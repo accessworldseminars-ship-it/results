@@ -361,6 +361,22 @@
             color: #4cd964;
         }
 
+        /* Commitment Banner */
+        .commitment-banner {
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+            padding: 25px;
+            border-radius: var(--radius);
+            margin: 40px auto;
+            max-width: 800px;
+            text-align: center;
+            border-left: 5px solid var(--accent-gold);
+        }
+
+        .commitment-banner h3 {
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
         /* Program Details */
         .program-details {
             background-color: var(--bg-dark);
@@ -453,30 +469,22 @@
             position: relative;
         }
 
-        .testimonial-slider {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
             gap: 30px;
-            padding: 20px 0 50px;
-        }
-
-        .testimonial-slider::-webkit-scrollbar {
-            display: none;
+            margin-top: 40px;
         }
 
         .testimonial-card {
-            flex: 0 0 calc(100% - 40px);
-            scroll-snap-align: start;
             background: rgba(255, 255, 255, 0.05);
             border-radius: var(--radius);
             padding: 30px;
             transition: var(--transition);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            min-height: 350px;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
         }
 
         .testimonial-card:hover {
@@ -485,15 +493,31 @@
             border-color: rgba(212, 175, 55, 0.3);
         }
 
+        .testimonial-number {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
         .testimonial-content {
             margin-bottom: 20px;
             font-style: italic;
             color: var(--text-gray);
+            flex-grow: 1;
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
         }
 
         .author-avatar {
@@ -520,31 +544,55 @@
             margin: 0;
         }
 
-        .slider-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
+        /* Contact Cards */
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
 
-        .slider-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(212, 175, 55, 0.2);
-            border: 2px solid var(--accent-gold);
-            color: var(--accent-gold);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
+        .contact-card {
+            background: rgba(26, 43, 94, 0.5);
+            border-radius: var(--radius);
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
             transition: var(--transition);
         }
 
-        .slider-btn:hover {
-            background: var(--accent-gold);
-            color: var(--primary-blue);
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
         }
 
         /* CTA Section */
@@ -577,11 +625,17 @@
             background: rgba(212, 175, 55, 0.2);
             border: 2px solid var(--accent-gold);
             color: var(--accent-gold);
-            padding: 10px 25px;
+            padding: 15px 30px;
             border-radius: 50px;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
             margin: 30px 0;
+        }
+
+        .price-subtext {
+            font-size: 1rem;
+            color: var(--accent-silver);
+            margin-top: 10px;
         }
 
         /* Footer */
@@ -672,8 +726,8 @@
                 gap: 30px;
             }
             
-            .testimonial-card {
-                flex: 0 0 calc(100% - 20px);
+            .testimonial-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -736,6 +790,14 @@
             .cta-content h2 {
                 font-size: 2.2rem;
             }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-card {
+                min-height: auto;
+            }
         }
 
         /* Animation on scroll */
@@ -770,6 +832,7 @@
                     <li><a href="#comparison">Comparison</a></li>
                     <li><a href="#program">Program</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
                     <li><a href="#cta" class="btn btn-secondary">Enroll Now</a></li>
                 </ul>
             </nav>
@@ -783,7 +846,7 @@
             <p>Join the exclusive AccessWorld Coach Academy and learn the exact systems, psychology, NLP foundations, and results-driven frameworks used to transform thousands of lives.</p>
             <div class="hero-btns">
                 <a href="#cta" class="btn">Start Your Journey</a>
-                <a href="#program" class="btn btn-secondary">Learn More</a>
+                <a href="#contact" class="btn btn-secondary">Free Strategy Session</a>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -893,7 +956,7 @@
                             <h4>💰 Cost</h4>
                         </div>
                         <div class="item-content">
-                            <p><span class="accent-text">$79 USD/month</span> — pay as you grow, low financial risk</p>
+                            <p><span class="accent-text">$79 USD/month</span> — 12-month commitment for complete transformation</p>
                         </div>
                     </div>
                     
@@ -967,6 +1030,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Commitment Banner -->
+            <div class="commitment-banner fade-in">
+                <h3><i class="fas fa-calendar-check"></i> 12-Month Commitment</h3>
+                <p>Our $79/month pricing requires a 12-month commitment to ensure you complete the full transformation journey and achieve certified coach status. This commitment is your investment in becoming a world-class coach.</p>
             </div>
         </div>
     </section>
@@ -1077,86 +1146,145 @@
                 <p>Hear from those whose lives have been changed through our methodology</p>
             </div>
             
-            <div class="testimonial-container fade-in">
-                <div class="testimonial-slider" id="testimonialSlider">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            "I first attended a seminar in 1991, and at the time, I had two major challenges: I was stuttering quite badly, and I wanted to become a karate champion. The seminar changed everything. Within two years, I became the Australian karate champion, and I was free from my stutter."
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">JR</div>
-                            <div class="author-info">
-                                <h4>Joshua Roy</h4>
-                                <p>Founder, AccessWorld Seminars</p>
-                            </div>
-                        </div>
+            <div class="testimonial-grid fade-in">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-number">1</div>
+                    <div class="testimonial-content">
+                        "Maya was plagued by social anxiety for most of her life. Through guided visualization and NLP techniques, she reprogrammed childhood trauma. By the end of the session, she was leading a group exercise on stage. Today, she runs her own online coaching business for introverts."
                     </div>
-                    
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            "DD had been struggling with recurring nightmares—sometimes as often as twice a week. She participated in an NLP training course where I worked with her nervous system. The result? Her nightmares completely stopped."
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">DD</div>
-                            <div class="author-info">
-                                <h4>DD</h4>
-                                <p>Nightmare Transformation</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Testimonial 3 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            "KLA struggled with a harsh inner critic for a long time. After taking part in some courses and learning NLP techniques, she was able to turn that inner critic into one of her greatest cheerleaders."
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">KL</div>
-                            <div class="author-info">
-                                <h4>KLA</h4>
-                                <p>Inner Critic Transformation</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Testimonial 4 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            "Sharon had been struggling with depression and anxiety. After going through a course and learning various NLP techniques, she realized that she didn't need medication to feel good. This shift allowed her to reclaim her life and happiness."
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">SH</div>
-                            <div class="author-info">
-                                <h4>Sharon</h4>
-                                <p>Overcame Depression & Anxiety</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Testimonial 5 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            "Daniel had some savings but lacked the confidence to purchase a house. After attending a seminar and going through several NLP courses, Daniel gained the self-assurance he needed and bought a house."
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">DN</div>
-                            <div class="author-info">
-                                <h4>Daniel</h4>
-                                <p>Gained Confidence to Buy a House</p>
-                            </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <h4>Maya</h4>
+                            <p>From Fear to Fierce Confidence</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="slider-controls">
-                    <button class="slider-btn" id="prevBtn">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="slider-btn" id="nextBtn">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-number">2</div>
+                    <div class="testimonial-content">
+                        "Tom, a widowed father of three, carried unresolved grief and guilt for over 15 years. At an emotional mastery seminar, he broke down during a forgiveness process and finally released the emotional burden. For the first time, he could speak openly to his children and even started dating again."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">T</div>
+                        <div class="author-info">
+                            <h4>Tom</h4>
+                            <p>Healing Decades of Grief</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-number">3</div>
+                    <div class="testimonial-content">
+                        "Alisha had the habit of starting big goals and giving up just before success. She discovered that as a child, she received love only when she was struggling. After rewiring that old belief, she started finishing what she started. Within six months, she finished her first book."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Alisha</h4>
+                            <p>Letting Go of Self-Sabotage</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-number">4</div>
+                    <div class="testimonial-content">
+                        "After losing his job, marriage, and home all in one year, Deven showed up feeling hopeless. Through an intense Future Self exercise, he saw a vision of himself as a speaker and mentor. Today, he's coaching young men in recovery, using his story to inspire others."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">D</div>
+                        <div class="author-info">
+                            <h4>Deven</h4>
+                            <p>Rebuilding After Rock Bottom</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-number">5</div>
+                    <div class="testimonial-content">
+                        "Karla struggled with a harsh inner critic. She had been battling negative, self-defeating thoughts for a long time. After learning NLP techniques, she was able to turn that inner critic into one of her greatest cheerleaders. Instead of negative comments, she started feeding herself positive thoughts."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">K</div>
+                        <div class="author-info">
+                            <h4>Karla</h4>
+                            <p>Inner Critic Transformation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-number">6</div>
+                    <div class="testimonial-content">
+                        "Dee had been struggling with recurring nightmares—sometimes as often as twice a week. She participated in an NLP training course where I worked with her nervous system. The result? Her nightmares completely stopped."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">D</div>
+                        <div class="author-info">
+                            <h4>Dee</h4>
+                            <p>Nightmare Transformation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#contact" class="btn">Book Your Transformation Session</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="program-details" id="contact">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Get In <span class="accent-text">Touch</span></h2>
+                <p>Start your transformation journey with a free strategy session</p>
+            </div>
+            
+            <div class="contact-cards fade-in">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp Direct</h3>
+                    <p>Message us directly for quick questions and program details</p>
+                    <a href="https://wa.me/61432119091" class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Message on WhatsApp
+                    </a>
+                    <p style="margin-top: 15px; font-size: 0.9rem;">Phone: +61 432 119 091</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Free Strategy Session</h3>
+                    <p>Book a complimentary 45-minute coaching strategy session to see if our program is right for you</p>
+                    <a href="https://form.jotform.com/250184868189875" class="btn" target="_blank" style="margin-top: 20px;">
+                        Book Free Session
+                    </a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Program Questions</h3>
+                    <p>Have specific questions about the certification program, curriculum, or outcomes?</p>
+                    <p style="margin-top: 20px; color: var(--accent-gold);">
+                        <i class="fas fa-envelope"></i> info@accessworld.com
+                    </p>
                 </div>
             </div>
         </div>
@@ -1169,15 +1297,23 @@
                 <h2>Your <span class="accent-text">Coaching Journey</span> Starts Here</h2>
                 <p>Join the AccessWorld Coach Training Program and become part of our mission to transform 10,000 lives globally. This is your moment to step into purpose, leadership, and impact.</p>
                 
-                <div class="price-tag">Only $79/month</div>
+                <div class="price-tag">
+                    $79 USD/month
+                    <div class="price-subtext">12-month commitment • Total investment: $948</div>
+                </div>
                 
-                <p>Start your transformation today with our flexible monthly payment plan.</p>
+                <p>Start your transformation today with our flexible monthly payment plan. Less than $2.60 per day to become a certified coach.</p>
                 
-                <a href="https://joshbossesteamworkspace.myclickfunnels.com/coaching_training" class="btn" style="font-size: 1.2rem; padding: 18px 45px;">
-                    <i class="fas fa-graduation-cap"></i> Become a World-Class Coach
-                </a>
+                <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
+                    <a href="https://joshbossesteamworkspace.myclickfunnels.com/coaching_training" class="btn" style="font-size: 1.2rem; padding: 18px 45px;">
+                        <i class="fas fa-graduation-cap"></i> Enroll Now
+                    </a>
+                    <a href="https://form.jotform.com/250184868189875" class="btn btn-secondary" style="font-size: 1.2rem; padding: 18px 45px;" target="_blank">
+                        <i class="fas fa-calendar-alt"></i> Free Strategy Call
+                    </a>
+                </div>
                 
-                <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">Limited spots available for the next cohort</p>
+                <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">Limited spots available for the next cohort starting soon</p>
             </div>
         </div>
     </section>
@@ -1204,20 +1340,21 @@
                     <a href="#comparison">Program Comparison</a>
                     <a href="#program">Program Outline</a>
                     <a href="#testimonials">Success Stories</a>
+                    <a href="#contact">Contact</a>
                     <a href="#cta">Enroll Now</a>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Contact Information</h3>
                     <p><i class="fas fa-envelope accent-text"></i> info@accessworld.com</p>
-                    <p><i class="fas fa-phone accent-text"></i> +1 (555) 123-4567</p>
+                    <p><i class="fab fa-whatsapp accent-text"></i> +61 432 119 091 (WhatsApp)</p>
                     <p><i class="fas fa-map-marker-alt accent-text"></i> Global Online Program</p>
                     <p>Simple access via WhatsApp — links and recordings sent directly to you</p>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 AccessWorld Coach Academy. All Rights Reserved. | Designed for transformation</p>
+                <p>&copy; 2024 AccessWorld Coach Academy. All Rights Reserved. | Designed for transformation</p>
             </div>
         </div>
     </footer>
@@ -1276,50 +1413,6 @@
                 }
             });
         }
-        
-        // Testimonial slider
-        const testimonialSlider = document.getElementById('testimonialSlider');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        
-        let currentSlide = 0;
-        
-        nextBtn.addEventListener('click', () => {
-            const slideWidth = document.querySelector('.testimonial-card').offsetWidth + 30;
-            const maxSlides = testimonialSlider.children.length - 1;
-            
-            if (currentSlide < maxSlides) {
-                currentSlide++;
-            } else {
-                currentSlide = 0;
-            }
-            
-            testimonialSlider.scrollTo({
-                left: currentSlide * slideWidth,
-                behavior: 'smooth'
-            });
-        });
-        
-        prevBtn.addEventListener('click', () => {
-            const slideWidth = document.querySelector('.testimonial-card').offsetWidth + 30;
-            const maxSlides = testimonialSlider.children.length - 1;
-            
-            if (currentSlide > 0) {
-                currentSlide--;
-            } else {
-                currentSlide = maxSlides;
-            }
-            
-            testimonialSlider.scrollTo({
-                left: currentSlide * slideWidth,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Auto-scroll testimonials
-        setInterval(() => {
-            nextBtn.click();
-        }, 8000);
         
         // Fade-in on scroll
         const fadeElements = document.querySelectorAll('.fade-in');
