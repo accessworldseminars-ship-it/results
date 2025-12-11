@@ -142,10 +142,22 @@
             padding: 20px;
         }
 
+        /* Logo Styling */
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
         }
 
         .logo h1 {
@@ -156,9 +168,11 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .logo-icon {
-            color: var(--accent-gold);
-            font-size: 1.8rem;
+        .logo-tagline {
+            font-size: 0.8rem;
+            color: var(--accent-silver);
+            font-family: 'Montserrat', sans-serif;
+            margin-top: -5px;
         }
 
         nav ul {
@@ -167,7 +181,7 @@
         }
 
         nav ul li {
-            margin-left: 30px;
+            margin-left: 25px;
             position: relative;
         }
 
@@ -819,6 +833,14 @@
             .testimonial-card {
                 min-height: auto;
             }
+            
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
         }
 
         /* Animation on scroll */
@@ -838,10 +860,15 @@
     <!-- Header & Navigation -->
     <header>
         <div class="container header-container">
-            <div class="logo">
-                <div class="logo-icon">💼</div>
-                <h1>AccessWorld Coach Academy</h1>
-            </div>
+            <a href="https://accessworldseminars-ship-it.github.io/results" class="logo">
+                <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" 
+                     alt="AccessWorld Seminars Logo" 
+                     class="logo-img">
+                <div class="logo-text">
+                    <h1>AccessWorld Coach Academy</h1>
+                    <div class="logo-tagline">Where You Learn to Help Others Access Their World</div>
+                </div>
+            </a>
             
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
@@ -854,6 +881,7 @@
                     <li><a href="#program">Program</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://accessworldseminars-ship-it.github.io/results" class="btn">Home Page</a></li>
                     <li><a href="#cta" class="btn btn-secondary">Enroll Now</a></li>
                 </ul>
             </nav>
@@ -1375,7 +1403,17 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>AccessWorld Coach Academy</h3>
+                    <a href="https://accessworldseminars-ship-it.github.io/results" style="text-decoration: none;">
+                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                            <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" 
+                                 alt="AccessWorld Seminars Logo" 
+                                 style="height: 50px; width: auto;">
+                            <div>
+                                <h3 style="margin: 0; padding: 0;">AccessWorld Coach Academy</h3>
+                                <div style="font-size: 0.9rem; color: var(--accent-silver);">Where You Learn to Help Others Access Their World</div>
+                            </div>
+                        </div>
+                    </a>
                     <p>"Where You Learn to Help Others Access Their World."</p>
                     <p>A comprehensive certification designed for people who want to lift, build, and impact others—while building a fulfilling, purposeful, financially empowering new career.</p>
                     <div class="social-links">
@@ -1394,6 +1432,7 @@
                     <a href="#testimonials">Success Stories</a>
                     <a href="#contact">Contact</a>
                     <a href="#cta">Enroll Now</a>
+                    <a href="https://accessworldseminars-ship-it.github.io/results">Home Page</a>
                 </div>
                 
                 <div class="footer-column">
