@@ -715,6 +715,27 @@
             font-size: 0.9rem;
         }
 
+        /* Email Link Styling */
+        .email-link {
+            color: var(--text-gray);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--accent-gold);
+            transition: var(--transition);
+            padding-bottom: 2px;
+        }
+
+        .email-link:hover {
+            color: var(--accent-gold);
+            border-bottom: 1px solid var(--accent-gold);
+        }
+
+        .contact-email {
+            margin-top: 20px;
+            color: var(--accent-gold);
+            display: block;
+            font-weight: 500;
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero h1 {
@@ -1147,71 +1168,41 @@
             </div>
             
             <div class="testimonial-grid fade-in">
-                <!-- Testimonial 1 -->
+                <!-- Testimonial 1 - Joshua -->
                 <div class="testimonial-card">
                     <div class="testimonial-number">1</div>
                     <div class="testimonial-content">
-                        "Maya was plagued by social anxiety for most of her life. Through guided visualization and NLP techniques, she reprogrammed childhood trauma. By the end of the session, she was leading a group exercise on stage. Today, she runs her own online coaching business for introverts."
+                        "I first attended a seminar in 1991, and at the time, I had two major challenges: I was stuttering quite badly, and I wanted to become a karate champion. The seminar changed everything. Within two years, I became the Australian karate champion, and I was free from my stutter."
                     </div>
                     <div class="testimonial-author">
-                        <div class="author-avatar">M</div>
+                        <div class="author-avatar">JR</div>
                         <div class="author-info">
-                            <h4>Maya</h4>
-                            <p>From Fear to Fierce Confidence</p>
+                            <h4>Joshua Roy</h4>
+                            <p>Founder, AccessWorld Seminars</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Testimonial 2 -->
+                <!-- Testimonial 2 - Dee -->
                 <div class="testimonial-card">
                     <div class="testimonial-number">2</div>
                     <div class="testimonial-content">
-                        "Tom, a widowed father of three, carried unresolved grief and guilt for over 15 years. At an emotional mastery seminar, he broke down during a forgiveness process and finally released the emotional burden. For the first time, he could speak openly to his children and even started dating again."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">T</div>
-                        <div class="author-info">
-                            <h4>Tom</h4>
-                            <p>Healing Decades of Grief</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-number">3</div>
-                    <div class="testimonial-content">
-                        "Alisha had the habit of starting big goals and giving up just before success. She discovered that as a child, she received love only when she was struggling. After rewiring that old belief, she started finishing what she started. Within six months, she finished her first book."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">A</div>
-                        <div class="author-info">
-                            <h4>Alisha</h4>
-                            <p>Letting Go of Self-Sabotage</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 4 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-number">4</div>
-                    <div class="testimonial-content">
-                        "After losing his job, marriage, and home all in one year, Deven showed up feeling hopeless. Through an intense Future Self exercise, he saw a vision of himself as a speaker and mentor. Today, he's coaching young men in recovery, using his story to inspire others."
+                        "Dee had been struggling with recurring nightmares—sometimes as often as twice a week. She participated in an NLP training course where I worked with her nervous system. The result? Her nightmares completely stopped."
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">D</div>
                         <div class="author-info">
-                            <h4>Deven</h4>
-                            <p>Rebuilding After Rock Bottom</p>
+                            <h4>Dee</h4>
+                            <p>Nightmare Transformation</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Testimonial 5 -->
+                <!-- Testimonial 3 - Karla -->
                 <div class="testimonial-card">
-                    <div class="testimonial-number">5</div>
+                    <div class="testimonial-number">3</div>
                     <div class="testimonial-content">
-                        "Karla struggled with a harsh inner critic. She had been battling negative, self-defeating thoughts for a long time. After learning NLP techniques, she was able to turn that inner critic into one of her greatest cheerleaders. Instead of negative comments, she started feeding herself positive thoughts."
+                        "Karla struggled with a harsh inner critic for a long time. After taking part in some courses and learning NLP techniques, she was able to turn that inner critic into one of her greatest cheerleaders."
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">K</div>
@@ -1222,17 +1213,77 @@
                     </div>
                 </div>
                 
-                <!-- Testimonial 6 -->
+                <!-- Testimonial 4 - Pam -->
+                <div class="testimonial-card">
+                    <div class="testimonial-number">4</div>
+                    <div class="testimonial-content">
+                        "Pam had a difficult childhood and had a lot of unresolved issues with her father. She hated him for the way he treated her. However, when she was in her 60s, after her father had already passed away, she was able to forgive him and release the heavy emotional burden."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">P</div>
+                        <div class="author-info">
+                            <h4>Pam</h4>
+                            <p>Father Forgiveness & Healing</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 5 - Daniel -->
+                <div class="testimonial-card">
+                    <div class="testimonial-number">5</div>
+                    <div class="testimonial-content">
+                        "Daniel had some savings but lacked the confidence to purchase a house. After attending a seminar and going through several NLP courses, Daniel gained the self-assurance he needed and bought a house."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DN</div>
+                        <div class="author-info">
+                            <h4>Daniel</h4>
+                            <p>Gained Confidence to Buy a House</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 6 - Sharon -->
                 <div class="testimonial-card">
                     <div class="testimonial-number">6</div>
                     <div class="testimonial-content">
-                        "Dee had been struggling with recurring nightmares—sometimes as often as twice a week. She participated in an NLP training course where I worked with her nervous system. The result? Her nightmares completely stopped."
+                        "Sharon had been struggling with depression and anxiety for quite some time. After going through a course and learning various NLP techniques, she realized that she didn't need medication to feel good. This shift allowed her to reclaim her life and her happiness."
                     </div>
                     <div class="testimonial-author">
-                        <div class="author-avatar">D</div>
+                        <div class="author-avatar">SH</div>
                         <div class="author-info">
-                            <h4>Dee</h4>
-                            <p>Nightmare Transformation</p>
+                            <h4>Sharon</h4>
+                            <p>Overcame Depression & Anxiety</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 7 - Kay -->
+                <div class="testimonial-card">
+                    <div class="testimonial-number">7</div>
+                    <div class="testimonial-content">
+                        "Kay had been grappling with suicidal thoughts, questioning whether life was worth living. After participating in a course and applying the tools and techniques she learned, she experienced a dramatic shift. She realized that she was capable of generating positive thoughts and creating a better life."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">K</div>
+                        <div class="author-info">
+                            <h4>Kay</h4>
+                            <p>Recovery from Suicidal Thoughts</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 8 - Joshua's 2017 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-number">8</div>
+                    <div class="testimonial-content">
+                        "In 2017, I made a commitment to go to three seminars that year as part of my personal growth plan. I experienced profound emotional healing after the loss of my children. Through emotional clearing tools, I was able to release physical pain from my body. By the end of that year, my life had shifted dramatically."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JR</div>
+                        <div class="author-info">
+                            <h4>Joshua Roy</h4>
+                            <p>2017 Year of Growth & Healing</p>
                         </div>
                     </div>
                 </div>
@@ -1278,13 +1329,14 @@
                 
                 <div class="contact-card">
                     <div class="contact-icon">
-                        <i class="fas fa-comments"></i>
+                        <i class="fas fa-envelope"></i>
                     </div>
-                    <h3>Program Questions</h3>
+                    <h3>Email Inquiries</h3>
                     <p>Have specific questions about the certification program, curriculum, or outcomes?</p>
-                    <p style="margin-top: 20px; color: var(--accent-gold);">
+                    <a href="mailto:accessworldseminars@gmail.com?subject=AccessWorld%20Coach%20Academy%20Question" 
+                       class="email-link contact-email">
                         <i class="fas fa-envelope"></i> info@accessworld.com
-                    </p>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1327,10 +1379,10 @@
                     <p>"Where You Learn to Help Others Access Their World."</p>
                     <p>A comprehensive certification designed for people who want to lift, build, and impact others—while building a fulfilling, purposeful, financially empowering new career.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.youtube.com/@joshuaroybosse" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/joshua_roy9/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/accessworld-seminars-3508a0296/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.tiktok.com/@accessworldseminars" target="_blank"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
                 
@@ -1346,8 +1398,21 @@
                 
                 <div class="footer-column">
                     <h3>Contact Information</h3>
-                    <p><i class="fas fa-envelope accent-text"></i> info@accessworld.com</p>
-                    <p><i class="fab fa-whatsapp accent-text"></i> +61 432 119 091 (WhatsApp)</p>
+                    <p>
+                        <i class="fas fa-envelope accent-text"></i> 
+                        <a href="mailto:accessworldseminars@gmail.com?subject=AccessWorld%20Coach%20Academy%20Inquiry" 
+                           class="email-link">
+                            info@accessworld.com
+                        </a>
+                    </p>
+                    <p>
+                        <i class="fab fa-whatsapp accent-text"></i> 
+                        <a href="https://wa.me/61432119091" 
+                           class="email-link" 
+                           target="_blank">
+                            +61 432 119 091 (WhatsApp)
+                        </a>
+                    </p>
                     <p><i class="fas fa-map-marker-alt accent-text"></i> Global Online Program</p>
                     <p>Simple access via WhatsApp — links and recordings sent directly to you</p>
                 </div>
