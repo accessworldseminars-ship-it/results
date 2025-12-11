@@ -109,15 +109,14 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
         
-             .card-header {
+        .card-header {
             background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
             color: white;
-            padding: 25px 25px 25px 25px;
+            padding: 25px;
             text-align: center;
             position: relative;
             z-index: 1;
-            padding-right: 100px; /* ← ADDED: Space for badges */
-            min-height: 120px;    /* ← ADDED: Consistent height */
+            min-height: 120px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -136,24 +135,22 @@
         }
         
         .program-name {
-           font-size: 24px;
+            font-size: 24px;
             font-weight: 700;
             margin-bottom: 10px;
             position: relative;
             z-index: 2;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            padding-right: 20px; /* ← ADD THIS */
-            word-wrap: break-word; /* ← ADD THIS */
+            padding-right: 100px; /* Space for badges */
         }
         
         .program-price {
-           font-size: 36px;
+            font-size: 36px;
             font-weight: 900;
             margin: 15px 0;
             position: relative;
             z-index: 2;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            padding-right: 20px; /* ← ADD THIS */
         }
         
         .card-content {
@@ -186,7 +183,7 @@
             font-weight: 600;
             color: #444;
             flex: 1;
-            min-width: 0; /* Prevents overflow */
+            min-width: 0;
         }
         
         .feature-value {
@@ -222,11 +219,12 @@
             font-weight: bold;
             z-index: 10;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            max-width: 80px;    /* ← ADDED: Prevents overflow */
-            text-align: center; /* ← ADDED: Centers text */
-            white-space: nowrap;/* ← ADDED: Keeps text on one line */
-            overflow: hidden;   /* ← ADDED: Hides overflow */
-            text-overflow: ellipsis; /* ← ADDED: Shows ... if too long */
+            max-width: 120px; /* Increased from 80px */
+            text-align: center;
+            white-space: normal; /* Changed from nowrap */
+            line-height: 1.2;
+            word-wrap: break-word;
+            overflow: visible;
         }
         
         .cta-button {
@@ -344,6 +342,16 @@
             .feature-value {
                 max-width: 100px;
                 font-size: 14px;
+            }
+            
+            .best-value-badge {
+                max-width: 100px;
+                font-size: 11px;
+                padding: 6px 10px;
+            }
+            
+            .program-name {
+                padding-right: 80px;
             }
         }
         
@@ -483,7 +491,7 @@
             <h3 style="color: #1a2980; margin-bottom: 25px; font-size: 24px;">Access Our Premium Webinar Collection</h3>
             
             <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin: 30px 0;">
-                <a href="webinars.html" 
+                <a href="https://form.jotform.com/250184868189875" target="_blank" 
                    style="background: #1a2980; 
                           color: white; 
                           padding: 18px 40px; 
@@ -532,7 +540,8 @@
                     <div class="ideal-for">
                         <strong>Ideal For:</strong> People wanting lifetime access only
                     </div>
-                    <a href="https://your-checkout-link.com/forever-access" target="_blank" class="cta-button">
+                    <!-- UPDATED: Changed to your lifetime access link -->
+                    <a href="https://joshbossesteamworkspace.myclickfunnels.com/lifetime-access" target="_blank" class="cta-button">
                         GET FOREVER ACCESS
                         <div class="link-indicator"><i class="fas fa-external-link-alt"></i> Secure checkout</div>
                     </a>
@@ -557,9 +566,10 @@
                     <div class="ideal-for">
                         <strong>Ideal For:</strong> People wanting guided transformation
                     </div>
-                    <a href="https://your-checkout-link.com/jumpstart-transformation" target="_blank" class="cta-button">
+                    <!-- UPDATED: Now goes to strategy session -->
+                    <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
                         START TRANSFORMATION
-                        <div class="link-indicator"><i class="fas fa-external-link-alt"></i> Secure checkout</div>
+                        <div class="link-indicator"><i class="fas fa-calendar-alt"></i> Book strategy session</div>
                     </a>
                 </div>
             </div>
@@ -584,16 +594,18 @@
                     <div class="ideal-for">
                         <strong>Ideal For:</strong> People wanting coaching + lifetime learning
                     </div>
-                    <a href="https://your-checkout-link.com/coaching-legacy" target="_blank" class="cta-button">
+                    <!-- UPDATED: Now goes to strategy session -->
+                    <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
                         GET COACHING + LEGACY
-                        <div class="link-indicator"><i class="fas fa-external-link-alt"></i> Secure checkout</div>
+                        <div class="link-indicator"><i class="fas fa-calendar-alt"></i> Book strategy session</div>
                     </a>
                 </div>
             </div>
 
             <!-- Mastery Accelerator -->
             <div class="program-card tier-2">
-                <div class="best-value-badge">VIP ELITE</div>
+                <!-- FIXED: Changed badge text to fit better -->
+                <div class="best-value-badge">VIP ELITE ACCESS</div>
                 <div class="card-header">
                     <div class="program-name">Mastery Accelerator</div>
                     <div class="program-price">$11,995</div>
@@ -611,9 +623,10 @@
                     <div class="ideal-for">
                         <strong>Ideal For:</strong> Elite performers ready for total transformation
                     </div>
-                    <a href="https://your-checkout-link.com/mastery-accelerator" target="_blank" class="cta-button">
+                    <!-- UPDATED: Now goes to strategy session -->
+                    <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
                         JOIN INNER CIRCLE
-                        <div class="link-indicator"><i class="fas fa-external-link-alt"></i> VIP application required</div>
+                        <div class="link-indicator"><i class="fas fa-calendar-alt"></i> VIP strategy session</div>
                     </a>
                 </div>
             </div>
@@ -631,31 +644,31 @@
                     <tr>
                         <th>Feature</th>
                         <th>
-                            <a href="https://your-checkout-link.com/live-webinar" target="_blank" style="color: white; text-decoration: none;">
+                            <a href="https://form.jotform.com/250184868189875" target="_blank" style="color: white; text-decoration: none;">
                                 Live Webinar<br>
                                 <div class="table-price">$795</div>
-                                <div class="table-subtitle">Click to enroll</div>
+                                <div class="table-subtitle">Click to book session</div>
                             </a>
                         </th>
                         <th>
-                            <a href="https://your-checkout-link.com/webinar-bonus" target="_blank" style="color: white; text-decoration: none;">
+                            <a href="https://form.jotform.com/250184868189875" target="_blank" style="color: white; text-decoration: none;">
                                 Webinar Bonus Deals<br>
                                 <div class="table-price">$995</div>
-                                <div class="table-subtitle">Click to enroll</div>
+                                <div class="table-subtitle">Click to book session</div>
                             </a>
                         </th>
                         <th class="highlight-cell">
-                            <a href="https://your-checkout-link.com/webinar-ultimate" target="_blank" style="color: #1a2980; text-decoration: none;">
+                            <a href="https://form.jotform.com/250184868189875" target="_blank" style="color: #1a2980; text-decoration: none;">
                                 Webinar Ultimate Package<br>
                                 <div class="table-price">$1,295</div>
-                                <div class="table-subtitle">Click to enroll</div>
+                                <div class="table-subtitle">Click to book session</div>
                             </a>
                         </th>
                         <th>
-                            <a href="https://your-checkout-link.com/webinar-subscription" target="_blank" style="color: white; text-decoration: none;">
+                            <a href="https://form.jotform.com/250184868189875" target="_blank" style="color: white; text-decoration: none;">
                                 Webinar Ultimate Package Subscription<br>
                                 <div class="table-price">$495 + $99/mo</div>
-                                <div class="table-subtitle">Click to enroll</div>
+                                <div class="table-subtitle">Click to book session</div>
                             </a>
                         </th>
                     </tr>
@@ -836,133 +849,4 @@
             <div class="badge">Choose Your Path</div>
         </div>
 
-        <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                <div style="background: #e3f2fd; padding: 20px; border-radius: 10px; border-left: 5px solid #1a2980;">
-                    <h3 style="color: #1a2980; margin-bottom: 15px;">🎯 Tier 1 - Foundation</h3>
-                    <p><strong>Investment:</strong> $795 - $1,295</p>
-                    <p><strong>Best for:</strong> Beginners, topic-specific learning</p>
-                    <p><strong>Format:</strong> Webinar-based with optional coaching</p>
-                    <a href="#tier1" style="color: #1a2980; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 10px;">
-                        View Tier 1 Programs <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div style="background: #fce4ec; padding: 20px; border-radius: 10px; border-left: 5px solid #D4145A;">
-                    <h3 style="color: #D4145A; margin-bottom: 15px;">🚀 Tier 2 - Transformation</h3>
-                    <p><strong>Investment:</strong> $2,896 - $11,995</p>
-                    <p><strong>Best for:</strong> Serious transformation seekers</p>
-                    <p><strong>Format:</strong> Intensive coaching + lifetime access</p>
-                    <a href="#tier2" style="color: #D4145A; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 10px;">
-                        View Tier 2 Programs <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div style="background: #e8f5e9; padding: 20px; border-radius: 10px; border-left: 5px solid #4CAF50;">
-                    <h3 style="color: #4CAF50; margin-bottom: 15px;">🎁 Introduction Offers</h3>
-                    <p><strong>Investment:</strong> FREE - $39 USD</p>
-                    <p><strong>Best for:</strong> Trying before committing</p>
-                    <p><strong>Format:</strong> Webinars, checklists, free sessions</p>
-                    <a href="#offers" style="color: #4CAF50; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 10px;">
-                        View Free Offers <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div style="text-align: center; margin: 50px 0 30px; color: white;">
-            <p style="font-size: 18px; margin-bottom: 10px;">Need help choosing the right program?</p>
-            <a href="https://calendly.com/your-accessworld/strategy-call" target="_blank" style="background: white; color: #1a2980; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block; font-size: 18px; transition: all 0.3s ease;">
-                <i class="fas fa-calendar-check"></i> Book a Free Strategy Call
-            </a>
-        </div>
-
-        <!-- ========== BACK TO HOME BUTTON ========== -->
-        <div style="text-align: center; padding: 50px 20px; background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%); margin-top: 60px; border-radius: 0 0 15px 15px;">
-            <a href="index.html"
-               style="background: white;
-                      color: #1a2980;
-                      padding: 18px 45px;
-                      border-radius: 30px;
-                      text-decoration: none;
-                      font-weight: bold;
-                      font-size: 20px;
-                      display: inline-block;
-                      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-                      transition: all 0.3s ease;">
-                ← Back to Joshua Roy Coaching Page
-            </a>
-            <p style="color: rgba(255,255,255,0.9); margin-top: 20px; font-size: 17px;">
-                Return to personal coaching options and transformation programs.
-            </p>
-        </div>
-    </div>
-
-    <script>
-        // Add hover effects and interactions
-        document.querySelectorAll('.program-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-
-        // Smooth scrolling for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Track link clicks
-        document.querySelectorAll('a[href^="http"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                const linkText = this.textContent.trim();
-                console.log(`Link clicked: ${linkText}`);
-                // Add your analytics tracking here
-            });
-        });
-
-        // Highlight best value program
-        const bestValueCards = document.querySelectorAll('.program-card .best-value-badge');
-        bestValueCards.forEach(badge => {
-            const card = badge.closest('.program-card');
-            card.style.border = '3px solid #ffeb3b';
-            card.style.boxShadow = '0 15px 35px rgba(255, 193, 7, 0.3)';
-        });
-
-        // Function to scroll to webinar section
-        function scrollToWebinars() {
-            const webinarSection = document.querySelector('.section-title:nth-of-type(1)');
-            webinarSection.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Add IDs for navigation
-        document.getElementById('tier1').scrollIntoView = function() {
-            const tier1Section = document.querySelector('.section-title:nth-of-type(2)');
-            tier1Section.scrollIntoView({ behavior: 'smooth' });
-        };
-        
-        document.getElementById('tier2').scrollIntoView = function() {
-            const tier2Section = document.querySelector('.section-title:first-of-type');
-            tier2Section.scrollIntoView({ behavior: 'smooth' });
-        };
-        
-        document.getElementById('offers').scrollIntoView = function() {
-            const offersSection = document.querySelector('.intro-offers');
-            offersSection.scrollIntoView({ behavior: 'smooth' });
-        };
-    </script>
-</body>
-</html>
+        <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);
