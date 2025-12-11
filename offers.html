@@ -109,13 +109,18 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
         
-        .card-header {
+             .card-header {
             background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
             color: white;
-            padding: 25px;
+            padding: 25px 25px 25px 25px;
             text-align: center;
             position: relative;
             z-index: 1;
+            padding-right: 100px; /* ← ADDED: Space for badges */
+            min-height: 120px;    /* ← ADDED: Consistent height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         /* FIXED: Ensure text is visible */
@@ -131,21 +136,24 @@
         }
         
         .program-name {
-            font-size: 24px;
+           font-size: 24px;
             font-weight: 700;
             margin-bottom: 10px;
             position: relative;
             z-index: 2;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            padding-right: 20px; /* ← ADD THIS */
+            word-wrap: break-word; /* ← ADD THIS */
         }
         
         .program-price {
-            font-size: 36px;
+           font-size: 36px;
             font-weight: 900;
             margin: 15px 0;
             position: relative;
             z-index: 2;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            padding-right: 20px; /* ← ADD THIS */
         }
         
         .card-content {
@@ -214,6 +222,11 @@
             font-weight: bold;
             z-index: 10;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            max-width: 80px;    /* ← ADDED: Prevents overflow */
+            text-align: center; /* ← ADDED: Centers text */
+            white-space: nowrap;/* ← ADDED: Keeps text on one line */
+            overflow: hidden;   /* ← ADDED: Hides overflow */
+            text-overflow: ellipsis; /* ← ADDED: Shows ... if too long */
         }
         
         .cta-button {
@@ -842,6 +855,26 @@
                 <i class="fas fa-calendar-check"></i> Book a Free Strategy Call
             </a>
         </div>
+
+        <!-- ========== BACK TO HOME BUTTON ========== -->
+        <div style="text-align: center; padding: 50px 20px; background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%); margin-top: 60px; border-radius: 0 0 15px 15px;">
+            <a href="index.html"
+               style="background: white;
+                      color: #1a2980;
+                      padding: 18px 45px;
+                      border-radius: 30px;
+                      text-decoration: none;
+                      font-weight: bold;
+                      font-size: 20px;
+                      display: inline-block;
+                      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+                      transition: all 0.3s ease;">
+                ← Back to Joshua Roy Coaching Page
+            </a>
+            <p style="color: rgba(255,255,255,0.9); margin-top: 20px; font-size: 17px;">
+                Return to personal coaching options and transformation programs.
+            </p>
+        </div>
     </div>
 
     <script>
@@ -890,7 +923,7 @@
             card.style.boxShadow = '0 15px 35px rgba(255, 193, 7, 0.3)';
         });
 
-              // Add IDs for navigation
+        // Add IDs for navigation
         document.getElementById('tier1').scrollIntoView = function() {
             const tier1Section = document.querySelector('.section-title:nth-of-type(2)');
             tier1Section.scrollIntoView({ behavior: 'smooth' });
@@ -906,26 +939,5 @@
             offersSection.scrollIntoView({ behavior: 'smooth' });
         };
     </script>
-
-    <!-- ========== BACK TO HOME BUTTON ========== -->
-    <div style="text-align: center; padding: 50px 20px; background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%); margin-top: 60px;">
-        <a href="index.html"
-           style="background: white;
-                  color: #1a2980;
-                  padding: 18px 45px;
-                  border-radius: 30px;
-                  text-decoration: none;
-                  font-weight: bold;
-                  font-size: 20px;
-                  display: inline-block;
-                  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-                  transition: all 0.3s ease;">
-            ← Back to Joshua Roy Coaching Page
-        </a>
-        <p style="color: rgba(255,255,255,0.9); margin-top: 20px; font-size: 17px;">
-            Return to personal coaching options and transformation programs.
-        </p>
-    </div>
-
 </body>
 </html>
