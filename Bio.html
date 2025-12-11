@@ -145,7 +145,18 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
         }
 
         .logo h1 {
@@ -156,9 +167,11 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .logo-icon {
-            color: var(--accent-gold);
-            font-size: 1.8rem;
+        .logo-tagline {
+            font-size: 0.8rem;
+            color: var(--accent-silver);
+            font-family: 'Montserrat', sans-serif;
+            margin-top: -5px;
         }
 
         nav ul {
@@ -167,7 +180,7 @@
         }
 
         nav ul li {
-            margin-left: 30px;
+            margin-left: 25px;
             position: relative;
         }
 
@@ -543,6 +556,14 @@
             .mobile-menu-btn {
                 display: block;
             }
+            
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
         }
     </style>
 </head>
@@ -550,10 +571,15 @@
     <!-- Header & Navigation -->
     <header>
         <div class="container header-container">
-            <div class="logo">
-                <div class="logo-icon">👤</div>
-                <h1>Joshua Roy</h1>
-            </div>
+            <a href="https://accessworldseminars-ship-it.github.io/results" class="logo">
+                <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" 
+                     alt="AccessWorld Seminars Logo" 
+                     class="logo-img">
+                <div class="logo-text">
+                    <h1>Joshua Roy</h1>
+                    <div class="logo-tagline">AccessWorld Seminars</div>
+                </div>
+            </a>
             
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
@@ -568,7 +594,7 @@
                     <li><a href="#services">Services</a></li>
                     <li><a href="#training">Free Training</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="../index.html" class="btn">Coach Academy</a></li>
+                    <li><a href="https://accessworldseminars-ship-it.github.io/results" class="btn">Home</a></li>
                 </ul>
             </nav>
         </div>
@@ -900,8 +926,18 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>Joshua Roy</h3>
-                    <p>Results Coach, Seminar Leader & Founder of AccessWorld Seminars dedicated to helping individuals unlock their full potential through proven coaching methodologies including NLP, NSR, and emotional mastery.</p>
+                    <a href="https://accessworldseminars-ship-it.github.io/results" style="text-decoration: none;">
+                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                            <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" 
+                                 alt="AccessWorld Seminars Logo" 
+                                 style="height: 50px; width: auto;">
+                            <div>
+                                <h3 style="margin: 0; padding: 0;">AccessWorld Seminars</h3>
+                                <div style="font-size: 0.9rem; color: var(--accent-silver);">Joshua Roy</div>
+                            </div>
+                        </div>
+                    </a>
+                    <p>Results Coach, Seminar Leader & Founder dedicated to helping individuals unlock their full potential through proven coaching methodologies including NLP, NSR, and emotional mastery.</p>
                     <div class="social-links">
                         <a href="https://www.youtube.com/@joshuaroybosse" target="_blank"><i class="fab fa-youtube"></i></a>
                         <a href="https://www.instagram.com/joshua_roy9/" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -919,7 +955,7 @@
                     <a href="#services">Services</a>
                     <a href="#training">Free Training</a>
                     <a href="#contact">Contact</a>
-                    <a href="../index.html">AccessWorld Academy</a>
+                    <a href="https://accessworldseminars-ship-it.github.io/results">Home</a>
                 </div>
                 
                 <div class="footer-column">
