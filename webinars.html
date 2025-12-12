@@ -523,6 +523,47 @@
             transform: translateY(-3px);
         }
         
+        /* Free Seminar Links Section */
+        .free-seminars-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            padding: 60px 0;
+            margin: 60px 0;
+            border-radius: var(--radius);
+        }
+        
+        .free-seminar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .free-seminar-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .free-seminar-card:hover {
+            transform: translateY(-10px);
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--accent-gold);
+        }
+        
+        .free-seminar-card i {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+        
+        .free-seminar-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero-content h1 {
@@ -598,6 +639,10 @@
                 width: 100%;
                 max-width: 300px;
                 justify-content: center;
+            }
+            
+            .free-seminar-grid {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -695,8 +740,72 @@
         </div>
     </section>
 
+    <!-- FREE SEMINAR LINKS -->
+    <section class="free-seminars-section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Free <span class="accent-text">Introductory</span> Seminars</h2>
+                <p style="font-size: 1.1rem; color: var(--text-gray); max-width: 700px; margin: 20px auto;">
+                    Start your transformation journey with these free introductory sessions
+                </p>
+            </div>
+            
+            <div class="free-seminar-grid fade-in">
+                <div class="free-seminar-card">
+                    <i class="fas fa-brain"></i>
+                    <h4>NLP for Beginners</h4>
+                    <p>Learn the foundation principles of NLP and how to transform your mindset</p>
+                    <a href="https://joshbossesteamworkspace.myclickfunnels.com/copy-of-challenge-funnel-heal-you-inner-child--88c12" 
+                       target="_blank" class="btn" style="margin-top: 20px; padding: 10px 25px; font-size: 0.9rem;">
+                        Access Free Seminar
+                    </a>
+                </div>
+                
+                <div class="free-seminar-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h4>Stop Self-Sabotage</h4>
+                    <p>Discover how to break free from patterns holding you back from success</p>
+                    <a href="https://joshbossesteamworkspace.myclickfunnels.com/copy-of-challenge-funnel-heal-you-inner-child" 
+                       target="_blank" class="btn" style="margin-top: 20px; padding: 10px 25px; font-size: 0.9rem;">
+                        Access Free Seminar
+                    </a>
+                </div>
+                
+                <div class="free-seminar-card">
+                    <i class="fas fa-child"></i>
+                    <h4>Heal Your Inner Child</h4>
+                    <p>Address past wounds and trauma to create emotional freedom</p>
+                    <a href="https://joshbossesteamworkspace.myclickfunnels.com/funnel-heal-you-inner-child" 
+                       target="_blank" class="btn" style="margin-top: 20px; padding: 10px 25px; font-size: 0.9rem;">
+                        Access Free Seminar
+                    </a>
+                </div>
+                
+                <div class="free-seminar-card">
+                    <i class="fas fa-comments"></i>
+                    <h4>Communication Mastery</h4>
+                    <p>Learn to communicate effectively and build deeper relationships</p>
+                    <a href="https://joshbossesteamworkspace.myclickfunnels.com/communicaiton-full" 
+                       target="_blank" class="btn" style="margin-top: 20px; padding: 10px 25px; font-size: 0.9rem;">
+                        Access Free Seminar
+                    </a>
+                </div>
+                
+                <div class="free-seminar-card">
+                    <i class="fas fa-memory"></i>
+                    <h4>Memory Enhancement</h4>
+                    <p>Boost your memory and cognitive abilities with proven techniques</p>
+                    <a href="https://joshbossesteamworkspace.myclickfunnels.com/memorywebinar" 
+                       target="_blank" class="btn" style="margin-top: 20px; padding: 10px 25px; font-size: 0.9rem;">
+                        Access Free Seminar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- HEALTH & WELLNESS CATEGORY -->
-    <section class="category-section">
+    <section class="category-section" id="health">
         <div class="container">
             <div class="category-header fade-in">
                 <i class="fas fa-heartbeat category-icon"></i>
@@ -715,47 +824,50 @@
                     </div>
                     <div class="accordion-content">
                         <p style="margin-bottom: 25px; font-size: 1.1rem;">
-                            The Health Mind Repatterning Webinar is for people who want to improve their health and energy to live a more abundant life.
+                            The health mind repatterning Webinar is for people who want to improve their health and energy so that they can live a more abundant life.
                         </p>
                         
                         <div class="audience-section">
                             <h3 class="section-subtitle"><i class="fas fa-users"></i> This Webinar Is For:</h3>
                             <div class="audience-grid">
                                 <div class="audience-card">
-                                    <h4>🔍 Health Optimizers</h4>
-                                    <p>People with minor health issues wanting improved mobility, energy, and zest for life</p>
+                                    <h4>👨‍⚕️ Health Optimizers</h4>
+                                    <p>People who are having minor health issues and would like to improve their health so that they can live longer, with improved mobility and enhanced energy and zest for life.</p>
                                 </div>
                                 <div class="audience-card">
                                     <h4>💪 Change Seekers</h4>
-                                    <p>Those struggling with health issues needing motivation to commit to change</p>
+                                    <p>People who are struggling with health issues and need to commit and motivate themselves to make a change.</p>
                                 </div>
                                 <div class="audience-card">
                                     <h4>⚡ Energy Maximizers</h4>
-                                    <p>People wanting abundant energy throughout the entire day, not just mornings</p>
+                                    <p>People who want to get more done in their day and have an abundance of energy at the end of the day and not just at the beginning.</p>
                                 </div>
                             </div>
+                            <p style="margin-top: 15px; font-style: italic; color: var(--accent-gold);">
+                                ... and anyone who wants to have fun achieving this quickly, with the support of an experienced teacher and an inspiring community.
+                            </p>
                         </div>
                         
                         <div class="outcomes-section">
                             <h3 class="section-subtitle"><i class="fas fa-bullseye"></i> Learning Outcomes:</h3>
                             <ol class="outcomes-list">
-                                <li>Discover your body's amazing ability to heal itself</li>
-                                <li>Learn specific foods to incorporate for health improvement</li>
-                                <li>Understand how undesirable foods create short/long-term problems</li>
-                                <li>Upgrade food selection criteria and lifestyle mindset</li>
-                                <li>Deepen knowledge about poor diet's effects on mind and emotions</li>
-                                <li>Apply NLP's swish pattern technique for your health journey</li>
+                                <li>Discover the amazing body that you possess and it's ability to heal itself.</li>
+                                <li>The specific foods that you should incorporate into your diet so that you can move your health forward.</li>
+                                <li>Understand the way that certain less than desirable foods react in the body and how they create short term and long term problems.</li>
+                                <li>How to Upgrade your food selection criteria, commit to a lifestyle change and adjust the way you think about food.</li>
+                                <li>Deepen your knowledge about the harmful effects of poor diet and how this affects the mind, your emotions and your life.</li>
+                                <li>Apply the NLP technique known as the swish pattern to assist you in your health journey.</li>
                             </ol>
                         </div>
                         
                         <div class="benefits-section">
                             <h3 class="section-subtitle"><i class="fas fa-trophy"></i> By The End, You Will:</h3>
                             <ul class="benefits-list">
-                                <li>Understand how to heal specific health challenges using foods as tools</li>
-                                <li>Know how to refrain from negatively impactful foods</li>
-                                <li>Have a complete step-by-step process for positive health habits</li>
-                                <li>Understand mindset power through affirmations and gratitude</li>
-                                <li>Confidently identify how you created current health challenges and how to change them</li>
+                                <li>Have a deeper understanding of how to heal specific health challenges by using certain foods as healing tools.</li>
+                                <li>Know how to refrain from foods that are having a negative impact on your health.</li>
+                                <li>Have a complete step by step process for developing positive habits around health.</li>
+                                <li>Understand the power of mindset as you incorporate affirmations, incantations and gratitude.</li>
+                                <li>Confidently and clearly identify how you have created your current health challenges and how to change it.</li>
                             </ul>
                         </div>
                     </div>
@@ -772,35 +884,49 @@
                     </div>
                     <div class="accordion-content">
                         <p style="margin-bottom: 25px; font-size: 1.1rem;">
-                            For people experiencing physical or emotional pain rooted in repressed emotions, seeking healing and empowerment.
+                            This Webinar is for people who are currently experiencing physical or emotional pain that has at its root cause, repressed emotions. It is for people who want physical and/or emotional healing in their lives. It is also designed to open up the minds and hearts of individuals toward the possibility of overcoming personal challenges and struggles and ultimately making the world a better place to live in.
                         </p>
                         
                         <div class="audience-section">
                             <h3 class="section-subtitle"><i class="fas fa-users"></i> This Webinar Is For:</h3>
                             <div class="audience-grid">
                                 <div class="audience-card">
-                                    <h4>😣 Pain Sufferers</h4>
-                                    <p>People with chronic illness, acute injury, or pain wanting a pain-free future</p>
+                                    <h4>😣 Physical Pain Sufferers</h4>
+                                    <p>People that are in physical pain due to chronic illness, acute injury or other challenge, and want to manifest a pain free future with the assistance of their unconscious mind.</p>
                                 </div>
                                 <div class="audience-card">
-                                    <h4>💔 Emotional Healing</h4>
-                                    <p>Those in emotional pain seeking relief, healing, and freedom</p>
+                                    <h4>💔 Emotional Healing Seekers</h4>
+                                    <p>People in emotional pain that want relief, healing and freedom.</p>
                                 </div>
                                 <div class="audience-card">
                                     <h4>🕊️ Future Healers</h4>
-                                    <p>People wanting to become healers for others struggling with pain</p>
+                                    <p>People who want to become a healer for others who constantly struggle with pain and need relief.</p>
                                 </div>
                             </div>
+                            <p style="margin-top: 15px; font-style: italic; color: var(--accent-gold);">
+                                ... and anyone that wants to have fun achieving this quickly, with the support of an experienced teacher and an inspiring community.
+                            </p>
+                        </div>
+                        
+                        <div class="outcomes-section">
+                            <h3 class="section-subtitle"><i class="fas fa-bullseye"></i> Learning Outcomes:</h3>
+                            <ol class="outcomes-list">
+                                <li>Discover how and why people are in pain, and why pain persists.</li>
+                                <li>Why and how to pay attention, and use the faculty of imagination to significantly reduce pain faster with your mind than through the use of medication.</li>
+                                <li>How to use psychosomatic, neuro modulation to communicate with the unconscious mind, in a way that the unconscious mind can immediately understand and respond.</li>
+                                <li>Understand the range of tools available to reduce suffering for self and other.</li>
+                                <li>Deepen your knowledge about using the tools and gaining experience in a safe learning environment.</li>
+                            </ol>
                         </div>
                         
                         <div class="benefits-section">
                             <h3 class="section-subtitle"><i class="fas fa-trophy"></i> By The End, You Will:</h3>
                             <ul class="benefits-list">
-                                <li>Understand why you need tools to intervene with current and future pain</li>
-                                <li>Know how to stop suffering by understanding three pain elimination prerequisites</li>
-                                <li>Have a complete step-by-step guide to qualify for rapid relief</li>
-                                <li>Understand how to communicate directly with your unconscious mind to control pain</li>
-                                <li>Confidently identify how to safely use these tools for self and others</li>
+                                <li>Have a deeper understanding of why you must possess tools to intervene with current and future pain for yourself.</li>
+                                <li>How to stop suffering in self and other by understanding the three pre requisites to pain elimination.</li>
+                                <li>A complete step by step guide to qualify yourself and others for rapidly relief.</li>
+                                <li>Understand how to send a new message and communicate directly with your unconscious mind to control pain.</li>
+                                <li>Confidently and clearly identify how to safely use these tools for self and others.</li>
                             </ul>
                         </div>
                     </div>
@@ -811,23 +937,55 @@
                     <div class="accordion-header" onclick="toggleAccordion(this)">
                         <div class="webinar-title">
                             <i class="fas fa-cloud-sun webinar-icon"></i>
-                            Emotional Clearing
+                            Emotional Clearing Webinar
                         </div>
                         <i class="fas fa-plus accordion-toggle"></i>
                     </div>
                     <div class="accordion-content">
                         <p style="margin-bottom: 25px; font-size: 1.1rem;">
-                            For people who have suffered from trauma, rejection, loss, and want to release trapped emotions and eliminate rumination.
+                            The Emotional Clearing Webinar is for people who have suffered from trauma, rejection, loss and other challenges. This webinar focusses on past event (known or repressed) that may cause you to feel trapped, stuck, hopeless or helpless. This webinar will guide you through processes designed to release the trapped emotions, and eliminate rumination.
                         </p>
+                        
+                        <div class="audience-section">
+                            <h3 class="section-subtitle"><i class="fas fa-users"></i> This Webinar Is For:</h3>
+                            <div class="audience-grid">
+                                <div class="audience-card">
+                                    <h4>🧸 Childhood Trauma Survivors</h4>
+                                    <p>People that have suffered from traumatic events in their childhood and these have directly affected their health, relationships, and quality of life.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🔄 Life Challenge Overcomers</h4>
+                                    <p>People who have had major life challenges, have experienced loss, and are wanting to rebuild themselves.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>❓ Curious High-Achievers</h4>
+                                    <p>People who are curious why they are putting in so much work and effort into achieving their goals, and are still coming up short.</p>
+                                </div>
+                            </div>
+                            <p style="margin-top: 15px; font-style: italic; color: var(--accent-gold);">
+                                ... and anyone that wants to have fun achieving this quickly, with the support of an experienced teacher and an inspiring community.
+                            </p>
+                        </div>
+                        
+                        <div class="outcomes-section">
+                            <h3 class="section-subtitle"><i class="fas fa-bullseye"></i> Learning Outcomes:</h3>
+                            <ol class="outcomes-list">
+                                <li>Discover effective tools for eliminating unconscious resistance.</li>
+                                <li>Learn 4 powerful emotional clearing techniques.</li>
+                                <li>How to change your perspective on the traumatic events of your life.</li>
+                                <li>Discover what trauma actually is.</li>
+                                <li>Deepen your knowledge about Healing.</li>
+                            </ol>
+                        </div>
                         
                         <div class="benefits-section">
                             <h3 class="section-subtitle"><i class="fas fa-trophy"></i> By The End, You Will:</h3>
                             <ul class="benefits-list">
-                                <li>Discover that you won't be able to think about the past and feel bad about it</li>
-                                <li>Know how to acknowledge, accept and appreciate your trauma</li>
-                                <li>Have a complete step-by-step process for creating healing and freedom</li>
-                                <li>Experience less unconscious resistance and renewed energy</li>
-                                <li>Confidently identify changes in your mood, behavior, and former triggers</li>
+                                <li>Discover that after doing emotional clearing processes that you will not be able to think about the past and feel bad about it.</li>
+                                <li>Know how to acknowledge, accept and appreciate your trauma.</li>
+                                <li>A complete step by step process for creating healing and freedom.</li>
+                                <li>Have less unconscious resistance and feel a renewal of energy that can be used to create results and success.</li>
+                                <li>Confidently and clearly identify changes in your mood, behavior and former triggers.</li>
                             </ul>
                         </div>
                     </div>
@@ -837,7 +995,7 @@
     </section>
 
     <!-- NLP & MINDSET CATEGORY -->
-    <section class="category-section" style="background: rgba(15, 26, 61, 0.3);">
+    <section class="category-section" style="background: rgba(15, 26, 61, 0.3);" id="nlp">
         <div class="container">
             <div class="category-header fade-in">
                 <i class="fas fa-brain category-icon"></i>
@@ -856,17 +1014,49 @@
                     </div>
                     <div class="accordion-content">
                         <p style="margin-bottom: 25px; font-size: 1.1rem;">
-                            For people experiencing less than positive thoughts, emotions, and results who want to create success in record time.
+                            The NLP foundation principle Webinar is for people who are currently experiencing less than positive thoughts, emotions and results in their lives. It is for people who want to get rid of a something that is inhibiting your progress or alternately to help them to create results in record time. NLP uses principles such as modeling to augment success and gain success.
                         </p>
+                        
+                        <div class="audience-section">
+                            <h3 class="section-subtitle"><i class="fas fa-users"></i> This Webinar Is For:</h3>
+                            <div class="audience-grid">
+                                <div class="audience-card">
+                                    <h4>🤔 Confidence Seekers</h4>
+                                    <p>People that have negative thoughts and feelings about themselves and their ability and lack the confidence to create the future and life they desire.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🎭 Emotional Managers</h4>
+                                    <p>People who want to increase their emotional intelligence and manage their state of the mind and emotion in an empowering way.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🧠 Unconscious Mind Masters</h4>
+                                    <p>People who want to take full control of their unconscious mind so that they can create a bright and compelling future.</p>
+                                </div>
+                            </div>
+                            <p style="margin-top: 15px; font-style: italic; color: var(--accent-gold);">
+                                ... and anyone that wants to have fun achieving this quickly, with the support of an experienced teacher and an inspiring community.
+                            </p>
+                        </div>
+                        
+                        <div class="outcomes-section">
+                            <h3 class="section-subtitle"><i class="fas fa-bullseye"></i> Learning Outcomes:</h3>
+                            <ol class="outcomes-list">
+                                <li>Discover how and why positive emotional states impact our thoughts and thinking.</li>
+                                <li>Why and how to ensure that you have tools that can help you change the way that your think and feel about yourself.</li>
+                                <li>How to use the state elicitation script to effectively revisit past experiences and bring positive emotional states at will into the present.</li>
+                                <li>Understand the range of tools available to create enhanced results using time line work.</li>
+                                <li>Deepen your knowledge about how to reprogram yourself for success and happiness.</li>
+                            </ol>
+                        </div>
                         
                         <div class="benefits-section">
                             <h3 class="section-subtitle"><i class="fas fa-trophy"></i> By The End, You Will:</h3>
                             <ul class="benefits-list">
-                                <li>Know how to feel good for no good reason</li>
-                                <li>Know how to stop negative thoughts and feelings from disrupting your peace</li>
-                                <li>Have a complete step-by-step process to anchor positive emotions</li>
-                                <li>Understand that you can take charge of your emotions, thoughts, and future</li>
-                                <li>Confidently identify how to generate and replicate a life you love</li>
+                                <li>Know how to feel good for no good reason.</li>
+                                <li>Know how to stop negative thoughts and feelings from disrupting your peace.</li>
+                                <li>Have a complete step by step process to anchoring positive emotions into the nervous system.</li>
+                                <li>Understand that you can take charge of your emotions, your thoughts, and your future.</li>
+                                <li>Confidently and clearly identify how to generate and replicate a life that you love.</li>
                             </ul>
                         </div>
                     </div>
@@ -883,17 +1073,49 @@
                     </div>
                     <div class="accordion-content">
                         <p style="margin-bottom: 25px; font-size: 1.1rem;">
-                            For people wanting to improve self-worth, worthiness, and self-image through empowering "I am" statements.
+                            The design your identity Webinar is for people who are wanting to improve their feelings of self-worth, worthiness and self-image. When you change the way you think and feel about yourself life will change. Identity statements begin with the words "I am". Empowering identity statements will move you forward in terms of having a more positive expectation, and thereby producing results consistent with an upgraded level of self-acceptance.
                         </p>
+                        
+                        <div class="audience-section">
+                            <h3 class="section-subtitle"><i class="fas fa-users"></i> This Webinar Is For:</h3>
+                            <div class="audience-grid">
+                                <div class="audience-card">
+                                    <h4>🗣️ Negative Self-Talk Challengers</h4>
+                                    <p>People that have negative self-talk that inhibits them from taking new action. These people often procrastinate, get distracted and discouraged.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🌟 Positive Self-Image Builders</h4>
+                                    <p>People who want to increase their positive self-talk so that they feel great about themselves and their life. These people want to level up and create more of what they want.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🚀 Identity Upgraders</h4>
+                                    <p>People who want to upgrade their identity and confidently create new results in their life. These results include but are not limited to health, relationships, finances, spirituality and lifestyle.</p>
+                                </div>
+                            </div>
+                            <p style="margin-top: 15px; font-style: italic; color: var(--accent-gold);">
+                                ... and anyone that wants to have fun achieving this quickly, with the support of an experienced teacher and an inspiring community.
+                            </p>
+                        </div>
+                        
+                        <div class="outcomes-section">
+                            <h3 class="section-subtitle"><i class="fas fa-bullseye"></i> Learning Outcomes:</h3>
+                            <ol class="outcomes-list">
+                                <li>Discover how and why less than positive "I am" statements have negatively impacted your life and choices.</li>
+                                <li>Why and how to ensure that you create and install positive "I am" statements into your nervous system.</li>
+                                <li>How to decide which values to incorporate into identity statements, and how to sequence them in a way that creates your best life.</li>
+                                <li>Understand how incantations can assist to override negative chatter in your mind.</li>
+                                <li>Deepen your knowledge about how to upgrade your identity for success.</li>
+                            </ol>
+                        </div>
                         
                         <div class="benefits-section">
                             <h3 class="section-subtitle"><i class="fas fa-trophy"></i> By The End, You Will:</h3>
                             <ul class="benefits-list">
-                                <li>Know how to turn any value into an identity statement</li>
-                                <li>Stop negative chatter through incantations</li>
-                                <li>Have a complete process to anchor new identity personas</li>
-                                <li>Understand how changing at one level creates domino effects</li>
-                                <li>Confidently identify how to generate the identity for desired outcomes</li>
+                                <li>Know how to turn any value into an identity statement.</li>
+                                <li>How to stop negative chatter in the mind through overriding any less than positive thoughts and feelings through incantations.</li>
+                                <li>A complete step by step process to anchor in new identity personas into the nervous system.</li>
+                                <li>Understand that you can change at one level to produce automatic changes at another level, like a domino effect.</li>
+                                <li>Confidently and clearly identify how to generate and replicate the identity that will produce your desired outcomes.</li>
                             </ul>
                         </div>
                     </div>
@@ -904,29 +1126,64 @@
                     <div class="accordion-header" onclick="toggleAccordion(this)">
                         <div class="webinar-title">
                             <i class="fas fa-dove webinar-icon"></i>
-                            Ultimate Freedom
+                            Ultimate Freedom Webinar
                         </div>
                         <i class="fas fa-plus accordion-toggle"></i>
                     </div>
                     <div class="accordion-content">
                         <p style="margin-bottom: 25px; font-size: 1.1rem;">
-                            For people who want to release trapped emotions, reduce fear/anxiety, and implement effective emotional releasing techniques.
+                            The Ultimate Freedom Webinar is for people who want to release trapped emotions and create change in their lives.
                         </p>
+                        
+                        <div class="audience-section">
+                            <h3 class="section-subtitle"><i class="fas fa-users"></i> This Webinar Is For:</h3>
+                            <div class="audience-grid">
+                                <div class="audience-card">
+                                    <h4>🗣️ Negative Self-Talk Releasers</h4>
+                                    <p>People who are not 100% free of negative self-talk and would like to move forward in life with a new level of freedom.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🛠️ Healing Implementers</h4>
+                                    <p>People who have done work to heal and want to implement effective emotional releasing techniques and strategies.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🕊️ Trauma & Addiction Healers</h4>
+                                    <p>People who have suffered from trauma, struggled with addiction, and want to reduce their levels of fear and anxiety.</p>
+                                </div>
+                            </div>
+                            <p style="margin-top: 15px; font-style: italic; color: var(--accent-gold);">
+                                ... and anyone who wants to have fun achieving this quickly, with the support of an experienced teacher and an inspiring community.
+                            </p>
+                        </div>
+                        
+                        <div class="outcomes-section">
+                            <h3 class="section-subtitle"><i class="fas fa-bullseye"></i> Learning Outcomes:</h3>
+                            <ol class="outcomes-list">
+                                <li>Discover the six reasons behind self-sabotage.</li>
+                                <li>Discover the 3-step solution to self-sabotage.</li>
+                                <li>Understand the REAL difference between happiness, unhappiness and suffering.</li>
+                                <li>Deepen your knowledge about addiction and addiction recovery.</li>
+                                <li>Apply the four-step healing process.</li>
+                            </ol>
+                        </div>
                         
                         <div class="benefits-section">
                             <h3 class="section-subtitle"><i class="fas fa-trophy"></i> By The End, You Will:</h3>
                             <ul class="benefits-list">
-                                <li>Have deeper understanding of how fear impacts mind and body</li>
-                                <li>Know how to stop reliving negative experiences</li>
-                                <li>Have a complete step-by-step process for healing</li>
-                                <li>Understand components of focus and how to align them</li>
-                                <li>Confidently identify why you suffer and how to create more happiness</li>
+                                <li>Have a deeper understanding of how fear impacts your mind and body.</li>
+                                <li>How to stop reliving negative experiences and eliminate negative self-talk.</li>
+                                <li>A complete step by step process for healing.</li>
+                                <li>Understand the components of focus, and how to align those components.</li>
+                                <li>Confidently and clearly identify why you suffer, and how to create more happiness.</li>
+                                <li>Identify your addictive behaviours and how to rapidly break bad habits before they overpower you.</li>
+                                <li>The four levels of addiction and insight into addiction recovery.</li>
+                                <li>How to move your life forward by applying the WIN formula.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- NSR Programming -->
+                <!-- NSR Programming (Standalone) -->
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion(this)">
                         <div class="webinar-title">
@@ -937,17 +1194,49 @@
                     </div>
                     <div class="accordion-content">
                         <p style="margin-bottom: 25px; font-size: 1.1rem;">
-                            For people wanting to regulate their nervous system, deal with compulsive behaviors, and find peace.
+                            The NSR program takes us deeper into Emotional Clearing and is for people who want to regulate their nervous system, deal with compulsive behaviors, and find peace and silence their mind. It focusses on addiction recovery, including the addiction of being one's self. NSR works as you focus on the various processes of transformation.
                         </p>
+                        
+                        <div class="audience-section">
+                            <h3 class="section-subtitle"><i class="fas fa-users"></i> This Webinar Is For:</h3>
+                            <div class="audience-grid">
+                                <div class="audience-card">
+                                    <h4>🌪️ Trauma Survivors</h4>
+                                    <p>People that have experienced past trauma both from external sources and personal decisions, and are now dealing with an unregulated nervous system.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🔄 Pattern Breakers</h4>
+                                    <p>People who have made significant changes in their life and wonder why they still react to unconscious past programming and desire to respond in a new empowered way.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🚦 Resistance Dissolvers</h4>
+                                    <p>People who are experiencing unconscious resistance and desire green lights when it comes to goal attainment and achievement. Anyone who wants to turn unconscious resistance into conscious motivation.</p>
+                                </div>
+                            </div>
+                            <p style="margin-top: 15px; font-style: italic; color: var(--accent-gold);">
+                                ... and anyone that wants to have fun achieving this quickly, with the support of an experienced teacher and an inspiring community.
+                            </p>
+                        </div>
+                        
+                        <div class="outcomes-section">
+                            <h3 class="section-subtitle"><i class="fas fa-bullseye"></i> Learning Outcomes:</h3>
+                            <ol class="outcomes-list">
+                                <li>Discover effective tools for eliminating unconscious resistance.</li>
+                                <li>Take a deep dive in powerful emotional clearing, and NSR techniques.</li>
+                                <li>How to incorporate these practices into your life and gain momentum through healing.</li>
+                                <li>The relationship between addiction and the neurotransmitter dopamine.</li>
+                                <li>Experience Healing.</li>
+                            </ol>
+                        </div>
                         
                         <div class="benefits-section">
                             <h3 class="section-subtitle"><i class="fas fa-trophy"></i> By The End, You Will:</h3>
                             <ul class="benefits-list">
-                                <li>Discover tools to regulate your nervous system in real-time</li>
-                                <li>Know exactly how emotional clearing and NSR processes work</li>
-                                <li>Have a complete guide to break the habit of being yourself</li>
-                                <li>Have tools to eliminate unconscious resistance</li>
-                                <li>Confidently identify patterns holding you back and create solutions</li>
+                                <li>Discover tools to regulate your nervous system, and experience real time shifts at a Nervous System Level.</li>
+                                <li>Know exactly how the processes of emotional clearing and NSR actually work.</li>
+                                <li>A complete step by step guide to break the habit of being yourself.</li>
+                                <li>Have the tools to eliminate unconscious resistance and feel a renewal of energy that can be used to create results and success.</li>
+                                <li>Confidently and clearly identify patterns that are holding you back and devise working solutions.</li>
                             </ul>
                         </div>
                     </div>
@@ -957,7 +1246,7 @@
     </section>
 
     <!-- RELATIONSHIPS CATEGORY -->
-    <section class="category-section">
+    <section class="category-section" id="relationships">
         <div class="container">
             <div class="category-header fade-in">
                 <i class="fas fa-heart category-icon"></i>
@@ -976,17 +1265,49 @@
                     </div>
                     <div class="accordion-content">
                         <p style="margin-bottom: 25px; font-size: 1.1rem;">
-                            For singles wanting to attract the right person and couples wanting to reignite their spark.
+                            The Chemistry of Love Webinar is for people who are currently in a relationship and those who are not are in a relationship. For singles this webinar will focus on dating, attraction and falling in love. For those in a relationship , dating your lover and understanding the process of falling in love will benefit you as you reignite the spark.
                         </p>
+                        
+                        <div class="audience-section">
+                            <h3 class="section-subtitle"><i class="fas fa-users"></i> This Webinar Is For:</h3>
+                            <div class="audience-grid">
+                                <div class="audience-card">
+                                    <h4>💑 Singles Seeking Connection</h4>
+                                    <p>People that are single and want to attract the right type of person into their lives.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🔥 Relationship Revitalizers</h4>
+                                    <p>People in a relationship that want to reignite a stale or lifeless relationship.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🌟 Relationship Enhancers</h4>
+                                    <p>People who are in a relationship that is good, but feel that they could improve the quality of their relationship through regular dating.</p>
+                                </div>
+                            </div>
+                            <p style="margin-top: 15px; font-style: italic; color: var(--accent-gold);">
+                                ... and anyone that wants to have fun achieving this quickly, with the support of an experienced teacher and an inspiring community.
+                            </p>
+                        </div>
+                        
+                        <div class="outcomes-section">
+                            <h3 class="section-subtitle"><i class="fas fa-bullseye"></i> Learning Outcomes:</h3>
+                            <ol class="outcomes-list">
+                                <li>Discover the three stages that every relationship passes through and the associated chemistry of falling in love.</li>
+                                <li>How to a good selection choice by applying the 6 human needs.</li>
+                                <li>Have a selection of dating tools that can make another person fall in love with you.</li>
+                                <li>Understand the non-verbal cues of interest desire and love.</li>
+                                <li>Deepen your knowledge about the 8 different types of love.</li>
+                            </ol>
+                        </div>
                         
                         <div class="benefits-section">
                             <h3 class="section-subtitle"><i class="fas fa-trophy"></i> By The End, You Will:</h3>
                             <ul class="benefits-list">
-                                <li>Understand how to make someone fall in love with you (first time or again)</li>
-                                <li>Stop dating from desperation and instead date from inspiration</li>
-                                <li>Have a complete step-by-step process for approaching potential love interests</li>
-                                <li>Understand that attraction and dating never ends</li>
-                                <li>Confidently identify primary needs for relationship success prediction</li>
+                                <li>Have a deeper understanding of how to make someone fall in love with you for the first time, or fall in love with you over and over again.</li>
+                                <li>How to stop coming from a place of desperation, and instead date from a place of inspiration.</li>
+                                <li>A complete step by step process for approaching a potential love interest.</li>
+                                <li>Understand that attraction and dating never ends and must continue indefinitely in your relationship. This course will assist both those who are in, or those who are not yet in a relationship.</li>
+                                <li>Confidently and clearly identify what your primary needs are, and what the primary needs of your love interest is. This provides a selection criteria that is very accurate when predicting success in a relationship.</li>
                             </ul>
                         </div>
                     </div>
@@ -1003,17 +1324,49 @@
                     </div>
                     <div class="accordion-content">
                         <p style="margin-bottom: 25px; font-size: 1.1rem;">
-                            For singles preparing a vision for future relationships and couples designing a shared vision.
+                            The create a relationship vision Webinar is for people who are currently in a relationship and those who are not are in a relationship. For singles this webinar will focus on preparing a vision for your future relationship. For those in a relationship , you will design a vision for your current relationship.
                         </p>
+                        
+                        <div class="audience-section">
+                            <h3 class="section-subtitle"><i class="fas fa-users"></i> This Webinar Is For:</h3>
+                            <div class="audience-grid">
+                                <div class="audience-card">
+                                    <h4>✨ Singles Manifesting Love</h4>
+                                    <p>People that are single and want to manifest true ideal future relationship with the assistance of their unconscious mind.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🤝 Relationship Synergy Creators</h4>
+                                    <p>People in a relationship that want to foster cooperation and create synergy.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🌟 Visionary Couples</h4>
+                                    <p>People who are in a relationship that is good, but feel that they could improve the quality of their relationship through creating a personal vision and a shared vision.</p>
+                                </div>
+                            </div>
+                            <p style="margin-top: 15px; font-style: italic; color: var(--accent-gold);">
+                                ... and anyone that wants to have fun achieving this quickly, with the support of an experienced teacher and an inspiring community.
+                            </p>
+                        </div>
+                        
+                        <div class="outcomes-section">
+                            <h3 class="section-subtitle"><i class="fas fa-bullseye"></i> Learning Outcomes:</h3>
+                            <ol class="outcomes-list">
+                                <li>Discover how and why having a vision will automatically improve commitment levels.</li>
+                                <li>Why and how to open your heart to a new possibility of consummate love by prioritising your relationship.</li>
+                                <li>How to use Strategic visioning to cause your unconscious mind to assist you in the creation for your future.</li>
+                                <li>Understand the positive to negative ratio required for you to create a phenomenal relationship.</li>
+                                <li>Deepen your knowledge about interdependence and 5 relationship challenges that will inevitably show up in your current, and/or next relationship.</li>
+                            </ol>
+                        </div>
                         
                         <div class="benefits-section">
                             <h3 class="section-subtitle"><i class="fas fa-trophy"></i> By The End, You Will:</h3>
                             <ul class="benefits-list">
-                                <li>Understand why you must have a relationship vision</li>
-                                <li>Know how to stop closing your heart and keep it open for love</li>
-                                <li>Have a complete process for creating phenomenal relationships</li>
-                                <li>Understand that you can choose to lift and love your intimate mate</li>
-                                <li>Confidently identify challenges to prepare for relationship thriving</li>
+                                <li>Have a deeper understanding of why you must have a relationship vision, and solidify that vision through an actual process.</li>
+                                <li>How to stop closing down your heart, and rather keeping it open so that love can be nurtured.</li>
+                                <li>Have a complete step by step process for creating a phenomenal relationship using the commit formula.</li>
+                                <li>Understand that you can choose to lift and love your intimate mate, and how influence is more effective than control.</li>
+                                <li>Confidently and clearly identify what challenges you must prepare for so that your relationship can thrive.</li>
                             </ul>
                         </div>
                     </div>
@@ -1024,22 +1377,54 @@
                     <div class="accordion-header" onclick="toggleAccordion(this)">
                         <div class="webinar-title">
                             <i class="fas fa-comments webinar-icon"></i>
-                            Intimacy
+                            Intimacy Webinar
                         </div>
                         <i class="fas fa-plus accordion-toggle"></i>
                     </div>
                     <div class="accordion-content">
                         <p style="margin-bottom: 25px; font-size: 1.1rem;">
-                            For deepening connections through time, talent, and energy investment in relationships.
+                            The intimacy Webinar is for people who are currently in a relationship or those who are wanting to be in a relationship in the future. This webinar focusses on deepening your connection and relationship and love through investing your time, talents and energy into your relationship.
                         </p>
+                        
+                        <div class="audience-section">
+                            <h3 class="section-subtitle"><i class="fas fa-users"></i> This Webinar Is For:</h3>
+                            <div class="audience-grid">
+                                <div class="audience-card">
+                                    <h4>💕 Singles Preparing for Love</h4>
+                                    <p>People that are single and want to prepare their minds and hearts for a relationship filled with love and passion. It is for those who want the tools and skills to create a high functioning relationship filled with honesty, trust, and deep heartfelt understanding.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🔗 Connection Deepeners</h4>
+                                    <p>People in a relationship that want to foster deep connection and intimacy with their lover.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🗣️ Communication Masters</h4>
+                                    <p>People who are in a relationship that is good, but feel that they could improve the quality of their relationship by mastering communication skills and learning to learn and practice other love languages.</p>
+                                </div>
+                            </div>
+                            <p style="margin-top: 15px; font-style: italic; color: var(--accent-gold);">
+                                ... and anyone that wants to have fun achieving this quickly, with the support of an experienced teacher and an inspiring community.
+                            </p>
+                        </div>
+                        
+                        <div class="outcomes-section">
+                            <h3 class="section-subtitle"><i class="fas fa-bullseye"></i> Learning Outcomes:</h3>
+                            <ol class="outcomes-list">
+                                <li>Discover how to give and receive love according to your lovers love language.</li>
+                                <li>How learning to love (putting the needs of another ahead of your own needs) can actually help you get more of what you want.</li>
+                                <li>How to feed your lovers love language even when you are annoyed or upset, so that your relationship can thrive.</li>
+                                <li>Understand the value of deep communication and how to deepen conversation.</li>
+                                <li>Deepen your knowledge about how to communicate from the level of needs and feelings.</li>
+                            </ol>
+                        </div>
                         
                         <div class="benefits-section">
                             <h3 class="section-subtitle"><i class="fas fa-trophy"></i> By The End, You Will:</h3>
                             <ul class="benefits-list">
-                                <li>Understand love languages to create phenomenal relationships</li>
-                                <li>Know how to ensure your partner's love cup remains full</li>
-                                <li>Have a complete process for deep communication</li>
-                                <li>Understand that love is about making your partner's needs your needs</li>
+                                <li>Have a deeper understanding of love languages so that you can create a phenomenal relationship.</li>
+                                <li>Know how to feed your lover to ensure her love cup remains full.</li>
+                                <li>Have a complete step by step process for creating a phenomenal relationship by focusing on deep communication.</li>
+                                <li>Understand that love is about making your lovers needs your needs.</li>
                             </ul>
                         </div>
                     </div>
@@ -1050,23 +1435,55 @@
                     <div class="accordion-header" onclick="toggleAccordion(this)">
                         <div class="webinar-title">
                             <i class="fas fa-fire webinar-icon"></i>
-                            Pathway to Passion
+                            The Pathway to Passion
                         </div>
                         <i class="fas fa-plus accordion-toggle"></i>
                     </div>
                     <div class="accordion-content">
                         <p style="margin-bottom: 25px; font-size: 1.1rem;">
-                            For singles preparing for physical relationships and couples wanting to reignite bedroom passion.
+                            The Passion Webinar is for people who are currently in a relationship and those who are not are in a relationship. For singles this webinar will focus on preparing for the physical element of a future desired relationship. For those in a relationship , you will discover how to ignite or reignite the passion in the bedroom.
                         </p>
+                        
+                        <div class="audience-section">
+                            <h3 class="section-subtitle"><i class="fas fa-users"></i> This Webinar Is For:</h3>
+                            <div class="audience-grid">
+                                <div class="audience-card">
+                                    <h4>💑 Singles Preparing for Passion</h4>
+                                    <p>People that are single and want to prepare for and create a relationship filled with love and passion.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🔥 Passion Reigniters</h4>
+                                    <p>People in a relationship that have deprioritized the physical part of their relationship, but want to feel the thrill and excitement again.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🌟 Intimacy Enhancers</h4>
+                                    <p>People who are in a relationship that is good, but feel that they could strengthen and improve their sex life.</p>
+                                </div>
+                            </div>
+                            <p style="margin-top: 15px; font-style: italic; color: var(--accent-gold);">
+                                ... and anyone that wants to have fun achieving this quickly, with the support of an experienced teacher and an inspiring community.
+                            </p>
+                        </div>
+                        
+                        <div class="outcomes-section">
+                            <h3 class="section-subtitle"><i class="fas fa-bullseye"></i> Learning Outcomes:</h3>
+                            <ol class="outcomes-list">
+                                <li>Discover the five sexual archetypes, and three elements that make up passion.</li>
+                                <li>Discover more about the important interplay between the masculine and feminine energies.</li>
+                                <li>How to use effective strategies to stimulate interest, desire and increase pleasure.</li>
+                                <li>Understand the biological differences and challenges that can create confusion and dissatisfaction.</li>
+                                <li>Deepen your knowledge about elevating pleasure so that your relationship thrives with passion.</li>
+                            </ol>
+                        </div>
                         
                         <div class="benefits-section">
                             <h3 class="section-subtitle"><i class="fas fa-trophy"></i> By The End, You Will:</h3>
                             <ul class="benefits-list">
-                                <li>Understand why you must focus on creating/maintaining passion</li>
-                                <li>Know how to give yourself permission for more pleasure</li>
-                                <li>Have a complete process for creating passion by feeding your partner's blueprint</li>
-                                <li>Understand how to become an incredible lover creating endless passion</li>
-                                <li>Confidently identify passion archetypes to fuel the erotic engine</li>
+                                <li>Have a deeper understanding of why you must focus energy into creating and maintaining passion.</li>
+                                <li>How to give yourself permission and allow more pleasure into your life.</li>
+                                <li>A complete step by step process for creating more passion by giving your lover what they really want. (feeding their blueprint)</li>
+                                <li>Understand how you can become an incredible lover and create wave after wave of Ecstasy and never-ending passion. (Energy work and energy recycling)</li>
+                                <li>Confidently and clearly identify your passion archetype, and that of your lover, so that you can fuel the erotic engine.</li>
                             </ul>
                         </div>
                     </div>
@@ -1076,7 +1493,7 @@
     </section>
 
     <!-- WEALTH & SUCCESS CATEGORY -->
-    <section class="category-section" style="background: rgba(15, 26, 61, 0.3);">
+    <section class="category-section" style="background: rgba(15, 26, 61, 0.3);" id="wealth">
         <div class="container">
             <div class="category-header fade-in">
                 <i class="fas fa-chart-line category-icon"></i>
@@ -1095,17 +1512,51 @@
                     </div>
                     <div class="accordion-content">
                         <p style="margin-bottom: 25px; font-size: 1.1rem;">
-                            For people wanting to improve financial circumstances and attract more prosperity.
+                            The Stepping Into Wealth Webinar is for people who want to improve their financial circumstances and attract more prosperity in their lives.
                         </p>
+                        
+                        <div class="audience-section">
+                            <h3 class="section-subtitle"><i class="fas fa-users"></i> This Webinar Is For:</h3>
+                            <div class="audience-grid">
+                                <div class="audience-card">
+                                    <h4>💰 Financial Optimizers</h4>
+                                    <p>People who are surviving financially but would like to improve their financial future, save for retirement or start investing.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🐀 Rat Race Escapers</h4>
+                                    <p>People who are struggling in the rat race, getting tired of the effort required to exchange time for money.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🧲 Money Magnets</h4>
+                                    <p>People who want to attract more wealth into their lives by setting themselves up as a money magnet.</p>
+                                </div>
+                            </div>
+                            <p style="margin-top: 15px; font-style: italic; color: var(--accent-gold);">
+                                ... and anyone who wants to have fun achieving this quickly, with the support of an experienced teacher and an inspiring community.
+                            </p>
+                        </div>
+                        
+                        <div class="outcomes-section">
+                            <h3 class="section-subtitle"><i class="fas fa-bullseye"></i> Learning Outcomes:</h3>
+                            <ol class="outcomes-list">
+                                <li>Discover the four levels of wealth creation.</li>
+                                <li>The tools that can move your financial thermostat up and down.</li>
+                                <li>Improve your money mindset and relationship with money.</li>
+                                <li>How to Upgrade your financial blueprint.</li>
+                                <li>Deepen your knowledge about the seven fundamental principles of Financial security.</li>
+                                <li>Apply gratitude to assist you in your wealth journey.</li>
+                            </ol>
+                        </div>
                         
                         <div class="benefits-section">
                             <h3 class="section-subtitle"><i class="fas fa-trophy"></i> By The End, You Will:</h3>
                             <ul class="benefits-list">
-                                <li>Understand how to attract more wealth into your life</li>
-                                <li>Know how to stop negative thinking about money</li>
-                                <li>Have a complete process for developing a growth mindset</li>
-                                <li>Understand the power of affirmations and gratitude</li>
-                                <li>Confidently identify how you created your financial situation and how to change it</li>
+                                <li>Have a deeper understanding of how to attract more wealth into your life.</li>
+                                <li>How to stop thinking about money in a less than positive way.</li>
+                                <li>A complete step by step process for developing a $$$ growth mindset.</li>
+                                <li>Understand the power of affirmations, incantations and gratitude.</li>
+                                <li>Confidently and clearly identify how you have created your current financial situation and how to change it.</li>
+                                <li>Identify the resistors to progress and make action plans to move along the faith continuum toward total conviction and absolute knowledge.</li>
                             </ul>
                         </div>
                     </div>
@@ -1116,23 +1567,57 @@
                     <div class="accordion-header" onclick="toggleAccordion(this)">
                         <div class="webinar-title">
                             <i class="fas fa-memory webinar-icon"></i>
-                            Ultimate Memory
+                            Ultimate Memory Webinar
                         </div>
                         <i class="fas fa-plus accordion-toggle"></i>
                     </div>
                     <div class="accordion-content">
                         <p style="margin-bottom: 25px; font-size: 1.1rem;">
-                            For people wanting to improve memory skills and mental effectiveness.
+                            The Ultimate MEMORY Webinar is for people who want to improve memory skills and mental effectiveness.
                         </p>
+                        
+                        <div class="audience-section">
+                            <h3 class="section-subtitle"><i class="fas fa-users"></i> This Webinar Is For:</h3>
+                            <div class="audience-grid">
+                                <div class="audience-card">
+                                    <h4>🧠 Memory Improvers</h4>
+                                    <p>People who are looking to improve their ability to remember information, lists, people, and places.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🎓 Effective Learners</h4>
+                                    <p>People who want to implement effective techniques and strategies to their studies, learning, and memory.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🚀 Career Advancers</h4>
+                                    <p>People who want to advance their career, become a proficient public speaker, comedian, or anyone who just wants to sharpen their mind and quicken their wit.</p>
+                                </div>
+                            </div>
+                            <p style="margin-top: 15px; font-style: italic; color: var(--accent-gold);">
+                                ... and anyone who wants to have fun achieving this quickly, with the support of an experienced teacher and an inspiring community.
+                            </p>
+                        </div>
+                        
+                        <div class="outcomes-section">
+                            <h3 class="section-subtitle"><i class="fas fa-bullseye"></i> Learning Outcomes:</h3>
+                            <ol class="outcomes-list">
+                                <li>Discover the 4 key tools for memory enhancement.</li>
+                                <li>Discover the most effective ways to prepare the mind for learning.</li>
+                                <li>Discover the most effective ways to install information in such a way that recall becomes simple.</li>
+                                <li>The four major functions of the mind and how to maximize the effectiveness of each.</li>
+                                <li>How to learn more rapidly.</li>
+                            </ol>
+                        </div>
                         
                         <div class="benefits-section">
                             <h3 class="section-subtitle"><i class="fas fa-trophy"></i> By The End, You Will:</h3>
                             <ul class="benefits-list">
-                                <li>Understand how to use memory techniques to supplement technology</li>
-                                <li>Stop forgetting where you parked or placed personal items</li>
-                                <li>Have a complete guide to creating a powerful memory</li>
-                                <li>Understand how the mind works for effective learning</li>
-                                <li>Confidently recall information you thought was forgotten</li>
+                                <li>Have a deeper understanding of how to use memory techniques to supplement technology.</li>
+                                <li>How to stop forgetting where you parked your car, or where you placed your personal affects.</li>
+                                <li>A complete step by step guide to creating a powerful memory.</li>
+                                <li>Understand the way the mind works and the importance of good preparation and effective installation.</li>
+                                <li>Confidently and clearly recall information and memories that you thought you had forgotten.</li>
+                                <li>Understand and have practical experience using 3 effective memory tools.</li>
+                                <li>How to move forward by applying memory skills to your education, day to day tasks and your life.</li>
                             </ul>
                         </div>
                     </div>
@@ -1149,17 +1634,49 @@
                     </div>
                     <div class="accordion-content">
                         <p style="margin-bottom: 25px; font-size: 1.1rem;">
-                            For people wanting to deepen relationships by improving communication skills.
+                            The Communicating from the Heart Webinar is for people who want to deepen their relationships by improving their communication skills.
                         </p>
+                        
+                        <div class="audience-section">
+                            <h3 class="section-subtitle"><i class="fas fa-users"></i> This Webinar Is For:</h3>
+                            <div class="audience-grid">
+                                <div class="audience-card">
+                                    <h4>😔 Lonely Connection Seekers</h4>
+                                    <p>Lonely people, who as a result of fear and rejection have struggled to create new friendships.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>⚖️ Balance Restorers</h4>
+                                    <p>People who want to focus energy back onto building connections and relationships after learning that their lives are out of balance.</p>
+                                </div>
+                                <div class="audience-card">
+                                    <h4>🗣️ Communication Enhancers</h4>
+                                    <p>People who can communicate well, and want to enhance their influence skills.</p>
+                                </div>
+                            </div>
+                            <p style="margin-top: 15px; font-style: italic; color: var(--accent-gold);">
+                                ... and anyone who wants to have fun achieving this quickly, with the support of an experienced teacher and an inspiring community.
+                            </p>
+                        </div>
+                        
+                        <div class="outcomes-section">
+                            <h3 class="section-subtitle"><i class="fas fa-bullseye"></i> Learning Outcomes:</h3>
+                            <ol class="outcomes-list">
+                                <li>Discover the five levels of communication.</li>
+                                <li>Discover the four types of communication.</li>
+                                <li>How to get instantaneous rapport with anyone that you meet.</li>
+                                <li>Understand how to become the most interesting person in any setting.</li>
+                                <li>Learn and know how to say the most important and impactful words that you could say to another person.</li>
+                            </ol>
+                        </div>
                         
                         <div class="benefits-section">
                             <h3 class="section-subtitle"><i class="fas fa-trophy"></i> By The End, You Will:</h3>
                             <ul class="benefits-list">
-                                <li>Understand why you should focus on and repeat key words</li>
-                                <li>Increase ability to listen to understand rather than respond</li>
-                                <li>Have clear understanding of awakened communication tools</li>
-                                <li>Understand attributes needed for naked communication</li>
-                                <li>Confidently identify others' representational systems to connect with them</li>
+                                <li>Have a deeper understanding of why you should focus on, and repeat key words.</li>
+                                <li>Increased your ability to listen with the intent of understanding, rather than hearing to respond.</li>
+                                <li>Have a clear understanding of the tools around awakened communication.</li>
+                                <li>Understand the attributes you will need to develop in order to enjoy naked communication.</li>
+                                <li>Confidently and clearly identify the representational system that others use, and how to connect with them.</li>
                             </ul>
                         </div>
                     </div>
@@ -1178,10 +1695,13 @@
             
             <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
                 <a href="https://joshbossesteamworkspace.myclickfunnels.com/webinar-funnel" target="_blank" class="btn" style="font-size: 1.2rem; padding: 18px 45px;">
-                    <i class="fas fa-play-circle"></i> Browse Webinars
+                    <i class="fas fa-play-circle"></i> Browse All Webinars
                 </a>
                 <a href="https://form.jotform.com/250184868189875" target="_blank" class="btn" style="font-size: 1.2rem; padding: 18px 45px; background: transparent; border: 2px solid var(--accent-gold); color: var(--accent-gold);">
                     <i class="fas fa-calendar-alt"></i> Free Strategy Call
+                </a>
+                <a href="https://accessworldseminars-ship-it.github.io/results/b" target="_blank" class="btn" style="font-size: 1.2rem; padding: 18px 45px; background: var(--secondary-blue); color: white;">
+                    <i class="fas fa-download"></i> Download Brochure
                 </a>
             </div>
             
@@ -1228,6 +1748,7 @@
                     <a href="#relationships">Relationships</a>
                     <a href="#wealth">Wealth & Success</a>
                     <a href="https://form.jotform.com/250184868189875" target="_blank">Free Strategy Session</a>
+                    <a href="https://accessworldseminars-ship-it.github.io/results/b" target="_blank">Download Brochure</a>
                 </div>
                 <div class="footer-column">
                     <h3>Contact Information</h3>
