@@ -215,11 +215,13 @@
             margin: 40px 0;
         }
         
+        /* FIXED PROFILE PHOTO STYLES - NO MORE HEAD CROPPING */
         .profile-photo {
             width: 350px;
             height: 350px;
             border-radius: 50%;
             object-fit: cover;
+            object-position: center 30%; /* This is the key fix - adjusts vertical positioning */
             border: 5px solid var(--accent-gold);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
@@ -649,6 +651,7 @@
                 width: 250px;
                 height: 250px;
                 margin: 0 auto;
+                object-position: center 25%; /* Adjusted for mobile */
             }
         }
         
@@ -714,6 +717,7 @@
             .profile-photo {
                 width: 200px;
                 height: 200px;
+                object-position: center 20%; /* Adjusted for small mobile */
             }
         }
     </style>
