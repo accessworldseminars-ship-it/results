@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AccessWorld Seminars Schedule Jan–Jun 2026</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to right, #1a1a40, #4b0082);
+        color: #ffffff;
+    }
+    header {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: rgba(0,0,0,0.5);
+    }
+    header h1 {
+        font-size: 2.5em;
+        margin: 0;
+        color: #ffffff;
+    }
+    header p {
+        font-size: 1.1em;
+        color: #ddd;
+    }
+    .month {
+        margin: 40px auto;
+        max-width: 900px;
+        padding: 20px;
+        border-left: 6px solid #00ffff;
+        background-color: rgba(0,0,0,0.3);
+        border-radius: 8px;
+    }
+    .month h2 {
+        margin-top: 0;
+        color: #ffd700;
+    }
+    .week {
+        margin-bottom: 20px;
+    }
+    .week h3 {
+        margin: 10px 0;
+        color: #ff7f50;
+    }
+    ul {
+        list-style: none;
+        padding-left: 10px;
+    }
+    li {
+        margin: 5px 0;
+        line-height: 1.5em;
+    }
+    .paid { color: #00ffcc; }
+    .nlp { color: #ff66ff; }
+    .low-tier { color: #ffcc00; }
+    .free { color: #ffffff; }
+    .seminar { color: #00ffff; font-weight: bold; }
+    select {
+        margin: 20px auto;
+        display: block;
+        padding: 10px;
+        font-size: 1em;
+        border-radius: 6px;
+        border: none;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>AccessWorld Seminars Schedule: Jan – Jun 2026</h1>
+    <p>All sessions are Thursday evenings & Friday mornings. Major 2-day seminars highlighted. Times will display in your local timezone.</p>
+    <label for="timezone">Select your time zone:</label>
+    <select id="timezone">
+        <option value="">Auto-detect</option>
+        <option value="Australia/Sydney">Sydney (AEST)</option>
+        <option value="America/New_York">New York (EST)</option>
+        <option value="Europe/London">London (GMT)</option>
+        <option value="Asia/Kolkata">India (IST)</option>
+        <option value="America/Los_Angeles">Los Angeles (PST)</option>
+    </select>
+</header>
+
+<script>
+    function updateTimes(tz = Intl.DateTimeFormat().resolvedOptions().timeZone) {
+        document.querySelectorAll('li[data-utc]').forEach(function(li){
+            const utcTime = li.getAttribute('data-utc');
+            const localTime = new Date(utcTime);
+            li.querySelector('.local-time').textContent = localTime.toLocaleString('en-US', { 
+                weekday: 'short', year: 'numeric', month: 'short', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', hour12: true, timeZone: tz
+            });
+        });
+    }
+
+    const select = document.getElementById('timezone');
+    select.addEventListener('change', () => {
+        const tz = select.value || Intl.DateTimeFormat().resolvedOptions().timeZone;
+        updateTimes(tz);
+    });
+
+    // Initial load
+    updateTimes();
+</script>
+
+<!-- JANUARY -->
+<div class="month">
+    <h2>January 2026</h2>
+    <div class="week">
+        <h3>Week 2 — Jan 5–11</h3>
+        <ul>
+            <li class="free" data-utc="2026-01-08T07:00:00+10:00">Thu 8 Jan — <span class="local-time"></span> — Intro Health Session (Free)</li>
+            <li class="paid" data-utc="2026-01-09T09:00:00+10:00">Fri 9 Jan — <span class="local-time"></span> — Coaching & Integration Session (Paid)</li>
+            <li class="free" data-utc="2026-01-09T11:00:00+10:00">Fri 9 Jan — <span class="local-time"></span> — Free Intro Seminar</li>
+        </ul>
+    </div>
+    <div class="week">
+        <h3>Week 3 — Jan 12–18</h3>
+        <ul>
+            <li class="free" data-utc="2026-01-15T19:00:00+10:00">Thu 15 Jan — <span class="local-time"></span> — Free Intro: Breathwork Training</li>
+            <li class="paid" data-utc="2026-01-16T09:00:00+10:00">Fri 16 Jan — <span class="local-time"></span> — Coaching & Integration Session (Paid)</li>
+            <li class="free" data-utc="2026-01-16T11:00:00+10:00">Fri 16 Jan — <span class="local-time"></span> — Free Health & Wellness Intro</li>
+        </ul>
+    </div>
+    <div class="week">
+        <h3>Week 4 — Jan 19–25</h3>
+        <ul>
+            <li class="nlp" data-utc="2026-01-22T19:00:00+10:00">Thu 22 Jan — <span class="local-time"></span> — NLP Session for Coaches & Influencers (Paid)</li>
+            <li class="paid" data-utc="2026-01-23T09:00:00+10:00">Fri 23 Jan — <span class="local-time"></span> — Coaching & Integration Session (Paid)</li>
+            <li class="free" data-utc="2026-01-23T11:00:00+10:00">Fri 23 Jan — <span class="local-time"></span> — Free Intro: Reduce Physical & Emotional Pain</li>
+        </ul>
+    </div>
+    <div class="week">
+        <h3>Week 5 — Jan 26–31</h3>
+        <ul>
+            <li class="free" data-utc="2026-01-29T19:00:00+10:00">Thu 29 Jan — <span class="local-time"></span> — Free Intro Seminar: Health</li>
+            <li class="low-tier" data-utc="2026-01-30T09:00:00+10:00">Fri 30 Jan — <span class="local-time"></span> — How to Become a World-Class Coach ($29)</li>
+        </ul>
+    </div>
+</div>
+
+<!-- FEBRUARY -->
+<div class="month">
+    <h2>February 2026</h2>
+    <div class="week">
+        <h3>Week 2 — Feb 6–12 (Seminar Week)</h3>
+        <ul>
+            <li class="seminar" data-utc="2026-02-12T07:00:00+10:00">Thu 12 Feb — <span class="local-time"></span> — Ultimate Relationship Seminar Day 1</li>
+            <li class="seminar" data-utc="2026-02-13T07:00:00+10:00">Fri 13 Feb — <span class="local-time"></span> — Ultimate Relationship Seminar Day 2</li>
+        </ul>
+    </div>
+    <div class="week">
+        <h3>Week 3 — Feb 13–19</h3>
+        <ul>
+            <li class="paid" data-utc="2026-02-19T19:00:00+10:00">Thu 19 Feb — <span class="local-time"></span> — Paid Coaching Session (1)</li>
+            <li class="paid" data-utc="2026-02-20T09:00:00+10:00">Fri 20 Feb — <span class="local-time"></span> — Paid Coaching Session (2)</li>
+            <li class="free" data-utc="2026-02-20T11:00:00+10:00">Fri 20 Feb — <span class="local-time"></span> — Free Intro Seminar</li>
+        </ul>
+    </div>
+    <div class="week">
+        <h3>Week 4 — Feb 20–26</h3>
+        <ul>
+            <li class="free" data-utc="2026-02-26T19:00:00+10:00">Thu 26 Feb — <span class="local-time"></span> — Free Intro / Attraction Seminar</li>
+            <li class="low-tier" data-utc="2026-02-27T07:00:00+10:00">Fri 27 Feb — <span class="local-time"></span> — Unlock Your Incredible Self</li>
+        </ul>
+    </div>
+</div>
+
+<!-- MARCH -->
+<div class="month">
+    <h2>March 2026</h2>
+    <div class="week">
+        <h3>Week 1 — Mar 1–7</h3>
+        <ul>
+            <li class="free" data-utc="2026-03-05T19:00:00+10:00">Thu 5 Mar — <span class="local-time"></span> — Free Intro / Attraction Seminar</li>
+            <li class="paid" data-utc="2026-03-06T09:00:00+10:00">Fri 6 Mar — <span class="local-time"></span> — Paid Coaching Session (1)</li>
+            <li class="free" data-utc="2026-03-06T11:00:00+10:00">Fri 6 Mar — <span class="local-time"></span> — Free Intro Seminar</li>
+        </ul>
+    </div>
+    <div class="week">
+        <h3>Week 2 — Mar 8–14</h3>
+        <ul>
+            <li class="nlp" data-utc="2026-03-12T19:00:00+10:00">Thu 12 Mar — <span class="local-time"></span> — NLP Session for Coaches & Influencers (Paid)</li>
+            <li class="nlp" data-utc="2026-03-13T09:00:00+10:00">Fri 13 Mar — <span class="local-time"></span> — NLP Session for Coaches & Influencers (Paid)</li>
+            <li class="free" data-utc="2026-03-13T11:00:00+10:00">Fri 13 Mar — <span class="local-time"></span> — Free Intro Seminar</li>
+        </ul>
+    </div>
+    <div class="week">
+        <h3>Week 3 — Mar 15–21</h3>
+        <ul>
+            <li class="free" data-utc="2026-03-19T19:00:00+10:00">Thu 19 Mar — <span class="local-time"></span> — Free Intro / Attraction Seminar</li>
+            <li class="low-tier" data-utc="2026-03-20T07:00:00+10:00">Fri 20 Mar — <span class="local-time"></span> — Unlock / Special Friday Session ($39)</li>
+        </ul>
+    </div>
+    <div class="week">
+        <h3>Week 4 — Mar 22–28</h3>
+        <ul>
+            <li class="paid" data-utc="2026-03-26T19:00:00+10:00">Thu 26 Mar — <span class="local-time"></span> — Paid Coaching Session (1)</li>
+            <li class="paid" data-utc="2026-03-27T09:00:00+10:00">Fri 27 Mar — <span class="local-time"></span> — Paid Coaching Session (2)</li>
+            <li class="free" data-utc="2026-03-27T11:00:00+10:00">Fri 27 Mar — <span class="local-time"></span> — Free Intro Seminar</li>
+        </ul>
+    </div>
+</div>
+
+<!-- APRIL -->
+<div class="month">
+    <h2>April 2026</h2>
+    <div class="week">
+        <h3>Week 1 — Apr 1–4</h3>
+        <ul>
+            <li class="free" data-utc="2026-04-02T19:00:00+10:00">Thu 2 Apr — <span class="local-time"></span> — Free Intro / Attraction Seminar</li>
+            <li class="paid" data-utc="2026-04-03T09:00:00+10:00">Fri 3 Apr — <span class="local-time"></span> — Paid Coaching Session (1)</li>
+            <li class="free" data-utc="2026-04-03T11:00:00+10:00">Fri 3 Apr — <span class="local-time"></span> — Free Intro Seminar</li>
+        </ul>
+    </div>
+    <div class="week">
+        <h3>Week 2 — Apr 5–11</h3>
+        <ul>
+            <li class="nlp" data-utc="2026-04-09T19:00:00+10:00">Thu 9 Apr — <span class="local-time"></span> — NLP Session for Coaches & Influencers (Paid)</li>
+            <li class="nlp" data-utc="2026-04-10T09:00:00+10:00">Fri 10 Apr — <span class="local-time"></span> — NLP Session for Coaches & Influencers (Paid)</li>
+            <li class="free" data-utc="2026-04-10T11:00:00+10:00">Fri 10 Apr — <span class="local-time"></span> — Free Intro Seminar</li>
+        </ul>
+    </div>
+    <div class="week">
+        <h3>Week 3 — Apr 12–18</h3>
+        <ul>
+            <li class="free" data-utc="2026-04-16T19:00:00+10:00">Thu 16 Apr — <span class="local-time"></span> — Free Intro / Attraction Seminar</li>
+            <li class="low-tier" data-utc="2026-04-17T09:00:00+10:00">Fri 17 Apr — <span class="local-time"></span> — Become World-Class Coach ($29)</li>
+        </ul>
+    </div>
+    <div class="week">
+        <h3>Week 4 — Apr 19–25</h3>
+        <ul>
+            <li class="paid" data-utc="2026-04-23T19:00:00+10:00">Thu 23 Apr — <span class="local-time"></span> — Paid Coaching Session (1)</li>
+            <li class="paid" data-utc="2026-04-24T09:00:00+10:00">Fri 24 Apr — <span class="local-time"></span> — Paid Coaching Session (2)</li>
+            <li class="free" data-utc="2026-04-24T11:00:00+10:00">Fri 24 Apr — <span class="local-time"></span> — Free Intro Seminar</li>
+        </ul>
+    </div>
+    <div class="week">
+        <h3>Week 5 — Apr 26–30</h3>
+        <ul>
+            <li class="free" data-utc="2026-04-30T19:00:00+10:00">Thu 30 Apr — <span class="local-time"></span> — Free Intro / Attraction Seminar</li>
+        </ul>
+    </div>
+</div>
+
+<!-- MAY -->
+<div class="month">
+    <h2>May 2026</h2>
+    <div class="week">
+        <h3>Week 1 — May 1–3</h3>
+        <ul>
+            <li class="free" data-utc="2026-05-07T19:00:00+10:00">Thu 7 May — <span class="local-time"></span> — Free Intro / Attraction Seminar</li>
+            <li class="paid" data-utc="2026-05-01T09:00:00+10:00">Fri 1 May — <span class="local-time"></span> — Paid Coaching Session (1)</li>
+            <li class="free" data-utc="2026-05-01T11:00:00+10:00">Fri 1 May — <span class="local-time"></span> — Free Intro Seminar</li>
+        </ul>
+    </div>
+    <div class="week">
+        <h3>Week 2 — May 4–10 (Major 2-Day Training)</h3>
+        <ul>
+            <li class="seminar" data-utc="2026-05-08T07:00:00+10:00">Thu 8 May — <span class="local-time"></span> — Ultimate Health Webinar Day 1</li>
+            <li class="seminar" data-utc="2026-05-09T07:00:00+10:00">Fri 9 May — <span class="local-time"></span> — Ultimate Health Webinar Day 2</li>
+        </ul>
