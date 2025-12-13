@@ -26,6 +26,7 @@
             --coaching-color: #4CAF50;
             --nlp-color: #9C27B0;
             --entry-color: #FF9800;
+            --elite-color: #2196F3;
         }
 
         * {
@@ -150,75 +151,75 @@
         .color-swatch.coaching { background-color: var(--coaching-color); }
         .color-swatch.nlp { background-color: var(--nlp-color); }
         .color-swatch.entry { background-color: var(--entry-color); }
+        .color-swatch.elite { background-color: var(--elite-color); }
 
-        /* Month Accordion */
-        .month-accordion {
-            margin: 40px 0;
-        }
-
-        .accordion-item {
+        /* Collapsible Month Sections */
+        .month-section {
             background: rgba(26, 43, 94, 0.5);
             border-radius: var(--radius);
-            margin-bottom: 15px;
+            margin: 20px 0;
             border: 1px solid rgba(255, 255, 255, 0.1);
             overflow: hidden;
             transition: var(--transition);
         }
 
-        .accordion-item:hover {
+        .month-section:hover {
             border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
-        .accordion-header {
+        .month-header {
             background: linear-gradient(135deg, var(--secondary-blue), var(--light-blue));
-            padding: 20px 25px;
-            cursor: pointer;
+            padding: 25px;
+            border-bottom: 2px solid var(--accent-gold);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid transparent;
-            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
         }
 
-        .accordion-header:hover {
-            background: linear-gradient(135deg, var(--light-blue), var(--secondary-blue));
-        }
-
-        .accordion-header.active {
-            border-bottom: 2px solid var(--accent-gold);
-            background: linear-gradient(135deg, var(--light-blue), #2a3c7a);
-        }
-
-        .accordion-header h2 {
-            font-size: 1.6rem;
+        .month-header h2 {
+            font-size: 1.8rem;
             margin-bottom: 0;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .accordion-icon {
-            transition: transform 0.3s ease;
+        .month-badge {
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .collapse-toggle {
             color: var(--accent-gold);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
         }
 
-        .accordion-header.active .accordion-icon {
+        .month-content {
+            padding: 20px;
+            display: none;
+        }
+
+        .month-section.active .month-content {
+            display: block;
+        }
+
+        .month-section.active .collapse-toggle {
             transform: rotate(180deg);
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-        }
-
-        .accordion-content.open {
-            max-height: 2000px;
         }
 
         /* Week Grid */
         .week-grid {
-            padding: 25px;
+            padding: 10px;
         }
 
         .week-card {
@@ -286,6 +287,7 @@
         .session-item.coaching { border-left-color: var(--coaching-color); }
         .session-item.nlp { border-left-color: var(--nlp-color); }
         .session-item.entry { border-left-color: var(--entry-color); }
+        .session-item.elite { border-left-color: var(--elite-color); }
 
         .session-date {
             min-width: 100px;
@@ -340,56 +342,110 @@
             background: rgba(255, 152, 0, 0.2); 
             color: var(--entry-color); 
         }
+        .session-type.elite { 
+            background: rgba(33, 150, 243, 0.2); 
+            color: var(--elite-color); 
+        }
 
-        /* Signature Events Section */
-        .signature-events {
-            background: rgba(212, 175, 55, 0.1);
-            border: 2px solid var(--premium-color);
+        /* Two-Day Seminars Section */
+        .seminars-section {
+            background: rgba(26, 43, 94, 0.5);
             border-radius: var(--radius);
             padding: 40px;
-            margin: 50px 0;
+            margin: 60px 0;
+            border: 2px solid var(--accent-gold);
             text-align: center;
         }
 
-        .signature-events h3 {
+        .seminars-section h2 {
             color: var(--accent-gold);
             margin-bottom: 30px;
-            font-size: 1.8rem;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
         }
 
-        .events-timeline {
+        .seminars-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-top: 30px;
         }
 
-        .event-card {
-            background: rgba(15, 26, 61, 0.7);
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 4px solid var(--premium-color);
+        .seminar-card {
+            background: rgba(15, 26, 61, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            border-top: 5px solid var(--premium-color);
             transition: var(--transition);
             text-align: left;
         }
 
-        .event-card:hover {
-            transform: translateY(-5px);
-            background: rgba(26, 43, 94, 0.7);
+        .seminar-card:hover {
+            transform: translateY(-10px);
+            background: rgba(26, 43, 94, 0.8);
         }
 
-        .event-card h4 {
+        .seminar-card h3 {
             color: var(--text-light);
             margin-bottom: 15px;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
         }
 
-        .event-date {
+        .seminar-date {
             color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .seminar-time {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .seminar-type {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--premium-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        /* Quick Month Navigation */
+        .month-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .month-nav-button {
+            background: rgba(26, 43, 94, 0.7);
+            color: var(--text-light);
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
             font-weight: 600;
             font-family: 'Montserrat', sans-serif;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .month-nav-button:hover, .month-nav-button.active {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: var(--accent-gold);
+            transform: translateY(-3px);
         }
 
         /* Action Buttons */
@@ -516,6 +572,12 @@
                 height: 50px;
             }
             
+            .month-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
             .session-item {
                 flex-direction: column;
                 align-items: flex-start;
@@ -534,8 +596,17 @@
                 grid-template-columns: 1fr;
             }
             
-            .events-timeline {
+            .seminars-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .month-navigation {
+                gap: 10px;
+            }
+            
+            .month-nav-button {
+                padding: 10px 15px;
+                font-size: 0.9rem;
             }
         }
 
@@ -556,8 +627,8 @@
                 min-width: 100%;
             }
             
-            .event-card {
-                padding: 20px;
+            .seminars-section {
+                padding: 25px;
             }
         }
     </style>
@@ -611,320 +682,660 @@
                 </div>
                 <div class="legend-item">
                     <div class="color-swatch nlp"></div>
-                    <span>NLP Training for Coaches & Influencers</span>
+                    <span>NLP Certification Training</span>
                 </div>
                 <div class="legend-item">
                     <div class="color-swatch entry"></div>
                     <span>Entry-Level Development Programs</span>
                 </div>
+                <div class="legend-item">
+                    <div class="color-swatch elite"></div>
+                    <span>Elite Member Sessions</span>
+                </div>
             </div>
         </div>
 
-        <!-- Month Accordion -->
-        <div class="month-accordion">
-            <!-- JANUARY 2026 -->
-            <div class="accordion-item">
-                <div class="accordion-header" data-month="january">
+        <!-- Quick Month Navigation -->
+        <div class="month-navigation">
+            <div class="month-nav-button" data-month="january">January</div>
+            <div class="month-nav-button" data-month="february">February</div>
+            <div class="month-nav-button" data-month="march">March</div>
+            <div class="month-nav-button" data-month="april">April</div>
+            <div class="month-nav-button" data-month="may">May</div>
+            <div class="month-nav-button" data-month="august">August</div>
+            <div class="month-nav-button" data-month="november">November</div>
+        </div>
+
+        <!-- JANUARY 2026 -->
+        <div class="month-section" id="january">
+            <div class="month-header">
+                <div>
                     <h2><i class="fas fa-snowflake"></i> January 2026</h2>
-                    <div class="accordion-icon"><i class="fas fa-chevron-down"></i></div>
+                    <div class="month-badge">Foundation Building</div>
                 </div>
-                <div class="accordion-content" id="january">
-                    <div class="week-grid">
-                        <!-- Week 2 -->
-                        <div class="week-card coaching-week">
-                            <h3>Week 2: Jan 5–11</h3>
-                            <ul class="session-list">
-                                <li class="session-item coaching" data-utc="2026-01-09T09:00:00+10:00">
-                                    <div class="session-date">Fri, Jan 9</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
-                                        <div class="session-type coaching">Member Coaching</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                <div class="collapse-toggle">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="month-content">
+                <div class="week-grid">
+                    <!-- Week 2 -->
+                    <div class="week-card coaching-week">
+                        <h3>Week 2: Jan 5–11</h3>
+                        <ul class="session-list">
+                            <li class="session-item coaching" data-utc="2026-01-09T09:00:00+10:00">
+                                <div class="session-date">Fri, Jan 9</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
+                                    <div class="session-type coaching">Member Coaching</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <!-- Week 3 -->
-                        <div class="week-card coaching-week">
-                            <h3>Week 3: Jan 12–18</h3>
-                            <ul class="session-list">
-                                <li class="session-item coaching" data-utc="2026-01-16T09:00:00+10:00">
-                                    <div class="session-date">Fri, Jan 16</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
-                                        <div class="session-type coaching">Member Coaching</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <!-- Week 3 -->
+                    <div class="week-card coaching-week">
+                        <h3>Week 3: Jan 12–18</h3>
+                        <ul class="session-list">
+                            <li class="session-item coaching" data-utc="2026-01-16T09:00:00+10:00">
+                                <div class="session-date">Fri, Jan 16</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
+                                    <div class="session-type coaching">Member Coaching</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <!-- Week 4 -->
-                        <div class="week-card nlp-week">
-                            <h3>Week 4: Jan 19–25</h3>
-                            <ul class="session-list">
-                                <li class="session-item nlp" data-utc="2026-01-22T19:00:00+10:00">
-                                    <div class="session-date">Thu, Jan 22</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">NLP Training for Coaches & Influencers</div>
-                                        <div class="session-type nlp">Advanced Training</div>
-                                    </div>
-                                </li>
-                                <li class="session-item nlp" data-utc="2026-01-23T09:00:00+10:00">
-                                    <div class="session-date">Fri, Jan 23</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">NLP Training for Coaches & Influencers</div>
-                                        <div class="session-type nlp">Advanced Training</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <!-- Week 4 -->
+                    <div class="week-card nlp-week">
+                        <h3>Week 4: Jan 19–25</h3>
+                        <ul class="session-list">
+                            <li class="session-item nlp" data-utc="2026-01-22T19:00:00+10:00">
+                                <div class="session-date">Thu, Jan 22</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">NLP Certification Training for Coaches</div>
+                                    <div class="session-type nlp">Advanced Training</div>
+                                </div>
+                            </li>
+                            <li class="session-item nlp" data-utc="2026-01-23T09:00:00+10:00">
+                                <div class="session-date">Fri, Jan 23</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">NLP Certification Training for Coaches</div>
+                                    <div class="session-type nlp">Advanced Training</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <!-- Week 5 -->
-                        <div class="week-card entry-week">
-                            <h3>Week 5: Jan 26–31</h3>
-                            <ul class="session-list">
-                                <li class="session-item entry" data-utc="2026-01-30T09:00:00+10:00">
-                                    <div class="session-date">Fri, Jan 30</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">How to Become a World-Class Coach</div>
-                                        <div class="session-type entry">$29 Development Program</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <!-- Week 5 -->
+                    <div class="week-card entry-week">
+                        <h3>Week 5: Jan 26–31</h3>
+                        <ul class="session-list">
+                            <li class="session-item entry" data-utc="2026-01-30T09:00:00+10:00">
+                                <div class="session-date">Fri, Jan 30</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">How to Become a World-Class Coach</div>
+                                    <div class="session-type entry">$29 Development Program</div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- FEBRUARY 2026 -->
-            <div class="accordion-item">
-                <div class="accordion-header" data-month="february">
+        <!-- FEBRUARY 2026 -->
+        <div class="month-section" id="february">
+            <div class="month-header">
+                <div>
                     <h2><i class="fas fa-heart"></i> February 2026</h2>
-                    <div class="accordion-icon"><i class="fas fa-chevron-down"></i></div>
+                    <div class="month-badge">Relationship Focus</div>
                 </div>
-                <div class="accordion-content" id="february">
-                    <div class="week-grid">
-                        <!-- Week 3 -->
-                        <div class="week-card coaching-week">
-                            <h3>Week 3: Feb 13–19</h3>
-                            <ul class="session-list">
-                                <li class="session-item coaching" data-utc="2026-02-19T19:00:00+10:00">
-                                    <div class="session-date">Thu, Feb 19</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
-                                        <div class="session-type coaching">Member Coaching</div>
-                                    </div>
-                                </li>
-                                <li class="session-item coaching" data-utc="2026-02-20T09:00:00+10:00">
-                                    <div class="session-date">Fri, Feb 20</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
-                                        <div class="session-type coaching">Member Coaching</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                <div class="collapse-toggle">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="month-content">
+                <div class="week-grid">
+                    <!-- Week 3 -->
+                    <div class="week-card coaching-week">
+                        <h3>Week 3: Feb 13–19</h3>
+                        <ul class="session-list">
+                            <li class="session-item coaching" data-utc="2026-02-19T19:00:00+10:00">
+                                <div class="session-date">Thu, Feb 19</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
+                                    <div class="session-type coaching">Member Coaching</div>
+                                </div>
+                            </li>
+                            <li class="session-item coaching" data-utc="2026-02-20T09:00:00+10:00">
+                                <div class="session-date">Fri, Feb 20</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
+                                    <div class="session-type coaching">Member Coaching</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <!-- Week 4 -->
-                        <div class="week-card entry-week">
-                            <h3>Week 4: Feb 20–26</h3>
-                            <ul class="session-list">
-                                <li class="session-item entry" data-utc="2026-02-27T07:00:00+10:00">
-                                    <div class="session-date">Fri, Feb 27</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">Unlock Your Incredible Self — 6-Hour Live Training</div>
-                                        <div class="session-type entry">$39 Development Program</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <!-- Week 4 -->
+                    <div class="week-card entry-week">
+                        <h3>Week 4: Feb 20–26</h3>
+                        <ul class="session-list">
+                            <li class="session-item entry" data-utc="2026-02-27T07:00:00+10:00">
+                                <div class="session-date">Fri, Feb 27</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Unlock Your Incredible Self — 6-Hour Live Training</div>
+                                    <div class="session-type entry">$39 Development Program</div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- MARCH 2026 -->
-            <div class="accordion-item">
-                <div class="accordion-header" data-month="march">
+        <!-- MARCH 2026 -->
+        <div class="month-section" id="march">
+            <div class="month-header">
+                <div>
                     <h2><i class="fas fa-leaf"></i> March 2026</h2>
-                    <div class="accordion-icon"><i class="fas fa-chevron-down"></i></div>
+                    <div class="month-badge">Advanced Development</div>
                 </div>
-                <div class="accordion-content" id="march">
-                    <div class="week-grid">
-                        <!-- Week 1 -->
-                        <div class="week-card coaching-week">
-                            <h3>Week 1: Mar 1–7</h3>
-                            <ul class="session-list">
-                                <li class="session-item coaching" data-utc="2026-03-06T09:00:00+10:00">
-                                    <div class="session-date">Fri, Mar 6</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
-                                        <div class="session-type coaching">Member Coaching</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                <div class="collapse-toggle">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="month-content">
+                <div class="week-grid">
+                    <!-- Week 1 -->
+                    <div class="week-card coaching-week">
+                        <h3>Week 1: Mar 1–7</h3>
+                        <ul class="session-list">
+                            <li class="session-item coaching" data-utc="2026-03-06T09:00:00+10:00">
+                                <div class="session-date">Fri, Mar 6</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
+                                    <div class="session-type coaching">Member Coaching</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <!-- Week 2 -->
-                        <div class="week-card nlp-week">
-                            <h3>Week 2: Mar 8–14</h3>
-                            <ul class="session-list">
-                                <li class="session-item nlp" data-utc="2026-03-12T19:00:00+10:00">
-                                    <div class="session-date">Thu, Mar 12</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">NLP Training for Coaches & Influencers</div>
-                                        <div class="session-type nlp">Advanced Training</div>
-                                    </div>
-                                </li>
-                                <li class="session-item nlp" data-utc="2026-03-13T09:00:00+10:00">
-                                    <div class="session-date">Fri, Mar 13</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">NLP Training for Coaches & Influencers</div>
-                                        <div class="session-type nlp">Advanced Training</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <!-- Week 2 -->
+                    <div class="week-card nlp-week">
+                        <h3>Week 2: Mar 8–14</h3>
+                        <ul class="session-list">
+                            <li class="session-item nlp" data-utc="2026-03-12T19:00:00+10:00">
+                                <div class="session-date">Thu, Mar 12</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">NLP Certification Training for Coaches</div>
+                                    <div class="session-type nlp">Advanced Training</div>
+                                </div>
+                            </li>
+                            <li class="session-item nlp" data-utc="2026-03-13T09:00:00+10:00">
+                                <div class="session-date">Fri, Mar 13</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">NLP Certification Training for Coaches</div>
+                                    <div class="session-type nlp">Advanced Training</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <!-- Week 3 -->
-                        <div class="week-card entry-week">
-                            <h3>Week 3: Mar 15–21</h3>
-                            <ul class="session-list">
-                                <li class="session-item entry" data-utc="2026-03-20T07:00:00+10:00">
-                                    <div class="session-date">Fri, Mar 20</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">Unlock Your Incredible Self — 6-Hour Live Training</div>
-                                        <div class="session-type entry">$39 Development Program</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <!-- Week 3 -->
+                    <div class="week-card entry-week">
+                        <h3>Week 3: Mar 15–21</h3>
+                        <ul class="session-list">
+                            <li class="session-item entry" data-utc="2026-03-20T07:00:00+10:00">
+                                <div class="session-date">Fri, Mar 20</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Unlock Your Incredible Self — 6-Hour Live Training</div>
+                                    <div class="session-type entry">$39 Development Program</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <!-- Week 4 -->
-                        <div class="week-card coaching-week">
-                            <h3>Week 4: Mar 22–28</h3>
-                            <ul class="session-list">
-                                <li class="session-item coaching" data-utc="2026-03-26T19:00:00+10:00">
-                                    <div class="session-date">Thu, Mar 26</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
-                                        <div class="session-type coaching">Member Coaching</div>
-                                    </div>
-                                </li>
-                                <li class="session-item coaching" data-utc="2026-03-27T09:00:00+10:00">
-                                    <div class="session-date">Fri, Mar 27</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
-                                        <div class="session-type coaching">Member Coaching</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <!-- Week 4 -->
+                    <div class="week-card coaching-week">
+                        <h3>Week 4: Mar 22–28</h3>
+                        <ul class="session-list">
+                            <li class="session-item coaching" data-utc="2026-03-26T19:00:00+10:00">
+                                <div class="session-date">Thu, Mar 26</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
+                                    <div class="session-type coaching">Member Coaching</div>
+                                </div>
+                            </li>
+                            <li class="session-item coaching" data-utc="2026-03-27T09:00:00+10:00">
+                                <div class="session-date">Fri, Mar 27</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
+                                    <div class="session-type coaching">Member Coaching</div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- APRIL 2026 -->
-            <div class="accordion-item">
-                <div class="accordion-header" data-month="april">
+        <!-- APRIL 2026 -->
+        <div class="month-section" id="april">
+            <div class="month-header">
+                <div>
                     <h2><i class="fas fa-seedling"></i> April 2026</h2>
-                    <div class="accordion-icon"><i class="fas fa-chevron-down"></i></div>
+                    <div class="month-badge">Skill Development</div>
                 </div>
-                <div class="accordion-content" id="april">
-                    <div class="week-grid">
-                        <!-- Week 1 -->
-                        <div class="week-card coaching-week">
-                            <h3>Week 1: Apr 1–7</h3>
-                            <ul class="session-list">
-                                <li class="session-item coaching" data-utc="2026-04-03T09:00:00+10:00">
-                                    <div class="session-date">Fri, Apr 3</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
-                                        <div class="session-type coaching">Member Coaching</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                <div class="collapse-toggle">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="month-content">
+                <div class="week-grid">
+                    <!-- Week 1 -->
+                    <div class="week-card coaching-week">
+                        <h3>Week 1: Apr 1–7</h3>
+                        <ul class="session-list">
+                            <li class="session-item coaching" data-utc="2026-04-03T09:00:00+10:00">
+                                <div class="session-date">Fri, Apr 3</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
+                                    <div class="session-type coaching">Member Coaching</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <!-- Week 2 -->
-                        <div class="week-card nlp-week">
-                            <h3>Week 2: Apr 8–14</h3>
-                            <ul class="session-list">
-                                <li class="session-item nlp" data-utc="2026-04-09T19:00:00+10:00">
-                                    <div class="session-date">Thu, Apr 9</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">NLP Training for Coaches & Influencers</div>
-                                        <div class="session-type nlp">Advanced Training</div>
-                                    </div>
-                                </li>
-                                <li class="session-item nlp" data-utc="2026-04-10T09:00:00+10:00">
-                                    <div class="session-date">Fri, Apr 10</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">NLP Training for Coaches & Influencers</div>
-                                        <div class="session-type nlp">Advanced Training</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <!-- Week 2 -->
+                    <div class="week-card nlp-week">
+                        <h3>Week 2: Apr 8–14</h3>
+                        <ul class="session-list">
+                            <li class="session-item nlp" data-utc="2026-04-09T19:00:00+10:00">
+                                <div class="session-date">Thu, Apr 9</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">NLP Certification Training for Coaches</div>
+                                    <div class="session-type nlp">Advanced Training</div>
+                                </div>
+                            </li>
+                            <li class="session-item nlp" data-utc="2026-04-10T09:00:00+10:00">
+                                <div class="session-date">Fri, Apr 10</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">NLP Certification Training for Coaches</div>
+                                    <div class="session-type nlp">Advanced Training</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <!-- Week 3 -->
-                        <div class="week-card entry-week">
-                            <h3>Week 3: Apr 15–21</h3>
-                            <ul class="session-list">
-                                <li class="session-item entry" data-utc="2026-04-17T09:00:00+10:00">
-                                    <div class="session-date">Fri, Apr 17</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">Become World-Class Coach</div>
-                                        <div class="session-type entry">$29 Development Program</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <!-- Week 3 -->
+                    <div class="week-card entry-week">
+                        <h3>Week 3: Apr 15–21</h3>
+                        <ul class="session-list">
+                            <li class="session-item entry" data-utc="2026-04-17T09:00:00+10:00">
+                                <div class="session-date">Fri, Apr 17</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Become World-Class Coach</div>
+                                    <div class="session-type entry">$29 Development Program</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <!-- Week 4 -->
-                        <div class="week-card coaching-week">
-                            <h3>Week 4: Apr 22–28</h3>
-                            <ul class="session-list">
-                                <li class="session-item coaching" data-utc="2026-04-23T19:00:00+10:00">
-                                    <div class="session-date">Thu, Apr 23</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
-                                        <div class="session-type coaching">Member Coaching</div>
-                                    </div>
-                                </li>
-                                <li class="session-item coaching" data-utc="2026-04-24T09:00:00+10:00">
-                                    <div class="session-date">Fri, Apr 24</div>
-                                    <div class="session-time"><span class="local-time"></span></div>
-                                    <div class="session-details">
-                                        <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
-                                        <div class="session-type coaching">Member Coaching</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <!-- Week 4 -->
+                    <div class="week-card coaching-week">
+                        <h3>Week 4: Apr 22–28</h3>
+                        <ul class="session-list">
+                            <li class="session-item coaching" data-utc="2026-04-23T19:00:00+10:00">
+                                <div class="session-date">Thu, Apr 23</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
+                                    <div class="session-type coaching">Member Coaching</div>
+                                </div>
+                            </li>
+                            <li class="session-item coaching" data-utc="2026-04-24T09:00:00+10:00">
+                                <div class="session-date">Fri, Apr 24</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
+                                    <div class="session-type coaching">Member Coaching</div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- MAY 2026 -->
-            <div class="accordion-item">
-                <div class="accordion-header" data-month="may">
-                    <h
+        <!-- MAY 2026 -->
+        <div class="month-section" id="may">
+            <div class="month-header">
+                <div>
+                    <h2><i class="fas fa-heartbeat"></i> May 2026</h2>
+                    <div class="month-badge">Health Focus</div>
+                </div>
+                <div class="collapse-toggle">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="month-content">
+                <div class="week-grid">
+                    <!-- Week 1 -->
+                    <div class="week-card coaching-week">
+                        <h3>Week 1: May 1–7</h3>
+                        <ul class="session-list">
+                            <li class="session-item coaching" data-utc="2026-05-01T09:00:00+10:00">
+                                <div class="session-date">Fri, May 1</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
+                                    <div class="session-type coaching">Member Coaching</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Week 3 -->
+                    <div class="week-card coaching-week">
+                        <h3>Week 3: May 11–17</h3>
+                        <ul class="session-list">
+                            <li class="session-item coaching" data-utc="2026-05-16T09:00:00+10:00">
+                                <div class="session-date">Fri, May 16</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
+                                    <div class="session-type coaching">Member Coaching</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Week 4 -->
+                    <div class="week-card entry-week">
+                        <h3>Week 4: May 18–24</h3>
+                        <ul class="session-list">
+                            <li class="session-item entry" data-utc="2026-05-23T07:00:00+10:00">
+                                <div class="session-date">Fri, May 23</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Unlock Your Incredible Self — 6-Hour Live Training</div>
+                                    <div class="session-type entry">$39 Development Program</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Week 5 -->
+                    <div class="week-card coaching-week">
+                        <h3>Week 5: May 25–31</h3>
+                        <ul class="session-list">
+                            <li class="session-item coaching" data-utc="2026-05-29T19:00:00+10:00">
+                                <div class="session-date">Thu, May 29</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
+                                    <div class="session-type coaching">Member Coaching</div>
+                                </div>
+                            </li>
+                            <li class="session-item coaching" data-utc="2026-05-30T09:00:00+10:00">
+                                <div class="session-date">Fri, May 30</div>
+                                <div class="session-time"><span class="local-time"></span></div>
+                                <div class="session-details">
+                                    <div class="session-title">Group Mentoring, Coaching & Integration Session</div>
+                                    <div class="session-type coaching">Member Coaching</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AUGUST 2026 -->
+        <div class="month-section" id="august">
+            <div class="month-header">
+                <div>
+                    <h2><i class="fas fa-brain"></i> August 2026</h2>
+                    <div class="month-badge">Emotional Mastery</div>
+                </div>
+                <div class="collapse-toggle">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="month-content">
+                <div class="week-grid">
+                    <!-- No regular sessions in August - only the 2-day seminar -->
+                    <div class="week-card coaching-week">
+                        <h3>Monthly Overview</h3>
+                        <ul class="session-list">
+                            <li class="session-item coaching">
+                                <div class="session-details">
+                                    <div class="session-title">August focuses exclusively on the 2-Day Emotional Mastery Intensive</div>
+                                    <div class="session-type coaching">Special Focus Month</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NOVEMBER 2026 -->
+        <div class="month-section" id="november">
+            <div class="month-header">
+                <div>
+                    <h2><i class="fas fa-graduation-cap"></i> November 2026</h2>
+                    <div class="month-badge">Life Skills</div>
+                </div>
+                <div class="collapse-toggle">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="month-content">
+                <div class="week-grid">
+                    <!-- No regular sessions in November - only the 2-day seminar -->
+                    <div class="week-card coaching-week">
+                        <h3>Monthly Overview</h3>
+                        <ul class="session-list">
+                            <li class="session-item coaching">
+                                <div class="session-details">
+                                    <div class="session-title">November focuses exclusively on the 2-Day Life Skills Masterclass</div>
+                                    <div class="session-type coaching">Special Focus Month</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TWO-DAY SEMINARS SECTION -->
+        <div class="seminars-section">
+            <h2><i class="fas fa-calendar-star"></i> 2026-2027 Signature Transformations</h2>
+            <p style="color: var(--text-gray); margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Our premier 2-day intensive seminars are designed for deep transformation. Each event runs from 7:00am–3:00pm AEST on both days.
+            </p>
+            
+            <div class="seminars-grid">
+                <div class="seminar-card">
+                    <h3>Ultimate Relationship Transformation</h3>
+                    <div class="seminar-date">February 12-13, 2026</div>
+                    <div class="seminar-time">Day 1: Thu, Feb 12 | Day 2: Fri, Feb 13</div>
+                    <p style="color: var(--text-gray); margin-bottom: 15px;">Transform your personal and professional relationships through advanced communication and connection techniques.</p>
+                    <div class="seminar-type">Premium 2-Day Transformation</div>
+                </div>
+                
+                <div class="seminar-card">
+                    <h3>Total Health Mastery</h3>
+                    <div class="seminar-date">May 8-9, 2026</div>
+                    <div class="seminar-time">Day 1: Thu, May 8 | Day 2: Fri, May 9</div>
+                    <p style="color: var(--text-gray); margin-bottom: 15px;">Master physical, mental, and emotional health through integrative wellness strategies and holistic practices.</p>
+                    <div class="seminar-type">Premium 2-Day Transformation</div>
+                </div>
+                
+                <div class="seminar-card">
+                    <h3>Emotional Mastery Intensive</h3>
+                    <div class="seminar-date">August 6-7, 2026</div>
+                    <div class="seminar-time">Day 1: Thu, Aug 6 | Day 2: Fri, Aug 7</div>
+                    <p style="color: var(--text-gray); margin-bottom: 15px;">Develop emotional intelligence, resilience, and self-regulation skills for personal and professional success.</p>
+                    <div class="seminar-type">Premium 2-Day Transformation</div>
+                </div>
+                
+                <div class="seminar-card">
+                    <h3>Life Skills Masterclass</h3>
+                    <div class="seminar-date">November 5-6, 2026</div>
+                    <div class="seminar-time">Day 1: Thu, Nov 5 | Day 2: Fri, Nov 6</div>
+                    <p style="color: var(--text-gray); margin-bottom: 15px;">Essential life skills for success including time management, decision making, and effective communication.</p>
+                    <div class="seminar-type">Premium 2-Day Transformation</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <a href="https://accessworldseminars-ship-it.github.io/results/" class="action-button gold">
+                <i class="fas fa-home"></i> Back to Main Site
+            </a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/webinars" target="_blank" class="action-button">
+                <i class="fas fa-video"></i> Member Webinar Library
+            </a>
+            <a href="https://form.jotform.com/250184868189875" target="_blank" class="action-button">
+                <i class="fas fa-headset"></i> Member Support
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" alt="AccessWorld Logo">
+                <div class="logo-text">ACCESSWORLD MEMBERS</div>
+            </div>
+            <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 20px; font-size: 1.1rem;">Premium Members-Only Schedule 2026-2027</p>
+            <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">© 2024-2027 AccessWorld Seminars. Members Exclusive Content.</p>
+            <p style="color: rgba(212, 175, 55, 0.8); margin-top: 15px; font-size: 0.9rem;">
+                <i class="fas fa-clock"></i> All session times displayed in your local timezone
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Timezone conversion function
+        function updateTimes(tz = Intl.DateTimeFormat().resolvedOptions().timeZone) {
+            document.querySelectorAll('.session-item[data-utc]').forEach(function(item) {
+                const utcTime = item.getAttribute('data-utc');
+                const localTime = new Date(utcTime);
+                const timeElement = item.querySelector('.local-time');
+                
+                timeElement.textContent = localTime.toLocaleString('en-US', { 
+                    weekday: 'short', 
+                    month: 'short', 
+                    day: 'numeric',
+                    hour: '2-digit', 
+                    minute: '2-digit',
+                    hour12: true, 
+                    timeZone: tz
+                });
+            });
+        }
+
+        // Timezone selector
+        const timezoneSelect = document.getElementById('timezone');
+        timezoneSelect.addEventListener('change', () => {
+            const tz = timezoneSelect.value || Intl.DateTimeFormat().resolvedOptions().timeZone;
+            updateTimes(tz);
+        });
+
+        // Collapsible month sections
+        document.querySelectorAll('.month-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const monthSection = header.closest('.month-section');
+                monthSection.classList.toggle('active');
+            });
+        });
+
+        // Month navigation
+        document.querySelectorAll('.month-nav-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const monthId = button.getAttribute('data-month');
+                const targetSection = document.getElementById(monthId);
+                
+                // Close all other month sections
+                document.querySelectorAll('.month-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Open target section
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                
+                // Update active button
+                document.querySelectorAll('.month-nav-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+            });
+        });
+
+        // Initialize with auto-detect and open first month
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTimes();
+            
+            // Set initial select value
+            const userTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            const matchingOption = Array.from(timezoneSelect.options).find(opt => 
+                opt.value && userTz.includes(opt.value.split('/').pop())
+            );
+            if (matchingOption) {
+                timezoneSelect.value = matchingOption.value;
+            }
+            
+            // Open first month by default
+            const firstMonth = document.querySelector('.month-section');
+            if (firstMonth) {
+                firstMonth.classList.add('active');
+                document.querySelector('.month-nav-button').classList.add('active');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
