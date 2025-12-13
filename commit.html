@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Your Incredible Self | Transform Your Life</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0f1a3d;
+            --secondary-blue: #1a2b5e;
+            --accent-gold: #d4af37;
+            --accent-silver: #c0c0c0;
+            --light-blue: #2d3b6b;
+            --text-light: #ffffff;
+            --text-gray: #e0e0e0;
+            --bg-dark: #050a1a;
+            --bg-light: #f8f9fa;
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --radius: 10px;
+            --success-green: #4CAF50;
+            --transformation-purple: #9C27B0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-gray);
+            background-color: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            padding: 50px 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            border-bottom: 5px solid var(--accent-gold);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logo-img {
+            height: 80px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+        }
+
+        .logo-text {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-silver));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-weight: 500;
+        }
+
+        /* Main Content Sections */
+        .section {
+            background: rgba(26, 43, 94, 0.3);
+            border-radius: var(--radius);
+            padding: 40px;
+            margin: 40px 0;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .section-title {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            font-size: 1.4rem;
+        }
+
+        /* Karate Story Section */
+        .story-section {
+            background: rgba(212, 175, 55, 0.05);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: var(--radius);
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            border-left: 4px solid var(--accent-gold);
+            padding-left: 20px;
+            margin: 25px 0;
+        }
+
+        /* Success Stories */
+        .success-stories {
+            margin: 50px 0;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .story-card {
+            background: rgba(15, 26, 61, 0.7);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--success-green);
+            transition: var(--transition);
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            background: rgba(26, 43, 94, 0.7);
+        }
+
+        .story-name {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .story-achievement {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(26, 43, 94, 0.3));
+            border: 3px solid var(--accent-gold);
+            border-radius: var(--radius);
+            padding: 50px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .cta-title {
+            color: var(--text-light);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-subtitle {
+            color: var(--accent-gold);
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        /* Questions Grid */
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .question-item {
+            background: rgba(15, 26, 61, 0.5);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--transformation-purple);
+            transition: var(--transition);
+        }
+
+        .question-item:hover {
+            background: rgba(26, 43, 94, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .question-text {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .action-button {
+            background: rgba(26, 43, 94, 0.7);
+            color: var(--text-light);
+            padding: 20px 40px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 280px;
+            justify-content: center;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .action-button:hover {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+        }
+
+        .action-button.gold {
+            background: linear-gradient(135deg, var(--accent-gold), #b8941f);
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        .action-button.purple {
+            background: linear-gradient(135deg, var(--transformation-purple), #7b1fa2);
+            color: var(--text-light);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            text-align: center;
+            margin: 60px 0;
+            padding: 50px;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: var(--radius);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .final-cta h2 {
+            color: var(--accent-gold);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        .footer-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            margin-top: 60px;
+            border-radius: var(--radius) var(--radius) 0 0;
+            border-top: 3px solid var(--accent-gold);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+        }
+
+        .footer-logo .logo-text {
+            font-size: 1.8rem;
+        }
+
+        .copyright {
+            color: var(--text-gray);
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 2rem;
+            }
+            
+            .logo-img {
+                height: 60px;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+            
+            .action-button {
+                min-width: 100%;
+            }
+            
+            .stories-grid, .questions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-section {
+                padding: 30px;
+            }
+            
+            .final-cta {
+                padding: 30px;
+            }
+            
+            .final-cta h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.6rem;
+            }
+            
+            .logo-img {
+                height: 50px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" alt="Josh Boss Coaching Logo" class="logo-img">
+                <div class="logo-text">UNLOCK YOUR INCREDIBLE SELF</div>
+            </div>
+            <h1>From Ordinary to Extraordinary</h1>
+            <div class="tagline">Join a community of high achievers who are transforming their lives through consistent personal development</div>
+            
+            <div class="action-buttons">
+                <a href="https://joshbossesteamworkspace.myclickfunnels.com/webinar-funnel" class="action-button gold">
+                    <i class="fas fa-unlock-alt"></i> Unlock Your Incredible Self
+                </a>
+                <a href="https://joshbossesteamworkspace.myclickfunnels.com/coaching_training" class="action-button purple">
+                    <i class="fas fa-graduation-cap"></i> Become a World-Class Coach
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Personal Development Philosophy -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-brain"></i> The Path to Mastery</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">Some people ask me, "Josh, you run a lot of seminars." This is true, and it all comes back to how seriously you take your personal development. I provide opportunities for people to attend numerous courses and programs because personal development is never a one-time thing—it's an all-the-time commitment.</p>
+            
+            <div class="story-section">
+                <h3 class="section-title"><i class="fas fa-fist-raised"></i> The Black Belt Mindset</h3>
+                <p>When I was training for my black belt in karate, I would practice my basics day after day after day. I'd think to myself, "I already know this." Yet I could almost hear my instructors' thoughts saying, "Yes, and you'll do it again, and again, and again."</p>
+                
+                <div class="quote">
+                    "Don't learn until you get it right—learn until you cannot get it wrong."
+                </div>
+                
+                <p>They taught me that "Black belt is where the true training begins," and that "Training is a way of life."</p>
+            </div>
+            
+            <p style="font-size: 1.1rem; margin-top: 25px;">I've applied this same principle to coaching. If you want consistent, extraordinary results, you need to practice the skills, do the drills, and invest in the education that will accelerate your life.</p>
+            
+            <div class="quote" style="margin-top: 30px;">
+                "I'm not looking for the ordinary. I'm seeking out the extraordinary—those willing to invest time and energy into mastering the training principles contained in this program."
+            </div>
+        </section>
+
+        <!-- Success Stories -->
+        <section class="success-stories">
+            <h2 class="section-title"><i class="fas fa-trophy"></i> Success Stories from Our Community</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 25px;">These people share one thing in common: they're not sitting on the sidelines hoping or dreaming for change. They showed commitment and achieved extraordinary results.</p>
+            
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-name">Veni</div>
+                    <div class="story-achievement">Left her safe employment to become a professional coach</div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-name">Daniel</div>
+                    <div class="story-achievement">Just left his employment to pursue coaching full-time</div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-name">Sanjay</div>
+                    <div class="story-achievement">Mastered AI technologies to strategically plan his 2026</div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-name">Joshua</div>
+                    <div class="story-achievement">Completed a transformative 2-day liver cleanse</div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-name">Shane</div>
+                    <div class="story-achievement">Preparing to coach others who've experienced parental alienation</div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-name">Trav & Bec</div>
+                    <div class="story-achievement">Bec published her book, with Trav soon to follow—now creating courses and retreats</div>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-name">Alla</div>
+                    <div class="story-achievement">Recently published her fourth book</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Questions -->
+        <section class="cta-section">
+            <h2 class="cta-title">What About You?</h2>
+            <div class="cta-subtitle">Are You Ready for Transformation?</div>
+            
+            <div class="questions-grid">
+                <div class="question-item">
+                    <div class="question-text">Are you ready to get off the sidelines and play the game?</div>
+                </div>
+                
+                <div class="question-item">
+                    <div class="question-text">Are you ready to stop living mediocre?</div>
+                </div>
+                
+                <div class="question-item">
+                    <div class="question-text">Are you ready to stop giving up on your dream life?</div>
+                </div>
+                
+                <div class="question-item">
+                    <div class="question-text">Are you ready to stop playing small?</div>
+                </div>
+                
+                <div class="question-item">
+                    <div class="question-text">Are you ready to take on a goal that scares you?</div>
+                </div>
+                
+                <div class="question-item">
+                    <div class="question-text">Are you ready to reach for the stars?</div>
+                </div>
+                
+                <div class="question-item">
+                    <div class="question-text">Are you ready to set your sights high and live a magnificent life?</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Decision Section -->
+        <section class="final-cta">
+            <h2>DECIDE. COMMIT. RESOLVE.</h2>
+            <p>Decide to attend a free introduction session.<br>
+               Commit to a 2-day transformation seminar.<br>
+               Resolve that you will pursue your dreams with every breath and every ounce of strength.</p>
+            
+            <div class="action-buttons">
+                <a href="https://joshbossesteamworkspace.myclickfunnels.com/webinar-funnel" class="action-button gold">
+                    <i class="fas fa-unlock-alt"></i> Start Your Transformation
+                </a>
+                <a href="https://joshbossesteamworkspace.myclickfunnels.com/coaching_training" class="action-button purple">
+                    <i class="fas fa-graduation-cap"></i> Become a World-Class Coach
+                </a>
+            </div>
+            
+            <h3 style="color: var(--accent-gold); margin-top: 40px; font-size: 2rem;">
+                DO IT. DO IT RIGHT! DO IT RIGHT NOW!!!
+            </h3>
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" alt="Josh Boss Coaching Logo" class="logo-img">
+                <div class="logo-text">UNLOCK YOUR INCREDIBLE SELF</div>
+            </div>
+            <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto 20px;">
+                Join a community of extraordinary individuals committed to personal mastery and transformation.
+            </p>
+            
+            <div class="action-buttons" style="margin: 30px 0;">
+                <a href="https://joshbossesteamworkspace.myclickfunnels.com/webinar-funnel" class="action-button gold">
+                    <i class="fas fa-unlock-alt"></i> Unlock Your Potential
+                </a>
+                <a href="https://joshbossesteamworkspace.myclickfunnels.com/coaching_training" class="action-button purple">
+                    <i class="fas fa-graduation-cap"></i> Start Coaching Journey
+                </a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2024 Josh Boss Team. All Rights Reserved. | Personal Development Transformation
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation to story cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe story cards
+            document.querySelectorAll('.story-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+
+            // Observe question items
+            document.querySelectorAll('.question-item').forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>
