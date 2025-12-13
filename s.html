@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AccessWorld Seminars - Program Options</title>
+    <title>AccessWorld Seminars - 2026-2027 Event Calendar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -21,7 +21,7 @@
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
@@ -140,7 +140,6 @@
             position: relative;
             z-index: 2;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            padding-right: 100px;
         }
         
         .program-price {
@@ -175,25 +174,6 @@
             color: #26d0ce;
             margin-right: 10px;
             font-size: 18px;
-            flex-shrink: 0;
-        }
-        
-        .feature-name {
-            font-weight: 600;
-            color: #444;
-            flex: 1;
-            min-width: 0;
-        }
-        
-        .feature-value {
-            color: #1a2980;
-            font-weight: 700;
-            text-align: right;
-            margin-left: 10px;
-            flex-shrink: 0;
-            max-width: 120px;
-            overflow: visible;
-            white-space: nowrap;
         }
         
         .ideal-for {
@@ -218,12 +198,6 @@
             font-weight: bold;
             z-index: 10;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            max-width: 120px;
-            text-align: center;
-            white-space: normal;
-            line-height: 1.2;
-            word-wrap: break-word;
-            overflow: visible;
         }
         
         .cta-button {
@@ -241,21 +215,11 @@
             margin-top: 25px;
             text-align: center;
             text-decoration: none;
-            position: relative;
-            z-index: 1;
         }
         
         .cta-button:hover {
             transform: scale(1.03);
             box-shadow: 0 5px 15px rgba(26, 41, 128, 0.3);
-        }
-        
-        .tier-1 .card-header::before {
-            background: linear-gradient(135deg, rgba(46, 49, 146, 0.9) 0%, rgba(27, 255, 255, 0.9) 100%);
-        }
-        
-        .tier-2 .card-header::before {
-            background: linear-gradient(135deg, rgba(212, 20, 90, 0.9) 0%, rgba(251, 176, 59, 0.9) 100%);
         }
         
         .intro-offers {
@@ -300,16 +264,12 @@
             color: #1a2980;
             margin-bottom: 10px;
             font-size: 18px;
-            position: relative;
-            z-index: 1;
         }
         
         .offer-price {
             color: #ff4081;
             font-weight: bold;
             margin-top: 10px;
-            position: relative;
-            z-index: 1;
         }
         
         .free-badge {
@@ -320,8 +280,6 @@
             font-size: 12px;
             display: inline-block;
             margin-left: 10px;
-            position: relative;
-            z-index: 2;
         }
         
         @media (max-width: 768px) {
@@ -336,148 +294,10 @@
             .section-title h2 {
                 font-size: 24px;
             }
-            
-            .feature-value {
-                max-width: 100px;
-                font-size: 14px;
-            }
-            
-            .best-value-badge {
-                max-width: 100px;
-                font-size: 11px;
-                padding: 6px 10px;
-            }
-            
-            .program-name {
-                padding-right: 80px;
-            }
-            
-            .calendar-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .comparison-table {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-            overflow-x: auto;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        th {
-            background: #1a2980;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-        }
-        
-        th::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: #1a2980;
-            z-index: -1;
-        }
-        
-        td {
-            padding: 15px 20px;
-            border-bottom: 1px solid #eee;
-            text-align: center;
-        }
-        
-        tr:hover {
-            background: #f8f9fa;
-        }
-        
-        .feature-cell {
-            text-align: left;
-            font-weight: 600;
-            color: #444;
-            background: #f8f9fa;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .highlight-cell {
-            background: #e3f2fd;
-            font-weight: 700;
-            color: #1a2980;
-            position: relative;
-        }
-        
-        .value-label {
-            background: rgba(255, 255, 255, 0.9);
-            color: #1a2980;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .tier-flag {
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: bold;
-            margin-left: 10px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .tier-1-flag {
-            background: #2E3192;
-            color: white;
-        }
-        
-        .tier-2-flag {
-            background: #D4145A;
-            color: white;
-        }
-        
-        .link-indicator {
-            color: #26d0ce;
-            font-size: 14px;
-            margin-top: 5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .table-price {
-            font-size: 20px;
-            font-weight: bold;
-            color: #1a2980;
-            margin: 5px 0;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .table-subtitle {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 5px;
-            position: relative;
-            z-index: 1;
         }
         
         /* Calendar Styles */
-        .calendar-section {
+        .calendar-container {
             background: white;
             border-radius: 15px;
             padding: 30px;
@@ -485,95 +305,92 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
         
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+        .event-timeline {
+            max-width: 800px;
+            margin: 40px auto;
+            position: relative;
         }
         
-        .month-card {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            border-left: 5px solid;
-            transition: all 0.3s ease;
+        .event-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #1a2980, #26d0ce);
+            border-radius: 2px;
         }
         
-        .month-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .month-title {
-            font-weight: 700;
-            font-size: 22px;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid;
-        }
-        
-        .event-list {
-            list-style: none;
-        }
-        
-        .event-item {
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
+        .timeline-event {
             display: flex;
-            align-items: flex-start;
-        }
-        
-        .event-item:last-child {
-            border-bottom: none;
+            margin-bottom: 40px;
+            position: relative;
         }
         
         .event-date {
             background: #1a2980;
             color: white;
-            padding: 5px 10px;
-            border-radius: 8px;
+            padding: 10px 20px;
+            border-radius: 25px;
             font-weight: bold;
-            min-width: 70px;
+            min-width: 120px;
             text-align: center;
-            margin-right: 15px;
-            flex-shrink: 0;
+            margin-right: 30px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(26, 41, 128, 0.3);
         }
         
-        .event-details {
+        .event-content {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #26d0ce;
             flex: 1;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
         
         .event-title {
-            font-weight: 600;
-            color: #444;
-            margin-bottom: 5px;
-            font-size: 16px;
+            font-weight: 700;
+            color: #1a2980;
+            margin-bottom: 10px;
+            font-size: 18px;
         }
         
-        .event-time {
+        .event-details {
             color: #666;
-            font-size: 14px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .event-details i {
+            color: #26d0ce;
+            width: 20px;
+        }
+        
+        .major-event {
+            border-left-color: #ff4081;
+        }
+        
+        .major-event .event-date {
+            background: #ff4081;
+            box-shadow: 0 4px 10px rgba(255, 64, 129, 0.3);
+        }
+        
+        .major-event .event-title {
+            color: #ff4081;
         }
         
         .theme-badge {
             display: inline-block;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 12px;
             font-weight: bold;
             margin-left: 10px;
-            text-transform: uppercase;
-        }
-        
-        /* Theme Colors */
-        .relationship-theme {
-            border-left-color: #D4145A;
-        }
-        
-        .relationship-theme .month-title {
-            color: #D4145A;
-            border-bottom-color: #D4145A;
         }
         
         .relationship-badge {
@@ -581,27 +398,9 @@
             color: white;
         }
         
-        .health-theme {
-            border-left-color: #4CAF50;
-        }
-        
-        .health-theme .month-title {
-            color: #4CAF50;
-            border-bottom-color: #4CAF50;
-        }
-        
         .health-badge {
             background: #4CAF50;
             color: white;
-        }
-        
-        .emotional-theme {
-            border-left-color: #9C27B0;
-        }
-        
-        .emotional-theme .month-title {
-            color: #9C27B0;
-            border-bottom-color: #9C27B0;
         }
         
         .emotional-badge {
@@ -609,38 +408,27 @@
             color: white;
         }
         
-        .calendar-legend {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 25px;
-            flex-wrap: wrap;
-        }
-        
-        .legend-item {
+        .link-indicator {
+            color: #26d0ce;
+            font-size: 14px;
+            margin-top: 10px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: 600;
+            gap: 5px;
         }
         
-        .legend-color {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
+        .strategy-call {
+            text-align: center;
+            margin: 50px 0 30px;
+            color: white;
         }
         
-        .legend-relationship {
-            background: #D4145A;
-        }
-        
-        .legend-health {
-            background: #4CAF50;
-        }
-        
-        .legend-emotional {
-            background: #9C27B0;
+        .back-button {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+            margin-top: 60px;
+            border-radius: 0 0 15px 15px;
         }
     </style>
 </head>
@@ -648,428 +436,384 @@
     <div class="container">
         <header>
             <div class="logo">ACCESS<span>WORLD</span> SEMINARS</div>
-            <div class="subtitle">Transformative Coaching & Training Programs</div>
-            <div class="currency-note">2026 Free Event Calendar - Thematic Progression</div>
+            <div class="subtitle">2026-2027 Event Calendar & Program Schedule</div>
+            <div class="currency-note">All dates in AEST (Australian Eastern Standard Time)</div>
         </header>
 
-        <!-- ========== FREE EVENT CALENDAR ========== -->
-        <div class="calendar-section">
-            <h2 style="color: #1a2980; margin-bottom: 25px; font-size: 32px; text-align: center;">
-                2026 FREE EVENT CALENDAR
-            </h2>
-            <p style="text-align: center; color: #666; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                Follow our thematic journey: <strong>Relationships → Health → Emotional Mastery</strong>. 
-                Each free event builds toward our major 2-day intensives.
-            </p>
-            
-            <div class="calendar-grid">
-                <!-- JANUARY - RELATIONSHIP THEME -->
-                <div class="month-card relationship-theme">
-                    <div class="month-title">JANUARY 2026 <span class="theme-badge relationship-badge">Relationships</span></div>
-                    <ul class="event-list">
-                        <li class="event-item">
-                            <div class="event-date">Thu, Jan 8</div>
-                            <div class="event-details">
-                                <div class="event-title">Relationship Communication Secrets</div>
-                                <div class="event-time">7:00–8:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Fri, Jan 9</div>
-                            <div class="event-details">
-                                <div class="event-title">Heal Your Heart for Healthy Love</div>
-                                <div class="event-time">11:00–12:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Thu, Jan 15</div>
-                            <div class="event-details">
-                                <div class="event-title">Stop Sabotaging Your Relationships</div>
-                                <div class="event-time">7:00–8:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Fri, Jan 16</div>
-                            <div class="event-details">
-                                <div class="event-title">The Attachment Blueprint for Secure Love</div>
-                                <div class="event-time">11:00–12:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Fri, Jan 23</div>
-                            <div class="event-details">
-                                <div class="event-title">Soulmate Signals: Recognize Your Perfect Partner</div>
-                                <div class="event-time">11:00–1:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Thu, Jan 29</div>
-                            <div class="event-details">
-                                <div class="event-title">Conflict to Connection: The Art of Fighting Fair</div>
-                                <div class="event-time">7:00–8:30pm</div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ddd; font-style: italic; color: #666;">
-                        Leads to: <strong>Feb 12-13 Ultimate Relationship Seminar</strong>
-                    </div>
-                </div>
-
-                <!-- FEBRUARY - HEALTH THEME -->
-                <div class="month-card health-theme">
-                    <div class="month-title">FEBRUARY 2026 <span class="theme-badge health-badge">Health</span></div>
-                    <ul class="event-list">
-                        <li class="event-item">
-                            <div class="event-date">Fri, Feb 20</div>
-                            <div class="event-details">
-                                <div class="event-title">The 5-Minute Morning Ritual for All-Day Energy</div>
-                                <div class="event-time">11:00–12:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Thu, Feb 26</div>
-                            <div class="event-details">
-                                <div class="event-title">Breathwork Mastery: Unlock Natural Vitality</div>
-                                <div class="event-time">7:00–8:30pm</div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ddd; font-weight: bold; color: #D4145A; text-align: center;">
-                        ⭐ FEB 12-13: Ultimate Relationship Seminar ⭐
-                    </div>
-                </div>
-
-                <!-- MARCH - HEALTH THEME -->
-                <div class="month-card health-theme">
-                    <div class="month-title">MARCH 2026 <span class="theme-badge health-badge">Health</span></div>
-                    <ul class="event-list">
-                        <li class="event-item">
-                            <div class="event-date">Thu, Mar 5</div>
-                            <div class="event-details">
-                                <div class="event-title">Sleep Revolution: Master Your Rest & Recovery</div>
-                                <div class="event-time">7:00–8:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Fri, Mar 6</div>
-                            <div class="event-details">
-                                <div class="event-title">Metabolic Reset: Reprogram Your Body</div>
-                                <div class="event-time">11:00–12:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Fri, Mar 13</div>
-                            <div class="event-details">
-                                <div class="event-title">Gut-Brain Connection: Heal Your Second Brain</div>
-                                <div class="event-time">11:00–12:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Thu, Mar 19</div>
-                            <div class="event-details">
-                                <div class="event-title">Stress to Strength: Build Resilience Naturally</div>
-                                <div class="event-time">7:00–8:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Fri, Mar 27</div>
-                            <div class="event-details">
-                                <div class="event-title">Pain-Free Movement: Unlock Your Body's Potential</div>
-                                <div class="event-time">11:00–12:30pm</div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ddd; font-style: italic; color: #666;">
-                        Builds to: <strong>May 8-9 Ultimate Health Webinar</strong>
-                    </div>
-                </div>
-
-                <!-- APRIL - EMOTIONAL MASTERY THEME -->
-                <div class="month-card emotional-theme">
-                    <div class="month-title">APRIL 2026 <span class="theme-badge emotional-badge">Emotional</span></div>
-                    <ul class="event-list">
-                        <li class="event-item">
-                            <div class="event-date">Thu, Apr 2</div>
-                            <div class="event-details">
-                                <div class="event-title">Emotional Alchemy: Transform Pain into Power</div>
-                                <div class="event-time">7:00–8:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Fri, Apr 3</div>
-                            <div class="event-details">
-                                <div class="event-title">Anxiety to Authenticity: Master Your Emotional State</div>
-                                <div class="event-time">11:00–12:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Fri, Apr 10</div>
-                            <div class="event-details">
-                                <div class="event-title">The NLP Breakthrough: Rewire Your Mind</div>
-                                <div class="event-time">11:00–12:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Thu, Apr 16</div>
-                            <div class="event-details">
-                                <div class="event-title">Subconscious Reprogramming: Erase Limiting Beliefs</div>
-                                <div class="event-time">7:00–8:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Fri, Apr 24</div>
-                            <div class="event-details">
-                                <div class="event-title">The Confidence Code: Build Unshakeable Self-Belief</div>
-                                <div class="event-time">11:00–12:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Thu, Apr 30</div>
-                            <div class="event-details">
-                                <div class="event-title">Emotional Resilience Bootcamp: Bounce Back Stronger</div>
-                                <div class="event-time">7:00–8:30pm</div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- MAY - EMOTIONAL MASTERY THEME -->
-                <div class="month-card emotional-theme">
-                    <div class="month-title">MAY 2026 <span class="theme-badge emotional-badge">Emotional</span></div>
-                    <ul class="event-list">
-                        <li class="event-item">
-                            <div class="event-date">Thu, May 7</div>
-                            <div class="event-details">
-                                <div class="event-title">NLP Anchoring Mastery: Access Your Best States Instantly</div>
-                                <div class="event-time">7:00–8:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Fri, May 1</div>
-                            <div class="event-details">
-                                <div class="event-title">From Triggered to Tranquil: Emotional Regulation Workshop</div>
-                                <div class="event-time">11:00–12:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Thu, May 14</div>
-                            <div class="event-details">
-                                <div class="event-title">The Mindset Metamorphosis: Transform Your Inner World</div>
-                                <div class="event-time">7:00–8:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Fri, May 16</div>
-                            <div class="event-details">
-                                <div class="event-title">Future Self Activation: Program Your Mind for Success</div>
-                                <div class="event-time">11:00–12:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Thu, May 22</div>
-                            <div class="event-details">
-                                <div class="event-title">Emotional Intelligence Mastery: Read & Respond with Wisdom</div>
-                                <div class="event-time">7:00–8:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Fri, May 30</div>
-                            <div class="event-details">
-                                <div class="event-title">Inner Peace Protocol: Calm Your Nervous System</div>
-                                <div class="event-time">11:00–12:30pm</div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ddd; font-weight: bold; color: #4CAF50; text-align: center;">
-                        ⭐ MAY 8-9: Ultimate Health Webinar ⭐
-                    </div>
-                </div>
-
-                <!-- JUNE - EMOTIONAL MASTERY THEME -->
-                <div class="month-card emotional-theme">
-                    <div class="month-title">JUNE 2026 <span class="theme-badge emotional-badge">Emotional</span></div>
-                    <ul class="event-list">
-                        <li class="event-item">
-                            <div class="event-date">Thu, Jun 4</div>
-                            <div class="event-details">
-                                <div class="event-title">Trauma to Triumph: Healing & Growth Integration</div>
-                                <div class="event-time">7:00–8:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Fri, Jun 5</div>
-                            <div class="event-details">
-                                <div class="event-title">Self-Sabotage Surgery: Remove Hidden Blocks</div>
-                                <div class="event-time">11:00–12:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Fri, Jun 12</div>
-                            <div class="event-details">
-                                <div class="event-title">The Forgiveness Formula: Heal & Release the Past</div>
-                                <div class="event-time">11:00–12:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Thu, Jun 18</div>
-                            <div class="event-details">
-                                <div class="event-title">Boundary Mastery: Protect Your Energy & Peace</div>
-                                <div class="event-time">7:00–8:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Fri, Jun 26</div>
-                            <div class="event-details">
-                                <div class="event-title">Intuition Activation: Trust Your Inner Guidance</div>
-                                <div class="event-time">11:00–12:30pm</div>
-                            </div>
-                        </li>
-                        <li class="event-item">
-                            <div class="event-date">Thu, Jun 30</div>
-                            <div class="event-details">
-                                <div class="event-title">Emotional Mastery Summit Preview</div>
-                                <div class="event-time">7:00–8:30pm</div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Calendar Legend -->
-            <div class="calendar-legend">
-                <div class="legend-item">
-                    <div class="legend-color legend-relationship"></div>
-                    <span>Relationship Theme (Jan)</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color legend-health"></div>
-                    <span>Health Theme (Feb-Mar)</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color legend-emotional"></div>
-                    <span>Emotional Mastery (Apr-Jun)</span>
-                </div>
-            </div>
-
-            <!-- Registration CTA -->
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="https://form.jotform.com/250184868189875" target="_blank" 
-                   class="cta-button" style="max-width: 400px; margin: 0 auto;">
-                    REGISTER FOR FREE EVENTS
-                    <div class="link-indicator"><i class="fas fa-calendar-check"></i> Book your spot</div>
-                </a>
-                <p style="color: #666; margin-top: 15px; font-size: 14px;">
-                    All free events include Q&A session and special bonuses
-                </p>
-            </div>
-        </div>
-
-        <!-- ========== MAJOR PAID EVENTS ========== -->
+        <!-- ========== MAJOR 2-DAY EVENTS ========== -->
         <div class="section-title">
-            <h2>MAJOR 2-DAY INTENSIVES</h2>
+            <h2>MAJOR 2-DAY TRAINING EVENTS</h2>
             <div class="badge">Premium Transformations</div>
         </div>
 
         <div class="programs-grid">
-            <!-- Ultimate Relationship Seminar -->
-            <div class="program-card tier-2">
+            <!-- 2026 Events -->
+            <div class="program-card">
                 <div class="best-value-badge">FEB 12-13</div>
                 <div class="card-header">
                     <div class="program-name">Ultimate Relationship Seminar</div>
                     <div class="program-price">$795</div>
-                    <div>2-Day Intensive</div>
+                    <div>2026 | 2-Day Intensive</div>
                 </div>
                 <div class="card-content">
                     <ul class="features-list">
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Live Training</span><span class="feature-value">2 Full Days</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Workbook & Materials</span><span class="feature-value">Included</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Q&A Sessions</span><span class="feature-value">Live Interaction</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Recording Access</span><span class="feature-value">12 Months</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Community Access</span><span class="feature-value">Private Group</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Bonus Materials</span><span class="feature-value">$297 Value</span></li>
+                        <li><span class="feature-icon">✓</span> Live Training (2 Full Days)</li>
+                        <li><span class="feature-icon">✓</span> Workbook & Materials Included</li>
+                        <li><span class="feature-icon">✓</span> Q&A Sessions with Joshua</li>
+                        <li><span class="feature-icon">✓</span> Recording Access (12 Months)</li>
+                        <li><span class="feature-icon">✓</span> Private Community Access</li>
                     </ul>
                     <div class="ideal-for">
-                        <strong>Perfect For:</strong> Anyone wanting deep, lasting relationship transformation
+                        <strong>Perfect For:</strong> Deep relationship transformation
                     </div>
                     <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
                         BOOK STRATEGY SESSION
-                        <div class="link-indicator"><i class="fas fa-calendar-alt"></i> Discuss if this is right for you</div>
                     </a>
                 </div>
             </div>
 
-            <!-- Ultimate Health Webinar -->
-            <div class="program-card tier-2">
+            <div class="program-card">
                 <div class="best-value-badge">MAY 8-9</div>
                 <div class="card-header">
                     <div class="program-name">Ultimate Health Webinar</div>
                     <div class="program-price">$695</div>
-                    <div>2-Day Transformation</div>
+                    <div>2026 | 2-Day Transformation</div>
                 </div>
                 <div class="card-content">
                     <ul class="features-list">
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Live Training</span><span class="feature-value">2 Full Days</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Health Assessments</span><span class="feature-value">Personalized</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Practical Exercises</span><span class="feature-value">Step-by-Step</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Recording Access</span><span class="feature-value">Lifetime</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Support Community</span><span class="feature-value">Health Focused</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Bonus Protocols</span><span class="feature-value">$197 Value</span></li>
+                        <li><span class="feature-icon">✓</span> Live Health Training</li>
+                        <li><span class="feature-icon">✓</span> Personalized Assessments</li>
+                        <li><span class="feature-icon">✓</span> Practical Step-by-Step Exercises</li>
+                        <li><span class="feature-icon">✓</span> Lifetime Recording Access</li>
+                        <li><span class="feature-icon">✓</span> Health-Focused Community</li>
                     </ul>
                     <div class="ideal-for">
-                        <strong>Perfect For:</strong> Those wanting vitality, energy, and optimal health
+                        <strong>Perfect For:</strong> Optimal health & vitality seekers
                     </div>
                     <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
                         BOOK STRATEGY SESSION
-                        <div class="link-indicator"><i class="fas fa-calendar-alt"></i> Discuss if this is right for you</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2026-2027 Major Events -->
+            <div class="program-card">
+                <div class="best-value-badge">AUG 6-7</div>
+                <div class="card-header">
+                    <div class="program-name">Emotional Mastery Series</div>
+                    <div class="program-price">$895</div>
+                    <div>2026 | 7am-3pm AEST</div>
+                </div>
+                <div class="card-content">
+                    <ul class="features-list">
+                        <li><span class="feature-icon">✓</span> Complete Emotional Mastery</li>
+                        <li><span class="feature-icon">✓</span> NLP & Mindset Techniques</li>
+                        <li><span class="feature-icon">✓</span> Practical Emotional Regulation</li>
+                        <li><span class="feature-icon">✓</span> Advanced Tools & Protocols</li>
+                        <li><span class="feature-icon">✓</span> Certification Available</li>
+                    </ul>
+                    <div class="ideal-for">
+                        <strong>Perfect For:</strong> Coaches & serious transformation seekers
+                    </div>
+                    <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
+                        BOOK STRATEGY SESSION
+                    </a>
+                </div>
+            </div>
+
+            <div class="program-card">
+                <div class="best-value-badge">NOV 5-6</div>
+                <div class="card-header">
+                    <div class="program-name">Life Skills Training</div>
+                    <div class="program-price">$795</div>
+                    <div>2026 | 7am-3pm AEST</div>
+                </div>
+                <div class="card-content">
+                    <ul class="features-list">
+                        <li><span class="feature-icon">✓</span> Essential Life Mastery Skills</li>
+                        <li><span class="feature-icon">✓</span> Communication & Leadership</li>
+                        <li><span class="feature-icon">✓</span> Productivity Systems</li>
+                        <li><span class="feature-icon">✓</span> Financial Mindset Training</li>
+                        <li><span class="feature-icon">✓</span> Relationship Building Skills</li>
+                    </ul>
+                    <div class="ideal-for">
+                        <strong>Perfect For:</strong> Personal & professional development
+                    </div>
+                    <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
+                        BOOK STRATEGY SESSION
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2027 Event -->
+            <div class="program-card">
+                <div class="best-value-badge">FEB 11-12</div>
+                <div class="card-header">
+                    <div class="program-name">Nervous System Re-programming</div>
+                    <div class="program-price">$995</div>
+                    <div>2027 | Advanced Training</div>
+                </div>
+                <div class="card-content">
+                    <ul class="features-list">
+                        <li><span class="feature-icon">✓</span> Advanced Nervous System Work</li>
+                        <li><span class="feature-icon">✓</span> Trauma Release Protocols</li>
+                        <li><span class="feature-icon">✓</span> Polyvagal Theory Application</li>
+                        <li><span class="feature-icon">✓</span> Somatic Experiencing Techniques</li>
+                        <li><span class="feature-icon">✓</span> Elite Level Certification</li>
+                    </ul>
+                    <div class="ideal-for">
+                        <strong>Perfect For:</strong> Advanced practitioners & healers
+                    </div>
+                    <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
+                        BOOK STRATEGY SESSION
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- ========== PROGRAM COMPARISON ========== -->
+        <!-- ========== FREE EVENT CALENDAR ========== -->
         <div class="section-title">
-            <h2>THEMATIC PROGRESSION ROADMAP</h2>
-            <div class="badge">Your 2026 Journey</div>
+            <h2>2026 FREE EVENT CALENDAR</h2>
+            <div class="badge">Thematic Progression</div>
         </div>
 
-        <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                <div style="background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); padding: 20px; border-radius: 10px; border-left: 5px solid #D4145A;">
-                    <h3 style="color: #D4145A; margin-bottom: 15px;">❤️ JAN-FEB: RELATIONSHIPS</h3>
-                    <p><strong>Free Events:</strong> 8 relationship-focused webinars</p>
-                    <p><strong>Peak:</strong> Feb 12-13 Ultimate Relationship Seminar</p>
-                    <p><strong>Focus:</strong> Communication, healing, secure attachment</p>
+        <div class="calendar-container">
+            <div class="event-timeline">
+                <!-- January - Relationship Theme -->
+                <div class="timeline-event">
+                    <div class="event-date">Jan 8</div>
+                    <div class="event-content">
+                        <div class="event-title">Relationship Communication Secrets <span class="theme-badge relationship-badge">Relationships</span></div>
+                        <div class="event-details"><i class="fas fa-clock"></i> Thursday 7:00–8:30pm</div>
+                        <div class="event-details"><i class="fas fa-video"></i> Free Intro Session</div>
+                    </div>
                 </div>
-                <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 20px; border-radius: 10px; border-left: 5px solid #4CAF50;">
-                    <h3 style="color: #4CAF50; margin-bottom: 15px;">🏃‍♂️ FEB-MAY: HEALTH & VITALITY</h3>
-                    <p><strong>Free Events:</strong> 7 health & wellness webinars</p>
-                    <p><strong>Peak:</strong> May 8-9 Ultimate Health Webinar</p>
-                    <p><strong>Focus:</strong> Energy, sleep, metabolism, resilience</p>
+
+                <div class="timeline-event">
+                    <div class="event-date">Jan 9</div>
+                    <div class="event-content">
+                        <div class="event-title">Heal Your Heart for Healthy Love <span class="theme-badge relationship-badge">Relationships</span></div>
+                        <div class="event-details"><i class="fas fa-clock"></i> Friday 11:00–12:30pm</div>
+                        <div class="event-details"><i class="fas fa-video"></i> Free Intro Seminar</div>
+                    </div>
                 </div>
-                <div style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); padding: 20px; border-radius: 10px; border-left: 5px solid #9C27B0;">
-                    <h3 style="color: #9C27B0; margin-bottom: 15px;">🧠 APR-JUN: EMOTIONAL MASTERY</h3>
-                    <p><strong>Free Events:</strong> 16 emotional mastery webinars</p>
-                    <p><strong>Focus:</strong> NLP, mindset, resilience, inner peace</p>
-                    <p><strong>Outcome:</strong> Complete emotional intelligence</p>
+
+                <div class="timeline-event">
+                    <div class="event-date">Jan 15</div>
+                    <div class="event-content">
+                        <div class="event-title">Stop Sabotaging Your Relationships <span class="theme-badge relationship-badge">Relationships</span></div>
+                        <div class="event-details"><i class="fas fa-clock"></i> Thursday 7:00–8:30pm</div>
+                        <div class="event-details"><i class="fas fa-video"></i> Free Breathwork Training</div>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="event-date">Jan 16</div>
+                    <div class="event-content">
+                        <div class="event-title">The Attachment Blueprint for Secure Love <span class="theme-badge relationship-badge">Relationships</span></div>
+                        <div class="event-details"><i class="fas fa-clock"></i> Friday 11:00–12:30pm</div>
+                        <div class="event-details"><i class="fas fa-video"></i> Free Health & Wellness Intro</div>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="event-date">Jan 23</div>
+                    <div class="event-content">
+                        <div class="event-title">Soulmate Signals: Recognize Your Perfect Partner <span class="theme-badge relationship-badge">Relationships</span></div>
+                        <div class="event-details"><i class="fas fa-clock"></i> Friday 11:00–1:30pm</div>
+                        <div class="event-details"><i class="fas fa-video"></i> Free Intro: Reduce Physical & Emotional Pain</div>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="event-date">Jan 29</div>
+                    <div class="event-content">
+                        <div class="event-title">Conflict to Connection: The Art of Fighting Fair <span class="theme-badge relationship-badge">Relationships</span></div>
+                        <div class="event-details"><i class="fas fa-clock"></i> Thursday 7:00–8:30pm</div>
+                        <div class="event-details"><i class="fas fa-video"></i> Free Intro Seminar: Health</div>
+                    </div>
+                </div>
+
+                <!-- February Major Event -->
+                <div class="timeline-event">
+                    <div class="event-date major-event">Feb 12-13</div>
+                    <div class="event-content major-event">
+                        <div class="event-title">⭐ ULTIMATE RELATIONSHIP SEMINAR ⭐</div>
+                        <div class="event-details"><i class="fas fa-clock"></i> 2 Days: 7:00am–3:00pm daily</div>
+                        <div class="event-details"><i class="fas fa-ticket-alt"></i> Premium 2-Day Intensive</div>
+                        <div class="link-indicator"><i class="fas fa-external-link-alt"></i> Limited spots available</div>
+                    </div>
+                </div>
+
+                <!-- February Health Theme -->
+                <div class="timeline-event">
+                    <div class="event-date">Feb 20</div>
+                    <div class="event-content">
+                        <div class="event-title">The 5-Minute Morning Ritual for All-Day Energy <span class="theme-badge health-badge">Health</span></div>
+                        <div class="event-details"><i class="fas fa-clock"></i> Friday 11:00–12:30pm</div>
+                        <div class="event-details"><i class="fas fa-video"></i> Free Intro Seminar</div>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="event-date">Feb 26</div>
+                    <div class="event-content">
+                        <div class="event-title">Breathwork Mastery: Unlock Natural Vitality <span class="theme-badge health-badge">Health</span></div>
+                        <div class="event-details"><i class="fas fa-clock"></i> Thursday 7:00–8:30pm</div>
+                        <div class="event-details"><i class="fas fa-video"></i> Free Intro / Attraction Seminar</div>
+                    </div>
+                </div>
+
+                <!-- March Health Theme -->
+                <div class="timeline-event">
+                    <div class="event-date">Mar 5</div>
+                    <div class="event-content">
+                        <div class="event-title">Sleep Revolution: Master Your Rest & Recovery <span class="theme-badge health-badge">Health</span></div>
+                        <div class="event-details"><i class="fas fa-clock"></i> Thursday 7:00–8:30pm</div>
+                        <div class="event-details"><i class="fas fa-video"></i> Free Intro / Attraction Seminar</div>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="event-date">Mar 6</div>
+                    <div class="event-content">
+                        <div class="event-title">Metabolic Reset: Reprogram Your Body <span class="theme-badge health-badge">Health</span></div>
+                        <div class="event-details"><i class="fas fa-clock"></i> Friday 11:00–12:30pm</div>
+                        <div class="event-details"><i class="fas fa-video"></i> Free Intro Seminar</div>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="event-date">Mar 13</div>
+                    <div class="event-content">
+                        <div class="event-title">Gut-Brain Connection: Heal Your Second Brain <span class="theme-badge health-badge">Health</span></div>
+                        <div class="event-details"><i class="fas fa-clock"></i> Friday 11:00–12:30pm</div>
+                        <div class="event-details"><i class="fas fa-video"></i> Free Intro Seminar</div>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="event-date">Mar 19</div>
+                    <div class="event-content">
+                        <div class="event-title">Stress to Strength: Build Resilience Naturally <span class="theme-badge health-badge">Health</span></div>
+                        <div class="event-details"><i class="fas fa-clock"></i> Thursday 7:00–8:30pm</div>
+                        <div class="event-details"><i class="fas fa-video"></i> Free Intro / Attraction Seminar</div>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="event-date">Mar 27</div>
+                    <div class="event-content">
+                        <div class="event-title">Pain-Free Movement: Unlock Your Body's Potential <span class="theme-badge health-badge">Health</span></div>
+                        <div class="event-details"><i class="fas fa-clock"></i> Friday 11:00–12:30pm</div>
+                        <div class="event-details"><i class="fas fa-video"></i> Free Intro Seminar</div>
+                    </div>
+                </div>
+
+                <!-- May Major Event -->
+                <div class="timeline-event">
+                    <div class="event-date major-event">May 8-9</div>
+                    <div class="event-content major-event">
+                        <div class="event-title">⭐ ULTIMATE HEALTH WEBINAR ⭐</div>
+                        <div class="event-details"><i class="fas fa-clock"></i> 2 Days: 7:00am–3:00pm daily</div>
+                        <div class="event-details"><i class="fas fa-ticket-alt"></i> Premium 2-Day Transformation</div>
+                        <div class="link-indicator"><i class="fas fa-external-link-alt"></i> Early bird pricing available</div>
+                    </div>
+                </div>
+
+                <!-- April-June Emotional Mastery (Sample) -->
+                <div class="timeline-event">
+                    <div class="event-date">Apr 2</div>
+                    <div class="event-content">
+                        <div class="event-title">Emotional Alchemy: Transform Pain into Power <span class="theme-badge emotional-badge">Emotional</span></div>
+                        <div class="event-details"><i class="fas fa-clock"></i> Thursday 7:00–8:30pm</div>
+                        <div class="event-details"><i class="fas fa-video"></i> Free Intro / Attraction Seminar</div>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="event-date">Jun 30</div>
+                    <div class="event-content">
+                        <div class="event-title">Emotional Mastery Summit Preview <span class="theme-badge emotional-badge">Emotional</span></div>
+                        <div class="event-details"><i class="fas fa-clock"></i> Thursday 7:00–8:30pm</div>
+                        <div class="event-details"><i class="fas fa-video"></i> Free Intro / Attraction Seminar</div>
+                    </div>
                 </div>
             </div>
-            
-            <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 2px dashed #eee;">
-                <p style="font-size: 18px; color: #1a2980; margin-bottom: 15px;">
-                    Ready to begin your transformation journey?
-                </p>
+
+            <div style="text-align: center; margin-top: 40px;">
                 <a href="https://form.jotform.com/250184868189875" target="_blank" 
-                   style="background: linear-gradient(135deg, #D4145A 0%, #FF4081 100%); 
-                          color: white; padding: 15px 40px; border-radius: 30px; 
-                          text-decoration: none; font-weight: bold; display: inline-block; 
-                          font-size: 18px; transition: all 0.3s ease;">
-                    <i class="fas fa-calendar-check"></i> Start with a Free Strategy Session
+                   class="cta-button" style="max-width: 400px; margin: 0 auto;">
+                    REGISTER FOR FREE EVENTS
+                    <div class="link-indicator"><i class="fas fa-calendar-check"></i> Secure your spot</div>
                 </a>
+                <p style="color: #666; margin-top: 15px; font-size: 14px;">
+                    All 31 free events available - See full calendar for complete schedule
+                </p>
             </div>
+        </div>
+
+        <!-- ========== UPCOMING MAJOR EVENTS SUMMARY ========== -->
+        <div class="section-title">
+            <h2>UPCOMING MAJOR EVENTS 2026-2027</h2>
+            <div class="badge">Save These Dates</div>
+        </div>
+
+        <div class="intro-offers">
+            <div class="offers-grid">
+                <div class="offer-card" style="border-left-color: #ff4081;">
+                    <div class="offer-title">Ultimate Relationship Seminar</div>
+                    <div class="offer-details">February 12-13, 2026</div>
+                    <div class="offer-details">7:00am–3:00pm AEST Daily</div>
+                    <div class="offer-price">$795 AUD</div>
+                </div>
+
+                <div class="offer-card" style="border-left-color: #4CAF50;">
+                    <div class="offer-title">Ultimate Health Webinar</div>
+                    <div class="offer-details">May 8-9, 2026</div>
+                    <div class="offer-details">7:00am–3:00pm AEST Daily</div>
+                    <div class="offer-price">$695 AUD</div>
+                </div>
+
+                <div class="offer-card" style="border-left-color: #9C27B0;">
+                    <div class="offer-title">Emotional Mastery Series</div>
+                    <div class="offer-details">August 6-7, 2026</div>
+                    <div class="offer-details">7:00am–3:00pm AEST Daily</div>
+                    <div class="offer-price">$895 AUD</div>
+                </div>
+
+                <div class="offer-card" style="border-left-color: #FF9800;">
+                    <div class="offer-title">Life Skills Training</div>
+                    <div class="offer-details">November 5-6, 2026</div>
+                    <div class="offer-details">7:00am–3:00pm AEST Daily</div>
+                    <div class="offer-price">$795 AUD</div>
+                </div>
+
+                <div class="offer-card" style="border-left-color: #2196F3;">
+                    <div class="offer-title">Nervous System Re-programming</div>
+                    <div class="offer-details">February 11-12, 2027</div>
+                    <div class="offer-details">Advanced Training</div>
+                    <div class="offer-price">$995 AUD</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== STRATEGY CALL CTA ========== -->
+        <div class="strategy-call">
+            <p style="font-size: 18px; margin-bottom: 10px;">Not sure which program is right for you?</p>
+            <a href="https://form.jotform.com/250184868189875" target="_blank" 
+               style="background: white; color: #1a2980; padding: 15px 40px; 
+                      border-radius: 30px; text-decoration: none; font-weight: bold; 
+                      display: inline-block; font-size: 18px; transition: all 0.3s ease;">
+                <i class="fas fa-calendar-check"></i> Book a Free Strategy Session
+            </a>
+            <p style="color: rgba(255,255,255,0.9); margin-top: 15px; font-size: 14px;">
+                Get personalized guidance on your transformation journey
+            </p>
         </div>
 
         <!-- ========== BACK TO HOME BUTTON ========== -->
-        <div style="text-align: center; padding: 50px 20px; background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%); margin-top: 60px; border-radius: 0 0 15px 15px;">
+        <div class="back-button">
             <a href="index.html"
                style="background: white;
                       color: #1a2980;
@@ -1084,7 +828,7 @@
                 ← Back to Joshua Roy Coaching Page
             </a>
             <p style="color: rgba(255,255,255,0.9); margin-top: 20px; font-size: 17px;">
-                Return to personal coaching options and transformation programs.
+                Return to personal coaching options and transformation programs
             </p>
         </div>
     </div>
@@ -1101,42 +845,34 @@
             });
         });
 
-        // Smooth scrolling for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Track link clicks
-        document.querySelectorAll('a[href^="http"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                const linkText = this.textContent.trim();
-                console.log(`Link clicked: ${linkText}`);
-            });
-        });
-
-        // Highlight current month
+        // Add current date indicator
         const currentDate = new Date();
-        const currentMonth = currentDate.getMonth() + 1; // January = 0
-        const monthCards = document.querySelectorAll('.month-card');
+        const currentDay = currentDate.getDate();
+        const currentMonth = currentDate.getMonth() + 1;
         
-        monthCards.forEach(card => {
-            const monthTitle = card.querySelector('.month-title').textContent;
-            if (monthTitle.includes('JANUARY') && currentMonth === 1) {
-                card.style.boxShadow = '0 0 0 3px #ffeb3b, 0 8px 25px rgba(0,0,0,0.15)';
+        // Format: "Jan 8" style comparison
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const currentDateString = `${monthNames[currentMonth-1]} ${currentDay}`;
+        
+        // Highlight current or next event
+        const eventDates = document.querySelectorAll('.event-date');
+        eventDates.forEach(dateEl => {
+            if(dateEl.textContent.includes(currentDateString)) {
+                dateEl.style.boxShadow = '0 0 0 3px #ffeb3b, 0 4px 10px rgba(26, 41, 128, 0.3)';
+                dateEl.style.animation = 'pulse 2s infinite';
             }
         });
+
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { box-shadow: 0 0 0 0 rgba(255, 235, 59, 0.7); }
+                70% { box-shadow: 0 0 0 10px rgba(255, 235, 59, 0); }
+                100% { box-shadow: 0 0 0 0 rgba(255, 235, 59, 0); }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
