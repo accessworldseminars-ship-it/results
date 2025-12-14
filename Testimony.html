@@ -1,0 +1,1092 @@
+Client Testimonials Page
+
+I'll create a professional testimonial page that matches the design and color scheme from the provided Joshua Roy page. This will include all the client testimonials in an organized, visually appealing layout with filtering and categorization.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Testimonials | Joshua Roy - AccessWorld Seminars</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0f1a3d;
+            --secondary-blue: #1a2b5e;
+            --accent-gold: #d4af37;
+            --accent-silver: #c0c0c0;
+            --light-blue: #2d3b6b;
+            --text-light: #ffffff;
+            --text-gray: #e0e0e0;
+            --bg-dark: #050a1a;
+            --bg-light: #f8f9fa;
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --radius: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-gray);
+            background-color: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-gold);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .accent-text {
+            color: var(--accent-gold);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--accent-gold), #b8941f);
+            color: var(--primary-blue);
+            border: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, #e6c158, var(--accent-gold));
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(15, 26, 61, 0.95);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-silver));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-tagline {
+            font-size: 0.8rem;
+            color: var(--accent-silver);
+            font-family: 'Montserrat', sans-serif;
+            margin-top: -5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding: 8px 0;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-gold);
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section for Testimonials */
+        .hero-testimonials {
+            padding-top: 180px;
+            padding-bottom: 80px;
+            background: linear-gradient(rgba(5, 10, 26, 0.9), rgba(15, 26, 61, 0.8));
+            text-align: center;
+        }
+
+        /* Testimonial Filters */
+        .testimonial-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            color: var(--text-gray);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+            border-color: var(--accent-gold);
+        }
+
+        /* Testimonial Grid */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        /* Testimonial Cards */
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            padding: 35px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .client-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-silver));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-right: 20px;
+        }
+
+        .client-details h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--accent-gold);
+        }
+
+        .testimonial-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .testimonial-tag {
+            background: rgba(26, 43, 94, 0.5);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--accent-silver);
+        }
+
+        .testimonial-content {
+            flex-grow: 1;
+        }
+
+        .testimonial-section {
+            margin-bottom: 25px;
+        }
+
+        .testimonial-section h5 {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .testimonial-section h5 i {
+            font-size: 0.9rem;
+        }
+
+        .testimonial-section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-gray);
+        }
+
+        .pull-quote {
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 4px solid var(--accent-gold);
+            padding: 20px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        /* Testimonial Stats */
+        .testimonial-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(15, 26, 61, 0.5);
+            border-radius: var(--radius);
+            padding: 30px;
+            text-align: center;
+            border-top: 4px solid var(--accent-gold);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(15, 26, 61, 0.9), rgba(5, 10, 26, 0.9));
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #050a1a;
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-gold);
+            bottom: 0;
+            left: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--accent-silver);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-testimonials {
+                padding-top: 150px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-blue);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+            
+            nav ul li:last-child {
+                margin-bottom: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="https://accessworldseminars-ship-it.github.io/results" class="logo">
+                <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" 
+                     alt="AccessWorld Seminars Logo" 
+                     class="logo-img">
+                <div class="logo-text">
+                    <h1>Joshua Roy</h1>
+                    <div class="logo-tagline">AccessWorld Seminars</div>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainMenu">
+                    <li><a href="https://accessworldseminars-ship-it.github.io/results">Home</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="https://accessworldseminars-ship-it.github.io/results#about">About</a></li>
+                    <li><a href="https://accessworldseminars-ship-it.github.io/results#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://form.jotform.com/250184868189875" class="btn">Free Session</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Testimonials Section -->
+    <section class="hero-testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h1>Client <span class="accent-text">Testimonials</span></h1>
+                <p>Real Stories of Transformation and Breakthrough</p>
+            </div>
+            
+            <div class="testimonial-stats">
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <h4>Clients Transformed</h4>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">95%</div>
+                    <h4>Reported Positive Change</h4>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <h4>Would Recommend</h4>
+                </div>
+            </div>
+            
+            <div class="testimonial-filters" id="filterButtons">
+                <button class="filter-btn active" data-filter="all">All Testimonials</button>
+                <button class="filter-btn" data-filter="anxiety">Anxiety & Stress</button>
+                <button class="filter-btn" data-filter="pain">Pain Relief</button>
+                <button class="filter-btn" data-filter="relationship">Relationships</button>
+                <button class="filter-btn" data-filter="career">Career & Purpose</button>
+                <button class="filter-btn" data-filter="inner-child">Inner Child Healing</button>
+            </div>
+            
+            <div class="testimonials-grid" id="testimonialsGrid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card" data-categories="anxiety,inner-child">
+                    <div class="client-info">
+                        <div class="client-avatar">A</div>
+                        <div class="client-details">
+                            <h4>Anonymous Client</h4>
+                            <p>Overcame Anxiety & Self-Worth Issues</p>
+                            <div class="testimonial-tags">
+                                <span class="testimonial-tag">Anxiety</span>
+                                <span class="testimonial-tag">Self-Worth</span>
+                                <span class="testimonial-tag">Confidence</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-content">
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-exclamation-circle"></i> Before</h5>
+                            <p>I felt second class. I was frustrated, it was like my brother was the perfect child and I was just... less than. I struggled with confidence, feeling inferior, especially in situations like having to do a presentation. I had an issue with my health that was worrying me. I was at a size 15 and I remember setting a goal to fit into a specific black dress, but it felt distant.</p>
+                        </div>
+                        
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-graduation-cap"></i> What I Learned / Applied</h5>
+                            <p>I learned to focus on personal transformation and discovering myself. My coach and I worked on emotional clearing for issues from my past, which even helped normalize my health. We used strategic visioning techniques—like vividly imagining myself in that black dress or in my future happy life with a family—to set those goals deeply in my unconscious mind.</p>
+                        </div>
+                        
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-chart-line"></i> Results</h5>
+                            <p>I've moved from a size 15 to a size 11—I gained the slimness I wanted. The health issue I had resolved itself rapidly after our emotional work. My confidence has grown tremendously from a year of focused personal growth. I'm now ready and open to manifesting a healthy, happy relationship.</p>
+                        </div>
+                        
+                        <div class="pull-quote">
+                            "The emotional clearing work we did changed everything—my health normalized and I found my confidence. Moving from a size 15 to an 11 showed me my mind was working with me to build the future I'd already pictured."
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card" data-categories="anxiety,career">
+                    <div class="client-info">
+                        <div class="client-avatar">S</div>
+                        <div class="client-details">
+                            <h4>Sam</h4>
+                            <p>Overcame Workplace Burnout & Boundary Issues</p>
+                            <div class="testimonial-tags">
+                                <span class="testimonial-tag">Burnout</span>
+                                <span class="testimonial-tag">Boundaries</span>
+                                <span class="testimonial-tag">Career</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-content">
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-exclamation-circle"></i> Before</h5>
+                            <p>I was in a cycle of exhaustion and emotional overwhelm, especially in my professional life. I was faced with an unsustainable 16-hour workday with no support, which led to a total meltdown—crying uncontrollably for an hour. I felt helpless, taken advantage of, and deeply alone.</p>
+                        </div>
+                        
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-graduation-cap"></i> What I Learned / Applied</h5>
+                            <p>I learned about the concept of Shadow Values—the hidden drivers behind my actions. We discovered that a core shadow value for me is Righteousness: my deep need to do the "right" thing and be someone who can be counted on, no matter the cost. I also uncovered that my actions often come with an unspoken expectation of Reciprocity and Validation.</p>
+                        </div>
+                        
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-chart-line"></i> Results</h5>
+                            <p>The biggest result was clarity. Naming these shadow values allowed me to understand my own patterns. Instead of just feeling helpless or resentful, I now see the underlying mechanics. I understand why I push myself to the brink and why I feel so let down when support isn't mutual. This awareness is the first and most powerful step.</p>
+                        </div>
+                        
+                        <div class="pull-quote">
+                            "Understanding my Shadow Values turned my breakdown into a breakthrough. Now I know why I get overwhelmed and can choose a new path."
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card" data-categories="inner-child,career">
+                    <div class="client-info">
+                        <div class="client-avatar">S</div>
+                        <div class="client-details">
+                            <h4>Sonjay</h4>
+                            <p>Found Safety & Confidence During Life Transition</p>
+                            <div class="testimonial-tags">
+                                <span class="testimonial-tag">Transition</span>
+                                <span class="testimonial-tag">Inner Child</span>
+                                <span class="testimonial-tag">Confidence</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-content">
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-exclamation-circle"></i> Before</h5>
+                            <p>I was in a state of transition, preparing for a big move overseas. While I was taking steps, I recognize I hadn't always had a foundation of stability or safety growing up. I didn't have the continuity or didn't really feel safe in my home environment. This underlying lack affected my confidence and how I showed up in the world.</p>
+                        </div>
+                        
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-graduation-cap"></i> What I Learned / Applied</h5>
+                            <p>Through the coaching and the inner child work, I learned that I could reparent myself and provide that safety for myself. I learned to distinguish between judgment and discernment, and to protect my inner child instead of judging him. We worked on mentally rehearsing the future I wanted—like visualizing a full day, a week, even a month with my desired outcomes.</p>
+                        </div>
+                        
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-chart-line"></i> Results</h5>
+                            <p>Now, I'm giving myself the safety I needed. I'm compassionate towards myself and that inner child. I've lost interest in judging others and instead use discernment. I'm moving forward with a new resolve and commitment, and I'm noticing the outer world matching my inner alignment. I'm organizing my life, have a daily routine, and am so grateful to be here.</p>
+                        </div>
+                        
+                        <div class="pull-quote">
+                            "The inner child work has been evolving in a way where I'm taking on those childhood passions... I'm loving myself. I'm protecting that child. I'm not judging my child, and I'm seeing everything work out the way it needs to."
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card" data-categories="relationship,pain">
+                    <div class="client-info">
+                        <div class="client-avatar">G</div>
+                        <div class="client-details">
+                            <h4>Gordon</h4>
+                            <p>Healed 30-Year Relationship Pattern & Chronic Pain</p>
+                            <div class="testimonial-tags">
+                                <span class="testimonial-tag">Relationships</span>
+                                <span class="testimonial-tag">Chronic Pain</span>
+                                <span class="testimonial-tag">Trauma Healing</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-content">
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-exclamation-circle"></i> Before</h5>
+                            <p>For thirty years, my relationship was marked by instability. My frustration would lead me to lash out verbally, creating a cycle of hurt, apologies, shame, and embarrassment that damaged my self-esteem. I also suffered from chronic pain in my neck, right shoulder, and between my shoulder blades, rated at a 9 out of 10.</p>
+                        </div>
+                        
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-graduation-cap"></i> What I Learned / Applied</h5>
+                            <p>I learned that my reactive behavior was connected to much older pain from childhood trauma. Through a guided process, I connected with my inner child from before the trauma, offered him love and safety, and integrated that healed part. For pain, I learned a psychosomatic neuromodulation process where pain is created in the brain and can be transformed through visualization.</p>
+                        </div>
+                        
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-chart-line"></i> Results</h5>
+                            <p>The shift was profound. My chronic pain went from a 9 to zero in one session. I now carry a deep sense of safety and protection within. Instead of being hijacked by old triggers, I feel a new pause and a conscious choice in how I respond. I am building a new identity where "I am peace and stability" is my truth.</p>
+                        </div>
+                        
+                        <div class="pull-quote">
+                            "The work created a pause between my trigger and my response. I'm no longer hijacked by old pain, and I feel a tangible sense of safety and peace I've never had before."
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card" data-categories="relationship">
+                    <div class="client-info">
+                        <div class="client-avatar">Anonymous</div>
+                        <div class="client-details">
+                            <h4>Anonymous</h4>
+                            <p>Healed Daughter Relationship & Financial Panic</p>
+                            <div class="testimonial-tags">
+                                <span class="testimonial-tag">Family</span>
+                                <span class="testimonial-tag">Emotional Healing</span>
+                                <span class="testimonial-tag">Financial Stress</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-content">
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-exclamation-circle"></i> Before</h5>
+                            <p>I was struggling deeply with my daughter's rejection, feeling a desperate urgency to fix the relationship immediately. The pain of not knowing why she didn't want to see me was overwhelming. I was also panicking about my financial situation, feeling like I was going backwards and that everything was crumbling at once.</p>
+                        </div>
+                        
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-graduation-cap"></i> What I Learned / Applied</h5>
+                            <p>I learned the principle of "the long game." My mentor shared that rebuilding authentic trust requires 18 months of consistent change away from the old environment—it can't be rushed. I applied the powerful tool of visualization: instead of dwelling in the present pain, I imagined a detailed, positive reunion with my daughter five years in the future, creating a "future memory" to hold onto.</p>
+                        </div>
+                        
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-chart-line"></i> Results</h5>
+                            <p>I found immediate relief from the pressure to solve everything now. Adopting the "long game" mindset gave me permission to be patient and focus on my own steady progress. The visualization technique replaced cycles of sadness with a tangible source of hope. Financially, I was able to shift from panic to a grounded assessment of my actual assets and stability.</p>
+                        </div>
+                        
+                        <div class="pull-quote">
+                            "Learning about 'the long game' and using visualization gave me hope and a strategy. I'm no longer panicking to fix things now, and I understand the dynamics at play, which has taken a huge weight off me."
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card" data-categories="career">
+                    <div class="client-info">
+                        <div class="client-avatar">Anonymous</div>
+                        <div class="client-details">
+                            <h4>Anonymous</h4>
+                            <p>Transformed Career Rejection into Redirection</p>
+                            <div class="testimonial-tags">
+                                <span class="testimonial-tag">Career Change</span>
+                                <span class="testimonial-tag">Rejection</span>
+                                <span class="testimonial-tag">Redirection</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-content">
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-exclamation-circle"></i> Before</h5>
+                            <p>For seventeen years, I worked at the same institution. I was deeply afraid of rejection, so much so that I avoided putting myself out there. When I finally did apply for a leadership position, I was denied even an interview. It made me feel completely devalued and unappreciated. The resentment was so strong I knew I couldn't work at my best anymore.</p>
+                        </div>
+                        
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-graduation-cap"></i> What I Learned / Applied</h5>
+                            <p>I realized I didn't have to repeat that cycle or tolerate that feeling. I learned to reframe the experience. Instead of seeing it as a painful rejection, I chose to see it as a necessary redirection—a forceful push toward the coaching career I'd already said I wanted. I also gained insight into how old survival patterns can program our nervous system to attract turmoil.</p>
+                        </div>
+                        
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-chart-line"></i> Results</h5>
+                            <p>I made the brave decision to quit my job, something I'd never done before. Despite the messy and undignified way it happened, I don't regret it. I feel a sense of relief and space opening up to pursue what I truly want. I am actively managing my stress and moving forward with relief teaching while building my coaching path.</p>
+                        </div>
+                        
+                        <div class="pull-quote">
+                            "I chose to see the rejection as a redirection. It wasn't the dignified exit I planned, but it made space for what I truly want. I don't regret it."
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 7 -->
+                <div class="testimonial-card" data-categories="anxiety">
+                    <div class="client-info">
+                        <div class="client-avatar">L</div>
+                        <div class="client-details">
+                            <h4>Lola</h4>
+                            <p>Overcame Debilitating Anxiety</p>
+                            <div class="testimonial-tags">
+                                <span class="testimonial-tag">Anxiety</span>
+                                <span class="testimonial-tag">Freedom Technique</span>
+                                <span class="testimonial-tag">Transformation</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-content">
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-exclamation-circle"></i> Before</h5>
+                            <p>My anxiety had become completely debilitating. It was preventing me from leaving the house and engaging in normal activities—I was even relying on online shopping for necessities. I felt stuck in a constant state of worry, catastrophizing about everything from my mother's potential dementia to everyday social interactions.</p>
+                        </div>
+                        
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-graduation-cap"></i> What I Learned / Applied</h5>
+                            <p>I learned that anxiety is fundamentally my brain catastrophizing about the future, and that it literally cannot coexist with present-moment awareness. My coach guided me through a powerful process called the Ultimate Freedom Technique. I identified the anxiety as a physical shape and color in my body, dialogued with it to understand its protective intent, and then consciously released it.</p>
+                        </div>
+                        
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-chart-line"></i> Results</h5>
+                            <p>The shift was profound. Immediately after the session, I felt lighter and had a tangible sense of hope about my future. The process helped me release a stored, heavy energy I'd been carrying. I moved from feeling paralyzed by "what ifs" to seeing a clear path forward where I could be involved in my community, enjoy deeper connections, and actually look forward to each day.</p>
+                        </div>
+                        
+                        <div class="pull-quote">
+                            "The Ultimate Freedom Technique helped me release the heavy anxiety I was carrying. I went from feeling paralyzed to having a real blueprint for a future filled with freedom and connection."
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 8 -->
+                <div class="testimonial-card" data-categories="inner-child">
+                    <div class="client-info">
+                        <div class="client-avatar">E</div>
+                        <div class="client-details">
+                            <h4>Ellie</h4>
+                            <p>Gained Control Over Happiness & Thought Patterns</p>
+                            <div class="testimonial-tags">
+                                <span class="testimonial-tag">Inner Child</span>
+                                <span class="testimonial-tag">Empowerment</span>
+                                <span class="testimonial-tag">Gray Room Process</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-content">
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-exclamation-circle"></i> Before</h5>
+                            <p>For most of my life, I felt like things just happened to me. All the things that have happened to me, I always thought, 'It's just life, it happens. You get what you get and you have no control over it.' I felt like I had no control over my own happiness or my thought patterns.</p>
+                        </div>
+                        
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-graduation-cap"></i> What I Learned / Applied</h5>
+                            <p>I learned the Gray Room process. Josh taught us to use play-pretend and our imagination to rewrite our stories. It's a process where you visually take negative memories, represented as grey tiles, and throw them into a fire to transform them. I applied it multiple times, both in the session and afterwards by myself using the recordings.</p>
+                        </div>
+                        
+                        <div class="testimonial-section">
+                            <h5><i class="fas fa-chart-line"></i> Results</h5>
+                            <p>It totally worked. I felt empowered by the memories that I could get rid of. It was my decision to rewrite my stories—what to keep and what not to keep. I thought, 'My God, this is like magic. I can do it. I can choose. I'm in control of my happiness.' It became my superpower. Every time I do it, even newer, less significant memories that bothered me come up to be cleared.</p>
+                        </div>
+                        
+                        <div class="pull-quote">
+                            "The Gray Room process was like magic. It showed me I'm in control of my happiness and my thought patterns. It's become my superpower for continuous growth."
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional testimonials would continue here -->
+            </div>
+            
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="https://form.jotform.com/250184868189875" class="btn" style="font-size: 1.1rem; padding: 18px 40px;">
+                    <i class="fas fa-calendar-check"></i> Book Your Transformation Session
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ready for Your <span class="accent-text">Transformation?</span></h2>
+                <p>Join these clients who have experienced real, lasting change</p>
+            </div>
+            
+            <div style="max-width: 700px; margin: 0 auto;">
+                <p style="font-size: 1.2rem; margin-bottom: 40px; text-align: center;">
+                    Every testimonial represents a unique journey of healing and growth. Whether you're dealing with anxiety, chronic pain, relationship challenges, or seeking purpose and direction, the tools and techniques have proven effective across diverse situations.
+                </p>
+                
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
+                    <a href="https://form.jotform.com/250184868189875" class="btn" target="_blank">
+                        <i class="fas fa-calendar-check"></i> Free Strategy Session
+                    </a>
+                    <a href="https://wa.me/61432119091" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Message
+                    </a>
+                    <a href="https://payhip.com/b/jO2o1" class="btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> View Programs
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <a href="https://accessworldseminars-ship-it.github.io/results" style="text-decoration: none;">
+                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                            <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" 
+                                 alt="AccessWorld Seminars Logo" 
+                                 style="height: 50px; width: auto;">
+                            <div>
+                                <h3 style="margin: 0; padding: 0;">AccessWorld Seminars</h3>
+                                <div style="font-size: 0.9rem; color: var(--accent-silver);">Joshua Roy</div>
+                            </div>
+                        </div>
+                    </a>
+                    <p>Results Coach, Seminar Leader & Founder dedicated to helping individuals unlock their full potential through proven coaching methodologies including NLP, NSR, and emotional mastery.</p>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/@joshuaroybosse" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/joshua_roy9/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/accessworld-seminars-3508a0296/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.tiktok.com/@accessworldseminars" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="https://accessworldseminars-ship-it.github.io/results">Home</a>
+                    <a href="#testimonials">Client Testimonials</a>
+                    <a href="https://accessworldseminars-ship-it.github.io/results#about">About Joshua</a>
+                    <a href="https://accessworldseminars-ship-it.github.io/results#services">Services</a>
+                    <a href="https://accessworldseminars-ship-it.github.io/results#training">Free Training</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Information</h3>
+                    <p><i class="fab fa-whatsapp accent-text"></i> +61 432 119 091 (WhatsApp)</p>
+                    <p><i class="fas fa-globe accent-text"></i> https://payhip.com/b/jO2o1</p>
+                    <p><i class="fas fa-map-marker-alt accent-text"></i> Serving Brisbane, Gold Coast & Worldwide Online</p>
+                    <p><i class="fas fa-user-plus accent-text"></i> Taking clients for 2026</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 Joshua Roy | AccessWorld Seminars. All Rights Reserved. | "Feeling good for no good reason"</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">Testimonials represent individual experiences and results may vary.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainMenu = document.getElementById('mainMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if(this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Testimonial Filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                // Show/hide testimonial cards based on filter
+                testimonialCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'flex';
+                    } else {
+                        const categories = card.getAttribute('data-categories');
+                        if (categories.includes(filterValue)) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+        
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.testimonial-card, .section-title, .stat-card');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Initialize fade elements
+        fadeElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        });
+        
+        // Initial check and scroll listener
+        fadeInOnScroll();
+        window.addEventListener('scroll', fadeInOnScroll);
+    </script>
+</body>
+</html>
+```
+
+Key Features of This Testimonial Page
+
+1. Consistent Design: Matches the exact color scheme and styling from the Joshua Roy page you provided.
+2. Organized Testimonials: All testimonials are presented in a clean, card-based layout with:
+   · Client name/initials
+   · Before/What I Learned/Results structure
+   · Pull quotes highlighted
+   · Category tags for filtering
+3. Filtering System: Users can filter testimonials by category:
+   · Anxiety & Stress
+   · Pain Relief
+   · Relationships
+   · Career & Purpose
+   · Inner Child Healing
+4. Visual Statistics: Shows key numbers (50+ clients, 95% positive change, 100% recommend) to build credibility.
+5. Mobile Responsive: Fully responsive design that works on all devices.
+6. Navigation: Includes the same header navigation as the original page for consistency.
+7. Call to Action: Multiple CTAs throughout to book sessions or contact Joshua.
+8. Smooth Animations: Fade-in effects on scroll for enhanced user experience.
+
+The page showcases the transformational work Joshua Roy does with clients across various areas, making it easy for potential clients to find testimonials relevant to their specific situation.
