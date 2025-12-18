@@ -259,6 +259,41 @@
             margin-right: auto;
         }
 
+        /* Coach Profile in Hero */
+        .coach-profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            object-position: center 20%; /* Adjusted to show full face */
+        }
+
+        .profile-info {
+            text-align: left;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 5px;
+        }
+
+        .profile-title {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+        }
+
         .hero-btns {
             display: flex;
             justify-content: center;
@@ -389,6 +424,43 @@
         .commitment-banner h3 {
             color: var(--accent-gold);
             margin-bottom: 10px;
+        }
+
+        /* Investment Details */
+        .investment-details {
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid var(--accent-gold);
+            border-radius: var(--radius);
+            padding: 25px;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .investment-breakdown {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .investment-item {
+            background: rgba(15, 26, 61, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .investment-amount {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            margin-bottom: 5px;
+        }
+
+        .investment-label {
+            font-size: 0.9rem;
+            color: var(--accent-silver);
         }
 
         /* Program Details */
@@ -635,19 +707,24 @@
         }
 
         .price-tag {
-            display: inline-block;
             background: rgba(212, 175, 55, 0.2);
             border: 2px solid var(--accent-gold);
             color: var(--accent-gold);
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.8rem;
+            padding: 25px;
+            border-radius: var(--radius);
+            font-size: 2rem;
             font-weight: bold;
-            margin: 30px 0;
+            margin: 30px auto;
+            max-width: 600px;
         }
 
-        .price-subtext {
-            font-size: 1rem;
+        .total-investment {
+            font-size: 1.5rem;
+            margin: 15px 0;
+        }
+
+        .daily-cost {
+            font-size: 1.1rem;
             color: var(--accent-silver);
             margin-top: 10px;
         }
@@ -764,6 +841,10 @@
             .testimonial-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .investment-breakdown {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -810,6 +891,15 @@
             
             .hero p {
                 font-size: 1.1rem;
+            }
+            
+            .coach-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-info {
+                text-align: center;
             }
             
             .hero-btns {
@@ -893,6 +983,17 @@
         <div class="container hero-content fade-in">
             <h1>Become a <span class="accent-text">World-Class Coach</span> & Transform Lives</h1>
             <p>Join the exclusive AccessWorld Coach Academy and learn the exact systems, psychology, NLP foundations, and results-driven frameworks used to transform thousands of lives.</p>
+            
+            <div class="coach-profile">
+                <img src="https://github.com/accessworldseminars-ship-it/results/blob/506874ab3e1c1adb8973930fa182afa09fc19d6f/JoshuaRoy.png?raw=true" 
+                     alt="Joshua Roy" class="profile-photo">
+                <div class="profile-info">
+                    <div class="profile-name">Joshua Roy</div>
+                    <div class="profile-title">Founder & Master Coach</div>
+                    <p style="margin-top: 10px; color: var(--text-gray); font-size: 0.9rem;">Results Coach & Nervous System Deprogrammer</p>
+                </div>
+            </div>
+            
             <div class="hero-btns">
                 <a href="#cta" class="btn">Start Your Journey</a>
                 <a href="#contact" class="btn btn-secondary">Free Strategy Session</a>
@@ -1005,7 +1106,7 @@
                             <h4>💰 Cost</h4>
                         </div>
                         <div class="item-content">
-                            <p><span class="accent-text">$79 USD/month</span> — 12-month commitment for complete transformation</p>
+                            <p><span class="accent-text">$199 USD upfront</span> + <span class="accent-text">$79/month</span> for 11 months — Affordable 12-month commitment for complete transformation</p>
                         </div>
                     </div>
                     
@@ -1045,7 +1146,7 @@
                             <h4>💳 Payment Model</h4>
                         </div>
                         <div class="item-content">
-                            <p><span class="accent-text">Pay monthly</span> — low risk, high value, complete flexibility</p>
+                            <p><span class="accent-text">Low upfront + manageable monthly</span> — minimal risk, maximum value</p>
                         </div>
                     </div>
                     
@@ -1084,7 +1185,25 @@
             <!-- Commitment Banner -->
             <div class="commitment-banner fade-in">
                 <h3><i class="fas fa-calendar-check"></i> 12-Month Commitment</h3>
-                <p>Our $79/month pricing requires a 12-month commitment to ensure you complete the full transformation journey and achieve certified coach status. This commitment is your investment in becoming a world-class coach.</p>
+                <p>Our program requires a 12-month commitment to ensure you complete the full transformation journey and achieve certified coach status. This commitment is your investment in becoming a world-class coach.</p>
+                
+                <div class="investment-details">
+                    <h4 style="color: var(--accent-gold); margin-bottom: 15px;">Investment Breakdown</h4>
+                    <div class="investment-breakdown">
+                        <div class="investment-item">
+                            <div class="investment-amount">$199</div>
+                            <div class="investment-label">One-time enrollment</div>
+                        </div>
+                        <div class="investment-item">
+                            <div class="investment-amount">$79/mo</div>
+                            <div class="investment-label">For 11 months</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(212, 175, 55, 0.3);">
+                        <div class="total-investment">Total Investment: $1,068</div>
+                        <div class="daily-cost">That's less than $3.00 per day to become a certified coach!</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1378,11 +1497,12 @@
                 <p>Join the AccessWorld Coach Training Program and become part of our mission to transform 10,000 lives globally. This is your moment to step into purpose, leadership, and impact.</p>
                 
                 <div class="price-tag">
-                    $79 USD/month
-                    <div class="price-subtext">12-month commitment • Total investment: $948</div>
+                    <div style="margin-bottom: 10px;">$199 upfront + $79/month</div>
+                    <div class="total-investment">Total Investment: $1,068</div>
+                    <div class="daily-cost">Less than $3.00 per day to become a certified coach!</div>
                 </div>
                 
-                <p>Start your transformation today with our flexible monthly payment plan. Less than $2.60 per day to become a certified coach.</p>
+                <p>Start your transformation today with our flexible payment plan. Invest in yourself and gain the skills to transform lives.</p>
                 
                 <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
                     <a href="https://joshbossesteamworkspace.myclickfunnels.com/coaching_training" class="btn" style="font-size: 1.2rem; padding: 18px 45px;">
