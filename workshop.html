@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Relationship Reset: Free Workshop for Couples & Singles | AccessWorld</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0f1a3d 0%, #1a2b5e 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #d4af37, #c0c0c0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin: 20px 0;
+            color: white;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #d4af37;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .date-badge {
+            background: #d4af37;
+            color: #0f1a3d;
+            padding: 12px 25px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .content-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eaeaea;
+        }
+        
+        h2 {
+            color: #0f1a3d;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #d4af37;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: #1a2b5e;
+            margin: 25px 0 15px;
+            font-size: 1.4rem;
+        }
+        
+        .hook-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            border-left: 5px solid #d4af37;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+        
+        .hook-section h3 {
+            color: #0f1a3d;
+            margin-top: 0;
+        }
+        
+        .story-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 1px solid #eaeaea;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: #1a2b5e;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #d4af37;
+            font-size: 1.1rem;
+        }
+        
+        .quote-author {
+            text-align: right;
+            font-weight: bold;
+            color: #0f1a3d;
+            margin-top: 10px;
+        }
+        
+        .what-youll-learn {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .learning-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #eaeaea;
+            border-top: 4px solid #d4af37;
+            transition: transform 0.3s ease;
+        }
+        
+        .learning-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .learning-item h4 {
+            color: #1a2b5e;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .learning-item h4 i {
+            color: #d4af37;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #0f1a3d 0%, #1a2b5e 100%);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37, #b8941f);
+            color: #0f1a3d;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, #e6c158, #d4af37);
+        }
+        
+        .free-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 15px 0;
+            font-size: 1.1rem;
+        }
+        
+        .details-box {
+            background: #f0f7ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 2px solid #d4af37;
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .detail-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        .detail-icon {
+            font-size: 2rem;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+        
+        .who-for {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .who-tag {
+            background: #e8f4fd;
+            color: #1a2b5e;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #c0d6f0;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eaeaea;
+            margin-top: 40px;
+        }
+        
+        .coach-profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 25px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .coach-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #d4af37;
+        }
+        
+        .coach-info h4 {
+            margin: 0 0 5px 0;
+            color: #0f1a3d;
+        }
+        
+        .coach-title {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #d4af37;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .author-initial {
+            width: 40px;
+            height: 40px;
+            background: #d4af37;
+            color: #0f1a3d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .header, .content-section, .cta-section {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .btn {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .coach-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">ACCESSWORLD SEMINARS</div>
+            <div class="subtitle">PRESENTS</div>
+            <h1>The Relationship Reset:<br>From Conflict to Connection</h1>
+            <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px;">
+                A Free Transformative Workshop for Couples & Singles Ready for Deeper, More Fulfilling Relationships
+            </p>
+            <div class="date-badge">
+                <i class="fas fa-calendar-alt"></i> Wednesday, February 28th • 7:00 PM - 9:00 PM
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-section">
+        <!-- THE HOOK -->
+        <div class="hook-section">
+            <h3><i class="fas fa-fire"></i> THE UNCOMFORTABLE TRUTH:</h3>
+            <p style="font-size: 1.2rem; font-weight: 600; color: #0f1a3d; margin-bottom: 15px;">
+                What if your relationship patterns are silently sabotaging your happiness—and you don't even realize it?
+            </p>
+            <p>
+                Most people spend years in relationships that feel "good enough" but secretly dream of something extraordinary. They tolerate occasional arguments, emotional distance, or recurring conflicts because they don't know there's another way. But what if you could experience a relationship that feels like coming home every single day?
+            </p>
+        </div>
+        
+        <h2>Why Most Relationship Advice Fails (And What Actually Works)</h2>
+        
+        <p>We've all tried the common advice: "communicate better," "date nights," "counseling." But these often feel like temporary fixes—like putting a band-aid on a wound that needs surgery.</p>
+        
+        <p>The problem isn't your effort. The problem is that most relationship advice addresses the <strong>symptoms</strong> (communication issues, arguments) while ignoring the <strong>root cause</strong>—your nervous system's programming around love, safety, and connection.</p>
+        
+        <!-- THE STORY -->
+        <div class="story-section">
+            <h3><i class="fas fa-book-open"></i> THE STORY THAT CHANGED EVERYTHING</h3>
+            
+            <div class="quote">
+                "After 22 years of marriage, we were sleeping in separate rooms. The love was there, but the connection was gone. We were two strangers sharing a house, both hurting but unable to bridge the gap. Then we learned about nervous system alignment..."
+                <div class="quote-author">— Mark & Sarah, married 25 years</div>
+            </div>
+            
+            <p>Mark and Sarah came to me as a "last resort" before divorce. They'd tried everything: marriage counseling, retreats, self-help books. Nothing stuck.</p>
+            
+            <p>The breakthrough came when we discovered that Sarah's nervous system was stuck in a "flight" response from childhood abandonment, while Mark's was in "freeze" from past emotional trauma. They weren't fighting each other—they were fighting their own nervous system programming.</p>
+            
+            <p>Using simple nervous system reprogramming techniques, we helped them create new pathways for connection. Within 3 sessions, they were holding hands again. Within 6 weeks, they were planning a second honeymoon.</p>
+            
+            <p><strong>This isn't magic.</strong> This is neuroscience applied to relationships.</p>
+        </div>
+        
+        <h2>What You'll Discover in This Free Workshop</h2>
+        
+        <div class="what-youll-learn">
+            <div class="learning-item">
+                <h4><i class="fas fa-heart"></i> The 3 Hidden Relationship Saboteurs</h4>
+                <p>Identify the unconscious patterns that quietly destroy connection, even when you're both trying your best.</p>
+            </div>
+            
+            <div class="learning-item">
+                <h4><i class="fas fa-brain"></i> Nervous System Alignment for Couples</h4>
+                <p>Learn how to get "on the same wavelength" emotionally, creating effortless understanding and empathy.</p>
+            </div>
+            
+            <div class="learning-item">
+                <h4><i class="fas fa-comments"></i> The Communication Upgrade</h4>
+                <p>Move from "talking at" each other to truly connecting—where words become bridges, not weapons.</p>
+            </div>
+            
+            <div class="learning-item">
+                <h4><i class="fas fa-seedling"></i> Reigniting Passion Naturally</h4>
+                <p>Rediscover the spark without forced romance or awkward date nights—letting attraction flow organically.</p>
+            </div>
+        </div>
+        
+        <!-- WHO THIS IS FOR -->
+        <h3><i class="fas fa-user-check"></i> This Workshop Is Perfect For:</h3>
+        <div class="who-for">
+            <span class="who-tag">Couples feeling disconnected or stuck in patterns</span>
+            <span class="who-tag">Singles tired of repeating unhealthy relationship cycles</span>
+            <span class="who-tag">Partners who argue about the same things repeatedly</span>
+            <span class="who-tag">Those who want deeper emotional intimacy</span>
+            <span class="who-tag">People who've tried therapy but want faster results</span>
+            <span class="who-tag">Anyone wanting to break family relationship patterns</span>
+        </div>
+        
+        <!-- MEET YOUR COACH -->
+        <div class="coach-profile">
+            <img src="https://github.com/accessworldseminars-ship-it/results/blob/506874ab3e1c1adb8973930fa182afa09fc19d6f/JoshuaRoy.png?raw=true" 
+                 alt="Joshua Roy" class="coach-photo">
+            <div class="coach-info">
+                <h4>Joshua Roy</h4>
+                <div class="coach-title">Results Coach & Nervous System Deprogrammer</div>
+                <p style="margin-top: 10px; font-size: 0.95rem;">
+                    With 9 coaching certifications and over 2,500 one-on-one sessions, Joshua specializes in transforming relationship dynamics through nervous system reprogramming. Having overcome his own relationship challenges, he brings both professional expertise and personal understanding to this work.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CTA SECTION -->
+    <div class="cta-section">
+        <div class="free-badge">100% FREE WORKSHOP</div>
+        <h2 class="cta-title">Ready to Transform Your Relationships?</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 25px; opacity: 0.95;">
+            Join us for this life-changing workshop and discover how to create relationships that feel like home.
+        </p>
+        
+        <a href="https://form.jotform.com/250184868189875" class="btn" target="_blank">
+            <i class="fas fa-calendar-check"></i> RESERVE YOUR FREE SPOT
+        </a>
+        
+        <p style="margin-top: 25px; font-size: 1.1rem; opacity: 0.9;">
+            Limited spaces available • Bring your partner or come solo
+        </p>
+    </div>
+    
+    <div class="content-section">
+        <div class="details-box">
+            <h3><i class="fas fa-info-circle"></i> Workshop Details</h3>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <div class="detail-icon"><i class="fas fa-calendar"></i></div>
+                    <div><strong>Date:</strong> Wednesday, February 28th</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon"><i class="fas fa-clock"></i></div>
+                    <div><strong>Time:</strong> 7:00 PM - 9:00 PM</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div><strong>Format:</strong> Live Online Webinar</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon"><i class="fas fa-ticket-alt"></i></div>
+                    <div><strong>Cost:</strong> Completely Free</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TESTIMONIAL -->
+        <div class="testimonial">
+            <p style="font-style: italic;">
+                "I'd been through two divorces and was convinced I was 'bad at relationships.' After Joshua's workshop, I understood my nervous system patterns for the first time. Six months later, I'm in the healthiest relationship of my life. This work is revolutionary."
+            </p>
+            <div class="testimonial-author">
+                <div class="author-initial">L</div>
+                <div>
+                    <strong>Lisa, 42</strong><br>
+                    <span style="font-size: 0.9rem; color: #666;">Attended Feb 2023 Workshop</span>
+                </div>
+            </div>
+        </div>
+        
+        <h3><i class="fas fa-lock"></i> What You'll Receive</h3>
+        <ul style="padding-left: 20px; margin: 15px 0;">
+            <li style="margin-bottom: 10px;"><strong>Live Workshop Access:</strong> Interactive 2-hour session with Joshua</li>
+            <li style="margin-bottom: 10px;"><strong>Relationship Assessment:</strong> Identify your specific patterns</li>
+            <li style="margin-bottom: 10px;"><strong>Practical Exercises:</strong> Tools you can use immediately</li>
+            <li style="margin-bottom: 10px;"><strong>Q&A Session:</strong> Get your specific questions answered</li>
+            <li style="margin-bottom: 10px;"><strong>Bonus Recording:</strong> Access for 7 days if you can't attend live</li>
+        </ul>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <p style="font-size: 1.1rem; font-weight: 600; color: #0f1a3d; margin-bottom: 20px;">
+                Don't settle for "good enough" when extraordinary relationships are possible.
+            </p>
+            <a href="https://form.jotform.com/250184868189875" class="btn" target="_blank" style="display: inline-block;">
+                <i class="fas fa-user-plus"></i> SECURE YOUR FREE SEAT NOW
+            </a>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: #666;">
+                Questions? WhatsApp: +61 432 119 091 • Email: info@accessworld.com
+            </p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2024 AccessWorld Seminars. All Rights Reserved.</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">
+            This workshop is educational in nature and not a substitute for professional therapy or counseling.
+        </p>
+    </div>
+</body>
+</html>
