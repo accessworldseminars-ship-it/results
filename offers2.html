@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AccessWorld Seminars - Program Options</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0f1a3d;
+            --secondary-blue: #1a2b5e;
+            --accent-gold: #d4af37;
+            --accent-silver: #c0c0c0;
+            --light-blue: #2d3b6b;
+            --text-light: #ffffff;
+            --text-gray: #e0e0e0;
+            --bg-dark: #050a1a;
+            --bg-light: #f8f9fa;
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --radius: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-gray);
+            background-color: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--accent-gold), #b8941f);
+            color: var(--primary-blue);
+            border: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, #e6c158, var(--accent-gold));
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .accent-text {
+            color: var(--accent-gold);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            padding: 30px 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .logo-img {
+            height: 70px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+        }
+
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-silver));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .currency-note {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--accent-gold);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 600;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        /* Section Title */
+        .section-title {
+            padding: 25px;
+            border-radius: var(--radius);
+            margin: 50px 0 30px;
+            background: rgba(26, 43, 94, 0.5);
+            border-left: 5px solid var(--accent-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-gold);
+            bottom: -5px;
+            left: 0;
+        }
+
+        .section-title .badge {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        /* Programs Grid */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .program-card {
+            background: rgba(26, 43, 94, 0.5);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--secondary-blue), var(--light-blue));
+            color: var(--text-light);
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .program-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            padding-right: 100px;
+        }
+
+        .program-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            margin: 10px 0;
+        }
+
+        .best-value-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 120px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .features-list {
+            list-style: none;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            color: var(--accent-gold);
+            margin-right: 10px;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .feature-name {
+            font-weight: 500;
+            color: var(--text-gray);
+            flex: 1;
+            min-width: 0;
+        }
+
+        .feature-value {
+            color: var(--accent-gold);
+            font-weight: 600;
+            text-align: right;
+            margin-left: 10px;
+            flex-shrink: 0;
+        }
+
+        .ideal-for {
+            background: rgba(15, 26, 61, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-style: italic;
+            color: var(--text-gray);
+            border-left: 3px solid var(--accent-gold);
+        }
+
+        .ideal-for strong {
+            color: var(--accent-gold);
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-gold), #b8941f);
+            color: var(--primary-blue);
+            border: none;
+            padding: 18px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 25px;
+            text-align: center;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .link-indicator {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            opacity: 0.9;
+        }
+
+        /* Tier-specific styling */
+        .tier-1 .card-header {
+            background: linear-gradient(135deg, #1a2b5e, #2d3b6b);
+        }
+
+        .tier-2 .card-header {
+            background: linear-gradient(135deg, #2d1a5e, #3b2d6b);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            background: rgba(26, 43, 94, 0.5);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: var(--secondary-blue);
+            color: var(--text-light);
+            padding: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        td {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--text-gray);
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-cell {
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-light);
+            background: rgba(15, 26, 61, 0.7);
+        }
+
+        .highlight-cell {
+            background: rgba(212, 175, 55, 0.1);
+            font-weight: 700;
+            color: var(--accent-gold);
+            position: relative;
+        }
+
+        .value-label {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--accent-gold);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .tier-flag {
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .tier-1-flag {
+            background: var(--light-blue);
+            color: var(--text-light);
+        }
+
+        .tier-2-flag {
+            background: #d4145a;
+            color: var(--text-light);
+        }
+
+        .table-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            margin: 5px 0;
+        }
+
+        .table-subtitle {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 5px;
+        }
+
+        /* Introduction Offers */
+        .intro-offers {
+            background: rgba(26, 43, 94, 0.5);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-top: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .offer-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .offer-card {
+            background: rgba(15, 26, 61, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-gold);
+            transition: var(--transition);
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+            background: rgba(26, 43, 94, 0.7);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .offer-title {
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .offer-price {
+            color: var(--accent-gold);
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .free-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* Summary Section */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .summary-card {
+            background: rgba(26, 43, 94, 0.5);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid;
+            transition: var(--transition);
+        }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .summary-card:nth-child(1) {
+            border-color: var(--light-blue);
+        }
+
+        .summary-card:nth-child(2) {
+            border-color: #d4145a;
+        }
+
+        .summary-card:nth-child(3) {
+            border-color: #4CAF50;
+        }
+
+        .summary-card h3 {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .summary-card a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+
+        .summary-card a:hover {
+            color: var(--text-light);
+            padding-left: 5px;
+        }
+
+        /* Webinar Banner */
+        .webinar-banner {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(rgba(15, 26, 61, 0.9), rgba(26, 43, 94, 0.9));
+            border-radius: var(--radius);
+            margin: 30px 0;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .webinar-banner h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .home-button {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .home-button:hover {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+
+        /* Footer Section */
+        .footer-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            margin-top: 60px;
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .programs-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 1.8rem;
+            }
+            
+            .logo-img {
+                height: 50px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+            
+            .program-name {
+                font-size: 1.3rem;
+                padding-right: 80px;
+            }
+            
+            .program-price {
+                font-size: 2rem;
+            }
+            
+            .best-value-badge {
+                font-size: 0.7rem;
+                padding: 6px 10px;
+                max-width: 100px;
+            }
+            
+            .feature-value {
+                font-size: 0.9rem;
+            }
+            
+            .section-title .badge {
+                position: relative;
+                top: auto;
+                right: auto;
+                display: inline-block;
+                margin-left: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+            }
+            
+            .home-button, .cta-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="https://github.com/accessworldseminars-ship-it/results/blob/2fcfdae671b699ec0b578911336fcc3ffc346532/worldjjpgsf.png?raw=true" alt="AccessWorld Logo" class="logo-img">
+                <div class="logo-text">ACCESSWORLD SEMINARS</div>
+            </div>
+            <div class="subtitle">Transformative Coaching & Training Programs</div>
+            <div class="currency-note">All prices in AUD (Australian Dollars)</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Webinar Banner -->
+        <div class="webinar-banner">
+            <h3>Access Our Premium <span class="accent-text">Webinar Collection</span></h3>
+            <div style="margin: 30px 0;">
+                <a href="https://accessworldseminars-ship-it.github.io/results/webinars" target="_blank" class="btn" style="font-size: 1.2rem; padding: 18px 45px;">
+                    <i class="fas fa-video"></i> View All Webinars
+                </a>
+            </div>
+            <p>Explore our comprehensive webinar library, specialized training sessions, and detailed program information to accelerate your personal and professional development journey.</p>
+        </div>
+
+        <!-- TIER 2 PROGRAMS -->
+        <div class="section-title" id="tier2">
+            <h2>TIER 2 PROGRAM OPTIONS <span class="tier-flag tier-2-flag">ELITE</span></h2>
+            <div class="badge">Advanced Coaching</div>
+        </div>
+        
+        <div class="programs-grid">
+            <!-- Forever Access Pass -->
+            <div class="program-card tier-2">
+                <div class="best-value-badge">LIFETIME VALUE</div>
+                <div class="card-header">
+                    <div class="program-name">Forever Access Pass</div>
+                    <div class="program-price">$3,595</div>
+                    <div>One-time investment</div>
+                </div>
+                <div class="card-content">
+                    <ul class="features-list">
+                        <li><span class="feature-icon">✓</span><span class="feature-name">1:1 Coaching</span><span class="feature-value">–</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">Group Coaching</span><span class="feature-value">Lifetime</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">NLP + Webinar Training</span><span class="feature-value">Lifetime</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">Event Recordings</span><span class="feature-value">Lifetime</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">2-day Webinars</span><span class="feature-value">Lifetime</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">Community</span><span class="feature-value">Lifetime</span></li>
+                    </ul>
+                    <div class="ideal-for">
+                        <strong>Ideal For:</strong> People wanting lifetime access only
+                    </div>
+                    <a href="https://joshbossesteamworkspace.myclickfunnels.com/lifetime-access" target="_blank" class="cta-button">
+                        GET FOREVER ACCESS
+                        <div class="link-indicator"><i class="fas fa-external-link-alt"></i> Secure checkout</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Jumpstart Transformation -->
+            <div class="program-card tier-2">
+                <div class="card-header">
+                    <div class="program-name">Jumpstart Transformation</div>
+                    <div class="program-price">$2,896</div>
+                    <div>6-Month Program</div>
+                </div>
+                <div class="card-content">
+                    <ul class="features-list">
+                        <li><span class="feature-icon">✓</span><span class="feature-name">1:1 Coaching</span><span class="feature-value">120min/mo (6mo)</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">Group Coaching</span><span class="feature-value">12 months</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">NLP + Webinar Training</span><span class="feature-value">12 months</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">Event Recordings</span><span class="feature-value">12 months</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">2-day Webinars</span><span class="feature-value">Unlock 4 Webinars</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">Community</span><span class="feature-value">12-month</span></li>
+                    </ul>
+                    <div class="ideal-for">
+                        <strong>Ideal For:</strong> People wanting guided transformation
+                    </div>
+                    <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
+                        START TRANSFORMATION
+                        <div class="link-indicator"><i class="fas fa-calendar-alt"></i> Book strategy session</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Coaching Plus Legacy -->
+            <div class="program-card tier-2">
+                <div class="best-value-badge">MOST POPULAR</div>
+                <div class="card-header">
+                    <div class="program-name">Coaching Plus Legacy</div>
+                    <div class="program-price">$4,629</div>
+                    <div>12 Sessions + Lifetime</div>
+                </div>
+                <div class="card-content">
+                    <ul class="features-list">
+                        <li><span class="feature-icon">✓</span><span class="feature-name">1:1 Coaching</span><span class="feature-value">120min/mo (6mo)</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">Group Coaching</span><span class="feature-value">Lifetime</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">NLP + Webinar Training</span><span class="feature-value">Lifetime</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">Event Recordings</span><span class="feature-value">Lifetime</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">2-day Webinars</span><span class="feature-value">Lifetime</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">Community</span><span class="feature-value">Lifetime</span></li>
+                    </ul>
+                    <div class="ideal-for">
+                        <strong>Ideal For:</strong> People wanting coaching + lifetime learning
+                    </div>
+                    <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
+                        GET COACHING + LEGACY
+                        <div class="link-indicator"><i class="fas fa-calendar-alt"></i> Book strategy session</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mastery Accelerator -->
+            <div class="program-card tier-2">
+                <div class="best-value-badge">VIP ELITE ACCESS</div>
+                <div class="card-header">
+                    <div class="program-name">Mastery Accelerator</div>
+                    <div class="program-price">$11,995</div>
+                    <div>Inner Circle (12-Month)</div>
+                </div>
+                <div class="card-content">
+                    <ul class="features-list">
+                        <li><span class="feature-icon">✓</span><span class="feature-name">1:1 Coaching</span><span class="feature-value">Weekly (12mo)</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">Group Coaching</span><span class="feature-value">Elite Inner Circle</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">NLP + Webinar Training</span><span class="feature-value">Advanced Exclusive</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">Event Recordings</span><span class="feature-value">Priority Access</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">2-day Webinars</span><span class="feature-value">Inner Circle Exclusive</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">Community</span><span class="feature-value">Private Inner Circle</span></li>
+                    </ul>
+                    <div class="ideal-for">
+                        <strong>Ideal For:</strong> Elite performers ready for total transformation
+                    </div>
+                    <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
+                        JOIN INNER CIRCLE
+                        <div class="link-indicator"><i class="fas fa-calendar-alt"></i> VIP strategy session</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- TIER 1 PROGRAMS -->
+        <div class="section-title" id="tier1">
+            <h2>TIER 1 PROGRAM OPTIONS <span class="tier-flag tier-1-flag">FOUNDATIONAL</span></h2>
+            <div class="badge">Webinar-Based Learning</div>
+        </div>
+
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>
+                            <a href="https://form.jotform.com/250184868189875" target="_blank" style="color: var(--text-light); text-decoration: none;">
+                                Live Webinar<br>
+                                <div class="table-price">$795</div>
+                                <div class="table-subtitle">Click to book session</div>
+                            </a>
+                        </th>
+                        <th>
+                            <a href="https://form.jotform.com/250184868189875" target="_blank" style="color: var(--text-light); text-decoration: none;">
+                                Webinar Bonus Deals<br>
+                                <div class="table-price">$995</div>
+                                <div class="table-subtitle">Click to book session</div>
+                            </a>
+                        </th>
+                        <th class="highlight-cell">
+                            <a href="https://form.jotform.com/250184868189875" target="_blank" style="color: var(--accent-gold); text-decoration: none;">
+                                Webinar Ultimate Package<br>
+                                <div class="table-price">$1,295</div>
+                                <div class="table-subtitle">Click to book session</div>
+                            </a>
+                        </th>
+                        <th>
+                            <a href="https://form.jotform.com/250184868189875" target="_blank" style="color: var(--text-light); text-decoration: none;">
+                                Webinar Ultimate Package Subscription<br>
+                                <div class="table-price">$495 + $99/mo</div>
+                                <div class="table-subtitle">Click to book session</div>
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="feature-cell">Live Seminars</td>
+                        <td>1 x 2-day Webinar</td>
+                        <td>2 x 2-day Webinars</td>
+                        <td class="highlight-cell">4 x 2-day Webinars</td>
+                        <td>5 x 2-day Webinars</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-cell">Webinar Choice</td>
+                        <td>Any (out of 5)</td>
+                        <td>Pick any 2</td>
+                        <td class="highlight-cell">Access to Upcoming Seminars</td>
+                        <td>Access to Seminars 1, 2, 3, 4 & 5</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-cell">Digital Workbook</td>
+                        <td>Included</td>
+                        <td>Included</td>
+                        <td class="highlight-cell">Included</td>
+                        <td>Included</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-cell">Recording Access</td>
+                        <td>12 Months</td>
+                        <td>12 Months</td>
+                        <td class="highlight-cell">Lifetime</td>
+                        <td>Lifetime</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-cell">Group Coaching</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td class="highlight-cell">Live sessions monthly</td>
+                        <td>Live sessions monthly</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-cell">Best For</td>
+                        <td>Focused learning on one topic</td>
+                        <td>Learning two topics</td>
+                        <td class="highlight-cell">Most comprehensive learning</td>
+                        <td>Most comprehensive learning</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-cell">VALUE</td>
+                        <td><div class="value-label">Standard value</div></td>
+                        <td><div class="value-label">Good Value</div></td>
+                        <td class="highlight-cell"><div class="value-label">Best Value</div></td>
+                        <td><div class="value-label">Good value</div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- INTRODUCTION OFFERS -->
+        <div class="section-title" id="offers">
+            <h2>INTRODUCTION OFFERS</h2>
+            <div class="badge">Start Your Journey</div>
+        </div>
+
+        <div class="intro-offers">
+            <div class="offers-grid">
+                <!-- Free Offers Column -->
+                <div>
+                    <h3 style="color: #4CAF50; margin-bottom: 20px;">🎁 Free Offers</h3>
+                    
+                    <!-- Free Strategy Session -->
+                    <a href="https://form.jotform.com/250184868189875" target="_blank" class="offer-link">
+                        <div class="offer-card">
+                            <div class="offer-title">Free Strategy Session <span class="free-badge">FREE</span></div>
+                            <div class="link-indicator"><i class="fas fa-calendar-alt"></i> Book your session</div>
+                        </div>
+                    </a>
+
+                    <!-- Join a Free Coaching Session -->
+                    <a href="https://joshbossesteamworkspace.myclickfunnels.com/joinnow" target="_blank" class="offer-link">
+                        <div class="offer-card">
+                            <div class="offer-title">Join a Free Coaching Session <span class="free-badge">FREE ($100 value)</span></div>
+                            <div class="link-indicator"><i class="fas fa-users"></i> Join live coaching</div>
+                        </div>
+                    </a>
+
+                    <!-- Attend a Free Introduction Seminar -->
+                    <a href="https://www.meetup.com/brisbane-life-coaching-neurological-repatterning-meetup/" target="_blank" class="offer-link">
+                        <div class="offer-card">
+                            <div class="offer-title">Attend a Free Introduction Seminar <span class="free-badge">FREE</span></div>
+                            <div class="link-indicator"><i class="fas fa-users"></i> Join meetup group</div>
+                        </div>
+                    </a>
+
+                    <!-- Morning Routine Checklist -->
+                    <a href="https://accessworldseminars-ship-it.github.io/results/webinars" target="_blank" class="offer-link">
+                        <div class="offer-card">
+                            <div class="offer-title">Get Morning Routine Checklist <span class="free-badge">FREE</span></div>
+                            <div class="link-indicator"><i class="fas fa-gift"></i> Attend a free webinar to receive</div>
+                        </div>
+                    </a>
+
+                    <!-- Unlock Your Incredible Self - eBook -->
+                    <a href="https://docs.google.com/document/d/1QQFNGhSEdvQstfEfcoK4HLVmbcfs8UpliU_eZ7qWzJs/edit?usp=drive_link" target="_blank" class="offer-link">
+                        <div class="offer-card">
+                            <div class="offer-title">Get "Unlock Your Incredible Self" - eBook <span class="free-badge">FREE</span></div>
+                            <div class="link-indicator"><i class="fas fa-download"></i> Download PDF</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Paid Offers Column -->
+                <div>
+                    <h3 style="color: var(--accent-gold); margin-bottom: 20px;">💎 Paid Offers</h3>
+                    
+                    <!-- 12 Months Membership -->
+                    <a href="https://joshbossesteamworkspace.myclickfunnels.com/cart-funnel" target="_blank" class="offer-link">
+                        <div class="offer-card">
+                            <div class="offer-title">12 Months Membership</div>
+                            <div class="offer-price">Premium Access</div>
+                            <div class="link-indicator"><i class="fas fa-shopping-cart"></i> Add to cart</div>
+                        </div>
+                    </a>
+
+                    <!-- Best Value Tier 1 Program + Emotional Clearing -->
+                    <a href="https://payhip.com/b/jO2o1" target="_blank" class="offer-link">
+                        <div class="offer-card">
+                            <div class="offer-title">Best Value Tier 1 Program + Emotional Clearing Program</div>
+                            <div class="offer-price">Special Package</div>
+                            <div class="link-indicator"><i class="fas fa-shopping-cart"></i> Add to cart</div>
+                        </div>
+                    </a>
+
+                    <!-- Unlock Your Incredible Self - $39 Offer -->
+                    <a href="https://joshbossesteamworkspace.myclickfunnels.com/webinar-funnel" target="_blank" class="offer-link">
+                        <div class="offer-card">
+                            <div class="offer-title">Unlock Your Incredible Self</div>
+                            <div class="offer-price">$39 USD</div>
+                            <div class="link-indicator"><i class="fas fa-shopping-cart"></i> Add to cart</div>
+                        </div>
+                    </a>
+
+                    <!-- Become a World Class Coach -->
+                    <a href="https://joshbossesteamworkspace.myclickfunnels.com/coaching_training" target="_blank" class="offer-link">
+                        <div class="offer-card">
+                            <div class="offer-title">Become a World Class Coach Program</div>
+                            <div class="offer-price">$29 USD</div>
+                            <div class="link-indicator"><i class="fas fa-shopping-cart"></i> Add to cart</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Claim All Free Offers Button -->
+            <div class="nav-buttons">
+                <a href="https://joshbossesteamworkspace.myclickfunnels.com/joinnow" target="_blank" class="cta-button" style="max-width: 300px;">
+                    CLAIM ALL FREE OFFERS
+                    <div class="link-indicator"><i class="fas fa-external-link-alt"></i> Instant access</div>
+                </a>
+                <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button" style="max-width: 300px; background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);">
+                    FREE STRATEGY SESSION
+                    <div class="link-indicator"><i class="fas fa-calendar-check"></i> Book now</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- PROGRAM COMPARISON SUMMARY -->
+        <div class="section-title">
+            <h2>PROGRAM COMPARISON SUMMARY</h2>
+            <div class="badge">Choose Your Path</div>
+        </div>
+
+        <div class="summary-grid">
+            <div class="summary-card">
+                <h3>🎯 Tier 1 - Foundation</h3>
+                <p><strong>Investment:</strong> $795 - $1,295</p>
+                <p><strong>Best for:</strong> Beginners, topic-specific learning</p>
+                <p><strong>Format:</strong> Webinar-based with optional coaching</p>
+                <a href="#tier1">View Tier 1 Programs <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="summary-card">
+                <h3>🚀 Tier 2 - Transformation</h3>
+                <p><strong>Investment:</strong> $2,896 - $11,995</p>
+                <p><strong>Best for:</strong> Serious transformation seekers</p>
+                <p><strong>Format:</strong> Intensive coaching + lifetime access</p>
+                <a href="#tier2">View Tier 2 Programs <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="summary-card">
+                <h3>🎁 Introduction Offers</h3>
+                <p><strong>Investment:</strong> FREE - $39 USD</p>
+                <p><strong>Best for:</strong> Trying before committing</p>
+                <p><strong>Format:</strong> Webinars, checklists, free sessions</p>
+                <a href="#offers">View Free Offers <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <!-- Need Help Choosing -->
+        <div style="text-align: center; margin: 50px 0 30px;">
+            <p style="font-size: 1.2rem; margin-bottom: 20px; color: var(--text-light);">Need help choosing the right program?</p>
+            <a href="https://form.jotform.com/250184868189875" target="_blank" class="btn" style="font-size: 1.1rem;">
+                <i class="fas fa-calendar-check"></i> Book a Free Strategy Call
+            </a>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <a href="https://accessworldseminars-ship-it.github.io/results/" class="home-button">
+                <i class="fas fa-home"></i> Back to Home Page
+            </a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/webinars" target="_blank" class="home-button">
+                <i class="fas fa-video"></i> View All Webinars
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="logo-container" style="margin-bottom: 30px;">
+                <img src="https://github.com/accessworldseminars-ship-it/results/blob/2fcfdae671b699ec0b578911336fcc3ffc346532/worldjjpgsf.png?raw=true" alt="AccessWorld Logo" class="logo-img" style="height: 50px;">
+                <div class="logo-text" style="font-size: 1.8rem;">ACCESSWORLD</div>
+            </div>
+            <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 20px; font-size: 1.1rem;">Transformative Coaching & Training Programs</p>
+            <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">© 2024 AccessWorld Seminars. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add hover effects and interactions
+        document.querySelectorAll('.program-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight best value program
+        const bestValueCards = document.querySelectorAll('.program-card .best-value-badge');
+        bestValueCards.forEach(badge => {
+            const card = badge.closest('.program-card');
+            card.style.border = '2px solid var(--accent-gold)';
+            card.style.boxShadow = '0 15px 35px rgba(212, 175, 55, 0.2)';
+        });
+
+        // Add hover effect to offer cards
+        document.querySelectorAll('.offer-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Add hover effect to summary cards
+        document.querySelectorAll('.summary-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Track link clicks (for analytics if needed)
+        document.querySelectorAll('a[href^="http"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const linkText = this.textContent.trim();
+                console.log(`Link clicked: ${linkText}`);
+                // Add your analytics tracking here
+            });
+        });
+
+        // Function to scroll to webinar section
+        function scrollToWebinars() {
+            const webinarSection = document.querySelector('.webinar-banner');
+            webinarSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
