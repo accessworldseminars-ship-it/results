@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healing Insights: From Resentment to Release</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #9b59b6;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.8rem 1rem;
+            color: var(--text-color);
+            border-bottom: 1px solid #eee;
+            transition: var(--transition);
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f5f5f5;
+            color: var(--secondary-color);
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .content-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--secondary-color);
+            font-size: 1.8rem;
+        }
+
+        .chapter-title {
+            color: var(--accent-color);
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
+        }
+
+        .hook {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--secondary-color);
+            border-radius: var(--border-radius);
+        }
+
+        .subheading {
+            color: var(--primary-color);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        .list {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .quote {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            font-style: italic;
+        }
+
+        .testimonial {
+            background-color: #f0f7ff;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--success-color);
+        }
+
+        .testimonial-name {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-title {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .pull-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            text-align: center;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            border-top: 4px solid var(--warning-color);
+            border-bottom: 4px solid var(--warning-color);
+        }
+
+        .mindset-shift {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-radius: var(--border-radius);
+        }
+
+        .from {
+            color: #e74c3c;
+            font-weight: 600;
+            margin-right: 1rem;
+            min-width: 80px;
+        }
+
+        .to {
+            color: var(--success-color);
+            font-weight: 600;
+            margin: 0 1rem;
+            min-width: 50px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2.5rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .footer-section p {
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .content-section {
+                padding: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav ul li {
+                margin: 0;
+                width: 100%;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                display: none;
+                box-shadow: none;
+            }
+            
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-menu {
+                display: block;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 1.5rem;
+                right: 20px;
+            }
+            
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .content-section {
+                padding: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .chapter-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">Healing<span>Path</span></a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul>
+                    <li><a href="#book-content">Book Chapter</a></li>
+                    <li class="dropdown">
+                        <a href="#webinar-review">Webinar Review <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="#overview">Session Overview</a>
+                            <a href="#teaching-points">Key Teaching Points</a>
+                            <a href="#quotes">Quotes & Gems</a>
+                            <a href="#mindset-shifts">Mindset Shifts</a>
+                            <a href="#application">Suggested Application</a>
+                        </div>
+                    </li>
+                    <li><a href="#testimonials">Client Testimonials</a></li>
+                    <li><a href="#stories">Extracted Stories</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>The Freedom Formula: From Resentment to Release</h1>
+            <p>Insights from a recovery session on healing, forgiveness, and personal transformation</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Book Content Section -->
+        <section id="book-content" class="content-section">
+            <h2 class="section-title">Book-Ready Chapter</h2>
+            
+            <h3 class="chapter-title">The Freedom Formula: From Resentment to Release</h3>
+            
+            <div class="hook">
+                <p>Have you ever felt stuck in a story of hurt, replaying the same painful scenes in your mind? We often think freedom comes from the other person apologizing or justice being served. But what if true freedom—the kind that lets you sleep at night and breathe easy during the day—has a different source? What if it’s a path you walk alone, but never truly alone? Let me share a conversation that uncovered this path, not in a quiet lecture hall, but in the messy, real-life stories of a recovery meeting.</p>
+            </div>
+            
+            <h4 class="subheading">The Happiness Blueprint</h4>
+            <p>We started with a simple, powerful formula: Happiness is when your life conditions match your blueprint—your vision of how things should be. If your marriage meets your expectations, you’re happy there. If your health doesn’t match your blueprint, you feel that unhappiness. It’s that straightforward. But knowledge isn’t enough. The real shift happens not when we learn a principle, but when we apply it—when we move it from our head, through our heart, and into our very nervous system, until it’s part of who we are. That’s embodied living.</p>
+            
+            <h4 class="subheading">The List and the Lie</h4>
+            <p>The discussion turned to Step 8: making a list of those we’ve harmed. It’s about cleaning up the wreckage left behind by our “tornado” of past actions. But a powerful insight emerged about why this is so hard. Stephen Covey noted that no one wants to be seen as irresponsible. So, we often jump to “I’m not responsible.” If I’m not responsible, then someone else is. I can blame them entirely. This feels safe because it means I don’t have to change—they do. It’s the birthplace of the victim mindset, and it’s a prison of its own making. True responsibility, and true healing, begins when we stop blaming and start listing our own part in the damage.</p>
+            
+            <h4 class="subheading">The Stories We Get Stuck In</h4>
+            <p>Then came the raw, human stories. Michelle shared her anguish over an ex-husband who, after years of psychological warfare, a near-death experience, and rehab, seemed to move on unscathed into a new life. “Where’s my story in the scriptures?” she asked. “Joseph’s brothers were sorry. What about when they’re not?” She felt trapped in a story with no clean ending.</p>
+            <p>I shared my own story of writing letters of amends to an ex-spouse, only to have anger returned. I had to learn that my forgiveness couldn’t be contingent on her receipt of it. My peace was my own journey.</p>
+            
+            <h4 class="subheading">The Four-Step Healing Process</h4>
+            <p>This led to a practical framework for healing, a path out of the stuck story:</p>
+            <ol class="list">
+                <li><strong>Recognize It:</strong> Be brutally honest about the hurt. Name it.</li>
+                <li><strong>Stop Picking at It:</strong> This is crucial. An emotional wound is like a physical one. If you keep picking at it—replaying the victim narrative, stoking the resentment—it will never heal. You have to change the story you tell yourself.</li>
+                <li><strong>Forgive:</strong> You can only truly forgive from a changed story. Shift from “I was destroyed” to “I survived. I am resilient. This experience, as horrible as it was, forced a strength in me I didn’t know I had.” Forgiveness becomes possible when you see your own growth.</li>
+                <li><strong>Feel Gratitude:</strong> This is the final seal of healing. Like the one leper who returned to give thanks, gratitude makes you whole. It’s the acknowledgment that even from the ashes, something good was forged.</li>
+            </ol>
+            
+            <h4 class="subheading">The Irony of True Freedom</h4>
+            <p>The most profound twist came from revisiting Joseph of Egypt. Who was truly free? Joseph, though sold into captivity and imprisoned, was free in spirit. He grew, he trusted God, he prospered. His brothers, who lived in their father’s house, were captives to their guilt and shame for decades. They were not free.</p>
+            <p>Your freedom is not determined by the other person’s imprisonment. Your freedom is an inside job. Michelle realized, “I’m free now… I don’t need that horrible feeling.” She began changing her story from victim to survivor. That’s where the blueprint of your life can finally start to match your conditions—not because the past changed, but because you have.</p>
+            
+            <h4 class="subheading">Integration Questions:</h4>
+            <ol class="list">
+                <li>Think of one relationship where you feel lingering resentment. What’s the “story” you’ve been telling about it? How could you gently begin to change that story from one of disempowerment to one of survival or strength?</li>
+                <li>Using the four-step healing process, where are you currently stuck? Are you still picking at the wound, or are you ready to try on a new narrative?</li>
+                <li>Where in your life does your “blueprint” not match your current conditions? Is there one small, responsible action you can take today to bring them closer together?</li>
+            </ol>
+        </section>
+
+        <!-- Webinar Review Section -->
+        <section id="webinar-review" class="content-section">
+            <h2 class="section-title">Webinar / Lesson Review</h2>
+            
+            <div id="overview">
+                <h3 class="subheading">Session Overview:</h3>
+                <p>This was a deep dive into the practical and spiritual work of Step 8 in addiction recovery ("Make a written list of all persons we have harmed..."). The lesson moved beyond theory into the raw, shared experiences of participants grappling with forgiveness, responsibility, and how to find personal freedom when others are not sorry. The core theme was <strong>healing the wreckage of the past by changing the stories we tell ourselves.</strong></p>
+            </div>
+            
+            <div id="teaching-points">
+                <h3 class="subheading">Key Teaching Points:</h3>
+                <ul class="list">
+                    <li><strong>The Happiness Formula:</strong> We are happy when our life conditions match our internal "blueprint" for how things should be. Unhappiness signals a mismatch.</li>
+                    <li><strong>The Path of Embodiment:</strong> Lasting change requires moving principles from cognitive understanding, through emotional/spiritual feeling, into nervous system embodiment—where it becomes who we are.</li>
+                    <li><strong>Responsibility vs. Blame:</strong> A key blocker to healing is shifting from "I am irresponsible" (which feels bad) to "I am not responsible" (which blames others). This victim mindset prevents personal growth.</li>
+                    <li><strong>The Purpose of Step 8:</strong> It is a preparation step (Step 9 is making amends) designed to help us "become willing." It requires honest listing and breaking cycles of mutual resentment.</li>
+                    <li><strong>The Healing Process Framework:</strong> A four-step path: 1) Recognize the hurt, 2) Stop picking at the emotional wound by changing your internal narrative, 3) Forgive from this new, empowered story, 4) Seal it with gratitude.</li>
+                </ul>
+            </div>
+            
+            <div id="quotes">
+                <h3 class="subheading">Quotes & Gems:</h3>
+                <div class="quote">"When you're doing something you love, you've got boundless amounts of energy. When you're doing something you hate, you get... tired."</div>
+                <div class="quote">"The hardest challenge people face is getting the information from their mind into their heart."</div>
+                <div class="quote">"Nobody likes to be seen as irresponsible. So instead, what we say is, 'I'm not responsible.' ...That means I don't have to change."</div>
+                <div class="quote">"You can't get to forgiveness unless you... stop picking at it. You've got to change from the victim to the victor."</div>
+                <div class="quote">"Joseph was free even though he was in captivity... The brothers weren't free because of their actions."</div>
+            </div>
+            
+            <div id="mindset-shifts">
+                <h3 class="subheading">Mindset Shifts / Reframes:</h3>
+                <div class="mindset-shift">
+                    <div class="from">From:</div>
+                    <div>My forgiveness depends on their apology.</div>
+                    <div class="to">To:</div>
+                    <div>My forgiveness is my own path to freedom, independent of their actions.</div>
+                </div>
+                <div class="mindset-shift">
+                    <div class="from">From:</div>
+                    <div>I am a victim of what happened.</div>
+                    <div class="to">To:</div>
+                    <div>I am a survivor of what happened, and it revealed my strength.</div>
+                </div>
+                <div class="mindset-shift">
+                    <div class="from">From:</div>
+                    <div>Step 8 is about shaming myself.</div>
+                    <div class="to">To:</div>
+                    <div>Step 8 is an honest inventory that allows the Savior to lift my burdens of guilt and shame.</div>
+                </div>
+                <div class="mindset-shift">
+                    <div class="from">From:</div>
+                    <div>Their freedom (or lack of it) dictates mine.</div>
+                    <div class="to">To:</div>
+                    <div>My freedom is an internal state, often found in ironic places (like Joseph in prison).</div>
+                </div>
+            </div>
+            
+            <div id="application">
+                <h3 class="subheading">Suggested Application:</h3>
+                <ol class="list">
+                    <li><strong>Identify Your Story:</strong> Pick one past hurt. Write down the "story" you typically tell about it.</li>
+                    <li><strong>Reframe the Narrative:</strong> Consciously rewrite that story focusing on your resilience, survival, or a lesson learned. How did you grow?</li>
+                    <li><strong>Apply the Formula:</strong> Identify one area of life where your "blueprint" and conditions don't match. Commit to one small, responsible action this week to align them.</li>
+                    <li><strong>Start Your List:</strong> Begin a private, prayerful list for Step 8. Focus first on your own part, resisting the urge to list their wrongs against you.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="content-section">
+            <h2 class="section-title">Client Testimonials</h2>
+            
+            <div class="testimonial">
+                <div class="testimonial-name">Name: Michelle</div>
+                
+                <h4 class="subheading">Before:</h4>
+                <p>My life was dominated by the psychological trauma from my marriage and divorce. For nine years, I endured what felt like psychological warfare—false accusations, constant court battles, police calls, and the fear of having my children taken away. It was volatile and unpredictable. After it ended, my ex-husband moved on, seemingly unscathed, and I was left carrying all the pain, resentment, and confusion. I was stuck in the story of being a victim, asking, "Why does he get to be happy? Where's my healing story in the scriptures?" I couldn't see a path to forgiving someone who wasn't truly sorry.</p>
+                
+                <h4 class="subheading">What I Learned / Applied:</h4>
+                <p>In this session, I learned about the four-step healing process and the crucial idea of "changing the story." I realized I had been "picking at the wound" by replaying the victim narrative. The insight about Joseph of Egypt was pivotal—I saw that he was spiritually free even in captivity, while his brothers were prisoners to their guilt. I also applied the distinction between being "irresponsible" and claiming "I'm not responsible." I began to understand the personality dynamics at play and accepted that I married someone who may never take responsibility. The key was seeing that I needed to change my internal story to find my freedom.</p>
+                
+                <h4 class="subheading">Results:</h4>
+                <p>By the end of the conversation, I felt a significant shift. I began to reframe my story from "I was a victim for nine years" to "I am a survivor who raised five children under extreme duress and came out the other side." I realized, "I'm free now... I don't need to carry that horrible feeling." The burden felt lighter. I gained compassion, understanding that my ex-husband's actions came from his own deep fears and addiction. I now have a practical framework (recognize, stop picking, forgive, gratitude) to continue my healing journey, independent of his choices.</p>
+                
+                <div class="pull-quote">
+                    "I began to change my story from victim to survivor. I realized, 'I'm free now.' The burden is lighter, and I have a path forward for my own peace."
+                </div>
+            </div>
+        </section>
+
+        <!-- Stories Section -->
+        <section id="stories" class="content-section">
+            <h2 class="section-title">Extracted Stories</h2>
+            
+            <div class="testimonial">
+                <div class="testimonial-name">Name: Josh</div>
+                <div class="testimonial-title">The Letters That Didn't Heal Her</div>
+                
+                <h4 class="subheading">The Story:</h4>
+                <p>I tried to do the right thing after my separation. I went through this seminar that said to make amends, so about four years out, I wrote my ex-wife a letter. I said I was sorry for the way things turned out, for how I acted and reacted, for the things I did that hurt her. I wanted to clean the slate, you know?</p>
+                <p>She wrote back. And she told me how I destroyed her life, how she'd never get over it, all that stuff. It was a bit of a shock. I thought, okay, maybe she needs more time.</p>
+                <p>So I waited a few more years, moved on a bit more myself, and I wrote her another letter. I thought, I'll try again. The letter I got back the second time was worse than the first. Her anger was actually increasing. It wasn't going down at all.</p>
+                <p>So from that point, I just stopped. I haven't spoken to her since. I realized there's no benefit for her in me reaching out—it just opens old wounds. I have to go through my process, and she has to go through hers. She's never taken responsibility for anything, ever. The blame was always squarely on my shoulders. I just had to learn to accept that.</p>
+                
+                <h4 class="subheading">The Point:</h4>
+                <p>This story shows that making amends and seeking forgiveness is a one-sided covenant for your own soul. The other person's reception of it—whether they accept it, reject it, or get angrier—is not within your control and does not determine the validity or completeness of your own healing work.</p>
+                
+                <h4 class="subheading">Lesson Learned:</h4>
+                <p>You can do your part to make things right with a clear conscience, but you cannot force another person's healing or reconciliation. Sometimes, the final step of amends is to accept their choice to remain in anger, and to peacefully move forward on your own path without further contact.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>HealingPath</h3>
+                    <p>Transforming raw experiences into actionable insights for personal growth and healing.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Content Sections</h3>
+                    <ul class="list">
+                        <li><a href="#book-content">Book Chapter</a></li>
+                        <li><a href="#webinar-review">Webinar Review</a></li>
+                        <li><a href="#testimonials">Client Testimonials</a></li>
+                        <li><a href="#stories">Extracted Stories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Key Insights</h3>
+                    <p>The Freedom Formula • Four-Step Healing Process • Responsibility vs. Blame • The Irony of True Freedom</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HealingPath. All content based on actual recovery session transcripts.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const nav = document.querySelector('nav');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Dropdown functionality for mobile
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('a');
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                    
+                    // Close other dropdowns
+                    dropdowns.forEach(other => {
+                        if (other !== dropdown) {
+                            other.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.dropdown') && window.innerWidth <= 768) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('nav').style.display = 'none';
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
