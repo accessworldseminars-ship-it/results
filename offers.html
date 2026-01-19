@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AccessWorld Seminars - Free Offers & Paid Programs</title>
+    <title>AccessWorld Seminars - Free Offers & Resources</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -93,15 +93,45 @@
         }
 
         .btn-premium {
+            display: inline-block;
+            padding: 16px 40px;
             background: linear-gradient(135deg, var(--premium-purple), #7b1fa2);
             color: white;
-            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.3);
+            border: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(156, 39, 176, 0.4);
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-premium:hover {
-            background: linear-gradient(135deg, #ba68c8, var(--premium-purple));
-            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.4);
             transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(156, 39, 176, 0.5);
+            background: linear-gradient(135deg, #ba68c8, var(--premium-purple));
+        }
+
+        .btn-premium .free-trial {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ffeb3b;
+            color: #333;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            transform: rotate(15deg);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            z-index: 2;
         }
 
         .accent-text {
@@ -215,6 +245,55 @@
             transform: translateY(-3px);
         }
 
+        /* Premium Banner */
+        .premium-banner {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(rgba(15, 26, 61, 0.9), rgba(26, 43, 94, 0.9));
+            border-radius: var(--radius);
+            margin: 30px 0;
+            border: 2px solid rgba(156, 39, 176, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-banner:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--premium-purple), #ffeb3b, var(--premium-purple));
+            z-index: 1;
+        }
+
+        .premium-banner h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #e1bee7;
+        }
+
+        .premium-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .trial-highlight {
+            display: inline-block;
+            background: rgba(255, 235, 59, 0.2);
+            color: #ffeb3b;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin: 10px 0;
+            border: 2px solid #ffeb3b;
+        }
+
         /* Section Title */
         .section-title {
             padding: 25px;
@@ -225,10 +304,6 @@
             position: relative;
             overflow: hidden;
             text-align: center;
-        }
-
-        .section-title.premium {
-            border-left: 5px solid var(--premium-purple);
         }
 
         .section-title h2 {
@@ -250,10 +325,6 @@
             border-radius: 2px;
         }
 
-        .section-title.premium h2:after {
-            background: var(--premium-purple);
-        }
-
         .section-title .badge {
             background: var(--success-green);
             color: white;
@@ -263,10 +334,6 @@
             font-weight: 700;
             display: inline-block;
             margin-top: 15px;
-        }
-
-        .section-title .badge.premium {
-            background: var(--premium-purple);
         }
 
         /* Free Offers Grid */
@@ -294,14 +361,6 @@
             border-color: var(--success-green);
         }
 
-        .offer-card.premium {
-            border: 2px solid rgba(156, 39, 176, 0.3);
-        }
-
-        .offer-card.premium:hover {
-            border-color: var(--premium-purple);
-        }
-
         .card-header {
             background: linear-gradient(135deg, var(--success-green), #2E7D32);
             color: white;
@@ -312,10 +371,6 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-        }
-
-        .card-header.premium {
-            background: linear-gradient(135deg, var(--premium-purple), #7b1fa2);
         }
 
         .free-badge {
@@ -333,11 +388,6 @@
             max-width: 100px;
             text-align: center;
             line-height: 1.2;
-        }
-
-        .premium-badge {
-            background: white;
-            color: var(--premium-purple);
         }
 
         .offer-name {
@@ -380,10 +430,6 @@
             flex-shrink: 0;
         }
 
-        .feature-icon.premium {
-            color: var(--premium-purple);
-        }
-
         .feature-name {
             font-weight: 500;
             color: var(--text-gray);
@@ -401,16 +447,8 @@
             border-left: 3px solid var(--success-green);
         }
 
-        .ideal-for.premium {
-            border-left: 3px solid var(--premium-purple);
-        }
-
         .ideal-for strong {
             color: var(--success-green);
-        }
-
-        .ideal-for.premium strong {
-            color: var(--premium-purple);
         }
 
         .cta-button {
@@ -439,15 +477,6 @@
             background: linear-gradient(135deg, #66BB6A, var(--success-green));
         }
 
-        .cta-button.premium {
-            background: linear-gradient(135deg, var(--premium-purple), #7b1fa2);
-        }
-
-        .cta-button.premium:hover {
-            background: linear-gradient(135deg, #ba68c8, var(--premium-purple));
-            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.4);
-        }
-
         .link-indicator {
             color: var(--text-light);
             font-size: 0.9rem;
@@ -457,21 +486,6 @@
             justify-content: center;
             gap: 8px;
             opacity: 0.9;
-        }
-
-        /* Paid Programs Intro */
-        .paid-intro {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(rgba(15, 26, 61, 0.9), rgba(26, 43, 94, 0.9));
-            border-radius: var(--radius);
-            margin: 30px 0;
-            border: 2px solid rgba(156, 39, 176, 0.3);
-        }
-
-        .paid-intro h3 {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
         }
 
         /* Webinar Banner */
@@ -547,74 +561,6 @@
             color: var(--text-gray);
         }
 
-        /* Paid Programs Section */
-        .paid-programs {
-            background: linear-gradient(135deg, rgba(15, 26, 61, 0.9), rgba(26, 43, 94, 0.9));
-            border-radius: var(--radius);
-            padding: 40px;
-            margin-top: 40px;
-            border: 2px solid rgba(156, 39, 176, 0.3);
-        }
-
-        .program-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--radius);
-            padding: 30px;
-            margin-bottom: 30px;
-            border-left: 5px solid var(--premium-purple);
-            transition: var(--transition);
-        }
-
-        .program-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .program-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .program-title {
-            font-size: 1.6rem;
-            color: #e1bee7;
-            margin-bottom: 5px;
-        }
-
-        .program-price {
-            font-size: 1.8rem;
-            color: var(--premium-purple);
-            font-weight: 700;
-        }
-
-        .program-price span {
-            font-size: 1rem;
-            color: var(--text-gray);
-            font-weight: 400;
-        }
-
-        .program-features {
-            list-style: none;
-            margin-bottom: 25px;
-        }
-
-        .program-features li {
-            padding: 10px 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .program-features i {
-            color: var(--premium-purple);
-            margin-right: 10px;
-            font-size: 1rem;
-        }
-
         /* Navigation Buttons */
         .nav-buttons {
             display: flex;
@@ -647,10 +593,12 @@
         .home-button.premium {
             background: rgba(156, 39, 176, 0.2);
             border-color: var(--premium-purple);
+            color: #e1bee7;
         }
 
         .home-button.premium:hover {
             background: rgba(156, 39, 176, 0.3);
+            transform: translateY(-3px);
         }
 
         /* Footer Section */
@@ -703,11 +651,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .program-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
             .nav-menu {
                 flex-direction: column;
                 align-items: center;
@@ -728,17 +671,13 @@
                 flex-direction: column;
             }
             
-            .home-button, .cta-button {
+            .home-button, .cta-button, .btn-premium {
                 width: 100%;
                 text-align: center;
             }
             
-            .resource-hub, .paid-programs {
+            .resource-hub, .premium-banner, .webinar-banner {
                 padding: 20px;
-            }
-            
-            .paid-intro, .webinar-banner {
-                padding: 25px 15px;
             }
         }
     </style>
@@ -751,7 +690,7 @@
                 <img src="https://github.com/accessworldseminars-ship-it/results/blob/2fcfdae671b699ec0b578911336fcc3ffc346532/worldjjpgsf.png?raw=true" alt="AccessWorld Logo" class="logo-img">
                 <div class="logo-text">ACCESSWORLD SEMINARS</div>
             </div>
-            <div class="subtitle">Free Offers, Resources & Premium Programs</div>
+            <div class="subtitle">Free Offers & Resources for Your Transformation Journey</div>
             <div class="hero-description">
                 Start your personal growth journey with these completely free resources. No credit card required, no hidden fees - just valuable tools and experiences to help you unlock your potential.
             </div>
@@ -762,13 +701,10 @@
                     <i class="fas fa-gift"></i> Free Offers
                 </a>
                 <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="nav-item premium">
-                    <i class="fas fa-crown"></i> Paid Programs
+                    <i class="fas fa-crown"></i> Start 14-Day Free Trial
                 </a>
                 <a href="#resources" class="nav-item">
                     <i class="fas fa-tools"></i> Resource Hub
-                </a>
-                <a href="#paid-programs" class="nav-item premium">
-                    <i class="fas fa-star"></i> Premium Options
                 </a>
                 <a href="https://accessworldseminars-ship-it.github.io/results/webinars" target="_blank" class="nav-item">
                     <i class="fas fa-video"></i> Free Webinars
@@ -780,7 +716,8 @@
                     <i class="fas fa-gift"></i> View All Free Offers
                 </a>
                 <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="btn-premium">
-                    <i class="fas fa-crown"></i> Explore Paid Programs
+                    <span class="free-trial">14 DAYS FREE</span>
+                    <i class="fas fa-crown"></i> Start Premium Free Trial
                 </a>
                 <a href="https://accessworldseminars-ship-it.github.io/results/" class="btn-secondary">
                     <i class="fas fa-home"></i> Back to Main Site
@@ -790,15 +727,20 @@
     </header>
 
     <main class="container">
-        <!-- Paid Programs Introduction -->
-        <div class="paid-intro">
-            <h3>Ready to Take Your Transformation <span class="premium-text">to the Next Level</span>?</h3>
-            <div style="margin: 30px 0;">
-                <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="btn-premium" style="font-size: 1.2rem; padding: 18px 45px;">
-                    <i class="fas fa-crown"></i> Explore Our Premium Programs
+        <!-- Premium Banner 1 -->
+        <div class="premium-banner">
+            <h3>Ready for <span class="premium-text">Premium Coaching</span>?</h3>
+            <p>Take your transformation to the next level with our comprehensive premium coaching programs.</p>
+            <div class="trial-highlight">
+                <i class="fas fa-star"></i> Get Started with a 14-Day Free Trial <i class="fas fa-star"></i>
+            </div>
+            <div style="margin: 25px 0;">
+                <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="btn-premium">
+                    <span class="free-trial">14 DAYS FREE</span>
+                    <i class="fas fa-crown"></i> Start Your Free Trial Now
                 </a>
             </div>
-            <p>Our paid programs offer in-depth coaching, personalized support, and comprehensive training for those ready to make a serious commitment to their personal growth journey.</p>
+            <p>Experience the full benefits of coaching with no commitment. Start your free trial today!</p>
         </div>
 
         <!-- Webinar Banner -->
@@ -976,97 +918,20 @@
             </div>
         </div>
 
-        <!-- PAID PROGRAMS SECTION -->
-        <div class="section-title premium" id="paid-programs">
-            <h2>PREMIUM PAID PROGRAMS</h2>
-            <div class="badge premium">In-Depth Coaching & Training</div>
-        </div>
-
-        <div class="paid-programs">
-            <div class="program-intro" style="text-align: center; margin-bottom: 40px;">
-                <h3 style="font-size: 1.8rem; color: #e1bee7; margin-bottom: 15px;">Ready for Deeper Transformation?</h3>
-                <p style="font-size: 1.2rem; color: var(--text-gray); max-width: 800px; margin: 0 auto 30px;">
-                    Our paid programs offer comprehensive support, personalized coaching, and in-depth training for those ready to make a serious investment in their personal growth.
-                </p>
-                <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="btn-premium" style="font-size: 1.2rem; padding: 18px 45px;">
-                    <i class="fas fa-crown"></i> Explore All Paid Programs
+        <!-- Premium Banner 2 -->
+        <div class="premium-banner">
+            <h3>Experience <span class="premium-text">Real Coaching Benefits</span> Today</h3>
+            <p>Get access to personalized coaching, comprehensive training materials, and ongoing support with our premium programs.</p>
+            <div class="trial-highlight">
+                <i class="fas fa-check-circle"></i> No Risk 14-Day Free Trial <i class="fas fa-check-circle"></i>
+            </div>
+            <div style="margin: 25px 0;">
+                <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="btn-premium">
+                    <span class="free-trial">14 DAYS FREE</span>
+                    <i class="fas fa-play-circle"></i> Start Free Trial & Get Benefits Now
                 </a>
             </div>
-            
-            <div class="program-card">
-                <div class="program-header">
-                    <div>
-                        <h3 class="program-title">Introductory Coaching Package</h3>
-                        <p style="color: var(--text-gray);">Perfect for beginners ready to start their transformation journey</p>
-                    </div>
-                    <div class="program-price">$497<span>/one-time</span></div>
-                </div>
-                <ul class="program-features">
-                    <li><i class="fas fa-check-circle"></i> 4 Personalized 1-on-1 Coaching Sessions</li>
-                    <li><i class="fas fa-check-circle"></i> Customized Action Plan & Goal Setting</li>
-                    <li><i class="fas fa-check-circle"></i> Access to Premium Training Materials</li>
-                    <li><i class="fas fa-check-circle"></i> Email Support Between Sessions</li>
-                    <li><i class="fas fa-check-circle"></i> Progress Tracking & Accountability</li>
-                </ul>
-                <div style="text-align: center;">
-                    <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="cta-button premium">
-                        LEARN MORE & ENROLL
-                    </a>
-                </div>
-            </div>
-            
-            <div class="program-card">
-                <div class="program-header">
-                    <div>
-                        <h3 class="program-title">Complete Transformation Program</h3>
-                        <p style="color: var(--text-gray);">Comprehensive 12-week program for deep, lasting change</p>
-                    </div>
-                    <div class="program-price">$1,997<span>/one-time</span></div>
-                </div>
-                <ul class="program-features">
-                    <li><i class="fas fa-check-circle"></i> 12 Weeks of Intensive Coaching</li>
-                    <li><i class="fas fa-check-circle"></i> Weekly 1-on-1 Sessions (12 total)</li>
-                    <li><i class="fas fa-check-circle"></i> Full Access to All Course Materials</li>
-                    <li><i class="fas fa-check-circle"></i> Priority Email & Phone Support</li>
-                    <li><i class="fas fa-check-circle"></i> Bonus: 3 Months of Group Coaching Access</li>
-                    <li><i class="fas fa-check-circle"></i> Personalized Resource Library</li>
-                </ul>
-                <div style="text-align: center;">
-                    <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="cta-button premium">
-                        LEARN MORE & ENROLL
-                    </a>
-                </div>
-            </div>
-            
-            <div class="program-card">
-                <div class="program-header">
-                    <div>
-                        <h3 class="program-title">Mastermind Group Membership</h3>
-                        <p style="color: var(--text-gray);">Ongoing support and community for continuous growth</p>
-                    </div>
-                    <div class="program-price">$97<span>/month</span></div>
-                </div>
-                <ul class="program-features">
-                    <li><i class="fas fa-check-circle"></i> Monthly Group Coaching Sessions</li>
-                    <li><i class="fas fa-check-circle"></i> Access to Private Community</li>
-                    <li><i class="fas fa-check-circle"></i> Monthly Training Workshops</li>
-                    <li><i class="fas fa-check-circle"></i> Resource Library Updates</li>
-                    <li><i class="fas fa-check-circle"></i> Networking with Like-Minded Individuals</li>
-                    <li><i class="fas fa-check-circle"></i> Cancel Anytime - No Long-Term Commitment</li>
-                </ul>
-                <div style="text-align: center;">
-                    <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="cta-button premium">
-                        LEARN MORE & ENROLL
-                    </a>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 40px;">
-                <p style="font-size: 1.1rem; color: var(--text-gray); margin-bottom: 20px;">All paid programs include a 14-day money-back guarantee</p>
-                <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="btn-premium" style="font-size: 1.1rem; padding: 15px 35px;">
-                    <i class="fas fa-external-link-alt"></i> View All Paid Program Details
-                </a>
-            </div>
+            <p>Begin experiencing the transformation immediately with no financial commitment.</p>
         </div>
 
         <!-- CLAIM ALL OFFERS BUTTON -->
@@ -1140,6 +1005,22 @@
             </div>
         </div>
 
+        <!-- Premium Banner 3 -->
+        <div class="premium-banner">
+            <h3>Your <span class="premium-text">Transformation Journey</span> Awaits</h3>
+            <p>Take the next step in your personal growth with comprehensive coaching and support.</p>
+            <div class="trial-highlight">
+                <i class="fas fa-bolt"></i> Get Full Benefits for 14 Days Free <i class="fas fa-bolt"></i>
+            </div>
+            <div style="margin: 25px 0;">
+                <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="btn-premium">
+                    <span class="free-trial">14 DAYS FREE</span>
+                    <i class="fas fa-rocket"></i> Start Premium Coaching Free Trial
+                </a>
+            </div>
+            <p>Experience the difference real coaching can make in your life. No commitment required.</p>
+        </div>
+
         <!-- Get Started Section -->
         <div style="text-align: center; margin: 60px 0 30px; padding: 40px; background: rgba(26, 43, 94, 0.5); border-radius: var(--radius); border: 2px solid rgba(76, 175, 80, 0.3);">
             <h3 style="font-size: 2rem; margin-bottom: 20px; color: var(--success-green);">Ready to Begin Your Transformation?</h3>
@@ -1158,7 +1039,7 @@
                 <i class="fas fa-home"></i> Back to Home Page
             </a>
             <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="home-button premium">
-                <i class="fas fa-crown"></i> Explore Paid Programs
+                <i class="fas fa-crown"></i> Start 14-Day Free Trial
             </a>
             <a href="https://accessworldseminars-ship-it.github.io/results/webinars" target="_blank" class="home-button">
                 <i class="fas fa-video"></i> View All Free Webinars
@@ -1175,7 +1056,7 @@
                 <img src="https://github.com/accessworldseminars-ship-it/results/blob/2fcfdae671b699ec0b578911336fcc3ffc346532/worldjjpgsf.png?raw=true" alt="AccessWorld Logo" class="logo-img" style="height: 50px;">
                 <div class="logo-text" style="font-size: 1.8rem;">ACCESSWORLD</div>
             </div>
-            <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 20px; font-size: 1.1rem;">Free Resources & Premium Programs for Your Transformation Journey</p>
+            <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 20px; font-size: 1.1rem;">Free Resources & Premium Coaching for Your Transformation Journey</p>
             
             <!-- Footer Navigation -->
             <div class="nav-menu" style="margin: 30px 0; justify-content: center;">
@@ -1183,18 +1064,19 @@
                     <i class="fas fa-gift"></i> Free Offers
                 </a>
                 <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="nav-item premium">
-                    <i class="fas fa-crown"></i> Paid Programs
-                </a>
-                <a href="#paid-programs" class="nav-item premium">
-                    <i class="fas fa-star"></i> Premium Options
+                    <i class="fas fa-crown"></i> Start Free Trial
                 </a>
                 <a href="#resources" class="nav-item">
                     <i class="fas fa-tools"></i> Resource Hub
                 </a>
+                <a href="https://accessworldseminars-ship-it.github.io/results/webinars" target="_blank" class="nav-item">
+                    <i class="fas fa-video"></i> Free Webinars
+                </a>
             </div>
             
             <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin-bottom: 10px;">Free offers are 100% free - no hidden fees, no credit card required</p>
-            <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">© 2024 AccessWorld Seminars. All Rights Reserved.</p>
+            <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Premium coaching includes a 14-day free trial with no commitment required</p>
+            <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin-top: 10px;">© 2024 AccessWorld Seminars. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -1211,16 +1093,6 @@
 
         // Add hover effects to resource cards
         document.querySelectorAll('.resource-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-5px)';
-            });
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-
-        // Add hover effects to program cards
-        document.querySelectorAll('.program-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-5px)';
             });
@@ -1259,6 +1131,16 @@
         setInterval(() => {
             freeBanner.style.transform = freeBanner.style.transform === 'rotate(5deg)' ? 'rotate(-5deg)' : 'rotate(5deg)';
         }, 3000);
+
+        // Add animation to premium buttons
+        document.querySelectorAll('.btn-premium').forEach(button => {
+            setInterval(() => {
+                const freeTrialBadge = button.querySelector('.free-trial');
+                if (freeTrialBadge) {
+                    freeTrialBadge.style.transform = freeTrialBadge.style.transform === 'rotate(15deg)' ? 'rotate(-15deg)' : 'rotate(15deg)';
+                }
+            }, 2000);
+        });
     </script>
 </body>
 </html>
