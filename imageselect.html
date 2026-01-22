@@ -1,87 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photo Menu</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f8f8;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .menu {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
-    .menu-item {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .menu-item img {
-      width: 150px;
-      height: auto;
-      border-radius: 5px;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-    .menu-item button {
-      display: block;
-      margin-top: 5px;
-      padding: 5px 10px;
-      cursor: pointer;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Images Library</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; background: #f0f0f0; }
+  h1 { text-align: center; }
+  .gallery { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+  .image-box { width: 200px; text-align: center; background: #fff; padding: 10px; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+  .image-box img { max-width: 100%; height: auto; border-radius: 5px; }
+  .image-box span { display: block; margin-top: 5px; font-size: 12px; word-break: break-all; }
+</style>
 </head>
 <body>
 
-<h1>Photo Menu</h1>
+<h1>All Images Library</h1>
+<p>Click on any image to copy its URL.</p>
 
-<div class="menu" id="menu">
-  <!-- Photos will go here -->
+<div class="gallery">
+
+<div class="image-box" onclick="copyURL('https://accessworldseminars-ship-it.github.io/results/images/1.png')">
+  <img src="https://accessworldseminars-ship-it.github.io/results/images/1.png" alt="">
+  <span>1.png</span>
+</div>
+<div class="image-box" onclick="copyURL('https://accessworldseminars-ship-it.github.io/results/images/11234868_10153431819884785_4437693635371559356_n (1).jpg')">
+  <img src="https://accessworldseminars-ship-it.github.io/results/images/11234868_10153431819884785_4437693635371559356_n (1).jpg" alt="">
+  <span>11234868_10153431819884785_4437693635371559356_n (1).jpg</span>
+</div>
+<div class="image-box" onclick="copyURL('https://accessworldseminars-ship-it.github.io/results/images/11665364_10153431819879785_9066230247782437122_n (1).jpg')">
+  <img src="https://accessworldseminars-ship-it.github.io/results/images/11665364_10153431819879785_9066230247782437122_n (1).jpg" alt="">
+  <span>11665364_10153431819879785_9066230247782437122_n (1).jpg</span>
+</div>
+<div class="image-box" onclick="copyURL('https://accessworldseminars-ship-it.github.io/results/images/1441219_180575765478843_186275728_n.jpg')">
+  <img src="https://accessworldseminars-ship-it.github.io/results/images/1441219_180575765478843_186275728_n.jpg" alt="">
+  <span>1441219_180575765478843_186275728_n.jpg</span>
+</div>
+<div class="image-box" onclick="copyURL('https://accessworldseminars-ship-it.github.io/results/images/156-4.jpg')">
+  <img src="https://accessworldseminars-ship-it.github.io/results/images/156-4.jpg" alt="">
+  <span>156-4.jpg</span>
+</div>
+<div class="image-box" onclick="copyURL('https://accessworldseminars-ship-it.github.io/results/images/15ffd8e36fedcdfef4feadde56a0255b.jpeg')">
+  <img src="https://accessworldseminars-ship-it.github.io/results/images/15ffd8e36fedcdfef4feadde56a0255b.jpeg" alt="">
+  <span>15ffd8e36fedcdfef4feadde56a0255b.jpeg</span>
+</div>
+<div class="image-box" onclick="copyURL('https://accessworldseminars-ship-it.github.io/results/images/2016-01-18-1453141118-5222562-girlmakingyuckface-thumb-1-150x150.jpg')">
+  <img src="https://accessworldseminars-ship-it.github.io/results/images/2016-01-18-1453141118-5222562-girlmakingyuckface-thumb-1-150x150.jpg" alt="">
+  <span>2016-01-18-1453141118-5222562-girlmakingyuckface-thumb-1-150x150.jpg</span>
+</div>
+<div class="image-box" onclick="copyURL('https://accessworldseminars-ship-it.github.io/results/images/221639_18419984784_3692_n.jpg')">
+  <img src="https://accessworldseminars-ship-it.github.io/results/images/221639_18419984784_3692_n.jpg" alt="">
+  <span>221639_18419984784_3692_n.jpg</span>
+</div>
+<div class="image-box" onclick="copyURL('https://accessworldseminars-ship-it.github.io/results/images/23905360_10155857231059785_7730782653856996330_n.jpg')">
+  <img src="https://accessworldseminars-ship-it.github.io/results/images/23905360_10155857231059785_7730782653856996330_n.jpg" alt="">
+  <span>23905360_10155857231059785_7730782653856996330_n.jpg</span>
+</div>
+
+<!-- REPEAT FOR ALL OTHER IMAGES -->
+
 </div>
 
 <script>
-const imageFilenames = [
-  "11234868_10153431819884785_4437693635371559356_n (1).jpg",
-  "11665364_10153431819879785_9066230247782437122_n (1).jpg",
-  "1441219_180575765478843_186275728_n.jpg",
-  "156-4.jpg",
-  "15ffd8e36fedcdfef4feadde56a0255b.jpeg",
-  "2016-01-18-1453141118-5222562-girlmakingyuckface-thumb-1-150x150.jpg"
-  // add the rest of your filenames here...
-];
-
-const menu = document.getElementById("menu");
-
-imageFilenames.forEach(filename => {
-  const div = document.createElement("div");
-  div.className = "menu-item";
-
-  const img = document.createElement("img");
-  img.src = `images/${filename}`;
-  img.alt = filename;
-
-  const btn = document.createElement("button");
-  btn.textContent = "Copy HTML Code";
-  btn.onclick = () => {
-    const code = `<img src="images/${filename}" alt="${filename}">`;
-    navigator.clipboard.writeText(code).then(() => {
-      alert("Copied code for " + filename);
-    });
-  };
-
-  div.appendChild(img);
-  div.appendChild(btn);
-  menu.appendChild(div);
-});
+function copyURL(url) {
+  navigator.clipboard.writeText(url).then(() => {
+    alert("Copied URL: " + url);
+  });
+}
 </script>
 
 </body>
