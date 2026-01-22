@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claim Your Certification | Results Submission Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .cert-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .cert-card.selected {
+            background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
+            border-left: 5px solid #764ba2;
+        }
+
+        .cert-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .cert-card p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .hours-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        .form-container {
+            padding: 0 30px 30px;
+        }
+
+        .form-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            margin: 15px 0;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-item input {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: 600;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+
+        .whatsapp-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .confirmation {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border-radius: 15px;
+            margin: 20px;
+        }
+
+        .confirmation h2 {
+            color: #155724;
+            margin-bottom: 15px;
+        }
+
+        .confirmation p {
+            color: #0c4128;
+            margin-bottom: 20px;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .requirements-list {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .requirements-list ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .requirements-list li {
+            margin-bottom: 8px;
+            color: #666;
+            position: relative;
+        }
+
+        .requirements-list li:before {
+            content: "✓";
+            color: #28a745;
+            position: absolute;
+            left: -20px;
+        }
+
+        .phone-input {
+            position: relative;
+        }
+
+        .phone-input input {
+            padding-left: 70px;
+        }
+
+        .country-code {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .certification-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .form-container {
+                padding: 0 20px 20px;
+            }
+            
+            .submit-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Claim Your Certification</h1>
+            <p>Submit your training results and receive your professional credentials through our honor-based system.</p>
+            <p>Your submission will be automatically sent for certification preparation.</p>
+        </div>
+
+        <div class="certification-grid">
+            <div class="cert-card" onclick="selectCertification('nlp')">
+                <h3>NLP Coach Practitioner Certificate</h3>
+                <p>Master NLP techniques for transformational coaching</p>
+                <span class="hours-badge">40+ hours required</span>
+                <div class="requirements-list" id="nlp-requirements">
+                    <ul>
+                        <li>10 NLP Training Modules completed</li>
+                        <li>Emotional Mastery 2-Day Seminar</li>
+                        <li>3 NLP Foundation Sessions</li>
+                        <li>3 NLP processes demonstrated</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cert-card" onclick="selectCertification('wellness')">
+                <h3>Wellness Coaching Certificate</h3>
+                <p>Guide clients to holistic health and wellbeing</p>
+                <span class="hours-badge">52+ hours required</span>
+                <div class="requirements-list" id="wellness-requirements">
+                    <ul>
+                        <li>Ultimate Health Webinar completed</li>
+                        <li>6+ months coaching with Joshua</li>
+                        <li>15 Group Coaching Sessions</li>
+                        <li>Wellness assessment demonstrated</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cert-card" onclick="selectCertification('mindset')">
+                <h3>Mindset Coaching Certificate</h3>
+                <p>Transform limiting beliefs into empowering mindsets</p>
+                <span class="hours-badge">52+ hours required</span>
+                <div class="requirements-list" id="mindset-requirements">
+                    <ul>
+                        <li>Stepping Into Wealth OR Ultimate Memory Webinar</li>
+                        <li>6+ months coaching with Joshua</li>
+                        <li>15 Group Coaching Sessions</li>
+                        <li>Mindset breakthrough session</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cert-card" onclick="selectCertification('relationship')">
+                <h3>Relationship Coaching Certificate</h3>
+                <p>Help clients create and maintain fulfilling relationships</p>
+                <span class="hours-badge">52+ hours required</span>
+                <div class="requirements-list" id="relationship-requirements">
+                    <ul>
+                        <li>Chemistry of Love Webinar</li>
+                        <li>Create Relationship Vision Webinar</li>
+                        <li>6+ months coaching with Joshua</li>
+                        <li>Relationship session demonstrated</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cert-card" onclick="selectCertification('trauma')">
+                <h3>Trauma Coaching Certificate</h3>
+                <p>Support clients through trauma-informed coaching</p>
+                <span class="hours-badge">66+ hours required</span>
+                <div class="requirements-list" id="trauma-requirements">
+                    <ul>
+                        <li>NSR Nervous System Programming Webinar</li>
+                        <li>Emotional Clearing Webinar</li>
+                        <li>6+ months coaching with Joshua</li>
+                        <li>3 Emotional clearing processes demonstrated</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <div class="form-section">
+                <h2 style="color: #2c3e50; margin-bottom: 20px;">Your Certification Submission</h2>
+                
+                <form id="certificationForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name as it should appear on certificate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="you@example.com">
+                    </div>
+
+                    <div class="form-group phone-input">
+                        <label for="phone">Phone Number *</label>
+                        <div class="country-code">+1</div>
+                        <input type="tel" id="phone" name="phone" required placeholder="(613) 211-9091" pattern="[0-9]{10}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="certificationType">Select Certification *</label>
+                        <select id="certificationType" name="certificationType" required>
+                            <option value="">-- Please select a certification --</option>
+                            <option value="NLP Coach Practitioner Certificate">NLP Coach Practitioner Certificate</option>
+                            <option value="Wellness Coaching Certificate">Wellness Coaching Certificate</option>
+                            <option value="Mindset Coaching Certificate">Mindset Coaching Certificate</option>
+                            <option value="Relationship Coaching Certificate">Relationship Coaching Certificate</option>
+                            <option value="Trauma Coaching Certificate">Trauma Coaching Certificate</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Program Completion Method *</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="method_live" name="completionMethod" value="Live Attendance">
+                                <label for="method_live">Attended programs live</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="method_recorded" name="completionMethod" value="Recorded Study">
+                                <label for="method_recorded">Studied recordings and applied teachings</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hoursCompleted">Total Hours Completed *</label>
+                        <input type="number" id="hoursCompleted" name="hoursCompleted" required min="40" max="200" placeholder="e.g., 52">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="completionDate">Approximate Completion Date *</label>
+                        <input type="date" id="completionDate" name="completionDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clientResults">Client Results & Case Studies *</label>
+                        <textarea id="clientResults" name="clientResults" required placeholder="Briefly describe 1-2 case studies or client results you've achieved using these methods (client details anonymized)..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="personalTransformation">Personal Transformation Story *</label>
+                        <textarea id="personalTransformation" name="personalTransformation" required placeholder="Share your personal transformation journey through this program..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="additionalNotes">Additional Notes</label>
+                        <textarea id="additionalNotes" name="additionalNotes" placeholder="Any other information you'd like to share..."></textarea>
+                    </div>
+
+                    <div class="form-group checkbox-item">
+                        <input type="checkbox" id="integrityPledge" name="integrityPledge" required>
+                        <label for="integrityPledge">I affirm that I have completed all required programs and hours through live attendance OR recorded study with full application. I understand that claiming unearned certifications violates professional ethics. *</label>
+                    </div>
+
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>Preparing your certification request...</p>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        Submit Certification Request
+                    </button>
+                </form>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="whatsapp-btn" onclick="sendWhatsAppDirect()">
+                        <span class="whatsapp-icon">📱</span>
+                        Need Help? Message on WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="confirmation" id="confirmation">
+            <h2>✅ Submission Successful!</h2>
+            <p>Your certification request has been submitted successfully.</p>
+            <p>A WhatsApp message has been sent to Joshua for immediate review.</p>
+            <p>Your certification will be prepared within 2-3 business days.</p>
+            <p>Check your email for confirmation and next steps.</p>
+            <button class="submit-btn" onclick="resetForm()" style="margin-top: 20px;">
+                Submit Another Certification
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let selectedCert = '';
+        
+        function selectCertification(type) {
+            // Remove selected class from all cards
+            document.querySelectorAll('.cert-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked card
+            event.currentTarget.classList.add('selected');
+            
+            // Hide all requirements lists
+            document.querySelectorAll('.requirements-list').forEach(list => {
+                list.style.display = 'none';
+            });
+            
+            // Show selected requirements
+            const reqList = document.getElementById(type + '-requirements');
+            if (reqList) {
+                reqList.style.display = 'block';
+            }
+            
+            // Set form value
+            selectedCert = type;
+            const certTypeSelect = document.getElementById('certificationType');
+            let certName = '';
+            
+            switch(type) {
+                case 'nlp':
+                    certName = 'NLP Coach Practitioner Certificate';
+                    break;
+                case 'wellness':
+                    certName = 'Wellness Coaching Certificate';
+                    break;
+                case 'mindset':
+                    certName = 'Mindset Coaching Certificate';
+                    break;
+                case 'relationship':
+                    certName = 'Relationship Coaching Certificate';
+                    break;
+                case 'trauma':
+                    certName = 'Trauma Coaching Certificate';
+                    break;
+            }
+            
+            certTypeSelect.value = certName;
+        }
+        
+        function formatWhatsAppMessage(formData) {
+            const timestamp = new Date().toLocaleString();
+            return `📋 *NEW CERTIFICATION REQUEST*\n\n` +
+                   `👤 *Name:* ${formData.fullName}\n` +
+                   `📧 *Email:* ${formData.email}\n` +
+                   `📱 *Phone:* +1${formData.phone}\n\n` +
+                   `🎓 *Certification:* ${formData.certificationType}\n` +
+                   `📅 *Completion Date:* ${formData.completionDate}\n` +
+                   `⏱️ *Hours Completed:* ${formData.hoursCompleted}\n` +
+                   `📚 *Method:* ${formData.completionMethod}\n\n` +
+                   `🏆 *Client Results:* ${formData.clientResults.substring(0, 100)}...\n\n` +
+                   `✨ *Personal Transformation:* ${formData.personalTransformation.substring(0, 100)}...\n\n` +
+                   `📝 *Additional Notes:* ${formData.additionalNotes || 'None'}\n\n` +
+                   `🕒 *Submitted:* ${timestamp}\n` +
+                   `🔗 *Action Required:* Prepare certification documents`;
+        }
+        
+        function sendToWhatsApp(message) {
+            const phoneNumber = "6132119091";
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/1${phoneNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp in new tab
+            window.open(whatsappUrl, '_blank');
+            
+            // Fallback: Try to open in same tab if popup blocked
+            setTimeout(() => {
+                window.location.href = whatsappUrl;
+            }, 1000);
+        }
+        
+        function sendWhatsAppDirect() {
+            const message = "Hi Joshua, I need assistance with my certification submission.";
+            sendToWhatsApp(message);
+        }
+        
+        document.getElementById('certificationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('submitBtn').style.display = 'none';
+            
+            // Get form data
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value.replace(/\D/g, ''),
+                certificationType: document.getElementById('certificationType').value,
+                completionMethod: Array.from(document.querySelectorAll('input[name="completionMethod"]:checked'))
+                    .map(cb => cb.value).join(', '),
+                hoursCompleted: document.getElementById('hoursCompleted').value,
+                completionDate: document.getElementById('completionDate').value,
+                clientResults: document.getElementById('clientResults').value,
+                personalTransformation: document.getElementById('personalTransformation').value,
+                additionalNotes: document.getElementById('additionalNotes').value
+            };
+            
+            // Validate phone number
+            if (formData.phone.length !== 10) {
+                alert('Please enter a valid 10-digit phone number');
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('submitBtn').style.display = 'block';
+                return;
+            }
+            
+            // Simulate processing delay
+            setTimeout(() => {
+                // Create WhatsApp message
+                const whatsappMessage = formatWhatsAppMessage(formData);
+                
+                // Send to WhatsApp
+                sendToWhatsApp(whatsappMessage);
+                
+                // Store submission locally (optional)
+                const submissions = JSON.parse(localStorage.getItem('certificationSubmissions') || '[]');
+                submissions.push({
+                    ...formData,
+                    timestamp: new Date().toISOString(),
+                    status: 'pending'
+                });
+                localStorage.setItem('certificationSubmissions', JSON.stringify(submissions));
+                
+                // Hide form and show confirmation
+                document.querySelector('.form-section').style.display = 'none';
+                document.getElementById('confirmation').style.display = 'block';
+                
+                // Send email notification (simulated - in production, use backend)
+                sendEmailNotification(formData);
+                
+            }, 2000);
+        });
+        
+        function sendEmailNotification(formData) {
+            // This would be replaced with actual email sending code
+            // For now, we'll just log it
+            console.log('Email would be sent to Joshua with:', {
+                to: 'joshua@example.com',
+                subject: `New Certification Request: ${formData.fullName}`,
+                body: formatWhatsAppMessage(formData).replace(/\*/g, '')
+            });
+        }
+        
+        function resetForm() {
+            // Reset the form
+            document.getElementById('certificationForm').reset();
+            document.querySelectorAll('.cert-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            document.querySelectorAll('.requirements-list').forEach(list => {
+                list.style.display = 'none';
+            });
+            
+            // Show form and hide confirmation
+            document.querySelector('.form-section').style.display = 'block';
+            document.getElementById('confirmation').style.display = 'none';
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('submitBtn').style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Set default date to today
+        document.getElementById('completionDate').valueAsDate = new Date();
+        
+        // Auto-select certification when chosen from dropdown
+        document.getElementById('certificationType').addEventListener('change', function(e) {
+            const value = e.target.value;
+            let certType = '';
+            
+            if (value.includes('NLP')) certType = 'nlp';
+            else if (value.includes('Wellness')) certType = 'wellness';
+            else if (value.includes('Mindset')) certType = 'mindset';
+            else if (value.includes('Relationship')) certType = 'relationship';
+            else if (value.includes('Trauma')) certType = 'trauma';
+            
+            if (certType) {
+                selectCertification(certType);
+            }
+        });
+        
+        // Initialize date picker max date as today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('completionDate').max = today;
+    </script>
+</body>
+</html>
