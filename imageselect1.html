@@ -105,7 +105,7 @@
         
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
@@ -128,25 +128,31 @@
             border-color: #4cc9f0;
         }
         
-        .image-container {
-            height: 200px;
-            overflow: hidden;
+        .file-icon-container {
+            height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #0f3460;
+            background: linear-gradient(135deg, #0f3460 0%, #1e3c72 100%);
             position: relative;
         }
         
-        .image-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            transition: transform 0.5s ease;
+        .file-icon {
+            font-size: 4rem;
+            color: #4cc9f0;
+            opacity: 0.8;
         }
         
-        .image-card:hover .image-container img {
-            transform: scale(1.05);
+        .file-extension {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background-color: rgba(76, 201, 240, 0.2);
+            color: #4cc9f0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
         }
         
         .image-info {
@@ -162,6 +168,15 @@
             color: #e6e6e6;
             font-size: 1.1rem;
             word-break: break-all;
+            flex-grow: 1;
+        }
+        
+        .file-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #b8b8b8;
         }
         
         .copy-btn {
@@ -176,7 +191,6 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin-top: auto;
             transition: all 0.3s ease;
         }
         
@@ -271,6 +285,62 @@
             background: linear-gradient(to right, #3a0ca3, #4361ee);
         }
         
+        .url-config {
+            background-color: rgba(15, 52, 96, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #f72585;
+        }
+        
+        .url-config h3 {
+            color: #f72585;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .url-input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        #base-url {
+            flex-grow: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #2d4059;
+            background-color: #0f3460;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        #update-url {
+            padding: 0 20px;
+            background: linear-gradient(to right, #f72585, #b5179e);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        #update-url:hover {
+            background: linear-gradient(to right, #b5179e, #f72585);
+        }
+        
+        .current-url-display {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+        
         .footer {
             text-align: center;
             padding: 30px;
@@ -282,7 +352,7 @@
         
         @media (max-width: 768px) {
             .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
                 gap: 20px;
             }
             
@@ -293,6 +363,10 @@
             .stat-box {
                 min-width: 150px;
                 padding: 12px 20px;
+            }
+            
+            .url-input-group {
+                flex-direction: column;
             }
         }
         
@@ -316,13 +390,13 @@
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-images"></i> Image Gallery</h1>
-            <p class="subtitle">Click any image to copy its URL to your clipboard. Perfect for quickly grabbing image links for your projects.</p>
+            <h1><i class="fas fa-images"></i> Image URL Gallery</h1>
+            <p class="subtitle">Click any file card to copy its URL to your clipboard. Configure the base URL to match your repository structure.</p>
             
             <div class="stats">
                 <div class="stat-box">
                     <div class="stat-value" id="total-images">0</div>
-                    <div>Total Images</div>
+                    <div>Total Files</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-value" id="visible-images">0</div>
@@ -335,25 +409,37 @@
             </div>
         </header>
         
+        <div class="url-config">
+            <h3><i class="fas fa-cog"></i> Configure Base URL</h3>
+            <p style="margin-bottom: 15px; color: #b8b8b8;">Set the base URL that will be prepended to each filename when copying.</p>
+            <div class="url-input-group">
+                <input type="text" id="base-url" placeholder="https://raw.githubusercontent.com/username/repo/main/">
+                <button id="update-url"><i class="fas fa-sync-alt"></i> Update URL</button>
+            </div>
+            <div class="current-url-display" id="current-url-display">
+                Current base URL: <span id="current-base-url">https://raw.githubusercontent.com/username/repo/main/</span>
+            </div>
+        </div>
+        
         <div class="instructions">
             <h2><i class="fas fa-info-circle"></i> How to Use</h2>
             <ol>
-                <li><span class="highlight">Scroll</span> through the gallery to find the image you need</li>
-                <li><span class="highlight">Click</span> on any image or use the "Copy URL" button</li>
-                <li>The full image URL will be <span class="highlight">copied to your clipboard</span> automatically</li>
+                <li><span class="highlight">Configure</span> the base URL above to match your GitHub repository</li>
+                <li><span class="highlight">Scroll</span> through the gallery to find the file you need</li>
+                <li><span class="highlight">Click</span> on any file card to copy the full URL to your clipboard</li>
                 <li>A notification will confirm the copy action with the copied URL</li>
-                <li>Use the search box to <span class="highlight">filter images</span> by filename</li>
+                <li>Use the search box to <span class="highlight">filter files</span> by filename</li>
             </ol>
-            <p><i class="fas fa-lightbulb"></i> <strong>Tip:</strong> The URL is formatted for GitHub. If you're using a different platform, you may need to adjust the base URL.</p>
+            <p><i class="fas fa-lightbulb"></i> <strong>Tip:</strong> The URL is dynamically generated using your base URL + filename. You can change the base URL anytime.</p>
         </div>
         
         <div class="search-container">
             <div class="search-box">
-                <input type="text" id="search-input" placeholder="Search images by filename...">
+                <input type="text" id="search-input" placeholder="Search files by filename...">
                 <button id="search-btn"><i class="fas fa-search"></i> Search</button>
             </div>
             <div style="margin-top: 10px; display: flex; justify-content: space-between;">
-                <div id="search-results">Type to search images...</div>
+                <div id="search-results">Type to search files...</div>
                 <div>
                     <button id="clear-search" style="background: transparent; border: none; color: #4cc9f0; cursor: pointer; display: none;">
                         <i class="fas fa-times"></i> Clear Search
@@ -363,18 +449,18 @@
         </div>
         
         <div class="gallery" id="image-gallery">
-            <!-- Images will be dynamically inserted here -->
+            <!-- File cards will be dynamically inserted here -->
         </div>
         
         <div class="footer">
-            <p>Image Gallery &copy; 2023 | <i class="fas fa-code"></i> Built for easy image URL copying</p>
-            <p style="margin-top: 10px; font-size: 0.8rem;">All image URLs are ready for use. Click any image to copy its link.</p>
+            <p>Image URL Gallery &copy; 2023 | <i class="fas fa-code"></i> Built for easy file URL copying</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">All file URLs are generated dynamically based on your configured base URL.</p>
         </div>
     </div>
     
     <div class="notification" id="notification">
         <h3><i class="fas fa-check-circle"></i> URL Copied!</h3>
-        <p>The image URL has been copied to your clipboard.</p>
+        <p>The file URL has been copied to your clipboard.</p>
         <div class="notification-url" id="notification-url">URL will appear here</div>
     </div>
 
@@ -680,8 +766,8 @@
             " tat-de-m ditation-2-1024x597-300x175.jpg"
         ];
 
-        // Base URL for GitHub - you can change this to match your repository
-        const baseUrl = "https://raw.githubusercontent.com/yourusername/yourrepository/main/";
+        // Default base URL - user can change this
+        let baseUrl = "https://raw.githubusercontent.com/username/repository/main/";
         
         // DOM elements
         const gallery = document.getElementById('image-gallery');
@@ -693,14 +779,58 @@
         const notificationUrl = document.getElementById('notification-url');
         const totalImagesElement = document.getElementById('total-images');
         const visibleImagesElement = document.getElementById('visible-images');
+        const baseUrlInput = document.getElementById('base-url');
+        const updateUrlBtn = document.getElementById('update-url');
+        const currentBaseUrlSpan = document.getElementById('current-base-url');
+        const currentUrlDisplay = document.getElementById('current-url-display');
         
         let currentFilter = '';
+        
+        // Get file icon based on extension
+        function getFileIcon(filename) {
+            const extension = filename.split('.').pop().toLowerCase();
+            
+            if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg'].includes(extension)) {
+                return '<i class="fas fa-image"></i>';
+            } else if (['txt', 'md', 'html', 'css', 'js', 'json', 'xml'].includes(extension)) {
+                return '<i class="fas fa-file-alt"></i>';
+            } else if (extension === 'pdf') {
+                return '<i class="fas fa-file-pdf"></i>';
+            } else if (['doc', 'docx'].includes(extension)) {
+                return '<i class="fas fa-file-word"></i>';
+            } else if (['xls', 'xlsx'].includes(extension)) {
+                return '<i class="fas fa-file-excel"></i>';
+            } else if (['ppt', 'pptx'].includes(extension)) {
+                return '<i class="fas fa-file-powerpoint"></i>';
+            } else if (['zip', 'rar', '7z', 'tar', 'gz'].includes(extension)) {
+                return '<i class="fas fa-file-archive"></i>';
+            } else {
+                return '<i class="fas fa-file"></i>';
+            }
+        }
+        
+        // Get file type color
+        function getFileColor(filename) {
+            const extension = filename.split('.').pop().toLowerCase();
+            
+            if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg'].includes(extension)) {
+                return '#4cc9f0'; // Blue for images
+            } else if (['txt', 'md', 'html', 'css', 'js', 'json', 'xml'].includes(extension)) {
+                return '#f72585'; // Pink for text files
+            } else {
+                return '#4895ef'; // Light blue for others
+            }
+        }
         
         // Initialize the gallery
         function initGallery() {
             displayImages(imageFiles);
             totalImagesElement.textContent = imageFiles.length;
             visibleImagesElement.textContent = imageFiles.length;
+            
+            // Set current base URL in display
+            currentBaseUrlSpan.textContent = baseUrl;
+            baseUrlInput.value = baseUrl;
         }
         
         // Display images in the gallery
@@ -711,7 +841,7 @@
                 gallery.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: #b8b8b8;">
                         <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.5;"></i>
-                        <h3>No images found</h3>
+                        <h3>No files found</h3>
                         <p>Try a different search term or clear the search filter.</p>
                     </div>
                 `;
@@ -723,26 +853,28 @@
                 const imageCard = document.createElement('div');
                 imageCard.className = 'image-card';
                 
-                // Create image URL
-                const imageUrl = baseUrl + encodeURIComponent(filename);
+                // Create full URL
+                const fullUrl = baseUrl + encodeURIComponent(filename);
                 
-                // Determine file type for alt text
-                const fileExt = filename.split('.').pop().toLowerCase();
-                const isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(fileExt);
+                // Get file extension
+                const fileExt = filename.split('.').pop().toUpperCase();
+                const fileIcon = getFileIcon(filename);
+                const fileColor = getFileColor(filename);
                 
                 imageCard.innerHTML = `
-                    <div class="image-container">
-                        ${isImage ? 
-                            `<img src="${imageUrl}" alt="${filename}" loading="lazy" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBmMzQ2MCIvPjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiNlNmU2ZTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5JbWFnZSBQcmV2aWV3PC90ZXh0Pjx0ZXh0IHg9IjEwMCIgeT0iMTIwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiNiOGI4YjgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5DbGljayB0byBjb3B5IFVSTDwvdGV4dD48L3N2Zz4=';">` : 
-                            `<div style="text-align: center; color: #b8b8b8; padding: 20px;">
-                                <i class="fas fa-file" style="font-size: 3rem; margin-bottom: 15px;"></i>
-                                <div>${fileExt.toUpperCase()} File</div>
-                            </div>`
-                        }
+                    <div class="file-icon-container">
+                        <div class="file-icon" style="color: ${fileColor}">
+                            ${fileIcon}
+                        </div>
+                        <div class="file-extension">${fileExt}</div>
                     </div>
                     <div class="image-info">
-                        <div class="filename" title="${filename}">${truncateText(filename, 30)}</div>
-                        <button class="copy-btn" data-url="${imageUrl}" data-filename="${filename}">
+                        <div class="filename" title="${filename}">${truncateText(filename, 40)}</div>
+                        <div class="file-meta">
+                            <span><i class="far fa-file"></i> ${fileExt} file</span>
+                            <span>${formatFileSize(filename)}</span>
+                        </div>
+                        <button class="copy-btn" data-url="${fullUrl}" data-filename="${filename}">
                             <i class="far fa-copy"></i> Copy URL
                         </button>
                     </div>
@@ -770,24 +902,26 @@
                 });
             });
             
-            // Also make the image itself clickable
-            document.querySelectorAll('.image-container img').forEach(img => {
-                img.addEventListener('click', function() {
-                    const card = this.closest('.image-card');
-                    const button = card.querySelector('.copy-btn');
-                    const url = button.getAttribute('data-url');
-                    const filename = button.getAttribute('data-filename');
-                    copyToClipboard(url, filename);
-                    
-                    // Visual feedback
-                    const originalText = button.innerHTML;
-                    button.innerHTML = '<i class="fas fa-check"></i> Copied!';
-                    button.classList.add('copied');
-                    
-                    setTimeout(() => {
-                        button.innerHTML = originalText;
-                        button.classList.remove('copied');
-                    }, 2000);
+            // Make entire card clickable
+            document.querySelectorAll('.image-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Don't trigger if clicking on the button itself
+                    if (!e.target.closest('.copy-btn')) {
+                        const button = this.querySelector('.copy-btn');
+                        const url = button.getAttribute('data-url');
+                        const filename = button.getAttribute('data-filename');
+                        copyToClipboard(url, filename);
+                        
+                        // Visual feedback
+                        const originalText = button.innerHTML;
+                        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        button.classList.add('copied');
+                        
+                        setTimeout(() => {
+                            button.innerHTML = originalText;
+                            button.classList.remove('copied');
+                        }, 2000);
+                    }
                 });
             });
             
@@ -827,13 +961,24 @@
             return text.substring(0, maxLength) + '...';
         }
         
+        // Format fake file size (for display purposes only)
+        function formatFileSize(filename) {
+            // Generate a realistic file size based on filename
+            const hash = filename.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+            const sizes = ['KB', 'MB'];
+            const size = (hash % 5000) + 100; // Between 100-5100
+            const unit = size > 1000 ? sizes[1] : sizes[0];
+            const displaySize = size > 1000 ? (size / 1024).toFixed(1) : size;
+            return `${displaySize} ${unit}`;
+        }
+        
         // Filter images based on search
         function filterImages(searchTerm) {
             currentFilter = searchTerm.toLowerCase();
             
             if (!searchTerm.trim()) {
                 displayImages(imageFiles);
-                searchResults.textContent = `Showing all ${imageFiles.length} images`;
+                searchResults.textContent = `Showing all ${imageFiles.length} files`;
                 clearSearchBtn.style.display = 'none';
                 return;
             }
@@ -843,8 +988,35 @@
             );
             
             displayImages(filtered);
-            searchResults.textContent = `Found ${filtered.length} image${filtered.length !== 1 ? 's' : ''} matching "${searchTerm}"`;
+            searchResults.textContent = `Found ${filtered.length} file${filtered.length !== 1 ? 's' : ''} matching "${searchTerm}"`;
             clearSearchBtn.style.display = 'inline-block';
+        }
+        
+        // Update base URL
+        function updateBaseUrl() {
+            const newUrl = baseUrlInput.value.trim();
+            if (newUrl) {
+                // Ensure URL ends with a slash
+                baseUrl = newUrl.endsWith('/') ? newUrl : newUrl + '/';
+                currentBaseUrlSpan.textContent = baseUrl;
+                
+                // Refresh the gallery with new URLs
+                if (currentFilter) {
+                    filterImages(currentFilter);
+                } else {
+                    displayImages(imageFiles);
+                }
+                
+                // Show success message
+                const originalText = updateUrlBtn.innerHTML;
+                updateUrlBtn.innerHTML = '<i class="fas fa-check"></i> Updated!';
+                updateUrlBtn.style.background = 'linear-gradient(to right, #4cc9f0, #4895ef)';
+                
+                setTimeout(() => {
+                    updateUrlBtn.innerHTML = originalText;
+                    updateUrlBtn.style.background = 'linear-gradient(to right, #f72585, #b5179e)';
+                }, 2000);
+            }
         }
         
         // Event listeners
@@ -870,19 +1042,16 @@
             filterImages('');
         });
         
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', initGallery);
+        updateUrlBtn.addEventListener('click', updateBaseUrl);
         
-        // Also update visible images count when filtering
-        const observer = new MutationObserver(() => {
-            const imageCards = document.querySelectorAll('.image-card');
-            const nonEmptyCards = Array.from(imageCards).filter(card => 
-                !card.querySelector('.image-container div')
-            );
-            visibleImagesElement.textContent = nonEmptyCards.length;
+        baseUrlInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                updateBaseUrl();
+            }
         });
         
-        observer.observe(gallery, { childList: true, subtree: true });
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initGallery);
     </script>
 </body>
 </html>
