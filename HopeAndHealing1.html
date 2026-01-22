@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 9: Making Amends | AccessWorld Seminars</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0f1a3d;
+            --secondary-blue: #1a2b5e;
+            --accent-gold: #d4af37;
+            --accent-silver: #c0c0c0;
+            --light-blue: #2d3b6b;
+            --text-light: #ffffff;
+            --text-gray: #e0e0e0;
+            --bg-dark: #050a1a;
+            --bg-light: #f8f9fa;
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --radius: 10px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-gray);
+            background-color: var(--bg-dark);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-gold);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .accent-text {
+            color: var(--accent-gold);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--accent-gold), #b8941f);
+            color: var(--primary-blue);
+            border: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, #e6c158, var(--accent-gold));
+        }
+        
+        /* Header & Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 26, 61, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .nav-logo img {
+            height: 50px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+        }
+        
+        .nav-logo span {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-silver));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a.active {
+            background: linear-gradient(135deg, var(--accent-gold), #b8941f);
+            color: var(--primary-blue);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Header */
+        .hero-header {
+            background: linear-gradient(rgba(5, 10, 26, 0.9), rgba(15, 26, 61, 0.8)), url('https://images.unsplash.com/photo-1519415711930-259d8c8ee7dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 180px 0 100px;
+            text-align: center;
+            margin-top: 70px;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-silver));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Cards and Content Sections */
+        .content-section {
+            padding: 80px 0;
+        }
+        
+        .content-card {
+            background: rgba(26, 43, 94, 0.5);
+            border-radius: var(--radius);
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: var(--transition);
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .content-card h3 {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .content-card h3 i {
+            font-size: 1.5rem;
+        }
+        
+        .quote-box {
+            background: rgba(15, 26, 61, 0.7);
+            border-left: 4px solid var(--accent-gold);
+            padding: 25px;
+            margin: 30px 0;
+            font-style: italic;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        
+        .highlight-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+        
+        .highlight-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .highlight-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .highlight-list li i {
+            color: var(--accent-gold);
+            margin-top: 5px;
+        }
+        
+        .story-card {
+            background: rgba(15, 26, 61, 0.5);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .story-card h4 {
+            color: var(--accent-gold);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .testimonial-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(26, 43, 94, 0.3));
+            border: 2px solid var(--accent-gold);
+            border-radius: var(--radius);
+            padding: 40px;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .testimonial-box:before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 6rem;
+            color: var(--accent-gold);
+            opacity: 0.3;
+            font-family: serif;
+        }
+        
+        .reflection-box {
+            background: rgba(15, 26, 61, 0.7);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin: 40px 0;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .reflection-box h4 {
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+        
+        .nav-button {
+            background: rgba(15, 26, 61, 0.7);
+            color: var(--text-light);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-button:hover {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #050a1a;
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-gold);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column p, .footer-column a {
+            color: var(--text-gray);
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--accent-silver);
+            font-size: 0.9rem;
+        }
+        
+        /* Animation on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .content-card {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 15px;
+                top: 15px;
+            }
+            
+            .hero-header {
+                padding: 150px 0 80px;
+                margin-top: 130px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .content-card {
+                padding: 25px;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-button {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content-card {
+                padding: 20px;
+            }
+            
+            .testimonial-box {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="nav-logo">
+            <img src="https://github.com/accessworldseminars-ship-it/results/blob/2fcfdae671b699ec0b578911336fcc3ffc346532/worldjjpgsf.png?raw=true" alt="AccessWorld Logo">
+            <span>ACCESSWORLD</span>
+        </div>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="https://accessworldseminars-ship-it.github.io/results/">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/BecomeACoach">
+                <i class="fas fa-graduation-cap"></i> Coach Academy
+            </a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/Bio">
+                <i class="fas fa-user"></i> Biography
+            </a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/offers">
+                <i class="fas fa-tags"></i> Programs & Offers
+            </a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/webinars">
+                <i class="fas fa-video"></i> Webinars
+            </a>
+            <a href="https://form.jotform.com/250184868189875" target="_blank" style="background: linear-gradient(135deg, var(--accent-gold), #b8941f); color: var(--primary-blue);">
+                <i class="fas fa-calendar-check"></i> Free Session
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <section class="hero-header">
+        <div class="hero-content fade-in">
+            <h1>Step 9: The Courage to Make Things Right</h1>
+            <p style="font-size: 1.3rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                A Practical Guide to Healing Relationships Through Direct Restitution
+            </p>
+            <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
+                We often carry the weight of past mistakes like invisible backpacks filled with stones. Step 9 isn't about continuing to carry that weight; it's about learning how to put those stones down, one by one.
+            </p>
+            <a href="#content" class="btn" style="margin-top: 40px;">
+                <i class="fas fa-book-open"></i> Explore the Guide
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section" id="content">
+        <div class="container">
+            <!-- Book Chapter Content -->
+            <div class="section-title fade-in">
+                <h2>Book Chapter: <span class="accent-text">The Courage to Make Things Right</span></h2>
+                <p style="font-size: 1.1rem; color: var(--text-gray); max-width: 700px; margin: 20px auto;">
+                    From live coaching session transcript to transformational book content
+                </p>
+            </div>
+
+            <div class="content-card fade-in">
+                <h3><i class="fas fa-hands-helping"></i> The Foundation of Making Amends</h3>
+                <p>Technical perfection isn't the goal in recovery—I learned this firsthand when dealing with microphone issues during our sessions. We use OBS Studio for higher quality recordings because Zoom's default quality simply doesn't capture the nuance needed for this work. But here's what matters more than perfect audio: showing up authentically and doing the work.</p>
+                
+                <p>Step 9 requires making direct restitution to all persons we have harmed, wherever possible. This isn't a theoretical exercise; it's practical, boots-on-the-ground relationship repair. Like the repentant sons of Mosiah in scripture, we must seek forgiveness with genuine humility.</p>
+                
+                <div class="quote-box">
+                    <strong>Key Principle:</strong> Making amends should never be impulsive or careless. This isn't about clearing your conscience at someone else's expense. It's about prayerfully considering when and how to approach each person, often consulting with sponsors or trusted advisors who can provide perspective you might lack in your eagerness to make things right.
+                </div>
+            </div>
+
+            <div class="content-card fade-in">
+                <h3><i class="fas fa-map-signs"></i> Navigating Practical Realities</h3>
+                
+                <div class="highlight-list">
+                    <li>
+                        <i class="fas fa-handshake"></i>
+                        <div>
+                            <strong>When Direct Contact Is Possible:</strong> Face-to-face meetings are recommended whenever feasible. There's something powerful about looking someone in the eyes, without the buffer of technology, and saying, "I was wrong, and I'm sorry." This approach respects the gravity of what you're attempting to repair.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-pen-fancy"></i>
+                        <div>
+                            <strong>When Direct Contact Isn't Possible:</strong> Legal restrictions may prevent meeting with some people. Others may have moved, passed away, or made it clear they don't want contact. In these cases, we explore indirect amends—writing letters we never send, helping someone who reminds us of that person, or making charitable donations in their name.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-balance-scale"></i>
+                        <div>
+                            <strong>The Exception Rule:</strong> Certain serious matters—theft, abuse, or actions with potential legal repercussions—require ecclesiastical or professional counsel before taking action. Your sponsor isn't a substitute for legal advice when actual crimes are involved.
+                        </div>
+                    </li>
+                </div>
+            </div>
+
+            <div class="content-card fade-in">
+                <h3><i class="fas fa-heart"></i> The Living Amend</h3>
+                <p>Perhaps the most powerful form of restitution is what I call "the living amend." This involves adopting recovery principles into your daily life so thoroughly that everyone around you is blessed by your transformation. It's the amend you make not through a single conversation, but through who you become.</p>
+                
+                <p>I once made an insensitive comment to a widow about dating—a thoughtless remark that damaged our relationship for two years despite my immediate apology. The words hung between us like a wall. Sometimes, even sincere apologies don't immediately heal what's been broken. People choose whether to be offended, and our job is to focus on our own actions rather than their reactions.</p>
+            </div>
+
+            <!-- Webinar Review -->
+            <div class="section-title fade-in" style="margin-top: 80px;">
+                <h2>Webinar <span class="accent-text">Review & Highlights</span></h2>
+                <p style="font-size: 1.1rem; color: var(--text-gray); max-width: 700px; margin: 20px auto;">
+                    Key insights from the live teaching session
+                </p>
+            </div>
+
+            <div class="content-card fade-in">
+                <h3><i class="fas fa-chalkboard-teacher"></i> Session Overview</h3>
+                <p>This lesson provided a practical, grounded guide to implementing Step 9 of recovery programs: making direct amends to those we've harmed. Moving beyond theory, we explored the nuanced realities of when to approach people, how to prepare spiritually and practically, and what to do when direct contact isn't possible.</p>
+                
+                <div class="highlight-list">
+                    <li><i class="fas fa-check-circle"></i> <strong>Preparation Over Impulse:</strong> Making amends should never be impulsive or careless.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Direct vs. Indirect Amends:</strong> Face-to-face meetings are ideal when possible.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>The Living Amend:</strong> The most powerful restitution often comes from adopting recovery principles into daily life.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Serious Matters Need Professional Guidance:</strong> Theft, abuse, or actions with legal implications require proper counsel.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Focus on Your Actions, Not Their Reaction:</strong> A sincere apology addresses your behavior without expectation of forgiveness.</li>
+                </div>
+            </div>
+
+            <!-- Client Testimonial -->
+            <div class="section-title fade-in" style="margin-top: 80px;">
+                <h2>Client <span class="accent-text">Testimonial</span></h2>
+                <p style="font-size: 1.1rem; color: var(--text-gray); max-width: 700px; margin: 20px auto;">
+                    Real transformation through applying Step 9 principles
+                </p>
+            </div>
+
+            <div class="testimonial-box fade-in">
+                <h3 style="color: var(--accent-gold); margin-bottom: 25px;">From Burdened to Transformed</h3>
+                
+                <div style="margin-bottom: 30px;">
+                    <h4 style="color: var(--accent-gold); margin-bottom: 10px;">Before:</h4>
+                    <p>"I was carrying this incident with me for two years—this thoughtless comment I made to a widow about dating. I had apologized immediately, but the damage was done. Our relationship was strained, and I could feel this wall between us every time we were at church together..."</p>
+                </div>
+                
+                <div style="margin-bottom: 30px;">
+                    <h4 style="color: var(--accent-gold); margin-bottom: 10px;">What I Learned / Applied:</h4>
+                    <p>"I learned about the difference between an immediate apology and a thoughtful amend. I understood that making amends shouldn't be impulsive—it requires prayerful consideration and sometimes waiting for the right timing..."</p>
+                </div>
+                
+                <div>
+                    <h4 style="color: var(--accent-gold); margin-bottom: 10px;">Results:</h4>
+                    <p>"I made the decision to approach the woman at church I had offended to apologize again, but this time with proper preparation and prayer. More importantly, I recommitted to my marriage despite my wife's chronic illness..."</p>
+                </div>
+                
+                <div class="quote-box" style="margin-top: 30px; background: rgba(15, 26, 61, 0.5);">
+                    <strong>Pull Quote:</strong> "I learned that making amends isn't about clearing your conscience—it's about changing your behavior. The living amend, where you transform your daily actions, has been more powerful than any single conversation."
+                </div>
+            </div>
+
+            <!-- Stories Section -->
+            <div class="section-title fade-in" style="margin-top: 80px;">
+                <h2>Personal <span class="accent-text">Stories</span></h2>
+                <p style="font-size: 1.1rem; color: var(--text-gray); max-width: 700px; margin: 20px auto;">
+                    Real-life examples and lessons learned
+                </p>
+            </div>
+
+            <div class="story-card fade-in">
+                <h4><i class="fas fa-comment"></i> Story 1: The Two-Year Wall</h4>
+                <p><strong>The Story:</strong> I described an incident where I made an insensitive comment to a widow about dating. Just threw it out there without thinking. I apologized right away, I mean immediately, but the damage was done. For two years, there was this strain between us. We'd see each other at church and there was this... wall. You could feel it.</p>
+                <p><strong>The Point:</strong> Sometimes apologies don't immediately heal what's been broken. Words can create lasting damage even when we didn't mean them to.</p>
+                <p><strong>Lesson Learned:</strong> An immediate apology is good, but some situations require more—they require what Step 9 calls "direct restitution" when the time is right.</p>
+            </div>
+
+            <div class="story-card fade-in">
+                <h4><i class="fas fa-heartbeat"></i> Story 2: The Marriage Decision</h4>
+                <p><strong>The Story:</strong> Right now I'm carrying some heavy stuff. There's a $7,500 legal bill hanging over me. And my wife—she's got serious health conditions. She needs regular hospital treatments for immune system deficiency. It's chronic. Three weeks ago, I actually considered leaving my marriage.</p>
+                <p><strong>The Point:</strong> Recovery and growth happen within real constraints, not in some fantasy life without problems.</p>
+                <p><strong>Lesson Learned:</strong> Commitment isn't about staying only when it's easy. It's about deciding to build something beautiful within the actual constraints you have.</p>
+            </div>
+
+            <!-- Reflection Questions -->
+            <div class="reflection-box fade-in">
+                <h4><i class="fas fa-brain"></i> Reflection Questions</h4>
+                <ol style="padding-left: 20px; margin-top: 15px;">
+                    <li style="margin-bottom: 15px;">Who comes to mind when you consider making direct amends? What feels possible, and what feels daunting about that conversation?</li>
+                    <li style="margin-bottom: 15px;">Where might you need to make "living amends"—changing your daily behavior rather than having a single conversation?</li>
+                    <li style="margin-bottom: 15px;">Is there someone you've apologized to where the relationship still feels strained? What might "praying for their availability" look like in that situation?</li>
+                    <li>What burdens are you carrying right now that might be making it harder to show up fully in your relationships? How can you acknowledge those burdens without letting them become excuses?</li>
+                </ol>
+            </div>
+
+            <!-- Suggested Application -->
+            <div class="content-card fade-in">
+                <h3><i class="fas fa-tasks"></i> Suggested Application</h3>
+                <p>Put these principles into practice with these actionable steps:</p>
+                
+                <div class="highlight-list">
+                    <li><i class="fas fa-list"></i> <strong>Create Your List:</strong> Write down everyone you've harmed, starting with those where amends feel most urgent.</li>
+                    <li><i class="fas fa-pray"></i> <strong>Prayerful Preparation:</strong> For each person, spend time in prayer asking for guidance about timing and approach.</li>
+                    <li><i class="fas fa-filter"></i> <strong>Categorize:</strong> Note which amends can be made directly, which need indirect approaches, and which require professional guidance.</li>
+                    <li><i class="fas fa-user-check"></i> <strong>Start with the Living Amend:</strong> Identify one behavior pattern you can change this week.</li>
+                    <li><i class="fas fa-calendar-alt"></i> <strong>Schedule First Steps:</strong> Choose one person from your list and set a realistic timeframe.</li>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Buttons -->
+    <div class="container">
+        <div class="nav-buttons">
+            <a href="https://accessworldseminars-ship-it.github.io/results/" class="nav-button">
+                <i class="fas fa-home"></i> Return to Home
+            </a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/webinars" class="nav-button">
+                <i class="fas fa-video"></i> View All Webinars
+            </a>
+            <a href="https://form.jotform.com/250184868189875" target="_blank" class="nav-button">
+                <i class="fas fa-calendar-check"></i> Book Free Session
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Step 9 Resources</h3>
+                    <p>"Transforming Relationships Through Courageous Action"</p>
+                    <p>A comprehensive guide to making amends, healing relationships, and finding freedom through direct restitution and living amends.</p>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/@joshuaroybosse" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/joshua_roy9/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/accessworld-seminars-3508a0296/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.tiktok.com/@accessworldseminars" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Navigation</h3>
+                    <a href="https://accessworldseminars-ship-it.github.io/results/">Home Page</a>
+                    <a href="https://accessworldseminars-ship-it.github.io/results/webinars">All Webinars</a>
+                    <a href="https://accessworldseminars-ship-it.github.io/results/offers">Programs & Offers</a>
+                    <a href="https://accessworldseminars-ship-it.github.io/results/BecomeACoach">Coach Academy</a>
+                    <a href="https://accessworldseminars-ship-it.github.io/results/Bio">Biography</a>
+                    <a href="https://form.jotform.com/250184868189875" target="_blank">Free Strategy Session</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Information</h3>
+                    <p>
+                        <i class="fas fa-envelope accent-text"></i>
+                        <a href="mailto:accessworldseminars@gmail.com?subject=Step%209%20Inquiry" style="color: var(--accent-gold);">
+                            info@accessworld.com
+                        </a>
+                    </p>
+                    <p>
+                        <i class="fab fa-whatsapp accent-text"></i>
+                        <a href="https://wa.me/61432119091" style="color: var(--accent-gold);" target="_blank">
+                            +61 432 119 091 (WhatsApp)
+                        </a>
+                    </p>
+                    <p><i class="fas fa-map-marker-alt accent-text"></i> Global Online Program</p>
+                    <p>Live and recorded webinar access via secure platform</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 AccessWorld Seminars. All Rights Reserved. | Session Date: January 22, 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Fade-in on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        // Initial check
+        fadeInOnScroll();
+        // Check on scroll
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
