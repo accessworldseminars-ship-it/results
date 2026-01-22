@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>All Images - Click to Copy URL</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f4f4f4;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+  .image-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+  .image-box:hover {
+    transform: scale(1.05);
+  }
+  .image-box img {
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 5px;
+    border-radius: 4px;
+  }
+  .image-box span {
+    font-size: 12px;
+    word-break: break-all;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h1>Click on any image to copy its URL</h1>
+
+<div class="gallery">
+  <!-- Start of images -->
+  <div class="image-box" onclick="copyURL('https://accessworldseminars-ship-it.github.io/results/images/11234868_10153431819884785_4437693635371559356_n (1).jpg')">
+    <img src="https://accessworldseminars-ship-it.github.io/results/images/11234868_10153431819884785_4437693635371559356_n (1).jpg" alt="">
+    <span>11234868_10153431819884785_4437693635371559356_n (1).jpg</span>
+  </div>
+
+  <div class="image-box" onclick="copyURL('https://accessworldseminars-ship-it.github.io/results/images/1441219_180575765478843_186275728_n.jpg')">
+    <img src="https://accessworldseminars-ship-it.github.io/results/images/1441219_180575765478843_186275728_n.jpg" alt="">
+    <span>1441219_180575765478843_186275728_n.jpg</span>
+  </div>
+
+  <div class="image-box" onclick="copyURL('https://accessworldseminars-ship-it.github.io/results/images/156-4.jpg')">
+    <img src="https://accessworldseminars-ship-it.github.io/results/images/156-4.jpg" alt="">
+    <span>156-4.jpg</span>
+  </div>
+
+  <!-- Repeat above block for all your images -->
+  <!-- End of images -->
+</div>
+
+<script>
+function copyURL(url) {
+  navigator.clipboard.writeText(url).then(() => {
+    alert("Copied URL to clipboard:\n" + url);
+  }).catch(err => {
+    alert("Failed to copy: " + err);
+  });
+}
+</script>
+
+</body>
+</html>
