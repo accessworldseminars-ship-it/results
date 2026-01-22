@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Become a World Class Coach | AccessWorld Seminars</title>
+    <title>Unlock Your Incredible Self | AccessWorld Coaching</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -185,7 +185,7 @@
         
         /* Hero Header */
         .hero-header {
-            background: linear-gradient(rgba(5, 10, 26, 0.9), rgba(15, 26, 61, 0.8)), url('https://accessworldseminars-ship-it.github.io/results/images/excited-businessman-14423537-257x300.jpg');
+            background: linear-gradient(rgba(5, 10, 26, 0.9), rgba(15, 26, 61, 0.8)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             padding: 180px 0 100px;
@@ -268,6 +268,108 @@
             margin-bottom: 20px;
         }
         
+        /* Training Paths Section */
+        .training-paths {
+            background: rgba(15, 26, 61, 0.3);
+        }
+        
+        .paths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .path-card {
+            background: rgba(26, 43, 94, 0.6);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: var(--transition);
+        }
+        
+        .path-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        .path-header {
+            background: rgba(212, 175, 55, 0.2);
+            padding: 25px;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+        
+        .path-header h3 {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+        
+        .path-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .path-content {
+            padding: 30px;
+        }
+        
+        .path-features {
+            margin: 25px 0;
+        }
+        
+        .path-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        
+        .path-feature i {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
+        
+        /* Training Modules */
+        .training-modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .module-card {
+            background: rgba(15, 26, 61, 0.7);
+            padding: 25px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--accent-gold);
+            transition: var(--transition);
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .module-card h4 {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
         /* Live Training Section */
         .live-training-section {
             background: rgba(15, 26, 61, 0.3);
@@ -328,14 +430,6 @@
             background: linear-gradient(to right, var(--accent-gold), var(--accent-silver));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-        
-        .action-section p {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
         }
         
         /* Benefits Grid */
@@ -534,6 +628,10 @@
                 gap: 40px;
             }
             
+            .paths-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .profile-photo {
                 width: 200px;
                 height: 200px;
@@ -626,6 +724,10 @@
             .action-section h2 {
                 font-size: 1.8rem;
             }
+            
+            .path-badge {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -646,6 +748,9 @@
                 <i class="fas fa-home"></i> Home
             </a>
             <a href="https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808" class="active">
+                <i class="fas fa-unlock"></i> Unlock Your Self
+            </a>
+            <a href="https://www.accessworldseminars.org/the-perfect-squeeze-page--45e9d">
                 <i class="fas fa-graduation-cap"></i> Become a Coach
             </a>
             <a href="https://accessworldseminars-ship-it.github.io/results/Bio">
@@ -675,9 +780,9 @@
     <!-- Hero Header -->
     <section class="hero-header">
         <div class="hero-content fade-in">
-            <h1>Become a World-Class Coach</h1>
+            <h1>Unlock Your Incredible Self</h1>
             <p style="font-size: 1.3rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
-                Transform Your Passion Into a Profession & Help Others Access Their World
+                Begin Your Personal Healing Journey & Transform Your Life
             </p>
             
             <div class="coach-profile">
@@ -685,19 +790,135 @@
                      alt="Joshua Roy" class="profile-photo">
                 <div class="profile-info">
                     <div class="profile-name">Joshua Roy</div>
-                    <div class="profile-title">Master Coach & Certification Trainer</div>
-                    <p style="margin-top: 10px; color: var(--text-gray);">23+ Years Coaching Experience</p>
+                    <div class="profile-title">Your Personal Transformation Guide</div>
+                    <p style="margin-top: 10px; color: var(--text-gray);">23+ Years Helping People Transform</p>
                 </div>
             </div>
             
             <p style="font-size: 1.1rem; max-width: 800px; margin: 30px auto;">
-                Join our exclusive Coach Certification Program and learn the exact systems, psychology, 
-                and results-driven frameworks used to transform thousands of lives worldwide.
+                Discover the tools, techniques, and guidance to release emotional blocks, heal past wounds, 
+                and step into the most empowered version of yourself. Your journey to emotional freedom starts here.
             </p>
             
             <a href="https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808" class="btn" style="margin-top: 20px;">
-                <i class="fas fa-graduation-cap"></i> Start Your Coaching Journey
+                <i class="fas fa-unlock-alt"></i> Start Your Transformation
             </a>
+        </div>
+    </section>
+
+    <!-- Training Paths Section -->
+    <section class="section training-paths">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Choose Your <span class="accent-text">Transformation Path</span></h2>
+                <p style="color: var(--text-gray);">Two Powerful Ways to Begin Your Journey</p>
+            </div>
+            
+            <div class="paths-grid fade-in">
+                <!-- Path 1: Unlock Your Incredible Self -->
+                <div class="path-card">
+                    <div class="path-header">
+                        <div class="path-badge">PERSONAL TRANSFORMATION</div>
+                        <h3>Unlock Your Incredible Self</h3>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">For those seeking personal healing and growth</p>
+                    </div>
+                    <div class="path-content">
+                        <p style="margin-bottom: 20px;">Begin your personal healing journey with our signature self-transformation program. Designed for individuals ready to release emotional baggage and step into their power.</p>
+                        
+                        <div class="path-features">
+                            <div class="path-feature">
+                                <i class="fas fa-heart"></i>
+                                <div>
+                                    <h4 style="margin: 0; font-size: 1rem;">Emotional Healing</h4>
+                                    <p style="margin: 0; font-size: 0.9rem;">Release trauma, anxiety, and limiting beliefs</p>
+                                </div>
+                            </div>
+                            
+                            <div class="path-feature">
+                                <i class="fas fa-brain"></i>
+                                <div>
+                                    <h4 style="margin: 0; font-size: 1rem;">Mindset Transformation</h4>
+                                    <p style="margin: 0; font-size: 0.9rem;">Rewrite your internal programming</p>
+                                </div>
+                            </div>
+                            
+                            <div class="path-feature">
+                                <i class="fas fa-tools"></i>
+                                <div>
+                                    <h4 style="margin: 0; font-size: 1rem;">Practical Life Skills</h4>
+                                    <p style="margin: 0; font-size: 0.9rem;">Tools for everyday emotional management</p>
+                                </div>
+                            </div>
+                            
+                            <div class="path-feature">
+                                <i class="fas fa-check"></i>
+                                <div>
+                                    <h4 style="margin: 0; font-size: 1rem;">Free Introduction Sessions</h4>
+                                    <p style="margin: 0; font-size: 0.9rem;">Experience the transformation first</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 30px;">
+                            <a href="https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808" class="btn" style="width: 100%;">
+                                <i class="fas fa-unlock-alt"></i> Start Personal Transformation
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Path 2: Become a World Class Coach -->
+                <div class="path-card">
+                    <div class="path-header">
+                        <div class="path-badge">PROFESSIONAL CERTIFICATION</div>
+                        <h3>Become a World-Class Coach</h3>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">For those wanting to transform others professionally</p>
+                    </div>
+                    <div class="path-content">
+                        <p style="margin-bottom: 20px;">Certify to transform others professionally with our comprehensive coach training program. Learn the exact systems and frameworks used to transform thousands of lives.</p>
+                        
+                        <div class="path-features">
+                            <div class="path-feature">
+                                <i class="fas fa-certificate"></i>
+                                <div>
+                                    <h4 style="margin: 0; font-size: 1rem;">Coaching Certification</h4>
+                                    <p style="margin: 0; font-size: 0.9rem;">Internationally recognized credentials</p>
+                                </div>
+                            </div>
+                            
+                            <div class="path-feature">
+                                <i class="fas fa-briefcase"></i>
+                                <div>
+                                    <h4 style="margin: 0; font-size: 1rem;">Business Development</h4>
+                                    <p style="margin: 0; font-size: 0.9rem;">Build and scale your coaching practice</p>
+                                </div>
+                            </div>
+                            
+                            <div class="path-feature">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div>
+                                    <h4 style="margin: 0; font-size: 1rem;">NLP & Methodology Training</h4>
+                                    <p style="margin: 0; font-size: 0.9rem;">Master advanced coaching techniques</p>
+                                </div>
+                            </div>
+                            
+                            <div class="path-feature">
+                                <i class="fas fa-users"></i>
+                                <div>
+                                    <h4 style="margin: 0; font-size: 1rem;">Ongoing Mentorship</h4>
+                                    <p style="margin: 0; font-size: 0.9rem;">Continued guidance from Joshua Roy</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 30px;">
+                            <a href="https://www.accessworldseminars.org/the-perfect-squeeze-page--45e9d" class="btn" style="width: 100%;">
+                                <i class="fas fa-graduation-cap"></i> Start Coach Training
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -719,8 +940,8 @@
                 <div>
                     <h3 style="color: var(--accent-gold); margin-bottom: 20px;">Continuous Growth & Mastery</h3>
                     <p style="font-size: 1.1rem; margin-bottom: 25px;">
-                        Our certification isn't a one-time course. You'll receive <strong>live NLP training sessions every month</strong> 
-                        as part of your ongoing skill development journey.
+                        Whether you choose personal transformation or professional certification, you'll receive 
+                        <strong>live NLP training sessions every month</strong> as part of your ongoing development journey.
                     </p>
                     
                     <div class="training-features">
@@ -736,7 +957,7 @@
                             <i class="fas fa-hands-helping"></i>
                             <div>
                                 <h4 style="margin-bottom: 5px;">Practical Application</h4>
-                                <p>Real-time coaching practice and feedback</p>
+                                <p>Real-time practice and personalized feedback</p>
                             </div>
                         </div>
                         
@@ -744,7 +965,7 @@
                             <i class="fas fa-brain"></i>
                             <div>
                                 <h4 style="margin-bottom: 5px;">Advanced Techniques</h4>
-                                <p>Latest NLP, NSR, and coaching methodologies</p>
+                                <p>Latest NLP, NSR, and transformation methodologies</p>
                             </div>
                         </div>
                         
@@ -752,62 +973,109 @@
                             <i class="fas fa-users"></i>
                             <div>
                                 <h4 style="margin-bottom: 5px;">Community Support</h4>
-                                <p>Connect with fellow coaches-in-training</p>
+                                <p>Connect with fellow transformation seekers</p>
                             </div>
                         </div>
                     </div>
                     
-                    <a href="https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808" class="btn" style="margin-top: 30px;">
-                        <i class="fas fa-play-circle"></i> Join Next Live Session
-                    </a>
+                    <div style="display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap;">
+                        <a href="https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808" class="btn">
+                            <i class="fas fa-unlock-alt"></i> Join Personal Training
+                        </a>
+                        <a href="https://www.accessworldseminars.org/the-perfect-squeeze-page--45e9d" class="btn" style="background: rgba(15, 26, 61, 0.8); border: 2px solid var(--accent-gold); color: var(--accent-gold);">
+                            <i class="fas fa-graduation-cap"></i> Join Professional Training
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Modules Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>What You'll <span class="accent-text">Learn</span></h2>
+                <p style="color: var(--text-gray);">Comprehensive Training Modules for Complete Transformation</p>
+            </div>
+            
+            <div class="training-modules fade-in">
+                <div class="module-card">
+                    <h4><i class="fas fa-brain"></i> Nervous System Reprogramming (NSR)</h4>
+                    <p>Release trapped emotions, heal the inner child, break cycles, overcome fear and anxiety, develop calm confidence.</p>
+                </div>
+                
+                <div class="module-card">
+                    <h4><i class="fas fa-language"></i> NLP Foundations</h4>
+                    <p>Language, anchoring, state management, belief change, reframing, identity and behavior alignment.</p>
+                </div>
+                
+                <div class="module-card">
+                    <h4><i class="fas fa-heart"></i> Emotional Mastery</h4>
+                    <p>Process and release emotional baggage, develop emotional intelligence, create healthy emotional responses.</p>
+                </div>
+                
+                <div class="module-card">
+                    <h4><i class="fas fa-star"></i> Values & Motivation</h4>
+                    <p>Resolve values conflicts, align vision and behavior, create effortless motivation, build momentum.</p>
+                </div>
+                
+                <div class="module-card">
+                    <h4><i class="fas fa-user-shield"></i> Beliefs & Identity</h4>
+                    <p>Install new beliefs, expand possibility, become your future self, shift subconscious limitations.</p>
+                </div>
+                
+                <div class="module-card">
+                    <h4><i class="fas fa-tools"></i> Practical Application</h4>
+                    <p>Real-world tools and techniques for immediate application in daily life and coaching practice.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Benefits Section -->
-    <section class="section">
+    <section class="section" style="background: rgba(15, 26, 61, 0.3);">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>Coaching <span class="accent-text">Benefits</span></h2>
-                <p style="color: var(--text-gray);">Why Become a Certified AccessWorld Coach</p>
+                <h2>Transformation <span class="accent-text">Benefits</span></h2>
+                <p style="color: var(--text-gray);">What You'll Achieve Through This Journey</p>
             </div>
             
             <div class="benefits-grid fade-in">
                 <div class="benefit-card">
-                    <i class="fas fa-certificate"></i>
-                    <h3>International Certification</h3>
-                    <p>Globally recognized coach certification with lifetime validity</p>
+                    <i class="fas fa-heart"></i>
+                    <h3>Emotional Freedom</h3>
+                    <p>Release past trauma and emotional baggage holding you back</p>
                 </div>
                 
                 <div class="benefit-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Business Development</h3>
-                    <p>Learn to build and scale your coaching practice successfully</p>
+                    <i class="fas fa-brain"></i>
+                    <h3>Mental Clarity</h3>
+                    <p>Clear mental fog and gain focus on what truly matters</p>
                 </div>
                 
                 <div class="benefit-card">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>Master Methodology</h3>
-                    <p>AccessWorld's proven NSR and NLP frameworks</p>
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Inner Confidence</h3>
+                    <p>Build unshakeable self-confidence from within</p>
                 </div>
                 
                 <div class="benefit-card">
-                    <i class="fas fa-handshake"></i>
-                    <h3>Ongoing Mentorship</h3>
-                    <p>Continued guidance from Joshua Roy and senior coaches</p>
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Life Balance</h3>
+                    <p>Create harmony across all areas of your life</p>
                 </div>
                 
                 <div class="benefit-card">
-                    <i class="fas fa-users"></i>
-                    <h3>Global Community</h3>
-                    <p>Join our network of certified coaches worldwide</p>
+                    <i class="fas fa-rocket"></i>
+                    <h3>Personal Power</h3>
+                    <p>Step into your true power and potential</p>
                 </div>
                 
                 <div class="benefit-card">
-                    <i class="fas fa-tools"></i>
-                    <h3>Complete Toolbox</h3>
-                    <p>All assessments, scripts, and coaching materials provided</p>
+                    <i class="fas fa-hand-peace"></i>
+                    <h3>Inner Peace</h3>
+                    <p>Cultivate lasting peace and contentment</p>
                 </div>
             </div>
         </div>
@@ -818,11 +1086,13 @@
         <div class="container">
             <div class="action-overlay fade-in">
                 <h2>IT'S TIME FOR YOU TO MOVE!</h2>
-                <p>Just like this determined athlete ready to start the race, your coaching journey is waiting for you to take that first step. The starting line is here, and the path to becoming a world-class coach is clear.</p>
+                <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    Just like this determined athlete ready to start the race, your transformation journey is waiting for you to take that first step. The starting line is here, and the path to becoming your incredible self is clear.
+                </p>
                 
                 <div class="cta-buttons">
                     <a href="https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808" class="btn" style="font-size: 1.1rem; padding: 18px 40px;">
-                        <i class="fas fa-running"></i> Start Your Race Now
+                        <i class="fas fa-running"></i> Start Your Transformation Now
                     </a>
                     <a href="https://form.jotform.com/250184868189875" class="btn" style="font-size: 1.1rem; padding: 18px 40px; background: rgba(15, 26, 61, 0.8); border: 2px solid var(--accent-gold); color: var(--accent-gold);">
                         <i class="fas fa-phone-alt"></i> Free Strategy Call
@@ -836,20 +1106,26 @@
     <section class="cta-section">
         <div class="container">
             <div class="cta-content fade-in">
-                <h2 style="color: var(--accent-gold); margin-bottom: 30px;">Your Coaching Future Starts Here</h2>
+                <h2 style="color: var(--accent-gold); margin-bottom: 30px;">Your Transformation Journey Starts Here</h2>
                 <p style="font-size: 1.2rem; margin-bottom: 40px; color: var(--text-gray); max-width: 700px; margin-left: auto; margin-right: auto;">
-                    Whether you want to transform lives professionally or enhance your existing practice, 
-                    our Coach Certification Program provides the tools, training, and support you need.
+                    Whether you choose personal healing or professional certification, 
+                    our programs provide the tools, training, and support you need to transform.
                 </p>
                 
                 <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
                     <a href="https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808" class="btn" style="font-size: 1.2rem; padding: 18px 45px;">
-                        <i class="fas fa-graduation-cap"></i> Begin Certification
+                        <i class="fas fa-unlock-alt"></i> Begin Personal Journey
                     </a>
-                    <a href="https://form.jotform.com/250184868189875" class="btn" style="font-size: 1.2rem; padding: 18px 45px; background: rgba(15, 26, 61, 0.8); border: 2px solid var(--accent-gold); color: var(--accent-gold);">
-                        <i class="fas fa-calendar-alt"></i> Free Strategy Session
+                    <a href="https://www.accessworldseminars.org/the-perfect-squeeze-page--45e9d" class="btn" style="font-size: 1.2rem; padding: 18px 45px; background: rgba(15, 26, 61, 0.8); border: 2px solid var(--accent-gold); color: var(--accent-gold);">
+                        <i class="fas fa-graduation-cap"></i> Begin Professional Journey
                     </a>
                 </div>
+                
+                <p style="margin-top: 30px; font-size: 1.1rem;">
+                    Not sure which path is right for you? 
+                    <a href="https://form.jotform.com/250184868189875" style="color: var(--accent-gold); text-decoration: underline;">Book a free strategy session</a> 
+                    and we'll help you decide.
+                </p>
             </div>
         </div>
     </section>
@@ -866,8 +1142,8 @@
             <a href="https://accessworldseminars-ship-it.github.io/results/ICS" class="nav-button">
                 <i class="fas fa-search"></i> Find Your Path
             </a>
-            <a href="https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808" class="nav-button">
-                <i class="fas fa-graduation-cap"></i> Start Certification
+            <a href="https://accessworldseminars-ship-it.github.io/results/s" class="nav-button">
+                <i class="fas fa-calendar"></i> Upcoming Events
             </a>
         </div>
     </div>
@@ -877,9 +1153,9 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>AccessWorld Coach Academy</h3>
-                    <p>"Where You Learn to Help Others Access Their World"</p>
-                    <p>Comprehensive coach certification designed for people who want to transform lives while building a fulfilling, purposeful, financially empowering career.</p>
+                    <h3>AccessWorld Coaching</h3>
+                    <p>"Transforming Lives Through Expert Coaching & Mentoring"</p>
+                    <p>Comprehensive programs designed for people who want to transform their lives through practical, results-driven learning and professional coaching certification.</p>
                     <div class="social-links">
                         <a href="https://www.youtube.com/@joshuaroybosse" target="_blank"><i class="fab fa-youtube"></i></a>
                         <a href="https://www.instagram.com/joshua_roy9/" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -889,27 +1165,24 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Website Navigation</h3>
-                    <a href="https://accessworldseminars-ship-it.github.io/results/">
-                        <i class="fas fa-home accent-text"></i> Home Page
-                    </a>
+                    <h3>Training Programs</h3>
                     <a href="https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808">
-                        <i class="fas fa-graduation-cap accent-text"></i> Become a Coach
+                        <i class="fas fa-unlock-alt accent-text"></i> Unlock Your Incredible Self
+                    </a>
+                    <a href="https://www.accessworldseminars.org/the-perfect-squeeze-page--45e9d">
+                        <i class="fas fa-graduation-cap accent-text"></i> Become a World-Class Coach
                     </a>
                     <a href="https://accessworldseminars-ship-it.github.io/results/s">
-                        <i class="fas fa-calendar-alt accent-text"></i> Events Schedule
+                        <i class="fas fa-calendar-alt accent-text"></i> Upcoming Training Events
                     </a>
                     <a href="https://accessworldseminars-ship-it.github.io/results/ICS">
-                        <i class="fas fa-search accent-text"></i> Find Your Coaching Path
+                        <i class="fas fa-search accent-text"></i> Find Your Training Path
                     </a>
                     <a href="https://accessworldseminars-ship-it.github.io/results/Testimony">
-                        <i class="fas fa-star accent-text"></i> Testimonials
+                        <i class="fas fa-star accent-text"></i> Success Stories
                     </a>
-                    <a href="https://accessworldseminars-ship-it.github.io/results/Stories">
-                        <i class="fas fa-book accent-text"></i> Transformational Stories
-                    </a>
-                    <a href="https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808">
-                        <i class="fas fa-play-circle accent-text"></i> Get Started
+                    <a href="https://accessworldseminars-ship-it.github.io/results/Lessons">
+                        <i class="fas fa-book-open accent-text"></i> Sample Training Sessions
                     </a>
                 </div>
                 
@@ -917,7 +1190,7 @@
                     <h3>Contact Information</h3>
                     <p>
                         <i class="fas fa-envelope accent-text"></i>
-                        <a href="mailto:accessworldseminars@gmail.com?subject=Coach%20Certification%20Inquiry" style="color: var(--accent-gold);">
+                        <a href="mailto:accessworldseminars@gmail.com?subject=Transformation%20Program%20Inquiry" style="color: var(--accent-gold);">
                             info@accessworld.com
                         </a>
                     </p>
@@ -927,13 +1200,17 @@
                             +61 432 119 091 (WhatsApp)
                         </a>
                     </p>
-                    <p><i class="fas fa-map-marker-alt accent-text"></i> Global Online Certification</p>
+                    <p><i class="fas fa-map-marker-alt accent-text"></i> Global Online Programs</p>
                     <p>Live monthly training sessions via secure platform</p>
+                    <p style="margin-top: 15px;">
+                        <i class="fas fa-calendar-check accent-text"></i>
+                        <a href="https://form.jotform.com/250184868189875" style="color: var(--accent-gold);">Book Free Strategy Session</a>
+                    </p>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2024 AccessWorld Coach Academy. All Rights Reserved. | Designed for transformation</p>
+                <p>&copy; 2024 AccessWorld Coaching. All Rights Reserved. | Designed for transformation</p>
             </div>
         </div>
     </footer>
@@ -992,7 +1269,7 @@
         });
         
         // Add hover animation to cards
-        document.querySelectorAll('.card, .benefit-card, .training-feature').forEach(card => {
+        document.querySelectorAll('.card, .path-card, .benefit-card, .module-card, .training-feature').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-10px)';
             });
