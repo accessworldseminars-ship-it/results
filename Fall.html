@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theology & Personal Revelation Learning Portal | January 25, 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #9b59b6;
+            --light: #f8f9fa;
+            --dark: #1a1a2e;
+            --gray: #6c757d;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        
+        .date-badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .author {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+        }
+        
+        .nav-link {
+            padding: 1.2rem 1.5rem;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--secondary);
+            border-bottom: 3px solid var(--secondary);
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: var(--transition);
+        }
+        
+        .section:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .section-icon {
+            background-color: var(--secondary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .section-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        /* Chapter Content */
+        .chapter-title {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .opening-hook {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--dark);
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background-color: rgba(52, 152, 219, 0.08);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-heading {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .insight-box {
+            background-color: rgba(155, 89, 182, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--dark);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            background-color: rgba(249, 249, 249, 0.9);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--warning);
+        }
+        
+        .quote::before {
+            content: "“";
+            font-size: 3rem;
+            color: var(--warning);
+            line-height: 0;
+            margin-right: 10px;
+            vertical-align: -0.4em;
+        }
+        
+        /* Lesson Review */
+        .teaching-point {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--success);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .teaching-point h4 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+        
+        .gem-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .gem-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .gem-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .gem-list li::before {
+            content: "💎";
+            position: absolute;
+            left: 0;
+            top: 0.8rem;
+        }
+        
+        /* Testimonial */
+        .testimonial-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid #dee2e6;
+        }
+        
+        .testimonial-part {
+            margin-bottom: 1.8rem;
+        }
+        
+        .testimonial-part h4 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-part h4 i {
+            margin-right: 0.7rem;
+            color: var(--secondary);
+        }
+        
+        .pull-quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            text-align: center;
+            padding: 2rem;
+            margin: 2rem 0;
+            background-color: white;
+            border-radius: var(--border-radius);
+            border-top: 4px solid var(--secondary);
+            border-bottom: 4px solid var(--secondary);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Stories */
+        .story-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+            transition: var(--transition);
+        }
+        
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .story-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .story-title i {
+            margin-right: 0.8rem;
+            color: var(--accent);
+        }
+        
+        .story-point, .story-lesson {
+            background-color: rgba(52, 152, 219, 0.05);
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border-radius: var(--border-radius);
+        }
+        
+        .story-point h4, .story-lesson h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .story-point h4 i, .story-lesson h4 i {
+            margin-right: 0.7rem;
+            color: var(--success);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .signature {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                padding: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-link {
+                text-align: center;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .chapter-title {
+                font-size: 1.8rem;
+            }
+            
+            .opening-hook {
+                font-size: 1.1rem;
+                padding: 1.2rem;
+            }
+        }
+        
+        /* Interactive Elements */
+        .reflection-box {
+            background-color: rgba(39, 174, 96, 0.08);
+            border-radius: var(--border-radius);
+            padding: 1.8rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--success);
+        }
+        
+        .reflection-box h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .reflection-box h4 i {
+            margin-right: 0.7rem;
+            color: var(--success);
+        }
+        
+        .reflection-questions {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .reflection-questions li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(39, 174, 96, 0.2);
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        
+        .reflection-questions li:last-child {
+            border-bottom: none;
+        }
+        
+        .reflection-questions li::before {
+            content: "❓";
+            position: absolute;
+            left: 0;
+            top: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .highlight {
+            background-color: rgba(255, 243, 18, 0.2);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="date-badge">
+                <i class="fas fa-calendar-alt"></i> Session Date: January 25, 2026
+            </div>
+            <h1>Theology & Personal Revelation</h1>
+            <p class="subtitle">A Learning Portal for Students of Truth</p>
+            <p class="author">From the teachings of Joshua Roy (Joshua Bossy)</p>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#overview" class="nav-link active"><i class="fas fa-home"></i> Overview</a>
+            <a href="#chapter" class="nav-link"><i class="fas fa-book"></i> Book Chapter</a>
+            <a href="#lessons" class="nav-link"><i class="fas fa-graduation-cap"></i> Lesson Review</a>
+            <a href="#testimonial" class="nav-link"><i class="fas fa-quote-left"></i> Testimonial</a>
+            <a href="#stories" class="nav-link"><i class="fas fa-book-open"></i> Personal Stories</a>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Overview Section -->
+        <section id="overview" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h2 class="section-title">Learning Portal Overview</h2>
+            </div>
+            <p>Welcome, student of truth. This learning portal contains a comprehensive breakdown of a teaching session on theology and personal revelation that took place on January 25, 2026. The material has been organized to help you learn effectively, whether you're exploring these concepts for the first time or seeking deeper understanding.</p>
+            
+            <div class="insight-box">
+                <p><strong>How to use this portal:</strong> Start with the overview, then move through each section sequentially. Take time to reflect on the questions provided. The content is arranged from foundational concepts to personal applications.</p>
+            </div>
+            
+            <div class="reflection-box">
+                <h4><i class="fas fa-brain"></i> Before You Begin: Self-Reflection</h4>
+                <ul class="reflection-questions">
+                    <li>What is your current understanding of God's nature?</li>
+                    <li>How do you typically approach religious or scriptural confusion?</li>
+                    <li>What do you believe about the story of Adam and Eve's "fall"?</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Book Chapter Section -->
+        <section id="chapter" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h2 class="section-title">Book Chapter: Seeing God Clearly</h2>
+            </div>
+            
+            <h3 class="chapter-title">The Doctrine of Progression: Why the Fall Was a Forward Step</h3>
+            
+            <div class="opening-hook">
+                What if the story you've been told about the beginning—about God, about Adam and Eve, about good and evil—was not a tragedy, but the essential first step in a magnificent plan of progression? What if confusion in religion stems not from God, but from losing the simple, revelatory key to understanding Him?
+            </div>
+            
+            <div class="content-section">
+                <h4 class="content-heading">1. The Art of Unprepared Speaking</h4>
+                <p>You don't build a talk in an hour. You build it over a lifetime. I once heard a story about a teacher asked to give a three-hour lecture. When praised for his flawless delivery, he was asked how long it took to prepare. "Five minutes," he said. After the shocked silence, he clarified: "That talk took me thirty years to live and learn. The last five minutes were just to arrange it."</p>
+                <p>That's how real wisdom works. It's the iceberg beneath the surface. When I speak, whether from a pulpit or into a microphone, I'm not reciting a script. I'm drawing from that deep well of accrued experience and revelation, organizing ideas, not memorizing words. The preparation happens in the living, not just the thinking.</p>
+            </div>
+            
+            <div class="content-section">
+                <h4 class="content-heading">2. The Simple, Startling Image of God</h4>
+                <p>Let's start with the most logical, yet most contested, point of all: What is God like? The world is full of complicated creeds describing an unknowable, formless being. But the simplest scripture cuts through the noise: <span class="highlight">"Man was created in the image of God."</span></p>
+                <p>Think about that. If you look into a pond, you see your image—your form, your face. If we are created in God's image, then the form we see reflected is, in essence, His form.</p>
+                <p>This isn't philosophical mystery. The Bible shows it repeatedly: God spoke to Moses "face to face, as a man speaketh unto his friend." You need a face for that. Stephen, at his death, looked up and saw God, with Jesus standing on His "right hand." You need a form for that. A child understands this immediately.</p>
+                <div class="quote">
+                    If you look upon God, you would see a man... We were created in the image and likeness of God. That's the big secret. But it's not a secret at all.
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h4 class="content-heading">3. The Source of Confusion: Interpretation Without Revelation</h4>
+                <p>This leads us to the great conundrum. If the Bible is our source, but its interpretations are wildly different, who is right? Methodists, Baptists, Presbyterians—all sincere, all using the same book to reach different conclusions. If God is not the author of confusion, then the problem must be in the interpretation.</p>
+                <p>How was scripture originally given? By revelation from God to prophets. How was it written? By inspiration. It was then translated by men across languages and centuries—a noble but human process, prone to deficiencies.</p>
+                <p>So, how do we get back to the original, correct meaning? The same way it was received: <span class="highlight">by revelation.</span> You cannot correctly interpret divine communication without the divine Communicator. Personal revelation isn't a bonus; it's the essential mechanism for discerning truth from error.</p>
+            </div>
+            
+            <div class="reflection-box">
+                <h4><i class="fas fa-question-circle"></i> Integration Questions</h4>
+                <ul class="reflection-questions">
+                    <li>Where in your life have you accepted a complicated "doctrine of men" when a simpler, truer answer was available?</li>
+                    <li>When facing a personal or scriptural confusion, do you first seek others' opinions or do you "live into the principle of revelation"?</li>
+                    <li>Consider a current challenge or "fall" in your life. How can you reframe it as a necessary step for your progression?</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Lesson Review Section -->
+        <section id="lessons" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h2 class="section-title">Lesson Review & Key Insights</h2>
+            </div>
+            
+            <div class="teaching-point">
+                <h4><i class="fas fa-bullseye"></i> Session Overview</h4>
+                <p>This lesson was a deep dive into clearing away religious confusion by returning to first principles. The core theme was that pure doctrine is simple and discernible through personal revelation, not scholarly debate. We explored the profound implications of two foundational truths.</p>
+            </div>
+            
+            <div class="teaching-point">
+                <h4><i class="fas fa-key"></i> Key Teaching Points</h4>
+                <ul class="gem-list">
+                    <li><strong>Wisdom is accrued, not prepared:</strong> Authentic teaching flows from a lifetime of experience.</li>
+                    <li><strong>God has a form:</strong> "In the image of God" is literal and simple.</li>
+                    <li><strong>The three doctrines:</strong> Distinguishing between doctrines of God, men, and devils.</li>
+                    <li><strong>Revelation is the interpreter:</strong> The only way to correctly understand divine truth.</li>
+                    <li><strong>The Fall was a forward step:</strong> Essential for growth, agency, and ultimate joy.</li>
+                </ul>
+            </div>
+            
+            <div class="teaching-point">
+                <h4><i class="fas fa-quote-right"></i> Quotes & Gems</h4>
+                <div class="quote">
+                    That talk took me thirty years to develop. The last five minutes was just to put together the content.
+                </div>
+                <div class="quote">
+                    You're not saved on gist. You're saved by knowledge and the true doctrine.
+                </div>
+                <div class="quote">
+                    Adam fell that men might be; and men are, that they might have joy.
+                </div>
+            </div>
+            
+            <div class="teaching-point">
+                <h4><i class="fas fa-exchange-alt"></i> Mindset Shifts</h4>
+                <ul class="gem-list">
+                    <li><strong>From Confusion to Clarity:</strong> "I need revelation to understand clearly."</li>
+                    <li><strong>From Abstract to Personal God:</strong> "God is a personal Father in whose image I am made."</li>
+                    <li><strong>From Tragedy to Plan:</strong> "The Fall was the necessary start of human progression."</li>
+                    <li><strong>From Passive Receiver to Active Seeker:</strong> "I will seek my own testimony through revelation."</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Testimonial Section -->
+        <section id="testimonial" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <h2 class="section-title">Transformation Testimony</h2>
+            </div>
+            
+            <div class="testimonial-box">
+                <div class="testimonial-part">
+                    <h4><i class="fas fa-history"></i> Before</h4>
+                    <p>I was struggling with major doctrinal confusion, particularly around the nature of God and the purpose of our existence. I encountered many different interpretations of the Bible from various faiths, all claiming to be the truth. This left me feeling uncertain and unable to find solid ground.</p>
+                </div>
+                
+                <div class="testimonial-part">
+                    <h4><i class="fas fa-lightbulb"></i> What I Learned / Applied</h4>
+                    <p>I learned to apply the principle of personal revelation as the true interpreter of scripture. I was taught that God communicates directly with us through the Holy Ghost to confirm truth. Instead of relying solely on others' explanations, I took a chapter of Isaiah and, with a suggested interpretation in mind, sought a spiritual witness.</p>
+                </div>
+                
+                <div class="testimonial-part">
+                    <h4><i class="fas fa-chart-line"></i> Results</h4>
+                    <p>As I read, I experienced a powerful, palpable spiritual confirmation from the Holy Ghost that lasted the entire chapter—a feeling of truth and clarity I had never gotten from scholarly texts. This experience dissolved my confusion and gave me an unshakable personal testimony.</p>
+                </div>
+                
+                <div class="pull-quote">
+                    "I went from doctrinal confusion to clarity when I stopped just reading and started seeking revelation. The Spirit confirmed the truth to my heart in a way no book ever could."
+                </div>
+            </div>
+        </section>
+        
+        <!-- Personal Stories Section -->
+        <section id="stories" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h2 class="section-title">Personal Stories & Experiences</h2>
+            </div>
+            
+            <div class="story-card">
+                <h3 class="story-title"><i class="fas fa-microphone"></i> The Thirty-Year Talk</h3>
+                <p>I heard about a man named Vaughan Featherstone. He was asked to give a three-hour seminar. He delivered it flawlessly—succinct, scriptural, powerful. Afterwards, someone asked him how long it took to prepare. He said, "About five minutes." The person was shocked. How could you create that in five minutes? Vaughan corrected himself. He said, "That talk actually took me 20 or 30 years to develop. The last five minutes was just to put together the content in a succinct sequence so that I could share it." When I heard that, it reinforced a huge idea for me. What you share in any given moment is just the tip of the iceberg. The real substance is the vast amount of knowledge and experience you've accrued along the way.</p>
+                
+                <div class="story-point">
+                    <h4><i class="fas fa-bullseye"></i> The Point</h4>
+                    <p>This shows that authentic wisdom and teaching cannot be rushed or faked. It's built through lived experience over time.</p>
+                </div>
+                
+                <div class="story-lesson">
+                    <h4><i class="fas fa-graduation-cap"></i> Lesson Learned</h4>
+                    <p>Don't worry about having a perfectly prepared script. Focus on filling your life with real learning, experience, and revelation. Your "preparation" is your life. When you speak from that deep well, the organization of it becomes simple.</p>
+                </div>
+            </div>
+            
+            <div class="story-card">
+                <h3 class="story-title"><i class="fas fa-heart"></i> My Isaiah Revelation</h3>
+                <p>Someone once gave me a book claiming to explain Isaiah. I read it and was disappointed—it felt empty, like "doctrines of men." Later, I was reading a specific chapter of Isaiah with a different, divinely-guided interpretation in mind. As I read verse one, I started feeling the Spirit. Verse two, three, it continued. It was palpable, thick, and rich. This feeling lasted the entire chapter, all the way to the last verse. When I said "Amen," the Spirit lingered and then faded. That was my revelation. It wasn't an idea; it was an experience. It sealed the truth of that interpretation in my heart more powerfully than any argument ever could.</p>
+                
+                <div class="story-point">
+                    <h4><i class="fas fa-bullseye"></i> The Point</h4>
+                    <p>This story demonstrates the tangible, experiential difference between intellectual study and receiving a spiritual witness through personal revelation.</p>
+                </div>
+                
+                <div class="story-lesson">
+                    <h4><i class="fas fa-graduation-cap"></i> Lesson Learned</h4>
+                    <p>Truth is ultimately confirmed by the Holy Ghost, not by books or scholars. Personal revelation is a real, discernible experience that provides certainty where reason alone leads to debate.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p class="footer-quote">"By the power of the Holy Ghost, you may know the truth of all things."</p>
+            <p>This learning portal is designed to help you discover truth through personal revelation and study.</p>
+            <p>Take these principles, seek your own witness, and apply them in your journey of progression.</p>
+            <p class="signature">In the name of Jesus Christ, Amen.</p>
+            <p><strong>— Joshua Roy (Joshua Bossy)</strong></p>
+            <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.9rem;">Learning Portal Created on January 25, 2026</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+        
+        // Highlight current section in nav based on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Add interactivity to reflection questions
+        document.addEventListener('DOMContentLoaded', function() {
+            const reflectionItems = document.querySelectorAll('.reflection-questions li');
+            reflectionItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.backgroundColor = this.style.backgroundColor === 'rgba(39, 174, 96, 0.1)' ? '' : 'rgba(39, 174, 96, 0.1)';
+                });
+            });
+            
+            // Add a simple note-taking functionality
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const noteButton = document.createElement('button');
+                noteButton.innerHTML = '<i class="fas fa-edit"></i> Add Note';
+                noteButton.style.cssText = `
+                    background: var(--secondary);
+                    color: white;
+                    border: none;
+                    padding: 0.5rem 1rem;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    margin-top: 1rem;
+                    font-family: inherit;
+                    font-weight: 600;
+                    transition: all 0.3s ease;
+                `;
+                noteButton.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = '#2980b9';
+                });
+                noteButton.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = '';
+                });
+                noteButton.addEventListener('click', function() {
+                    const note = prompt('Add a personal note for this section:');
+                    if (note) {
+                        alert('Note saved! (In a real application, this would be stored in a database)');
+                    }
+                });
+                
+                // Insert before the section's closing
+                if (!section.querySelector('.note-button-added')) {
+                    section.appendChild(noteButton);
+                    section.classList.add('note-button-added');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
