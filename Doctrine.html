@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gospel Transformation | January 18, 2026 | Joshua Roy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #9b59b6;
+            --light: #f8f9fa;
+            --dark: #1a1a2e;
+            --gray: #6c757d;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        
+        .date-badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .author {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .back-link:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+        }
+        
+        .nav-link {
+            padding: 1.2rem 1.5rem;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--secondary);
+            border-bottom: 3px solid var(--secondary);
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: var(--transition);
+        }
+        
+        .section:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .section-icon {
+            background-color: var(--secondary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .section-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        /* Chapter Content */
+        .chapter-title {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .opening-hook {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--dark);
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background-color: rgba(52, 152, 219, 0.08);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-heading {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .insight-box {
+            background-color: rgba(155, 89, 182, 0.08);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--dark);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            background-color: rgba(249, 249, 249, 0.9);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--warning);
+        }
+        
+        .quote::before {
+            content: "“";
+            font-size: 3rem;
+            color: var(--warning);
+            line-height: 0;
+            margin-right: 10px;
+            vertical-align: -0.4em;
+        }
+        
+        /* Lesson Review */
+        .teaching-point {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--success);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .teaching-point h4 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+        
+        .gem-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .gem-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .gem-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .gem-list li::before {
+            content: "💎";
+            position: absolute;
+            left: 0;
+            top: 0.8rem;
+        }
+        
+        /* Testimonial */
+        .testimonial-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid #dee2e6;
+        }
+        
+        .testimonial-part {
+            margin-bottom: 1.8rem;
+        }
+        
+        .testimonial-part h4 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-part h4 i {
+            margin-right: 0.7rem;
+            color: var(--secondary);
+        }
+        
+        .pull-quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            text-align: center;
+            padding: 2rem;
+            margin: 2rem 0;
+            background-color: white;
+            border-radius: var(--border-radius);
+            border-top: 4px solid var(--secondary);
+            border-bottom: 4px solid var(--secondary);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Stories */
+        .story-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+            transition: var(--transition);
+        }
+        
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .story-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .story-title i {
+            margin-right: 0.8rem;
+            color: var(--accent);
+        }
+        
+        .story-point, .story-lesson {
+            background-color: rgba(52, 152, 219, 0.05);
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border-radius: var(--border-radius);
+        }
+        
+        .story-point h4, .story-lesson h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .story-point h4 i, .story-lesson h4 i {
+            margin-right: 0.7rem;
+            color: var(--success);
+        }
+        
+        /* Model Visualization */
+        .model-visualization {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .model-pyramid {
+            display: inline-block;
+            width: 300px;
+            margin: 1.5rem auto;
+        }
+        
+        .pyramid-level {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .level-purpose { background-color: var(--accent); width: 100%; }
+        .level-identity { background-color: #3498db; width: 85%; }
+        .level-beliefs { background-color: #2ecc71; width: 70%; }
+        .level-capabilities { background-color: #f39c12; width: 55%; }
+        .level-behavior { background-color: #e74c3c; width: 40%; }
+        .level-environment { background-color: #95a5a6; width: 25%; }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .signature {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                padding: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-link {
+                text-align: center;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .chapter-title {
+                font-size: 1.8rem;
+            }
+            
+            .opening-hook {
+                font-size: 1.1rem;
+                padding: 1.2rem;
+            }
+            
+            .model-pyramid {
+                width: 250px;
+            }
+        }
+        
+        /* Interactive Elements */
+        .reflection-box {
+            background-color: rgba(39, 174, 96, 0.08);
+            border-radius: var(--border-radius);
+            padding: 1.8rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--success);
+        }
+        
+        .reflection-box h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .reflection-box h4 i {
+            margin-right: 0.7rem;
+            color: var(--success);
+        }
+        
+        .reflection-questions {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .reflection-questions li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(39, 174, 96, 0.2);
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        
+        .reflection-questions li:last-child {
+            border-bottom: none;
+        }
+        
+        .reflection-questions li::before {
+            content: "❓";
+            position: absolute;
+            left: 0;
+            top: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .highlight {
+            background-color: rgba(255, 243, 18, 0.2);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        .experiment-box {
+            background: linear-gradient(135deg, #3498db15 0%, #9b59b615 100%);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px dashed var(--secondary);
+        }
+        
+        .experiment-box h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .commitment-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="date-badge">
+                <i class="fas fa-calendar-alt"></i> Session Date: January 18, 2026
+            </div>
+            <h1>Gospel Transformation</h1>
+            <p class="subtitle">The Superior Technology for Human Change</p>
+            <p class="author">From the teachings of Joshua Roy (Joshua Bossy)</p>
+            <a href="https://accessworldseminars-ship-it.github.io/results/Fall" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to "Theology & Personal Revelation" Portal
+            </a>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#overview" class="nav-link active"><i class="fas fa-home"></i> Overview</a>
+            <a href="#chapter" class="nav-link"><i class="fas fa-book"></i> Book Chapter</a>
+            <a href="#model" class="nav-link"><i class="fas fa-sitemap"></i> Change Model</a>
+            <a href="#lessons" class="nav-link"><i class="fas fa-graduation-cap"></i> Lesson Review</a>
+            <a href="#testimonial" class="nav-link"><i class="fas fa-quote-left"></i> Personal Testimony</a>
+            <a href="#stories" class="nav-link"><i class="fas fa-book-open"></i> Stories & Experiences</a>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Overview Section -->
+        <section id="overview" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h2 class="section-title">Learning Portal Overview</h2>
+            </div>
+            <p>Welcome to this exploration of gospel-centered transformation. This portal unpacks a teaching session from January 18, 2026, that presents a compelling case: <span class="highlight">Gospel study is the most effective "technology" for human change</span>, surpassing even psychological methods when applied consistently at the identity level.</p>
+            
+            <div class="insight-box">
+                <p><strong>Core Thesis:</strong> Boyd K. Packer taught that "a study of the doctrines of Jesus Christ will change attitudes and behavior faster than a study of behavior will change behavior." This session demonstrates this principle through personal experience, psychological models, and practical application.</p>
+            </div>
+            
+            <div class="experiment-box">
+                <h4><i class="fas fa-flask"></i> The 2-Year Transformation Experiment</h4>
+                <p>During a painful divorce, the teacher conducted a personal experiment: read the Book of Mormon five times in two years while applying gospel principles consistently. The results? Unconscious behavioral change, natural missionary work, and healing that behavioral approaches alone couldn't provide.</p>
+            </div>
+            
+            <div class="reflection-box">
+                <h4><i class="fas fa-brain"></i> Before You Begin: Self-Assessment</h4>
+                <ul class="reflection-questions">
+                    <li>How do you currently approach personal change—through behavior modification or identity transformation?</li>
+                    <li>What's your current daily scripture engagement like? (Time, consistency, depth)</li>
+                    <li>Do you see gospel study as informational or transformational?</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Book Chapter Section -->
+        <section id="chapter" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h2 class="section-title">Book Chapter: The Gospel as Superior Change Technology</h2>
+            </div>
+            
+            <h3 class="chapter-title">From Personal Crisis to Gospel Mastery</h3>
+            
+            <div class="opening-hook">
+                I was fixing computers when it hit me: we approach human transformation all wrong. We treat broken hearts like malfunctioning machines—applying behavioral patches instead of addressing the core operating system. But what if there was a technology for human change that was more effective than any therapy, faster than any coaching, and more profound than any self-help program?
+            </div>
+            
+            <div class="content-section">
+                <h4 class="content-heading">1. The Broken Computer and the Broken Heart</h4>
+                <p>Yesterday, I fixed two computers. Found another place on the motherboard to plug things into. Problem solved. It got me thinking about how we approach human brokenness. We're like technicians trying to fix spiritual and emotional issues with behavioral patches—cognitive behavioral therapy here, a new habit there. But what if the issue isn't on the surface? What if, like that hidden connection on the motherboard, real transformation requires accessing deeper systems?</p>
+            </div>
+            
+            <div class="content-section">
+                <h4 class="content-heading">2. Boyd K. Packer's Startling Insight</h4>
+                <p>Apostle Boyd K. Packer taught something revolutionary: <span class="highlight">"A study of the doctrines of Jesus Christ will change attitudes and behavior faster than a study of behavior will change behavior."</span> Let that sink in. He claimed that diving into gospel doctrine creates more rapid, profound transformation than any psychological method. This isn't anti-therapy; it's about understanding hierarchy of change. Behavior modification works at the surface. Doctrine rewires at the identity level.</p>
+            </div>
+            
+            <div class="content-section">
+                <h4 class="content-heading">3. My Personal Laboratory of Pain</h4>
+                <p>I tested this principle in the crucible of my own life. Years ago, my marriage ended. My wife decided to leave, to go out partying, to not remain with me. I was a father of three small children, facing rejection I couldn't comprehend. This wasn't theoretical—this was my nervous system in crisis, my identity shattered, my future uncertain. I entered what felt like uncharted emotional territory.</p>
+                <div class="quote">
+                    Nobody teaches you how to handle this kind of emotional earthquake. My parents had never divorced, so I had no roadmap. I felt completely lost.
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h4 class="content-heading">4. The Two-Year Scripture Experiment</h4>
+                <p>For two years during my separation and divorce, I committed to an experiment: three chapters of the Book of Mormon daily, sometimes reading twenty chapters in a single park session. I read through the Book of Mormon five times in those twenty-four months. This wasn't casual reading; this was immersion therapy for the soul.</p>
+                <div class="commitment-card">
+                    <h4><i class="fas fa-bible"></i> The Commitment</h4>
+                    <p><strong>Duration:</strong> 2 years during divorce process</p>
+                    <p><strong>Daily Minimum:</strong> 3 chapters Book of Mormon</p>
+                    <p><strong>Intensive Sessions:</strong> Up to 20 chapters in park readings</p>
+                    <p><strong>Total Completions:</strong> 5 full readings of Book of Mormon</p>
+                </div>
+            </div>
+            
+            <div class="reflection-box">
+                <h4><i class="fas fa-question-circle"></i> Integration Questions</h4>
+                <ul class="reflection-questions">
+                    <li>Where in your life are you trying to change behavior without addressing identity?</li>
+                    <li>What would shift if you truly operated from "I am a child of God" as your core identity?</li>
+                    <li>What's your current daily scripture commitment? If you increased it to 30 minutes of focused study, what changes might emerge in 90 days?</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Change Model Section -->
+        <section id="model" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-sitemap"></i>
+                </div>
+                <h2 class="section-title">The Hierarchy of Change: Dilts' Model</h2>
+            </div>
+            
+            <div class="model-visualization">
+                <h4>Dilts' Logical Levels of Change</h4>
+                <p>Understanding where change happens determines how effective it will be.</p>
+                
+                <div class="model-pyramid">
+                    <div class="pyramid-level level-purpose">PURPOSE<br><small>God's work & glory</small></div>
+                    <div class="pyramid-level level-identity">IDENTITY<br><small>"I am a child of God"</small></div>
+                    <div class="pyramid-level level-beliefs">BELIEFS & VALUES<br><small>Gospel principles</small></div>
+                    <div class="pyramid-level level-capabilities">CAPABILITIES<br><small>Skills, talents</small></div>
+                    <div class="pyramid-level level-behavior">BEHAVIOR<br><small>Actions, habits</small></div>
+                    <div class="pyramid-level level-environment">ENVIRONMENT<br><small>Surroundings, situations</small></div>
+                </div>
+                
+                <div class="insight-box" style="max-width: 600px; margin: 0 auto;">
+                    <p><strong>The Gospel Difference:</strong> Most therapies work at the <strong>Behavior</strong> and <strong>Beliefs</strong> levels. The gospel works most powerfully at the <strong>Identity</strong> and <strong>Purpose</strong> levels—the highest leverage points for transformation.</p>
+                </div>
+            </div>
+            
+            <div class="teaching-point">
+                <h4><i class="fas fa-layer-group"></i> Identity: The Most Powerful Change Lever</h4>
+                <p>Search the world over—through NLP, psychology, philosophy—and you won't find a more powerful identity statement than <span class="highlight">"I am a child of God."</span> This simple Primary hymn contains more transformative power than entire libraries of self-help literature because it addresses the core identity question. Every other identity ("I am a victim," "I am successful," "I am a failure") sits beneath this fundamental truth.</p>
+            </div>
+            
+            <div class="teaching-point">
+                <h4><i class="fas fa-bullseye"></i> Purpose Alignment: Adopting God's Mission</h4>
+                <p>President Nelson emphasized that God's purpose—"to bring to pass the immortality and eternal life of man"—can become our purpose. When we align our personal purpose with divine purpose, our entire life trajectory shifts. This isn't theoretical; it's observable in the lives of prophets and disciples who have made this alignment.</p>
+            </div>
+        </section>
+        
+        <!-- Lesson Review Section -->
+        <section id="lessons" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h2 class="section-title">Lesson Review & Key Insights</h2>
+            </div>
+            
+            <div class="teaching-point">
+                <h4><i class="fas fa-bullseye"></i> Session Overview</h4>
+                <p>This session presented gospel study as the most effective technology for human transformation. Drawing from personal experience through divorce, psychological models of change, and Latter-day Saint theology, the teacher argued that engaging with scripture changes people at the identity and purpose levels—far more profound than behavioral approaches alone.</p>
+            </div>
+            
+            <div class="teaching-point">
+                <h4><i class="fas fa-key"></i> Key Teaching Points</h4>
+                <ul class="gem-list">
+                    <li><strong>Doctrine Over Behavior:</strong> Studying Christ's doctrines changes behavior faster than studying behavior itself.</li>
+                    <li><strong>The Identity Lever:</strong> "I am a child of God" addresses the highest level in change models.</li>
+                    <li><strong>Purpose Alignment:</strong> Adopting God's purpose (immortality and eternal life) creates profound life shifts.</li>
+                    <li><strong>The 30-Minute Minimum:</strong> Daily immersion for nervous system rewiring, not just information gathering.</li>
+                    <li><strong>Gospel Fluency:</strong> Consistent study enables natural spiritual conversations in any setting.</li>
+                </ul>
+            </div>
+            
+            <div class="teaching-point">
+                <h4><i class="fas fa-quote-right"></i> Quotes & Gems</h4>
+                <div class="quote">
+                    If you want change, real change, then make the study of the Scriptures a must for you and a must for your life.
+                </div>
+                <div class="quote">
+                    I was changing faster than if I'd gone to see a psychologist or a therapist.
+                </div>
+                <div class="quote">
+                    Search the whole world over... you'll never find a more empowering identity than 'I am a child of God.'
+                </div>
+            </div>
+            
+            <div class="teaching-point">
+                <h4><i class="fas fa-exchange-alt"></i> Mindset Shifts</h4>
+                <ul class="gem-list">
+                    <li><strong>From Therapy to Doctrine:</strong> "I need doctrine to transform my identity" not just "I need tools to fix my behavior."</li>
+                    <li><strong>From Study to Immersion:</strong> "I need 30-minute daily immersion" not just "I should read scriptures."</li>
+                    <li><strong>From Consumer to Co-Creator:</strong> "I participate in God's work" not just "I consume spiritual content."</li>
+                    <li><strong>From Defending to Declaring:</strong> "I declare truth" not "I argue doctrine."</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Testimonial Section -->
+        <section id="testimonial" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <h2 class="section-title">Personal Transformation Testimony</h2>
+            </div>
+            
+            <div class="testimonial-box">
+                <div class="testimonial-part">
+                    <h4><i class="fas fa-history"></i> Before</h4>
+                    <p>I was in a deeply painful personal crisis. My marriage had ended—my wife chose to leave and pursue a different life. As a father of three young children, I faced overwhelming rejection and emotional upheaval. I didn't know how to navigate the separation and divorce; this was uncharted territory for me. I felt lost, crushed, and without direction for how to heal or move forward.</p>
+                </div>
+                
+                <div class="testimonial-part">
+                    <h4><i class="fas fa-lightbulb"></i> What I Learned / Applied</h4>
+                    <p>I applied Boyd K. Packer's principle that studying the doctrines of Jesus Christ changes attitudes and behavior faster than behavioral approaches. Instead of seeking therapy alone, I committed to an intense, consistent scripture immersion. Following a mission president's counsel, I read at least three chapters of the Book of Mormon daily, often reading for hours in the park. Over two years, I read the Book of Mormon five times, making gospel study my primary "change technology."</p>
+                </div>
+                
+                <div class="testimonial-part">
+                    <h4><i class="fas fa-chart-line"></i> Results</h4>
+                    <p>The transformation was profound and unconscious. My focus, conversations, and interests naturally shifted toward spiritual things without forced effort. Missionary work became automatic—both my neighbors inquired about the changes they saw in me and eventually joined the Church. I developed "gospel fluency," the ability to discuss truth naturally in any setting. Most importantly, I found healing and purpose that behavioral approaches alone couldn't provide.</p>
+                </div>
+                
+                <div class="pull-quote">
+                    "Studying doctrine changed me faster than therapy ever could. When I immersed in scriptures, healing and transformation happened at the identity level—and my life changed automatically."
+                </div>
+            </div>
+        </section>
+        
+        <!-- Personal Stories Section -->
+        <section id="stories" class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h2 class="section-title">Stories & Experiences</h2>
+            </div>
+            
+            <div class="story-card">
+                <h3 class="story-title"><i class="fas fa-heart-broken"></i> The Divorce Scripture Experiment</h3>
+                <p>Years ago, I hit my lowest point. My marriage ended—my wife decided to leave, to go out partying, to not be with me anymore. Here I was, a father of three small children, facing this crushing rejection. I didn't know what to do. Nobody teaches you how to handle this kind of emotional earthquake. My parents had never divorced, so I had no roadmap. I felt completely lost. So I went back to what I knew from my mission and my parents' examples. My mom would pray and open scriptures when she was struggling. My dad would retreat to the bathtub to pray and meditate. So for the next two years, during the worst of the separation and divorce, I made a commitment: read the Book of Mormon like my life depended on it. I'd go to the park and read for hours—twenty chapters at a time. I read through the Book of Mormon five times in those two years. I wasn't trying to "fix" myself; I was just immersing in the words.</p>
+                
+                <div class="story-point">
+                    <h4><i class="fas fa-bullseye"></i> The Point</h4>
+                    <p>This story shows gospel study as a transformative technology during life's deepest crises—not as an escape, but as a rewiring process.</p>
+                </div>
+                
+                <div class="story-lesson">
+                    <h4><i class="fas fa-graduation-cap"></i> Lesson Learned</h4>
+                    <p>Consistent, immersive scripture study during crisis doesn't just provide comfort; it actively rewires your identity and automatic responses. Transformation happens at the nervous system level when you feed it truth consistently.</p>
+                </div>
+            </div>
+            
+            <div class="story-card">
+                <h3 class="story-title"><i class="fas fa-users"></i> The Neighbors Who Noticed</h3>
+                <p>During that two-year period of intense scripture study, I lived in a house on a hill. I had neighbors on both sides. As I changed through the scriptures—without really trying to change—these neighbors started noticing something different. They'd come to my kickboxing classes, we'd chat, and conversations would naturally drift to spiritual things because that's where my mind was living. It wasn't forced or weird; it was just what flowed out of me. Over time, both neighbors—one on this side, one on that side—started asking questions. They saw the change in me, the stability, the peace amid my personal storm. Eventually, both of them decided to get baptized. They weren't responding to my arguments; they were responding to the transformation they witnessed.</p>
+                
+                <div class="story-point">
+                    <h4><i class="fas fa-bullseye"></i> The Point</h4>
+                    <p>Authentic, internal gospel transformation has external, observable effects that naturally attract others to truth.</p>
+                </div>
+                
+                <div class="story-lesson">
+                    <h4><i class="fas fa-graduation-cap"></i> Lesson Learned</h4>
+                    <p>When gospel study changes you at a deep level, missionary work stops being a program and starts being a natural overflow. People are drawn to authentic change, not perfect arguments.</p>
+                </div>
+            </div>
+            
+            <div class="story-card">
+                <h3 class="story-title"><i class="fas fa-desktop"></i> The Computer Builder's Revelation</h3>
+                <p>Just yesterday, I was fixing computers. Found another place on the motherboard to plug things in, got two machines running. It got me thinking about how we approach human problems. We're like technicians trying to patch behavior—do this, don't do that, replace this habit with that one. But what if human transformation isn't about surface-level repairs? What if, like finding that hidden connection on the motherboard, real change requires accessing a deeper system? That's when I connected it to Boyd Packer's teaching and the Dilts pyramid. Most therapy works at the behavior level. The gospel works at the identity and purpose level—the motherboard of human experience.</p>
+                
+                <div class="story-point">
+                    <h4><i class="fas fa-bullseye"></i> The Point</h4>
+                    <p>Gospel truth addresses human nature at the foundational level, not just the symptomatic level.</p>
+                </div>
+                
+                <div class="story-lesson">
+                    <h4><i class="fas fa-graduation-cap"></i> Lesson Learned</h4>
+                    <p>Effective change requires working at the right level. The gospel offers the most profound change technology because it addresses identity ("child of God") and purpose ("God's work and glory") directly.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Application Section -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <h2 class="section-title">Your 90-Day Transformation Experiment</h2>
+            </div>
+            
+            <div class="experiment-box">
+                <h4><i class="fas fa-flask"></i> The Gospel Transformation Challenge</h4>
+                <p>Based on the principles taught in this session, design your own 90-day experiment:</p>
+                
+                <div class="commitment-card">
+                    <h4><i class="fas fa-calendar-check"></i> Phase 1: Foundation (Days 1-30)</h4>
+                    <ul class="gem-list">
+                        <li>30 minutes of uninterrupted scripture study daily</li>
+                        <li>Journal one sentence about unconscious shifts</li>
+                        <li>Begin each session with "I am a child of God" identity affirmation</li>
+                    </ul>
+                </div>
+                
+                <div class="commitment-card">
+                    <h4><i class="fas fa-chart-line"></i> Phase 2: Integration (Days 31-60)</h4>
+                    <ul class="gem-list">
+                        <li>Add 5 minutes of meditation on one gospel principle</li>
+                        <li>Practice "gospel fluency" in one non-church conversation weekly</li>
+                        <li>Identify and replace one non-divine identity statement</li>
+                    </ul>
+                </div>
+                
+                <div class="commitment-card">
+                    <h4><i class="fas fa-rocket"></i> Phase 3: Expansion (Days 61-90)</h4>
+                    <ul class="gem-list">
+                        <li>Share one spiritual insight naturally with someone</li>
+                        <li>Align one daily activity with God's purpose (Moses 1:39)</li>
+                        <li>Evaluate transformation at identity level, not just behavior</li>
+                    </ul>
+                </div>
+                
+                <p style="text-align: center; margin-top: 1.5rem;">
+                    <strong>Measure progress by:</strong> Unconscious shifts in thinking, natural spiritual conversations, and identity-level changes rather than just behavioral compliance.
+                </p>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p class="footer-quote">"A study of the doctrines of Jesus Christ will change attitudes and behavior faster than a study of behavior will change behavior." - Boyd K. Packer</p>
+            <p>This learning portal presents gospel study as transformative technology for identity-level change.</p>
+            <p>Commit to the experiment. Track the transformation. Witness the power of doctrine over mere behavior modification.</p>
+            <p class="signature">In the name of Jesus Christ, Amen.</p>
+            <p><strong>— Joshua Roy (Joshua Bossy)</strong></p>
+            <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.9rem;">
+                <a href="https://accessworldseminars-ship-it.github.io/results/Fall" style="color: #3498db; text-decoration: none;">
+                    <i class="fas fa-arrow-left"></i> Return to "Theology & Personal Revelation" Portal
+                </a>
+            </p>
+            <p style="margin-top: 0.5rem; opacity: 0.7; font-size: 0.9rem;">Learning Portal Created on January 26, 2026</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+        
+        // Highlight current section in nav based on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Interactive pyramid levels
+        document.addEventListener('DOMContentLoaded', function() {
+            const pyramidLevels = document.querySelectorAll('.pyramid-level');
+            pyramidLevels.forEach(level => {
+                level.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.boxShadow = '0 6px 15px rgba(0,0,0,0.2)';
+                });
+                level.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+            
+            // Add interactive reflection questions
+            const reflectionItems = document.querySelectorAll('.reflection-questions li');
+            reflectionItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.backgroundColor = this.style.backgroundColor === 'rgba(39, 174, 96, 0.1)' ? '' : 'rgba(39, 174, 96, 0.1)';
+                });
+            });
+            
+            // Commitment card interaction
+            const commitmentCards = document.querySelectorAll('.commitment-card');
+            commitmentCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = this.style.transform === 'scale(0.99)' ? 'scale(1)' : 'scale(0.99)';
+                });
+            });
+            
+            // 90-Day Challenge tracker
+            const challengeButton = document.createElement('button');
+            challengeButton.innerHTML = '<i class="fas fa-calendar-alt"></i> Start 90-Day Challenge';
+            challengeButton.style.cssText = `
+                background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+                color: white;
+                border: none;
+                padding: 1rem 2rem;
+                border-radius: 50px;
+                cursor: pointer;
+                margin: 2rem auto;
+                font-family: inherit;
+                font-weight: 600;
+                font-size: 1.1rem;
+                transition: all 0.3s ease;
+                display: block;
+                box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3);
+            `;
+            
+            challengeButton.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+                this.style.boxShadow = '0 8px 20px rgba(155, 89, 182, 0.4)';
+            });
+            
+            challengeButton.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 4px 15px rgba(155, 89, 182, 0.3)';
+            });
+            
+            challengeButton.addEventListener('click', function() {
+                const today = new Date();
+                const endDate = new Date(today);
+                endDate.setDate(today.getDate() + 90);
+                
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const endDateStr = endDate.toLocaleDateString('en-US', options);
+                
+                alert(`90-Day Gospel Transformation Challenge Started!\n\nYour challenge will run from today until ${endDateStr}.\n\nRemember: Focus on identity-level change, not just behavioral compliance. Track unconscious shifts in thinking and natural spiritual conversations.`);
+                
+                // In a real application, this would save to localStorage or a database
+                localStorage.setItem('gospelChallengeStart', today.toISOString());
+                localStorage.setItem('gospelChallengeEnd', endDate.toISOString());
+            });
+            
+            // Add to experiment box
+            const experimentBox = document.querySelector('.experiment-box');
+            if (experimentBox) {
+                experimentBox.appendChild(challengeButton);
+            }
+        });
+    </script>
+</body>
+</html>
