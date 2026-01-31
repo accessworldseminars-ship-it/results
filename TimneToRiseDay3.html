@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time to Rise Day 3 | AccessWorld Seminars</title>
+    <title>Time to Rise Day 3 Complete Resources | AccessWorld Seminars</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -218,6 +218,87 @@
             opacity: 0.9;
         }
         
+        /* Social Media & Podcast Section */
+        .media-section {
+            background-color: var(--light-gray);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .media-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .media-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .media-icon {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+        
+        .podcast-player {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+        
+        .podcast-player a {
+            color: var(--light-gold);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 10px 20px;
+            background-color: var(--accent-gold);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .podcast-player a:hover {
+            background-color: var(--secondary-blue);
+        }
+        
         /* Buttons */
         .btn {
             display: inline-block;
@@ -247,50 +328,301 @@
             margin-right: 8px;
         }
         
-        /* Cards */
-        .card {
+        /* Accordion Sections */
+        .resources-accordion {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .accordion-item {
             background-color: var(--white);
-            border-radius: 8px;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
             overflow: hidden;
             box-shadow: var(--box-shadow);
             transition: var(--transition);
-            height: 100%;
         }
         
-        .card:hover {
-            transform: translateY(-10px);
+        .accordion-item.active {
             box-shadow: var(--box-shadow-hover);
         }
         
-        .card-content {
-            padding: 2rem;
+        .accordion-header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
         }
         
-        .card h3 {
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
+        .accordion-header:hover {
+            background-color: var(--secondary-blue);
+        }
+        
+        .accordion-header.active {
+            background-color: var(--secondary-blue);
+        }
+        
+        .accordion-title {
             font-size: 1.5rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
         
-        .card-icon {
-            font-size: 2.5rem;
+        .accordion-icon {
+            font-size: 1.8rem;
             color: var(--accent-gold);
+        }
+        
+        .accordion-toggle {
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .accordion-item.active .accordion-toggle {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        
+        .accordion-item.active .accordion-content {
+            padding: 2rem;
+            max-height: 5000px;
+        }
+        
+        /* Worksheet Styles */
+        .worksheet-step {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px dashed var(--light-gray);
+        }
+        
+        .worksheet-step:last-child {
+            border-bottom: none;
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
             margin-bottom: 1.5rem;
         }
         
-        /* Grid Layouts */
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
+        .step-number {
+            background-color: var(--accent-gold);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            flex-shrink: 0;
         }
         
-        .key-points-grid {
+        .step-title {
+            font-size: 1.3rem;
+            color: var(--primary-blue);
+            margin: 0;
+        }
+        
+        .worksheet-question {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-gold);
+        }
+        
+        .worksheet-question h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .worksheet-question h4 i {
+            color: var(--accent-gold);
+        }
+        
+        .answer-area {
+            min-height: 100px;
+            border: 2px dashed var(--accent-gold);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            background-color: rgba(197, 160, 71, 0.05);
+        }
+        
+        /* Journey Guide Styles */
+        .journey-step-compact {
+            display: flex;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-gold);
+        }
+        
+        .journey-step-number {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .journey-step-content h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Daily Practice Styles */
+        .practice-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .practice-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+        
+        .practice-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+        
+        .practice-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .practice-card h4 i {
+            color: var(--accent-gold);
+        }
+        
+        .time-badge {
+            background-color: var(--accent-gold);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+        
+        /* Stories Styles */
+        .story-card-compact {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--box-shadow);
+            border-left: 4px solid var(--accent-gold);
+        }
+        
+        .story-card-compact h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .story-category {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .transformation-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .transformation-point {
+            background-color: rgba(197, 160, 71, 0.1);
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--light-gold);
+        }
+        
+        .transformation-point h5 {
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
             margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .action-btn:hover {
+            background-color: var(--secondary-blue);
+            transform: translateY(-2px);
+        }
+        
+        .action-btn.gold {
+            background-color: var(--accent-gold);
+        }
+        
+        .action-btn.gold:hover {
+            background-color: var(--secondary-blue);
         }
         
         /* Navigation Buttons */
@@ -319,6 +651,40 @@
         .nav-button:hover {
             background-color: var(--secondary-blue);
             transform: translateY(-3px);
+        }
+        
+        /* Resource Links Footer */
+        .resource-footer {
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+        
+        .resource-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .resource-link-card {
+            background-color: var(--primary-blue);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .resource-link-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(10, 35, 66, 0.9);
+        }
+        
+        .resource-link-card i {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
         }
         
         /* Footer */
@@ -377,13 +743,13 @@
             color: var(--accent-gold);
         }
         
-        .social-links {
+        .footer-social-links {
             display: flex;
             gap: 1rem;
             margin-top: 1.5rem;
         }
         
-        .social-links a {
+        .footer-social-links a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -396,7 +762,7 @@
             transition: var(--transition);
         }
         
-        .social-links a:hover {
+        .footer-social-links a:hover {
             background-color: var(--accent-gold);
             transform: translateY(-3px);
         }
@@ -428,10 +794,10 @@
         .quote-box {
             background-color: var(--light-gray);
             border-left: 4px solid var(--accent-gold);
-            padding: 2rem;
-            margin: 2.5rem 0;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
             font-style: italic;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
         
         /* Responsive Design */
@@ -448,8 +814,8 @@
                 font-size: 2.8rem;
             }
             
-            .content-grid {
-                grid-template-columns: 1fr;
+            .accordion-title {
+                font-size: 1.3rem;
             }
             
             .nav-links {
@@ -483,6 +849,10 @@
                 display: block;
             }
             
+            .practice-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .nav-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -492,6 +862,10 @@
                 width: 100%;
                 max-width: 300px;
                 justify-content: center;
+            }
+            
+            .resource-links-grid {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -519,6 +893,22 @@
             .hero-header {
                 padding: 150px 0 80px;
             }
+            
+            .accordion-header {
+                padding: 1.2rem;
+            }
+            
+            .accordion-item.active .accordion-content {
+                padding: 1.5rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 480px) {
@@ -539,8 +929,18 @@
                 font-size: 0.9rem;
             }
             
-            .card-content {
-                padding: 1.5rem;
+            .accordion-title {
+                font-size: 1.1rem;
+            }
+            
+            .step-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .step-number {
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -561,17 +961,14 @@
                 <a href="https://accessworldseminars-ship-it.github.io/results/">
                     <i class="fas fa-home"></i> Home
                 </a>
-                <a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay1">
-                    <i class="fas fa-sun"></i> Day 1
-                </a>
-                <a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay2">
-                    <i class="fas fa-moon"></i> Day 2
-                </a>
-                <a href="#" class="active">
+                <a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay3">
                     <i class="fas fa-star"></i> Day 3
                 </a>
-                <a href="#highlights" class="btn" style="padding: 8px 20px; margin-left: 10px;">
-                    <i class="fas fa-play-circle"></i> Highlights
+                <a href="#" class="active">
+                    <i class="fas fa-toolbox"></i> Complete Resources
+                </a>
+                <a href="#worksheet" class="btn" style="padding: 8px 20px; margin-left: 10px;">
+                    <i class="fas fa-file-alt"></i> Start Worksheet
                 </a>
             </div>
         </div>
@@ -580,168 +977,469 @@
     <!-- Hero Section -->
     <section class="hero-header">
         <div class="hero-content fade-in">
-            <h1>Time to Rise: Day 3</h1>
-            <p>Master Your Story & Embrace the Hero's Journey. Discover how to rewrite your narrative and become the hero of your own life with practical tools for lasting transformation.</p>
-            <a href="#content" class="btn">
-                <i class="fas fa-arrow-down"></i> Explore Day 3 Content
+            <h1>Complete Day 3 Resources</h1>
+            <p>All four essential tools from Time to Rise Day 3 combined into one powerful page. Click on any section to expand and access worksheets, guides, templates, and inspiring stories.</p>
+            <a href="#resources" class="btn">
+                <i class="fas fa-arrow-down"></i> Explore All Resources
             </a>
         </div>
     </section>
 
-    <!-- Main Content Section -->
-    <section class="section" id="content">
+    <!-- Media & Social Section -->
+    <section class="media-section">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Day 3: Your Hero's Journey</h2>
-                <p>The final day of the summit brings together all concepts into a complete framework for transformation. Learn how to see your life as a Hero's Journey and apply the 7-step Path to mastery in any area of your life.</p>
+                <h2>Connect With Joshua Roy & AccessWorld</h2>
+                <p>Follow Joshua Roy on social media and listen to the latest podcast episode for ongoing inspiration and insights.</p>
             </div>
             
-            <div class="content-grid">
-                <div class="card fade-in">
-                    <div class="card-content">
-                        <div class="card-icon">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <h3>Progress = Happiness</h3>
-                        <p>Achieving goals provides fleeting joy; sustainable happiness comes from the feeling of growth and momentum on the path toward a goal. This fundamental principle shifts our focus from destination to journey.</p>
-                        <div class="quote-box">
-                            "It's not even achieving your goals that makes you happy. Progress equals happiness."
-                        </div>
+            <div class="media-grid">
+                <div class="media-card fade-in">
+                    <div class="media-icon">
+                        <i class="fab fa-youtube"></i>
                     </div>
+                    <h3>YouTube Channel</h3>
+                    <p>Subscribe to Joshua Roy's YouTube channel for video content, teachings, and transformational insights.</p>
+                    <a href="https://www.youtube.com/@joshuaroybosse" target="_blank" class="btn" style="margin-top: 1rem;">
+                        <i class="fab fa-youtube"></i> Subscribe Now
+                    </a>
                 </div>
                 
-                <div class="card fade-in">
-                    <div class="card-content">
-                        <div class="card-icon">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        <h3>Your Life is a Story</h3>
-                        <p>You are either living a warning or an example. Every great religion and mythology teaches through stories, and your life is no different. To change your life, you must first change your story.</p>
-                        <p class="accent-text">Key Insight: "Change your story, change your life."</p>
+                <div class="media-card fade-in">
+                    <div class="media-icon">
+                        <i class="fas fa-podcast"></i>
                     </div>
-                </div>
-                
-                <div class="card fade-in">
-                    <div class="card-content">
-                        <div class="card-icon">
-                            <i class="fas fa-route"></i>
-                        </div>
-                        <h3>The Hero's Journey Framework</h3>
-                        <p>Your life naturally follows this universal arc: Ordinary World → Call to Adventure (often a crisis) → Refusal of the Call → Meeting Mentors/Allies → Crossing the Threshold → The Ordeal → The Reward → Return Home as the Hero.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- The 7-Step Path Section -->
-    <section class="section" style="background-color: var(--light-gray);">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>The 7-Step Path to Mastery</h2>
-                <p>A practical framework you can apply to any area of your life for lasting transformation and breakthrough results.</p>
-            </div>
-            
-            <div class="key-points-grid">
-                <div class="card fade-in">
-                    <div class="card-content">
-                        <h3><span class="accent-text">1.</span> Awaken Your Hunger</h3>
-                        <p>Get crystal clear on what you specifically want. Clarity is power. Then connect to your "why" - reasons come first, answers come second.</p>
-                    </div>
-                </div>
-                
-                <div class="card fade-in">
-                    <div class="card-content">
-                        <h3><span class="accent-text">2.</span> Find & Face the Truth</h3>
-                        <p>Be brutally honest about what has stopped you. Is it fear? A limiting belief? A bad habit? A missing skill? The truth will set you free.</p>
-                    </div>
-                </div>
-                
-                <div class="card fade-in">
-                    <div class="card-content">
-                        <h3><span class="accent-text">3.</span> Create a Map</h3>
-                        <p>What are two actions you can take right now? One simple step for today, one bolder commitment for momentum. Massive action is the cure-all.</p>
-                    </div>
-                </div>
-                
-                <div class="card fade-in">
-                    <div class="card-content">
-                        <h3><span class="accent-text">4.</span> Slay Your Dragons</h3>
-                        <p>This is where you become the hero. Face the fear. Challenge the belief. Learn the skill. Do what's hard first. This transforms your identity.</p>
-                    </div>
-                </div>
-                
-                <div class="card fade-in">
-                    <div class="card-content">
-                        <h3><span class="accent-text">5.</span> Daily Practice</h3>
-                        <p>Progress requires consistency. What tiny, non-negotiable habit will you do daily to stay on the path? Consistency beats intensity.</p>
-                    </div>
-                </div>
-                
-                <div class="card fade-in">
-                    <div class="card-content">
-                        <h3><span class="accent-text">6.</span> Raise Standards & Measure</h3>
-                        <p>We get what we tolerate. Decide what you will no longer accept from yourself. Then measure progress frequently. What gets measured gets managed.</p>
-                    </div>
-                </div>
-                
-                <div class="card fade-in">
-                    <div class="card-content">
-                        <h3><span class="accent-text">7.</span> Celebrate Victory</h3>
-                        <p>Do not skip this. Celebrate your wins. Feel the achievement. This conditions your nervous system to associate pleasure with growth.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Highlights Section -->
-    <section class="section" id="highlights">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Day 3 Highlights</h2>
-                <p>Powerful insights and mindset shifts from the final day of the Time to Rise Summit</p>
-            </div>
-            
-            <div class="content-grid">
-                <div class="card fade-in">
-                    <div class="card-content">
-                        <h3>Mindset Shifts</h3>
-                        <ul style="padding-left: 1.5rem; margin-top: 1rem;">
-                            <li style="margin-bottom: 0.8rem;"><strong>From Problem to Adventure:</strong> A crisis is a Call to Adventure happening FOR you</li>
-                            <li style="margin-bottom: 0.8rem;"><strong>From Scarcity to Abundance:</strong> Act abundantly by giving</li>
-                            <li style="margin-bottom: 0.8rem;"><strong>From Waiting to Committing:</strong> "Someday" is a town called nowhere</li>
-                            <li><strong>From External to Internal:</strong> The ultimate opponent is inside you</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="card fade-in">
-                    <div class="card-content">
-                        <h3>Key Quotes & Gems</h3>
-                        <div class="quote-box" style="margin: 1.5rem 0;">
-                            "Disappointment is the secret to success."
-                        </div>
-                        <div class="quote-box" style="margin: 1.5rem 0;">
-                            "The secret to living is giving."
-                        </div>
-                        <div class="quote-box" style="margin: 1.5rem 0;">
-                            "Never leave the site of a decision."
-                        </div>
-                        <p class="accent-text" style="margin-top: 1rem;">"A worthy opponent." - On reframing challenges</p>
-                    </div>
-                </div>
-                
-                <div class="card fade-in">
-                    <div class="card-content">
-                        <h3>Powerful Stories</h3>
-                        <p><strong>The Last $19:</strong> How giving when you have nothing breaks the psychology of scarcity and creates abundance.</p>
-                        <p><strong>Jolie's Broadway Dream:</strong> The power of urgency and "never leaving the site of a decision" in achieving dreams.</p>
-                        <p><strong>Jeff's Transformation:</strong> From wheelchair to championship coach - overcoming physical limitations through mindset.</p>
-                        <a href="#stories" class="btn" style="margin-top: 1rem; padding: 8px 16px; font-size: 0.9rem;">
-                            <i class="fas fa-book-open"></i> Read Stories
+                    <h3>The Joshua Roy Show</h3>
+                    <p>Listen to Episode 1 of our podcast for deeper insights into transformation and personal growth.</p>
+                    <div class="podcast-player">
+                        <h4>Episode 1 Now Available</h4>
+                        <p>Launching the journey of transformation through powerful conversations.</p>
+                        <a href="https://rss.com/podcasts/the-joshua-roy-show/2468355" target="_blank" class="btn" style="background-color: var(--secondary-blue);">
+                            <i class="fas fa-headphones"></i> Listen Now
                         </a>
                     </div>
+                </div>
+                
+                <div class="media-card fade-in">
+                    <div class="media-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Social Media Links</h3>
+                    <p>Follow Joshua Roy and AccessWorld Seminars across all platforms for daily inspiration.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/joshua_roy9/" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/accessworld-seminars-3508a0296/" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@accessworldseminars" target="_blank" class="social-link">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@joshuaroybosse" target="_blank" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Your Complete Transformation Toolkit</h2>
+                <p>Everything you need to apply the principles from Time to Rise Day 3 is right here. Expand any section below to access the tools and resources.</p>
+            </div>
+            
+            <div class="quote-box fade-in">
+                <p><i class="fas fa-quote-left accent-text"></i> Progress equals happiness. These tools are designed to help you make consistent progress on your Hero's Journey. Use them daily, revisit them often, and watch as small steps lead to massive transformation. <i class="fas fa-quote-right accent-text"></i></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Accordion -->
+    <section class="section" id="resources" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Click to Expand Any Resource</h2>
+                <p>All four essential tools are here. Click on any section to open it and access the content.</p>
+            </div>
+            
+            <div class="resources-accordion">
+                <!-- Resource 1: 7-Step Path Worksheet -->
+                <div class="accordion-item fade-in" id="worksheet">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-title">
+                            <i class="fas fa-clipboard-list accordion-icon"></i>
+                            <span>7-Step Path Worksheet</span>
+                        </div>
+                        <div class="accordion-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="worksheet-step">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <h3 class="step-title">Awaken Your Hunger</h3>
+                            </div>
+                            
+                            <div class="worksheet-question">
+                                <h4><i class="fas fa-bullseye"></i> What specifically do you want to achieve?</h4>
+                                <p>Be precise. Instead of "more money" write "$10,000 saved by December."</p>
+                                <div class="answer-area" contenteditable="true">
+                                    <!-- User can type here -->
+                                </div>
+                            </div>
+                            
+                            <div class="worksheet-question">
+                                <h4><i class="fas fa-question-circle"></i> Why is this a MUST for you?</h4>
+                                <p>List at least 3 powerful reasons why achieving this is non-negotiable.</p>
+                                <div class="answer-area" contenteditable="true">
+                                    1.<br>2.<br>3.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="worksheet-step">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <h3 class="step-title">Find & Face the Truth</h3>
+                            </div>
+                            
+                            <div class="worksheet-question">
+                                <h4><i class="fas fa-search"></i> What has stopped you in the past?</h4>
+                                <p>Be brutally honest. Check all that apply: Fear, Limiting beliefs, Bad habits, Missing skills</p>
+                                <div class="answer-area" contenteditable="true">
+                                    The main thing that has stopped me is...
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="worksheet-step">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <h3 class="step-title">Create Your Map</h3>
+                            </div>
+                            
+                            <div class="worksheet-question">
+                                <h4><i class="fas fa-rocket"></i> What's ONE action you can take TODAY?</h4>
+                                <div class="answer-area" contenteditable="true">
+                                    Today I will...
+                                </div>
+                            </div>
+                            
+                            <div class="worksheet-question">
+                                <h4><i class="fas fa-mountain"></i> What's ONE bold action for this week?</h4>
+                                <div class="answer-area" contenteditable="true">
+                                    This week I commit to...
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button onclick="window.print()" class="action-btn gold">
+                                <i class="fas fa-print"></i> Print Worksheet
+                            </button>
+                            <button onclick="saveWorksheet()" class="action-btn">
+                                <i class="fas fa-save"></i> Save Progress
+                            </button>
+                            <a href="#" class="action-btn">
+                                <i class="fas fa-download"></i> Download Full PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resource 2: Hero's Journey Guide -->
+                <div class="accordion-item fade-in" id="journey">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-title">
+                            <i class="fas fa-map-signs accordion-icon"></i>
+                            <span>Hero's Journey Guide</span>
+                        </div>
+                        <div class="accordion-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <h3>The 8 Stages of Your Hero's Journey</h3>
+                        <p>Your life follows the same universal pattern as every great story ever told. Here are the 8 stages:</p>
+                        
+                        <div class="journey-step-compact">
+                            <div class="journey-step-number">1</div>
+                            <div class="journey-step-content">
+                                <h4>The Ordinary World</h4>
+                                <p>Your starting point—your current reality. It might be comfortable, boring, painful, or limiting.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="journey-step-compact">
+                            <div class="journey-step-number">2</div>
+                            <div class="journey-step-content">
+                                <h4>The Call to Adventure</h4>
+                                <p>Life presents an opportunity, challenge, or crisis that demands you grow. Often feels like disaster.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="journey-step-compact">
+                            <div class="journey-step-number">3</div>
+                            <div class="journey-step-content">
+                                <h4>Refusal of the Call</h4>
+                                <p>The natural response is to say no. We make excuses: "I'm not ready," "This isn't my problem."</p>
+                            </div>
+                        </div>
+                        
+                        <div class="journey-step-compact">
+                            <div class="journey-step-number">4</div>
+                            <div class="journey-step-content">
+                                <h4>Meeting the Mentor</h4>
+                                <p>Help arrives. A mentor provides guidance, wisdom, tools, or encouragement.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="quote-box">
+                            <p><strong>Key Insight:</strong> Your challenges are not happening TO you—they're Calls to Adventure happening FOR you. The bigger the dragon, the greater the hero you become by slaying it.</p>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="action-btn">
+                                <i class="fas fa-download"></i> Download Complete Guide
+                            </a>
+                            <a href="#" class="action-btn">
+                                <i class="fas fa-video"></i> Watch Video Explanation
+                            </a>
+                            <a href="#" class="action-btn">
+                                <i class="fas fa-journal-whills"></i> Get Journey Journal
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resource 3: Daily Practice Templates -->
+                <div class="accordion-item fade-in" id="practices">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-title">
+                            <i class="fas fa-calendar-alt accordion-icon"></i>
+                            <span>Daily Practice Templates</span>
+                        </div>
+                        <div class="accordion-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <h3>Morning Ritual Templates</h3>
+                        <p>Start your day with intention and energy. Choose a template that fits your schedule.</p>
+                        
+                        <div class="practice-grid">
+                            <div class="practice-card">
+                                <h4><i class="fas fa-sun"></i> 5-Minute Jumpstart</h4>
+                                <p>For busy people who want maximum impact in minimum time.</p>
+                                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                                    <li>1 min: Deep breathing</li>
+                                    <li>1 min: Express gratitude</li>
+                                    <li>1 min: State intention</li>
+                                    <li>2 min: Body activation</li>
+                                </ul>
+                                <div class="time-badge">5 minutes</div>
+                            </div>
+                            
+                            <div class="practice-card">
+                                <h4><i class="fas fa-bolt"></i> 15-Minute Power Hour</h4>
+                                <p>Balanced ritual for energy, focus, and emotional state.</p>
+                                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                                    <li>2 min: Hydration & cold</li>
+                                    <li>5 min: Meditation</li>
+                                    <li>5 min: Movement</li>
+                                    <li>3 min: Reading</li>
+                                </ul>
+                                <div class="time-badge">15 minutes</div>
+                            </div>
+                        </div>
+                        
+                        <h3 style="margin-top: 2rem;">Evening Wind-Down Templates</h3>
+                        <p>End your day with reflection and preparation for tomorrow's success.</p>
+                        
+                        <div class="practice-grid">
+                            <div class="practice-card">
+                                <h4><i class="fas fa-moon"></i> 5-Minute Reflection</h4>
+                                <p>Quick review to end your day intentionally.</p>
+                                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                                    <li>1 min: 3 wins from today</li>
+                                    <li>2 min: 1 lesson learned</li>
+                                    <li>1 min: Gratitude practice</li>
+                                    <li>1 min: Tomorrow's priority</li>
+                                </ul>
+                                <div class="time-badge">5 minutes</div>
+                            </div>
+                            
+                            <div class="practice-card">
+                                <h4><i class="fas fa-wind"></i> 10-Minute Unwind</h4>
+                                <p>Release the day's stress and prepare for restful sleep.</p>
+                                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                                    <li>3 min: Breathing exercise</li>
+                                    <li>4 min: Journaling</li>
+                                    <li>3 min: Gentle stretching</li>
+                                </ul>
+                                <div class="time-badge">10 minutes</div>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="action-btn">
+                                <i class="fas fa-download"></i> Download All Templates
+                            </a>
+                            <a href="#" class="action-btn">
+                                <i class="fas fa-calendar-week"></i> Weekly Planner
+                            </a>
+                            <a href="#" class="action-btn">
+                                <i class="fas fa-mobile-alt"></i> Habit Tracker App
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resource 4: Transformation Stories -->
+                <div class="accordion-item fade-in" id="stories">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-title">
+                            <i class="fas fa-book-open accordion-icon"></i>
+                            <span>Transformation Stories</span>
+                        </div>
+                        <div class="accordion-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <h3>Real People. Real Journeys. Real Transformation.</h3>
+                        <p>Be inspired by stories of individuals who applied these principles and transformed their lives.</p>
+                        
+                        <div class="story-card-compact">
+                            <div class="story-category">Relationships & Mindset</div>
+                            <h4>From Broken to Bestselling Author</h4>
+                            <p><strong>Gillian's Challenge:</strong> Her mother had terminal cancer, she had a miscarriage, and her husband ended their marriage via text—all simultaneously.</p>
+                            <p><strong>The Turning Point:</strong> Attended Unleash the Power Within and experienced the Dickens Process.</p>
+                            
+                            <div class="transformation-points">
+                                <div class="transformation-point">
+                                    <h5>Transformation</h5>
+                                    <p>Became a NY Times bestselling author and relationship expert</p>
+                                </div>
+                                <div class="transformation-point">
+                                    <h5>Impact</h5>
+                                    <p>Now helps thousands of women through courses and content</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="story-card-compact">
+                            <div class="story-category">Mindset & Health</div>
+                            <h4>Wheelchair to Championship Coach</h4>
+                            <p><strong>Jeff's Challenge:</strong> At 28, broke, in a wheelchair, moving back with parents, told he wouldn't live past mid-30s.</p>
+                            <p><strong>The Turning Point:</strong> Discovered Tony's work and learned to associate pleasure/pain differently.</p>
+                            
+                            <div class="transformation-points">
+                                <div class="transformation-point">
+                                    <h5>Transformation</h5>
+                                    <p>Raised daughter alone, coached football for 21 years, won championships</p>
+                                </div>
+                                <div class="transformation-point">
+                                    <h5>Impact</h5>
+                                    <p>Inspires people globally through writing and mentoring youth</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <a href="#" class="action-btn">
+                                <i class="fas fa-book"></i> Read All Stories
+                            </a>
+                            <a href="#" class="action-btn">
+                                <i class="fas fa-pen-alt"></i> Share Your Story
+                            </a>
+                            <a href="#" class="action-btn">
+                                <i class="fas fa-video"></i> Watch Video Stories
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Access Buttons -->
+            <div style="text-align: center; margin-top: 3rem;">
+                <h3>Quick Access to All Resources</h3>
+                <div class="action-buttons" style="justify-content: center;">
+                    <a href="#worksheet" class="action-btn gold" onclick="openAccordion('worksheet')">
+                        <i class="fas fa-clipboard-list"></i> Open Worksheet
+                    </a>
+                    <a href="#journey" class="action-btn" onclick="openAccordion('journey')">
+                        <i class="fas fa-map-signs"></i> Open Journey Guide
+                    </a>
+                    <a href="#practices" class="action-btn" onclick="openAccordion('practices')">
+                        <i class="fas fa-calendar-alt"></i> Open Practice Templates
+                    </a>
+                    <a href="#stories" class="action-btn" onclick="openAccordion('stories')">
+                        <i class="fas fa-book-open"></i> Open Stories
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resource Links Footer -->
+    <section class="resource-footer">
+        <div class="container">
+            <div class="section-header" style="color: var(--white);">
+                <h2>All Resources in One Page</h2>
+                <p>Bookmark this page to access all four essential tools whenever you need them.</p>
+            </div>
+            
+            <div class="resource-links-grid">
+                <div class="resource-link-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>7-Step Path Worksheet</h3>
+                    <p>Complete fillable worksheet with save/print functionality</p>
+                    <a href="#worksheet" onclick="openAccordion('worksheet')" class="action-btn" style="margin-top: 1rem; display: inline-block;">
+                        <i class="fas fa-external-link-alt"></i> Open
+                    </a>
+                </div>
+                
+                <div class="resource-link-card">
+                    <i class="fas fa-map-signs"></i>
+                    <h3>Hero's Journey Guide</h3>
+                    <p>All 8 stages explained with practical applications</p>
+                    <a href="#journey" onclick="openAccordion('journey')" class="action-btn" style="margin-top: 1rem; display: inline-block;">
+                        <i class="fas fa-external-link-alt"></i> Open
+                    </a>
+                </div>
+                
+                <div class="resource-link-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Daily Practice Templates</h3>
+                    <p>Multiple templates for morning/evening routines</p>
+                    <a href="#practices" onclick="openAccordion('practices')" class="action-btn" style="margin-top: 1rem; display: inline-block;">
+                        <i class="fas fa-external-link-alt"></i> Open
+                    </a>
+                </div>
+                
+                <div class="resource-link-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Transformation Stories</h3>
+                    <p>Real-life success stories from real people</p>
+                    <a href="#stories" onclick="openAccordion('stories')" class="action-btn" style="margin-top: 1rem; display: inline-block;">
+                        <i class="fas fa-external-link-alt"></i> Open
+                    </a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <p style="color: var(--light-gold);">Share this page with others who could benefit from these resources:</p>
+                <div class="social-links" style="justify-content: center; margin-top: 1rem;">
+                    <a href="https://accessworldseminars-ship-it.github.io/results/T2RD3a" class="action-btn gold">
+                        <i class="fas fa-link"></i> Copy Page Link
+                    </a>
                 </div>
             </div>
         </div>
@@ -753,11 +1451,11 @@
             <a href="https://accessworldseminars-ship-it.github.io/results/" class="nav-button">
                 <i class="fas fa-home"></i> Return Home
             </a>
-            <a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay2" class="nav-button">
-                <i class="fas fa-arrow-left"></i> Day 2 Content
+            <a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay3" class="nav-button">
+                <i class="fas fa-arrow-left"></i> Back to Day 3
             </a>
-            <a href="#content" class="nav-button">
-                <i class="fas fa-arrow-up"></i> Back to Top
+            <a href="#resources" class="nav-button">
+                <i class="fas fa-arrow-up"></i> Back to Resources
             </a>
         </div>
     </div>
@@ -774,37 +1472,43 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="https://accessworldseminars-ship-it.github.io/results/">Home</a></li>
-                        <li><a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay1">Time to Rise: Day 1</a></li>
-                        <li><a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay2">Time to Rise: Day 2</a></li>
-                        <li><a href="#">Time to Rise: Day 3</a></li>
+                        <li><a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay3">Time to Rise: Day 3</a></li>
+                        <li><a href="https://accessworldseminars-ship-it.github.io/results/T2RD3a">Complete Resources</a></li>
+                        <li><a href="#worksheet" onclick="openAccordion('worksheet')">7-Step Worksheet</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="#">7-Step Path Worksheet</a></li>
-                        <li><a href="#">Hero's Journey Guide</a></li>
-                        <li><a href="#">Daily Practice Templates</a></li>
-                        <li><a href="#">Transformation Stories</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Connect With Us</h4>
-                    <p>Follow us for more insights and updates on upcoming seminars and transformational content.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <h4>Connect With Joshua Roy</h4>
+                    <p>Follow Joshua Roy for daily inspiration and insights:</p>
+                    <div class="footer-social-links">
+                        <a href="https://www.youtube.com/@joshuaroybosse" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.instagram.com/joshua_roy9/" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/accessworld-seminars-3508a0296/" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@accessworldseminars" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
                     </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Listen to the Podcast</h4>
+                    <p>Join Joshua Roy for transformational conversations:</p>
+                    <a href="https://rss.com/podcasts/the-joshua-roy-show/2468355" target="_blank" class="action-btn" style="margin-top: 1rem; display: inline-block;">
+                        <i class="fas fa-podcast"></i> Listen Now
+                    </a>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2024 AccessWorld Seminars. All rights reserved. | Transforming Lives Through Knowledge & Action</p>
+                <p>&copy; 2024 AccessWorld Seminars. All rights reserved. | This page contains: 7-Step Path Worksheet, Hero's Journey Guide, Daily Practice Templates, and Transformation Stories | Follow Joshua Roy on social media for ongoing inspiration</p>
+                <p style="margin-top: 1rem;">Page URL: <a href="https://accessworldseminars-ship-it.github.io/results/T2RD3a" style="color: var(--light-gold);">https://accessworldseminars-ship-it.github.io/results/T2RD3a</a></p>
             </div>
         </div>
     </footer>
@@ -850,22 +1554,119 @@
             // Check on scroll
             window.addEventListener('scroll', fadeInOnScroll);
             
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
+            // Open first accordion by default
+            setTimeout(() => {
+                openAccordion('worksheet');
+            }, 500);
+            
+            // Copy page link functionality
+            document.querySelectorAll('a[href="https://accessworldseminars-ship-it.github.io/results/T2RD3a"]').forEach(link => {
+                if (link.textContent.includes('Copy Page Link')) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const pageUrl = 'https://accessworldseminars-ship-it.github.io/results/T2RD3a';
+                        navigator.clipboard.writeText(pageUrl).then(() => {
+                            const originalText = this.innerHTML;
+                            this.innerHTML = '<i class="fas fa-check"></i> Link Copied!';
+                            setTimeout(() => {
+                                this.innerHTML = originalText;
+                            }, 2000);
                         });
-                    }
+                    });
+                }
+            });
+        });
+        
+        // Accordion Functions
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const content = item.querySelector('.accordion-content');
+            
+            // Close all other accordions
+            document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.accordion-content').style.maxHeight = '0';
+                    otherItem.querySelector('.accordion-content').style.padding = '0';
+                }
+            });
+            
+            // Toggle current accordion
+            if (item.classList.contains('active')) {
+                item.classList.remove('active');
+                content.style.maxHeight = '0';
+                content.style.padding = '0';
+            } else {
+                item.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                content.style.padding = '2rem';
+            }
+        }
+        
+        function openAccordion(id) {
+            const item = document.getElementById(id);
+            const header = item.querySelector('.accordion-header');
+            toggleAccordion(header);
+            
+            // Scroll to the accordion
+            setTimeout(() => {
+                window.scrollTo({
+                    top: item.offsetTop - 100,
+                    behavior: 'smooth'
                 });
+            }, 300);
+        }
+        
+        // Save worksheet content to localStorage
+        window.saveWorksheet = function() {
+            const answers = document.querySelectorAll('.answer-area');
+            const worksheetData = {};
+            
+            answers.forEach((answer, index) => {
+                worksheetData[`answer${index}`] = answer.innerHTML;
+            });
+            
+            localStorage.setItem('7StepWorksheet', JSON.stringify(worksheetData));
+            
+            // Show success message
+            alert('Worksheet progress saved! Your answers have been stored in your browser.');
+        };
+        
+        // Load saved worksheet content
+        const savedWorksheet = localStorage.getItem('7StepWorksheet');
+        if (savedWorksheet) {
+            const worksheetData = JSON.parse(savedWorksheet);
+            const answers = document.querySelectorAll('.answer-area');
+            
+            answers.forEach((answer, index) => {
+                if (worksheetData[`answer${index}`]) {
+                    answer.innerHTML = worksheetData[`answer${index}`];
+                }
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                
+                // Don't prevent default for accordion toggles
+                if (href === '#worksheet' || href === '#journey' || href === '#practices' || href === '#stories') {
+                    return;
+                }
+                
+                e.preventDefault();
+                
+                const targetId = href;
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>
