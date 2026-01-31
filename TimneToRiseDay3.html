@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time to Rise Day 3 | AccessWorld Seminars</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Color Scheme */
+            --primary-blue: #0a2342;
+            --secondary-blue: #1a365d;
+            --accent-gold: #c5a047;
+            --light-gold: #e6d7a8;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --text-dark: #333333;
+            --text-light: #666666;
+            
+            /* Typography */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            
+            /* Spacing */
+            --section-spacing: 80px;
+            --container-width: 1200px;
+            
+            /* Effects */
+            --transition: all 0.3s ease;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --box-shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-gold);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: var(--section-spacing) 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-light);
+        }
+        
+        /* Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary-blue);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-logo i {
+            color: var(--accent-gold);
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--light-gold);
+        }
+        
+        .nav-links a.active {
+            color: var(--accent-gold);
+        }
+        
+        .nav-links a.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero-header {
+            background: linear-gradient(rgba(10, 35, 66, 0.9), rgba(10, 35, 66, 0.8)), url('https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 180px 0 100px;
+            margin-top: 70px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-content h1 {
+            margin-bottom: 1.5rem;
+            font-size: 3.5rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-blue);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow-hover);
+            color: var(--white);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        /* Cards */
+        .card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .card-content {
+            padding: 2rem;
+        }
+        
+        .card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Grid Layouts */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .key-points-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .nav-button:hover {
+            background-color: var(--secondary-blue);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo i {
+            color: var(--accent-gold);
+            margin-right: 10px;
+        }
+        
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--light-gold);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--light-gold);
+        }
+        
+        /* Utility Classes */
+        .accent-text {
+            color: var(--accent-gold);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .quote-box {
+            background-color: var(--light-gray);
+            border-left: 4px solid var(--accent-gold);
+            padding: 2rem;
+            margin: 2.5rem 0;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-blue);
+                flex-direction: column;
+                padding: 1rem 0;
+                gap: 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links a {
+                width: 100%;
+                padding: 1rem 2rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-button {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .hero-header {
+                padding: 150px 0 80px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .card-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="https://accessworldseminars-ship-it.github.io/results/" class="nav-logo">
+                <i class="fas fa-globe-americas"></i> AccessWorld
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="https://accessworldseminars-ship-it.github.io/results/">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay1">
+                    <i class="fas fa-sun"></i> Day 1
+                </a>
+                <a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay2">
+                    <i class="fas fa-moon"></i> Day 2
+                </a>
+                <a href="#" class="active">
+                    <i class="fas fa-star"></i> Day 3
+                </a>
+                <a href="#highlights" class="btn" style="padding: 8px 20px; margin-left: 10px;">
+                    <i class="fas fa-play-circle"></i> Highlights
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-header">
+        <div class="hero-content fade-in">
+            <h1>Time to Rise: Day 3</h1>
+            <p>Master Your Story & Embrace the Hero's Journey. Discover how to rewrite your narrative and become the hero of your own life with practical tools for lasting transformation.</p>
+            <a href="#content" class="btn">
+                <i class="fas fa-arrow-down"></i> Explore Day 3 Content
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <section class="section" id="content">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Day 3: Your Hero's Journey</h2>
+                <p>The final day of the summit brings together all concepts into a complete framework for transformation. Learn how to see your life as a Hero's Journey and apply the 7-step Path to mastery in any area of your life.</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="card fade-in">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Progress = Happiness</h3>
+                        <p>Achieving goals provides fleeting joy; sustainable happiness comes from the feeling of growth and momentum on the path toward a goal. This fundamental principle shifts our focus from destination to journey.</p>
+                        <div class="quote-box">
+                            "It's not even achieving your goals that makes you happy. Progress equals happiness."
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3>Your Life is a Story</h3>
+                        <p>You are either living a warning or an example. Every great religion and mythology teaches through stories, and your life is no different. To change your life, you must first change your story.</p>
+                        <p class="accent-text">Key Insight: "Change your story, change your life."</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h3>The Hero's Journey Framework</h3>
+                        <p>Your life naturally follows this universal arc: Ordinary World → Call to Adventure (often a crisis) → Refusal of the Call → Meeting Mentors/Allies → Crossing the Threshold → The Ordeal → The Reward → Return Home as the Hero.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The 7-Step Path Section -->
+    <section class="section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>The 7-Step Path to Mastery</h2>
+                <p>A practical framework you can apply to any area of your life for lasting transformation and breakthrough results.</p>
+            </div>
+            
+            <div class="key-points-grid">
+                <div class="card fade-in">
+                    <div class="card-content">
+                        <h3><span class="accent-text">1.</span> Awaken Your Hunger</h3>
+                        <p>Get crystal clear on what you specifically want. Clarity is power. Then connect to your "why" - reasons come first, answers come second.</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-content">
+                        <h3><span class="accent-text">2.</span> Find & Face the Truth</h3>
+                        <p>Be brutally honest about what has stopped you. Is it fear? A limiting belief? A bad habit? A missing skill? The truth will set you free.</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-content">
+                        <h3><span class="accent-text">3.</span> Create a Map</h3>
+                        <p>What are two actions you can take right now? One simple step for today, one bolder commitment for momentum. Massive action is the cure-all.</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-content">
+                        <h3><span class="accent-text">4.</span> Slay Your Dragons</h3>
+                        <p>This is where you become the hero. Face the fear. Challenge the belief. Learn the skill. Do what's hard first. This transforms your identity.</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-content">
+                        <h3><span class="accent-text">5.</span> Daily Practice</h3>
+                        <p>Progress requires consistency. What tiny, non-negotiable habit will you do daily to stay on the path? Consistency beats intensity.</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-content">
+                        <h3><span class="accent-text">6.</span> Raise Standards & Measure</h3>
+                        <p>We get what we tolerate. Decide what you will no longer accept from yourself. Then measure progress frequently. What gets measured gets managed.</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-content">
+                        <h3><span class="accent-text">7.</span> Celebrate Victory</h3>
+                        <p>Do not skip this. Celebrate your wins. Feel the achievement. This conditions your nervous system to associate pleasure with growth.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="section" id="highlights">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Day 3 Highlights</h2>
+                <p>Powerful insights and mindset shifts from the final day of the Time to Rise Summit</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="card fade-in">
+                    <div class="card-content">
+                        <h3>Mindset Shifts</h3>
+                        <ul style="padding-left: 1.5rem; margin-top: 1rem;">
+                            <li style="margin-bottom: 0.8rem;"><strong>From Problem to Adventure:</strong> A crisis is a Call to Adventure happening FOR you</li>
+                            <li style="margin-bottom: 0.8rem;"><strong>From Scarcity to Abundance:</strong> Act abundantly by giving</li>
+                            <li style="margin-bottom: 0.8rem;"><strong>From Waiting to Committing:</strong> "Someday" is a town called nowhere</li>
+                            <li><strong>From External to Internal:</strong> The ultimate opponent is inside you</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-content">
+                        <h3>Key Quotes & Gems</h3>
+                        <div class="quote-box" style="margin: 1.5rem 0;">
+                            "Disappointment is the secret to success."
+                        </div>
+                        <div class="quote-box" style="margin: 1.5rem 0;">
+                            "The secret to living is giving."
+                        </div>
+                        <div class="quote-box" style="margin: 1.5rem 0;">
+                            "Never leave the site of a decision."
+                        </div>
+                        <p class="accent-text" style="margin-top: 1rem;">"A worthy opponent." - On reframing challenges</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-content">
+                        <h3>Powerful Stories</h3>
+                        <p><strong>The Last $19:</strong> How giving when you have nothing breaks the psychology of scarcity and creates abundance.</p>
+                        <p><strong>Jolie's Broadway Dream:</strong> The power of urgency and "never leaving the site of a decision" in achieving dreams.</p>
+                        <p><strong>Jeff's Transformation:</strong> From wheelchair to championship coach - overcoming physical limitations through mindset.</p>
+                        <a href="#stories" class="btn" style="margin-top: 1rem; padding: 8px 16px; font-size: 0.9rem;">
+                            <i class="fas fa-book-open"></i> Read Stories
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Buttons -->
+    <div class="container">
+        <div class="nav-buttons">
+            <a href="https://accessworldseminars-ship-it.github.io/results/" class="nav-button">
+                <i class="fas fa-home"></i> Return Home
+            </a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay2" class="nav-button">
+                <i class="fas fa-arrow-left"></i> Day 2 Content
+            </a>
+            <a href="#content" class="nav-button">
+                <i class="fas fa-arrow-up"></i> Back to Top
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-globe-americas"></i> AccessWorld Seminars
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="https://accessworldseminars-ship-it.github.io/results/">Home</a></li>
+                        <li><a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay1">Time to Rise: Day 1</a></li>
+                        <li><a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay2">Time to Rise: Day 2</a></li>
+                        <li><a href="#">Time to Rise: Day 3</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">7-Step Path Worksheet</a></li>
+                        <li><a href="#">Hero's Journey Guide</a></li>
+                        <li><a href="#">Daily Practice Templates</a></li>
+                        <li><a href="#">Transformation Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Connect With Us</h4>
+                    <p>Follow us for more insights and updates on upcoming seminars and transformational content.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 AccessWorld Seminars. All rights reserved. | Transforming Lives Through Knowledge & Action</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            
+            // Fade-in animation on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
+                    }
+                });
+            };
+            
+            // Initial check
+            fadeInOnScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', fadeInOnScroll);
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
