@@ -48,83 +48,41 @@
             padding: 0 20px;
         }
 
-        /* Navigation */
-        .main-nav {
-            background-color: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.2rem 2rem;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
+        /* Navigation Bar */
+        .nav-bar {
+            background: var(--secondary-dark);
+            padding: 1rem 0;
             border-bottom: 2px solid var(--primary-gold);
         }
 
         .nav-container {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
 
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .nav-logo img {
-            height: 45px;
-            width: auto;
-        }
-
-        .nav-logo span {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 1.8rem;
-            background: linear-gradient(to right, var(--primary-gold), var(--primary-gold-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
+        .nav-container a {
             color: var(--text-light);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
             transition: var(--transition);
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .nav-links a:hover {
-            color: var(--primary-gold);
+        .nav-container a:hover {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
             transform: translateY(-2px);
         }
 
-        .nav-links a.active {
-            color: var(--primary-gold);
-            border-bottom: 2px solid var(--primary-gold);
-            padding-bottom: 5px;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 1.8rem;
-            cursor: pointer;
+        .nav-container a.active {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
         }
 
         /* Hero Section */
@@ -137,7 +95,7 @@
             display: flex;
             align-items: center;
             text-align: center;
-            padding-top: 100px;
+            padding-top: 50px;
         }
 
         .hero-content {
@@ -301,12 +259,15 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            text-decoration: none;
+            color: var(--text-light);
         }
 
         .quick-link-card:hover {
             transform: translateY(-5px);
             border-color: var(--primary-gold);
             box-shadow: var(--shadow);
+            color: var(--text-light);
         }
 
         .quick-link-card i {
@@ -368,6 +329,58 @@
             background: var(--primary-gold);
             color: var(--primary-dark);
             transform: translateY(-3px);
+        }
+
+        /* Coaching CTA Section */
+        .coaching-cta {
+            background: linear-gradient(135deg, var(--primary-gold), #B8972E);
+            padding: 80px 0;
+            text-align: center;
+            margin: 50px 0;
+            border-radius: var(--border-radius);
+        }
+
+        .coaching-cta h2 {
+            color: var(--primary-dark);
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .coaching-cta p {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .coaching-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .coaching-option {
+            background: var(--primary-dark);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .coaching-option:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .coaching-option h3 {
+            color: var(--primary-gold);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .coaching-option p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
         }
 
         /* Footer */
@@ -465,34 +478,13 @@
             .notes-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .coaching-options {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                right: 0;
-                background: var(--primary-dark);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1.5rem;
-                transform: translateY(-100%);
-                opacity: 0;
-                transition: var(--transition);
-                border-bottom: 2px solid var(--primary-gold);
-                z-index: 999;
-            }
-
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-            }
-
             .hero-content h1 {
                 font-size: 2.8rem;
             }
@@ -503,6 +495,12 @@
 
             .section {
                 padding: 70px 0;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
             }
         }
 
@@ -523,52 +521,50 @@
                 padding: 12px 25px;
                 font-size: 1rem;
             }
+            
+            .coaching-cta h2 {
+                font-size: 2.2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span>AccessWorld</span>
-            </div>
-            
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <div class="nav-links">
-                <a href="https://accessworldseminars-ship-it.github.io/results/">
+    <!-- Simple Navigation Bar -->
+    <div class="nav-bar">
+        <div class="container">
+            <div class="nav-container">
+                <a href="https://accessworldseminars-ship-it.github.io/results/" class="active">
                     <i class="fas fa-home"></i> Home
                 </a>
-                <a href="#" class="active">
-                    <i class="fas fa-book"></i> Day 1 Notes
+                <a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay2">
+                    <i class="fas fa-sun"></i> Day 2 Notes
                 </a>
-                <a href="#">
-                    <i class="fas fa-video"></i> Videos
+                <a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay3">
+                    <i class="fas fa-star"></i> Day 3 Notes
                 </a>
-                <a href="#">
-                    <i class="fas fa-calendar"></i> Events
+                <a href="https://accessworldseminars-ship-it.github.io/results/T2RD3a">
+                    <i class="fas fa-toolbox"></i> All Resources
                 </a>
-                <a href="#">
-                    <i class="fas fa-user"></i> Coaching
-                </a>
-                <a href="https://www.youtube.com/@joshuaroybosse" target="_blank" class="btn">
+                <a href="https://www.youtube.com/@joshuaroybosse" target="_blank">
                     <i class="fab fa-youtube"></i> YouTube
                 </a>
             </div>
         </div>
-    </nav>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero-header">
         <div class="hero-content fade-in">
             <h1>Tony Robbins Day 1 Summit Notes</h1>
             <p>Key insights, transformative principles, and actionable takeaways from Joshua Roy's experience at the Tony Robbins event. Capture the wisdom to apply to your life and business.</p>
-            <a href="#core-principles" class="btn">
-                <i class="fas fa-graduation-cap"></i> Explore Key Principles
-            </a>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="#core-principles" class="btn">
+                    <i class="fas fa-graduation-cap"></i> Explore Key Principles
+                </a>
+                <a href="#coaching" class="btn" style="background: var(--primary-dark); color: var(--primary-gold);">
+                    <i class="fas fa-users"></i> Start Your Journey
+                </a>
+            </div>
         </div>
     </section>
 
@@ -694,37 +690,63 @@
         </div>
     </section>
 
+    <!-- Coaching CTA Section -->
+    <section id="coaching" class="coaching-cta">
+        <div class="container">
+            <h2 class="fade-in">Take Your Transformation to the Next Level</h2>
+            <p class="fade-in">Choose one of two paths to begin your journey with Joshua Roy and AccessWorld Seminars</p>
+            
+            <div class="coaching-options">
+                <div class="coaching-option fade-in">
+                    <h3><i class="fas fa-user-circle"></i> Personal Transformation</h3>
+                    <p>Unlock your incredible self and achieve personal mastery. This path is for you if you want to transform your life, overcome limitations, and reach new levels of personal success and fulfillment.</p>
+                    <a href="https://accessworldseminars-ship-it.github.io/results/commit" class="btn" style="background: var(--primary-dark); color: var(--primary-gold);">
+                        <i class="fas fa-rocket"></i> Unlock Your Incredible Self
+                    </a>
+                </div>
+                
+                <div class="coaching-option fade-in">
+                    <h3><i class="fas fa-users"></i> Become a Coach</h3>
+                    <p>Transform others while building a fulfilling career. This path is for you if you want to become a world-class life and results coach, helping others achieve breakthroughs while creating income and impact.</p>
+                    <a href="https://accessworldseminars-ship-it.github.io/results/commit" class="btn" style="background: var(--primary-dark); color: var(--primary-gold);">
+                        <i class="fas fa-graduation-cap"></i> Become a World-Class Coach
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Quick Links Section -->
     <section class="section" style="background: var(--secondary-dark);">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Connect With Joshua Roy</h2>
-                <p>Follow for more insights, coaching, and transformational content</p>
+                <h2>Continue Your Learning Journey</h2>
+                <p>Access all resources and connect with Joshua Roy</p>
             </div>
 
             <div class="quick-links-grid">
+                <a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay2" class="quick-link-card fade-in">
+                    <i class="fas fa-sun"></i>
+                    <h3>Day 2 Notes</h3>
+                    <p>Continue with Day 2 insights and principles</p>
+                </a>
+
+                <a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay3" class="quick-link-card fade-in">
+                    <i class="fas fa-star"></i>
+                    <h3>Day 3 Notes</h3>
+                    <p>Complete your journey with Day 3 wisdom</p>
+                </a>
+
+                <a href="https://accessworldseminars-ship-it.github.io/results/T2RD3a" class="quick-link-card fade-in">
+                    <i class="fas fa-toolbox"></i>
+                    <h3>All Resources</h3>
+                    <p>Complete toolkit: Worksheets, templates & stories</p>
+                </a>
+
                 <a href="https://www.youtube.com/@joshuaroybosse" target="_blank" class="quick-link-card fade-in">
                     <i class="fab fa-youtube"></i>
                     <h3>YouTube Channel</h3>
-                    <p>Daily insights, breakdowns, and coaching sessions</p>
-                </a>
-
-                <a href="https://www.instagram.com/joshua_roy9/" target="_blank" class="quick-link-card fade-in">
-                    <i class="fab fa-instagram"></i>
-                    <h3>Instagram</h3>
-                    <p>Daily motivation and behind-the-scenes</p>
-                </a>
-
-                <a href="https://www.linkedin.com/in/accessworld-seminars-3508a0296/" target="_blank" class="quick-link-card fade-in">
-                    <i class="fab fa-linkedin"></i>
-                    <h3>LinkedIn</h3>
-                    <p>Professional network and business insights</p>
-                </a>
-
-                <a href="https://www.tiktok.com/@accessworldseminars" target="_blank" class="quick-link-card fade-in">
-                    <i class="fab fa-tiktok"></i>
-                    <h3>TikTok</h3>
-                    <p>Quick transformational tips and insights</p>
+                    <p>Daily insights and transformational content</p>
                 </a>
             </div>
         </div>
@@ -736,11 +758,11 @@
             <a href="https://accessworldseminars-ship-it.github.io/results/" class="nav-button">
                 <i class="fas fa-home"></i> Return Home
             </a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay2" class="nav-button">
+                <i class="fas fa-arrow-right"></i> Go to Day 2
+            </a>
             <a href="https://rss.com/podcasts/the-joshua-roy-show/2468355" target="_blank" class="nav-button">
                 <i class="fas fa-podcast"></i> Listen to Podcast
-            </a>
-            <a href="https://www.youtube.com/@joshuaroybosse" target="_blank" class="nav-button">
-                <i class="fab fa-youtube"></i> Watch on YouTube
             </a>
         </div>
     </div>
@@ -752,22 +774,6 @@
                 <div class="footer-logo">
                     <h2>AccessWorld Seminars</h2>
                     <p>Transformational coaching and peak performance training with Joshua Roy.</p>
-                </div>
-
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="https://accessworldseminars-ship-it.github.io/results/">Home</a></li>
-                        <li><a href="#">Coaching Programs</a></li>
-                        <li><a href="#">Events</a></li>
-                        <li><a href="#">Testimonials</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-social">
-                    <h3>Connect With Us</h3>
-                    <p>Follow for daily transformational content</p>
                     <div class="social-icons">
                         <a href="https://www.youtube.com/@joshuaroybosse" target="_blank">
                             <i class="fab fa-youtube"></i>
@@ -783,32 +789,37 @@
                         </a>
                     </div>
                 </div>
+
+                <div class="footer-links">
+                    <h3>Time to Rise Series</h3>
+                    <ul>
+                        <li><a href="https://accessworldseminars-ship-it.github.io/results/">Home</a></li>
+                        <li><a href="#">Day 1 Notes</a></li>
+                        <li><a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay2">Day 2 Notes</a></li>
+                        <li><a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay3">Day 3 Notes</a></li>
+                        <li><a href="https://accessworldseminars-ship-it.github.io/results/T2RD3a">All Resources</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Get Started</h3>
+                    <ul>
+                        <li><a href="https://accessworldseminars-ship-it.github.io/results/commit">Personal Transformation</a></li>
+                        <li><a href="https://accessworldseminars-ship-it.github.io/results/commit">Become a Coach</a></li>
+                        <li><a href="https://rss.com/podcasts/the-joshua-roy-show/2468355" target="_blank">The Joshua Roy Show</a></li>
+                        <li><a href="https://www.youtube.com/@joshuaroybosse" target="_blank">YouTube Content</a></li>
+                    </ul>
+                </div>
             </div>
 
             <div class="copyright">
                 <p>&copy; 2024 AccessWorld Seminars. All rights reserved. | Created by Joshua Roy</p>
-                <p>This site contains notes and interpretations from the Tony Robbins event.</p>
+                <p>This site contains notes and interpretations from the Tony Robbins Time to Rise event.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-            this.innerHTML = document.querySelector('.nav-links').classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('.nav-links').classList.remove('active');
-                document.querySelector('.mobile-menu-btn').innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-
         // Fade-in animation on scroll
         const observerOptions = {
             threshold: 0.1,
