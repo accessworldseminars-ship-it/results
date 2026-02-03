@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time to Rise Day 3 Resources | AccessWorld Seminars</title>
+    <title>Time to Rise Day 3 | Complete Workbook - AccessWorld Seminars</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +30,7 @@
             --font-body: 'Open Sans', sans-serif;
             
             /* Spacing */
-            --section-spacing: 80px;
+            --section-spacing: 60px;
             --container-width: 1200px;
             
             /* Effects */
@@ -61,28 +61,33 @@
         }
         
         h1 {
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
         }
         
         h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             position: relative;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         h2:after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 0;
-            width: 80px;
+            width: 70px;
             height: 4px;
             background-color: var(--accent-gold);
         }
         
+        .section-header h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
         p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             font-size: 1.1rem;
         }
         
@@ -98,7 +103,7 @@
         
         .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
         
         .section-header p {
@@ -130,7 +135,7 @@
         
         .nav-logo {
             font-family: var(--font-heading);
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--white);
             text-decoration: none;
@@ -145,7 +150,7 @@
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
         }
         
@@ -154,13 +159,13 @@
             text-decoration: none;
             font-family: var(--font-heading);
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 0.95rem;
             padding: 0.5rem 0;
             position: relative;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         
         .nav-links a:hover {
@@ -196,7 +201,7 @@
             background-size: cover;
             background-position: center;
             color: var(--white);
-            padding: 180px 0 100px;
+            padding: 150px 0 80px;
             margin-top: 70px;
             text-align: center;
         }
@@ -208,13 +213,13 @@
         }
         
         .hero-content h1 {
-            margin-bottom: 1.5rem;
-            font-size: 3.5rem;
+            margin-bottom: 1.2rem;
+            font-size: 2.8rem;
         }
         
         .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
             opacity: 0.9;
         }
         
@@ -223,7 +228,7 @@
             display: inline-block;
             background-color: var(--accent-gold);
             color: var(--white);
-            padding: 12px 30px;
+            padding: 12px 28px;
             border-radius: 4px;
             text-decoration: none;
             font-family: var(--font-heading);
@@ -247,29 +252,33 @@
             margin-right: 8px;
         }
         
-        /* Accordion Sections */
-        .resources-accordion {
+        /* Resources Container */
+        .resources-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
             max-width: 1100px;
             margin: 0 auto;
         }
         
-        .accordion-item {
+        /* Resource Cards - Scrollable */
+        .resource-card {
             background-color: var(--white);
             border-radius: 10px;
-            margin-bottom: 1.5rem;
             overflow: hidden;
             box-shadow: var(--box-shadow);
             transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
-        .accordion-item.active {
+        .resource-card:hover {
             box-shadow: var(--box-shadow-hover);
         }
         
-        .accordion-header {
+        .resource-header {
             background-color: var(--primary-blue);
             color: var(--white);
-            padding: 1.5rem 2rem;
+            padding: 1.5rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -277,53 +286,59 @@
             transition: var(--transition);
         }
         
-        .accordion-header:hover {
+        .resource-header:hover {
             background-color: var(--secondary-blue);
         }
         
-        .accordion-header.active {
+        .resource-header.active {
             background-color: var(--secondary-blue);
         }
         
-        .accordion-title {
-            font-size: 1.5rem;
+        .resource-title {
+            font-size: 1.4rem;
             margin: 0;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
         
-        .accordion-icon {
-            font-size: 1.8rem;
+        .resource-icon {
+            font-size: 1.6rem;
             color: var(--accent-gold);
         }
         
-        .accordion-toggle {
-            font-size: 1.5rem;
+        .resource-toggle {
+            font-size: 1.4rem;
             transition: var(--transition);
         }
         
-        .accordion-item.active .accordion-toggle {
+        .resource-card.active .resource-toggle {
             transform: rotate(180deg);
         }
         
-        .accordion-content {
+        /* Scrollable Content Area - FIXED */
+        .resource-content {
             padding: 0;
             max-height: 0;
             overflow: hidden;
-            transition: all 0.5s ease;
+            transition: max-height 0.5s ease;
         }
         
-        .accordion-item.active .accordion-content {
+        .resource-card.active .resource-content {
+            padding: 0;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .resource-inner {
             padding: 2rem;
-            max-height: 5000px;
         }
         
         /* Worksheet Styles */
         .worksheet-step {
             margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px dashed var(--light-gray);
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed var(--light-gray);
         }
         
         .worksheet-step:last-child {
@@ -333,36 +348,36 @@
         .step-header {
             display: flex;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
         
         .step-number {
             background-color: var(--accent-gold);
             color: var(--white);
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: var(--font-heading);
             font-weight: 700;
-            font-size: 1.2rem;
-            margin-right: 15px;
+            font-size: 1.1rem;
+            margin-right: 12px;
             flex-shrink: 0;
         }
         
         .step-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--primary-blue);
             margin: 0;
         }
         
         .worksheet-question {
             background-color: var(--light-gray);
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: 8px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             border-left: 4px solid var(--accent-gold);
         }
         
@@ -371,7 +386,8 @@
             margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            font-size: 1.1rem;
         }
         
         .worksheet-question h4 i {
@@ -379,18 +395,21 @@
         }
         
         .answer-area {
-            min-height: 100px;
+            min-height: 80px;
             border: 2px dashed var(--accent-gold);
             border-radius: 8px;
-            padding: 1.5rem;
-            margin-top: 1rem;
+            padding: 1.2rem;
+            margin-top: 0.8rem;
             background-color: rgba(197, 160, 71, 0.05);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.5;
         }
         
         /* Journey Guide Styles */
         .journey-step-compact {
             display: flex;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             padding: 1rem;
             background-color: var(--light-gray);
             border-radius: 8px;
@@ -400,36 +419,38 @@
         .journey-step-number {
             background-color: var(--primary-blue);
             color: var(--white);
-            width: 35px;
-            height: 35px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: var(--font-heading);
             font-weight: 700;
-            margin-right: 15px;
+            margin-right: 12px;
             flex-shrink: 0;
+            font-size: 0.9rem;
         }
         
         .journey-step-content h4 {
             color: var(--primary-blue);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+            font-size: 1.1rem;
         }
         
         /* Daily Practice Styles */
         .practice-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
             margin-top: 1rem;
         }
         
         .practice-card {
-            background-color: var(--white);
+            background-color: var(--light-gray);
             border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: var(--box-shadow);
+            padding: 1.2rem;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
             border: 2px solid transparent;
             transition: var(--transition);
         }
@@ -441,14 +462,20 @@
         
         .practice-card h4 {
             color: var(--primary-blue);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            font-size: 1.1rem;
         }
         
         .practice-card h4 i {
             color: var(--accent-gold);
+        }
+        
+        .practice-card ul {
+            margin-left: 1.2rem;
+            margin-bottom: 0.8rem;
         }
         
         .time-badge {
@@ -468,13 +495,14 @@
             border-radius: 8px;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
-            box-shadow: var(--box-shadow);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
             border-left: 4px solid var(--accent-gold);
         }
         
         .story-card-compact h4 {
             color: var(--primary-blue);
             margin-bottom: 0.5rem;
+            font-size: 1.2rem;
         }
         
         .story-category {
@@ -490,7 +518,7 @@
         
         .transformation-points {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 1rem;
             margin-top: 1rem;
         }
@@ -505,7 +533,7 @@
         .transformation-point h5 {
             color: var(--accent-gold);
             margin-bottom: 0.5rem;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
         
         /* Action Buttons */
@@ -529,6 +557,8 @@
             font-weight: 500;
             font-size: 0.9rem;
             transition: var(--transition);
+            border: none;
+            cursor: pointer;
         }
         
         .action-btn:hover {
@@ -541,14 +571,14 @@
         }
         
         .action-btn.gold:hover {
-            background-color: var(--secondary-blue);
+            background-color: #b08c36;
         }
         
         /* Navigation Buttons */
         .nav-buttons {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             margin-top: 3rem;
             flex-wrap: wrap;
         }
@@ -556,10 +586,10 @@
         .nav-button {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             background-color: var(--primary-blue);
             color: var(--white);
-            padding: 12px 25px;
+            padding: 12px 24px;
             border-radius: 4px;
             text-decoration: none;
             font-family: var(--font-heading);
@@ -576,7 +606,8 @@
         footer {
             background-color: var(--primary-blue);
             color: var(--white);
-            padding: 60px 0 30px;
+            padding: 50px 0 25px;
+            margin-top: 40px;
         }
         
         .footer-container {
@@ -587,14 +618,14 @@
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
         }
         
         .footer-logo {
             font-family: var(--font-heading);
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 1rem;
         }
@@ -606,8 +637,8 @@
         
         .footer-links h4 {
             color: var(--white);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
         }
         
         .footer-links ul {
@@ -615,13 +646,14 @@
         }
         
         .footer-links li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
         }
         
         .footer-links a {
             color: var(--light-gold);
             text-decoration: none;
             transition: var(--transition);
+            font-size: 0.95rem;
         }
         
         .footer-links a:hover {
@@ -630,16 +662,16 @@
         
         .social-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
         }
         
         .social-links a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             background-color: var(--secondary-blue);
             color: var(--white);
             border-radius: 50%;
@@ -654,9 +686,9 @@
         
         .copyright {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--light-gold);
         }
         
@@ -665,41 +697,30 @@
             color: var(--accent-gold);
         }
         
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
         .quote-box {
             background-color: var(--light-gray);
             border-left: 4px solid var(--accent-gold);
-            padding: 1.5rem;
+            padding: 1.2rem;
             margin: 1.5rem 0;
             font-style: italic;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
         
         /* Responsive Design */
         @media (max-width: 992px) {
             h1 {
-                font-size: 2.8rem;
+                font-size: 2.4rem;
             }
             
             h2 {
-                font-size: 2.2rem;
+                font-size: 1.9rem;
             }
             
             .hero-content h1 {
-                font-size: 2.8rem;
+                font-size: 2.4rem;
             }
             
-            .accordion-title {
+            .resource-title {
                 font-size: 1.3rem;
             }
             
@@ -722,8 +743,9 @@
             
             .nav-links a {
                 width: 100%;
-                padding: 1rem 2rem;
+                padding: 1rem 1.5rem;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                justify-content: flex-start;
             }
             
             .nav-links a:last-child {
@@ -748,47 +770,13 @@
                 max-width: 300px;
                 justify-content: center;
             }
+            
+            .action-buttons {
+                justify-content: center;
+            }
         }
         
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.3rem;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.3rem;
-            }
-            
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-            
-            .section {
-                padding: 60px 0;
-            }
-            
-            .hero-header {
-                padding: 150px 0 80px;
-            }
-            
-            .accordion-header {
-                padding: 1.2rem;
-            }
-            
-            .accordion-item.active .accordion-content {
-                padding: 1.5rem;
-            }
-            
-            .action-buttons {
-                flex-direction: column;
-            }
-        }
-        
-        @media (max-width: 480px) {
             h1 {
                 font-size: 2rem;
             }
@@ -801,23 +789,70 @@
                 font-size: 2rem;
             }
             
-            .btn {
-                padding: 10px 20px;
-                font-size: 0.9rem;
+            .hero-content p {
+                font-size: 1.05rem;
             }
             
-            .accordion-title {
+            .section {
+                padding: 50px 0;
+            }
+            
+            .hero-header {
+                padding: 130px 0 60px;
+            }
+            
+            .resource-header {
+                padding: 1.2rem;
+            }
+            
+            .resource-inner {
+                padding: 1.5rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .action-btn {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+            
+            .resource-title {
                 font-size: 1.1rem;
             }
             
             .step-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 10px;
+                gap: 8px;
             }
             
             .step-number {
-                margin-bottom: 10px;
+                margin-bottom: 8px;
+            }
+            
+            .transformation-points {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -838,14 +873,17 @@
                 <a href="https://accessworldseminars-ship-it.github.io/results/">
                     <i class="fas fa-home"></i> Home
                 </a>
+                <a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay1">
+                    <i class="fas fa-calendar-day"></i> Day 1
+                </a>
+                <a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay2">
+                    <i class="fas fa-calendar-day"></i> Day 2
+                </a>
                 <a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay3">
-                    <i class="fas fa-star"></i> Day 3
+                    <i class="fas fa-calendar-day"></i> Day 3
                 </a>
                 <a href="#" class="active">
                     <i class="fas fa-toolbox"></i> All Resources
-                </a>
-                <a href="#worksheet" class="btn" style="padding: 8px 20px; margin-left: 10px;">
-                    <i class="fas fa-file-alt"></i> Jump to Worksheet
                 </a>
             </div>
         </div>
@@ -853,11 +891,11 @@
 
     <!-- Hero Section -->
     <section class="hero-header">
-        <div class="hero-content fade-in">
-            <h1>Time to Rise: Complete Resources</h1>
+        <div class="hero-content">
+            <h1>Time to Rise: Complete Workbook</h1>
             <p>All four essential tools from Day 3 in one place. Click on any section to expand and access worksheets, guides, templates, and inspiring stories.</p>
             <a href="#resources" class="btn">
-                <i class="fas fa-arrow-down"></i> Explore All Resources
+                <i class="fas fa-arrow-down"></i> Start Your Journey
             </a>
         </div>
     </section>
@@ -865,436 +903,444 @@
     <!-- Introduction -->
     <section class="section">
         <div class="container">
-            <div class="section-header fade-in">
+            <div class="section-header">
                 <h2>Your Complete Transformation Toolkit</h2>
                 <p>Everything you need to apply the principles from Time to Rise Day 3 is right here. Expand any section below to access the tools and resources.</p>
             </div>
             
-            <div class="quote-box fade-in">
+            <div class="quote-box">
                 <p><i class="fas fa-quote-left accent-text"></i> Progress equals happiness. These tools are designed to help you make consistent progress on your Hero's Journey. Use them daily, revisit them often, and watch as small steps lead to massive transformation. <i class="fas fa-quote-right accent-text"></i></p>
             </div>
         </div>
     </section>
 
-    <!-- Resources Accordion -->
+    <!-- Resources Section -->
     <section class="section" id="resources" style="background-color: var(--light-gray);">
         <div class="container">
-            <div class="section-header fade-in">
+            <div class="section-header">
                 <h2>Click to Expand Any Resource</h2>
                 <p>All four essential tools are here. Click on any section to open it and access the content.</p>
             </div>
             
-            <div class="resources-accordion">
+            <div class="resources-container">
                 <!-- Resource 1: 7-Step Path Worksheet -->
-                <div class="accordion-item fade-in" id="worksheet">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <div class="accordion-title">
-                            <i class="fas fa-clipboard-list accordion-icon"></i>
+                <div class="resource-card active" id="worksheet">
+                    <div class="resource-header" onclick="toggleResource(this)">
+                        <div class="resource-title">
+                            <i class="fas fa-clipboard-list resource-icon"></i>
                             <span>7-Step Path Worksheet</span>
                         </div>
-                        <div class="accordion-toggle">
+                        <div class="resource-toggle">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
-                    <div class="accordion-content">
-                        <div class="worksheet-step">
-                            <div class="step-header">
-                                <div class="step-number">1</div>
-                                <h3 class="step-title">Awaken Your Hunger</h3>
-                            </div>
-                            
-                            <div class="worksheet-question">
-                                <h4><i class="fas fa-bullseye"></i> What specifically do you want to achieve?</h4>
-                                <p>Be precise. Instead of "more money" write "$10,000 saved by December."</p>
-                                <div class="answer-area" contenteditable="true">
-                                    <!-- User can type here -->
+                    <div class="resource-content">
+                        <div class="resource-inner">
+                            <div class="worksheet-step">
+                                <div class="step-header">
+                                    <div class="step-number">1</div>
+                                    <h3 class="step-title">Awaken Your Hunger</h3>
+                                </div>
+                                
+                                <div class="worksheet-question">
+                                    <h4><i class="fas fa-bullseye"></i> What specifically do you want to achieve?</h4>
+                                    <p>Be precise. Instead of "more money" write "$10,000 saved by December."</p>
+                                    <div class="answer-area" contenteditable="true" data-question="goal">
+                                        <!-- User can type here -->
+                                    </div>
+                                </div>
+                                
+                                <div class="worksheet-question">
+                                    <h4><i class="fas fa-question-circle"></i> Why is this a MUST for you?</h4>
+                                    <p>List at least 3 powerful reasons why achieving this is non-negotiable.</p>
+                                    <div class="answer-area" contenteditable="true" data-question="reasons">
+                                        1.<br>2.<br>3.
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div class="worksheet-question">
-                                <h4><i class="fas fa-question-circle"></i> Why is this a MUST for you?</h4>
-                                <p>List at least 3 powerful reasons why achieving this is non-negotiable.</p>
-                                <div class="answer-area" contenteditable="true">
-                                    1.<br>2.<br>3.
+                            <div class="worksheet-step">
+                                <div class="step-header">
+                                    <div class="step-number">2</div>
+                                    <h3 class="step-title">Find & Face the Truth</h3>
                                 </div>
-                            </div>
-                        </div>
-                        
-                        <div class="worksheet-step">
-                            <div class="step-header">
-                                <div class="step-number">2</div>
-                                <h3 class="step-title">Find & Face the Truth</h3>
-                            </div>
-                            
-                            <div class="worksheet-question">
-                                <h4><i class="fas fa-search"></i> What has stopped you in the past?</h4>
-                                <p>Be brutally honest. Check all that apply: Fear, Limiting beliefs, Bad habits, Missing skills</p>
-                                <div class="answer-area" contenteditable="true">
-                                    The main thing that has stopped me is...
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="worksheet-step">
-                            <div class="step-header">
-                                <div class="step-number">3</div>
-                                <h3 class="step-title">Create Your Map</h3>
-                            </div>
-                            
-                            <div class="worksheet-question">
-                                <h4><i class="fas fa-rocket"></i> What's ONE action you can take TODAY?</h4>
-                                <div class="answer-area" contenteditable="true">
-                                    Today I will...
+                                
+                                <div class="worksheet-question">
+                                    <h4><i class="fas fa-search"></i> What has stopped you in the past?</h4>
+                                    <p>Be brutally honest. Check all that apply: Fear, Limiting beliefs, Bad habits, Missing skills</p>
+                                    <div class="answer-area" contenteditable="true" data-question="obstacles">
+                                        The main thing that has stopped me is...
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div class="worksheet-question">
-                                <h4><i class="fas fa-mountain"></i> What's ONE bold action for this week?</h4>
-                                <div class="answer-area" contenteditable="true">
-                                    This week I commit to...
+                            <div class="worksheet-step">
+                                <div class="step-header">
+                                    <div class="step-number">3</div>
+                                    <h3 class="step-title">Create Your Map</h3>
                                 </div>
-                            </div>
-                        </div>
-                        
-                        <div class="worksheet-step">
-                            <div class="step-header">
-                                <div class="step-number">4</div>
-                                <h3 class="step-title">Slay Your Dragons</h3>
+                                
+                                <div class="worksheet-question">
+                                    <h4><i class="fas fa-rocket"></i> What's ONE action you can take TODAY?</h4>
+                                    <div class="answer-area" contenteditable="true" data-question="today-action">
+                                        Today I will...
+                                    </div>
+                                </div>
+                                
+                                <div class="worksheet-question">
+                                    <h4><i class="fas fa-mountain"></i> What's ONE bold action for this week?</h4>
+                                    <div class="answer-area" contenteditable="true" data-question="week-action">
+                                        This week I commit to...
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="worksheet-question">
-                                <h4><i class="fas fa-dragon"></i> What's your biggest dragon to slay?</h4>
-                                <div class="answer-area" contenteditable="true">
-                                    My main dragon is...
+                            <div class="worksheet-step">
+                                <div class="step-header">
+                                    <div class="step-number">4</div>
+                                    <h3 class="step-title">Slay Your Dragons</h3>
+                                </div>
+                                
+                                <div class="worksheet-question">
+                                    <h4><i class="fas fa-dragon"></i> What's your biggest dragon to slay?</h4>
+                                    <div class="answer-area" contenteditable="true" data-question="dragon">
+                                        My main dragon is...
+                                    </div>
+                                </div>
+                                
+                                <div class="worksheet-question">
+                                    <h4><i class="fas fa-shield-alt"></i> How will you slay it?</h4>
+                                    <div class="answer-area" contenteditable="true" data-question="slay-plan">
+                                        To slay this dragon, I will...
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div class="worksheet-question">
-                                <h4><i class="fas fa-shield-alt"></i> How will you slay it?</h4>
-                                <div class="answer-area" contenteditable="true">
-                                    To slay this dragon, I will...
-                                </div>
+                            <div class="action-buttons">
+                                <button onclick="printWorksheet()" class="action-btn gold">
+                                    <i class="fas fa-print"></i> Print Worksheet
+                                </button>
+                                <button onclick="saveWorksheet()" class="action-btn">
+                                    <i class="fas fa-save"></i> Save My Progress
+                                </button>
+                                <button onclick="clearWorksheet()" class="action-btn">
+                                    <i class="fas fa-redo"></i> Clear Answers
+                                </button>
                             </div>
-                        </div>
-                        
-                        <div class="action-buttons">
-                            <button onclick="window.print()" class="action-btn gold">
-                                <i class="fas fa-print"></i> Print Worksheet
-                            </button>
-                            <button onclick="saveWorksheet()" class="action-btn">
-                                <i class="fas fa-save"></i> Save Progress
-                            </button>
-                            <a href="#" class="action-btn">
-                                <i class="fas fa-download"></i> Download Full PDF
-                            </a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Resource 2: Hero's Journey Guide -->
-                <div class="accordion-item fade-in" id="journey">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <div class="accordion-title">
-                            <i class="fas fa-map-signs accordion-icon"></i>
+                <div class="resource-card" id="journey">
+                    <div class="resource-header" onclick="toggleResource(this)">
+                        <div class="resource-title">
+                            <i class="fas fa-map-signs resource-icon"></i>
                             <span>Hero's Journey Guide</span>
                         </div>
-                        <div class="accordion-toggle">
+                        <div class="resource-toggle">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
-                    <div class="accordion-content">
-                        <h3>The 8 Stages of Your Hero's Journey</h3>
-                        <p>Your life follows the same universal pattern as every great story ever told. Here are the 8 stages:</p>
-                        
-                        <div class="journey-step-compact">
-                            <div class="journey-step-number">1</div>
-                            <div class="journey-step-content">
-                                <h4>The Ordinary World</h4>
-                                <p>Your starting point—your current reality. It might be comfortable, boring, painful, or limiting.</p>
+                    <div class="resource-content">
+                        <div class="resource-inner">
+                            <h3>The 8 Stages of Your Hero's Journey</h3>
+                            <p>Your life follows the same universal pattern as every great story ever told. Here are the 8 stages:</p>
+                            
+                            <div class="journey-step-compact">
+                                <div class="journey-step-number">1</div>
+                                <div class="journey-step-content">
+                                    <h4>The Ordinary World</h4>
+                                    <p>Your starting point—your current reality. It might be comfortable, boring, painful, or limiting.</p>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="journey-step-compact">
-                            <div class="journey-step-number">2</div>
-                            <div class="journey-step-content">
-                                <h4>The Call to Adventure</h4>
-                                <p>Life presents an opportunity, challenge, or crisis that demands you grow. Often feels like disaster.</p>
+                            
+                            <div class="journey-step-compact">
+                                <div class="journey-step-number">2</div>
+                                <div class="journey-step-content">
+                                    <h4>The Call to Adventure</h4>
+                                    <p>Life presents an opportunity, challenge, or crisis that demands you grow. Often feels like disaster.</p>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="journey-step-compact">
-                            <div class="journey-step-number">3</div>
-                            <div class="journey-step-content">
-                                <h4>Refusal of the Call</h4>
-                                <p>The natural response is to say no. We make excuses: "I'm not ready," "This isn't my problem."</p>
+                            
+                            <div class="journey-step-compact">
+                                <div class="journey-step-number">3</div>
+                                <div class="journey-step-content">
+                                    <h4>Refusal of the Call</h4>
+                                    <p>The natural response is to say no. We make excuses: "I'm not ready," "This isn't my problem."</p>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="journey-step-compact">
-                            <div class="journey-step-number">4</div>
-                            <div class="journey-step-content">
-                                <h4>Meeting the Mentor</h4>
-                                <p>Help arrives. A mentor provides guidance, wisdom, tools, or encouragement.</p>
+                            
+                            <div class="journey-step-compact">
+                                <div class="journey-step-number">4</div>
+                                <div class="journey-step-content">
+                                    <h4>Meeting the Mentor</h4>
+                                    <p>Help arrives. A mentor provides guidance, wisdom, tools, or encouragement.</p>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="journey-step-compact">
-                            <div class="journey-step-number">5</div>
-                            <div class="journey-step-content">
-                                <h4>Crossing the Threshold</h4>
-                                <p>You finally commit. You burn the boats. There's no turning back.</p>
+                            
+                            <div class="journey-step-compact">
+                                <div class="journey-step-number">5</div>
+                                <div class="journey-step-content">
+                                    <h4>Crossing the Threshold</h4>
+                                    <p>You finally commit. You burn the boats. There's no turning back.</p>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="journey-step-compact">
-                            <div class="journey-step-number">6</div>
-                            <div class="journey-step-content">
-                                <h4>Tests, Allies & Enemies</h4>
-                                <p>You face challenges, find allies, and encounter enemies. Each test makes you stronger.</p>
+                            
+                            <div class="journey-step-compact">
+                                <div class="journey-step-number">6</div>
+                                <div class="journey-step-content">
+                                    <h4>Tests, Allies & Enemies</h4>
+                                    <p>You face challenges, find allies, and encounter enemies. Each test makes you stronger.</p>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="journey-step-compact">
-                            <div class="journey-step-number">7</div>
-                            <div class="journey-step-content">
-                                <h4>The Ordeal & Reward</h4>
-                                <p>You face your greatest fear. When you overcome it, you gain new wisdom or power.</p>
+                            
+                            <div class="journey-step-compact">
+                                <div class="journey-step-number">7</div>
+                                <div class="journey-step-content">
+                                    <h4>The Ordeal & Reward</h4>
+                                    <p>You face your greatest fear. When you overcome it, you gain new wisdom or power.</p>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="journey-step-compact">
-                            <div class="journey-step-number">8</div>
-                            <div class="journey-step-content">
-                                <h4>Return & New Life</h4>
-                                <p>You return transformed. You bring back wisdom to share. Your ordinary world is different because you're in it.</p>
+                            
+                            <div class="journey-step-compact">
+                                <div class="journey-step-number">8</div>
+                                <div class="journey-step-content">
+                                    <h4>Return & New Life</h4>
+                                    <p>You return transformed. You bring back wisdom to share. Your ordinary world is different because you're in it.</p>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="quote-box">
-                            <p><strong>Key Insight:</strong> Your challenges are not happening TO you—they're Calls to Adventure happening FOR you. The bigger the dragon, the greater the hero you become by slaying it.</p>
-                        </div>
-                        
-                        <div class="action-buttons">
-                            <a href="#" class="action-btn">
-                                <i class="fas fa-download"></i> Download Complete Guide
-                            </a>
-                            <a href="#" class="action-btn">
-                                <i class="fas fa-video"></i> Watch Video Explanation
-                            </a>
-                            <a href="#" class="action-btn">
-                                <i class="fas fa-journal-whills"></i> Get Journey Journal
-                            </a>
+                            
+                            <div class="quote-box">
+                                <p><strong>Key Insight:</strong> Your challenges are not happening TO you—they're Calls to Adventure happening FOR you. The bigger the dragon, the greater the hero you become by slaying it.</p>
+                            </div>
+                            
+                            <div class="action-buttons">
+                                <button onclick="printResource('journey')" class="action-btn">
+                                    <i class="fas fa-print"></i> Print This Guide
+                                </button>
+                                <a href="#" class="action-btn">
+                                    <i class="fas fa-download"></i> Download PDF
+                                </a>
+                                <a href="#" class="action-btn">
+                                    <i class="fas fa-journal-whills"></i> Get Journey Journal
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Resource 3: Daily Practice Templates -->
-                <div class="accordion-item fade-in" id="practices">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <div class="accordion-title">
-                            <i class="fas fa-calendar-alt accordion-icon"></i>
+                <div class="resource-card" id="practices">
+                    <div class="resource-header" onclick="toggleResource(this)">
+                        <div class="resource-title">
+                            <i class="fas fa-calendar-alt resource-icon"></i>
                             <span>Daily Practice Templates</span>
                         </div>
-                        <div class="accordion-toggle">
+                        <div class="resource-toggle">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
-                    <div class="accordion-content">
-                        <h3>Morning Ritual Templates</h3>
-                        <p>Start your day with intention and energy. Choose a template that fits your schedule.</p>
-                        
-                        <div class="practice-grid">
-                            <div class="practice-card">
-                                <h4><i class="fas fa-sun"></i> 5-Minute Jumpstart</h4>
-                                <p>For busy people who want maximum impact in minimum time.</p>
-                                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
-                                    <li>1 min: Deep breathing</li>
-                                    <li>1 min: Express gratitude</li>
-                                    <li>1 min: State intention</li>
-                                    <li>2 min: Body activation</li>
-                                </ul>
-                                <div class="time-badge">5 minutes</div>
+                    <div class="resource-content">
+                        <div class="resource-inner">
+                            <h3>Morning Ritual Templates</h3>
+                            <p>Start your day with intention and energy. Choose a template that fits your schedule.</p>
+                            
+                            <div class="practice-grid">
+                                <div class="practice-card">
+                                    <h4><i class="fas fa-sun"></i> 5-Minute Jumpstart</h4>
+                                    <p>For busy people who want maximum impact in minimum time.</p>
+                                    <ul>
+                                        <li>1 min: Deep breathing</li>
+                                        <li>1 min: Express gratitude</li>
+                                        <li>1 min: State intention</li>
+                                        <li>2 min: Body activation</li>
+                                    </ul>
+                                    <div class="time-badge">5 minutes</div>
+                                </div>
+                                
+                                <div class="practice-card">
+                                    <h4><i class="fas fa-bolt"></i> 15-Minute Power Hour</h4>
+                                    <p>Balanced ritual for energy, focus, and emotional state.</p>
+                                    <ul>
+                                        <li>2 min: Hydration & cold</li>
+                                        <li>5 min: Meditation</li>
+                                        <li>5 min: Movement</li>
+                                        <li>3 min: Reading</li>
+                                    </ul>
+                                    <div class="time-badge">15 minutes</div>
+                                </div>
+                                
+                                <div class="practice-card">
+                                    <h4><i class="fas fa-star"></i> 30-Minute Transformation</h4>
+                                    <p>Comprehensive ritual for deep personal growth.</p>
+                                    <ul>
+                                        <li>5 min: Cold therapy</li>
+                                        <li>10 min: Meditation</li>
+                                        <li>10 min: Exercise</li>
+                                        <li>5 min: Journaling</li>
+                                    </ul>
+                                    <div class="time-badge">30 minutes</div>
+                                </div>
                             </div>
                             
-                            <div class="practice-card">
-                                <h4><i class="fas fa-bolt"></i> 15-Minute Power Hour</h4>
-                                <p>Balanced ritual for energy, focus, and emotional state.</p>
-                                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
-                                    <li>2 min: Hydration & cold</li>
-                                    <li>5 min: Meditation</li>
-                                    <li>5 min: Movement</li>
-                                    <li>3 min: Reading</li>
-                                </ul>
-                                <div class="time-badge">15 minutes</div>
+                            <h3 style="margin-top: 2rem;">Evening Wind-Down Templates</h3>
+                            <p>End your day with reflection and preparation for tomorrow's success.</p>
+                            
+                            <div class="practice-grid">
+                                <div class="practice-card">
+                                    <h4><i class="fas fa-moon"></i> 5-Minute Reflection</h4>
+                                    <p>Quick review to end your day intentionally.</p>
+                                    <ul>
+                                        <li>1 min: 3 wins from today</li>
+                                        <li>2 min: 1 lesson learned</li>
+                                        <li>1 min: Gratitude practice</li>
+                                        <li>1 min: Tomorrow's priority</li>
+                                    </ul>
+                                    <div class="time-badge">5 minutes</div>
+                                </div>
+                                
+                                <div class="practice-card">
+                                    <h4><i class="fas fa-wind"></i> 10-Minute Unwind</h4>
+                                    <p>Release the day's stress and prepare for restful sleep.</p>
+                                    <ul>
+                                        <li>3 min: Breathing exercise</li>
+                                        <li>4 min: Journaling</li>
+                                        <li>3 min: Gentle stretching</li>
+                                    </ul>
+                                    <div class="time-badge">10 minutes</div>
+                                </div>
                             </div>
                             
-                            <div class="practice-card">
-                                <h4><i class="fas fa-star"></i> 30-Minute Transformation</h4>
-                                <p>Comprehensive ritual for deep personal growth.</p>
-                                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
-                                    <li>5 min: Cold therapy</li>
-                                    <li>10 min: Meditation</li>
-                                    <li>10 min: Exercise</li>
-                                    <li>5 min: Journaling</li>
-                                </ul>
-                                <div class="time-badge">30 minutes</div>
+                            <div class="action-buttons">
+                                <button onclick="printResource('practices')" class="action-btn">
+                                    <i class="fas fa-print"></i> Print Templates
+                                </button>
+                                <a href="#" class="action-btn">
+                                    <i class="fas fa-download"></i> Download All
+                                </a>
+                                <a href="#" class="action-btn">
+                                    <i class="fas fa-calendar-week"></i> Weekly Planner
+                                </a>
                             </div>
-                        </div>
-                        
-                        <h3 style="margin-top: 2rem;">Evening Wind-Down Templates</h3>
-                        <p>End your day with reflection and preparation for tomorrow's success.</p>
-                        
-                        <div class="practice-grid">
-                            <div class="practice-card">
-                                <h4><i class="fas fa-moon"></i> 5-Minute Reflection</h4>
-                                <p>Quick review to end your day intentionally.</p>
-                                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
-                                    <li>1 min: 3 wins from today</li>
-                                    <li>2 min: 1 lesson learned</li>
-                                    <li>1 min: Gratitude practice</li>
-                                    <li>1 min: Tomorrow's priority</li>
-                                </ul>
-                                <div class="time-badge">5 minutes</div>
-                            </div>
-                            
-                            <div class="practice-card">
-                                <h4><i class="fas fa-wind"></i> 10-Minute Unwind</h4>
-                                <p>Release the day's stress and prepare for restful sleep.</p>
-                                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
-                                    <li>3 min: Breathing exercise</li>
-                                    <li>4 min: Journaling</li>
-                                    <li>3 min: Gentle stretching</li>
-                                </ul>
-                                <div class="time-badge">10 minutes</div>
-                            </div>
-                        </div>
-                        
-                        <div class="action-buttons">
-                            <a href="#" class="action-btn">
-                                <i class="fas fa-download"></i> Download All Templates
-                            </a>
-                            <a href="#" class="action-btn">
-                                <i class="fas fa-calendar-week"></i> Weekly Planner
-                            </a>
-                            <a href="#" class="action-btn">
-                                <i class="fas fa-mobile-alt"></i> Habit Tracker App
-                            </a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Resource 4: Transformation Stories -->
-                <div class="accordion-item fade-in" id="stories">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <div class="accordion-title">
-                            <i class="fas fa-book-open accordion-icon"></i>
+                <div class="resource-card" id="stories">
+                    <div class="resource-header" onclick="toggleResource(this)">
+                        <div class="resource-title">
+                            <i class="fas fa-book-open resource-icon"></i>
                             <span>Transformation Stories</span>
                         </div>
-                        <div class="accordion-toggle">
+                        <div class="resource-toggle">
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
-                    <div class="accordion-content">
-                        <h3>Real People. Real Journeys. Real Transformation.</h3>
-                        <p>Be inspired by stories of individuals who applied these principles and transformed their lives.</p>
-                        
-                        <div class="story-card-compact">
-                            <div class="story-category">Relationships & Mindset</div>
-                            <h4>From Broken to Bestselling Author</h4>
-                            <p><strong>Gillian's Challenge:</strong> Her mother had terminal cancer, she had a miscarriage, and her husband ended their marriage via text—all simultaneously.</p>
-                            <p><strong>The Turning Point:</strong> Attended Unleash the Power Within and experienced the Dickens Process.</p>
+                    <div class="resource-content">
+                        <div class="resource-inner">
+                            <h3>Real People. Real Journeys. Real Transformation.</h3>
+                            <p>Be inspired by stories of individuals who applied these principles and transformed their lives.</p>
                             
-                            <div class="transformation-points">
-                                <div class="transformation-point">
-                                    <h5>Transformation</h5>
-                                    <p>Became a NY Times bestselling author and relationship expert</p>
+                            <div class="story-card-compact">
+                                <div class="story-category">Relationships & Mindset</div>
+                                <h4>From Broken to Bestselling Author</h4>
+                                <p><strong>Gillian's Challenge:</strong> Her mother had terminal cancer, she had a miscarriage, and her husband ended their marriage via text—all simultaneously.</p>
+                                <p><strong>The Turning Point:</strong> Attended Unleash the Power Within and experienced the Dickens Process.</p>
+                                
+                                <div class="transformation-points">
+                                    <div class="transformation-point">
+                                        <h5>Transformation</h5>
+                                        <p>Became a NY Times bestselling author and relationship expert</p>
+                                    </div>
+                                    <div class="transformation-point">
+                                        <h5>Impact</h5>
+                                        <p>Now helps thousands of women through courses and content</p>
+                                    </div>
                                 </div>
-                                <div class="transformation-point">
-                                    <h5>Impact</h5>
-                                    <p>Now helps thousands of women through courses and content</p>
-                                </div>
-                            </div>
-                            
-                            <div class="quote-box">
-                                "We are truly the creators of our own reality and destiny."
-                            </div>
-                        </div>
-                        
-                        <div class="story-card-compact">
-                            <div class="story-category">Mindset & Health</div>
-                            <h4>Wheelchair to Championship Coach</h4>
-                            <p><strong>Jeff's Challenge:</strong> At 28, broke, in a wheelchair, moving back with parents, told he wouldn't live past mid-30s.</p>
-                            <p><strong>The Turning Point:</strong> Discovered Tony's work and learned to associate pleasure/pain differently.</p>
-                            
-                            <div class="transformation-points">
-                                <div class="transformation-point">
-                                    <h5>Transformation</h5>
-                                    <p>Raised daughter alone, coached football for 21 years, won championships</p>
-                                </div>
-                                <div class="transformation-point">
-                                    <h5>Impact</h5>
-                                    <p>Inspires people globally through writing and mentoring youth</p>
+                                
+                                <div class="quote-box">
+                                    "We are truly the creators of our own reality and destiny."
                                 </div>
                             </div>
                             
-                            <div class="quote-box">
-                                "Life is a gift. And every day I choose to live it fully."
-                            </div>
-                        </div>
-                        
-                        <div class="story-card-compact">
-                            <div class="story-category">Career & Financial</div>
-                            <h4>From Laid Off to 7-Figure Entrepreneur</h4>
-                            <p><strong>Marcus's Challenge:</strong> Laid off at 42 after 15 years in corporate, with kids in college and mortgage.</p>
-                            <p><strong>The Turning Point:</strong> Realized layoff was a "Call to Adventure" and applied the 7-Step Path.</p>
-                            
-                            <div class="transformation-points">
-                                <div class="transformation-point">
-                                    <h5>Transformation</h5>
-                                    <p>Built 7-figure marketing consultancy in 3 years</p>
+                            <div class="story-card-compact">
+                                <div class="story-category">Mindset & Health</div>
+                                <h4>Wheelchair to Championship Coach</h4>
+                                <p><strong>Jeff's Challenge:</strong> At 28, broke, in a wheelchair, moving back with parents, told he wouldn't live past mid-30s.</p>
+                                <p><strong>The Turning Point:</strong> Discovered Tony's work and learned to associate pleasure/pain differently.</p>
+                                
+                                <div class="transformation-points">
+                                    <div class="transformation-point">
+                                        <h5>Transformation</h5>
+                                        <p>Raised daughter alone, coached football for 21 years, won championships</p>
+                                    </div>
+                                    <div class="transformation-point">
+                                        <h5>Impact</h5>
+                                        <p>Inspires people globally through writing and mentoring youth</p>
+                                    </div>
                                 </div>
-                                <div class="transformation-point">
-                                    <h5>Impact</h5>
-                                    <p>Helped 200+ small businesses grow, creating hundreds of jobs</p>
+                                
+                                <div class="quote-box">
+                                    "Life is a gift. And every day I choose to live it fully."
                                 </div>
                             </div>
                             
-                            <div class="quote-box">
-                                "Getting laid off was the best thing that ever happened to me."
+                            <div class="story-card-compact">
+                                <div class="story-category">Career & Financial</div>
+                                <h4>From Laid Off to 7-Figure Entrepreneur</h4>
+                                <p><strong>Marcus's Challenge:</strong> Laid off at 42 after 15 years in corporate, with kids in college and mortgage.</p>
+                                <p><strong>The Turning Point:</strong> Realized layoff was a "Call to Adventure" and applied the 7-Step Path.</p>
+                                
+                                <div class="transformation-points">
+                                    <div class="transformation-point">
+                                        <h5>Transformation</h5>
+                                        <p>Built 7-figure marketing consultancy in 3 years</p>
+                                    </div>
+                                    <div class="transformation-point">
+                                        <h5>Impact</h5>
+                                        <p>Helped 200+ small businesses grow, creating hundreds of jobs</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="quote-box">
+                                    "Getting laid off was the best thing that ever happened to me."
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="action-buttons">
-                            <a href="#" class="action-btn">
-                                <i class="fas fa-book"></i> Read All Stories
-                            </a>
-                            <a href="#" class="action-btn">
-                                <i class="fas fa-pen-alt"></i> Share Your Story
-                            </a>
-                            <a href="#" class="action-btn">
-                                <i class="fas fa-video"></i> Watch Video Stories
-                            </a>
+                            
+                            <div class="action-buttons">
+                                <button onclick="printResource('stories')" class="action-btn">
+                                    <i class="fas fa-print"></i> Print Stories
+                                </button>
+                                <a href="#" class="action-btn">
+                                    <i class="fas fa-book"></i> Read All Stories
+                                </a>
+                                <a href="#" class="action-btn">
+                                    <i class="fas fa-pen-alt"></i> Share Your Story
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
             <!-- Quick Access Buttons -->
-            <div style="text-align: center; margin-top: 3rem;">
+            <div style="text-align: center; margin-top: 2.5rem;">
                 <h3>Quick Access to All Resources</h3>
                 <div class="action-buttons" style="justify-content: center;">
-                    <a href="#worksheet" class="action-btn gold" onclick="openAccordion('worksheet')">
+                    <button onclick="openResource('worksheet')" class="action-btn gold">
                         <i class="fas fa-clipboard-list"></i> Open Worksheet
-                    </a>
-                    <a href="#journey" class="action-btn" onclick="openAccordion('journey')">
+                    </button>
+                    <button onclick="openResource('journey')" class="action-btn">
                         <i class="fas fa-map-signs"></i> Open Journey Guide
-                    </a>
-                    <a href="#practices" class="action-btn" onclick="openAccordion('practices')">
+                    </button>
+                    <button onclick="openResource('practices')" class="action-btn">
                         <i class="fas fa-calendar-alt"></i> Open Practice Templates
-                    </a>
-                    <a href="#stories" class="action-btn" onclick="openAccordion('stories')">
+                    </button>
+                    <button onclick="openResource('stories')" class="action-btn">
                         <i class="fas fa-book-open"></i> Open Stories
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -1319,33 +1365,11 @@
     <footer>
         <div class="footer-container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <i class="fas fa-globe-americas"></i> AccessWorld Seminars
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="https://accessworldseminars-ship-it.github.io/results/">Home</a></li>
-                        <li><a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay3">Time to Rise: Day 3</a></li>
-                        <li><a href="#">All Resources</a></li>
-                        <li><a href="#worksheet" onclick="openAccordion('worksheet')">7-Step Worksheet</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="#journey" onclick="openAccordion('journey')">Hero's Journey Guide</a></li>
-                        <li><a href="#practices" onclick="openAccordion('practices')">Daily Practice Templates</a></li>
-                        <li><a href="#stories" onclick="openAccordion('stories')">Transformation Stories</a></li>
-                        <li><a href="#">Community Forum</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Connect With Us</h4>
-                    <p>Share your transformation journey with our community.</p>
+                <div>
+                    <div class="footer-logo">
+                        <i class="fas fa-globe-americas"></i> AccessWorld Seminars
+                    </div>
+                    <p style="color: var(--light-gold); font-size: 0.95rem; margin-bottom: 1.5rem;">Transforming lives through practical tools and actionable wisdom.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1354,10 +1378,40 @@
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="https://accessworldseminars-ship-it.github.io/results/">Home</a></li>
+                        <li><a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay1">Time to Rise: Day 1</a></li>
+                        <li><a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay2">Time to Rise: Day 2</a></li>
+                        <li><a href="https://accessworldseminars-ship-it.github.io/results/TimeToRiseDay3">Time to Rise: Day 3</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#worksheet" onclick="openResource('worksheet')">7-Step Worksheet</a></li>
+                        <li><a href="#journey" onclick="openResource('journey')">Hero's Journey Guide</a></li>
+                        <li><a href="#practices" onclick="openResource('practices')">Daily Practice Templates</a></li>
+                        <li><a href="#stories" onclick="openResource('stories')">Transformation Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact & Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community Forum</a></li>
+                        <li><a href="#">Email Updates</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2024 AccessWorld Seminars. All rights reserved. | All four Day 3 resources combined into one comprehensive page | Transforming Lives Through Practical Tools</p>
+                <p>&copy; 2024 AccessWorld Seminars. All rights reserved. | Time to Rise Day 3 Complete Workbook | Designed for transformation and growth</p>
             </div>
         </div>
     </footer>
@@ -1383,32 +1437,12 @@
                 });
             });
             
-            // Fade-in animation on scroll
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const fadeInOnScroll = function() {
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.classList.add('visible');
-                    }
-                });
-            };
-            
-            // Initial check
-            fadeInOnScroll();
-            
-            // Check on scroll
-            window.addEventListener('scroll', fadeInOnScroll);
-            
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
                     
-                    // Don't prevent default for accordion toggles
+                    // Skip for resource links handled by openResource function
                     if (href === '#worksheet' || href === '#journey' || href === '#practices' || href === '#stories') {
                         return;
                     }
@@ -1428,101 +1462,205 @@
                 });
             });
             
-            // Open first accordion by default
-            setTimeout(() => {
-                openAccordion('worksheet');
-            }, 500);
-        });
-        
-        // Accordion Functions
-        function toggleAccordion(header) {
-            const item = header.parentElement;
-            const content = item.querySelector('.accordion-content');
+            // Load saved worksheet content
+            loadWorksheet();
             
-            // Close all other accordions
-            document.querySelectorAll('.accordion-item').forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
-                    otherItem.querySelector('.accordion-content').style.maxHeight = '0';
-                    otherItem.querySelector('.accordion-content').style.padding = '0';
-                }
+            // Auto-save when user types in worksheet
+            document.querySelectorAll('.answer-area').forEach(area => {
+                area.addEventListener('input', function() {
+                    saveWorksheet();
+                });
             });
             
-            // Toggle current accordion
-            if (item.classList.contains('active')) {
-                item.classList.remove('active');
+            // Open worksheet by default
+            openResource('worksheet');
+        });
+        
+        // Resource Functions
+        function toggleResource(header) {
+            const card = header.parentElement;
+            const content = card.querySelector('.resource-content');
+            
+            // If clicking the already active resource, close it
+            if (card.classList.contains('active')) {
+                card.classList.remove('active');
                 content.style.maxHeight = '0';
-                content.style.padding = '0';
             } else {
-                item.classList.add('active');
+                // Close all other resources
+                document.querySelectorAll('.resource-card').forEach(otherCard => {
+                    if (otherCard !== card) {
+                        otherCard.classList.remove('active');
+                        otherCard.querySelector('.resource-content').style.maxHeight = '0';
+                    }
+                });
+                
+                // Open the clicked resource
+                card.classList.add('active');
                 content.style.maxHeight = content.scrollHeight + 'px';
-                content.style.padding = '2rem';
+                
+                // Scroll to the resource
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: card.offsetTop - 120,
+                        behavior: 'smooth'
+                    });
+                }, 300);
             }
         }
         
-        function openAccordion(id) {
-            const item = document.getElementById(id);
-            const header = item.querySelector('.accordion-header');
-            toggleAccordion(header);
+        function openResource(id) {
+            const card = document.getElementById(id);
+            const header = card.querySelector('.resource-header');
             
-            // Scroll to the accordion
-            setTimeout(() => {
-                window.scrollTo({
-                    top: item.offsetTop - 100,
-                    behavior: 'smooth'
-                });
-            }, 300);
-        }
-        
-        // Save worksheet content to localStorage
-        window.saveWorksheet = function() {
-            const answers = document.querySelectorAll('.answer-area');
-            const worksheetData = {};
-            
-            answers.forEach((answer, index) => {
-                worksheetData[`answer${index}`] = answer.innerHTML;
-            });
-            
-            localStorage.setItem('7StepWorksheet', JSON.stringify(worksheetData));
-            
-            // Show success message
-            alert('Worksheet progress saved! Your answers have been stored in your browser.');
-        };
-        
-        // Load saved worksheet content
-        const savedWorksheet = localStorage.getItem('7StepWorksheet');
-        if (savedWorksheet) {
-            const worksheetData = JSON.parse(savedWorksheet);
-            const answers = document.querySelectorAll('.answer-area');
-            
-            answers.forEach((answer, index) => {
-                if (worksheetData[`answer${index}`]) {
-                    answer.innerHTML = worksheetData[`answer${index}`];
+            // Close all other resources
+            document.querySelectorAll('.resource-card').forEach(otherCard => {
+                if (otherCard !== card) {
+                    otherCard.classList.remove('active');
+                    otherCard.querySelector('.resource-content').style.maxHeight = '0';
                 }
             });
+            
+            // Open the requested resource
+            card.classList.add('active');
+            const content = card.querySelector('.resource-content');
+            content.style.maxHeight = content.scrollHeight + 'px';
+            
+            // Scroll to the resource
+            setTimeout(() => {
+                window.scrollTo({
+                    top: card.offsetTop - 120,
+                    behavior: 'smooth'
+                });
+            }, 100);
         }
         
-        // Print function
-        window.printPage = function(section) {
-            const originalContent = document.body.innerHTML;
-            const printContent = document.getElementById(section).innerHTML;
+        // Worksheet Functions
+        function saveWorksheet() {
+            const answers = {};
+            document.querySelectorAll('.answer-area').forEach((area, index) => {
+                const question = area.getAttribute('data-question') || `question${index}`;
+                answers[question] = area.innerHTML;
+            });
             
-            document.body.innerHTML = `
-                <div style="padding: 20px; font-family: Arial, sans-serif;">
-                    <h1 style="color: #0a2342; border-bottom: 3px solid #c5a047; padding-bottom: 10px;">
-                        AccessWorld Seminars - ${section.charAt(0).toUpperCase() + section.slice(1)}
-                    </h1>
-                    ${printContent}
-                    <div style="margin-top: 40px; text-align: center; color: #666; font-size: 12px;">
-                        Printed from AccessWorld Seminars - Time to Rise Day 3 Resources
-                    </div>
-                </div>
-            `;
+            localStorage.setItem('7StepWorksheet', JSON.stringify(answers));
             
-            window.print();
-            document.body.innerHTML = originalContent;
-            location.reload(); // Restore functionality
-        };
+            // Show subtle save confirmation
+            const saveBtn = document.querySelector('button[onclick="saveWorksheet()"]');
+            const originalText = saveBtn.innerHTML;
+            saveBtn.innerHTML = '<i class="fas fa-check"></i> Saved!';
+            saveBtn.style.backgroundColor = '#2e7d32';
+            
+            setTimeout(() => {
+                saveBtn.innerHTML = originalText;
+                saveBtn.style.backgroundColor = '';
+            }, 1500);
+        }
+        
+        function loadWorksheet() {
+            const savedWorksheet = localStorage.getItem('7StepWorksheet');
+            if (savedWorksheet) {
+                try {
+                    const worksheetData = JSON.parse(savedWorksheet);
+                    document.querySelectorAll('.answer-area').forEach((area, index) => {
+                        const question = area.getAttribute('data-question') || `question${index}`;
+                        if (worksheetData[question]) {
+                            area.innerHTML = worksheetData[question];
+                        }
+                    });
+                } catch (e) {
+                    console.log('Error loading saved worksheet:', e);
+                }
+            }
+        }
+        
+        function clearWorksheet() {
+            if (confirm('Are you sure you want to clear all worksheet answers? This cannot be undone.')) {
+                document.querySelectorAll('.answer-area').forEach(area => {
+                    area.innerHTML = '';
+                });
+                localStorage.removeItem('7StepWorksheet');
+                
+                // Show confirmation
+                const clearBtn = document.querySelector('button[onclick="clearWorksheet()"]');
+                const originalText = clearBtn.innerHTML;
+                clearBtn.innerHTML = '<i class="fas fa-check"></i> Cleared!';
+                clearBtn.style.backgroundColor = '#d32f2f';
+                
+                setTimeout(() => {
+                    clearBtn.innerHTML = originalText;
+                    clearBtn.style.backgroundColor = '';
+                }, 1500);
+            }
+        }
+        
+        function printWorksheet() {
+            const worksheetContent = document.getElementById('worksheet').querySelector('.resource-inner').innerHTML;
+            const printWindow = window.open('', '_blank');
+            
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>7-Step Path Worksheet - AccessWorld Seminars</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; padding: 20px; color: #333; }
+                            h1 { color: #0a2342; border-bottom: 3px solid #c5a047; padding-bottom: 10px; }
+                            h3 { color: #0a2342; margin-top: 25px; }
+                            .worksheet-question { background: #f5f5f5; padding: 15px; margin: 15px 0; border-left: 4px solid #c5a047; }
+                            .answer-area { min-height: 80px; border: 1px dashed #c5a047; padding: 10px; margin-top: 10px; }
+                            .step-number { background: #c5a047; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 10px; }
+                            @media print { .no-print { display: none; } }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>7-Step Path Worksheet</h1>
+                        <p><em>From Time to Rise Day 3 - AccessWorld Seminars</em></p>
+                        <div>${worksheetContent}</div>
+                        <div style="margin-top: 40px; font-size: 12px; color: #666; text-align: center;">
+                            Printed from AccessWorld Seminars - Time to Rise Day 3 Resources
+                        </div>
+                        <script>
+                            window.onload = function() { window.print(); }
+                        <\/script>
+                    </body>
+                </html>
+            `);
+            printWindow.document.close();
+        }
+        
+        function printResource(resourceId) {
+            const resourceContent = document.getElementById(resourceId).querySelector('.resource-inner').innerHTML;
+            const resourceTitle = document.getElementById(resourceId).querySelector('.resource-title span').textContent;
+            const printWindow = window.open('', '_blank');
+            
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>${resourceTitle} - AccessWorld Seminars</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; padding: 20px; color: #333; }
+                            h1 { color: #0a2342; border-bottom: 3px solid #c5a047; padding-bottom: 10px; }
+                            h3 { color: #0a2342; margin-top: 20px; }
+                            .quote-box { background: #f5f5f5; padding: 15px; border-left: 4px solid #c5a047; font-style: italic; margin: 15px 0; }
+                            .practice-card, .story-card-compact { border: 1px solid #ddd; padding: 15px; margin: 15px 0; border-radius: 5px; }
+                            .action-buttons { display: none; }
+                            @media print { .no-print { display: none; } }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>${resourceTitle}</h1>
+                        <p><em>From Time to Rise Day 3 - AccessWorld Seminars</em></p>
+                        <div>${resourceContent}</div>
+                        <div style="margin-top: 40px; font-size: 12px; color: #666; text-align: center;">
+                            Printed from AccessWorld Seminars - Time to Rise Day 3 Resources
+                        </div>
+                        <script>
+                            window.onload = function() { window.print(); }
+                        <\/script>
+                    </body>
+                </html>
+            `);
+            printWindow.document.close();
+        }
     </script>
 </body>
 </html>
