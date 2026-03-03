@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Permission to Be Enough | AccessWorld Seminars</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Montserrat + Open Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* ----- :root variables (exact copy from main) ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1a2b4c;      /* deep navy */
+            --secondary-blue: #2a3f66;    /* medium navy */
+            --accent-gold: #c6a43f;        /* warm gold */
+            --light-bg: #f8f9fa;           /* off-white */
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ----- navigation (exact style) ----- */
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 32px;
+            background: var(--text-light);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        .nav-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+        .nav-logo span {
+            color: var(--accent-gold);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 1rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a i {
+            color: var(--accent-gold);
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-gold);
+        }
+
+        .nav-links a.active {
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 4px;
+        }
+
+        /* ----- hero section (adapted) ----- */
+        .hero-header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            padding: 140px 0 100px;
+            text-align: center;
+            color: var(--text-light);
+            margin-top: 70px; /* offset fixed nav */
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content .gold-underline {
+            width: 80px;
+            height: 4px;
+            background: var(--accent-gold);
+            margin: 20px auto;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            background: #b48d30;
+            transform: translateY(-3px);
+            color: var(--text-light);
+        }
+
+        .btn i {
+            font-size: 1.1rem;
+        }
+
+        /* ----- sections ----- */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+        }
+
+        .section-header .gold-line {
+            width: 60px;
+            height: 3px;
+            background: var(--accent-gold);
+            margin: 0 auto 20px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .accent-text {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        /* cards and grids (same design) */
+        .reflection-grid, .pillars-grid, .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 32px 24px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-bottom-color: var(--accent-gold);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+        }
+
+        .card i {
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--primary-blue);
+        }
+
+        .card p {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        /* story block (like nsr-pillars but vertical) */
+        .story-block {
+            background: var(--light-bg);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border-left: 6px solid var(--accent-gold);
+        }
+
+        .story-title {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .story-title i {
+            color: var(--accent-gold);
+        }
+
+        .story-meta {
+            font-style: italic;
+            color: #666;
+            margin: 10px 0 20px;
+        }
+
+        .quote-block {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            font-size: 1.2rem;
+            border: 1px solid #eee;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        .quote-block i {
+            color: var(--accent-gold);
+            opacity: 0.4;
+            font-size: 2rem;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+        }
+
+        .quote-text {
+            padding-left: 40px;
+            font-weight: 400;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-blue);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-button:hover {
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+        }
+
+        /* footer (exact copy) */
+        footer {
+            background: var(--primary-blue);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* fade-in */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* responsive */
+        @media (max-width: 992px) {
+            .hero-content h1 { font-size: 2.6rem; }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                padding: 20px 0;
+                gap: 15px;
+            }
+            .nav-links.show { display: flex; }
+            .hero-header { padding: 120px 0 70px; }
+            .section-header h2 { font-size: 2rem; }
+            .story-block { padding: 25px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation (exact same as main) -->
+    <nav class="main-nav">
+        <div class="nav-logo">AccessWorld <span>✓</span></div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links" id="navLinks">
+            <a href="https://accessworldseminars-ship-it.github.io/results/"><i class="fas fa-home"></i> Home</a>
+            <a href="#" class="active"><i class="fas fa-feather-alt"></i> Permission to Be</a>
+            <a href="#"><i class="fas fa-calendar-alt"></i> Events</a>
+            <a href="#"><i class="fas fa-podcast"></i> Meditations</a>
+            <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-header fade-in">
+        <div class="hero-content">
+            <h1>The Permission to Be Enough</h1>
+            <div class="gold-underline"></div>
+            <p>Letting go of the addiction to "not enough" and discovering the richness that's already here.</p>
+            <a href="#chapter" class="btn"><i class="fas fa-book-open"></i> Start the journey</a>
+        </div>
+    </section>
+
+    <!-- Chapter Introduction (Book Content) -->
+    <section class="section" id="chapter">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Chapter: The Permission to Just Be</h2>
+                <div class="gold-line"></div>
+                <p><span class="accent-text">Finding Enoughness</span> in a World That Always Wants More</p>
+            </div>
+            <div class="fade-in" style="max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 1.2rem;">There's something I've noticed about guided meditations and why they work. You'll notice there are questions that are asked throughout. Here's the thing—you don't actually have to answer them. You can if you want to, but the questions are really just prompts. They're invitations to notice whatever comes up within you naturally.</p>
+                <p style="margin-top: 20px;">So if I ask something like, "Could you welcome this feeling?" you might notice a feeling arise. You might notice an answer of "no" come up inside. That's not a mistake. That's actually really great and helpful.</p>
+                <div class="quote-block">
+                    <i class="fas fa-quote-left"></i>
+                    <div class="quote-text">"There are no wrong answers here. No right answers either. Instead, as you allow yourself to simply notice whatever comes up, it all takes care of itself."</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Gift of Resistance (two cards) -->
+    <section class="section" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>The Gift of Resistance</h2>
+                <div class="gold-line"></div>
+            </div>
+            <div class="reflection-grid">
+                <div class="card fade-in">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Feeling, not fighting</h3>
+                    <p>Resistance passes <em>because</em> you let yourself feel it — not because you suppressed it. When you just see it, it untangles by itself.</p>
+                </div>
+                <div class="card fade-in">
+                    <i class="fas fa-heart"></i>
+                    <h3>The power of "no"</h3>
+                    <p>Often saying "no" is more releasing than saying "yes" when you think you should. Honesty with where you are is the door.</p>
+                </div>
+                <div class="card fade-in">
+                    <i class="fas fa-brain"></i>
+                    <h3>The doing trance</h3>
+                    <p>The mind is wired for constant doing. That's why sitting still feels so hard — but the discomfort is just information.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Reflection Questions (prompt 1) as a grid -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>The questions that set you free</h2>
+                <div class="gold-line"></div>
+                <p>Use these as journal prompts or gentle meditation guides.</p>
+            </div>
+            <div class="reflection-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+                <!-- first 12 questions, condensed for space -->
+                <div class="card" style="padding: 20px;"><i class="fas fa-question-circle"></i> Could you allow yourself to just be here?</div>
+                <div class="card" style="padding: 20px;"><i class="fas fa-question-circle"></i> Could you let that be enough?</div>
+                <div class="card" style="padding: 20px;"><i class="fas fa-question-circle"></i> Could you welcome any feeling that says no?</div>
+                <div class="card" style="padding: 20px;"><i class="fas fa-question-circle"></i> Could you just notice that space?</div>
+                <div class="card" style="padding: 20px;"><i class="fas fa-question-circle"></i> Could you welcome that restless energy?</div>
+                <div class="card" style="padding: 20px;"><i class="fas fa-question-circle"></i> Could you simply allow it to be here, however it is?</div>
+                <div class="card" style="padding: 20px;"><i class="fas fa-question-circle"></i> Could you let go of making anything wrong?</div>
+                <div class="card" style="padding: 20px;"><i class="fas fa-question-circle"></i> Could you welcome ease, even if discomfort arises first?</div>
+                <div class="card" style="padding: 20px;"><i class="fas fa-question-circle"></i> Could you let go of needing to figure anything out?</div>
+                <div class="card" style="padding: 20px;"><i class="fas fa-question-circle"></i> Could you notice the calm that’s already here?</div>
+                <div class="card" style="padding: 20px;"><i class="fas fa-question-circle"></i> Could you feel enough in one area of life right now?</div>
+                <div class="card" style="padding: 20px;"><i class="fas fa-question-circle"></i> Could you allow yourself to feel rich, not just in money?</div>
+                <div class="card" style="padding: 20px;"><i class="fas fa-question-circle"></i> Could you see that the “lock” is just a belief?</div>
+                <div class="card" style="padding: 20px;"><i class="fas fa-question-circle"></i> Could you let yourself be enough, right now?</div>
+                <div class="card" style="padding: 20px;"><i class="fas fa-question-circle"></i> Could you open to seeing the richness of your life?</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stories (Prompt 4) in story-block format -->
+    <section class="section" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Stories from the mat</h2>
+                <div class="gold-line"></div>
+                <p>Real moments that illuminate the teaching.</p>
+            </div>
+
+            <div class="story-block fade-in">
+                <div class="story-title"><i class="fas fa-coins"></i> The ten‑dollar note</div>
+                <p>Remember primary school? A ten‑dollar note meant you could buy anything at the canteen. It felt like abundance. Now ten dollars feels like nothing. The money didn’t change – we learned to see it as “not enough.” That innocent feeling of plenty is still within you. You can choose to see through that lens again.</p>
+                <div class="story-meta">— from the March 4 session</div>
+            </div>
+
+            <div class="story-block fade-in">
+                <div class="story-title"><i class="fas fa-flask"></i> The physics exam</div>
+                <p>I studied for hours. Went into the exam and it looked like another language. I just laughed. The stress you feel is never just yours – it’s collective. Seeing that loosens its grip.</p>
+            </div>
+
+            <div class="story-block fade-in">
+                <div class="story-title"><i class="fas fa-tooth"></i> Not having a toothache</div>
+                <p>When you have a toothache, you realise how good it felt not to have one. Enoughness is everywhere – the breath, organs working, the absence of pain. We just stopped looking.</p>
+            </div>
+
+            <div class="story-block fade-in">
+                <div class="story-title"><i class="fas fa-fire"></i> The addiction to not feeling enough</div>
+                <p>It sounds strange, but there’s an addiction to “not enough.” It’s familiar, it’s what everyone else seems to feel. When you see it clearly, the pressure lessens. Life circumstances can shift to reflect your inner ease.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials (Prompt 3) -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>What participants are saying</h2>
+                <div class="gold-line"></div>
+            </div>
+            <div class="testimonial-grid">
+                <div class="card fade-in">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Joshua</h3>
+                    <p><em>“It was really good to meditate and share a little bit of insight. I learned that the stress I feel isn’t just mine – it’s also collective. That shifted something.”</em></p>
+                </div>
+                <div class="card fade-in">
+                    <i class="fas fa-user-check"></i>
+                    <h3>Bijou / Mindy</h3>
+                    <p><em>“That was lovely. Thank you for taking the time to run this. I wanted the reflection questions to set intentions for the week.”</em></p>
+                </div>
+                <div class="card fade-in">
+                    <i class="fas fa-user-astronaut"></i>
+                    <h3>Participant</h3>
+                    <p><em>“Nick talked about how you feel first, then the mind justifies it. That idea – 'how do you feel toward that?' – is still with me.”</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Webinar review / highlights (Prompt 2) - condensed as cards -->
+    <section class="section" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Session highlights</h2>
+                <div class="gold-line"></div>
+                <p>Key mindset shifts from the March 4 webinar.</p>
+            </div>
+            <div class="pillars-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="card"><i class="fas fa-exchange-alt"></i> <strong>Old:</strong> I must welcome everything → <strong>New:</strong> "No" can be more releasing</div>
+                <div class="card"><i class="fas fa-puzzle-piece"></i> <strong>Old:</strong> Resistance is the enemy → <strong>New:</strong> Resistance passes when allowed</div>
+                <div class="card"><i class="fas fa-lock-open"></i> <strong>Old:</strong> I'll feel enough when... → <strong>New:</strong> I can choose enough now</div>
+                <div class="card"><i class="fas fa-child"></i> <strong>Old:</strong> Circumstances create feelings → <strong>New:</strong> Feelings colour circumstances</div>
+                <div class="card"><i class="fas fa-brain"></i> <strong>Addiction to "not enough"</strong> can be seen and released</div>
+            </div>
+            <!-- Quick gem list -->
+            <div class="quote-block fade-in" style="margin: 40px 0 0;">
+                <i class="fas fa-quote-left"></i>
+                <div class="quote-text">
+                    “Life circumstances can change very quickly around you to reflect how you feel on the inside.”
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Buttons (home & top) -->
+    <div class="container nav-buttons">
+        <a href="https://accessworldseminars-ship-it.github.io/results/" class="nav-button"><i class="fas fa-home"></i> Return Home</a>
+        <a href="#" class="nav-button"><i class="fas fa-arrow-up"></i> Back to top</a>
+    </div>
+
+    <!-- Footer (exact copy) -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>AccessWorld</h4>
+                    <p>Guided meditations and seminars for realising the enoughness that is already here.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="https://accessworldseminars-ship-it.github.io/results/"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#">Meditations</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 AccessWorld Seminars. All rights reserved. First Tuesday of every month.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile menu toggle -->
+    <script>
+        const btn = document.getElementById('mobileMenuBtn');
+        const links = document.getElementById('navLinks');
+        btn.addEventListener('click', () => {
+            links.classList.toggle('show');
+        });
+    </script>
+    <!-- (fade-in handled by CSS, no extra needed) -->
+</body>
+</html>
