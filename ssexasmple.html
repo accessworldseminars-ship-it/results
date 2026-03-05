@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Strategy Session — Real Example | AccessWorld Seminars</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #e8c96a;
+            --navy: #1A2744;
+            --navy-light: #253460;
+            --dark: #111827;
+            --dark-card: #1e2a40;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ── NAV ── */
+        .main-nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(17,24,39,0.97);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(201,168,76,0.2);
+            padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 70px;
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800; font-size: 1.1rem;
+            color: var(--gold); text-decoration: none;
+        }
+        .nav-logo img { height: 36px; width: auto; }
+        .nav-links {
+            display: flex; align-items: center; gap: 0.2rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem; font-weight: 600;
+            padding: 0.4rem 0.65rem; border-radius: 6px;
+            transition: var(--transition);
+            display: flex; align-items: center; gap: 5px;
+        }
+        .nav-links a:hover { color: var(--gold); background: rgba(201,168,76,0.08); }
+        .nav-links a.active { color: var(--gold); background: rgba(201,168,76,0.12); }
+        .nav-links a.btn-nav {
+            background: var(--gold); color: var(--navy);
+            font-weight: 700; margin-left: 0.5rem;
+        }
+        .nav-links a.btn-nav:hover { background: var(--gold-light); }
+
+        .mobile-menu-btn {
+            display: none; background: none; border: none;
+            color: var(--gold); font-size: 1.4rem; cursor: pointer;
+        }
+
+        /* ── HERO ── */
+        .hero-header {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0f1e 0%, #1A2744 50%, #0d1525 100%);
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 120px 2rem 80px;
+            position: relative; overflow: hidden;
+        }
+        .hero-header::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 60%, rgba(201,168,76,0.12) 0%, transparent 70%);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201,168,76,0.15);
+            border: 1px solid rgba(201,168,76,0.4);
+            color: var(--gold); border-radius: 30px;
+            padding: 0.45rem 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem; font-weight: 700;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 820px; }
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            font-weight: 900; line-height: 1.15;
+            color: var(--white); margin-bottom: 1.2rem;
+        }
+        .hero-content h1 span { color: var(--gold); }
+        .hero-content p {
+            font-size: 1.15rem; color: var(--text-muted);
+            max-width: 620px; margin: 0 auto 2rem;
+        }
+        .hero-meta {
+            display: flex; justify-content: center; gap: 2rem;
+            flex-wrap: wrap; margin-bottom: 2.5rem;
+        }
+        .hero-meta-item {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.85rem; color: var(--text-muted);
+        }
+        .hero-meta-item i { color: var(--gold); }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gold); color: var(--navy);
+            padding: 0.85rem 2rem; border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; font-size: 0.9rem;
+            text-decoration: none; transition: var(--transition);
+            border: none; cursor: pointer;
+        }
+        .btn:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,0.3); }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold); margin-left: 1rem;
+        }
+        .btn-outline:hover { background: rgba(201,168,76,0.1); transform: translateY(-2px); }
+
+        /* ── SECTIONS ── */
+        .section { padding: 90px 2rem; }
+        .section-alt { background: rgba(26,39,68,0.3); }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3.5rem; }
+        .section-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 800; color: var(--white); margin-bottom: 0.8rem;
+        }
+        .section-header h2::after {
+            content: ''; display: block;
+            width: 60px; height: 3px;
+            background: var(--gold); margin: 0.8rem auto 0;
+            border-radius: 2px;
+        }
+        .section-header p { color: var(--text-muted); font-size: 1.05rem; max-width: 580px; margin: 0 auto; }
+        .accent-text { color: var(--gold); }
+
+        /* ── INTRO STRIP ── */
+        .intro-strip {
+            background: linear-gradient(90deg, rgba(201,168,76,0.08), rgba(201,168,76,0.15), rgba(201,168,76,0.08));
+            border-top: 1px solid rgba(201,168,76,0.25);
+            border-bottom: 1px solid rgba(201,168,76,0.25);
+            padding: 2.5rem 2rem;
+        }
+        .intro-strip .container {
+            display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+        }
+        .intro-strip i { color: var(--gold); font-size: 2rem; flex-shrink: 0; }
+        .intro-strip p { font-size: 1.05rem; color: var(--text); font-style: italic; flex: 1; min-width: 260px; }
+        .intro-strip strong { color: var(--gold); }
+
+        /* ── SESSION STORY ── */
+        .story-layout {
+            display: grid; grid-template-columns: 1fr 340px;
+            gap: 3.5rem; align-items: start;
+        }
+        .story-body p { color: var(--text-muted); margin-bottom: 1.2rem; font-size: 1rem; }
+        .story-body h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; font-size: 1.2rem;
+            color: var(--gold); margin: 2rem 0 0.8rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--gold);
+        }
+
+        /* Sidebar card */
+        .sidebar-card {
+            background: var(--dark-card);
+            border: 1px solid rgba(201,168,76,0.2);
+            border-radius: 12px; padding: 1.8rem;
+            position: sticky; top: 90px;
+        }
+        .sidebar-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800; color: var(--gold);
+            font-size: 0.8rem; letter-spacing: 0.12em;
+            text-transform: uppercase; margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(201,168,76,0.2);
+        }
+
+        /* Testimonial pull */
+        .pull-quote {
+            background: rgba(201,168,76,0.08);
+            border-left: 4px solid var(--gold);
+            border-radius: 0 8px 8px 0;
+            padding: 1.4rem 1.6rem;
+            margin: 2rem 0;
+        }
+        .pull-quote p {
+            font-size: 1.1rem !important;
+            color: var(--white) !important;
+            font-style: italic; margin: 0 0 0.6rem !important;
+        }
+        .pull-quote span { font-size: 0.82rem; color: var(--gold); font-weight: 600; }
+
+        /* ── PROCESS STEPS ── */
+        .process-steps { display: flex; flex-direction: column; gap: 0; }
+        .step {
+            display: flex; gap: 1.5rem;
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            position: relative;
+        }
+        .step:last-child { border-bottom: none; }
+        .step-num {
+            flex-shrink: 0;
+            width: 52px; height: 52px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900; font-size: 1.1rem; color: var(--navy);
+        }
+        .step-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; color: var(--white); font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .step-content p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+
+        /* ── TEACHING POINTS ── */
+        .teaching-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: var(--dark-card);
+            border: 1px solid rgba(201,168,76,0.15);
+            border-radius: 12px; padding: 1.8rem;
+            transition: var(--transition);
+        }
+        .card:hover {
+            border-color: rgba(201,168,76,0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        }
+        .card-icon {
+            width: 48px; height: 48px;
+            background: rgba(201,168,76,0.12);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.1rem;
+        }
+        .card-icon i { color: var(--gold); font-size: 1.2rem; }
+        .card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; color: var(--white);
+            font-size: 1rem; margin-bottom: 0.6rem;
+        }
+        .card p { color: var(--text-muted); font-size: 0.92rem; margin: 0; }
+
+        /* ── MINDSET SHIFTS ── */
+        .shifts-list { display: flex; flex-direction: column; gap: 1.2rem; }
+        .shift-item {
+            display: grid; grid-template-columns: 1fr auto 1fr;
+            gap: 1rem; align-items: center;
+            background: var(--dark-card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 10px; padding: 1.2rem 1.5rem;
+        }
+        .shift-from {
+            color: var(--text-muted); font-size: 0.9rem;
+            padding: 0.6rem 1rem;
+            background: rgba(255,255,255,0.04);
+            border-radius: 6px; text-align: center;
+        }
+        .shift-arrow { color: var(--gold); font-size: 1.2rem; text-align: center; }
+        .shift-to {
+            color: var(--white); font-size: 0.9rem; font-weight: 600;
+            padding: 0.6rem 1rem;
+            background: rgba(201,168,76,0.08);
+            border: 1px solid rgba(201,168,76,0.2);
+            border-radius: 6px; text-align: center;
+        }
+
+        /* ── QUOTES ── */
+        .quotes-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .quote-card {
+            background: var(--dark-card);
+            border: 1px solid rgba(201,168,76,0.15);
+            border-radius: 12px; padding: 1.8rem;
+        }
+        .quote-card::before {
+            content: '"'; font-family: Georgia, serif;
+            font-size: 4rem; color: var(--gold); line-height: 1;
+            display: block; margin-bottom: 0.5rem; opacity: 0.6;
+        }
+        .quote-card p {
+            font-size: 0.97rem; color: var(--text);
+            font-style: italic; margin: 0 0 0.8rem;
+        }
+        .quote-card cite { font-size: 0.8rem; color: var(--gold); font-style: normal; font-weight: 600; }
+
+        /* ── TESTIMONIAL ── */
+        .testimonial-block {
+            background: linear-gradient(135deg, rgba(26,39,68,0.8), rgba(13,21,37,0.9));
+            border: 1px solid rgba(201,168,76,0.25);
+            border-radius: 16px; padding: 3rem;
+            max-width: 860px; margin: 0 auto;
+            text-align: center;
+        }
+        .testimonial-phases { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; text-align: left; }
+        .phase-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem; font-weight: 800;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 0.5rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid rgba(201,168,76,0.3);
+        }
+        .phase-text { color: var(--text-muted); font-size: 0.88rem; font-style: italic; }
+        .testimonial-quote {
+            font-size: 1.2rem; color: var(--white);
+            font-style: italic; font-weight: 600;
+            margin-bottom: 0.8rem; line-height: 1.5;
+        }
+        .testimonial-quote::before, .testimonial-quote::after { color: var(--gold); }
+        .testimonial-quote::before { content: '" '; }
+        .testimonial-quote::after { content: ' "'; }
+        .testimonial-name { color: var(--gold); font-weight: 700; font-size: 0.9rem; }
+
+        /* ── CTA ── */
+        .cta-section {
+            background: linear-gradient(135deg, var(--navy) 0%, #0d1525 100%);
+            padding: 90px 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(201,168,76,0.2);
+        }
+        .cta-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900; font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--white); margin-bottom: 1rem;
+        }
+        .cta-section p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 580px; margin-left: auto; margin-right: auto; }
+        .cta-features {
+            display: flex; justify-content: center; gap: 2rem;
+            flex-wrap: wrap; margin-bottom: 2.5rem;
+        }
+        .cta-feature {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.9rem; color: var(--text-muted);
+        }
+        .cta-feature i { color: var(--gold); }
+        .cta-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+        /* ── WHAT TO EXPECT ── */
+        .expect-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        .expect-item {
+            text-align: center; padding: 1.8rem 1.2rem;
+            background: var(--dark-card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+        }
+        .expect-item i { color: var(--gold); font-size: 2rem; margin-bottom: 0.8rem; display: block; }
+        .expect-item h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; color: var(--white);
+            font-size: 0.95rem; margin-bottom: 0.5rem;
+        }
+        .expect-item p { color: var(--text-muted); font-size: 0.85rem; margin: 0; }
+
+        /* ── NAV BUTTONS ── */
+        .nav-buttons {
+            display: flex; justify-content: center; gap: 1rem;
+            flex-wrap: wrap; padding: 2rem;
+        }
+        .nav-button {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 0.65rem 1.4rem; border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem; font-weight: 600;
+            text-decoration: none; transition: var(--transition);
+            background: rgba(201,168,76,0.08);
+            border: 1px solid rgba(201,168,76,0.2);
+            color: var(--gold);
+        }
+        .nav-button:hover { background: rgba(201,168,76,0.15); }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #0a0e1a;
+            border-top: 1px solid rgba(201,168,76,0.15);
+            padding: 3rem 2rem 1.5rem;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem; max-width: 1100px; margin: 0 auto 2rem;
+        }
+        .footer-brand h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800; color: var(--gold); font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+        .footer-brand p { color: var(--text-muted); font-size: 0.88rem; }
+        .footer-col h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; color: var(--white);
+            font-size: 0.85rem; margin-bottom: 1rem;
+            text-transform: uppercase; letter-spacing: 0.08em;
+        }
+        .footer-col a {
+            display: block; color: var(--text-muted);
+            text-decoration: none; font-size: 0.85rem;
+            margin-bottom: 0.5rem; transition: var(--transition);
+        }
+        .footer-col a:hover { color: var(--gold); }
+        .footer-bottom {
+            text-align: center; padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            color: var(--text-muted); font-size: 0.8rem;
+            max-width: 1100px; margin: 0 auto;
+        }
+
+        /* ── FADE IN ── */
+        .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .fade-in.visible { opacity: 1; transform: none; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 992px) {
+            .story-layout { grid-template-columns: 1fr; }
+            .sidebar-card { position: static; }
+            .testimonial-phases { grid-template-columns: 1fr; gap: 1.2rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .shift-item { grid-template-columns: 1fr; gap: 0.5rem; }
+            .shift-arrow { display: none; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; align-items: flex-start;
+                position: absolute; top: 70px; left: 0; right: 0;
+                background: rgba(10,14,26,0.98);
+                padding: 1.2rem; border-bottom: 1px solid rgba(201,168,76,0.2);
+                gap: 0.3rem;
+            }
+            .nav-links.open { display: flex; }
+            .mobile-menu-btn { display: block; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .cta-features { flex-direction: column; align-items: center; }
+        }
+        @media (max-width: 480px) {
+            .btn-outline { margin-left: 0; margin-top: 0.6rem; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .testimonial-block { padding: 2rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav class="main-nav">
+    <a href="https://accessworldseminars-ship-it.github.io/results/" class="nav-logo">
+        <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" alt="AccessWorld Logo" onerror="this.style.display='none'">
+        ACCESSWORLD
+    </a>
+    <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="nav-links" id="navLinks">
+        <a href="https://accessworldseminars-ship-it.github.io/results/"><i class="fas fa-home"></i> Home</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/BecomeACoach"><i class="fas fa-graduation-cap"></i> Coach Academy</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/Bio"><i class="fas fa-user"></i> Biography</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/offers"><i class="fas fa-tag"></i> Programs</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/webinars"><i class="fas fa-video"></i> Webinars</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/Testimony"><i class="fas fa-star"></i> Testimonials</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/Lessons" class="active"><i class="fas fa-play-circle"></i> Example Sessions</a>
+        <a href="https://form.jotform.com/250184868189875" class="btn-nav"><i class="fas fa-calendar-check"></i> Free Session</a>
+    </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero-header">
+    <div class="hero-content fade-in">
+        <div class="hero-badge"><i class="fas fa-gift"></i> &nbsp; 100% Free — No Obligation</div>
+        <h1>What a <span>Free Strategy Session</span><br>Actually Looks Like</h1>
+        <p>A real session. A real breakthrough. See exactly what happens when you stop fighting resistance — and finally clear it out.</p>
+        <div class="hero-meta">
+            <div class="hero-meta-item"><i class="fas fa-user-circle"></i> Real session with Trace, Age 22</div>
+            <div class="hero-meta-item"><i class="fas fa-clock"></i> 45–60 minutes</div>
+            <div class="hero-meta-item"><i class="fas fa-heart"></i> Inner child healing included</div>
+        </div>
+        <a href="#session-story" class="btn"><i class="fas fa-play"></i> Read the Full Session</a>
+        <a href="https://form.jotform.com/250184868189875" class="btn btn-outline"><i class="fas fa-calendar-check"></i> Book Yours Now</a>
+    </div>
+</section>
+
+<!-- ── INTRO STRIP ── -->
+<div class="intro-strip">
+    <div class="container">
+        <i class="fas fa-quote-left"></i>
+        <p>We carry our past with us. Every joy, every slight, every moment of boredom or loneliness gets stored away — not just in our memories, but in our <strong>bodies and our nervous systems</strong>. Often, we try to move forward, but we feel stuck. That isn't a lack of motivation; it's often a sign of <strong>unconscious resistance</strong>. This is what happens when we stop fighting that resistance and finally clear it out.</p>
+        <i class="fas fa-quote-right"></i>
+    </div>
+</div>
+
+<!-- ── WHAT TO EXPECT ── -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>What You Can Expect</h2>
+            <p>Every free strategy session follows the same core framework — tailored entirely to you.</p>
+        </div>
+        <div class="expect-grid fade-in">
+            <div class="expect-item">
+                <i class="fas fa-compass"></i>
+                <h4>Discover Your Goals</h4>
+                <p>We get clear on what you actually want — your hopes, aspirations, and the life you're building toward.</p>
+            </div>
+            <div class="expect-item">
+                <i class="fas fa-search"></i>
+                <h4>Uncover the Block</h4>
+                <p>We identify what's really stopping you — not the surface story, but the unconscious resistance underneath it.</p>
+            </div>
+            <div class="expect-item">
+                <i class="fas fa-wind"></i>
+                <h4>Emotional Clearing</h4>
+                <p>I guide you through a process to help you feel light, clear, and good — so you can make real decisions.</p>
+            </div>
+            <div class="expect-item">
+                <i class="fas fa-road"></i>
+                <h4>Your Path Forward</h4>
+                <p>You leave with clarity, momentum, and a genuine sense of what's possible for your life.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── SESSION STORY ── -->
+<section class="section" id="session-story">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>The Session: <span class="accent-text">Trace's Story</span></h2>
+            <p>A 22-year-old from Virginia. DoorDashing to pay off a patent. Stuck. This is what happened.</p>
+        </div>
+        <div class="story-layout fade-in">
+            <div class="story-body">
+                <h3><i class="fas fa-map-pin" style="color:var(--gold);margin-right:8px"></i>The Starting Point</h3>
+                <p>I was speaking with Trace, a twenty-two-year-old from Richmond, Virginia. He was in "crunch time" — working DoorDash to make the final payment on a patent. On the surface, he had a clear goal: find a stable, structured job.</p>
+                <p>But underneath, there was a familiar fog of procrastination and a lingering feeling of being "stuck," despite a recent retreat that had given him a taste of true euphoria.</p>
+                <p>When I asked him what he would create with a magic wand, he didn't ask for millions of dollars. He asked for <strong style="color:var(--white)">stability in finances and in relationships.</strong> He wanted to feel that euphoria again — that state of being fully present. He had the resources. He knew the next step. But something was blocking him.</p>
+
+                <div class="pull-quote">
+                    <p>"My mind makes it out to be so much more than it is. I've been struggling with procrastination."</p>
+                    <span>— Trace, before the session</span>
+                </div>
+
+                <p>This is where we must shift from <em>conscious motivation</em> to <em>unconscious support.</em></p>
+
+                <h3><i class="fas fa-brain" style="color:var(--gold);margin-right:8px"></i>The Process: Inner Child Healing & NSR</h3>
+                <p>You cannot think your way out of a feeling that is lodged in your nervous system. You have to go in and clear it. This is what Nervous System Reprogramming (NSR) is all about.</p>
+                <p>I guided Trace through an inner child healing process — one of the most powerful ways to clear old patterns. I asked him to close his eyes and drift back to a time of pure joy, between the ages of four and eight. He found himself inside, with his brother and his mom, in the daytime.</p>
+                <p>We didn't just observe that little boy. We engaged with him. I guided Trace to take that joyful child by the hand and whisper into his ear — to tell that little boy everything he needed to know. That no matter what — through boredom, loneliness, or feeling unworthy — everything would be okay. That he would never be alone.</p>
+                <p>As Trace held that younger version of himself, the boy shrank and fit perfectly into his heart. Then we moved through time — looking at his life from an adult perspective, then from a higher, God's-eye perspective, showing that child that challenges are just character-building. That hardship creates strength.</p>
+                <p>Finally, we moved toward a bright light. I asked Trace to dive into that light, to feel his body expand and merge with it — realising that he is that light. Pure intelligence and truth.</p>
+
+                <h3><i class="fas fa-sun" style="color:var(--gold);margin-right:8px"></i>The Result: Freedom from the Past</h3>
+                <p>After the process, I asked Trace to try and feel bad about a past memory. Just try.</p>
+
+                <div class="pull-quote">
+                    <p>"I couldn't do it. It wasn't working. It was like good things just kept popping up."</p>
+                    <span>— Trace, immediately after the process</span>
+                </div>
+
+                <p>He reported feeling <strong style="color:var(--white)">"light."</strong></p>
+                <p>This is the hallmark of emotional clearing. It's not about forgetting the past — it's about removing its charge. We don't get freedom from the past by thinking about it differently. We get freedom by reprocessing it at a neurological level, allowing the body to release the weight it's been holding.</p>
+                <p><strong style="color:var(--gold)">When the past no longer dictates your present, you are finally free to choose your future.</strong></p>
+            </div>
+
+            <!-- SIDEBAR -->
+            <div>
+                <div class="sidebar-card">
+                    <h4>Session at a Glance</h4>
+                    <div style="display:flex;flex-direction:column;gap:0.8rem">
+                        <div style="display:flex;gap:0.8rem;align-items:flex-start">
+                            <i class="fas fa-user" style="color:var(--gold);margin-top:3px;flex-shrink:0"></i>
+                            <div><div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em">Client</div><div style="color:var(--white);font-size:0.9rem">Trace, 22 — Richmond, Virginia</div></div>
+                        </div>
+                        <div style="display:flex;gap:0.8rem;align-items:flex-start">
+                            <i class="fas fa-bullseye" style="color:var(--gold);margin-top:3px;flex-shrink:0"></i>
+                            <div><div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em">Conscious Goal</div><div style="color:var(--white);font-size:0.9rem">Find a stable, structured job</div></div>
+                        </div>
+                        <div style="display:flex;gap:0.8rem;align-items:flex-start">
+                            <i class="fas fa-lock" style="color:var(--gold);margin-top:3px;flex-shrink:0"></i>
+                            <div><div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em">Real Barrier</div><div style="color:var(--white);font-size:0.9rem">Unconscious resistance & emotional patterns from the past</div></div>
+                        </div>
+                        <div style="display:flex;gap:0.8rem;align-items:flex-start">
+                            <i class="fas fa-tools" style="color:var(--gold);margin-top:3px;flex-shrink:0"></i>
+                            <div><div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em">Process Used</div><div style="color:var(--white);font-size:0.9rem">Inner Child Healing + NSR</div></div>
+                        </div>
+                        <div style="display:flex;gap:0.8rem;align-items:flex-start">
+                            <i class="fas fa-star" style="color:var(--gold);margin-top:3px;flex-shrink:0"></i>
+                            <div><div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em">Result</div><div style="color:var(--white);font-size:0.9rem">Physical lightness, unable to access negative past emotions, excited to take action</div></div>
+                        </div>
+                    </div>
+                    <div style="margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid rgba(201,168,76,0.2)">
+                        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;text-align:center">Ready for your own breakthrough?</p>
+                        <a href="https://form.jotform.com/250184868189875" class="btn" style="width:100%;justify-content:center">
+                            <i class="fas fa-calendar-check"></i> Book Your Free Session
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── THE PROCESS STEPS ── -->
+<section class="section section-alt" id="process">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>How the Session Unfolded</h2>
+            <p>The inner child healing process, step by step.</p>
+        </div>
+        <div class="process-steps fade-in">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h3>Surface Goals — What Do You Want?</h3>
+                    <p>We start with what you consciously want: the job, the relationship, the income, the feeling. Trace wanted stability and to recapture that feeling of euphoria from his internship — a constant state of being fully present.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h3>Identify the Real Block</h3>
+                    <p>Trace knew what to do. He had LinkedIn, Indeed, everything he needed. But something was stopping him. The block wasn't knowledge — it was unconscious resistance. Procrastination isn't laziness. It's your nervous system protecting an unresolved wound.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <h3>Go Back to the Joy — Inner Child Work</h3>
+                    <p>I guided Trace back to a memory of pure joy between ages 4 and 8. He found himself with his brother and mum. We didn't just observe that little boy — we engaged with him. Trace walked up, took his hand, and whispered to him.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <div class="step-content">
+                    <h3>Install the New Programming</h3>
+                    <p>Trace told that little boy: no matter what happens — through boredom, loneliness, feeling unworthy — you are going to be okay. You are supported. You are never alone. The boy shrank and fit perfectly into his heart.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">5</div>
+                <div class="step-content">
+                    <h3>The God's-Eye View</h3>
+                    <p>We moved through time — from adult perspective to a higher view — showing that child that every challenge is just character-building. That hardship creates strength. A completely new relationship with the past.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">6</div>
+                <div class="step-content">
+                    <h3>Merge with the Light</h3>
+                    <p>Finally, we moved toward a bright light. I asked Trace to dive into it — to feel his body expand and merge with it. To realise: he is that light. Pure intelligence and truth. From there, everything is possible.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── KEY TEACHING POINTS ── -->
+<section class="section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Key Teaching Points</h2>
+            <p>What this session reveals about the way real change actually works.</p>
+        </div>
+        <div class="teaching-grid fade-in">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-lock-open"></i></div>
+                <h3>The Real Barrier</h3>
+                <p>Procrastination isn't a character flaw — it's often a sign of unconscious resistance. The conscious mind wants the goal. The unconscious is holding onto old patterns or fears.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-redo-alt"></i></div>
+                <h3>Reframing Rejection</h3>
+                <p>Every "no" is a step closer to the "yes." Get excited when you hear no — you're ticking off attempts until you succeed. Internal fortitude makes the path shorter, not longer.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-child"></i></div>
+                <h3>The Inner Child Connection</h3>
+                <p>Many adult struggles — feeling unworthy, lonely, or stuck — have their roots in childhood. To change the adult, we must first comfort and empower the child within.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-moon"></i></div>
+                <h3>Unconscious Support</h3>
+                <p>Conscious motivation is fleeting. Lasting change happens when you gain the support of your unconscious mind. You stop trying to do things — and simply find yourself doing them.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-feather"></i></div>
+                <h3>The "Light" Feeling</h3>
+                <p>A sign of successful emotional clearing is physical lightness and an inability to feel negative emotions about past events. When it's gone, it's genuinely gone.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-forward"></i></div>
+                <h3>Freedom to Choose</h3>
+                <p>When the past no longer dictates your present, you are finally free to choose your future. Not because you willed it — because the weight has been removed.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── MINDSET SHIFTS ── -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Mindset Shifts From This Session</h2>
+            <p>The reframes that change everything.</p>
+        </div>
+        <div class="shifts-list fade-in">
+            <div class="shift-item">
+                <div class="shift-from">"Procrastination is laziness"</div>
+                <div class="shift-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="shift-to">"Procrastination is a signal — there's an unresolved block that needs attention first"</div>
+            </div>
+            <div class="shift-item">
+                <div class="shift-from">"I need to white-knuckle my way through this"</div>
+                <div class="shift-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="shift-to">"I can engage my deepest mind to work for me — making the path easier"</div>
+            </div>
+            <div class="shift-item">
+                <div class="shift-from">"I need to fix and understand my past"</div>
+                <div class="shift-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="shift-to">"I need to release the emotional charge so I'm no longer controlled by it"</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── QUOTES ── -->
+<section class="section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Gems from the Session</h2>
+        </div>
+        <div class="quotes-grid fade-in">
+            <div class="quote-card">
+                <p>You've got to have the internal fortitude that when you hear a no, get excited — because that means you're one step closer to a yes.</p>
+                <cite>— Joshua Roy</cite>
+            </div>
+            <div class="quote-card">
+                <p>We can't just be sitting around twiddling our thumbs. We've got to get out and do something more.</p>
+                <cite>— Joshua Roy, on purpose</cite>
+            </div>
+            <div class="quote-card">
+                <p>When the past no longer dictates your present, you are finally free to choose your future.</p>
+                <cite>— Joshua Roy</cite>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── TESTIMONIAL ── -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Trace's Transformation</h2>
+            <p>In his own words — before, during, and after.</p>
+        </div>
+        <div class="testimonial-block fade-in">
+            <div class="testimonial-phases">
+                <div>
+                    <div class="phase-label"><i class="fas fa-circle" style="font-size:0.5rem;margin-right:5px"></i>Before</div>
+                    <p class="phase-text">"I had an internship almost a year ago — it was probably the happiest time of my life. A pretty constant state of euphoria. I've been struggling to get back to that feeling. I'm putting off creating a resume and looking for a structured job, even though I know it's easy to do. My mind makes it out to be so much more than it is."</p>
+                </div>
+                <div>
+                    <div class="phase-label"><i class="fas fa-circle" style="font-size:0.5rem;margin-right:5px"></i>What I Learned</div>
+                    <p class="phase-text">"Josh guided me through an inner child process where I went back and connected with a younger version of myself. He had me whisper to that little boy — telling him he would be supported and that everything would be okay. It felt like we were installing new programming in my mind."</p>
+                </div>
+                <div>
+                    <div class="phase-label"><i class="fas fa-circle" style="font-size:0.5rem;margin-right:5px"></i>After</div>
+                    <p class="phase-text">"After the session, I felt light. Josh asked me to try and feel bad about something in my past, and I literally couldn't do it. Every time I tried, good things just kept popping up instead. It was amazing. I feel free, and I'm actually excited to start working toward my goals now."</p>
+                </div>
+            </div>
+            <p class="testimonial-quote">After the session, I felt light. I tried to feel bad about my past, and I couldn't do it. Good things just kept popping up instead.</p>
+            <div class="testimonial-name">— Trace, Age 22 &nbsp;·&nbsp; Richmond, Virginia</div>
+        </div>
+    </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section" id="book">
+    <div class="container">
+        <div class="fade-in">
+            <h2>Your Session is <span class="accent-text">Waiting</span></h2>
+            <p>This is exactly what your free strategy session looks like. Discover your goals. Uncover the real block. Walk away feeling light, clear, and genuinely ready to move forward.</p>
+            <div class="cta-features">
+                <div class="cta-feature"><i class="fas fa-check-circle"></i> 100% Free — No obligation</div>
+                <div class="cta-feature"><i class="fas fa-check-circle"></i> 45–60 minutes one-on-one with Joshua</div>
+                <div class="cta-feature"><i class="fas fa-check-circle"></i> Emotional clearing process included</div>
+                <div class="cta-feature"><i class="fas fa-check-circle"></i> Walk away with real clarity</div>
+            </div>
+            <div class="cta-buttons">
+                <a href="https://form.jotform.com/250184868189875" class="btn" style="font-size:1rem;padding:1rem 2.5rem">
+                    <i class="fas fa-calendar-check"></i> Book My Free Strategy Session
+                </a>
+                <a href="https://accessworldseminars-ship-it.github.io/results/Testimony" class="btn btn-outline">
+                    <i class="fas fa-star"></i> Read More Testimonials
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── NAV BUTTONS ── -->
+<div class="container">
+    <div class="nav-buttons">
+        <a href="https://accessworldseminars-ship-it.github.io/results/" class="nav-button"><i class="fas fa-home"></i> Return Home</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/Lessons" class="nav-button"><i class="fas fa-play-circle"></i> All Example Sessions</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/offers" class="nav-button"><i class="fas fa-tag"></i> Programs & Offers</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/s" class="nav-button"><i class="fas fa-calendar"></i> Upcoming Events</a>
+    </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h3>AccessWorld Coaching</h3>
+            <p>"Transforming Lives Through Expert Coaching & Mentoring"</p>
+            <p style="margin-top:0.8rem">Comprehensive coaching programs designed for people who want to transform their health, relationships, mindset, and life through practical, results-driven learning.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Navigation</h4>
+            <a href="https://accessworldseminars-ship-it.github.io/results/s"><i class="fas fa-calendar" style="width:16px;color:var(--gold)"></i> Events Schedule</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/ICS"><i class="fas fa-compass" style="width:16px;color:var(--gold)"></i> Find Your Path</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/Lessons"><i class="fas fa-play-circle" style="width:16px;color:var(--gold)"></i> Example Sessions</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/Testimony"><i class="fas fa-star" style="width:16px;color:var(--gold)"></i> Testimonials</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/Stories"><i class="fas fa-book-open" style="width:16px;color:var(--gold)"></i> Stories</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/Members"><i class="fas fa-lock" style="width:16px;color:var(--gold)"></i> Members Area</a>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="mailto:accessworldseminars@gmail.com"><i class="fas fa-envelope" style="width:16px;color:var(--gold)"></i> accessworldseminars@gmail.com</a>
+            <a href="https://wa.me/61432119091"><i class="fab fa-whatsapp" style="width:16px;color:var(--gold)"></i> +61 432 119 091 (WhatsApp)</a>
+            <a href="https://form.jotform.com/250184868189875" style="margin-top:1rem;background:var(--gold);color:var(--navy);padding:0.6rem 1rem;border-radius:6px;font-weight:700;display:inline-flex;align-items:center;gap:6px"><i class="fas fa-calendar-check"></i> Book Free Session</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 AccessWorld Coaching. All Rights Reserved. | Designed for transformation</p>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+        menuBtn.querySelector('i').className = navLinks.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
+    });
+    document.addEventListener('click', e => {
+        if (!menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+            navLinks.classList.remove('open');
+            menuBtn.querySelector('i').className = 'fas fa-bars';
+        }
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const t = document.querySelector(a.getAttribute('href'));
+            if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+    });
+</script>
+</body>
+</html>
