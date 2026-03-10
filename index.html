@@ -130,18 +130,12 @@
             gap: 15px;
         }
         
+        /* UPDATED: Using your actual logo image */
         .nav-logo img {
-            height: 50px;
+            height: 60px;
             width: auto;
             filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
-        }
-        
-        .nav-logo span {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(to right, var(--accent-gold), var(--accent-silver));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            border-radius: 5px;
         }
         
         .nav-links {
@@ -216,13 +210,13 @@
             margin: 40px 0;
         }
         
-        /* FIXED PROFILE PHOTO STYLES - NO MORE HEAD CROPPING */
+        /* UPDATED: Changed from circle to square with rounded corners */
         .profile-photo {
             width: 350px;
             height: 350px;
-            border-radius: 50%;
+            border-radius: 20px; /* Changed from 50% to 20px for softer edges */
             object-fit: cover;
-            object-position: center 30%; /* This is the key fix - adjusts vertical positioning */
+            object-position: center 25%; /* Adjusted to show more of the top */
             border: 5px solid var(--accent-gold);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
@@ -292,6 +286,52 @@
             font-size: 2.5rem;
             color: var(--accent-gold);
             margin-bottom: 20px;
+        }
+        
+        /* NEW: Styles for image cards */
+        .image-card {
+            background: rgba(15, 26, 61, 0.7);
+            border-radius: var(--radius);
+            padding: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--accent-gold);
+            margin-bottom: 15px;
+        }
+        
+        .image-card h3 {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .image-card p {
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
         }
         
         /* NSR Section Styles */
@@ -578,6 +618,13 @@
             padding-left: 5px;
         }
         
+        .footer-logo {
+            height: 80px;
+            width: auto;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        
         .social-links {
             display: flex;
             gap: 15px;
@@ -683,8 +730,8 @@
             }
             
             .profile-photo {
-                width: 250px;
-                height: 250px;
+                width: 280px;
+                height: 280px;
                 margin: 0 auto;
                 object-position: center 25%;
             }
@@ -722,8 +769,8 @@
             }
             
             .hero-header {
-                padding: 150px 0 80px;
-                margin-top: 130px;
+                padding: 200px 0 80px;
+                margin-top: 100px;
             }
             
             .hero-content h1 {
@@ -759,15 +806,15 @@
                 top: 15px;
             }
             
-            .nsr-pillars-grid, .who-is-for-grid {
+            .nsr-pillars-grid, .who-is-for-grid, .insight-grid {
                 grid-template-columns: 1fr;
             }
         }
         
         @media (max-width: 480px) {
             .profile-photo {
-                width: 200px;
-                height: 200px;
+                width: 220px;
+                height: 220px;
                 object-position: center 20%;
             }
             
@@ -787,11 +834,12 @@
     </style>
 </head>
 <body>
-    <!-- Main Navigation -->
+    <!-- Main Navigation with Logo -->
     <nav class="main-nav">
         <div class="nav-logo">
-            <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" alt="AccessWorld Logo">
-            <span>ACCESSWORLD</span>
+            <!-- UPDATED: Using your actual logo image -->
+            <img src="https://i.ibb.co/CsPRYN8s/Screenshot-2026-01-29-104941.png" alt="AccessWorld Logo">
+            <!-- Optional: Remove the text span or keep it minimal -->
         </div>
         
         <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -799,29 +847,20 @@
         </button>
         
         <div class="nav-links" id="navLinks">
-            <a href="https://accessworldseminars-ship-it.github.io/results/" class="active">
+            <a href="#home" class="active">
                 <i class="fas fa-home"></i> Home
             </a>
-            <a href="https://accessworldseminars-ship-it.github.io/results/BecomeACoach">
-                <i class="fas fa-graduation-cap"></i> Coach Academy
+            <a href="#nsr-section">
+                <i class="fas fa-brain"></i> NSR
             </a>
-            <a href="https://accessworldseminars-ship-it.github.io/results/Bio">
-                <i class="fas fa-user"></i> Biography
+            <a href="#services">
+                <i class="fas fa-tags"></i> Services
             </a>
-            <a href="https://accessworldseminars-ship-it.github.io/results/offers">
-                <i class="fas fa-tags"></i> Programs & Offers
+            <a href="#bio">
+                <i class="fas fa-user"></i> Bio
             </a>
-            <a href="https://accessworldseminars-ship-it.github.io/results/webinars">
-                <i class="fas fa-video"></i> Webinars
-            </a>
-            <a href="https://accessworldseminars-ship-it.github.io/results/s">
-                <i class="fas fa-calendar"></i> Events Schedule
-            </a>
-            <a href="https://accessworldseminars-ship-it.github.io/results/ICS">
-                <i class="fas fa-question-circle"></i> Find Your Path
-            </a>
-            <a href="https://accessworldseminars-ship-it.github.io/results/Testimony">
-                <i class="fas fa-star"></i> Testimonials
+            <a href="#guarantee">
+                <i class="fas fa-shield-alt"></i> Guarantee
             </a>
             <a href="https://form.jotform.com/250184868189875" target="_blank" style="background: linear-gradient(135deg, var(--accent-gold), #b8941f); color: var(--primary-blue);">
                 <i class="fas fa-calendar-check"></i> Free Session
@@ -830,7 +869,7 @@
     </nav>
 
     <!-- Hero Header -->
-    <section class="hero-header">
+    <section class="hero-header" id="home">
         <div class="hero-content fade-in">
             <h1>Your Precision Coaching & Mentoring Experience</h1>
             <p style="font-size: 1.3rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
@@ -838,6 +877,7 @@
             </p>
             
             <div class="coach-profile">
+                <!-- FIXED: Profile photo with rounded corners instead of circle -->
                 <img src="https://github.com/accessworldseminars-ship-it/results/blob/506874ab3e1c1adb8973930fa182afa09fc19d6f/JoshuaRoy.png?raw=true" 
                      alt="Joshua Roy" class="profile-photo">
                 <div class="profile-info">
@@ -858,7 +898,38 @@
         </div>
     </section>
 
-    <!-- Quick Links Section -->
+    <!-- NEW: Key Insights Section with Your Images -->
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Key Insights for Transformation</h2>
+            <p class="section-subtitle" style="color: var(--text-gray);">Understanding the path to real, lasting change</p>
+        </div>
+        
+        <div class="insight-grid fade-in">
+            <!-- Education & Income Card -->
+            <div class="image-card">
+                <img src="https://i.ibb.co/CsPRYN8s/Screenshot-2026-01-29-104941.png" alt="Education and Income">
+                <h3>The Right Psychology: State & Story</h3>
+                <p><strong>Education</strong> is the bridge between challenge and result. When you invest in the right education, your income and capabilities expand together. True transformation begins with learning that rewires your approach.</p>
+            </div>
+            
+            <!-- New Opportunity Card -->
+            <div class="image-card">
+                <img src="https://i.ibb.co/Zp8xwpYk/Screenshot-2026-01-29-104856.png" alt="New Opportunity">
+                <h3>The "New Opportunity"</h3>
+                <p>If you've tried before and felt like you failed, NSR is your new opportunity. It works at the neural level—reprogramming the connections between <strong>health, wealth, and relationships</strong>. Unlock your incredible self by changing the wiring, not just the thoughts.</p>
+            </div>
+            
+            <!-- Effective Tools Card -->
+            <div class="image-card">
+                <img src="https://i.ibb.co/0RmH3ghz/Screenshot-2026-01-29-105001.png" alt="Effective Tools">
+                <h3>The Right Tools: State & Strategy</h3>
+                <p>To overcome any challenge, you need the right tools. NSR provides the state and strategy—the precise tools to navigate from where you are to your desired result. It's not about trying harder, but using tools that actually work on the nervous system level.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Links Section (Moved down slightly for better flow) -->
     <div class="container">
         <div class="quick-links">
             <div class="section-header fade-in">
@@ -869,37 +940,37 @@
             </div>
             
             <div class="quick-links-grid fade-in">
-                <a href="https://accessworldseminars-ship-it.github.io/results/s" class="link-card">
+                <a href="#" class="link-card">
                     <i class="fas fa-calendar-alt"></i>
                     <h3>Upcoming Events</h3>
                     <p>View our full calendar of free & paid seminars, webinars, and coaching sessions</p>
                 </a>
                 
-                <a href="https://accessworldseminars-ship-it.github.io/results/ICS" class="link-card">
+                <a href="#" class="link-card">
                     <i class="fas fa-search"></i>
                     <h3>Find Your Coaching Path</h3>
                     <p>12-question diagnostic to identify your needs and recommended sessions</p>
                 </a>
                 
-                <a href="https://accessworldseminars-ship-it.github.io/results/Testimony" class="link-card">
+                <a href="#" class="link-card">
                     <i class="fas fa-star"></i>
                     <h3>Success Stories</h3>
                     <p>Read inspiring testimonials from people transformed by this work</p>
                 </a>
                 
-                <a href="https://accessworldseminars-ship-it.github.io/results/Lessons" class="link-card">
+                <a href="#" class="link-card">
                     <i class="fas fa-book-open"></i>
                     <h3>Example Sessions</h3>
                     <p>Preview insights from actual 1-on-1 and group coaching sessions</p>
                 </a>
                 
-                <a href="https://accessworldseminars-ship-it.github.io/results/Stories" class="link-card">
+                <a href="#" class="link-card">
                     <i class="fas fa-book"></i>
                     <h3>Transformational Stories</h3>
                     <p>Read moving stories to entertain, excite, and inspire your own journey</p>
                 </a>
                 
-                <a href="https://accessworldseminars-ship-it.github.io/results/Members" class="link-card">
+                <a href="#" class="link-card">
                     <i class="fas fa-lock"></i>
                     <h3>Members Area</h3>
                     <p>Exclusive content for current clients (Password: Accessworld)</p>
@@ -1046,7 +1117,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="section">
+    <section class="section" id="services">
         <div class="container">
             <div class="section-header fade-in">
                 <h2>Coaching Services</h2>
@@ -1097,7 +1168,7 @@
     </section>
 
     <!-- Biography Section -->
-    <section class="section" style="background: rgba(15, 26, 61, 0.3);">
+    <section class="section" id="bio" style="background: rgba(15, 26, 61, 0.3);">
         <div class="container">
             <div class="section-header fade-in">
                 <h2>About Joshua Roy</h2>
@@ -1152,7 +1223,7 @@
     </section>
 
     <!-- Guarantee Section -->
-    <section class="section">
+    <section class="section" id="guarantee">
         <div class="container">
             <div class="section-header fade-in">
                 <h2>Our Guarantee</h2>
@@ -1245,7 +1316,7 @@
                         </div>
                     </div>
                     
-                    <a href="https://accessworldseminars-ship-it.github.io/results/commit" class="btn" style="width: 100%;">
+                    <a href="#" class="btn" style="width: 100%;">
                         <i class="fas fa-unlock"></i> Start Your Transformation
                     </a>
                 </div>
@@ -1275,7 +1346,7 @@
                         </div>
                     </div>
                     
-                    <a href="https://accessworldseminars-ship-it.github.io/results/commit" class="btn" style="width: 100%;">
+                    <a href="#" class="btn" style="width: 100%;">
                         <i class="fas fa-graduation-cap"></i> Start Coach Training
                     </a>
                 </div>
@@ -1284,13 +1355,13 @@
             <div style="text-align: center; margin-top: 40px;">
                 <p style="color: var(--accent-silver); margin-bottom: 20px;">Not ready to commit? Explore these options first:</p>
                 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                    <a href="https://accessworldseminars-ship-it.github.io/results/s" class="btn btn-secondary">
+                    <a href="#" class="btn btn-secondary">
                         <i class="fas fa-calendar"></i> View Free Events
                     </a>
                     <a href="https://form.jotform.com/250184868189875" class="btn btn-secondary">
                         <i class="fas fa-phone"></i> Free Strategy Call
                     </a>
-                    <a href="https://accessworldseminars-ship-it.github.io/results/Stories" class="btn btn-secondary">
+                    <a href="#" class="btn btn-secondary">
                         <i class="fas fa-book"></i> Read Stories First
                     </a>
                 </div>
@@ -1301,16 +1372,16 @@
     <!-- Navigation -->
     <div class="container">
         <div class="nav-buttons">
-            <a href="https://accessworldseminars-ship-it.github.io/results/s" class="nav-button">
+            <a href="#" class="nav-button">
                 <i class="fas fa-calendar"></i> Upcoming Events
             </a>
-            <a href="https://accessworldseminars-ship-it.github.io/results/Testimony" class="nav-button">
+            <a href="#" class="nav-button">
                 <i class="fas fa-star"></i> Read Testimonials
             </a>
-            <a href="https://accessworldseminars-ship-it.github.io/results/ICS" class="nav-button">
+            <a href="#" class="nav-button">
                 <i class="fas fa-search"></i> Find Your Path
             </a>
-            <a href="https://accessworldseminars-ship-it.github.io/results/commit" class="nav-button">
+            <a href="#" class="nav-button">
                 <i class="fas fa-play-circle"></i> Start Your Journey
             </a>
         </div>
@@ -1321,7 +1392,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>AccessWorld Coaching</h3>
+                    <!-- Logo in footer as well -->
+                    <img src="https://i.ibb.co/CsPRYN8s/Screenshot-2026-01-29-104941.png" alt="AccessWorld Logo" class="footer-logo">
                     <p>"Transforming Lives Through Expert Coaching & Mentoring"</p>
                     <p>Comprehensive coaching programs designed for people who want to transform their health, relationships, mindset, and life through practical, results-driven learning.</p>
                     <div class="social-links">
@@ -1333,27 +1405,21 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Website Navigation</h3>
-                    <a href="https://accessworldseminars-ship-it.github.io/results/s">
-                        <i class="fas fa-calendar-alt accent-text"></i> Events Schedule
+                    <h3>Quick Links</h3>
+                    <a href="#home">
+                        <i class="fas fa-home accent-text"></i> Home
                     </a>
-                    <a href="https://accessworldseminars-ship-it.github.io/results/ICS">
-                        <i class="fas fa-search accent-text"></i> Find Your Coaching Path
+                    <a href="#nsr-section">
+                        <i class="fas fa-brain accent-text"></i> NSR
                     </a>
-                    <a href="https://accessworldseminars-ship-it.github.io/results/Lessons">
-                        <i class="fas fa-book-open accent-text"></i> Example Sessions
+                    <a href="#services">
+                        <i class="fas fa-tags accent-text"></i> Services
                     </a>
-                    <a href="https://accessworldseminars-ship-it.github.io/results/Testimony">
-                        <i class="fas fa-star accent-text"></i> Testimonials
+                    <a href="#bio">
+                        <i class="fas fa-user accent-text"></i> Biography
                     </a>
-                    <a href="https://accessworldseminars-ship-it.github.io/results/Stories">
-                        <i class="fas fa-book accent-text"></i> Transformational Stories
-                    </a>
-                    <a href="https://accessworldseminars-ship-it.github.io/results/Members">
-                        <i class="fas fa-lock accent-text"></i> Members Area
-                    </a>
-                    <a href="https://accessworldseminars-ship-it.github.io/results/commit">
-                        <i class="fas fa-play-circle accent-text"></i> Get Started
+                    <a href="#guarantee">
+                        <i class="fas fa-shield-alt accent-text"></i> Guarantee
                     </a>
                 </div>
                 
@@ -1434,20 +1500,6 @@
                 }
             });
         });
-        
-        // Add hover animation to cards
-        document.querySelectorAll('.card, .pillar-card, .link-card, .stat-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
     </script>
 </body>
 </html>
-
-
-
