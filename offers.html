@@ -22,6 +22,7 @@
             --radius: 10px;
             --success-green: #4CAF50;
             --premium-purple: #9c27b0;
+            --healing-blue: #2196F3;
         }
 
         * {
@@ -92,10 +93,10 @@
             background: rgba(212, 175, 55, 0.1);
         }
 
-        .btn-premium {
+        .btn-healing {
             display: inline-block;
             padding: 16px 40px;
-            background: linear-gradient(135deg, var(--premium-purple), #7b1fa2);
+            background: linear-gradient(135deg, var(--healing-blue), #1976D2);
             color: white;
             border: none;
             border-radius: 50px;
@@ -108,38 +109,21 @@
             transition: var(--transition);
             text-decoration: none;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(156, 39, 176, 0.4);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(33, 150, 243, 0.4);
         }
 
-        .btn-premium:hover {
+        .btn-healing:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(156, 39, 176, 0.5);
-            background: linear-gradient(135deg, #ba68c8, var(--premium-purple));
-        }
-
-        .btn-premium .free-trial {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #ffeb3b;
-            color: #333;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            transform: rotate(15deg);
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-            z-index: 2;
+            box-shadow: 0 10px 25px rgba(33, 150, 243, 0.5);
+            background: linear-gradient(135deg, #64B5F6, var(--healing-blue));
         }
 
         .accent-text {
             color: var(--accent-gold);
         }
 
-        .premium-text {
-            color: var(--premium-purple);
+        .healing-text {
+            color: var(--healing-blue);
         }
 
         /* Header */
@@ -234,64 +218,15 @@
             transform: translateY(-3px);
         }
 
-        .nav-item.premium {
-            background: rgba(156, 39, 176, 0.2);
-            border-color: var(--premium-purple);
-            color: #e1bee7;
+        .nav-item.healing {
+            background: rgba(33, 150, 243, 0.2);
+            border-color: var(--healing-blue);
+            color: #BBDEFB;
         }
 
-        .nav-item.premium:hover {
-            background: rgba(156, 39, 176, 0.3);
+        .nav-item.healing:hover {
+            background: rgba(33, 150, 243, 0.3);
             transform: translateY(-3px);
-        }
-
-        /* Premium Banner */
-        .premium-banner {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(rgba(15, 26, 61, 0.9), rgba(26, 43, 94, 0.9));
-            border-radius: var(--radius);
-            margin: 30px 0;
-            border: 2px solid rgba(156, 39, 176, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .premium-banner:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--premium-purple), #ffeb3b, var(--premium-purple));
-            z-index: 1;
-        }
-
-        .premium-banner h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: #e1bee7;
-        }
-
-        .premium-banner p {
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-            color: var(--text-gray);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .trial-highlight {
-            display: inline-block;
-            background: rgba(255, 235, 59, 0.2);
-            color: #ffeb3b;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: 700;
-            margin: 10px 0;
-            border: 2px solid #ffeb3b;
         }
 
         /* Section Title */
@@ -373,6 +308,10 @@
             justify-content: center;
         }
 
+        .card-header.healing-header {
+            background: linear-gradient(135deg, var(--healing-blue), #1976D2);
+        }
+
         .free-badge {
             position: absolute;
             top: 15px;
@@ -388,6 +327,10 @@
             max-width: 100px;
             text-align: center;
             line-height: 1.2;
+        }
+
+        .free-badge.healing {
+            color: var(--healing-blue);
         }
 
         .offer-name {
@@ -430,6 +373,10 @@
             flex-shrink: 0;
         }
 
+        .feature-icon.healing {
+            color: var(--healing-blue);
+        }
+
         .feature-name {
             font-weight: 500;
             color: var(--text-gray);
@@ -447,8 +394,16 @@
             border-left: 3px solid var(--success-green);
         }
 
+        .ideal-for.healing {
+            border-left: 3px solid var(--healing-blue);
+        }
+
         .ideal-for strong {
             color: var(--success-green);
+        }
+
+        .ideal-for.healing strong {
+            color: var(--healing-blue);
         }
 
         .cta-button {
@@ -475,6 +430,15 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
             background: linear-gradient(135deg, #66BB6A, var(--success-green));
+        }
+
+        .cta-button.healing {
+            background: linear-gradient(135deg, var(--healing-blue), #1976D2);
+        }
+
+        .cta-button.healing:hover {
+            box-shadow: 0 8px 20px rgba(33, 150, 243, 0.4);
+            background: linear-gradient(135deg, #64B5F6, var(--healing-blue));
         }
 
         .link-indicator {
@@ -579,7 +543,7 @@
             font-weight: 600;
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: var(--transition);
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 10px;
         }
@@ -590,14 +554,14 @@
             transform: translateY(-3px);
         }
 
-        .home-button.premium {
-            background: rgba(156, 39, 176, 0.2);
-            border-color: var(--premium-purple);
-            color: #e1bee7;
+        .home-button.healing {
+            background: rgba(33, 150, 243, 0.2);
+            border-color: var(--healing-blue);
+            color: #BBDEFB;
         }
 
-        .home-button.premium:hover {
-            background: rgba(156, 39, 176, 0.3);
+        .home-button.healing:hover {
+            background: rgba(33, 150, 243, 0.3);
             transform: translateY(-3px);
         }
 
@@ -671,12 +635,13 @@
                 flex-direction: column;
             }
             
-            .home-button, .cta-button, .btn-premium {
+            .home-button {
                 width: 100%;
                 text-align: center;
+                justify-content: center;
             }
             
-            .resource-hub, .premium-banner, .webinar-banner {
+            .resource-hub, .webinar-banner {
                 padding: 20px;
             }
         }
@@ -700,8 +665,8 @@
                 <a href="#free-offers" class="nav-item">
                     <i class="fas fa-gift"></i> Free Offers
                 </a>
-                <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="nav-item premium">
-                    <i class="fas fa-crown"></i> Start 14-Day Free Trial
+                <a href="https://joshbossesteamworkspace.myclickfunnels.com/funnel-heal-you-inner-child" target="_blank" class="nav-item healing">
+                    <i class="fas fa-heart"></i> Heal Your Inner Child
                 </a>
                 <a href="#resources" class="nav-item">
                     <i class="fas fa-tools"></i> Resource Hub
@@ -715,9 +680,8 @@
                 <a href="#free-offers" class="btn">
                     <i class="fas fa-gift"></i> View All Free Offers
                 </a>
-                <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="btn-premium">
-                    <span class="free-trial">14 DAYS FREE</span>
-                    <i class="fas fa-crown"></i> Start Premium Free Trial
+                <a href="https://joshbossesteamworkspace.myclickfunnels.com/funnel-heal-you-inner-child" target="_blank" class="btn-healing">
+                    <i class="fas fa-heart"></i> Heal Your Inner Child
                 </a>
                 <a href="https://accessworldseminars-ship-it.github.io/results/" class="btn-secondary">
                     <i class="fas fa-home"></i> Back to Main Site
@@ -727,22 +691,6 @@
     </header>
 
     <main class="container">
-        <!-- Premium Banner 1 -->
-        <div class="premium-banner">
-            <h3>Ready for <span class="premium-text">Premium Coaching</span>?</h3>
-            <p>Take your transformation to the next level with our comprehensive premium coaching programs.</p>
-            <div class="trial-highlight">
-                <i class="fas fa-star"></i> Get Started with a 14-Day Free Trial <i class="fas fa-star"></i>
-            </div>
-            <div style="margin: 25px 0;">
-                <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="btn-premium">
-                    <span class="free-trial">14 DAYS FREE</span>
-                    <i class="fas fa-crown"></i> Start Your Free Trial Now
-                </a>
-            </div>
-            <p>Experience the full benefits of coaching with no commitment. Start your free trial today!</p>
-        </div>
-
         <!-- Webinar Banner -->
         <div class="webinar-banner">
             <h3>Access Our Premium <span class="accent-text">Webinar Collection</span></h3>
@@ -775,7 +723,7 @@
                         <li><span class="feature-icon">✓</span><span class="feature-name">Identify Your Biggest Blocks</span></li>
                         <li><span class="feature-icon">✓</span><span class="feature-name">Personalized Action Plan</span></li>
                         <li><span class="feature-icon">✓</span><span class="feature-name">Q&A With Joshua Roy</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">No Pressure - Just Value</span></li>
+                        <li><span class="feature-icon">✓</span><span class="feature-name">Personalized Plans to Suit Any Budget</span></li>
                     </ul>
                     <div class="ideal-for">
                         <strong>Ideal For:</strong> Anyone ready to clarify their transformation path
@@ -787,7 +735,7 @@
                 </div>
             </div>
 
-            <!-- Join a Free Coaching Session -->
+            <!-- Join a Free Group Coaching Session -->
             <div class="offer-card">
                 <div class="free-badge">100% FREE</div>
                 <div class="card-header">
@@ -813,134 +761,41 @@
                 </div>
             </div>
 
-            <!-- Attend a Free Introduction Seminar -->
+            <!-- Heal Your Inner Child Webinar -->
             <div class="offer-card">
-                <div class="free-badge">100% FREE</div>
-                <div class="card-header">
-                    <div class="offer-name">Attend a Free Introduction Seminar</div>
-                    <div class="offer-value">In-Person Experience</div>
-                    <div>Local Meetup Events</div>
+                <div class="free-badge healing">MOST TALKED ABOUT</div>
+                <div class="card-header healing-header">
+                    <div class="offer-name">Heal Your Inner Child Webinar</div>
+                    <div class="offer-value">Pre-Recorded Session</div>
+                    <div>Break Free From Your Past</div>
                 </div>
                 <div class="card-content">
                     <ul class="features-list">
-                        <li><span class="feature-icon">✓</span><span class="feature-name">In-Person Seminar</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Live Demonstrations</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Networking Opportunities</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Hands-On Exercises</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Community Building</span></li>
+                        <li><span class="feature-icon healing">✓</span><span class="feature-name">Pre-Recorded Webinar Access</span></li>
+                        <li><span class="feature-icon healing">✓</span><span class="feature-name">Learn How Your Past Creates Internal Resistance</span></li>
+                        <li><span class="feature-icon healing">✓</span><span class="feature-name">Discover How Childhood Shapes Your Future</span></li>
+                        <li><span class="feature-icon healing">✓</span><span class="feature-name">Powerful Healing Techniques</span></li>
+                        <li><span class="feature-icon healing">✓</span><span class="feature-name">Break Free From Limiting Patterns</span></li>
                     </ul>
-                    <div class="ideal-for">
-                        <strong>Ideal For:</strong> Local residents wanting in-person connection
+                    <div class="ideal-for healing">
+                        <strong>Ideal For:</strong> Anyone wanting to understand how their past affects their present
                     </div>
-                    <a href="https://www.meetup.com/brisbane-life-coaching-neurological-repatterning-meetup/" target="_blank" class="cta-button">
-                        VIEW MEETUP SCHEDULE
-                        <div class="link-indicator"><i class="fas fa-users"></i> Join meetup group</div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Morning Routine Checklist -->
-            <div class="offer-card">
-                <div class="free-badge">FREE DOWNLOAD</div>
-                <div class="card-header">
-                    <div class="offer-name">Morning Routine Checklist</div>
-                    <div class="offer-value">Productivity Tool</div>
-                    <div>Transform Your Mornings</div>
-                </div>
-                <div class="card-content">
-                    <ul class="features-list">
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Step-by-Step Morning Routine</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Energy Optimization Checklist</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Mindset Activation Exercises</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Printable PDF Format</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Immediate Download</span></li>
-                    </ul>
-                    <div class="ideal-for">
-                        <strong>Ideal For:</strong> Anyone wanting to improve daily productivity
-                    </div>
-                    <a href="https://accessworldseminars-ship-it.github.io/results/webinars" target="_blank" class="cta-button">
-                        GET CHECKLIST
-                        <div class="link-indicator"><i class="fas fa-gift"></i> Attend free webinar to receive</div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Unlock Your Incredible Self - eBook -->
-            <div class="offer-card">
-                <div class="free-badge">FREE EBOOK</div>
-                <div class="card-header">
-                    <div class="offer-name">"Unlock Your Incredible Self" eBook</div>
-                    <div class="offer-value">Complete Guide</div>
-                    <div>Personal Transformation</div>
-                </div>
-                <div class="card-content">
-                    <ul class="features-list">
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Complete Self-Discovery Guide</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Step-by-Step Exercises</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Practical Transformation Tools</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">PDF Format - Read Anywhere</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">No Email Required</span></li>
-                    </ul>
-                    <div class="ideal-for">
-                        <strong>Ideal For:</strong> Self-starters wanting to begin their journey
-                    </div>
-                    <a href="https://docs.google.com/document/d/1QQFNGhSEdvQstfEfcoK4HLVmbcfs8UpliU_eZ7qWzJs/edit?usp=drive_link" target="_blank" class="cta-button">
-                        DOWNLOAD EBOOK
-                        <div class="link-indicator"><i class="fas fa-download"></i> Instant access</div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Free Webinar Access -->
-            <div class="offer-card">
-                <div class="free-badge">FREE ACCESS</div>
-                <div class="card-header">
-                    <div class="offer-name">Premium Webinar Collection</div>
-                    <div class="offer-value">$1000+ Value</div>
-                    <div>Recorded Training Library</div>
-                </div>
-                <div class="card-content">
-                    <ul class="features-list">
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Multiple Webinar Topics</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Expert Training Sessions</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Downloadable Resources</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Lifetime Access Options</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">No Purchase Necessary</span></li>
-                    </ul>
-                    <div class="ideal-for">
-                        <strong>Ideal For:</strong> Self-learners wanting comprehensive training
-                    </div>
-                    <a href="https://accessworldseminars-ship-it.github.io/results/webinars" target="_blank" class="cta-button">
-                        ACCESS WEBINARS
-                        <div class="link-indicator"><i class="fas fa-video"></i> View all free webinars</div>
+                    <a href="https://joshbossesteamworkspace.myclickfunnels.com/funnel-heal-you-inner-child" target="_blank" class="cta-button healing">
+                        GET ACCESS NOW
+                        <div class="link-indicator"><i class="fas fa-heart"></i> Start healing today</div>
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Premium Banner 2 -->
-        <div class="premium-banner">
-            <h3>Experience <span class="premium-text">Real Coaching Benefits</span> Today</h3>
-            <p>Get access to personalized coaching, comprehensive training materials, and ongoing support with our premium programs.</p>
-            <div class="trial-highlight">
-                <i class="fas fa-check-circle"></i> No Risk 14-Day Free Trial <i class="fas fa-check-circle"></i>
-            </div>
-            <div style="margin: 25px 0;">
-                <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="btn-premium">
-                    <span class="free-trial">14 DAYS FREE</span>
-                    <i class="fas fa-play-circle"></i> Start Free Trial & Get Benefits Now
-                </a>
-            </div>
-            <p>Begin experiencing the transformation immediately with no financial commitment.</p>
-        </div>
-
-        <!-- CLAIM ALL OFFERS BUTTON -->
-        <div style="text-align: center; margin: 50px 0 30px;">
-            <p style="font-size: 1.3rem; margin-bottom: 20px; color: var(--text-light); font-weight: 600;">Want instant access to all free resources?</p>
-            <a href="https://joshbossesteamworkspace.myclickfunnels.com/joinnow" target="_blank" class="btn" style="font-size: 1.3rem; padding: 20px 50px;">
-                <i class="fas fa-download"></i> CLAIM ALL FREE OFFERS
-            </a>
-            <p style="color: var(--text-gray); margin-top: 15px;">One-click access to everything above</p>
+        <!-- Resource Hub Note -->
+        <div style="text-align: center; margin: 30px 0; padding: 20px; background: rgba(33, 150, 243, 0.1); border-radius: var(--radius); border: 2px solid var(--healing-blue);">
+            <p style="font-size: 1.1rem; color: var(--text-light);">
+                <i class="fas fa-heart" style="color: var(--healing-blue); margin-right: 10px;"></i>
+                <strong>New:</strong> Check out our most popular resource - 
+                <a href="https://joshbossesteamworkspace.myclickfunnels.com/funnel-heal-you-inner-child" target="_blank" style="color: var(--healing-blue); text-decoration: underline;">Heal Your Inner Child Webinar</a>
+                - learn how your past is creating internal resistance to your life and future.
+            </p>
         </div>
 
         <!-- RESOURCE HUB SECTION -->
@@ -1005,22 +860,6 @@
             </div>
         </div>
 
-        <!-- Premium Banner 3 -->
-        <div class="premium-banner">
-            <h3>Your <span class="premium-text">Transformation Journey</span> Awaits</h3>
-            <p>Take the next step in your personal growth with comprehensive coaching and support.</p>
-            <div class="trial-highlight">
-                <i class="fas fa-bolt"></i> Get Full Benefits for 14 Days Free <i class="fas fa-bolt"></i>
-            </div>
-            <div style="margin: 25px 0;">
-                <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="btn-premium">
-                    <span class="free-trial">14 DAYS FREE</span>
-                    <i class="fas fa-rocket"></i> Start Premium Coaching Free Trial
-                </a>
-            </div>
-            <p>Experience the difference real coaching can make in your life. No commitment required.</p>
-        </div>
-
         <!-- Get Started Section -->
         <div style="text-align: center; margin: 60px 0 30px; padding: 40px; background: rgba(26, 43, 94, 0.5); border-radius: var(--radius); border: 2px solid rgba(76, 175, 80, 0.3);">
             <h3 style="font-size: 2rem; margin-bottom: 20px; color: var(--success-green);">Ready to Begin Your Transformation?</h3>
@@ -1038,8 +877,8 @@
             <a href="https://accessworldseminars-ship-it.github.io/results/" class="home-button">
                 <i class="fas fa-home"></i> Back to Home Page
             </a>
-            <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="home-button premium">
-                <i class="fas fa-crown"></i> Start 14-Day Free Trial
+            <a href="https://joshbossesteamworkspace.myclickfunnels.com/funnel-heal-you-inner-child" target="_blank" class="home-button healing">
+                <i class="fas fa-heart"></i> Heal Your Inner Child
             </a>
             <a href="https://accessworldseminars-ship-it.github.io/results/webinars" target="_blank" class="home-button">
                 <i class="fas fa-video"></i> View All Free Webinars
@@ -1056,15 +895,15 @@
                 <img src="https://github.com/accessworldseminars-ship-it/results/blob/2fcfdae671b699ec0b578911336fcc3ffc346532/worldjjpgsf.png?raw=true" alt="AccessWorld Logo" class="logo-img" style="height: 50px;">
                 <div class="logo-text" style="font-size: 1.8rem;">ACCESSWORLD</div>
             </div>
-            <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 20px; font-size: 1.1rem;">Free Resources & Premium Coaching for Your Transformation Journey</p>
+            <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 20px; font-size: 1.1rem;">Free Resources & Coaching for Your Transformation Journey</p>
             
             <!-- Footer Navigation -->
             <div class="nav-menu" style="margin: 30px 0; justify-content: center;">
                 <a href="#free-offers" class="nav-item">
                     <i class="fas fa-gift"></i> Free Offers
                 </a>
-                <a href="https://accessworldseminars-ship-it.github.io/results/commit" target="_blank" class="nav-item premium">
-                    <i class="fas fa-crown"></i> Start Free Trial
+                <a href="https://joshbossesteamworkspace.myclickfunnels.com/funnel-heal-you-inner-child" target="_blank" class="nav-item healing">
+                    <i class="fas fa-heart"></i> Heal Your Inner Child
                 </a>
                 <a href="#resources" class="nav-item">
                     <i class="fas fa-tools"></i> Resource Hub
@@ -1075,8 +914,7 @@
             </div>
             
             <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin-bottom: 10px;">Free offers are 100% free - no hidden fees, no credit card required</p>
-            <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Premium coaching includes a 14-day free trial with no commitment required</p>
-            <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin-top: 10px;">© 2024 AccessWorld Seminars. All Rights Reserved.</p>
+            <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">© 2024 AccessWorld Seminars. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -1131,16 +969,6 @@
         setInterval(() => {
             freeBanner.style.transform = freeBanner.style.transform === 'rotate(5deg)' ? 'rotate(-5deg)' : 'rotate(5deg)';
         }, 3000);
-
-        // Add animation to premium buttons
-        document.querySelectorAll('.btn-premium').forEach(button => {
-            setInterval(() => {
-                const freeTrialBadge = button.querySelector('.free-trial');
-                if (freeTrialBadge) {
-                    freeTrialBadge.style.transform = freeTrialBadge.style.transform === 'rotate(15deg)' ? 'rotate(-15deg)' : 'rotate(15deg)';
-                }
-            }, 2000);
-        });
     </script>
 </body>
 </html>
