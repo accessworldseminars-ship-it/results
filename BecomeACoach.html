@@ -212,33 +212,49 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 30px;
+            gap: 40px;
             margin: 40px 0;
+            flex-wrap: wrap;
         }
         
         .profile-photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
+            width: 220px;
+            height: 220px;
             object-fit: cover;
+            object-position: center 15%;
             border: 5px solid var(--accent-gold);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
         }
         
         .profile-info {
             text-align: left;
+            max-width: 500px;
         }
         
         .profile-name {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--accent-gold);
             margin-bottom: 5px;
         }
         
         .profile-title {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--text-gray);
+            margin-bottom: 15px;
+        }
+        
+        .catchphrase {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-light);
+            font-style: italic;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 0 10px 10px 0;
         }
         
         /* Section Styles */
@@ -623,6 +639,10 @@
                 text-align: center;
             }
             
+            .catchphrase {
+                text-align: left;
+            }
+            
             .live-training-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
@@ -704,6 +724,10 @@
                 right: 15px;
                 top: 15px;
             }
+            
+            .catchphrase {
+                font-size: 1.1rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -735,7 +759,7 @@
     <!-- Main Navigation -->
     <nav class="main-nav">
         <div class="nav-logo">
-            <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" alt="AccessWorld Logo">
+            <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Logo">
             <span>ACCESSWORLD</span>
         </div>
         
@@ -791,7 +815,16 @@
                 <div class="profile-info">
                     <div class="profile-name">Joshua Roy</div>
                     <div class="profile-title">Your Personal Transformation Guide</div>
-                    <p style="margin-top: 10px; color: var(--text-gray);">23+ Years Helping People Transform</p>
+                    <p style="margin-top: 10px; color: var(--text-gray);">12+ Years Helping People Transform</p>
+                    
+                    <div class="catchphrase">
+                        <i class="fas fa-quote-left" style="color: var(--accent-gold); margin-right: 10px;"></i>
+                        I'm in the business of helping people just like you to stop wasting energy and create a meaningful life.
+                    </div>
+                    
+                    <p style="font-size: 1.1rem; margin-top: 20px; color: var(--text-light);">
+                        Through group coaching, mentoring, and integration sessions, you'll have all of your personal and specific questions answered.
+                    </p>
                 </div>
             </div>
             
@@ -851,10 +884,10 @@
                             </div>
                             
                             <div class="path-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-users"></i>
                                 <div>
-                                    <h4 style="margin: 0; font-size: 1rem;">Free Introduction Sessions</h4>
-                                    <p style="margin: 0; font-size: 0.9rem;">Experience the transformation first</p>
+                                    <h4 style="margin: 0; font-size: 1rem;">Group Coaching & Mentoring</h4>
+                                    <p style="margin: 0; font-size: 0.9rem;">Get all your personal questions answered</p>
                                 </div>
                             </div>
                         </div>
@@ -972,8 +1005,8 @@
                         <div class="training-feature">
                             <i class="fas fa-users"></i>
                             <div>
-                                <h4 style="margin-bottom: 5px;">Community Support</h4>
-                                <p>Connect with fellow transformation seekers</p>
+                                <h4 style="margin-bottom: 5px;">Group Coaching & Mentoring</h4>
+                                <p>Get all your personal and specific questions answered</p>
                             </div>
                         </div>
                     </div>
