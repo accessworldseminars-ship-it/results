@@ -160,11 +160,19 @@
         .nav-logo {
             display: flex;
             align-items: center;
+            gap: 10px;
         }
 
-        .nav-logo img {
-            height: 45px;
-            width: auto;
+        .nav-logo i {
+            font-size: 2rem;
+            color: var(--accent-gold);
+        }
+
+        .nav-logo span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 1.3rem;
         }
 
         .nav-links {
@@ -203,7 +211,7 @@
             cursor: pointer;
         }
 
-        /* ------ HERO SECTION (adjusted for coaching) ------ */
+        /* ------ HERO SECTION ------ */
         .hero-header {
             background: linear-gradient(135deg, var(--primary-blue) 0%, #123b66 100%);
             color: var(--white);
@@ -223,7 +231,23 @@
             opacity: 0.9;
         }
 
-        /* ------ FORM STYLES (clean, card-based) ------ */
+        .whatsapp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .whatsapp-badge i {
+            font-size: 1.5rem;
+        }
+
+        /* ------ FORM STYLES ------ */
         .enquiry-form {
             background: var(--white);
             border-radius: 16px;
@@ -321,19 +345,34 @@
         }
 
         .submit-btn {
-            background: var(--primary-blue);
+            background: #25D366;
             color: white;
             padding: 16px 50px;
             font-size: 1.2rem;
             border-radius: 60px;
-            box-shadow: 0 8px 20px rgba(10, 43, 78, 0.3);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
         }
 
         .submit-btn:hover {
-            background: #0e3a5c;
+            background: #128C7E;
         }
 
-        /* ------ NAV BUTTONS (return home etc) ------ */
+        .submit-btn i {
+            font-size: 1.3rem;
+        }
+
+        .wa-note {
+            text-align: center;
+            margin-top: 15px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .wa-note i {
+            color: #25D366;
+        }
+
+        /* ------ NAV BUTTONS ------ */
         .nav-buttons {
             display: flex;
             justify-content: center;
@@ -367,7 +406,7 @@
             color: white;
         }
 
-        /* ------ FOOTER (exact copy from main) ------ */
+        /* ------ FOOTER ------ */
         footer {
             background: var(--primary-blue);
             color: var(--white);
@@ -437,7 +476,7 @@
             font-size: 0.9rem;
         }
 
-        /* ------ RESPONSIVE (exact breakpoints) ------ */
+        /* ------ RESPONSIVE ------ */
         @media (max-width: 992px) {
             .form-grid {
                 grid-template-columns: 1fr;
@@ -480,13 +519,12 @@
     </style>
 </head>
 <body>
-    <!-- Navigation (exact same as main) -->
+    <!-- Navigation -->
     <nav class="main-nav">
         <div class="container">
             <div class="nav-logo">
-                <!-- Placeholder logo: text version (same style) -->
-                <i class="fas fa-compass" style="font-size: 2rem; color: var(--accent-gold); margin-right: 8px;"></i>
-                <span style="font-family: 'Montserrat'; font-weight: 700; color: var(--primary-blue);">AccessWorld</span>
+                <i class="fas fa-compass"></i>
+                <span>AccessWorld</span>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
@@ -504,8 +542,11 @@
     <section class="hero-header">
         <div class="container hero-content fade-in">
             <h1>Begin Your Transformation</h1>
-            <p>Fill in the form below. Your enquiry will be sent as a text message to our coaching team for immediate follow‑up.</p>
-            <a href="#enquiryForm" class="btn"><i class="fas fa-pen"></i> Start your journey</a>
+            <p>Fill in the form below. Your enquiry will be sent instantly via WhatsApp to our coaching team.</p>
+            <div class="whatsapp-badge">
+                <i class="fab fa-whatsapp"></i>
+                <span>Free WhatsApp Chat • One Click to Send</span>
+            </div>
         </div>
     </section>
 
@@ -514,63 +555,46 @@
         <div class="container">
             <div class="section-header fade-in">
                 <h2 class="section-title">Life Coaching Enquiry</h2>
-                <p><span class="accent-text">Your privacy matters.</span> We'll respond via SMS or phone within 24h.</p>
+                <p><span class="accent-text">Free WhatsApp delivery.</span> Just click send when WhatsApp opens.</p>
             </div>
 
-            <!-- FORM with SMS submit (web3forms-like) -->
-            <form class="enquiry-form card fade-in" id="coachingForm" action="https://api.web3forms.com/submit" method="POST">
-                <!-- Access key (public test key) + SMS redirection using redirect_url / web3forms sms feature? 
-                     We'll use accessKey and then configure to send SMS to 61432119091 via web3forms dashboard.
-                     For demo, we add a hidden field that tells web3forms to send SMS. 
-                     Web3Forms pro supports SMS; for free tier we simulate by sending to a real endpoint.
-                     Alternatively, we directly POST to a formspree or custom script. 
-                     To ensure SMS, I'll use a hidden 'phone' recipient: but standard web3forms uses 'to' for email.
-                     Better: use a custom endpoint that sends SMS. For simplicity, we use formsubmit.co with SMS option? 
-                     Not reliable. I'll instead use a mock SMS by logging and an alert + actual email.
-                     But user explicitly wants SMS to 61432119091. I'll implement using a free sms gateway simulation:
-                     The form will POST to a free service "textbelt" (requires API key) but not safe.
-                     Instead, I'll use JavaScript to capture and simulate SMS + send email via web3forms.
-                -->
-                <!-- Web3Forms access key (test key, replace with real) -->
-                <input type="hidden" name="access_key" value="4a7b7c5d-8e3f-4a2b-9c1d-6e8f7a9b0c1d">
-                <!-- SMS number: using a custom field, web3forms can send SMS if configured, but we also use redirect -->
-                <input type="hidden" name="to_number" value="61432119091">
-                <input type="hidden" name="from_name" value="AccessWorld Coaching Enquiry">
-                <!-- Subject line -->
-                <input type="hidden" name="subject" value="New Life Coaching Enquiry via SMS">
-                <!-- Redirect after submit (thank you page) -->
-                <input type="hidden" name="redirect" value="https://accessworldseminars-ship-it.github.io/results/thank-you">
-
+            <!-- FORM with WhatsApp Click to Chat -->
+            <form class="enquiry-form card fade-in" id="coachingForm">
                 <div class="form-grid">
                     <!-- Name -->
                     <div class="form-group">
                         <label><i class="fas fa-user"></i> Full Name *</label>
-                        <input type="text" name="name" required placeholder="e.g. Jane Smith">
+                        <input type="text" id="name" required placeholder="e.g. Jane Smith">
                     </div>
-                    <!-- Site Location (custom) -->
+                    
+                    <!-- Location -->
                     <div class="form-group">
                         <label><i class="fas fa-map-pin"></i> Location (suburb/city) *</label>
-                        <input type="text" name="location" required placeholder="Sydney, NSW">
+                        <input type="text" id="location" required placeholder="Sydney, NSW">
                     </div>
-                    <!-- Site Post Code -->
+                    
+                    <!-- Postcode -->
                     <div class="form-group">
                         <label><i class="fas fa-mail-bulk"></i> Postcode</label>
-                        <input type="text" name="postcode" placeholder="2000">
+                        <input type="text" id="postcode" placeholder="2000">
                     </div>
+                    
                     <!-- Email -->
                     <div class="form-group">
                         <label><i class="fas fa-envelope"></i> Email *</label>
-                        <input type="email" name="email" required placeholder="you@example.com">
+                        <input type="email" id="email" required placeholder="you@example.com">
                     </div>
+                    
                     <!-- Phone -->
                     <div class="form-group">
                         <label><i class="fas fa-phone-alt"></i> Phone *</label>
-                        <input type="tel" name="phone" required placeholder="0412 345 678">
+                        <input type="tel" id="phone" required placeholder="0412 345 678">
                     </div>
+                    
                     <!-- Coaching preference dropdown -->
                     <div class="form-group">
                         <label><i class="fas fa-compass"></i> Coaching preference *</label>
-                        <select name="coaching_preference" required>
+                        <select id="preference" required>
                             <option value="" disabled selected>— Select area —</option>
                             <option value="Life & Results">Life & Results</option>
                             <option value="Health & Wellness">Health</option>
@@ -581,33 +605,36 @@
                             <option value="Other">Other</option>
                         </select>
                     </div>
-                    <!-- Briefly describe current challenges (full width) -->
+                    
+                    <!-- Briefly describe current challenges -->
                     <div class="form-group full-width">
                         <label><i class="fas fa-comment"></i> Briefly describe your current challenges *</label>
-                        <textarea name="challenges" required placeholder="What would you like to work on?"></textarea>
+                        <textarea id="challenges" required placeholder="What would you like to work on?"></textarea>
                     </div>
-                    <!-- When would you like to engage? (day/month/year style) -->
+                    
+                    <!-- When would you like to engage? -->
                     <div class="form-group">
                         <label><i class="fas fa-calendar-alt"></i> When would you like to engage?</label>
                         <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                            <select name="start_day" style="flex:1; min-width: 80px;">
+                            <select id="start_day" style="flex:1; min-width: 80px;">
                                 <option value="">Day</option>
                                 <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
                             </select>
-                            <select name="start_month" style="flex:1;">
+                            <select id="start_month" style="flex:1;">
                                 <option value="">Month</option>
                                 <option value="January">Jan</option><option value="February">Feb</option><option value="March">Mar</option><option value="April">Apr</option><option value="May">May</option><option value="June">Jun</option><option value="July">Jul</option><option value="August">Aug</option><option value="September">Sep</option><option value="October">Oct</option><option value="November">Nov</option><option value="December">Dec</option>
                             </select>
-                            <select name="start_year" style="flex:1;">
+                            <select id="start_year" style="flex:1;">
                                 <option value="">Year</option>
                                 <option value="2026">2026</option><option value="2027">2027</option><option value="2028">2028</option>
                             </select>
                         </div>
                     </div>
+                    
                     <!-- How did you hear about us? -->
                     <div class="form-group">
                         <label><i class="fas fa-bullhorn"></i> How did you hear about us? *</label>
-                        <select name="hear_about" required>
+                        <select id="hear_about" required>
                             <option value="" disabled selected>— select —</option>
                             <option value="Google">Google</option>
                             <option value="Facebook">Facebook</option>
@@ -617,13 +644,15 @@
                             <option value="Other">Other</option>
                         </select>
                     </div>
-                    <!-- Approximate budget (with counter) -->
+                    
+                    <!-- Approximate budget -->
                     <div class="form-group">
                         <label><i class="fas fa-dollar-sign"></i> Approximate Budget (AUD)</label>
-                        <input type="text" name="budget" maxlength="50" placeholder="e.g. 500-1000" id="budgetInput">
+                        <input type="text" id="budget" maxlength="50" placeholder="e.g. 500-1000">
                         <div class="budget-counter"><span id="charCount">0</span> of 50 max characters</div>
                     </div>
-                    <!-- Two radio groups (plans drawn up & finance) - adapt to coaching context -->
+                    
+                    <!-- Previous coaching? -->
                     <div class="form-group">
                         <label><i class="fas fa-clipboard-list"></i> Have you done coaching before?</label>
                         <div class="radio-group">
@@ -631,6 +660,8 @@
                             <label><input type="radio" name="previous_coaching" value="No" checked> No</label>
                         </div>
                     </div>
+                    
+                    <!-- Budget allocated? -->
                     <div class="form-group">
                         <label><i class="fas fa-credit-card"></i> Have you allocated budget?</label>
                         <div class="radio-group">
@@ -639,23 +670,21 @@
                             <label><input type="radio" name="finance_ready" value="Not Applicable" checked> Not Applicable</label>
                         </div>
                     </div>
-                </div> <!-- end form-grid -->
-
-                <!-- SMS specific: additional hidden to indicate SMS delivery (used in web3forms) -->
-                <input type="hidden" name="sms_to" value="61432119091">
-                <input type="hidden" name="sms_message" value="New coaching enquiry: {{name}} - {{coaching_preference}} - {{phone}}">
+                </div>
 
                 <div class="submit-area">
-                    <button type="submit" class="btn submit-btn"><i class="fas fa-paper-plane"></i> SUBMIT ENQUIRY (SMS will be sent)</button>
+                    <button type="submit" class="btn submit-btn" id="whatsappSubmit">
+                        <i class="fab fa-whatsapp"></i> SEND VIA WHATSAPP
+                    </button>
                 </div>
-                <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--text-light);">
-                    <i class="fas fa-mobile-alt" style="color: var(--accent-gold);"></i> By submitting, you agree that this form sends an SMS to +61 432 119 091
-                </p>
+                <div class="wa-note">
+                    <i class="fas fa-info-circle"></i> Clicking send will open WhatsApp with your message pre-filled. Just click the send button in WhatsApp - it's free!
+                </div>
             </form>
         </div>
     </section>
 
-    <!-- Navigation Buttons (Return Home etc) -->
+    <!-- Navigation Buttons -->
     <div class="container">
         <div class="nav-buttons">
             <a href="https://accessworldseminars-ship-it.github.io/results/" class="nav-button"><i class="fas fa-home"></i> Return Home</a>
@@ -663,7 +692,7 @@
         </div>
     </div>
 
-    <!-- Footer (exact same as main page) -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -691,7 +720,7 @@
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
                     </div>
                     <p style="margin-top: 20px;"><i class="fas fa-phone"></i> 1300 787 577</p>
                 </div>
@@ -702,7 +731,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript (mobile menu + budget char counter + SMS simulation if needed) -->
+    <!-- JavaScript -->
     <script>
         (function() {
             // Mobile menu toggle
@@ -715,7 +744,7 @@
             }
 
             // Budget char counter
-            const budgetInput = document.getElementById('budgetInput');
+            const budgetInput = document.getElementById('budget');
             const charCount = document.getElementById('charCount');
             if (budgetInput && charCount) {
                 budgetInput.addEventListener('input', function() {
@@ -723,17 +752,66 @@
                 });
             }
 
-            // Optional: Intercept form to ensure SMS number is used. But we rely on web3forms hidden fields.
-            // Since web3forms may not actually send SMS on free tier, we'll add a clear console log.
+            // WhatsApp form submission
             const form = document.getElementById('coachingForm');
+            const submitBtn = document.getElementById('whatsappSubmit');
+
             form.addEventListener('submit', function(e) {
-                // For demo: show SMS simulation message
-                console.log('Form submitted. SMS would be sent to 61432119091 with form data.');
-                // You can also prevent and use fetch if needed, but we let web3forms handle.
-                // For production, replace access_key with real one and enable SMS in web3forms dashboard.
-                // To satisfy the requirement, we show an alert.
-                alert('Demo: your enquiry has been sent (SMS simulation to 61432119091). In production, web3forms would deliver SMS.');
-                // Form continues to web3forms
+                e.preventDefault(); // Stop normal form submission
+
+                // Get all form values
+                const name = document.getElementById('name').value.trim();
+                const location = document.getElementById('location').value.trim();
+                const postcode = document.getElementById('postcode').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const preference = document.getElementById('preference').value;
+                const challenges = document.getElementById('challenges').value.trim();
+                
+                // Get date
+                const day = document.getElementById('start_day').value;
+                const month = document.getElementById('start_month').value;
+                const year = document.getElementById('start_year').value;
+                const startDate = [day, month, year].filter(v => v).join(' ') || 'Not specified';
+                
+                const hearAbout = document.getElementById('hear_about').value;
+                const budget = document.getElementById('budget').value.trim() || 'Not specified';
+                
+                // Get radio values
+                const previousCoaching = document.querySelector('input[name="previous_coaching"]:checked')?.value || 'Not specified';
+                const financeReady = document.querySelector('input[name="finance_ready"]:checked')?.value || 'Not specified';
+
+                // Validate required fields
+                if (!name || !location || !email || !phone || !preference || !challenges || !hearAbout) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+
+                // Create WhatsApp message
+                const message = `*NEW LIFE COACHING ENQUIRY*%0A%0A` +
+                    `*Name:* ${name}%0A` +
+                    `*Location:* ${location} ${postcode ? '| ' + postcode : ''}%0A` +
+                    `*Email:* ${email}%0A` +
+                    `*Phone:* ${phone}%0A` +
+                    `*Coaching Preference:* ${preference}%0A` +
+                    `*Challenges:* ${challenges}%0A` +
+                    `*Preferred Start:* ${startDate}%0A` +
+                    `*Heard via:* ${hearAbout}%0A` +
+                    `*Budget:* ${budget}%0A` +
+                    `*Previous Coaching:* ${previousCoaching}%0A` +
+                    `*Budget Allocated:* ${financeReady}`;
+
+                // WhatsApp URL (Australian number format)
+                const whatsappUrl = `https://wa.me/61432119091?text=${message}`;
+
+                // Open WhatsApp
+                window.open(whatsappUrl, '_blank');
+
+                // Optional: Show success message
+                alert('WhatsApp opened with your enquiry! Just click send to complete.');
+                
+                // Optional: Reset form
+                // form.reset();
             });
         })();
     </script>
