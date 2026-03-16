@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unlock Your Incredible Self — Joshua Roy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1A2744;
+  --gold: #C9A84C;
+  --gold-light: #E8C96A;
+  --cream: #FAF7F0;
+  --warm-white: #FFFDF8;
+  --charcoal: #2C2C2C;
+  --mid: #5A5A6A;
+  --accent-red: #C0392B;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--warm-white);
+  color: var(--charcoal);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── HERO ──────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 130px 24px 80px;
+  overflow: hidden;
+}
+
+/* layered radial glow */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 20%, rgba(201,168,76,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(201,168,76,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 20% 70%, rgba(201,168,76,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* animated shimmer lines */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 80px,
+    rgba(201,168,76,0.03) 80px,
+    rgba(201,168,76,0.03) 81px
+  );
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.4);
+  color: var(--gold-light);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 100px;
+  margin-bottom: 36px;
+  animation: fadeInDown 0.8s ease both;
+}
+
+.hero-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  animation: fadeInDown 0.9s 0.1s ease both;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 9vw, 110px);
+  font-weight: 300;
+  line-height: 1.0;
+  color: var(--cream);
+  letter-spacing: -1px;
+  max-width: 900px;
+  margin: 0 auto 8px;
+  animation: fadeInUp 1s 0.15s ease both;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 3.5vw, 32px);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(250,247,240,0.7);
+  margin: 24px auto 0;
+  max-width: 680px;
+  line-height: 1.5;
+  animation: fadeInUp 1s 0.25s ease both;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 36px auto;
+  animation: fadeIn 1s 0.4s ease both;
+}
+
+.hero-body {
+  font-size: 17px;
+  color: rgba(250,247,240,0.75);
+  max-width: 600px;
+  line-height: 1.8;
+  margin: 0 auto 48px;
+  animation: fadeInUp 1s 0.35s ease both;
+}
+
+/* countdown */
+.countdown-wrap {
+  animation: fadeInUp 1s 0.45s ease both;
+  margin-bottom: 48px;
+}
+
+.countdown-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.countdown {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.countdown-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--cream);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 8px;
+  padding: 8px 20px;
+  min-width: 80px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.countdown-sep {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  color: var(--gold);
+  line-height: 1.3;
+  margin-top: 8px;
+}
+
+.countdown-word {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.6);
+}
+
+.cta-wrap {
+  animation: fadeInUp 1s 0.55s ease both;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  background-size: 200% auto;
+  color: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 20px 56px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 40px rgba(201,168,76,0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent 60%);
+  pointer-events: none;
+}
+
+.btn-primary:hover {
+  background-position: right center;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 60px rgba(201,168,76,0.5);
+}
+
+.price-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: rgba(250,247,240,0.6);
+}
+
+.price-old {
+  text-decoration: line-through;
+  color: rgba(250,247,240,0.35);
+}
+
+.price-new {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold-light);
+}
+
+.price-note {
+  font-size: 12px;
+  color: rgba(201,168,76,0.7);
+  letter-spacing: 1px;
+}
+
+/* scroll indicator */
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: fadeIn 1s 1.2s ease both;
+}
+.scroll-hint span {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.5);
+}
+.scroll-arrow {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* ── HONEST SECTION ────────────────────────────────────────────── */
+.honest {
+  background: var(--cream);
+  padding: 100px 24px;
+  text-align: center;
+}
+
+.section-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.honest h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 6vw, 68px);
+  font-weight: 400;
+  color: var(--navy);
+  line-height: 1.1;
+  max-width: 760px;
+  margin: 0 auto 24px;
+}
+
+.honest h2 em { font-style: italic; color: var(--gold); }
+
+.honest-body {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--mid);
+  max-width: 640px;
+  margin: 0 auto 60px;
+}
+
+/* symptoms grid */
+.symptom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2px;
+  max-width: 900px;
+  margin: 0 auto 60px;
+  background: var(--navy);
+}
+
+.symptom-card {
+  background: var(--warm-white);
+  padding: 36px 28px;
+  text-align: left;
+  transition: background 0.3s ease;
+}
+
+.symptom-card:hover { background: #F0EDE4; }
+
+.symptom-icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.symptom-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.symptom-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--mid);
+}
+
+/* ── STORY SECTION ─────────────────────────────────────────────── */
+.story {
+  background: var(--navy);
+  padding: 100px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.story::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.story-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.story .section-tag { color: var(--gold); }
+
+.story h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5.5vw, 62px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 40px;
+}
+
+.story h2 em { font-style: italic; color: var(--gold-light); }
+
+.story p {
+  font-size: 17px;
+  line-height: 1.9;
+  color: rgba(250,247,240,0.78);
+  margin-bottom: 24px;
+}
+
+.story p strong { color: var(--cream); font-weight: 600; }
+
+.pull-quote {
+  border-left: 3px solid var(--gold);
+  padding: 20px 0 20px 32px;
+  margin: 48px 0;
+}
+
+.pull-quote p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cream) !important;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(201,168,76,0.2);
+  margin: 60px 0;
+}
+
+.stat-block {
+  background: rgba(255,255,255,0.04);
+  padding: 36px 24px;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  color: var(--gold-light);
+  letter-spacing: 2px;
+  line-height: 1;
+  display: block;
+}
+
+.stat-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(250,247,240,0.5);
+  margin-top: 8px;
+}
+
+/* ── WHAT IS NSR ───────────────────────────────────────────────── */
+.nsr {
+  background: var(--warm-white);
+  padding: 100px 24px;
+}
+
+.nsr-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.nsr-text .section-tag { text-align: left; }
+
+.nsr-text h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4.5vw, 54px);
+  font-weight: 400;
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 28px;
+}
+
+.nsr-text h2 em { font-style: italic; color: var(--gold); }
+
+.nsr-text p {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--mid);
+  margin-bottom: 20px;
+}
+
+.nsr-visual {
+  position: relative;
+}
+
+.nsr-rings {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin: 0 auto;
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring-1 {
+  width: 100%; height: 100%;
+  border-color: rgba(201,168,76,0.15);
+  animation: spinSlow 30s linear infinite;
+}
+
+.ring-2 {
+  width: 75%; height: 75%;
+  border-color: rgba(201,168,76,0.25);
+  animation: spinSlow 20s linear infinite reverse;
+}
+
+.ring-3 {
+  width: 50%; height: 50%;
+  border-color: rgba(201,168,76,0.4);
+  animation: spinSlow 12s linear infinite;
+}
+
+.ring-core {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy), #2A3D6B);
+  border: 2px solid var(--gold);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(201,168,76,0.3);
+}
+
+.ring-core-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--gold-light);
+  line-height: 1.2;
+}
+
+.ring-dot {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  top: 0; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ── PATHWAYS ──────────────────────────────────────────────────── */
+.pathways {
+  background: var(--cream);
+  padding: 100px 24px;
+  text-align: center;
+}
+
+.pathways h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 400;
+  color: var(--navy);
+  margin-bottom: 16px;
+}
+
+.pathways h2 em { font-style: italic; color: var(--gold); }
+
+.pathways-sub {
+  font-size: 17px;
+  color: var(--mid);
+  max-width: 560px;
+  margin: 0 auto 70px;
+  line-height: 1.7;
+}
+
+.pathway-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0;
+  max-width: 960px;
+  margin: 0 auto 80px;
+  border: 1px solid rgba(26,39,68,0.1);
+}
+
+.pathway-card {
+  padding: 52px 36px;
+  text-align: left;
+  border-right: 1px solid rgba(26,39,68,0.1);
+  transition: background 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pathway-card:last-child { border-right: none; }
+
+.pathway-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.pathway-card:hover::before { transform: scaleX(1); }
+.pathway-card:hover { background: rgba(201,168,76,0.04); }
+
+.pathway-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 80px;
+  line-height: 1;
+  color: rgba(26,39,68,0.06);
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  user-select: none;
+}
+
+.pathway-icon {
+  font-size: 32px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.pathway-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.pathway-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.pathway-card p {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--mid);
+  margin-bottom: 24px;
+}
+
+.pathway-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pathway-items li {
+  font-size: 13.5px;
+  color: var(--charcoal);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+}
+
+.pathway-items li::before {
+  content: '✦';
+  color: var(--gold);
+  font-size: 10px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* ── SESSIONS ──────────────────────────────────────────────────── */
+.sessions {
+  background: var(--navy);
+  padding: 100px 24px;
+}
+
+.sessions-inner { max-width: 900px; margin: 0 auto; }
+
+.sessions h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5.5vw, 60px);
+  font-weight: 300;
+  color: var(--cream);
+  text-align: center;
+  margin-bottom: 12px;
+}
+.sessions h2 em { font-style: italic; color: var(--gold-light); }
+
+.sessions-sub {
+  text-align: center;
+  color: rgba(250,247,240,0.6);
+  font-size: 16px;
+  margin-bottom: 70px;
+}
+
+.session-half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: rgba(201,168,76,0.15);
+  margin-bottom: 2px;
+}
+
+.session-part {
+  background: rgba(255,255,255,0.03);
+  padding: 40px 36px;
+}
+
+.session-part-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+}
+
+.session-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  align-items: flex-start;
+}
+
+.session-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  color: rgba(201,168,76,0.3);
+  flex-shrink: 0;
+  width: 30px;
+}
+
+.session-info h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+
+.session-info p {
+  font-size: 13px;
+  color: rgba(250,247,240,0.5);
+  line-height: 1.5;
+}
+
+/* ── TESTIMONIALS ──────────────────────────────────────────────── */
+.testimonials {
+  background: var(--warm-white);
+  padding: 100px 24px;
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 400;
+  color: var(--navy);
+  margin-bottom: 64px;
+}
+
+.testimonials h2 em { font-style: italic; color: var(--gold); }
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2px;
+  max-width: 980px;
+  margin: 0 auto 80px;
+  background: rgba(26,39,68,0.08);
+}
+
+.testi-card {
+  background: var(--warm-white);
+  padding: 44px 36px;
+  text-align: left;
+  transition: background 0.3s ease;
+}
+
+.testi-card:hover { background: var(--cream); }
+
+.testi-stars {
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.testi-card blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+
+.testi-author {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ── WHO IS JOSH ───────────────────────────────────────────────── */
+.about-josh {
+  background: var(--cream);
+  padding: 100px 24px;
+}
+
+.about-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-left { position: sticky; top: 80px; }
+
+.about-portrait {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-portrait::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,168,76,0.15), transparent 70%);
+}
+
+.portrait-initials {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 100px;
+  font-weight: 300;
+  color: rgba(201,168,76,0.3);
+  user-select: none;
+  z-index: 1;
+}
+
+.portrait-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(201,168,76,0.9), transparent);
+  padding: 36px 24px 20px;
+}
+
+.portrait-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.portrait-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.8;
+}
+
+.about-creds {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.about-cred {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--mid);
+}
+
+.about-cred::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.about-right h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 4.5vw, 50px);
+  font-weight: 400;
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 28px;
+}
+
+.about-right h2 em { font-style: italic; color: var(--gold); }
+
+.about-right p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--mid);
+  margin-bottom: 20px;
+}
+
+.about-right p strong { color: var(--navy); font-weight: 600; }
+
+/* ── PRICING ───────────────────────────────────────────────────── */
+.pricing {
+  background: var(--navy);
+  padding: 100px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,168,76,0.12), transparent 60%);
+  pointer-events: none;
+}
+
+.pricing h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 6vw, 68px);
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+
+.pricing h2 em { font-style: italic; color: var(--gold-light); }
+
+.pricing-sub {
+  font-size: 17px;
+  color: rgba(250,247,240,0.6);
+  max-width: 520px;
+  margin: 0 auto 70px;
+  line-height: 1.7;
+}
+
+.pricing-card {
+  max-width: 540px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 60px 48px;
+  position: relative;
+}
+
+.pricing-card::before {
+  content: 'LIMITED OFFER';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  padding: 6px 20px;
+}
+
+.pricing-was {
+  font-size: 18px;
+  color: rgba(250,247,240,0.4);
+  text-decoration: line-through;
+  margin-bottom: 8px;
+}
+
+.pricing-now {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.pricing-dollar {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  color: var(--gold-light);
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+.pricing-amount {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 96px;
+  color: var(--gold-light);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.pricing-currency {
+  font-size: 14px;
+  color: rgba(201,168,76,0.6);
+  margin-top: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.pricing-value {
+  font-size: 14px;
+  color: rgba(250,247,240,0.5);
+  margin-bottom: 40px;
+}
+
+.pricing-includes {
+  text-align: left;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pricing-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 15px;
+  color: rgba(250,247,240,0.8);
+  line-height: 1.5;
+}
+
+.pricing-item::before {
+  content: '✓';
+  color: var(--gold);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.pricing-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(201,168,76,0.2);
+  margin: 40px 0;
+}
+
+.guarantee {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  text-align: left;
+  background: rgba(201,168,76,0.07);
+  padding: 20px 24px;
+  margin-bottom: 40px;
+}
+
+.guarantee-icon { font-size: 28px; flex-shrink: 0; }
+
+.guarantee-text h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.guarantee-text p {
+  font-size: 13px;
+  color: rgba(250,247,240,0.6);
+  line-height: 1.6;
+}
+
+/* ── TIMEZONES ─────────────────────────────────────────────────── */
+.timezones {
+  background: var(--cream);
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.timezones h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--navy);
+  margin-bottom: 48px;
+}
+
+.tz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2px;
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(26,39,68,0.08);
+}
+
+.tz-item {
+  background: var(--warm-white);
+  padding: 24px 20px;
+  text-align: left;
+}
+
+.tz-flag { font-size: 20px; margin-bottom: 6px; display: block; }
+.tz-region {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.tz-time {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.tz-date { font-size: 12px; color: var(--mid); margin-top: 2px; }
+
+/* ── FINAL CTA ─────────────────────────────────────────────────── */
+.final-cta {
+  background: var(--navy);
+  padding: 120px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,168,76,0.12), transparent 60%);
+  pointer-events: none;
+}
+
+.final-cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 7vw, 80px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.1;
+  max-width: 800px;
+  margin: 0 auto 24px;
+}
+
+.final-cta h2 em { font-style: italic; color: var(--gold-light); }
+
+.final-cta p {
+  font-size: 18px;
+  color: rgba(250,247,240,0.65);
+  max-width: 520px;
+  margin: 0 auto 56px;
+  line-height: 1.75;
+}
+
+/* ── FOOTER ────────────────────────────────────────────────────── */
+footer {
+  background: #0F1A30;
+  padding: 40px 24px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(250,247,240,0.3);
+}
+
+footer a { color: rgba(201,168,76,0.6); text-decoration: none; }
+
+/* ── LOGO ──────────────────────────────────────────────────────── */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  background: rgba(26,39,68,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+}
+.site-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ── HOOK IMAGE ─────────────────────────────────────────────────── */
+.hook-section {
+  background: var(--navy);
+  padding: 0;
+  overflow: hidden;
+}
+.hook-image {
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+  filter: brightness(0.88) saturate(1.1);
+}
+.hook-caption {
+  background: var(--navy);
+  text-align: center;
+  padding: 36px 24px 60px;
+}
+.hook-caption h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.2;
+  max-width: 720px;
+  margin: 0 auto 16px;
+}
+.hook-caption h2 em { font-style: italic; color: var(--gold-light); }
+.hook-caption p {
+  font-size: 17px;
+  color: rgba(250,247,240,0.65);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── NSR EXPANDED ───────────────────────────────────────────────── */
+.nsr-deep {
+  background: #0F1A30;
+  padding: 100px 24px;
+}
+.nsr-deep-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.nsr-deep .section-tag { color: var(--gold); }
+.nsr-deep h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5.5vw, 60px);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 40px;
+}
+.nsr-deep h2 em { font-style: italic; color: var(--gold-light); }
+.nsr-deep p {
+  font-size: 17px;
+  line-height: 1.9;
+  color: rgba(250,247,240,0.78);
+  margin-bottom: 24px;
+}
+.nsr-deep p strong { color: var(--cream); }
+.nsr-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2px;
+  background: rgba(201,168,76,0.2);
+  margin: 60px 0;
+}
+.nsr-step {
+  background: rgba(255,255,255,0.03);
+  padding: 36px 28px;
+}
+.nsr-step-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  color: var(--gold);
+  opacity: 0.4;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.nsr-step h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+.nsr-step p {
+  font-size: 14px;
+  color: rgba(250,247,240,0.55);
+  line-height: 1.65;
+  margin: 0;
+}
+.nsr-seminar-img {
+  width: 100%;
+  border-radius: 2px;
+  display: block;
+  object-fit: cover;
+  max-height: 420px;
+  margin: 48px 0;
+  filter: brightness(0.9) saturate(1.05);
+}
+
+/* ── PORTRAIT PHOTO ─────────────────────────────────────────────── */
+.about-photo {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: brightness(0.95) saturate(1.05);
+}
+.about-portrait { overflow: hidden; position: relative; }
+
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes spinSlow {
+  from { transform: translate(-50%,-50%) rotate(0deg); }
+  to   { transform: translate(-50%,-50%) rotate(360deg); }
+}
+@keyframes scrollPulse {
+  0%,100% { opacity: 0.4; transform: scaleY(1); }
+  50%      { opacity: 1;   transform: scaleY(1.15); }
+}
+
+/* reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .nsr-inner { grid-template-columns: 1fr; gap: 48px; }
+  .nsr-visual { display: none; }
+  .about-inner { grid-template-columns: 1fr; gap: 40px; }
+  .about-left { position: static; }
+  .stats-row { grid-template-columns: 1fr; }
+  .session-half { grid-template-columns: 1fr; }
+  .countdown-num { font-size: 44px; min-width: 60px; padding: 8px 12px; }
+  .pricing-card { padding: 48px 28px; }
+  .pricing-amount { font-size: 72px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ═════════════════════════════════════════════════════ -->
+<header class="site-header">
+  <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" class="site-logo">
+</header>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-badge">Brisbane, Australia &nbsp;·&nbsp; Live Virtual Event</div>
+  <div class="hero-eyebrow">A 6-Hour Live Transformation Experience</div>
+  <h1>Unlock Your<br><em>Incredible Self</em></h1>
+  <p class="hero-sub">Your health, your happiness, and your dreams are not behind you. They are waiting for you to decide it is finally time.</p>
+  <div class="hero-divider"></div>
+  <p class="hero-body">For anyone who wakes up tired, feels dimmer than they used to, and suspects there is a version of themselves — healthy, free, alive — that they have not yet fully met.</p>
+
+  <div class="countdown-wrap">
+    <p class="countdown-label">Event begins in</p>
+    <div class="countdown">
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-days">02</div>
+        <div class="countdown-word">Days</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-hours">21</div>
+        <div class="countdown-word">Hours</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-mins">52</div>
+        <div class="countdown-word">Mins</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-secs">59</div>
+        <div class="countdown-word">Secs</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-wrap">
+    <a href="https://www.accessworldseminars.org/orderforma--4fbd9" class="btn-primary" target="_blank" rel="noopener">Claim Your Seat — Join Now</a>
+    <div class="price-badge">
+      <span class="price-old">$900 USD</span>
+      <span class="price-new">Only $39 USD</span>
+      <span class="price-note">· First 100 seats</span>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Discover More</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ══ HOOK IMAGE ═════════════════════════════════════════════════ -->
+<section class="hook-section">
+  <img src="https://i.ibb.co/Kc5L5zbn/what-men-want-in-a-woman-1.jpg" alt="People experiencing joy and transformation" class="hook-image">
+  <div class="hook-caption">
+    <h2>This is what it looks like<br>when people finally <em>feel free.</em></h2>
+    <p>Genuine joy. Real transformation. The kind that lives in the body, not just the mind. This is what happens when you work with your nervous system instead of against it.</p>
+  </div>
+</section>
+
+<!-- ══ HONEST ═════════════════════════════════════════════════════ -->
+<section class="honest">
+  <div class="section-tag">This is for you if...</div>
+  <h2>You know you were made for<br><em>more than this.</em></h2>
+  <p class="honest-body">You're not lazy. You're not broken. You've tried the diets, the routines, the self-help books. But something deeper keeps pulling you back — and you know it. This is the conversation that changes everything.</p>
+
+  <div class="symptom-grid reveal">
+    <div class="symptom-card">
+      <span class="symptom-icon">🌫️</span>
+      <h3>You wake up exhausted</h3>
+      <p>Eight hours of sleep, and you're still running on empty. Your body is trying to tell you something your GP can't quite name.</p>
+    </div>
+    <div class="symptom-card">
+      <span class="symptom-icon">🪞</span>
+      <h3>You've lost yourself</h3>
+      <p>The person in the mirror isn't just older — they're dimmer. The spark you used to have feels like a memory from someone else's life.</p>
+    </div>
+    <div class="symptom-card">
+      <span class="symptom-icon">🔁</span>
+      <h3>You keep repeating patterns</h3>
+      <p>Same arguments. Same habits. Same sabotage. Part of you knows change is possible — but you can't seem to break through on your own.</p>
+    </div>
+    <div class="symptom-card">
+      <span class="symptom-icon">💭</span>
+      <h3>The voice says "maybe this is it"</h3>
+      <p>A quiet whisper that maybe this — tired, stuck, going through the motions — is simply what life becomes. It's not. And deep down you know it.</p>
+    </div>
+    <div class="symptom-card">
+      <span class="symptom-icon">🌊</span>
+      <h3>Your emotions run you</h3>
+      <p>You react when you meant to respond. You say things you don't mean. Your inner world feels like weather you can't predict or control.</p>
+    </div>
+    <div class="symptom-card">
+      <span class="symptom-icon">🚪</span>
+      <h3>Your dreams feel locked away</h3>
+      <p>You still carry a vision of the life you were meant to live — but the gap between here and there feels impossibly wide. It isn't.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STORY ══════════════════════════════════════════════════════ -->
+<section class="story">
+  <div class="story-inner">
+    <div class="section-tag">From Joshua Roy</div>
+    <h2>I understand your struggle<br>because I <em>lived it.</em></h2>
+
+    <p>I spent <strong>24 years as a law enforcement officer.</strong> You want to talk about stress? Try walking into scenes that would haunt most people for life. Try running on adrenaline for 12-hour shifts. Try carrying a nervous system that never learned how to switch off.</p>
+
+    <p>I watched strong, capable people turn into shells of themselves — gaining weight, losing energy, developing mystery illnesses that doctors couldn't explain. And I noticed something. <strong>It wasn't just about what they were eating. It was about what was eating them.</strong> The trauma. The invisible weight they carried every single day.</p>
+
+    <div class="pull-quote">
+      <p>The day my three eldest children chose to live with their mother didn't just break my heart. It broke my body. I couldn't sleep. I couldn't eat. My immune system crashed. I was a police officer who couldn't protect himself from his own nervous system.</p>
+    </div>
+
+    <p>That was the turning point. I threw myself into discovering why humans get stuck — and more importantly, <strong>how they get unstuck.</strong> I invested over $85,000 in training programs. I studied NLP, neuroscience, nervous system reprogramming. I became a life coach. I sat with over 3,500 people in crisis — and I watched them transform.</p>
+
+    <p>What I discovered changed everything I thought I knew about health, happiness, and human potential. And in 6 hours, <strong>I'll give you the essence of all of it.</strong></p>
+
+    <div class="stats-row reveal">
+      <div class="stat-block">
+        <span class="stat-num">3,500+</span>
+        <span class="stat-label">1-on-1 Coaching Sessions</span>
+      </div>
+      <div class="stat-block">
+        <span class="stat-num">800+</span>
+        <span class="stat-label">Seminars Delivered</span>
+      </div>
+      <div class="stat-block">
+        <span class="stat-num">$85K+</span>
+        <span class="stat-label">Invested in Training</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ NSR DEEP ════════════════════════════════════════════════════ -->
+<section class="nsr-deep">
+  <div class="nsr-deep-inner">
+    <div class="section-tag">Introducing NSR</div>
+    <h2>Nervous System Reprogramming —<br>the missing piece <em>nobody told you about.</em></h2>
+
+    <p>Here is what most health and happiness advice misses completely: <strong>your body is not a machine that needs better fuel. It is a living, feeling system governed by your nervous system.</strong> And your nervous system has been shaped — since the very beginning of your life — by every experience you have ever had. Every stress. Every loss. Every moment of fear, rejection, or overwhelm.</p>
+
+    <p>If your nervous system is locked in a state of survival — running a background programme of anxiety, grief, unprocessed emotion, or chronic stress — you can eat perfectly, exercise daily, meditate every morning, and still feel exhausted, flat, and stuck. Because your body is too busy surviving to let you thrive. <strong>This is not a willpower problem. This is a nervous system problem.</strong></p>
+
+    <p>NSR — Nervous System Reprogramming — is the signature methodology developed by Joshua Roy after more than a decade of working with thousands of people who had tried everything else. It is not talk therapy. It is not positive thinking. It is a practical, body-based process that rewires the actual neurological pathways that are keeping you stuck — so your system can finally shift out of survival mode, and into a state where healing, joy, and genuine thriving become possible.</p>
+
+    <img src="https://i.ibb.co/97mZvc6/Screenshot-2026-01-29-105636.png" alt="Joshua Roy coaching — NSR in action" class="nsr-seminar-img reveal">
+
+    <div class="nsr-steps reveal">
+      <div class="nsr-step">
+        <div class="nsr-step-num">01</div>
+        <h4>Recognise the Pattern</h4>
+        <p>We identify the specific nervous system patterns — the emotional loops, the body responses, the automatic reactions — that are running your life without your permission.</p>
+      </div>
+      <div class="nsr-step">
+        <div class="nsr-step-num">02</div>
+        <h4>Release the Charge</h4>
+        <p>Using targeted body-based and psychological techniques, we release the trapped emotional charge that is keeping your nervous system in a state of activation. This is where genuine relief happens.</p>
+      </div>
+      <div class="nsr-step">
+        <div class="nsr-step-num">03</div>
+        <h4>Reprogram the Response</h4>
+        <p>We install new neurological pathways — new patterns of emotional response, new default states — so your system begins to operate from a foundation of calm, clarity, and genuine aliveness.</p>
+      </div>
+      <div class="nsr-step">
+        <div class="nsr-step-num">04</div>
+        <h4>Reinforce and Sustain</h4>
+        <p>Through practical daily tools that take minutes, you lock in the new patterns so they become your new normal — and the old patterns lose their grip permanently.</p>
+      </div>
+    </div>
+
+    <p>The results people experience through NSR are not subtle. They describe it as a felt shift — like something that has been bracing in their body finally releases. Like being able to take a full breath for the first time in years. Like waking up and actually wanting to be awake. In six hours, Joshua will introduce you to this work and give you the foundational tools to begin applying it immediately.</p>
+  </div>
+</section>
+
+
+<section class="pathways">
+  <div class="section-tag">The Three Transformation Pathways</div>
+  <h2>Every session is built on<br>one of three <em>pathways.</em></h2>
+  <p class="pathways-sub">Real, lasting change happens when all three pathways are addressed together. That is exactly what this event does.</p>
+
+  <div class="pathway-cards reveal">
+    <div class="pathway-card">
+      <span class="pathway-num">01</span>
+      <span class="pathway-icon">❤️‍🔥</span>
+      <h3>The Emotion Pathway</h3>
+      <span class="pathway-tag">Master your inner world</span>
+      <p>Your emotions are not your enemy. They are messengers — and once you learn to read them, regulate them, and direct them, you become unstoppable.</p>
+      <ul class="pathway-items">
+        <li>Release repressed emotions stored in the body</li>
+        <li>Master emotional intelligence and resilience</li>
+        <li>Eliminate internal conflict and reactivity</li>
+        <li>Feel what you choose to feel — by design</li>
+      </ul>
+    </div>
+    <div class="pathway-card">
+      <span class="pathway-num">02</span>
+      <span class="pathway-icon">🧠</span>
+      <h3>The Thought Pathway</h3>
+      <span class="pathway-tag">Reprogram your mind</span>
+      <p>Your current life is the output of your current thinking. Change the thinking — at the unconscious level, where it actually lives — and everything changes.</p>
+      <ul class="pathway-items">
+        <li>Reprogram limiting beliefs and negative self-talk</li>
+        <li>Install a champion mindset that drives action</li>
+        <li>Break the self-sabotage cycle for good</li>
+        <li>Build unshakeable confidence from within</li>
+      </ul>
+    </div>
+    <div class="pathway-card">
+      <span class="pathway-num">03</span>
+      <span class="pathway-icon">🌟</span>
+      <h3>The Destiny Pathway</h3>
+      <span class="pathway-tag">Build the life you want</span>
+      <p>You have a vision for your life. It hasn't gone anywhere. It's waiting for you to build the internal foundation strong enough to hold it.</p>
+      <ul class="pathway-items">
+        <li>Define your life's purpose and create a success roadmap</li>
+        <li>Build a compelling vision that pulls you forward</li>
+        <li>Align daily actions with your deepest desires</li>
+        <li>Make your dreams feel inevitable, not impossible</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SESSIONS ═══════════════════════════════════════════════════ -->
+<section class="sessions">
+  <div class="sessions-inner">
+    <div class="section-tag" style="text-align:center; color:var(--gold);">What You'll Experience — 6 Hours</div>
+    <h2>Every hour is <em>designed</em> to move you.</h2>
+    <p class="sessions-sub">Two powerful blocks. Six transformative sessions. One experience that changes everything.</p>
+
+    <div class="session-half reveal">
+      <div class="session-part">
+        <div class="session-part-label">Part One — Unlock Your Incredible Self</div>
+        <div class="session-item">
+          <div class="session-num">1</div>
+          <div class="session-info">
+            <h4>Commitment & Subconscious Success</h4>
+            <p>Why most people never change — and the one shift that makes everything else work.</p>
+          </div>
+        </div>
+        <div class="session-item">
+          <div class="session-num">2</div>
+          <div class="session-info">
+            <h4>Create a Life Vision</h4>
+            <p>Build a vision so clear and so compelling that your unconscious mind has no choice but to pursue it.</p>
+          </div>
+        </div>
+        <div class="session-item">
+          <div class="session-num">3</div>
+          <div class="session-info">
+            <h4>Health & Emotional Mastery</h4>
+            <p>The connection between your nervous system, your body, and why you feel the way you feel — and how to change it.</p>
+          </div>
+        </div>
+      </div>
+      <div class="session-part">
+        <div class="session-part-label">Part Two — Unleash Your Potential</div>
+        <div class="session-item">
+          <div class="session-num">4</div>
+          <div class="session-info">
+            <h4>The Emotion Pathway</h4>
+            <p>Master the emotional states that determine everything — your relationships, your health, your results.</p>
+          </div>
+        </div>
+        <div class="session-item">
+          <div class="session-num">5</div>
+          <div class="session-info">
+            <h4>The Thought Pathway</h4>
+            <p>Reprogram the unconscious beliefs that are quietly running — and ruining — your life without your permission.</p>
+          </div>
+        </div>
+        <div class="session-item">
+          <div class="session-num">6</div>
+          <div class="session-info">
+            <h4>The Destiny Pathway</h4>
+            <p>The roadmap, the tools, and the internal momentum to make the life you want feel not just possible but inevitable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ═══════════════════════════════════════════════ -->
+<section class="testimonials">
+  <div class="section-tag">Voices from the Journey</div>
+  <h2>Real people.<br><em>Real transformation.</em></h2>
+
+  <div class="testi-grid reveal">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <blockquote>"I now have the tools to better myself. I just spent 2 full days with Josh and I can't thank him enough. He teaches you how to feel better about yourself and how to be more positive. Thank you Josh."</blockquote>
+      <div class="testi-author">Sharman — Single Mum, Queensland</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <blockquote>"I gained valuable insight as to why I was the way I was — and then the tools to change it. He gave us simple and incredibly effective methods to disempower the 'yuk' stuff, and then enhancing and creating the future."</blockquote>
+      <div class="testi-author">Kay — Queensland</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <blockquote>"Today's clarity was great. So either your presentation has improved or my belief shifted. My guess is both. Really interesting and left me wanting more. Excited to hear the hope for my future."</blockquote>
+      <div class="testi-author">Seminar Participant — Australia</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT JOSH ═════════════════════════════════════════════════ -->
+<section class="about-josh">
+  <div class="about-inner">
+    <div class="about-left reveal">
+      <div class="about-portrait">
+        <img src="https://i.ibb.co/F4c0V58q/Screenshot-2025-12-12-162510.png" alt="Joshua Roy" class="about-photo">
+        <div class="portrait-bar">
+          <div class="portrait-name">Joshua Roy</div>
+          <div class="portrait-title">Life & Results Coach</div>
+        </div>
+      </div>
+      <div class="about-creds">
+        <div class="about-cred">9 Coaching Certifications</div>
+        <div class="about-cred">NLP Practitioner</div>
+        <div class="about-cred">NSR Specialist</div>
+        <div class="about-cred">3,500+ Sessions Delivered</div>
+        <div class="about-cred">800+ Seminars Worldwide</div>
+        <div class="about-cred">24 Years QPS — Sergeant</div>
+        <div class="about-cred">Brisbane, Australia</div>
+      </div>
+    </div>
+    <div class="about-right reveal">
+      <div class="section-tag">Your Guide for the Day</div>
+      <h2>The coach who has<br>been where <em>you are.</em></h2>
+      <p>Joshua Roy is a Life and Results Coach, NLP Practitioner, and creator of NSR — Nervous System Reprogramming. He is also a serving Sergeant of Police with 24 years of frontline experience in Queensland.</p>
+      <p>He is not a coach who read about transformation in books and decided to teach it. <strong>He is someone who went through the fire.</strong> Depression. Family breakdown. Loss. The slow rebuilding of a life from the inside out — using the exact tools he now teaches.</p>
+      <img src="https://i.ibb.co/Zp8xwpYk/Screenshot-2026-01-29-104856.png" alt="Joshua Roy — Live Seminar" style="width:100%;display:block;border-radius:2px;margin:24px 0;object-fit:cover;max-height:280px;filter:brightness(0.92) saturate(1.05);">
+      <p>Over more than a decade, he has invested <strong>over $85,000</strong> in his own training and education, completed more than 20 major personal development programs, and holds nine professional coaching certifications. He has delivered over 3,500 individual coaching sessions and more than 800 seminars to audiences across the world.</p>
+      <p>But his greatest qualification is not his credentials. It is the fact that <strong>he has done this work on himself</strong> — and it changed everything. He leads the happiest team in his workplace. He has rebuilt relationships. He wakes up, every day, genuinely glad to be alive.</p>
+      <p>He wants that for you too. That is why this event exists.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ════════════════════════════════════════════════════ -->
+<section class="pricing" id="pricing">
+  <div class="section-tag" style="color:var(--gold);">Your Investment</div>
+  <h2>Six hours that could change<br>the rest of your <em>life.</em></h2>
+  <p class="pricing-sub">Most transformation events charge $3,000 to $5,000. This is not one of those events. This is Joshua making a deliberate decision to make this accessible to everyone who needs it.</p>
+
+  <div class="pricing-card reveal">
+    <div class="pricing-was">Value $900 USD</div>
+    <div class="pricing-now">
+      <span class="pricing-dollar">$</span>
+      <span class="pricing-amount">39</span>
+      <span class="pricing-currency">USD</span>
+    </div>
+    <div class="pricing-value">First 100 seats only · Price rises to $139 after</div>
+
+    <div class="pricing-includes">
+      <div class="pricing-item">6 hours of live, immersive coaching with Joshua Roy</div>
+      <div class="pricing-item">All three transformation pathways — Emotion, Thought, Destiny</div>
+      <div class="pricing-item">NSR tools you can use immediately after the event</div>
+      <div class="pricing-item">Community access and ongoing support</div>
+      <div class="pricing-item">Mystery bonus gifts for first 100 seats</div>
+    </div>
+
+    <div class="guarantee">
+      <div class="guarantee-icon">🛡️</div>
+      <div class="guarantee-text">
+        <h4>100% Satisfaction Guarantee</h4>
+        <p>If you don't walk away with immediately applicable insights that improve your health, happiness, or relationships — reach out after the event for a full refund. No questions asked.</p>
+      </div>
+    </div>
+
+    <a href="https://www.accessworldseminars.org/orderforma--4fbd9" class="btn-primary" target="_blank" rel="noopener" style="width:100%; text-align:center; display:block;">
+      Yes — I'm Ready to Unlock My Incredible Self
+    </a>
+
+    <div class="pricing-divider"></div>
+    <p style="font-size:13px; color:rgba(250,247,240,0.4); text-align:center;">Secure payment · Instant access to event link · Limited seats available</p>
+  </div>
+</section>
+
+<!-- ══ TIMEZONES ══════════════════════════════════════════════════ -->
+<section class="timezones">
+  <h3>Join from Anywhere in the World</h3>
+  <div class="tz-grid reveal">
+    <div class="tz-item">
+      <span class="tz-flag">🇦🇺</span>
+      <div class="tz-region">Brisbane (AEST)</div>
+      <div class="tz-time">7:00 AM – 1:00 PM</div>
+      <div class="tz-date">Friday 20 March 2026</div>
+    </div>
+    <div class="tz-item">
+      <span class="tz-flag">🇦🇺</span>
+      <div class="tz-region">Sydney / Melbourne (AEDT)</div>
+      <div class="tz-time">8:00 AM – 2:00 PM</div>
+      <div class="tz-date">Friday 20 March 2026</div>
+    </div>
+    <div class="tz-item">
+      <span class="tz-flag">🇦🇺</span>
+      <div class="tz-region">Adelaide (ACDT)</div>
+      <div class="tz-time">7:30 AM – 1:30 PM</div>
+      <div class="tz-date">Friday 20 March 2026</div>
+    </div>
+    <div class="tz-item">
+      <span class="tz-flag">🇦🇺</span>
+      <div class="tz-region">Perth (AWST)</div>
+      <div class="tz-time">5:00 AM – 11:00 AM</div>
+      <div class="tz-date">Friday 20 March 2026</div>
+    </div>
+    <div class="tz-item">
+      <span class="tz-flag">🇳🇿</span>
+      <div class="tz-region">New Zealand (NZDT)</div>
+      <div class="tz-time">10:00 AM – 4:00 PM</div>
+      <div class="tz-date">Friday 20 March 2026</div>
+    </div>
+    <div class="tz-item">
+      <span class="tz-flag">🇮🇳</span>
+      <div class="tz-region">India (IST)</div>
+      <div class="tz-time">2:30 AM – 8:30 AM</div>
+      <div class="tz-date">Friday 20 March 2026</div>
+    </div>
+    <div class="tz-item">
+      <span class="tz-flag">🇺🇸</span>
+      <div class="tz-region">USA Eastern (EDT)</div>
+      <div class="tz-time">5:00 PM – 11:00 PM</div>
+      <div class="tz-date">Thursday 19 March 2026</div>
+    </div>
+    <div class="tz-item">
+      <span class="tz-flag">🇺🇸</span>
+      <div class="tz-region">USA Pacific (PDT)</div>
+      <div class="tz-time">2:00 PM – 8:00 PM</div>
+      <div class="tz-date">Thursday 19 March 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══════════════════════════════════════════════════ -->
+<section class="final-cta">
+  <div class="section-tag" style="color:var(--gold);">The Moment of Decision</div>
+  <h2>The life you want<br>is not a <em>dream.</em><br>It's a decision.</h2>
+  <p>Every day you wait is another day of settling for less than you are capable of. The version of you who is healthy, free, and genuinely alive is not far away. They are six hours away.</p>
+  <a href="https://www.accessworldseminars.org/orderforma--4fbd9" class="btn-primary" target="_blank" rel="noopener">Claim Your Seat — $39 USD</a>
+</section>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════════════ -->
+<footer>
+  <p style="margin-bottom:8px;">AccessWorld Seminars &copy; 2015–2026 &nbsp;·&nbsp; Brisbane, Australia &nbsp;·&nbsp; ABN: 72 546 137 885</p>
+  <p>Questions? <a href="mailto:accessworldseminars@gmail.com">accessworldseminars@gmail.com</a> &nbsp;·&nbsp; <a href="tel:0432119091">0432 119 091</a></p>
+</footer>
+
+<script>
+// ── Countdown Timer ─────────────────────────────────────────────
+const targetDate = new Date('2026-03-20T07:00:00+10:00');
+
+function updateCountdown() {
+  const now  = new Date();
+  const diff = Math.max(0, targetDate - now);
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000)  / 60000);
+  const s = Math.floor((diff % 60000)    / 1000);
+  document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// ── Scroll Reveal ────────────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
