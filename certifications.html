@@ -2,24 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Certification Declaration — AccessWorld Seminars</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Certification Request — AccessWorld Seminars</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy:  #1A2744;
-  --gold:  #C9A84C;
-  --gold2: #E8C96A;
-  --pale:  #F7EDD5;
-  --cream: #FDFAF4;
-  --green: #1A5C2A;
-  --red:   #8B1A1A;
-  --mid:   #5A5565;
-  --light: #9090A0;
-  --white: #FFFFFF;
+  --navy:   #1A2744;
+  --navy2:  #243560;
+  --gold:   #C9A84C;
+  --gold2:  #E8C96A;
+  --pale:   #F7EDD5;
+  --green:  #1A5C2A;
+  --lgreen: #EAF5EC;
+  --red:    #7A1A1A;
+  --lred:   #FBE8E8;
+  --mid:    #5A5565;
+  --light:  #9090A0;
+  --cream:  #FDFAF4;
+  --white:  #FFFFFF;
 }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
 body {
   background: var(--navy);
   min-height: 100vh;
@@ -28,842 +32,812 @@ body {
   flex-direction: column;
 }
 
-/* ── TOP BAR ────────────────────────────────────────────────────────────── */
+/* ── TOPBAR ────────────────────────────────────────────────────── */
 .topbar {
-  background: rgba(255,255,255,0.04);
-  border-bottom: 1px solid rgba(201,168,76,0.2);
-  padding: 14px 28px;
+  background: rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(201,168,76,0.25);
+  padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
-.topbar-brand {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-}
-.topbar-sub {
-  font-size: 12px;
-  color: rgba(255,255,255,0.4);
-  letter-spacing: 1px;
-}
+.topbar-brand { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+.topbar-right { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 1px; }
 
-/* ── PROGRESS BAR ───────────────────────────────────────────────────────── */
-.progress-track {
-  height: 3px;
-  background: rgba(255,255,255,0.08);
-  flex-shrink: 0;
-}
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--gold), var(--gold2));
-  transition: width 0.5s cubic-bezier(.4,0,.2,1);
-  width: 0%;
-}
+/* ── PROGRESS ──────────────────────────────────────────────────── */
+.prog-track { height: 3px; background: rgba(255,255,255,0.08); }
+.prog-fill  { height: 100%; background: linear-gradient(90deg,var(--gold),var(--gold2)); transition: width .5s cubic-bezier(.4,0,.2,1); width: 0%; }
 
-/* ── MAIN STAGE ─────────────────────────────────────────────────────────── */
+/* ── STAGE ─────────────────────────────────────────────────────── */
 .stage {
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 32px 20px;
+  padding: 24px 16px 48px;
 }
 
-.question-card {
+/* ── CARD ──────────────────────────────────────────────────────── */
+.card {
   background: var(--white);
-  max-width: 640px;
   width: 100%;
-  padding: 0;
+  max-width: 520px;
   overflow: hidden;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.4);
-  animation: cardIn 0.4s cubic-bezier(.4,0,.2,1) both;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.45);
+  animation: cardIn .35s cubic-bezier(.4,0,.2,1) both;
 }
-
 @keyframes cardIn {
-  from { opacity: 0; transform: translateY(28px) scale(0.97); }
-  to   { opacity: 1; transform: none; }
+  from{opacity:0;transform:translateY(20px) scale(.98)}
+  to  {opacity:1;transform:none}
 }
+.card-top { height: 5px; background: linear-gradient(90deg,var(--navy),var(--gold)); }
+.card-body { padding: 28px 24px 24px; }
+.card-foot { padding: 0 24px 28px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 
-.card-stripe {
-  height: 6px;
-  background: linear-gradient(90deg, var(--navy), var(--gold));
-}
+/* ── TYPOGRAPHY ────────────────────────────────────────────────── */
+.q-step  { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.q-text  { font-family: 'Playfair Display', serif; font-size: clamp(18px, 5vw, 22px); font-weight: 600; color: var(--navy); line-height: 1.35; margin-bottom: 8px; }
+.q-sub   { font-size: 13px; color: var(--mid); line-height: 1.6; margin-bottom: 24px; }
 
-.card-body {
-  padding: 40px 44px 36px;
-}
-
-.q-step {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 18px;
-}
-
-.q-text {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(20px, 3.5vw, 26px);
-  font-weight: 600;
-  color: var(--navy);
-  line-height: 1.35;
-  margin-bottom: 10px;
-}
-
-.q-sub {
-  font-size: 14px;
-  color: var(--mid);
-  line-height: 1.65;
-  margin-bottom: 32px;
-}
-
-/* ── ANSWER TYPES ────────────────────────────────────────────────────────── */
-
-/* Yes / No */
-.yn-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
+/* ── YES / NO ──────────────────────────────────────────────────── */
+.yn { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .yn-btn {
-  padding: 22px 16px;
-  border: 2px solid rgba(26,39,68,0.15);
+  padding: 18px 12px;
+  border: 2px solid rgba(26,39,68,.14);
   background: var(--cream);
   cursor: pointer;
   font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   color: var(--navy);
-  transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  text-align: center;
+  gap: 6px;
+  transition: all .18s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
+.yn-btn .icon { font-size: 26px; }
+.yn-btn.yes:active, .yn-btn.yes.sel { background:#EAF5EC; border-color:var(--green); color:var(--green); }
+.yn-btn.no:active,  .yn-btn.no.sel  { background:var(--lred);  border-color:var(--red);   color:var(--red);   }
 
-.yn-btn:hover { transform: translateY(-3px); }
-
-.yn-btn.yes:hover, .yn-btn.yes.selected {
-  background: #EDF7EF;
-  border-color: var(--green);
-  color: var(--green);
-}
-
-.yn-btn.no:hover, .yn-btn.no.selected {
-  background: #FDF0F0;
-  border-color: var(--red);
-  color: var(--red);
-}
-
-.yn-icon { font-size: 28px; }
-
-/* Number picker */
-.num-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
+/* ── NUMBER TILES ──────────────────────────────────────────────── */
+.num-grid { display: flex; flex-wrap: wrap; gap: 8px; }
 .num-btn {
-  width: 60px;
-  height: 60px;
-  border: 2px solid rgba(26,39,68,0.15);
+  width: 52px; height: 52px;
+  border: 2px solid rgba(26,39,68,.14);
   background: var(--cream);
   cursor: pointer;
   font-family: 'Playfair Display', serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--navy);
-  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all .18s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
+.num-btn:active, .num-btn.sel { background:var(--pale); border-color:var(--gold); transform:scale(1.08); }
 
-.num-btn:hover, .num-btn.selected {
-  background: var(--pale);
-  border-color: var(--gold);
-  color: var(--navy);
-  transform: scale(1.08);
-}
-
-/* Text input */
-.text-input {
+/* ── TEXT INPUT ─────────────────────────────────────────────────── */
+.txt-inp {
   width: 100%;
-  border: 2px solid rgba(26,39,68,0.15);
-  padding: 16px 18px;
+  border: 2px solid rgba(26,39,68,.15);
+  padding: 14px 16px;
   font-family: 'DM Sans', sans-serif;
   font-size: 16px;
   color: var(--navy);
   background: var(--cream);
   outline: none;
-  transition: border-color 0.2s ease;
-  margin-bottom: 20px;
+  border-radius: 0;
+  -webkit-appearance: none;
+  margin-bottom: 0;
 }
-.text-input:focus { border-color: var(--gold); }
+.txt-inp:focus { border-color: var(--gold); }
 
-/* Cert selector */
-.cert-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
+/* ── CERT SELECTOR ──────────────────────────────────────────────── */
+.cert-list { display: flex; flex-direction: column; gap: 8px; }
 .cert-btn {
-  padding: 18px 22px;
-  border: 2px solid rgba(26,39,68,0.12);
+  padding: 14px 16px;
+  border: 2px solid rgba(26,39,68,.12);
   background: var(--cream);
   cursor: pointer;
   font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--navy);
   display: flex;
   align-items: center;
-  gap: 16px;
-  transition: all 0.2s ease;
-  text-align: left;
+  gap: 14px;
+  transition: all .18s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
-.cert-btn:hover, .cert-btn.selected {
-  background: var(--pale);
-  border-color: var(--gold);
-  transform: translateX(4px);
-}
-.cert-btn .cert-icon { font-size: 22px; flex-shrink: 0; }
-.cert-btn .cert-info { display: flex; flex-direction: column; gap: 2px; }
-.cert-btn .cert-name { font-size: 15px; font-weight: 700; }
-.cert-btn .cert-req  { font-size: 12px; color: var(--mid); font-weight: 400; }
+.cert-btn:active, .cert-btn.sel { background:var(--pale); border-color:var(--gold); }
+.cert-btn .ci { font-size: 22px; flex-shrink: 0; }
+.cert-btn .cn { font-size: 14px; font-weight: 700; color: var(--navy); }
+.cert-btn .cs { font-size: 11px; color: var(--mid); }
 
-/* ── NEXT BUTTON ─────────────────────────────────────────────────────────── */
-.card-footer {
-  padding: 0 44px 36px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
+/* ── NAV BUTTONS ─────────────────────────────────────────────────── */
 .btn-next {
-  background: linear-gradient(135deg, var(--navy), #2A3D6B);
+  background: linear-gradient(135deg,var(--navy),var(--navy2));
   color: var(--gold);
   border: none;
-  padding: 16px 40px;
+  padding: 15px 28px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 6px 24px rgba(26,39,68,0.25);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  transition: all .2s ease;
+  box-shadow: 0 4px 16px rgba(26,39,68,.3);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
-.btn-next:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(26,39,68,0.35);
-}
-.btn-next:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+.btn-next:disabled { opacity: .3; cursor: not-allowed; }
+.btn-next:not(:disabled):active { transform: scale(.97); }
 
 .btn-back {
   background: none;
   border: none;
   font-size: 13px;
-  color: rgba(255,255,255,0.4);
+  color: var(--mid);
   cursor: pointer;
   padding: 8px 0;
   font-family: 'DM Sans', sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
-.btn-back:hover { color: rgba(255,255,255,0.7); }
 
-/* ── SEND BUTTON ─────────────────────────────────────────────────────────── */
-.btn-whatsapp {
-  background: linear-gradient(135deg, #25D366, #128C7E);
+/* ── SUMMARY ──────────────────────────────────────────────────────── */
+.summary { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+.sum-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 9px 12px; gap: 12px; }
+.sum-row:nth-child(odd)  { background: var(--cream); }
+.sum-row:nth-child(even) { background: #F0EDE4; }
+.sum-lbl { font-size: 11px; font-weight: 700; color: var(--light); text-transform: uppercase; letter-spacing: .5px; flex-shrink: 0; max-width: 44%; }
+.sum-val { font-size: 13px; font-weight: 600; color: var(--navy); text-align: right; }
+.sum-val.y { color: var(--green); }
+.sum-val.n { color: var(--red); }
+
+/* ── DECLARATION BOX ─────────────────────────────────────────────── */
+.decl {
+  background: var(--navy);
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+.decl-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold2); margin-bottom: 8px; }
+.decl-body  { font-size: 13px; color: rgba(255,255,255,.72); line-height: 1.65; }
+
+/* ── WA BUTTON ──────────────────────────────────────────────────── */
+.btn-wa {
+  width: 100%;
+  background: linear-gradient(135deg,#25D366,#128C7E);
   color: white;
   border: none;
-  padding: 18px 36px;
+  padding: 18px 20px;
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 8px 28px rgba(37,211,102,0.3);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
-  margin: 0 auto;
+  transition: all .2s ease;
+  box-shadow: 0 6px 24px rgba(37,211,102,.3);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
-.btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(37,211,102,0.45); }
+.btn-wa:active { transform: scale(.98); }
+.wa-svg { width: 22px; height: 22px; flex-shrink: 0; }
 
-/* ── SUMMARY CARD ────────────────────────────────────────────────────────── */
-.summary-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 28px;
-}
-.summary-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 10px 14px;
-  background: var(--cream);
-  gap: 16px;
-}
-.summary-row:nth-child(even) { background: #F0EDE4; }
-.summary-label { font-size: 12px; font-weight: 700; color: var(--light); text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
-.summary-val   { font-size: 14px; font-weight: 600; color: var(--navy); text-align: right; }
-.summary-val.yes  { color: var(--green); }
-.summary-val.no   { color: var(--red); }
-
-/* ── SUCCESS ─────────────────────────────────────────────────────────────── */
+/* ── SUCCESS ─────────────────────────────────────────────────────── */
 .success-card {
   background: var(--white);
-  max-width: 540px;
+  max-width: 520px;
   width: 100%;
-  padding: 60px 44px;
+  padding: 52px 28px;
   text-align: center;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.4);
-  animation: cardIn 0.5s ease both;
+  box-shadow: 0 24px 64px rgba(0,0,0,.45);
+  animation: cardIn .5s ease both;
 }
-.success-icon { font-size: 60px; display: block; margin-bottom: 24px; }
-.success-card h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 32px;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: 14px;
-}
-.success-card h2 em { font-style: italic; color: var(--gold); }
-.success-card p { font-size: 15px; color: var(--mid); line-height: 1.7; }
-
-@media (max-width: 560px) {
-  .card-body, .card-footer { padding-left: 24px; padding-right: 24px; }
-  .yn-btn { padding: 18px 10px; font-size: 13px; }
-  .num-btn { width: 52px; height: 52px; font-size: 18px; }
-  .cert-btn { padding: 14px 16px; }
-}
+.suc-icon { font-size: 56px; display: block; margin-bottom: 20px; }
+.suc-h2   { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+.suc-h2 em { font-style: italic; color: var(--gold); }
+.suc-p  { font-size: 15px; color: var(--mid); line-height: 1.7; }
 </style>
 </head>
 <body>
 
 <div class="topbar">
   <span class="topbar-brand">AccessWorld Seminars</span>
-  <span class="topbar-sub">Certification Declaration</span>
+  <span class="topbar-right" id="topRight">Certification Request</span>
 </div>
-<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
 
-<div class="stage" id="stage">
-  <!-- Question cards injected here -->
-</div>
+<div class="stage" id="stage"></div>
 
 <script>
-// ─── CERTIFICATION QUESTION SETS ─────────────────────────────────────────────
+// ── CERT REQUIREMENTS ────────────────────────────────────────────────────────
 const CERTS = {
-  "NLP Coach Practitioner": {
-    icon: "🧠",
-    questions: [
-      { id:"q_seminars",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
-        text:"How many AccessWorld seminars or training events have you attended?",
-        sub:"Include all live, virtual, and recorded sessions that contributed to your training hours.",
-        label:"Seminars attended" },
-      { id:"q_hours",       type:"yn",
-        text:"Have you completed a minimum of 72 approved coach-specific training hours?",
-        sub:"This includes all AccessWorld programme hours counted toward your NLP Coach Practitioner certification.",
-        label:"72 hours completed" },
-      { id:"q_sessions",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
-        text:"How many one-on-one coaching sessions have you delivered to clients or practice partners?",
-        sub:"Include both supervised and independent coaching sessions using NLP techniques.",
-        label:"Coaching sessions delivered" },
-      { id:"q_nlp_tools",   type:"yn",
-        text:"Have you applied core NLP techniques including anchoring, state elicitation, and the Meta Model in your sessions?",
-        sub:"You must be able to demonstrate working competency in these foundational NLP tools.",
-        label:"Core NLP tools applied" },
-      { id:"q_rapport",     type:"yn",
-        text:"Have you demonstrated the ability to build rapid rapport with clients using matching, mirroring, and pacing?",
-        sub:"Rapport-building is a foundational skill assessed as part of NLP coaching competency.",
-        label:"Rapport skills demonstrated" },
-      { id:"q_ethics",      type:"yn",
-        text:"Have you read and agreed to uphold the AccessWorld Seminars Coaching Code of Ethics?",
-        sub:"All certified coaches are required to conduct themselves in accordance with the AccessWorld ethical standards.",
-        label:"Code of ethics agreed" },
-      { id:"q_feedback",    type:"yn",
-        text:"Have you received and reflected on feedback from at least one coaching supervisor or peer?",
-        sub:"Reflective practice and feedback are core requirements for certification readiness.",
-        label:"Feedback received and reflected" },
+  "NLP Coach Practitioner Certificate": {
+    icon: "🧠", color: "#1A2744",
+    reqs: [
+      { id:"em_seminar",  type:"yn",
+        q: "Have you attended the Emotional Mastery 2-Day Seminar?",
+        sub: "This is the flagship programme and the first requirement for this certification. It can be attended live or via recording.",
+        label: "Emotional Mastery Seminar" },
+      { id:"nlp_modules", type:"num", nums:["1","2","3","4","5","6","7","8","9","10"],
+        q: "How many of the 10 NLP Training Modules have you completed?",
+        sub: "Each module is approximately 2 hours. All 10 must be completed (live or recorded) to qualify.",
+        label: "NLP Modules completed" },
+      { id:"nlp_found",   type:"yn",
+        q: "Have you completed both NLP Foundation Sessions (90 mins each)?",
+        sub: "Both foundation sessions are required as part of the NLP curriculum.",
+        label: "NLP Foundation Sessions" },
+      { id:"sem2",        type:"yn",
+        q: "Have you attended Seminar 2 (2-Day)?",
+        sub: "Live attendance or recording both count toward your certification hours.",
+        label: "Seminar 2 completed" },
+      { id:"sem3",        type:"yn",
+        q: "Have you attended Seminar 3 (2-Day)?",
+        sub: "Live attendance or recording both count toward your certification hours.",
+        label: "Seminar 3 completed" },
+      { id:"group",       type:"num", nums:["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],
+        q: "How many Group Coaching & Mentoring Sessions have you attended?",
+        sub: "15 sessions of 90 minutes each are required. The same sessions count toward all certifications you are pursuing.",
+        label: "Group sessions attended" },
+      { id:"wcc",         type:"yn",
+        q: "Have you attended the \"How to Become a World Class Coach\" session (3 hrs)?",
+        sub: "This session is a required component for all AccessWorld certifications.",
+        label: "World Class Coach session" },
+      { id:"nlp_rec",     type:"num", nums:["0","1","2","3"],
+        q: "How many NLP Process Recordings have you submitted?",
+        sub: "3 recordings required. Submit the specific process only — closed-eye, set to music if desired. Not a full coaching session.",
+        label: "NLP process recordings submitted" },
+      { id:"coaching",    type:"coaching",
+        q: "Which coaching path have you completed or are currently completing?",
+        sub: "Select the path you have taken toward your certification hours.",
+        label: "Coaching path" },
     ]
   },
-  "Wellness Coaching": {
-    icon: "🌿",
-    questions: [
-      { id:"q_seminars",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
-        text:"How many AccessWorld wellness training sessions or seminars have you attended?",
-        sub:"Include all relevant health, nutrition, breathwork, and wellness programme sessions.",
-        label:"Sessions attended" },
-      { id:"q_hours",       type:"yn",
-        text:"Have you completed a minimum of 72 approved coach-specific training hours?",
-        sub:"This includes all AccessWorld programme hours counted toward your Wellness Coaching certification.",
-        label:"72 hours completed" },
-      { id:"q_sessions",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
-        text:"How many wellness coaching sessions have you delivered to clients or practice partners?",
-        sub:"Include sessions focusing on health goals, nutrition, energy, and lifestyle change.",
-        label:"Wellness sessions delivered" },
-      { id:"q_alkaline",    type:"yn",
-        text:"Can you explain the acid-alkaline balance and its relationship to cellular health and disease prevention?",
-        sub:"This is a core knowledge requirement for all AccessWorld Wellness coaches.",
-        label:"Acid-alkaline knowledge confirmed" },
-      { id:"q_breathwork",  type:"yn",
-        text:"Have you personally practised and can you teach the breathwork and cellular oxygenation principles taught in the programme?",
-        sub:"Including diaphragmatic breathing, breath hold techniques, and the 2-unit vs 32-unit energy model.",
-        label:"Breathwork taught and practised" },
-      { id:"q_routine",     type:"yn",
-        text:"Do you have a personal morning wellness routine in place that you model to your clients?",
-        sub:"AccessWorld Wellness coaches are expected to model the practices they teach.",
-        label:"Personal wellness routine in place" },
-      { id:"q_ethics",      type:"yn",
-        text:"Have you read and agreed to uphold the AccessWorld Seminars Coaching Code of Ethics?",
-        sub:"All certified coaches are required to conduct themselves in accordance with the AccessWorld ethical standards.",
-        label:"Code of ethics agreed" },
+
+  "Wellness Coaching Certificate": {
+    icon: "🌿", color: "#1A5C2A",
+    reqs: [
+      { id:"em_seminar",  type:"yn",
+        q: "Have you attended the Emotional Mastery 2-Day Seminar?",
+        sub: "This is the flagship programme and the first requirement for this certification.",
+        label: "Emotional Mastery Seminar" },
+      { id:"health_web",  type:"yn",
+        q: "Have you completed the Ultimate Health 2-Day Webinar?",
+        sub: "Covers cellular nutrition, breathwork, alkaline living, and the acid-alkaline balance.",
+        label: "Ultimate Health Webinar" },
+      { id:"nsr_web",     type:"yn",
+        q: "Have you completed the NSR Nervous System Reprogramming 2-Day Webinar?",
+        sub: "Core NSR methodology — live or recorded attendance both count.",
+        label: "NSR Webinar" },
+      { id:"sem2",        type:"yn",
+        q: "Have you attended Seminar 2 (2-Day)?",
+        sub: "Live or recorded attendance counts.",
+        label: "Seminar 2 completed" },
+      { id:"sem3",        type:"yn",
+        q: "Have you attended Seminar 3 (2-Day)?",
+        sub: "Live or recorded attendance counts.",
+        label: "Seminar 3 completed" },
+      { id:"nlp_modules", type:"num", nums:["1","2","3","4","5","6","7","8","9","10"],
+        q: "How many of the 10 NLP Training Modules have you completed?",
+        sub: "All 10 modules must be completed. Live or recorded.",
+        label: "NLP Modules completed" },
+      { id:"group",       type:"num", nums:["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],
+        q: "How many Group Coaching & Mentoring Sessions have you attended?",
+        sub: "15 sessions required. These count concurrently across all certifications you are pursuing.",
+        label: "Group sessions attended" },
+      { id:"wcc",         type:"yn",
+        q: "Have you attended the \"How to Become a World Class Coach\" session (3 hrs)?",
+        sub: "Required for all AccessWorld certifications.",
+        label: "World Class Coach session" },
+      { id:"nlp_rec",     type:"num", nums:["0","1","2","3"],
+        q: "How many NLP Process Recordings have you submitted?",
+        sub: "3 recordings required — process only, not a full coaching session.",
+        label: "NLP process recordings submitted" },
+      { id:"coaching",    type:"coaching",
+        q: "Which coaching path have you completed or are currently completing?",
+        sub: "Select the path you have taken.",
+        label: "Coaching path" },
     ]
   },
-  "Mindset Coaching": {
-    icon: "⚡",
-    questions: [
-      { id:"q_seminars",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
-        text:"How many AccessWorld mindset training sessions or seminars have you attended?",
-        sub:"Include all sessions covering emotional mastery, belief change, identity work, and self-sabotage.",
-        label:"Sessions attended" },
-      { id:"q_hours",       type:"yn",
-        text:"Have you completed a minimum of 72 approved coach-specific training hours?",
-        sub:"This includes all AccessWorld programme hours counted toward your Mindset Coaching certification.",
-        label:"72 hours completed" },
-      { id:"q_sessions",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
-        text:"How many mindset coaching sessions have you delivered to clients or practice partners?",
-        sub:"Include sessions using belief change, emotional mastery, identity design, and self-sabotage frameworks.",
-        label:"Coaching sessions delivered" },
-      { id:"q_emotion",     type:"yn",
-        text:"Can you explain and apply the emotional mastery pathway — emotion → mood → temperament → disposition?",
-        sub:"This is the core Emotional Mastery framework taught in the AccessWorld Mindset programme.",
-        label:"Emotional mastery pathway applied" },
-      { id:"q_sabotage",    type:"yn",
-        text:"Can you identify the six drivers of self-sabotage and apply appropriate coaching interventions for each?",
-        sub:"Including loss of self-worth, need for control, scapegoat, boredom, familiar, and impostor syndrome.",
-        label:"Self-sabotage drivers identified" },
-      { id:"q_identity",    type:"yn",
-        text:"Have you guided at least one client through an identity redesign process using I AM statements and incantations?",
-        sub:"Identity-level coaching is a core competency for AccessWorld Mindset certification.",
-        label:"Identity redesign facilitated" },
-      { id:"q_ethics",      type:"yn",
-        text:"Have you read and agreed to uphold the AccessWorld Seminars Coaching Code of Ethics?",
-        sub:"All certified coaches are required to conduct themselves in accordance with the AccessWorld ethical standards.",
-        label:"Code of ethics agreed" },
+
+  "Mindset Coaching Certificate": {
+    icon: "⚡", color: "#2D3A8C",
+    reqs: [
+      { id:"em_seminar",  type:"yn",
+        q: "Have you attended the Emotional Mastery 2-Day Seminar?",
+        sub: "Flagship programme — first requirement for this certification.",
+        label: "Emotional Mastery Seminar" },
+      { id:"life_sem",    type:"yn",
+        q: "Have you attended the Life Skills 2-Day Seminar?",
+        sub: "Core seminar covering mindset, self-leadership, and life design.",
+        label: "Life Skills Seminar" },
+      { id:"sem2",        type:"yn",
+        q: "Have you attended Seminar 2 (2-Day)?",
+        sub: "Live or recorded attendance counts.",
+        label: "Seminar 2 completed" },
+      { id:"sem3",        type:"yn",
+        q: "Have you attended Seminar 3 (2-Day)?",
+        sub: "Live or recorded attendance counts.",
+        label: "Seminar 3 completed" },
+      { id:"nlp_modules", type:"num", nums:["1","2","3","4","5","6","7","8","9","10"],
+        q: "How many of the 10 NLP Training Modules have you completed?",
+        sub: "All 10 modules required. Live or recorded.",
+        label: "NLP Modules completed" },
+      { id:"group",       type:"num", nums:["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],
+        q: "How many Group Coaching & Mentoring Sessions have you attended?",
+        sub: "15 sessions required. Count concurrently across all certifications.",
+        label: "Group sessions attended" },
+      { id:"visioning",   type:"num", nums:["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],
+        q: "How many Personal Strategic Visioning Sessions have you completed?",
+        sub: "15 sessions of 20 minutes each are required as part of the Mindset programme.",
+        label: "Visioning sessions completed" },
+      { id:"vis_others",  type:"num", nums:["0","1","2","3"],
+        q: "How many Visioning Sessions have you facilitated for others?",
+        sub: "3 visioning sessions facilitated for others are required as external practice.",
+        label: "Visioning sessions for others" },
+      { id:"wcc",         type:"yn",
+        q: "Have you attended the \"How to Become a World Class Coach\" session (3 hrs)?",
+        sub: "Required for all AccessWorld certifications.",
+        label: "World Class Coach session" },
+      { id:"nlp_rec",     type:"num", nums:["0","1","2","3"],
+        q: "How many NLP Process Recordings have you submitted?",
+        sub: "3 recordings required — process only, not a full session.",
+        label: "NLP process recordings submitted" },
+      { id:"coaching",    type:"coaching",
+        q: "Which coaching path have you completed or are currently completing?",
+        sub: "Select the path you have taken.",
+        label: "Coaching path" },
     ]
   },
-  "Relationship Coaching": {
-    icon: "❤️",
-    questions: [
-      { id:"q_seminars",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
-        text:"How many AccessWorld relationship training sessions or seminars have you attended?",
-        sub:"Include all sessions covering love languages, communication, intimacy, passion, and commitment.",
-        label:"Sessions attended" },
-      { id:"q_hours",       type:"yn",
-        text:"Have you completed a minimum of 72 approved coach-specific training hours?",
-        sub:"This includes all AccessWorld programme hours counted toward your Relationship Coaching certification.",
-        label:"72 hours completed" },
-      { id:"q_sessions",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
-        text:"How many relationship coaching sessions have you delivered to individuals or couples?",
-        sub:"Include sessions focused on communication, conflict resolution, intimacy, or relationship vision work.",
-        label:"Relationship sessions delivered" },
-      { id:"q_love_lang",   type:"yn",
-        text:"Can you identify and work with the five love languages to support clients in their relationships?",
-        sub:"Including Words of Affirmation, Acts of Service, Receiving Gifts, Quality Time, and Physical Touch.",
-        label:"Love languages applied" },
-      { id:"q_commit",      type:"yn",
-        text:"Have you guided a client or couple through the Relationship Vision process and the COMMIT formula?",
-        sub:"The COMMIT formula and Relationship Vision are core AccessWorld tools for relationship coaching.",
-        label:"COMMIT formula and vision facilitated" },
-      { id:"q_communication", type:"yn",
-        text:"Can you apply the five levels of communication and teach clean language and echo technique to clients?",
-        sub:"These are foundational communication tools assessed in the AccessWorld Relationship programme.",
-        label:"Communication tools applied" },
-      { id:"q_ethics",      type:"yn",
-        text:"Have you read and agreed to uphold the AccessWorld Seminars Coaching Code of Ethics?",
-        sub:"All certified coaches are required to conduct themselves in accordance with the AccessWorld ethical standards.",
-        label:"Code of ethics agreed" },
+
+  "Relationship Coaching Certificate": {
+    icon: "❤️", color: "#7A1A3A",
+    reqs: [
+      { id:"em_seminar",  type:"yn",
+        q: "Have you attended the Emotional Mastery 2-Day Seminar?",
+        sub: "Flagship programme — first requirement for this certification.",
+        label: "Emotional Mastery Seminar" },
+      { id:"rel_web",     type:"yn",
+        q: "Have you completed the Full Relationship 2-Day Webinar?",
+        sub: "Covers love languages, communication, intimacy, passion, and the COMMIT formula.",
+        label: "Relationship Webinar" },
+      { id:"sem2",        type:"yn",
+        q: "Have you attended Seminar 2 (2-Day)?",
+        sub: "Live or recorded attendance counts.",
+        label: "Seminar 2 completed" },
+      { id:"sem3",        type:"yn",
+        q: "Have you attended Seminar 3 (2-Day)?",
+        sub: "Live or recorded attendance counts.",
+        label: "Seminar 3 completed" },
+      { id:"nlp_modules", type:"num", nums:["1","2","3","4","5","6","7","8","9","10"],
+        q: "How many of the 10 NLP Training Modules have you completed?",
+        sub: "All 10 modules required. Live or recorded.",
+        label: "NLP Modules completed" },
+      { id:"group",       type:"num", nums:["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],
+        q: "How many Group Coaching & Mentoring Sessions have you attended?",
+        sub: "15 sessions required. Count concurrently across all certifications.",
+        label: "Group sessions attended" },
+      { id:"rel_demo",    type:"yn",
+        q: "Have you completed a Relationship Session Demonstration (live or recorded)?",
+        sub: "A demonstrated relationship coaching session is required — live delivery or submitted recording.",
+        label: "Relationship demo completed" },
+      { id:"wcc",         type:"yn",
+        q: "Have you attended the \"How to Become a World Class Coach\" session (3 hrs)?",
+        sub: "Required for all AccessWorld certifications.",
+        label: "World Class Coach session" },
+      { id:"nlp_rec",     type:"num", nums:["0","1","2","3"],
+        q: "How many NLP Process Recordings have you submitted?",
+        sub: "3 recordings required — process only, not a full session.",
+        label: "NLP process recordings submitted" },
+      { id:"coaching",    type:"coaching",
+        q: "Which coaching path have you completed or are currently completing?",
+        sub: "Select the path you have taken.",
+        label: "Coaching path" },
     ]
   },
-  "Trauma Coaching": {
-    icon: "🌊",
-    questions: [
-      { id:"q_seminars",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
-        text:"How many AccessWorld trauma and NSR training sessions have you attended?",
-        sub:"Include all sessions covering trauma, nervous system reprogramming, emotional clearing, and NSR techniques.",
-        label:"Sessions attended" },
-      { id:"q_hours",       type:"yn",
-        text:"Have you completed a minimum of 72 approved coach-specific training hours?",
-        sub:"This includes all AccessWorld programme hours counted toward your Trauma Coaching certification.",
-        label:"72 hours completed" },
-      { id:"q_sessions",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
-        text:"How many trauma coaching or NSR sessions have you delivered to clients?",
-        sub:"Include all sessions involving emotional clearing, nervous system work, or trauma-informed coaching.",
-        label:"Trauma sessions delivered" },
-      { id:"q_nsr",         type:"yn",
-        text:"Have you applied Nervous System Reprogramming (NSR) techniques in live coaching sessions?",
-        sub:"Including the 4-step NSR process: Recognise, Release, Reprogram, and Reinforce.",
-        label:"NSR techniques applied" },
-      { id:"q_clearing",    type:"yn",
-        text:"Can you facilitate the Gift process, the Voice of Authority, and at least one other emotional clearing technique?",
-        sub:"Emotional clearing facilitation is a core competency for AccessWorld Trauma Coaching certification.",
-        label:"Emotional clearing facilitated" },
-      { id:"q_safety",      type:"yn",
-        text:"Do you understand and apply trauma-informed coaching principles including pacing, safety, and referral protocols?",
-        sub:"Trauma coaching requires awareness of boundaries, safety planning, and when to refer to clinical professionals.",
-        label:"Trauma-informed principles applied" },
-      { id:"q_ethics",      type:"yn",
-        text:"Have you read and agreed to uphold the AccessWorld Seminars Coaching Code of Ethics?",
-        sub:"All certified coaches are required to conduct themselves in accordance with the AccessWorld ethical standards.",
-        label:"Code of ethics agreed" },
+
+  "Trauma Coaching Certificate": {
+    icon: "🌊", color: "#1A5A6B",
+    reqs: [
+      { id:"em_seminar",  type:"yn",
+        q: "Have you attended the Emotional Mastery 2-Day Seminar?",
+        sub: "Flagship programme — first requirement for the full Trauma curriculum.",
+        label: "Emotional Mastery Seminar" },
+      { id:"health_sem",  type:"yn",
+        q: "Have you attended the Ultimate Health 2-Day Seminar?",
+        sub: "Part of the full 5-seminar Trauma curriculum.",
+        label: "Ultimate Health Seminar" },
+      { id:"life_sem",    type:"yn",
+        q: "Have you attended the Life Skills 2-Day Seminar?",
+        sub: "Part of the full 5-seminar Trauma curriculum.",
+        label: "Life Skills Seminar" },
+      { id:"nsr_sem",     type:"yn",
+        q: "Have you attended the NSR Nervous System Reprogramming 2-Day Seminar?",
+        sub: "Core NSR training — live or recorded.",
+        label: "NSR Seminar" },
+      { id:"rel_sem",     type:"yn",
+        q: "Have you attended the Relationships 2-Day Seminar?",
+        sub: "Part of the full 5-seminar Trauma curriculum.",
+        label: "Relationships Seminar" },
+      { id:"ec_web",      type:"num", nums:["0","1","2","3"],
+        q: "How many times have you attended the Emotional Clearing Webinar (3.5 hrs each)?",
+        sub: "The Emotional Clearing Webinar must be attended 3 times. Live or recorded.",
+        label: "Emotional Clearing Webinars" },
+      { id:"nlp_modules", type:"num", nums:["1","2","3","4","5","6","7","8","9","10"],
+        q: "How many of the 10 NLP Training Modules have you completed?",
+        sub: "All 10 modules required. Live or recorded.",
+        label: "NLP Modules completed" },
+      { id:"group",       type:"num", nums:["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],
+        q: "How many Group Coaching & Mentoring Sessions have you attended?",
+        sub: "15 sessions required. Count concurrently across all certifications.",
+        label: "Group sessions attended" },
+      { id:"meditation",  type:"num", nums:["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],
+        q: "How many Guided Meditation Sessions have you completed?",
+        sub: "15 guided meditation sessions of 20 minutes each are required.",
+        label: "Guided meditation sessions" },
+      { id:"healing_dem", type:"yn",
+        q: "Have you completed a 4-Step Healing Process Demonstration (live or recorded)?",
+        sub: "A demonstration of the full 4-step healing process is required.",
+        label: "Healing process demonstration" },
+      { id:"healing_exp", type:"yn",
+        q: "Have you shared a personal healing experience with Joshua Roy?",
+        sub: "A personal sharing of your own healing journey is required as part of the Trauma certification.",
+        label: "Personal healing experience shared" },
+      { id:"wcc",         type:"yn",
+        q: "Have you attended the \"How to Become a World Class Coach\" session (3 hrs)?",
+        sub: "Required for all AccessWorld certifications.",
+        label: "World Class Coach session" },
+      { id:"nlp_rec",     type:"num", nums:["0","1","2","3"],
+        q: "How many NLP Process Recordings have you submitted?",
+        sub: "3 recordings required — process only, not a full session.",
+        label: "NLP process recordings submitted" },
+      { id:"coaching",    type:"coaching",
+        q: "Which coaching path have you completed or are currently completing?",
+        sub: "Select the path you have taken. 48 group mentoring sessions required for Trauma.",
+        label: "Coaching path" },
     ]
   }
 };
 
-// ─── STATE ────────────────────────────────────────────────────────────────────
+// ── STATE ─────────────────────────────────────────────────────────────────────
 const answers = {};
-let flow = [];       // ordered question/screen IDs
-let flowIdx = 0;
-let selectedCert = null;
+let flow = [];
+let idx  = 0;
 
-// ─── FLOW DEFINITION ─────────────────────────────────────────────────────────
-// Each item: { type, ...data }
 function buildFlow() {
   flow = [
-    { type: "name",  id: "name"  },
-    { type: "email", id: "email" },
-    { type: "cert",  id: "cert"  },
-    // cert-specific questions inserted after cert selection
+    { type:"name"  },
+    { type:"email" },
+    { type:"phone" },
+    { type:"cert"  },
   ];
 }
 
-// ─── RENDER ──────────────────────────────────────────────────────────────────
+// ── RENDER ────────────────────────────────────────────────────────────────────
 function render() {
-  const total = flow.length + 1; // +1 for summary
-  const pct   = Math.round((flowIdx / (total - 1)) * 100);
-  document.getElementById('progressFill').style.width = pct + '%';
+  const total = flow.length;
+  const pct   = Math.round((idx / Math.max(total - 1, 1)) * 100);
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('topRight').textContent =
+    idx < total ? `Step ${idx + 1} of ${total}` : 'Review';
 
   const stage = document.getElementById('stage');
+  if (idx >= total) { renderSummary(stage); return; }
+  const item = flow[idx];
 
-  if (flowIdx >= flow.length) {
-    renderSummary(stage);
-    return;
-  }
-
-  const item = flow[flowIdx];
-
-  if (item.type === "name")  { renderName(stage);  return; }
-  if (item.type === "email") { renderEmail(stage); return; }
-  if (item.type === "cert")  { renderCert(stage);  return; }
-  if (item.type === "question") { renderQuestion(stage, item); return; }
+  if (item.type === 'name')     { renderText(stage, 'name',  'Your full name', 'e.g. Ellie Lorenz', 'Let\'s get started', 'This will appear on your certification request.'); }
+  else if (item.type === 'email')    { renderText(stage, 'email', 'Your email address', 'your@email.com', `Step 2 of ${total}`, 'For Joshua Roy to confirm your certification and send your certificate.'); }
+  else if (item.type === 'phone')    { renderPhone(stage, total); }
+  else if (item.type === 'cert')     { renderCert(stage, total); }
+  else if (item.type === 'req')      { renderReq(stage, item.req, item.certName, total); }
 }
 
-// ─── NAME ────────────────────────────────────────────────────────────────────
-function renderName(stage) {
+// ── TEXT FIELD ────────────────────────────────────────────────────────────────
+function renderText(stage, id, placeholder, hint, stepLabel, sub) {
   stage.innerHTML = `
-    <div class="question-card">
-      <div class="card-stripe"></div>
+    <div class="card">
+      <div class="card-top"></div>
       <div class="card-body">
-        <div class="q-step">Let's get started</div>
-        <div class="q-text">What is your full name?</div>
-        <div class="q-sub">This will appear on your certification declaration.</div>
-        <input class="text-input" id="inp-name" type="text" placeholder="e.g. Ellie Lorenz"
-          value="${answers.name || ''}" oninput="enableNext()" onkeydown="if(event.key==='Enter')nextStep()">
+        <div class="q-step">${stepLabel}</div>
+        <div class="q-text">${id === 'name' ? 'What is your full name?' : 'What is your email address?'}</div>
+        <div class="q-sub">${sub}</div>
+        <input class="txt-inp" id="inp" type="${id==='email'?'email':'text'}"
+          placeholder="${placeholder}" value="${answers[id]||''}"
+          autocomplete="${id==='email'?'email':'name'}"
+          onkeydown="if(event.key==='Enter'&&!document.getElementById('btnN').disabled)advance()">
       </div>
-      <div class="card-footer">
-        <span></span>
-        <button class="btn-next" id="btnNext" onclick="nextStep()" ${answers.name ? '' : 'disabled'}>
-          Next <span>→</span>
-        </button>
+      <div class="card-foot">
+        ${idx > 0 ? '<button class="btn-back" onclick="back()">← Back</button>' : '<span></span>'}
+        <button class="btn-next" id="btnN" onclick="advance()" disabled>Next →</button>
       </div>
     </div>`;
-  const inp = document.getElementById('inp-name');
+  const inp = document.getElementById('inp');
   inp.focus();
   inp.addEventListener('input', () => {
-    document.getElementById('btnNext').disabled = inp.value.trim().length < 2;
+    const v = inp.value.trim();
+    const ok = id === 'email' ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) : v.length >= 2;
+    document.getElementById('btnN').disabled = !ok;
   });
+  if (answers[id]) document.getElementById('btnN').disabled = false;
 }
 
-// ─── EMAIL ───────────────────────────────────────────────────────────────────
-function renderEmail(stage) {
+// ── PHONE ─────────────────────────────────────────────────────────────────────
+function renderPhone(stage, total) {
   stage.innerHTML = `
-    <div class="question-card">
-      <div class="card-stripe"></div>
+    <div class="card">
+      <div class="card-top"></div>
       <div class="card-body">
-        <div class="q-step">Step 2 of ${flow.length + 1}</div>
-        <div class="q-text">What is your email address?</div>
-        <div class="q-sub">So Joshua Roy can confirm your certification and send your certificate.</div>
-        <input class="text-input" id="inp-email" type="email" placeholder="your@email.com"
-          value="${answers.email || ''}" oninput="checkEmail()" onkeydown="if(event.key==='Enter')nextStep()">
+        <div class="q-step">Step 3 of ${total}</div>
+        <div class="q-text">Your phone number</div>
+        <div class="q-sub">Optional — so Joshua Roy can contact you directly if needed.</div>
+        <input class="txt-inp" id="inp" type="tel" placeholder="e.g. 0400 000 000"
+          value="${answers.phone||''}"
+          onkeydown="if(event.key==='Enter')advance()">
       </div>
-      <div class="card-footer">
-        <button class="btn-back" onclick="prevStep()">← Back</button>
-        <button class="btn-next" id="btnNext" onclick="nextStep()" ${answers.email ? '' : 'disabled'}>
-          Next <span>→</span>
-        </button>
+      <div class="card-foot">
+        <button class="btn-back" onclick="back()">← Back</button>
+        <button class="btn-next" onclick="advance()">Next →</button>
       </div>
     </div>`;
-  document.getElementById('inp-email').focus();
+  document.getElementById('inp').focus();
 }
 
-function checkEmail() {
-  const v = document.getElementById('inp-email').value.trim();
-  document.getElementById('btnNext').disabled = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-}
-
-// ─── CERT SELECTOR ───────────────────────────────────────────────────────────
-function renderCert(stage) {
-  const certs = Object.keys(CERTS);
-  const items = certs.map(c => `
-    <button class="cert-btn ${answers.cert === c ? 'selected' : ''}" onclick="selectCert('${c}')">
-      <span class="cert-icon">${CERTS[c].icon}</span>
-      <span class="cert-info">
-        <span class="cert-name">${c}</span>
-        <span class="cert-req">72 approved training hours required</span>
-      </span>
-    </button>`).join('');
-
+// ── CERT SELECTOR ─────────────────────────────────────────────────────────────
+function renderCert(stage, total) {
+  const items = Object.keys(CERTS).map(c => `
+    <div class="cert-btn ${answers.cert===c?'sel':''}" onclick="pickCert('${c}')">
+      <span class="ci">${CERTS[c].icon}</span>
+      <div><div class="cn">${c}</div><div class="cs">Tap to select</div></div>
+    </div>`).join('');
   stage.innerHTML = `
-    <div class="question-card">
-      <div class="card-stripe"></div>
+    <div class="card">
+      <div class="card-top"></div>
       <div class="card-body">
-        <div class="q-step">Step 3 of ${flow.length + 1}</div>
-        <div class="q-text">Which certification are you declaring for?</div>
-        <div class="q-sub">Select the coaching certification you have completed.</div>
+        <div class="q-step">Step 4 of ${total}</div>
+        <div class="q-text">Which certification are you requesting?</div>
+        <div class="q-sub">Select the coaching certification you have completed the requirements for.</div>
         <div class="cert-list">${items}</div>
       </div>
-      <div class="card-footer">
-        <button class="btn-back" onclick="prevStep()">← Back</button>
-        <button class="btn-next" id="btnNext" onclick="nextStep()" ${answers.cert ? '' : 'disabled'}>
-          Next <span>→</span>
-        </button>
+      <div class="card-foot">
+        <button class="btn-back" onclick="back()">← Back</button>
+        <button class="btn-next" id="btnN" onclick="advance()" ${answers.cert?'':'disabled'}>Next →</button>
       </div>
     </div>`;
 }
 
-function selectCert(c) {
+function pickCert(c) {
   answers.cert = c;
-  selectedCert = c;
-  // Inject cert-specific questions into flow after step 2 (cert step)
-  const certQs = CERTS[c].questions.map(q => ({ type:"question", ...q }));
+  const certData = CERTS[c];
+  // Rebuild flow with this cert's requirements
   flow = [
-    flow[0], // name
-    flow[1], // email
-    flow[2], // cert
-    ...certQs
+    { type:'name' }, { type:'email' }, { type:'phone' }, { type:'cert' },
+    ...certData.reqs.map(r => ({ type:'req', req:r, certName:c }))
   ];
-  document.querySelectorAll('.cert-btn').forEach(btn => btn.classList.remove('selected'));
-  event.currentTarget.classList.add('selected');
-  document.getElementById('btnNext').disabled = false;
+  document.querySelectorAll('.cert-btn').forEach(b => b.classList.remove('sel'));
+  event.currentTarget.classList.add('sel');
+  document.getElementById('btnN').disabled = false;
 }
 
-// ─── QUESTION (YN / NUMBER) ───────────────────────────────────────────────────
-function renderQuestion(stage, item) {
-  const qNum  = flowIdx - 2; // offset for name/email/cert
-  const total = flow.length - 3;
-  const prev  = answers[item.id];
+// ── REQUIREMENT QUESTION ──────────────────────────────────────────────────────
+function renderReq(stage, req, certName, total) {
+  const cert   = CERTS[certName];
+  const qNum   = idx - 3;
+  const qTotal = cert.reqs.length;
+  const prev   = answers[req.id];
 
   let inputHTML = '';
 
-  if (item.type === "yn") {
+  if (req.type === 'yn') {
     inputHTML = `
-      <div class="yn-row">
-        <button class="yn-btn yes ${prev === 'Yes' ? 'selected' : ''}"
-          onclick="answerYN('${item.id}', 'Yes')">
-          <span class="yn-icon">✅</span>Yes
+      <div class="yn">
+        <button class="yn-btn yes ${prev==='Yes'?'sel':''}" onclick="answerYN('${req.id}','Yes')">
+          <span class="icon">✅</span>Yes
         </button>
-        <button class="yn-btn no ${prev === 'No' ? 'selected' : ''}"
-          onclick="answerYN('${item.id}', 'No')">
-          <span class="yn-icon">❌</span>No
+        <button class="yn-btn no ${prev==='No'?'sel':''}" onclick="answerYN('${req.id}','No')">
+          <span class="icon">❌</span>No / Not yet
         </button>
       </div>`;
-  } else if (item.type === "number") {
+  } else if (req.type === 'num') {
     inputHTML = `
-      <div class="num-options">
-        ${item.nums.map(n => `
-          <button class="num-btn ${prev == n ? 'selected' : ''}"
-            onclick="answerNum('${item.id}', '${n}')">
+      <div class="num-grid">
+        ${req.nums.map(n=>`
+          <button class="num-btn ${prev==n?'sel':''}" onclick="answerNum('${req.id}','${n}')">
             ${n}
           </button>`).join('')}
+      </div>`;
+  } else if (req.type === 'coaching') {
+    const isTrauma = certName === 'Trauma Coaching Certificate';
+    const opts = isTrauma
+      ? [
+          { val:'1-on-1: 24 sessions completed',          label:'1-on-1 Coaching', sub:'24 sessions completed' },
+          { val:'1-on-1: In progress',                    label:'1-on-1 Coaching', sub:'Currently in progress' },
+          { val:'Group Mentoring: 48 sessions completed', label:'Group Mentoring',  sub:'48 sessions completed' },
+          { val:'Group Mentoring: In progress',           label:'Group Mentoring',  sub:'Currently in progress' },
+        ]
+      : [
+          { val:'1-on-1: 12 sessions completed',          label:'1-on-1 Coaching', sub:'12 sessions completed' },
+          { val:'1-on-1: In progress',                    label:'1-on-1 Coaching', sub:'Currently in progress' },
+          { val:'Group Mentoring: 24 sessions completed', label:'Group Mentoring',  sub:'24 sessions completed' },
+          { val:'Group Mentoring: In progress',           label:'Group Mentoring',  sub:'Currently in progress' },
+        ];
+    inputHTML = `
+      <div class="cert-list">
+        ${opts.map(o=>`
+          <div class="cert-btn ${prev===o.val?'sel':''}" onclick="answerCoach('${req.id}','${o.val}')">
+            <div><div class="cn">${o.label}</div><div class="cs">${o.sub}</div></div>
+          </div>`).join('')}
       </div>`;
   }
 
   stage.innerHTML = `
-    <div class="question-card">
-      <div class="card-stripe"></div>
+    <div class="card">
+      <div class="card-top" style="background:linear-gradient(90deg,${cert.color},var(--gold))"></div>
       <div class="card-body">
-        <div class="q-step">${CERTS[selectedCert].icon} ${selectedCert}  ·  Question ${qNum} of ${total}</div>
-        <div class="q-text">${item.text}</div>
-        <div class="q-sub">${item.sub}</div>
+        <div class="q-step">${cert.icon} ${certName}  ·  Requirement ${qNum} of ${qTotal}</div>
+        <div class="q-text">${req.q}</div>
+        <div class="q-sub">${req.sub}</div>
         ${inputHTML}
       </div>
-      <div class="card-footer">
-        <button class="btn-back" onclick="prevStep()">← Back</button>
-        <button class="btn-next" id="btnNext" onclick="nextStep()" ${prev !== undefined ? '' : 'disabled'}>
-          Next <span>→</span>
-        </button>
+      <div class="card-foot">
+        <button class="btn-back" onclick="back()">← Back</button>
+        <button class="btn-next" id="btnN" onclick="advance()" ${prev!==undefined?'':'disabled'}>Next →</button>
       </div>
     </div>`;
 }
 
+// ── ANSWER HANDLERS ───────────────────────────────────────────────────────────
 function answerYN(id, val) {
   answers[id] = val;
-  // auto-advance after 400ms
-  document.querySelectorAll('.yn-btn').forEach(b => b.classList.remove('selected'));
-  document.querySelector(`.yn-btn.${val === 'Yes' ? 'yes' : 'no'}`).classList.add('selected');
-  document.getElementById('btnNext').disabled = false;
-  setTimeout(nextStep, 420);
+  document.querySelectorAll('.yn-btn').forEach(b => b.classList.remove('sel'));
+  document.querySelector(`.yn-btn.${val==='Yes'?'yes':'no'}`).classList.add('sel');
+  document.getElementById('btnN').disabled = false;
+  setTimeout(advance, 380);
 }
 
 function answerNum(id, val) {
   answers[id] = val;
-  document.querySelectorAll('.num-btn').forEach(b => b.classList.remove('selected'));
-  event.currentTarget.classList.add('selected');
-  document.getElementById('btnNext').disabled = false;
-  setTimeout(nextStep, 420);
+  document.querySelectorAll('.num-btn').forEach(b => b.classList.remove('sel'));
+  event.currentTarget.classList.add('sel');
+  document.getElementById('btnN').disabled = false;
+  setTimeout(advance, 380);
 }
 
-// ─── SUMMARY + SEND ───────────────────────────────────────────────────────────
-function renderSummary(stage) {
-  document.getElementById('progressFill').style.width = '100%';
-  const cert  = answers.cert;
-  const qs    = CERTS[cert].questions;
+function answerCoach(id, val) {
+  answers[id] = val;
+  document.querySelectorAll('.cert-btn').forEach(b => b.classList.remove('sel'));
+  event.currentTarget.classList.add('sel');
+  document.getElementById('btnN').disabled = false;
+  setTimeout(advance, 380);
+}
 
-  const rows = qs.map(q => {
-    const val = answers[q.id];
-    const cls = val === 'Yes' ? 'yes' : val === 'No' ? 'no' : '';
-    const disp = val === 'Yes' ? '✅  Yes' : val === 'No' ? '❌  No' : val;
-    return `
-      <div class="summary-row">
-        <span class="summary-label">${q.label}</span>
-        <span class="summary-val ${cls}">${disp}</span>
-      </div>`;
-  }).join('');
+// ── SUMMARY ───────────────────────────────────────────────────────────────────
+function renderSummary(stage) {
+  document.getElementById('progFill').style.width = '100%';
+  document.getElementById('topRight').textContent = 'Review & Send';
+
+  const cert  = answers.cert;
+  const reqs  = CERTS[cert].reqs;
+  const date  = new Date().toLocaleDateString('en-AU',{day:'2-digit',month:'2-digit',year:'numeric'});
+
+  const rows = [
+    ['Name',          answers.name,  ''],
+    ['Email',         answers.email, ''],
+    ['Phone',         answers.phone||'Not provided', ''],
+    ['Certification', cert,          ''],
+    ['Date',          date,          ''],
+    ...reqs.map(r => {
+      const v = answers[r.id] || '—';
+      const cls = v === 'Yes' ? 'y' : v === 'No / Not yet' ? 'n' : '';
+      const disp = v === 'Yes' ? '✅ Yes' : v === 'No / Not yet' ? '❌ Not yet' : v;
+      return [r.label, disp, cls];
+    })
+  ].map(([l,v,c]) => `
+    <div class="sum-row">
+      <span class="sum-lbl">${l}</span>
+      <span class="sum-val ${c}">${v}</span>
+    </div>`).join('');
 
   stage.innerHTML = `
-    <div class="question-card">
-      <div class="card-stripe"></div>
+    <div class="card">
+      <div class="card-top"></div>
       <div class="card-body">
-        <div class="q-step">Almost done</div>
-        <div class="q-text">Review your declaration</div>
-        <div class="q-sub">Check your answers below. When you're ready, send your declaration to Joshua Roy via WhatsApp for verification.</div>
-
-        <div class="summary-list">
-          <div class="summary-row">
-            <span class="summary-label">Name</span>
-            <span class="summary-val">${answers.name}</span>
-          </div>
-          <div class="summary-row">
-            <span class="summary-label">Email</span>
-            <span class="summary-val">${answers.email}</span>
-          </div>
-          <div class="summary-row">
-            <span class="summary-label">Certification</span>
-            <span class="summary-val">${cert}</span>
-          </div>
-          ${rows}
+        <div class="q-step">Final Step</div>
+        <div class="q-text">Review your certification request</div>
+        <div class="q-sub">Check your responses below, then send your request to Joshua Roy via WhatsApp for review and certification.</div>
+        <div class="decl">
+          <div class="decl-title">Declaration</div>
+          <div class="decl-body">I, <strong>${answers.name}</strong>, confirm that all information provided in this form is true and accurate, and that I am requesting certification for the <strong>${cert}</strong> from AccessWorld Seminars.</div>
         </div>
-
-        <div style="padding:18px 16px; background:#F0EDE4; font-size:13px; color:var(--mid); line-height:1.65;">
-          <strong style="color:var(--navy); display:block; margin-bottom:6px;">Declaration</strong>
-          I, <strong>${answers.name}</strong>, declare that all answers provided above are true and accurate, and that I have genuinely met the criteria for the <strong>${cert}</strong> certification issued by AccessWorld Seminars.
-        </div>
+        <div class="summary">${rows}</div>
       </div>
-      <div class="card-footer" style="justify-content:center; flex-direction:column; gap:16px; align-items:center;">
-        <button class="btn-whatsapp" onclick="sendWhatsApp()">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Send via WhatsApp to Joshua Roy
+      <div class="card-foot" style="flex-direction:column; align-items:stretch; gap:10px;">
+        <button class="btn-wa" onclick="sendWA()">
+          <svg class="wa-svg" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Submit Certification Request via WhatsApp
         </button>
-        <button class="btn-back" style="color:rgba(255,255,255,0.5);" onclick="prevStep()">← Go back and edit</button>
+        <button class="btn-back" style="text-align:center;" onclick="back()">← Go back and edit</button>
       </div>
     </div>`;
 }
 
-// ─── WHATSAPP SEND ────────────────────────────────────────────────────────────
-function sendWhatsApp() {
-  const cert = answers.cert;
-  const qs   = CERTS[cert].questions;
-  const date = new Date().toLocaleDateString('en-AU', { day:'2-digit', month:'2-digit', year:'numeric' });
+// ── WHATSAPP SEND ─────────────────────────────────────────────────────────────
+function sendWA() {
+  const cert  = answers.cert;
+  const reqs  = CERTS[cert].reqs;
+  const date  = new Date().toLocaleDateString('en-AU',{day:'2-digit',month:'2-digit',year:'numeric'});
 
   let lines = [
-    `*ACCESSWORLD SEMINARS — CERTIFICATION DECLARATION*`,
+    `🎓 *ACCESSWORLD SEMINARS — CERTIFICATION REQUEST*`,
     ``,
-    `*Name:*  ${answers.name}`,
-    `*Email:*  ${answers.email}`,
-    `*Certification:*  ${cert}`,
-    `*Date:*  ${date}`,
+    `*Name:* ${answers.name}`,
+    `*Email:* ${answers.email}`,
+    `*Phone:* ${answers.phone || 'Not provided'}`,
+    `*Certificate Requested:* ${cert}`,
+    `*Date Submitted:* ${date}`,
     ``,
-    `*DECLARATION RESPONSES:*`,
+    `*─── REQUIREMENTS VERIFICATION ───*`,
   ];
 
-  qs.forEach(q => {
-    const v = answers[q.id];
-    const icon = v === 'Yes' ? '✅' : v === 'No' ? '❌' : '🔢';
-    lines.push(`${icon}  ${q.label}: ${v}`);
+  reqs.forEach(r => {
+    const v = answers[r.id] || '—';
+    const icon = v === 'Yes' ? '✅' : v === 'No / Not yet' ? '❌' : '📌';
+    lines.push(`${icon} ${r.label}: ${v}`);
   });
 
-  lines.push(``);
-  lines.push(`*DECLARATION:* I, ${answers.name}, declare that all answers are true and accurate, and that I have met the criteria for the ${cert} certification.`);
-  lines.push(``);
-  lines.push(`— Sent via AccessWorld Certification Declaration Form`);
+  lines.push(``, `*─── DECLARATION ───*`);
+  lines.push(`I, ${answers.name}, confirm that all information provided is true and accurate. I am formally requesting certification for the ${cert} from AccessWorld Seminars.`);
+  lines.push(``, `_Submitted via AccessWorld Certification Request Form_`);
 
-  const msg = lines.join('\n');
-  const url = `https://wa.me/61432119091?text=${encodeURIComponent(msg)}`;
+  const url = `https://wa.me/61432119091?text=${encodeURIComponent(lines.join('\n'))}`;
   window.open(url, '_blank');
 
-  // Show success
   document.getElementById('stage').innerHTML = `
     <div class="success-card">
-      <span class="success-icon">🎉</span>
-      <h2>Declaration <em>sent!</em></h2>
-      <p>Your certification declaration has been sent to Joshua Roy via WhatsApp. You will be contacted once your declaration has been reviewed and your certificate is confirmed.</p>
+      <span class="suc-icon">🎉</span>
+      <h2 class="suc-h2">Request <em>submitted!</em></h2>
+      <p class="suc-p">Your certification request has been sent to Joshua Roy via WhatsApp. You will be contacted once your request has been reviewed and your certificate is ready.</p>
     </div>`;
-  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('progFill').style.width = '100%';
 }
 
-// ─── NAVIGATION ──────────────────────────────────────────────────────────────
-function nextStep() {
-  // Save current field value if text/email
-  const item = flow[flowIdx];
-  if (item && item.type === "name") {
-    const v = document.getElementById('inp-name')?.value.trim();
+// ── NAVIGATION ────────────────────────────────────────────────────────────────
+function advance() {
+  const item = flow[idx];
+  if (item.type === 'name') {
+    const v = document.getElementById('inp')?.value.trim();
     if (!v || v.length < 2) return;
     answers.name = v;
-  }
-  if (item && item.type === "email") {
-    const v = document.getElementById('inp-email')?.value.trim();
+  } else if (item.type === 'email') {
+    const v = document.getElementById('inp')?.value.trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return;
     answers.email = v;
+  } else if (item.type === 'phone') {
+    answers.phone = document.getElementById('inp')?.value.trim() || '';
   }
-  flowIdx++;
+  idx++;
+  window.scrollTo(0, 0);
   render();
 }
 
-function prevStep() {
-  if (flowIdx > 0) { flowIdx--; render(); }
+function back() {
+  if (idx > 0) { idx--; window.scrollTo(0,0); render(); }
 }
 
-function enableNext() {
-  const btn = document.getElementById('btnNext');
-  if (btn) btn.disabled = false;
-}
-
-// ─── INIT ─────────────────────────────────────────────────────────────────────
+// ── INIT ──────────────────────────────────────────────────────────────────────
 buildFlow();
 render();
 </script>
