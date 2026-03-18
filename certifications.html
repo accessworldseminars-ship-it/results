@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certification Declaration — AccessWorld Seminars</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:  #1A2744;
+  --gold:  #C9A84C;
+  --gold2: #E8C96A;
+  --pale:  #F7EDD5;
+  --cream: #FDFAF4;
+  --green: #1A5C2A;
+  --red:   #8B1A1A;
+  --mid:   #5A5565;
+  --light: #9090A0;
+  --white: #FFFFFF;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--navy);
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── TOP BAR ────────────────────────────────────────────────────────────── */
+.topbar {
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.topbar-brand {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.topbar-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1px;
+}
+
+/* ── PROGRESS BAR ───────────────────────────────────────────────────────── */
+.progress-track {
+  height: 3px;
+  background: rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold2));
+  transition: width 0.5s cubic-bezier(.4,0,.2,1);
+  width: 0%;
+}
+
+/* ── MAIN STAGE ─────────────────────────────────────────────────────────── */
+.stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+}
+
+.question-card {
+  background: var(--white);
+  max-width: 640px;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+  animation: cardIn 0.4s cubic-bezier(.4,0,.2,1) both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(28px) scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+.card-stripe {
+  height: 6px;
+  background: linear-gradient(90deg, var(--navy), var(--gold));
+}
+
+.card-body {
+  padding: 40px 44px 36px;
+}
+
+.q-step {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+
+.q-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 3.5vw, 26px);
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.q-sub {
+  font-size: 14px;
+  color: var(--mid);
+  line-height: 1.65;
+  margin-bottom: 32px;
+}
+
+/* ── ANSWER TYPES ────────────────────────────────────────────────────────── */
+
+/* Yes / No */
+.yn-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.yn-btn {
+  padding: 22px 16px;
+  border: 2px solid rgba(26,39,68,0.15);
+  background: var(--cream);
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.yn-btn:hover { transform: translateY(-3px); }
+
+.yn-btn.yes:hover, .yn-btn.yes.selected {
+  background: #EDF7EF;
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.yn-btn.no:hover, .yn-btn.no.selected {
+  background: #FDF0F0;
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.yn-icon { font-size: 28px; }
+
+/* Number picker */
+.num-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.num-btn {
+  width: 60px;
+  height: 60px;
+  border: 2px solid rgba(26,39,68,0.15);
+  background: var(--cream);
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--navy);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.num-btn:hover, .num-btn.selected {
+  background: var(--pale);
+  border-color: var(--gold);
+  color: var(--navy);
+  transform: scale(1.08);
+}
+
+/* Text input */
+.text-input {
+  width: 100%;
+  border: 2px solid rgba(26,39,68,0.15);
+  padding: 16px 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: var(--navy);
+  background: var(--cream);
+  outline: none;
+  transition: border-color 0.2s ease;
+  margin-bottom: 20px;
+}
+.text-input:focus { border-color: var(--gold); }
+
+/* Cert selector */
+.cert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cert-btn {
+  padding: 18px 22px;
+  border: 2px solid rgba(26,39,68,0.12);
+  background: var(--cream);
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+.cert-btn:hover, .cert-btn.selected {
+  background: var(--pale);
+  border-color: var(--gold);
+  transform: translateX(4px);
+}
+.cert-btn .cert-icon { font-size: 22px; flex-shrink: 0; }
+.cert-btn .cert-info { display: flex; flex-direction: column; gap: 2px; }
+.cert-btn .cert-name { font-size: 15px; font-weight: 700; }
+.cert-btn .cert-req  { font-size: 12px; color: var(--mid); font-weight: 400; }
+
+/* ── NEXT BUTTON ─────────────────────────────────────────────────────────── */
+.card-footer {
+  padding: 0 44px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.btn-next {
+  background: linear-gradient(135deg, var(--navy), #2A3D6B);
+  color: var(--gold);
+  border: none;
+  padding: 16px 40px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 24px rgba(26,39,68,0.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-next:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(26,39,68,0.35);
+}
+.btn-next:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+.btn-back {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  padding: 8px 0;
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-back:hover { color: rgba(255,255,255,0.7); }
+
+/* ── SEND BUTTON ─────────────────────────────────────────────────────────── */
+.btn-whatsapp {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  border: none;
+  padding: 18px 36px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 28px rgba(37,211,102,0.3);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto;
+}
+.btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(37,211,102,0.45); }
+
+/* ── SUMMARY CARD ────────────────────────────────────────────────────────── */
+.summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 14px;
+  background: var(--cream);
+  gap: 16px;
+}
+.summary-row:nth-child(even) { background: #F0EDE4; }
+.summary-label { font-size: 12px; font-weight: 700; color: var(--light); text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+.summary-val   { font-size: 14px; font-weight: 600; color: var(--navy); text-align: right; }
+.summary-val.yes  { color: var(--green); }
+.summary-val.no   { color: var(--red); }
+
+/* ── SUCCESS ─────────────────────────────────────────────────────────────── */
+.success-card {
+  background: var(--white);
+  max-width: 540px;
+  width: 100%;
+  padding: 60px 44px;
+  text-align: center;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+  animation: cardIn 0.5s ease both;
+}
+.success-icon { font-size: 60px; display: block; margin-bottom: 24px; }
+.success-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+.success-card h2 em { font-style: italic; color: var(--gold); }
+.success-card p { font-size: 15px; color: var(--mid); line-height: 1.7; }
+
+@media (max-width: 560px) {
+  .card-body, .card-footer { padding-left: 24px; padding-right: 24px; }
+  .yn-btn { padding: 18px 10px; font-size: 13px; }
+  .num-btn { width: 52px; height: 52px; font-size: 18px; }
+  .cert-btn { padding: 14px 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="topbar-brand">AccessWorld Seminars</span>
+  <span class="topbar-sub">Certification Declaration</span>
+</div>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="stage" id="stage">
+  <!-- Question cards injected here -->
+</div>
+
+<script>
+// ─── CERTIFICATION QUESTION SETS ─────────────────────────────────────────────
+const CERTS = {
+  "NLP Coach Practitioner": {
+    icon: "🧠",
+    questions: [
+      { id:"q_seminars",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
+        text:"How many AccessWorld seminars or training events have you attended?",
+        sub:"Include all live, virtual, and recorded sessions that contributed to your training hours.",
+        label:"Seminars attended" },
+      { id:"q_hours",       type:"yn",
+        text:"Have you completed a minimum of 72 approved coach-specific training hours?",
+        sub:"This includes all AccessWorld programme hours counted toward your NLP Coach Practitioner certification.",
+        label:"72 hours completed" },
+      { id:"q_sessions",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
+        text:"How many one-on-one coaching sessions have you delivered to clients or practice partners?",
+        sub:"Include both supervised and independent coaching sessions using NLP techniques.",
+        label:"Coaching sessions delivered" },
+      { id:"q_nlp_tools",   type:"yn",
+        text:"Have you applied core NLP techniques including anchoring, state elicitation, and the Meta Model in your sessions?",
+        sub:"You must be able to demonstrate working competency in these foundational NLP tools.",
+        label:"Core NLP tools applied" },
+      { id:"q_rapport",     type:"yn",
+        text:"Have you demonstrated the ability to build rapid rapport with clients using matching, mirroring, and pacing?",
+        sub:"Rapport-building is a foundational skill assessed as part of NLP coaching competency.",
+        label:"Rapport skills demonstrated" },
+      { id:"q_ethics",      type:"yn",
+        text:"Have you read and agreed to uphold the AccessWorld Seminars Coaching Code of Ethics?",
+        sub:"All certified coaches are required to conduct themselves in accordance with the AccessWorld ethical standards.",
+        label:"Code of ethics agreed" },
+      { id:"q_feedback",    type:"yn",
+        text:"Have you received and reflected on feedback from at least one coaching supervisor or peer?",
+        sub:"Reflective practice and feedback are core requirements for certification readiness.",
+        label:"Feedback received and reflected" },
+    ]
+  },
+  "Wellness Coaching": {
+    icon: "🌿",
+    questions: [
+      { id:"q_seminars",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
+        text:"How many AccessWorld wellness training sessions or seminars have you attended?",
+        sub:"Include all relevant health, nutrition, breathwork, and wellness programme sessions.",
+        label:"Sessions attended" },
+      { id:"q_hours",       type:"yn",
+        text:"Have you completed a minimum of 72 approved coach-specific training hours?",
+        sub:"This includes all AccessWorld programme hours counted toward your Wellness Coaching certification.",
+        label:"72 hours completed" },
+      { id:"q_sessions",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
+        text:"How many wellness coaching sessions have you delivered to clients or practice partners?",
+        sub:"Include sessions focusing on health goals, nutrition, energy, and lifestyle change.",
+        label:"Wellness sessions delivered" },
+      { id:"q_alkaline",    type:"yn",
+        text:"Can you explain the acid-alkaline balance and its relationship to cellular health and disease prevention?",
+        sub:"This is a core knowledge requirement for all AccessWorld Wellness coaches.",
+        label:"Acid-alkaline knowledge confirmed" },
+      { id:"q_breathwork",  type:"yn",
+        text:"Have you personally practised and can you teach the breathwork and cellular oxygenation principles taught in the programme?",
+        sub:"Including diaphragmatic breathing, breath hold techniques, and the 2-unit vs 32-unit energy model.",
+        label:"Breathwork taught and practised" },
+      { id:"q_routine",     type:"yn",
+        text:"Do you have a personal morning wellness routine in place that you model to your clients?",
+        sub:"AccessWorld Wellness coaches are expected to model the practices they teach.",
+        label:"Personal wellness routine in place" },
+      { id:"q_ethics",      type:"yn",
+        text:"Have you read and agreed to uphold the AccessWorld Seminars Coaching Code of Ethics?",
+        sub:"All certified coaches are required to conduct themselves in accordance with the AccessWorld ethical standards.",
+        label:"Code of ethics agreed" },
+    ]
+  },
+  "Mindset Coaching": {
+    icon: "⚡",
+    questions: [
+      { id:"q_seminars",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
+        text:"How many AccessWorld mindset training sessions or seminars have you attended?",
+        sub:"Include all sessions covering emotional mastery, belief change, identity work, and self-sabotage.",
+        label:"Sessions attended" },
+      { id:"q_hours",       type:"yn",
+        text:"Have you completed a minimum of 72 approved coach-specific training hours?",
+        sub:"This includes all AccessWorld programme hours counted toward your Mindset Coaching certification.",
+        label:"72 hours completed" },
+      { id:"q_sessions",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
+        text:"How many mindset coaching sessions have you delivered to clients or practice partners?",
+        sub:"Include sessions using belief change, emotional mastery, identity design, and self-sabotage frameworks.",
+        label:"Coaching sessions delivered" },
+      { id:"q_emotion",     type:"yn",
+        text:"Can you explain and apply the emotional mastery pathway — emotion → mood → temperament → disposition?",
+        sub:"This is the core Emotional Mastery framework taught in the AccessWorld Mindset programme.",
+        label:"Emotional mastery pathway applied" },
+      { id:"q_sabotage",    type:"yn",
+        text:"Can you identify the six drivers of self-sabotage and apply appropriate coaching interventions for each?",
+        sub:"Including loss of self-worth, need for control, scapegoat, boredom, familiar, and impostor syndrome.",
+        label:"Self-sabotage drivers identified" },
+      { id:"q_identity",    type:"yn",
+        text:"Have you guided at least one client through an identity redesign process using I AM statements and incantations?",
+        sub:"Identity-level coaching is a core competency for AccessWorld Mindset certification.",
+        label:"Identity redesign facilitated" },
+      { id:"q_ethics",      type:"yn",
+        text:"Have you read and agreed to uphold the AccessWorld Seminars Coaching Code of Ethics?",
+        sub:"All certified coaches are required to conduct themselves in accordance with the AccessWorld ethical standards.",
+        label:"Code of ethics agreed" },
+    ]
+  },
+  "Relationship Coaching": {
+    icon: "❤️",
+    questions: [
+      { id:"q_seminars",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
+        text:"How many AccessWorld relationship training sessions or seminars have you attended?",
+        sub:"Include all sessions covering love languages, communication, intimacy, passion, and commitment.",
+        label:"Sessions attended" },
+      { id:"q_hours",       type:"yn",
+        text:"Have you completed a minimum of 72 approved coach-specific training hours?",
+        sub:"This includes all AccessWorld programme hours counted toward your Relationship Coaching certification.",
+        label:"72 hours completed" },
+      { id:"q_sessions",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
+        text:"How many relationship coaching sessions have you delivered to individuals or couples?",
+        sub:"Include sessions focused on communication, conflict resolution, intimacy, or relationship vision work.",
+        label:"Relationship sessions delivered" },
+      { id:"q_love_lang",   type:"yn",
+        text:"Can you identify and work with the five love languages to support clients in their relationships?",
+        sub:"Including Words of Affirmation, Acts of Service, Receiving Gifts, Quality Time, and Physical Touch.",
+        label:"Love languages applied" },
+      { id:"q_commit",      type:"yn",
+        text:"Have you guided a client or couple through the Relationship Vision process and the COMMIT formula?",
+        sub:"The COMMIT formula and Relationship Vision are core AccessWorld tools for relationship coaching.",
+        label:"COMMIT formula and vision facilitated" },
+      { id:"q_communication", type:"yn",
+        text:"Can you apply the five levels of communication and teach clean language and echo technique to clients?",
+        sub:"These are foundational communication tools assessed in the AccessWorld Relationship programme.",
+        label:"Communication tools applied" },
+      { id:"q_ethics",      type:"yn",
+        text:"Have you read and agreed to uphold the AccessWorld Seminars Coaching Code of Ethics?",
+        sub:"All certified coaches are required to conduct themselves in accordance with the AccessWorld ethical standards.",
+        label:"Code of ethics agreed" },
+    ]
+  },
+  "Trauma Coaching": {
+    icon: "🌊",
+    questions: [
+      { id:"q_seminars",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
+        text:"How many AccessWorld trauma and NSR training sessions have you attended?",
+        sub:"Include all sessions covering trauma, nervous system reprogramming, emotional clearing, and NSR techniques.",
+        label:"Sessions attended" },
+      { id:"q_hours",       type:"yn",
+        text:"Have you completed a minimum of 72 approved coach-specific training hours?",
+        sub:"This includes all AccessWorld programme hours counted toward your Trauma Coaching certification.",
+        label:"72 hours completed" },
+      { id:"q_sessions",    type:"number", nums:[1,2,3,4,5,6,7,8,9,"10+"],
+        text:"How many trauma coaching or NSR sessions have you delivered to clients?",
+        sub:"Include all sessions involving emotional clearing, nervous system work, or trauma-informed coaching.",
+        label:"Trauma sessions delivered" },
+      { id:"q_nsr",         type:"yn",
+        text:"Have you applied Nervous System Reprogramming (NSR) techniques in live coaching sessions?",
+        sub:"Including the 4-step NSR process: Recognise, Release, Reprogram, and Reinforce.",
+        label:"NSR techniques applied" },
+      { id:"q_clearing",    type:"yn",
+        text:"Can you facilitate the Gift process, the Voice of Authority, and at least one other emotional clearing technique?",
+        sub:"Emotional clearing facilitation is a core competency for AccessWorld Trauma Coaching certification.",
+        label:"Emotional clearing facilitated" },
+      { id:"q_safety",      type:"yn",
+        text:"Do you understand and apply trauma-informed coaching principles including pacing, safety, and referral protocols?",
+        sub:"Trauma coaching requires awareness of boundaries, safety planning, and when to refer to clinical professionals.",
+        label:"Trauma-informed principles applied" },
+      { id:"q_ethics",      type:"yn",
+        text:"Have you read and agreed to uphold the AccessWorld Seminars Coaching Code of Ethics?",
+        sub:"All certified coaches are required to conduct themselves in accordance with the AccessWorld ethical standards.",
+        label:"Code of ethics agreed" },
+    ]
+  }
+};
+
+// ─── STATE ────────────────────────────────────────────────────────────────────
+const answers = {};
+let flow = [];       // ordered question/screen IDs
+let flowIdx = 0;
+let selectedCert = null;
+
+// ─── FLOW DEFINITION ─────────────────────────────────────────────────────────
+// Each item: { type, ...data }
+function buildFlow() {
+  flow = [
+    { type: "name",  id: "name"  },
+    { type: "email", id: "email" },
+    { type: "cert",  id: "cert"  },
+    // cert-specific questions inserted after cert selection
+  ];
+}
+
+// ─── RENDER ──────────────────────────────────────────────────────────────────
+function render() {
+  const total = flow.length + 1; // +1 for summary
+  const pct   = Math.round((flowIdx / (total - 1)) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+
+  const stage = document.getElementById('stage');
+
+  if (flowIdx >= flow.length) {
+    renderSummary(stage);
+    return;
+  }
+
+  const item = flow[flowIdx];
+
+  if (item.type === "name")  { renderName(stage);  return; }
+  if (item.type === "email") { renderEmail(stage); return; }
+  if (item.type === "cert")  { renderCert(stage);  return; }
+  if (item.type === "question") { renderQuestion(stage, item); return; }
+}
+
+// ─── NAME ────────────────────────────────────────────────────────────────────
+function renderName(stage) {
+  stage.innerHTML = `
+    <div class="question-card">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="q-step">Let's get started</div>
+        <div class="q-text">What is your full name?</div>
+        <div class="q-sub">This will appear on your certification declaration.</div>
+        <input class="text-input" id="inp-name" type="text" placeholder="e.g. Ellie Lorenz"
+          value="${answers.name || ''}" oninput="enableNext()" onkeydown="if(event.key==='Enter')nextStep()">
+      </div>
+      <div class="card-footer">
+        <span></span>
+        <button class="btn-next" id="btnNext" onclick="nextStep()" ${answers.name ? '' : 'disabled'}>
+          Next <span>→</span>
+        </button>
+      </div>
+    </div>`;
+  const inp = document.getElementById('inp-name');
+  inp.focus();
+  inp.addEventListener('input', () => {
+    document.getElementById('btnNext').disabled = inp.value.trim().length < 2;
+  });
+}
+
+// ─── EMAIL ───────────────────────────────────────────────────────────────────
+function renderEmail(stage) {
+  stage.innerHTML = `
+    <div class="question-card">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="q-step">Step 2 of ${flow.length + 1}</div>
+        <div class="q-text">What is your email address?</div>
+        <div class="q-sub">So Joshua Roy can confirm your certification and send your certificate.</div>
+        <input class="text-input" id="inp-email" type="email" placeholder="your@email.com"
+          value="${answers.email || ''}" oninput="checkEmail()" onkeydown="if(event.key==='Enter')nextStep()">
+      </div>
+      <div class="card-footer">
+        <button class="btn-back" onclick="prevStep()">← Back</button>
+        <button class="btn-next" id="btnNext" onclick="nextStep()" ${answers.email ? '' : 'disabled'}>
+          Next <span>→</span>
+        </button>
+      </div>
+    </div>`;
+  document.getElementById('inp-email').focus();
+}
+
+function checkEmail() {
+  const v = document.getElementById('inp-email').value.trim();
+  document.getElementById('btnNext').disabled = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+}
+
+// ─── CERT SELECTOR ───────────────────────────────────────────────────────────
+function renderCert(stage) {
+  const certs = Object.keys(CERTS);
+  const items = certs.map(c => `
+    <button class="cert-btn ${answers.cert === c ? 'selected' : ''}" onclick="selectCert('${c}')">
+      <span class="cert-icon">${CERTS[c].icon}</span>
+      <span class="cert-info">
+        <span class="cert-name">${c}</span>
+        <span class="cert-req">72 approved training hours required</span>
+      </span>
+    </button>`).join('');
+
+  stage.innerHTML = `
+    <div class="question-card">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="q-step">Step 3 of ${flow.length + 1}</div>
+        <div class="q-text">Which certification are you declaring for?</div>
+        <div class="q-sub">Select the coaching certification you have completed.</div>
+        <div class="cert-list">${items}</div>
+      </div>
+      <div class="card-footer">
+        <button class="btn-back" onclick="prevStep()">← Back</button>
+        <button class="btn-next" id="btnNext" onclick="nextStep()" ${answers.cert ? '' : 'disabled'}>
+          Next <span>→</span>
+        </button>
+      </div>
+    </div>`;
+}
+
+function selectCert(c) {
+  answers.cert = c;
+  selectedCert = c;
+  // Inject cert-specific questions into flow after step 2 (cert step)
+  const certQs = CERTS[c].questions.map(q => ({ type:"question", ...q }));
+  flow = [
+    flow[0], // name
+    flow[1], // email
+    flow[2], // cert
+    ...certQs
+  ];
+  document.querySelectorAll('.cert-btn').forEach(btn => btn.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+  document.getElementById('btnNext').disabled = false;
+}
+
+// ─── QUESTION (YN / NUMBER) ───────────────────────────────────────────────────
+function renderQuestion(stage, item) {
+  const qNum  = flowIdx - 2; // offset for name/email/cert
+  const total = flow.length - 3;
+  const prev  = answers[item.id];
+
+  let inputHTML = '';
+
+  if (item.type === "yn") {
+    inputHTML = `
+      <div class="yn-row">
+        <button class="yn-btn yes ${prev === 'Yes' ? 'selected' : ''}"
+          onclick="answerYN('${item.id}', 'Yes')">
+          <span class="yn-icon">✅</span>Yes
+        </button>
+        <button class="yn-btn no ${prev === 'No' ? 'selected' : ''}"
+          onclick="answerYN('${item.id}', 'No')">
+          <span class="yn-icon">❌</span>No
+        </button>
+      </div>`;
+  } else if (item.type === "number") {
+    inputHTML = `
+      <div class="num-options">
+        ${item.nums.map(n => `
+          <button class="num-btn ${prev == n ? 'selected' : ''}"
+            onclick="answerNum('${item.id}', '${n}')">
+            ${n}
+          </button>`).join('')}
+      </div>`;
+  }
+
+  stage.innerHTML = `
+    <div class="question-card">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="q-step">${CERTS[selectedCert].icon} ${selectedCert}  ·  Question ${qNum} of ${total}</div>
+        <div class="q-text">${item.text}</div>
+        <div class="q-sub">${item.sub}</div>
+        ${inputHTML}
+      </div>
+      <div class="card-footer">
+        <button class="btn-back" onclick="prevStep()">← Back</button>
+        <button class="btn-next" id="btnNext" onclick="nextStep()" ${prev !== undefined ? '' : 'disabled'}>
+          Next <span>→</span>
+        </button>
+      </div>
+    </div>`;
+}
+
+function answerYN(id, val) {
+  answers[id] = val;
+  // auto-advance after 400ms
+  document.querySelectorAll('.yn-btn').forEach(b => b.classList.remove('selected'));
+  document.querySelector(`.yn-btn.${val === 'Yes' ? 'yes' : 'no'}`).classList.add('selected');
+  document.getElementById('btnNext').disabled = false;
+  setTimeout(nextStep, 420);
+}
+
+function answerNum(id, val) {
+  answers[id] = val;
+  document.querySelectorAll('.num-btn').forEach(b => b.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+  document.getElementById('btnNext').disabled = false;
+  setTimeout(nextStep, 420);
+}
+
+// ─── SUMMARY + SEND ───────────────────────────────────────────────────────────
+function renderSummary(stage) {
+  document.getElementById('progressFill').style.width = '100%';
+  const cert  = answers.cert;
+  const qs    = CERTS[cert].questions;
+
+  const rows = qs.map(q => {
+    const val = answers[q.id];
+    const cls = val === 'Yes' ? 'yes' : val === 'No' ? 'no' : '';
+    const disp = val === 'Yes' ? '✅  Yes' : val === 'No' ? '❌  No' : val;
+    return `
+      <div class="summary-row">
+        <span class="summary-label">${q.label}</span>
+        <span class="summary-val ${cls}">${disp}</span>
+      </div>`;
+  }).join('');
+
+  stage.innerHTML = `
+    <div class="question-card">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="q-step">Almost done</div>
+        <div class="q-text">Review your declaration</div>
+        <div class="q-sub">Check your answers below. When you're ready, send your declaration to Joshua Roy via WhatsApp for verification.</div>
+
+        <div class="summary-list">
+          <div class="summary-row">
+            <span class="summary-label">Name</span>
+            <span class="summary-val">${answers.name}</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Email</span>
+            <span class="summary-val">${answers.email}</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Certification</span>
+            <span class="summary-val">${cert}</span>
+          </div>
+          ${rows}
+        </div>
+
+        <div style="padding:18px 16px; background:#F0EDE4; font-size:13px; color:var(--mid); line-height:1.65;">
+          <strong style="color:var(--navy); display:block; margin-bottom:6px;">Declaration</strong>
+          I, <strong>${answers.name}</strong>, declare that all answers provided above are true and accurate, and that I have genuinely met the criteria for the <strong>${cert}</strong> certification issued by AccessWorld Seminars.
+        </div>
+      </div>
+      <div class="card-footer" style="justify-content:center; flex-direction:column; gap:16px; align-items:center;">
+        <button class="btn-whatsapp" onclick="sendWhatsApp()">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Send via WhatsApp to Joshua Roy
+        </button>
+        <button class="btn-back" style="color:rgba(255,255,255,0.5);" onclick="prevStep()">← Go back and edit</button>
+      </div>
+    </div>`;
+}
+
+// ─── WHATSAPP SEND ────────────────────────────────────────────────────────────
+function sendWhatsApp() {
+  const cert = answers.cert;
+  const qs   = CERTS[cert].questions;
+  const date = new Date().toLocaleDateString('en-AU', { day:'2-digit', month:'2-digit', year:'numeric' });
+
+  let lines = [
+    `*ACCESSWORLD SEMINARS — CERTIFICATION DECLARATION*`,
+    ``,
+    `*Name:*  ${answers.name}`,
+    `*Email:*  ${answers.email}`,
+    `*Certification:*  ${cert}`,
+    `*Date:*  ${date}`,
+    ``,
+    `*DECLARATION RESPONSES:*`,
+  ];
+
+  qs.forEach(q => {
+    const v = answers[q.id];
+    const icon = v === 'Yes' ? '✅' : v === 'No' ? '❌' : '🔢';
+    lines.push(`${icon}  ${q.label}: ${v}`);
+  });
+
+  lines.push(``);
+  lines.push(`*DECLARATION:* I, ${answers.name}, declare that all answers are true and accurate, and that I have met the criteria for the ${cert} certification.`);
+  lines.push(``);
+  lines.push(`— Sent via AccessWorld Certification Declaration Form`);
+
+  const msg = lines.join('\n');
+  const url = `https://wa.me/61432119091?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+
+  // Show success
+  document.getElementById('stage').innerHTML = `
+    <div class="success-card">
+      <span class="success-icon">🎉</span>
+      <h2>Declaration <em>sent!</em></h2>
+      <p>Your certification declaration has been sent to Joshua Roy via WhatsApp. You will be contacted once your declaration has been reviewed and your certificate is confirmed.</p>
+    </div>`;
+  document.getElementById('progressFill').style.width = '100%';
+}
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────────
+function nextStep() {
+  // Save current field value if text/email
+  const item = flow[flowIdx];
+  if (item && item.type === "name") {
+    const v = document.getElementById('inp-name')?.value.trim();
+    if (!v || v.length < 2) return;
+    answers.name = v;
+  }
+  if (item && item.type === "email") {
+    const v = document.getElementById('inp-email')?.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return;
+    answers.email = v;
+  }
+  flowIdx++;
+  render();
+}
+
+function prevStep() {
+  if (flowIdx > 0) { flowIdx--; render(); }
+}
+
+function enableNext() {
+  const btn = document.getElementById('btnNext');
+  if (btn) btn.disabled = false;
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+buildFlow();
+render();
+</script>
+</body>
+</html>
