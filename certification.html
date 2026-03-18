@@ -1,323 +1,717 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claim Your Certification | AccessWorld Seminars</title>
-    
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary-dark: #0a1931;
-            --primary-blue: #185adb;
-            --accent-gold: #ffd700;
-            --light-bg: #f8f9fa;
-            --white: #ffffff;
-            --text-dark: #2c3e50;
-            --shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            --radius: 10px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coaching Certification Pathways — AccessWorld Seminars</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:  #1A2744;
+  --navy2: #243560;
+  --gold:  #C9A84C;
+  --gold2: #E8C96A;
+  --pale:  #F7EDD5;
+  --cream: #FDFAF4;
+  --ivory: #FFF9EE;
+  --mid:   #5A5565;
+  --light: #9090A0;
+  --rule:  rgba(201,168,76,.28);
+  --white: #FFFFFF;
+  --nlp:   #1A2744;
+  --well:  #1A5C2A;
+  --mind:  #2D3A8C;
+  --rel:   #7A1A3A;
+  --trau:  #1A5A6B;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--navy);font-family:'DM Sans',sans-serif;overflow-x:hidden}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* ── REVEAL ───────────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+.reveal.on{opacity:1;transform:none}
 
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-            background: var(--white);
-        }
+/* ── TOPBAR ───────────────────────────────────────────────── */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,39,68,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);padding:13px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.topbar-brand{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.topbar-nav{display:flex;gap:20px;flex-wrap:wrap}
+.topbar-nav a{font-size:11px;color:rgba(255,255,255,.5);text-decoration:none;letter-spacing:.5px;transition:color .2s;white-space:nowrap}
+.topbar-nav a:hover{color:var(--gold)}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+/* ── HERO ─────────────────────────────────────────────────── */
+.hero{position:relative;min-height:100vh;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:110px 24px 80px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 75% 60% at 50% 25%,rgba(201,168,76,.16),transparent 65%),radial-gradient(ellipse 50% 40% at 80% 80%,rgba(201,168,76,.08),transparent 55%);pointer-events:none}
+.hero::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-52deg,transparent,transparent 60px,rgba(201,168,76,.022) 60px,rgba(201,168,76,.022) 61px);pointer-events:none}
+.hero-tag{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;animation:fadeInDown .8s ease both}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,9vw,104px);font-weight:300;line-height:1;color:var(--white);letter-spacing:-1px;margin-bottom:6px;animation:fadeInUp 1s .1s ease both}
+.hero h1 em{font-style:italic;color:var(--gold2)}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.8vw,25px);font-weight:300;font-style:italic;color:rgba(255,255,255,.6);max-width:600px;margin:22px auto 0;line-height:1.55;animation:fadeInUp 1s .2s ease both}
+.hero-rule{width:56px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:36px auto;animation:fadeIn 1s .4s ease both}
+.hero-intro{font-size:15px;color:rgba(255,255,255,.6);max-width:560px;line-height:1.8;margin:0 auto 52px;animation:fadeInUp 1s .35s ease both}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:fadeInUp 1s .5s ease both}
+.btn-gold{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;text-decoration:none;transition:all .25s ease;box-shadow:0 8px 32px rgba(201,168,76,.3)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 44px rgba(201,168,76,.45)}
+.btn-outline{display:inline-block;border:1px solid rgba(201,168,76,.4);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:13px 32px;text-decoration:none;transition:all .25s ease}
+.btn-outline:hover{background:rgba(201,168,76,.08);border-color:var(--gold)}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;animation:fadeIn 2s 1.5s ease both}
+.scroll-hint span{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,.4)}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2.2s ease-in-out infinite}
 
-        .header {
-            background: linear-gradient(rgba(10, 25, 49, 0.9), rgba(10, 25, 49, 0.9));
-            color: white;
-            padding: 100px 0 60px;
-            text-align: center;
-        }
+/* ── SECTION ──────────────────────────────────────────────── */
+.section{padding:80px 24px}
+.section-inner{max-width:860px;margin:0 auto}
+.section-tag{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.section-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,52px);font-weight:400;color:var(--navy);line-height:1.15;margin-bottom:14px}
+.section-h2 em{font-style:italic;color:var(--gold)}
+.section-sub{font-size:15px;color:var(--mid);line-height:1.8;max-width:620px;margin-bottom:48px}
 
-        .header h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
+/* ── SUMMARY TABLE ────────────────────────────────────────── */
+.sum-table{width:100%;border-collapse:collapse;margin-bottom:48px;font-size:13px}
+.sum-table th{background:var(--navy);color:var(--gold2);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px 14px;text-align:left}
+.sum-table th:not(:first-child){text-align:center}
+.sum-table td{padding:11px 14px;color:var(--mid);border-bottom:1px solid rgba(26,39,68,.07)}
+.sum-table td:first-child{font-weight:700;color:var(--navy)}
+.sum-table td:not(:first-child){text-align:center}
+.sum-table tr:nth-child(even) td{background:rgba(26,39,68,.025)}
 
-        .header p {
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
+/* ── ACCORDION ────────────────────────────────────────────── */
+.accordion{border:1px solid rgba(26,39,68,.1);margin-bottom:4px;overflow:hidden}
+.accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;background:var(--white);cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-align:left;transition:background .2s;-webkit-tap-highlight-color:transparent}
+.accordion-trigger:hover{background:var(--ivory)}
+.accordion-trigger.open{background:var(--navy)}
+.acc-left{display:flex;align-items:center;gap:14px}
+.acc-icon{font-size:20px;flex-shrink:0}
+.acc-title{font-size:15px;font-weight:700;color:var(--navy);transition:color .2s}
+.accordion-trigger.open .acc-title{color:var(--gold2)}
+.acc-sub{font-size:12px;color:var(--light);margin-top:2px;line-height:1.4;transition:color .2s}
+.accordion-trigger.open .acc-sub{color:rgba(255,255,255,.5)}
+.acc-badge{font-size:11px;font-weight:700;padding:4px 10px;background:var(--pale);color:var(--navy);white-space:nowrap;flex-shrink:0;border:1px solid var(--rule);transition:all .2s}
+.accordion-trigger.open .acc-badge{background:rgba(201,168,76,.15);color:var(--gold2);border-color:rgba(201,168,76,.3)}
+.acc-arrow{font-size:18px;color:var(--light);transition:transform .3s ease,color .2s;flex-shrink:0}
+.accordion-trigger.open .acc-arrow{transform:rotate(180deg);color:var(--gold2)}
+.accordion-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.accordion-body.open{max-height:2000px}
+.accordion-content{padding:28px 22px;background:var(--ivory);border-top:2px solid var(--gold)}
 
-        .whatsapp-notice {
-            background: #25D366;
-            color: white;
-            padding: 15px;
-            border-radius: var(--radius);
-            margin: 20px auto;
-            max-width: 800px;
-            text-align: center;
-            font-weight: 600;
-        }
+/* cert-specific accent on open trigger */
+.accordion.nlp  .accordion-trigger.open{background:var(--nlp)}
+.accordion.well .accordion-trigger.open{background:var(--well)}
+.accordion.mind .accordion-trigger.open{background:var(--mind)}
+.accordion.rel  .accordion-trigger.open{background:var(--rel)}
+.accordion.trau .accordion-trigger.open{background:var(--trau)}
 
-        .whatsapp-notice i {
-            margin-right: 10px;
-        }
+/* ── INSIDE ACCORDION ─────────────────────────────────────── */
+.req-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px 32px;margin-bottom:20px}
+.req-group{}
+.req-group-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--light);padding-bottom:8px;border-bottom:1px solid rgba(26,39,68,.1);margin-bottom:10px}
+.req-item{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--mid);line-height:1.5;padding:4px 0}
+.req-item::before{content:'✦';color:var(--gold);font-size:8px;flex-shrink:0;margin-top:4px}
+.req-item strong{color:var(--navy)}
+.totals-box{background:var(--pale);border-left:3px solid var(--gold);padding:16px 18px;margin-top:8px}
+.totals-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--light);margin-bottom:10px}
+.total-row{display:flex;justify-content:space-between;font-size:13px;padding:3px 0}
+.total-label{color:var(--mid)}
+.total-val{font-weight:700;color:var(--navy)}
+.concurrent-note{font-size:11px;color:var(--gold);margin-top:10px;font-style:italic;line-height:1.5}
 
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            padding: 40px 0;
-        }
+/* ── NAVY INFO BOX ────────────────────────────────────────── */
+.info-box{background:var(--navy);padding:40px 44px;margin:48px 0;position:relative;overflow:hidden}
+.info-box::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.1),transparent 70%);pointer-events:none}
+.info-box h3{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--gold2);margin-bottom:16px}
+.info-box p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:14px}
+.info-box p:last-child{margin:0}
+.info-box p strong{color:var(--white)}
+.info-box p em{color:rgba(255,255,255,.45);font-style:italic}
 
-        .cert-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 25px;
-            box-shadow: var(--shadow);
-            border-top: 4px solid var(--accent-gold);
-        }
+/* ── HOURS GRID ───────────────────────────────────────────── */
+.hrs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2px;background:rgba(201,168,76,.2);margin:24px 0}
+.hrs-block{background:rgba(255,255,255,.04);padding:24px 20px;text-align:center}
+.hrs-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--gold2);line-height:1;display:block;margin-bottom:6px}
+.hrs-label{font-size:11px;color:rgba(255,255,255,.45);line-height:1.4}
 
-        .cert-card h3 {
-            color: var(--primary-dark);
-            margin-bottom: 15px;
-            font-family: 'Montserrat', sans-serif;
-        }
+/* ── PALE INFO BOX ────────────────────────────────────────── */
+.pale-box{background:var(--pale);border:1px solid var(--rule);padding:40px 44px;margin:24px 0}
+.pale-box h3{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--navy);margin-bottom:16px}
+.pale-box p{font-size:14px;color:var(--mid);line-height:1.8;margin-bottom:14px}
+.pale-box p:last-child{margin:0;font-weight:600;color:var(--navy);font-style:italic}
 
-        .hours-badge {
-            display: inline-block;
-            background: var(--primary-blue);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
+/* ── CERT PHOTO SECTION ───────────────────────────────────── */
+.cert-section{background:var(--navy);padding:80px 24px;text-align:center;position:relative;overflow:hidden}
+.cert-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 50%,rgba(201,168,76,.1),transparent 60%);pointer-events:none}
+.cert-img-wrap{max-width:800px;margin:0 auto;position:relative}
+.cert-img-frame{position:absolute;inset:-10px;border:1px solid rgba(201,168,76,.3);pointer-events:none}
+.cert-img{width:100%;display:block;box-shadow:0 36px 90px rgba(0,0,0,.5)}
 
-        .form-section {
-            background: var(--light-bg);
-            padding: 60px 0;
-            text-align: center;
-        }
+/* ── NOTES ACCORDION ──────────────────────────────────────── */
+.notes-accordion{border:1px solid rgba(26,39,68,.1);margin-bottom:4px}
+.notes-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 22px;background:var(--white);cursor:pointer;border:none;font-family:'DM Sans',sans-serif;text-align:left;transition:background .2s;-webkit-tap-highlight-color:transparent}
+.notes-trigger:hover,.notes-trigger.open{background:var(--ivory)}
+.notes-trigger.open{border-bottom:1px solid rgba(26,39,68,.08)}
+.notes-trigger-title{font-size:14px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:10px}
+.notes-trigger-title .ni{font-size:16px}
+.notes-arrow{font-size:16px;color:var(--light);transition:transform .3s ease}
+.notes-trigger.open .notes-arrow{transform:rotate(180deg);color:var(--gold)}
+.notes-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.notes-body.open{max-height:600px}
+.notes-content{padding:20px 22px;font-size:14px;color:var(--mid);line-height:1.75;background:var(--ivory);border-top:1px solid rgba(26,39,68,.06)}
+.notes-content ul{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.notes-content li{display:flex;gap:8px;align-items:flex-start}
+.notes-content li::before{content:'→';color:var(--gold);font-weight:700;flex-shrink:0}
 
-        .form-section h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--primary-dark);
-        }
+/* ── CONTACT ──────────────────────────────────────────────── */
+.contact-card{max-width:500px;margin:0 auto;background:var(--white);border:1px solid rgba(26,39,68,.1);padding:44px 40px;box-shadow:0 20px 56px rgba(26,39,68,.1)}
+.contact-card h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:var(--navy);margin-bottom:6px}
+.contact-card h3 em{font-style:italic;color:var(--gold)}
+.contact-card p{font-size:13px;color:var(--mid);margin-bottom:24px;line-height:1.7}
+.contact-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid rgba(26,39,68,.07);font-size:13px}
+.contact-row:last-of-type{border:none}
+.ci-icon{font-size:18px;flex-shrink:0;width:24px;text-align:center}
+.ci-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--light);margin-bottom:2px}
+.ci-val{font-weight:600;color:var(--navy)}
+.ci-val a{color:var(--navy);text-decoration:none}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px}
 
-        .jotform-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: var(--accent-gold);
-            color: var(--primary-dark);
-            padding: 18px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
+/* ── FOOTER ───────────────────────────────────────────────── */
+footer{background:var(--navy);padding:28px 24px;text-align:center;font-size:11px;color:rgba(255,255,255,.28);letter-spacing:.5px}
 
-        .jotform-btn:hover {
-            background: #ffed4e;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
-        }
+/* ── ANIMS ────────────────────────────────────────────────── */
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:none}}
+@keyframes fadeInUp  {from{opacity:0;transform:translateY(24px)}  to{opacity:1;transform:none}}
+@keyframes fadeIn    {from{opacity:0}                              to{opacity:1}}
+@keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:.8}}
 
-        .instructions {
-            background: white;
-            padding: 30px;
-            border-radius: var(--radius);
-            max-width: 800px;
-            margin: 40px auto;
-            box-shadow: var(--shadow);
-        }
-
-        .instructions ol {
-            margin-left: 20px;
-            margin-top: 15px;
-        }
-
-        .instructions li {
-            margin-bottom: 10px;
-        }
-
-        footer {
-            background: var(--primary-dark);
-            color: white;
-            text-align: center;
-            padding: 40px 0;
-            margin-top: 60px;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .cert-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .jotform-btn {
-                padding: 15px 25px;
-                font-size: 1rem;
-            }
-        }
-    </style>
+@media(max-width:640px){
+  .topbar-nav{display:none}
+  .section{padding:56px 18px}
+  .info-box,.pale-box{padding:28px 20px}
+  .contact-card{padding:32px 22px}
+  .accordion-trigger{padding:16px 16px}
+  .accordion-content{padding:20px 16px}
+}
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <div class="header">
-        <div class="container">
-            <h1>🎓 Claim Your Certification</h1>
-            <p>Submit your training results and receive your professional credentials through our honor-based certification system.</p>
-            
-            <div class="whatsapp-notice">
-                <i class="fab fa-whatsapp"></i>
-                IMPORTANT: After completing requirements below, click the "Submit via JotForm" button. 
-                Joshua will receive a WhatsApp notification instantly!
-            </div>
-        </div>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <span class="topbar-brand">AccessWorld Seminars</span>
+  <div class="topbar-nav">
+    <a href="#overview">Overview</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#certificate">Certificate</a>
+    <a href="#notes">Key Notes</a>
+    <a href="#contact">Get Started</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-tag">AccessWorld Seminars · Brisbane, Australia</div>
+  <h1>Coaching<br>Certification<br><em>Pathways</em></h1>
+  <p class="hero-sub">Your complete guide to achieving your AccessWorld professional coaching certification</p>
+  <div class="hero-rule"></div>
+  <p class="hero-intro">Five professional certifications. One methodology. A lifetime of impact. Achievable in 3 to 6 months — depending on your commitment, drive, and determination.</p>
+  <div class="hero-cta">
+    <a href="#certifications" class="btn-gold">Explore Programmes</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results" class="btn-outline" target="_blank">Visit Website</a>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- ═══ OVERVIEW ════════════════════════════════════════════════ -->
+<section class="section" id="overview">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">About These Programmes</div>
+      <h2 class="section-h2">Five certifications.<br>One <em>transformational</em> framework.</h2>
+      <p class="section-sub">Each programme is grounded in Nervous System Reprogramming (NSR), NLP, and Emotional Mastery — refined over more than a decade and 3,500+ individual coaching sessions by Joshua Roy.</p>
     </div>
 
-    <!-- Certifications Grid -->
-    <div class="container">
-        <div class="cert-grid">
-            <!-- NLP Card -->
-            <div class="cert-card">
-                <div class="hours-badge">40+ hours required</div>
-                <h3>NLP Coach Practitioner Certificate</h3>
-                <ul>
-                    <li>10 NLP Training Modules (2-hour sessions)</li>
-                    <li>Emotional Mastery 2-Day Seminar</li>
-                    <li>2 NLP Foundation Sessions</li>
-                    <li>3 NLP processes demonstrated</li>
-                    <li>"How to become a world class coach" session</li>
-                </ul>
-            </div>
-
-            <!-- Wellness Card -->
-            <div class="cert-card">
-                <div class="hours-badge">52+ hours required</div>
-                <h3>Wellness Coaching Certificate</h3>
-                <ul>
-                    <li>Ultimate Health Webinar</li>
-                    <li>NSR Nervous System Reprogramming Webinar</li>
-                    <li>6 months coaching OR 24 mentoring sessions</li>
-                    <li>15 Group Coaching Sessions</li>
-                    <li>3-month morning routine commitment</li>
-                </ul>
-            </div>
-
-            <!-- Mindset Card -->
-            <div class="cert-card">
-                <div class="hours-badge">52+ hours required</div>
-                <h3>Mindset Coaching Certificate</h3>
-                <ul>
-                    <li>Life Skills Seminar</li>
-                    <li>6 months coaching OR 15 mentoring sessions</li>
-                    <li>15 Group Coaching Sessions</li>
-                    <li>15 personal strategic visioning sessions</li>
-                    <li>3 visioning sessions for others</li>
-                </ul>
-            </div>
-
-            <!-- Relationship Card -->
-            <div class="cert-card">
-                <div class="hours-badge">52+ hours required</div>
-                <h3>Relationship Coaching Certificate</h3>
-                <ul>
-                    <li>Full Relationship Webinar</li>
-                    <li>6 months coaching OR 24 mentoring sessions</li>
-                    <li>15 Group Coaching Sessions</li>
-                    <li>Relationship session demonstrated</li>
-                </ul>
-            </div>
-
-            <!-- Trauma Card -->
-            <div class="cert-card">
-                <div class="hours-badge">66+ hours required</div>
-                <h3>Trauma Coaching Certificate</h3>
-                <ul>
-                    <li>NSR Nervous System Programming Webinar</li>
-                    <li>Emotional Clearing Webinar (3 times)</li>
-                    <li>15 guided meditation sessions</li>
-                    <li>4-step healing process demonstrated</li>
-                    <li>Personal healing experience shared</li>
-                    <li>6+ months coaching OR 30 mentoring sessions</li>
-                </ul>
-            </div>
-        </div>
+    <div class="reveal">
+      <table class="sum-table">
+        <thead>
+          <tr><th>#</th><th style="text-align:left">Certificate</th><th>Foundation</th><th>1-on-1 Path</th><th>Group Path</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>01</td><td>NLP Coach Practitioner</td><td>96.5 hrs</td><td>108.5 hrs</td><td>132.5 hrs</td></tr>
+          <tr><td>02</td><td>Wellness Coaching</td><td>109.5 hrs</td><td>121.5 hrs</td><td>145.5 hrs</td></tr>
+          <tr><td>03</td><td>Mindset Coaching</td><td>98.5 hrs</td><td>110.5 hrs</td><td>134.5 hrs</td></tr>
+          <tr><td>04</td><td>Relationship Coaching</td><td>93.5 hrs</td><td>105.5 hrs</td><td>129.5 hrs</td></tr>
+          <tr><td>05</td><td>Trauma Coaching</td><td>141 hrs</td><td>165 hrs</td><td>213 hrs</td></tr>
+        </tbody>
+      </table>
     </div>
 
-    <!-- Submission Instructions -->
-    <div class="instructions container">
-        <h2>📋 How to Claim Your Certification</h2>
-        <ol>
-            <li><strong>Complete</strong> all requirements for your chosen certification</li>
-            <li><strong>Document</strong> your hours, client results, and personal transformation</li>
-            <li><strong>Click</strong> the button below to open the submission form</li>
-            <li><strong>Fill out</strong> the JotForm with your details</li>
-            <li><strong>Submit</strong> the form (Joshua gets WhatsApp notification instantly)</li>
-            <li><strong>Receive</strong> your digital certificate within 2-3 business days</li>
-        </ol>
+    <!-- Concurrent hours -->
+    <div class="info-box reveal">
+      <h3>⚡ How Concurrent Hours Work</h3>
+      <p>One of the most powerful features of the AccessWorld certification model is that your training hours <strong>run concurrently across all five certifications.</strong> You are not required to repeat the same training five times.</p>
+      <p><strong>1-on-1 Coaching</strong> — Every session counts toward all five certifications simultaneously.</p>
+      <p><strong>Group Coaching & Mentoring</strong> — Each session you attend credits all programmes you are enrolled in at once.</p>
+      <p><strong>Tool Development & Training</strong> — NLP modules, the World Class Coach session, and cross-programme training apply to all five certifications concurrently.</p>
+      <p><em>A participant pursuing multiple certifications simultaneously can complete shared training once and have those hours recognised across every applicable programme.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CERTIFICATIONS ══════════════════════════════════════════ -->
+<section class="section" id="certifications" style="background:var(--ivory);padding-top:20px">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">The Five Certifications</div>
+      <h2 class="section-h2">Choose your <em>pathway</em></h2>
+      <p class="section-sub">Tap any certification below to expand the full requirements. All pathways begin with the Emotional Mastery Seminar as the flagship foundation.</p>
     </div>
 
-    <!-- JotForm Button -->
-    <div class="form-section">
-        <div class="container">
-            <h2>Ready to Submit?</h2>
-            <p>Click below to open the certification submission form. Joshua will receive a WhatsApp notification the moment you submit.</p>
-            
-            <!-- REPLACE THIS LINK WITH YOUR JOTFORM URL -->
-            <a href="YOUR-JOTFORM-URL-HERE" target="_blank" class="jotform-btn">
-                <i class="fas fa-file-certificate"></i>
-                Submit Certification via JotForm
-            </a>
-            
-            <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">
-                <i class="fas fa-external-link-alt"></i>
-                Form opens in new tab. WhatsApp notification sent instantly to Joshua.
-            </p>
+    <!-- NLP -->
+    <div class="accordion nlp reveal">
+      <button class="accordion-trigger" onclick="toggle(this)">
+        <div class="acc-left">
+          <span class="acc-icon">🧠</span>
+          <div>
+            <div class="acc-title">NLP Coach Practitioner Certificate</div>
+            <div class="acc-sub">Language patterns · Behavioural modelling · Anchoring · Reframing · Subconscious reprogramming</div>
+          </div>
         </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+          <span class="acc-badge">Foundation: 96.5 hrs</span>
+          <span class="acc-arrow">▾</span>
+        </div>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="req-cols">
+            <div class="req-group">
+              <div class="req-group-title">Foundation — Seminars & Core Training</div>
+              <div class="req-item"><strong>Emotional Mastery 2-Day Seminar</strong> — Flagship Programme (16 hrs)</div>
+              <div class="req-item">10 NLP Training Modules × 2 hrs each (20 hrs)</div>
+              <div class="req-item">2 NLP Foundation Sessions × 90 mins (3 hrs)</div>
+              <div class="req-item">Seminar 2 — 2-Day (16 hrs)</div>
+              <div class="req-item">Seminar 3 — 2-Day (16 hrs)</div>
+              <div class="req-item">15 Group Coaching & Mentoring Sessions × 90 mins (22.5 hrs)</div>
+              <div class="req-item">"How to Become a World Class Coach" Session (3 hrs)</div>
+              <div class="req-item">3 NLP Process Recordings — closed-eye process only, not a full session (live or recorded)</div>
+            </div>
+            <div class="req-group">
+              <div class="req-group-title">Additional Training — Choose One Path</div>
+              <div class="req-item"><strong>Option A:</strong> 6 months 1-on-1 coaching — 12 sessions (12 hrs)</div>
+              <div class="req-item"><strong>Option B:</strong> 24 Group Mentoring Sessions × 90 mins (36 hrs)</div>
+              <div class="req-group-title" style="margin-top:20px">External Practice Required</div>
+              <div class="req-item">Apply NLP processes with practice clients</div>
+              <div class="req-item">Submit process recordings to Joshua Roy</div>
+              <div class="req-item">3-Month Morning Routine (1 hr, 5 days/week — personal commitment)</div>
+              <div class="totals-box">
+                <div class="totals-title">Total Certification Hours</div>
+                <div class="total-row"><span class="total-label">With 1-on-1 Coaching</span><span class="total-val">108.5 hrs</span></div>
+                <div class="total-row"><span class="total-label">With Group Mentoring</span><span class="total-val">132.5 hrs</span></div>
+                <div class="concurrent-note">⚡ Hours count concurrently across all certifications</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>AccessWorld Seminars Certification Program</p>
-            <p>Questions? WhatsApp Joshua at +61 432 119 091</p>
-            <p style="margin-top: 20px; opacity: 0.8; font-size: 0.9rem;">
-                &copy; 2024 AccessWorld Seminars. All rights reserved.
-            </p>
+    <!-- WELLNESS -->
+    <div class="accordion well reveal">
+      <button class="accordion-trigger" onclick="toggle(this)">
+        <div class="acc-left">
+          <span class="acc-icon">🌿</span>
+          <div>
+            <div class="acc-title">Wellness Coaching Certificate</div>
+            <div class="acc-sub">Whole-body health · Cellular nutrition · Breathwork · Alkaline living · Sustainable lifestyle change</div>
+          </div>
         </div>
-    </footer>
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+          <span class="acc-badge">Foundation: 109.5 hrs</span>
+          <span class="acc-arrow">▾</span>
+        </div>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="req-cols">
+            <div class="req-group">
+              <div class="req-group-title">Foundation — Seminars & Core Training</div>
+              <div class="req-item"><strong>Emotional Mastery 2-Day Seminar</strong> — Flagship Programme (16 hrs)</div>
+              <div class="req-item">Ultimate Health 2-Day Webinar (16 hrs)</div>
+              <div class="req-item">NSR Nervous System Reprogramming 2-Day Webinar (16 hrs)</div>
+              <div class="req-item">Seminar 2 — 2-Day (16 hrs)</div>
+              <div class="req-item">Seminar 3 — 2-Day (16 hrs)</div>
+              <div class="req-item">10 NLP Training Modules × 2 hrs each (20 hrs)</div>
+              <div class="req-item">15 Group Coaching & Mentoring Sessions × 90 mins (22.5 hrs)</div>
+              <div class="req-item">"How to Become a World Class Coach" Session (3 hrs)</div>
+              <div class="req-item">3 NLP Process Recordings — closed-eye process only (live or recorded)</div>
+            </div>
+            <div class="req-group">
+              <div class="req-group-title">Additional Training — Choose One Path</div>
+              <div class="req-item"><strong>Option A:</strong> 6 months 1-on-1 coaching — 12 sessions (12 hrs)</div>
+              <div class="req-item"><strong>Option B:</strong> 24 Group Mentoring Sessions × 90 mins (36 hrs)</div>
+              <div class="req-group-title" style="margin-top:20px">External Practice Required</div>
+              <div class="req-item">Apply wellness coaching frameworks with at least 2 practice clients</div>
+              <div class="req-item">3-Month Morning Routine (1 hr, 5 days/week — personal commitment)</div>
+              <div class="totals-box">
+                <div class="totals-title">Total Certification Hours</div>
+                <div class="total-row"><span class="total-label">With 1-on-1 Coaching</span><span class="total-val">121.5 hrs</span></div>
+                <div class="total-row"><span class="total-label">With Group Mentoring</span><span class="total-val">145.5 hrs</span></div>
+                <div class="concurrent-note">⚡ Hours count concurrently across all certifications</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <script>
-        // Simple WhatsApp reminder
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Certification page loaded. Remember: Replace YOUR-JOTFORM-URL-HERE with actual JotForm URL');
-        });
-    </script>
+    <!-- MINDSET -->
+    <div class="accordion mind reveal">
+      <button class="accordion-trigger" onclick="toggle(this)">
+        <div class="acc-left">
+          <span class="acc-icon">⚡</span>
+          <div>
+            <div class="acc-title">Mindset Coaching Certificate</div>
+            <div class="acc-sub">Rewiring limiting beliefs · Mental resilience · Emotional mastery · Identity-level transformation</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+          <span class="acc-badge">Foundation: 98.5 hrs</span>
+          <span class="acc-arrow">▾</span>
+        </div>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="req-cols">
+            <div class="req-group">
+              <div class="req-group-title">Foundation — Seminars & Core Training</div>
+              <div class="req-item"><strong>Emotional Mastery 2-Day Seminar</strong> — Flagship Programme (16 hrs)</div>
+              <div class="req-item">Life Skills 2-Day Seminar (16 hrs)</div>
+              <div class="req-item">Seminar 2 — 2-Day (16 hrs)</div>
+              <div class="req-item">Seminar 3 — 2-Day (16 hrs)</div>
+              <div class="req-item">10 NLP Training Modules × 2 hrs each (20 hrs)</div>
+              <div class="req-item">15 Group Coaching & Mentoring Sessions × 90 mins (22.5 hrs)</div>
+              <div class="req-item">15 Personal Strategic Visioning Sessions × 20 mins (5 hrs)</div>
+              <div class="req-item">"How to Become a World Class Coach" Session (3 hrs)</div>
+              <div class="req-item">3 NLP Process Recordings — closed-eye process only (live or recorded)</div>
+            </div>
+            <div class="req-group">
+              <div class="req-group-title">Additional Training — Choose One Path</div>
+              <div class="req-item"><strong>Option A:</strong> 6 months 1-on-1 coaching — 12 sessions (12 hrs)</div>
+              <div class="req-item"><strong>Option B:</strong> 24 Group Mentoring Sessions × 90 mins (36 hrs)</div>
+              <div class="req-group-title" style="margin-top:20px">External Practice Required</div>
+              <div class="req-item">3 Visioning Sessions facilitated for others</div>
+              <div class="req-item">3-Month Morning Routine (1 hr, 5 days/week — personal commitment)</div>
+              <div class="totals-box">
+                <div class="totals-title">Total Certification Hours</div>
+                <div class="total-row"><span class="total-label">With 1-on-1 Coaching</span><span class="total-val">110.5 hrs</span></div>
+                <div class="total-row"><span class="total-label">With Group Mentoring</span><span class="total-val">134.5 hrs</span></div>
+                <div class="concurrent-note">⚡ Hours count concurrently across all certifications</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RELATIONSHIP -->
+    <div class="accordion rel reveal">
+      <button class="accordion-trigger" onclick="toggle(this)">
+        <div class="acc-left">
+          <span class="acc-icon">❤️</span>
+          <div>
+            <div class="acc-title">Relationship Coaching Certificate</div>
+            <div class="acc-sub">Communication dynamics · Conflict resolution · Love languages · Attachment styles · Healthy connections</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+          <span class="acc-badge">Foundation: 93.5 hrs</span>
+          <span class="acc-arrow">▾</span>
+        </div>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="req-cols">
+            <div class="req-group">
+              <div class="req-group-title">Foundation — Seminars & Core Training</div>
+              <div class="req-item"><strong>Emotional Mastery 2-Day Seminar</strong> — Flagship Programme (16 hrs)</div>
+              <div class="req-item">Full Relationship 2-Day Webinar (16 hrs)</div>
+              <div class="req-item">Seminar 2 — 2-Day (16 hrs)</div>
+              <div class="req-item">Seminar 3 — 2-Day (16 hrs)</div>
+              <div class="req-item">10 NLP Training Modules × 2 hrs each (20 hrs)</div>
+              <div class="req-item">15 Group Coaching & Mentoring Sessions × 90 mins (22.5 hrs)</div>
+              <div class="req-item">Relationship Session Demonstration — live or recorded</div>
+              <div class="req-item">"How to Become a World Class Coach" Session (3 hrs)</div>
+              <div class="req-item">3 NLP Process Recordings — closed-eye process only (live or recorded)</div>
+            </div>
+            <div class="req-group">
+              <div class="req-group-title">Additional Training — Choose One Path</div>
+              <div class="req-item"><strong>Option A:</strong> 6 months 1-on-1 coaching — 12 sessions (12 hrs)</div>
+              <div class="req-item"><strong>Option B:</strong> 24 Group Mentoring Sessions × 90 mins (36 hrs)</div>
+              <div class="req-group-title" style="margin-top:20px">External Practice Required</div>
+              <div class="req-item">Practice relationship coaching sessions with peers or clients</div>
+              <div class="req-item">3-Month Morning Routine (1 hr, 5 days/week — personal commitment)</div>
+              <div class="totals-box">
+                <div class="totals-title">Total Certification Hours</div>
+                <div class="total-row"><span class="total-label">With 1-on-1 Coaching</span><span class="total-val">105.5 hrs</span></div>
+                <div class="total-row"><span class="total-label">With Group Mentoring</span><span class="total-val">129.5 hrs</span></div>
+                <div class="concurrent-note">⚡ Hours count concurrently across all certifications</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRAUMA -->
+    <div class="accordion trau reveal">
+      <button class="accordion-trigger" onclick="toggle(this)">
+        <div class="acc-left">
+          <span class="acc-icon">🌊</span>
+          <div>
+            <div class="acc-title">Trauma Coaching Certificate</div>
+            <div class="acc-sub">Full 5-seminar curriculum · NSR · Emotional clearing · Somatic healing · Trauma-informed practice</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+          <span class="acc-badge">Foundation: 141 hrs</span>
+          <span class="acc-arrow">▾</span>
+        </div>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="req-cols">
+            <div class="req-group">
+              <div class="req-group-title">Complete 5-Seminar Curriculum</div>
+              <div class="req-item"><strong>Emotional Mastery 2-Day Seminar</strong> — Flagship (16 hrs)</div>
+              <div class="req-item">Ultimate Health 2-Day Seminar (16 hrs)</div>
+              <div class="req-item">Life Skills 2-Day Seminar (16 hrs)</div>
+              <div class="req-item">NSR Nervous System Reprogramming 2-Day Seminar (16 hrs)</div>
+              <div class="req-item">Relationships 2-Day Seminar (16 hrs)</div>
+              <div class="req-item">Emotional Clearing Webinar × 3 times (3.5 hrs × 3 = 10.5 hrs)</div>
+            </div>
+            <div class="req-group">
+              <div class="req-group-title">Core Training Components</div>
+              <div class="req-item">10 NLP Training Modules × 2 hrs each (20 hrs)</div>
+              <div class="req-item">15 Group Coaching & Mentoring Sessions × 90 mins (22.5 hrs)</div>
+              <div class="req-item">15 Guided Meditation Sessions × 20 mins (5 hrs)</div>
+              <div class="req-item">4-Step Healing Process Demonstration — live or recorded</div>
+              <div class="req-item">Personal Healing Experience Sharing with Joshua Roy</div>
+              <div class="req-item">"How to Become a World Class Coach" Session (3 hrs)</div>
+              <div class="req-item">3 NLP Process Recordings — closed-eye process only (live or recorded)</div>
+            </div>
+            <div class="req-group">
+              <div class="req-group-title">Additional Training — Choose One Path</div>
+              <div class="req-item"><strong>Option A:</strong> 6+ months 1-on-1 coaching — 24 sessions (24 hrs)</div>
+              <div class="req-item"><strong>Option B:</strong> 48 Group Mentoring Sessions × 90 mins (72 hrs)</div>
+              <div class="req-group-title" style="margin-top:20px">External Practice Required</div>
+              <div class="req-item">Practice 4-step healing process with others</div>
+              <div class="req-item">Share personal healing experience with Joshua Roy</div>
+              <div class="req-item">3-Month Morning Routine (1 hr, 5 days/week)</div>
+              <div class="totals-box">
+                <div class="totals-title">Total Certification Hours</div>
+                <div class="total-row"><span class="total-label">With 1-on-1 Coaching</span><span class="total-val">165 hrs</span></div>
+                <div class="total-row"><span class="total-label">With Group Mentoring</span><span class="total-val">213 hrs</span></div>
+                <div class="concurrent-note">⚡ Hours count concurrently across all certifications</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ TIMELINE ════════════════════════════════════════════════ -->
+<section class="section" id="timeline">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">You Can Do This</div>
+      <h2 class="section-h2">Achievable in <em>3 to 6 months.</em></h2>
+      <p class="section-sub">Depending on your commitment, drive, and determination — even the most comprehensive certification is within reach well within a year.</p>
+    </div>
+
+    <div class="info-box reveal">
+      <h3>📅 What the Numbers Look Like</h3>
+      <p>If you've looked at the hours and wondered whether this is achievable alongside a busy life — the answer is <strong>yes. Absolutely yes.</strong></p>
+      <div class="hrs-grid">
+        <div class="hrs-block"><span class="hrs-num">2.3</span><span class="hrs-label">Hours per week to become a fully qualified NLP Coach in 12 months</span></div>
+        <div class="hrs-block"><span class="hrs-num">4</span><span class="hrs-label">Hours per week completes even the Trauma Certificate within 12 months</span></div>
+        <div class="hrs-block"><span class="hrs-num">3–6</span><span class="hrs-label">Months is genuinely achievable with real commitment and drive</span></div>
+        <div class="hrs-block"><span class="hrs-num">5</span><span class="hrs-label">Certifications you can pursue concurrently — shared hours apply to all</span></div>
+      </div>
+      <p>All training can be attended <strong>live or via recording.</strong> Both count equally. Show up when you can — watch the replay when you can't. Keep moving.</p>
+      <p>The question is not whether you have the time. <strong>The question is whether you are willing to invest it in yourself.</strong></p>
+    </div>
+
+    <div class="pale-box reveal">
+      <h3>★ Best Practice — From Joshua Roy</h3>
+      <p>I encourage every participant to attend as many live sessions as possible. There is a quality of learning, presence, and transformation in a live room that recordings cannot fully replicate. Show up. Be in the room. Engage.</p>
+      <p>Between live sessions, actively watch recordings, listen to podcasts, and engage with any training material that feeds your growth. Every hour you invest counts. Use replays and self-directed study to keep moving forward.</p>
+      <p>The goal is not hours. The goal is to develop yourself beyond the average person — to become exceptional, exemplary, and outstanding, both as an individual and as a coach.</p>
+      <p>The world does not need more average coaches. It needs coaches who have done the work — who show up with depth, skill, and the kind of earned authority that only comes from genuine personal investment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CERTIFICATE ══════════════════════════════════════════════ -->
+<section class="cert-section" id="certificate">
+  <div class="section-tag">Your Achievement</div>
+  <h2 class="section-h2" style="color:var(--white);max-width:560px;margin:0 auto 14px">This is what you are<br>working <em>toward.</em></h2>
+  <p style="font-size:15px;color:rgba(255,255,255,.55);max-width:520px;margin:0 auto 52px;line-height:1.7">Upon completing your certification requirements, you will receive your AccessWorld coaching certificate — a recognition of genuine transformation and professional achievement.</p>
+  <div class="cert-img-wrap reveal">
+    <div class="cert-img-frame"></div>
+    <img src="https://i.ibb.co/HL5wSWmK/Screenshot-2026-03-18-150409.png" alt="AccessWorld NLP Coach Practitioner Certificate" class="cert-img">
+  </div>
+</section>
+
+<!-- ═══ KEY NOTES ════════════════════════════════════════════════ -->
+<section class="section" id="notes" style="background:var(--ivory)">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">Important Information</div>
+      <h2 class="section-h2">Everything you need<br>to <em>know.</em></h2>
+      <p class="section-sub">Tap any heading to expand the details.</p>
+    </div>
+
+    <div class="reveal">
+
+      <div class="notes-accordion">
+        <button class="notes-trigger" onclick="toggleNote(this)">
+          <span class="notes-trigger-title"><span class="ni">📺</span> Live or Recorded — Both Count</span>
+          <span class="notes-arrow">▾</span>
+        </button>
+        <div class="notes-body"><div class="notes-content">All training components — seminars, webinars, group sessions, NLP modules — can be attended live or accessed via recording. Both count equally toward your certification hours. This means you can fit your learning around your life without falling behind.</div></div>
+      </div>
+
+      <div class="notes-accordion">
+        <button class="notes-trigger" onclick="toggleNote(this)">
+          <span class="notes-trigger-title"><span class="ni">⚡</span> Concurrent Hours — Train Once, Count Everywhere</span>
+          <span class="notes-arrow">▾</span>
+        </button>
+        <div class="notes-body"><div class="notes-content">Hours run concurrently across all five certifications. One coaching session, one group mentoring attendance, one training module — credits to every programme you are enrolled in simultaneously. You do not repeat the same training to earn multiple certificates.</div></div>
+      </div>
+
+      <div class="notes-accordion">
+        <button class="notes-trigger" onclick="toggleNote(this)">
+          <span class="notes-trigger-title"><span class="ni">🎙️</span> NLP Process Recordings — What to Submit</span>
+          <span class="notes-arrow">▾</span>
+        </button>
+        <div class="notes-body"><div class="notes-content">Submit the specific NLP process only — closed-eye, set to music if desired. Do not submit a full coaching session. The recording demonstrates your ability to guide a client through an NLP intervention cleanly and effectively. Sessions can be done live or recorded.</div></div>
+      </div>
+
+      <div class="notes-accordion">
+        <button class="notes-trigger" onclick="toggleNote(this)">
+          <span class="notes-trigger-title"><span class="ni">🌅</span> Morning Routine Commitment</span>
+          <span class="notes-arrow">▾</span>
+        </button>
+        <div class="notes-body"><div class="notes-content">A 3-month morning routine commitment of 1 hour, 5 days per week is required as a personal practice for all programmes. This does not count toward training hours — it counts toward becoming the kind of person who genuinely coaches from lived experience.</div></div>
+      </div>
+
+      <div class="notes-accordion">
+        <button class="notes-trigger" onclick="toggleNote(this)">
+          <span class="notes-trigger-title"><span class="ni">🛤️</span> Coaching Paths — Your Options</span>
+          <span class="notes-arrow">▾</span>
+        </button>
+        <div class="notes-body"><div class="notes-content">
+          All programmes offer two coaching paths:<ul>
+            <li>1-on-1 Coaching: 12 sessions over 6 months (most programmes)</li>
+            <li>1-on-1 Coaching: 24 sessions over 6+ months (Trauma only)</li>
+            <li>Group Mentoring: 24 sessions × 90 mins each (most programmes)</li>
+            <li>Group Mentoring: 48 sessions × 90 mins each (Trauma only)</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="notes-accordion">
+        <button class="notes-trigger" onclick="toggleNote(this)">
+          <span class="notes-trigger-title"><span class="ni">🏋️</span> External Practice Requirements</span>
+          <span class="notes-arrow">▾</span>
+        </button>
+        <div class="notes-body"><div class="notes-content">Most programmes include external practice — visioning sessions for others, relationship demonstrations, healing process practice. These are required but do not count toward training hours. They count toward genuine competency. Practice on real people. It is the most important part.</div></div>
+      </div>
+
+      <div class="notes-accordion">
+        <button class="notes-trigger" onclick="toggleNote(this)">
+          <span class="notes-trigger-title"><span class="ni">🏛️</span> The Flagship Foundation — Emotional Mastery</span>
+          <span class="notes-arrow">▾</span>
+        </button>
+        <div class="notes-body"><div class="notes-content">Every certification begins with the Emotional Mastery 2-Day Seminar. This is the flagship programme of AccessWorld Seminars and the non-negotiable foundation for all five pathways. It is not optional. It is where everything begins.</div></div>
+      </div>
+
+      <div class="notes-accordion">
+        <button class="notes-trigger" onclick="toggleNote(this)">
+          <span class="notes-trigger-title"><span class="ni">🌐</span> AccessWorld Website</span>
+          <span class="notes-arrow">▾</span>
+        </button>
+        <div class="notes-body"><div class="notes-content">For full programme details, upcoming events, and to enrol: <a href="https://accessworldseminars-ship-it.github.io/results" target="_blank" style="color:var(--navy);font-weight:700;text-decoration:underline">accessworldseminars-ship-it.github.io/results</a></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ══════════════════════════════════════════════════ -->
+<section class="section" id="contact" style="text-align:center">
+  <div class="reveal">
+    <div class="section-tag" style="text-align:center">Begin Your Journey</div>
+    <h2 class="section-h2" style="text-align:center;max-width:480px;margin:0 auto 14px">Ready to become an <em>exceptional</em> coach?</h2>
+    <p class="section-sub" style="text-align:center;margin:0 auto 44px">Contact Joshua Roy directly to choose your pathway and get started.</p>
+  </div>
+  <div class="contact-card reveal">
+    <h3>Get <em>Started</em></h3>
+    <p>To begin your certification journey, contact Joshua Roy directly. He will help you choose the right pathway and build a plan that fits your life.</p>
+    <div class="contact-row">
+      <span class="ci-icon">📱</span>
+      <div><div class="ci-label">Phone / WhatsApp</div><div class="ci-val">0432 119 091</div></div>
+    </div>
+    <div class="contact-row">
+      <span class="ci-icon">✉️</span>
+      <div><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:accessworldseminars@gmail.com">accessworldseminars@gmail.com</a></div></div>
+    </div>
+    <div class="contact-row">
+      <span class="ci-icon">🌐</span>
+      <div><div class="ci-label">Website</div><div class="ci-val"><a href="https://accessworldseminars-ship-it.github.io/results" target="_blank">accessworldseminars-ship-it.github.io/results</a></div></div>
+    </div>
+    <div class="cta-btns">
+      <a href="https://wa.me/61432119091" class="btn-gold" target="_blank">💬 Message on WhatsApp</a>
+      <a href="https://accessworldseminars-ship-it.github.io/results" class="btn-outline" target="_blank">Visit Website</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>AccessWorld Seminars &copy; 2026 &nbsp;·&nbsp; Brisbane, Australia &nbsp;·&nbsp; ABN: 72 546 137 885 &nbsp;·&nbsp; Joshua Roy</p>
+</footer>
+
+<script>
+// accordion for cert cards
+function toggle(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  // close all
+  document.querySelectorAll('.accordion-trigger.open').forEach(b => {
+    b.classList.remove('open');
+    b.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) {
+    btn.classList.add('open');
+    body.classList.add('open');
+  }
+}
+
+// accordion for notes
+function toggleNote(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+
+// scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); }});
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
