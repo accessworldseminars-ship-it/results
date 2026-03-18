@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | AccessWorld Seminars</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0e1b35;
+            --navy-mid: #162240;
+            --navy-light: #1e2f55;
+            --gold: #c9a84c;
+            --gold-light: #e2c47a;
+            --gold-pale: #f5e8c8;
+            --white: #ffffff;
+            --gray: #9aa3b5;
+            --text: #d8dde8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--navy);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: rgba(14,27,53,0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(201,168,76,0.25);
+            z-index: 1000;
+            padding: 0 3%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+        .nav-logo img {
+            height: 48px;
+            filter: drop-shadow(0 0 8px rgba(201,168,76,0.4));
+        }
+        .nav-links { display: flex; align-items: center; gap: 2px; }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 6px 10px;
+            border-radius: 4px;
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+        .nav-links a:hover { background: rgba(201,168,76,0.15); color: var(--gold-light); }
+        .nav-links a.active { color: var(--gold); }
+        .nav-links a.cta-nav {
+            background: linear-gradient(135deg, var(--gold), #a87d28);
+            color: var(--navy);
+            font-weight: 700;
+            padding: 7px 14px;
+            border-radius: 30px;
+            margin-left: 6px;
+        }
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 68px; left: 0; width: 100%;
+            background: rgba(14,27,53,0.99);
+            border-bottom: 1px solid rgba(201,168,76,0.2);
+            padding: 20px;
+            z-index: 999;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 12px 16px;
+            border-radius: 6px;
+            border: 1px solid rgba(201,168,76,0.15);
+            transition: all 0.2s;
+        }
+        .mobile-menu a:hover { background: rgba(201,168,76,0.15); color: var(--gold); }
+        .mobile-menu a.cta-nav {
+            background: linear-gradient(135deg, var(--gold), #a87d28);
+            color: var(--navy);
+            border: none;
+            text-align: center;
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            padding: 130px 5% 70px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(160deg, #0a1428 0%, #0e1b35 60%, #14233f 100%);
+        }
+        .page-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .page-header::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(ellipse at 80% 40%, rgba(201,168,76,0.07), transparent 65%);
+        }
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 60px;
+            align-items: center;
+        }
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(201,168,76,0.12);
+            border: 1px solid rgba(201,168,76,0.3);
+            border-radius: 30px;
+            padding: 6px 18px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 20px;
+        }
+        .eyebrow span { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; display: inline-block; }
+        .page-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        .page-header h1 em { font-style: italic; color: var(--gold); }
+        .page-header p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--text);
+            max-width: 500px;
+        }
+        .profile-card {
+            background: rgba(22,34,64,0.85);
+            border: 1px solid rgba(201,168,76,0.25);
+            border-radius: 16px;
+            padding: 32px 28px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            min-width: 240px;
+        }
+        .profile-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 20%;
+            border: 3px solid var(--gold);
+            margin-bottom: 14px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .profile-card .name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+        .profile-card .role {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 18px;
+        }
+        .wa-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #25D366;
+            color: white;
+            padding: 9px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.25s;
+        }
+        .wa-pill:hover { background: #1da851; transform: translateY(-2px); }
+
+        /* QUICK CONTACTS */
+        .quick-section {
+            background: var(--navy-mid);
+            padding: 50px 5%;
+        }
+        .quick-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .quick-card {
+            background: rgba(14,27,53,0.6);
+            border: 1px solid rgba(201,168,76,0.18);
+            border-radius: 12px;
+            padding: 28px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .quick-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+            background: rgba(201,168,76,0.05);
+        }
+        .quick-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 12px;
+            background: rgba(201,168,76,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        .quick-icon i { color: var(--gold); font-size: 1.4rem; }
+        .quick-card h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .quick-card p {
+            font-size: 0.82rem;
+            color: var(--gray);
+            margin-bottom: 12px;
+        }
+        .quick-card a {
+            color: var(--gold-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: block;
+            transition: color 0.2s;
+        }
+        .quick-card a:hover { color: var(--gold); }
+
+        /* FORM SECTION */
+        .form-section {
+            padding: 90px 5%;
+            background: var(--navy);
+        }
+        .form-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 440px;
+            gap: 70px;
+            align-items: start;
+        }
+        .form-side-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .form-side-label::before {
+            content: '';
+            width: 28px;
+            height: 2px;
+            background: var(--gold);
+        }
+        .form-side h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .form-side h2 em { font-style: italic; color: var(--gold); }
+        .form-side p {
+            font-size: 0.98rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 40px;
+        }
+        .wa-note {
+            background: rgba(37,211,102,0.08);
+            border: 1px solid rgba(37,211,102,0.25);
+            border-radius: 10px;
+            padding: 18px 22px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+        .wa-note i { color: #25D366; font-size: 1.3rem; margin-top: 2px; flex-shrink: 0; }
+        .wa-note p { font-size: 0.85rem; color: var(--text); margin-bottom: 0; line-height: 1.6; }
+        .side-promises {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .promise {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.88rem;
+            color: var(--text);
+        }
+        .promise i { color: var(--gold); flex-shrink: 0; }
+
+        /* THE FORM */
+        .form-box {
+            background: rgba(22,34,64,0.7);
+            border: 1px solid rgba(201,168,76,0.2);
+            border-radius: 16px;
+            padding: 44px 40px;
+            backdrop-filter: blur(8px);
+        }
+        .form-box h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(201,168,76,0.2);
+        }
+        .form-group {
+            margin-bottom: 22px;
+        }
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 8px;
+        }
+        .form-group label i { width: 14px; font-size: 0.85rem; }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(14,27,53,0.6);
+            border: 1px solid rgba(201,168,76,0.2);
+            border-radius: 6px;
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.95rem;
+            color: var(--white);
+            transition: border-color 0.25s, background 0.25s;
+            outline: none;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: rgba(154,163,181,0.5); }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--gold);
+            background: rgba(201,168,76,0.05);
+        }
+        .form-group textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+        .form-group select { cursor: pointer; }
+        .form-group select option { background: #162240; color: var(--white); }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+        .radio-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .radio-row label {
+            font-size: 0.88rem;
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: 0;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            cursor: pointer;
+        }
+        .radio-row input[type="radio"] {
+            width: auto;
+            accent-color: var(--gold);
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Barlow', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        .submit-btn:hover {
+            background: #1da851;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37,211,102,0.3);
+        }
+        .form-footer-note {
+            text-align: center;
+            margin-top: 14px;
+            font-size: 0.78rem;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+        .form-footer-note i { color: #25D366; }
+
+        /* FOOTER */
+        .footer {
+            background: #080f1e;
+            padding: 50px 5% 28px;
+            border-top: 1px solid rgba(201,168,76,0.12);
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-bottom img { height: 40px; filter: drop-shadow(0 0 6px rgba(201,168,76,0.3)); }
+        .footer-bottom p { font-size: 0.78rem; color: rgba(154,163,181,0.5); }
+        .footer-bottom a {
+            color: var(--gold-light);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .footer-bottom a:hover { color: var(--gold); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+            .header-inner { grid-template-columns: 1fr; }
+            .profile-card { display: none; }
+            .quick-inner { grid-template-columns: 1fr; }
+            .form-inner { grid-template-columns: 1fr; }
+            .form-box { padding: 32px 28px; }
+        }
+        @media (max-width: 640px) {
+            .form-row { grid-template-columns: 1fr; }
+            .form-box { padding: 24px 20px; }
+        }
+
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+    <div class="nav-logo">
+        <a href="https://accessworldseminars-ship-it.github.io/results/"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars"></a>
+    </div>
+    <div class="nav-links">
+        <a href="https://accessworldseminars-ship-it.github.io/results/"><i class="fas fa-home"></i> Home</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/BecomeACoach"><i class="fas fa-graduation-cap"></i> Coach Academy</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/Bio"><i class="fas fa-user"></i> Biography</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/offers"><i class="fas fa-tags"></i> Programs</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/webinars"><i class="fas fa-video"></i> Webinars</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/s"><i class="fas fa-calendar"></i> Events</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/ICS"><i class="fas fa-compass"></i> Find Your Path</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/Testimony"><i class="fas fa-star"></i> Testimonials</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/contactform" class="active"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="https://form.jotform.com/250184868189875" class="cta-nav" target="_blank"><i class="fas fa-calendar-check"></i> Free Session</a>
+    </div>
+    <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="https://accessworldseminars-ship-it.github.io/results/"><i class="fas fa-home"></i> Home</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/BecomeACoach"><i class="fas fa-graduation-cap"></i> Coach Academy</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/Bio"><i class="fas fa-user"></i> Biography</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/offers"><i class="fas fa-tags"></i> Programs & Offers</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/webinars"><i class="fas fa-video"></i> Webinars</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/s"><i class="fas fa-calendar"></i> Events Schedule</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/ICS"><i class="fas fa-compass"></i> Find Your Path</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/Testimony"><i class="fas fa-star"></i> Testimonials</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/contactform"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="https://form.jotform.com/250184868189875" class="cta-nav" target="_blank"><i class="fas fa-calendar-check"></i> Book Free Session</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+    <div class="header-inner">
+        <div class="reveal">
+            <div class="eyebrow"><span></span> Let's Connect</div>
+            <h1>Start Your Journey<br>Toward <em>Real Change</em></h1>
+            <p>Whether you're ready to dive in or just exploring — reach out. The fastest path to a different life is a single conversation.</p>
+        </div>
+        <div class="profile-card reveal" style="transition-delay:0.15s">
+            <img src="https://i.ibb.co/F4c0V58q/Screenshot-2025-12-12-162510.png" alt="Joshua Roy">
+            <div class="name">Joshua Roy</div>
+            <div class="role">Results Coach · NLP · NSR</div>
+            <a href="https://wa.me/61432119091" class="wa-pill" target="_blank">
+                <i class="fab fa-whatsapp"></i> +61 432 119 091
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- QUICK CONTACTS -->
+<div class="quick-section">
+    <div class="quick-inner">
+        <div class="quick-card reveal">
+            <div class="quick-icon"><i class="fab fa-whatsapp"></i></div>
+            <h3>WhatsApp</h3>
+            <p>Fastest response — usually within hours.</p>
+            <a href="https://wa.me/61432119091" target="_blank">+61 432 119 091</a>
+            <a href="https://wa.me/61432119091" target="_blank" style="color:var(--gold); font-size:0.82rem; margin-top:6px;">Click to chat now →</a>
+        </div>
+        <div class="quick-card reveal" style="transition-delay:0.1s">
+            <div class="quick-icon"><i class="fas fa-envelope"></i></div>
+            <h3>Email</h3>
+            <p>Response within 24 hours on business days.</p>
+            <a href="mailto:accessworldseminars@gmail.com">accessworldseminars@gmail.com</a>
+        </div>
+        <div class="quick-card reveal" style="transition-delay:0.2s">
+            <div class="quick-icon"><i class="fas fa-calendar-check"></i></div>
+            <h3>Free Strategy Session</h3>
+            <p>Book a complimentary Propulsion call.</p>
+            <a href="https://form.jotform.com/250184868189875" target="_blank">Book via JotForm →</a>
+        </div>
+    </div>
+</div>
+
+<!-- FORM -->
+<section class="form-section">
+    <div class="form-inner">
+        <div class="form-side reveal">
+            <div class="form-side-label">Send a Message</div>
+            <h2>Tell Me What<br>You're <em>Working Through</em></h2>
+            <p>Fill in the form and it will open WhatsApp with your message pre-filled. Just tap send — it goes straight to me and I'll get back to you personally.</p>
+            <div class="wa-note">
+                <i class="fab fa-whatsapp"></i>
+                <p><strong>Why WhatsApp?</strong> It's faster, more personal and you get a real reply from me — not an autoresponder. Your enquiry goes directly to my phone.</p>
+            </div>
+            <div class="side-promises">
+                <div class="promise"><i class="fas fa-check-circle"></i> Personal reply from Joshua (not a team)</div>
+                <div class="promise"><i class="fas fa-check-circle"></i> No pushy sales calls</div>
+                <div class="promise"><i class="fas fa-check-circle"></i> Honest guidance on the best next step for you</div>
+                <div class="promise"><i class="fas fa-check-circle"></i> Confidential and respectful</div>
+            </div>
+        </div>
+
+        <div class="form-box reveal" style="transition-delay:0.15s">
+            <h3><i class="fab fa-whatsapp" style="color:#25D366"></i> Send Via WhatsApp</h3>
+            <form id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Full Name *</label>
+                        <input type="text" id="name" required placeholder="Jane Smith">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-map-marker-alt"></i> Location *</label>
+                        <input type="text" id="location" required placeholder="Brisbane, QLD">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email *</label>
+                        <input type="email" id="email" required placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Phone *</label>
+                        <input type="tel" id="phone" required placeholder="0412 345 678">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-compass"></i> What do you want to work on? *</label>
+                    <select id="preference" required>
+                        <option value="" disabled selected>— Select area —</option>
+                        <option>Life & Results Coaching</option>
+                        <option>Nervous System Reprogramming (NSR)</option>
+                        <option>NLP & Mindset</option>
+                        <option>Health & Wellness</option>
+                        <option>Relationships</option>
+                        <option>Career & Leadership</option>
+                        <option>Wealth & Business Mindset</option>
+                        <option>Time Management</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-comment-alt"></i> What's going on for you right now? *</label>
+                    <textarea id="challenges" required placeholder="Briefly describe what you'd like help with and what's most important to you right now..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-bullhorn"></i> How did you hear about us?</label>
+                    <select id="hearAbout">
+                        <option value="">— Select —</option>
+                        <option>Google</option>
+                        <option>Facebook</option>
+                        <option>Instagram</option>
+                        <option>YouTube</option>
+                        <option>TikTok</option>
+                        <option>Friend / Referral</option>
+                        <option>Podcast</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-clipboard-list"></i> Have you done coaching before?</label>
+                    <div class="radio-row">
+                        <label><input type="radio" name="prev" value="Yes"> Yes</label>
+                        <label><input type="radio" name="prev" value="No" checked> No</label>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                </button>
+                <p class="form-footer-note">
+                    <i class="fas fa-info-circle"></i> This opens WhatsApp with your message ready to send. Free and instant.
+                </p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-bottom">
+        <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars">
+        <p>© 2026 AccessWorld Seminars · Joshua Roy · ABN: 72 546 137 885</p>
+        <a href="https://accessworldseminars-ship-it.github.io/results/">← Back to Home</a>
+    </div>
+</footer>
+
+<script>
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        hamburger.innerHTML = mobileMenu.classList.contains('open')
+            ? '<i class="fas fa-times"></i>'
+            : '<i class="fas fa-bars"></i>';
+    });
+    document.querySelectorAll('.mobile-menu a').forEach(a => {
+        a.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+    });
+
+    // Form → WhatsApp
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name      = document.getElementById('name').value.trim();
+        const location  = document.getElementById('location').value.trim();
+        const email     = document.getElementById('email').value.trim();
+        const phone     = document.getElementById('phone').value.trim();
+        const pref      = document.getElementById('preference').value;
+        const challenges= document.getElementById('challenges').value.trim();
+        const hear      = document.getElementById('hearAbout').value || 'Not specified';
+        const prev      = document.querySelector('input[name="prev"]:checked')?.value || 'Not specified';
+
+        if (!name || !location || !email || !phone || !pref || !challenges) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        const msg =
+            `*NEW COACHING ENQUIRY — ACCESSWORLD*%0A%0A` +
+            `*Name:* ${encodeURIComponent(name)}%0A` +
+            `*Location:* ${encodeURIComponent(location)}%0A` +
+            `*Email:* ${encodeURIComponent(email)}%0A` +
+            `*Phone:* ${encodeURIComponent(phone)}%0A` +
+            `*Focus Area:* ${encodeURIComponent(pref)}%0A` +
+            `*Situation:* ${encodeURIComponent(challenges)}%0A` +
+            `*Heard via:* ${encodeURIComponent(hear)}%0A` +
+            `*Previous coaching:* ${encodeURIComponent(prev)}`;
+
+        window.open(`https://wa.me/61432119091?text=${msg}`, '_blank');
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => obs.observe(r));
+</script>
+</body>
+</html>
