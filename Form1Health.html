@@ -3,74 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Ultimate Health | Mind Repatterning Seminar 2026</title>
-  <!-- Google Fonts + Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title>Ultimate Health | Mind Repatterning Seminar 2026 | AccessWorld Seminars</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* ===== ROOT VARIABLES (exact same as main design system) ===== */
     :root {
-      --primary-green: #2A7F6E;
-      --primary-dark: #1E5A4F;
-      --primary-light: #E6F4F0;
-      --accent-gold: #D4AF37;
-      --accent-soft: #F9F3E2;
-      --gray-dark: #2C3E3F;
-      --gray-medium: #5A6E6B;
-      --gray-light: #EFF2F1;
-      --white: #FFFFFF;
-      --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
-      --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.08);
-      --transition: all 0.3s ease;
+      --navy-deep:    #050a1a;
+      --navy-primary: #0f1a3d;
+      --navy-mid:     #1a2b5e;
+      --navy-light:   #2d3b6b;
+      --gold:         #d4af37;
+      --gold-light:   #f0d060;
+      --silver:       #c0c0c0;
+      --white:        #ffffff;
+      --text-gray:    #e0e0e0;
+      --glass-border: rgba(255,255,255,0.08);
+      --gold-border:  rgba(212,175,55,0.3);
+      --shadow:       0 10px 30px rgba(0,0,0,0.35);
+      --transition:   all 0.3s ease;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Open Sans', sans-serif;
-      background-color: var(--white);
-      color: var(--gray-dark);
-      line-height: 1.5;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy-deep);
+      color: var(--text-gray);
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
-    h1, h2, h3, h4, .nav-links a, .btn, .card-title {
-      font-family: 'Montserrat', sans-serif;
+    /* ── noise texture overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
     }
 
-    /* navigation */
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── NAVBAR ── */
     .navbar {
-      background: var(--white);
-      box-shadow: var(--shadow-sm);
-      padding: 1rem 2rem;
       position: sticky;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(2px);
-      background-color: rgba(255,255,255,0.96);
+      z-index: 200;
+      background: rgba(5, 10, 26, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 1rem 2rem;
     }
 
     .nav-container {
       max-width: 1280px;
       margin: 0 auto;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       flex-wrap: wrap;
+      gap: 1rem;
     }
 
-    .logo h2 {
-      font-weight: 700;
-      color: var(--primary-green);
-      font-size: 1.6rem;
-      letter-spacing: -0.3px;
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
     }
-    .logo span {
-      color: var(--accent-gold);
+
+    .logo-wrap img {
+      height: 48px;
+      width: 48px;
+      object-fit: contain;
+      border-radius: 50%;
+      border: 1px solid var(--gold-border);
+      background: var(--navy-mid);
+      padding: 2px;
+    }
+
+    .logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--silver) 60%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      white-space: nowrap;
     }
 
     .nav-links {
@@ -82,274 +107,682 @@
 
     .nav-links a {
       text-decoration: none;
-      font-weight: 600;
-      color: var(--gray-dark);
+      font-weight: 500;
+      color: var(--text-gray);
       transition: var(--transition);
-      font-size: 1rem;
+      font-size: 0.9rem;
       display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--gold);
+    }
+
+    /* ── HERO ── */
+    .hero-wrap {
+      position: relative;
+      padding: 5rem 2rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(26,43,94,0.9) 0%, var(--navy-deep) 70%);
+      z-index: 0;
+    }
+
+    /* animated radial pulse */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%);
+      top: -200px;
+      right: -200px;
+      animation: pulse 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); opacity: 0.5; }
+      to   { transform: scale(1.3); opacity: 1; }
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-gray);
+      max-width: 580px;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    /* TIMEZONE CLOCK PANEL */
+    .tz-panel {
+      background: rgba(26,43,94,0.5);
+      border: 1px solid var(--gold-border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .tz-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--primary-green);
+    .tz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
     }
 
-    /* buttons, cards, sections */
+    .tz-item {
+      background: rgba(5,10,26,0.5);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+    }
+
+    .tz-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--silver);
+      margin-bottom: 2px;
+    }
+
+    .tz-day1, .tz-day2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .tz-time {
+      font-size: 0.85rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .tz-note {
+      font-size: 0.7rem;
+      color: var(--silver);
+      margin-top: 2px;
+    }
+
+    /* HERO CTA */
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: var(--primary-green);
-      color: white;
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 600;
+      background: linear-gradient(135deg, var(--gold), #b8941f);
+      color: var(--navy-deep);
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 700;
       text-decoration: none;
       transition: var(--transition);
       border: none;
       cursor: pointer;
       font-size: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 0.02em;
     }
 
     .btn:hover {
-      background: var(--primary-dark);
       transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 8px 24px rgba(212,175,55,0.4);
     }
 
-    .btn-outline {
+    .btn-ghost {
       background: transparent;
-      border: 2px solid var(--primary-green);
-      color: var(--primary-green);
-    }
-    .btn-outline:hover {
-      background: var(--primary-green);
-      color: white;
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
     }
 
+    .btn-ghost:hover {
+      background: rgba(212,175,55,0.1);
+      box-shadow: 0 8px 24px rgba(212,175,55,0.15);
+    }
+
+    /* HERO RIGHT – sticky countdown box */
+    .hero-card {
+      background: rgba(15,26,61,0.8);
+      border: 1px solid var(--gold-border);
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .countdown-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .cd-unit {
+      background: rgba(5,10,26,0.6);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      text-align: center;
+      padding: 0.75rem 0.5rem;
+    }
+
+    .cd-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .cd-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--silver);
+      margin-top: 4px;
+    }
+
+    .seats-note {
+      background: rgba(212,175,55,0.08);
+      border: 1px solid var(--gold-border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-size: 0.82rem;
+      color: var(--text-gray);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .seats-note strong { color: var(--gold); }
+
+    /* ── SECTION ── */
     .section {
-      padding: 80px 24px;
+      padding: 80px 2rem;
       max-width: 1280px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
-    .hero {
-      background: linear-gradient(135deg, var(--primary-light) 0%, white 100%);
-      border-radius: 2rem;
-      margin: 2rem auto;
-      padding: 3rem 2rem;
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
     }
 
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── CARDS ── */
     .card {
-      background: var(--white);
-      border-radius: 28px;
-      box-shadow: var(--shadow-sm);
-      padding: 28px;
+      background: rgba(15,26,61,0.6);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      padding: 2rem;
       transition: var(--transition);
-      border: 1px solid rgba(42,127,110,0.1);
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--primary-light);
+      backdrop-filter: blur(4px);
     }
 
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+      border-color: var(--gold-border);
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--gold), var(--silver));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .card ul {
+      margin-left: 1.1rem;
+      color: var(--text-gray);
+    }
+
+    .card ul li {
+      margin-bottom: 0.4rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* ── REGISTRATION FORM ── */
+    .form-section {
+      background: rgba(15,26,61,0.7);
+      border: 1px solid var(--gold-border);
+      border-radius: 10px;
+      padding: 3rem;
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
+    }
+
+    .form-section h2 {
+      font-size: 2.2rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.4rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 7px;
+      color: var(--text-gray);
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 13px 18px;
+      background: rgba(5,10,26,0.6);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      transition: 0.25s;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: rgba(255,255,255,0.3);
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.15);
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 1rem 0;
+    }
+
+    .checkbox-group input[type=checkbox] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      accent-color: var(--gold);
+      margin-top: 2px;
+    }
+
+    .checkbox-group label {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--text-gray);
+      font-weight: 400;
+      cursor: pointer;
+    }
+
+    .guest-fields {
+      background: rgba(5,10,26,0.4);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 12px;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, var(--gold-border), transparent);
+      margin: 2rem 0;
+    }
+
+    .wa-note {
+      background: rgba(37,211,102,0.08);
+      border: 1px solid rgba(37,211,102,0.2);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      font-size: 0.85rem;
+      color: var(--text-gray);
+      margin: 1.5rem 0;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .wa-note i { color: #25D366; margin-top: 2px; flex-shrink: 0; }
+
+    .currency-note {
+      font-size: 0.7rem;
+      color: var(--silver);
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-primary);
+      border-top: 1px solid var(--gold-border);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      margin-top: 0;
+      color: var(--silver);
+      font-size: 0.85rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      background: linear-gradient(135deg, var(--gold), var(--silver));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    /* ── FADE IN ── */
     .fade-in {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(24px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
+
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { max-width: 480px; }
+      .form-section { padding: 2rem 1.5rem; }
     }
 
-    /* registration form */
-    .form-group {
-      margin-bottom: 1.5rem;
+    @media (max-width: 600px) {
+      .nav-container { flex-direction: column; gap: 1rem; }
+      .hero-title { font-size: 2.5rem; }
+      .countdown-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    label {
-      font-weight: 600;
-      display: block;
-      margin-bottom: 8px;
-      color: var(--gray-dark);
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 14px 18px;
-      border: 1px solid #ddd;
-      border-radius: 20px;
-      font-family: 'Open Sans', sans-serif;
-      font-size: 1rem;
-      transition: 0.2s;
-    }
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--primary-green);
-      box-shadow: 0 0 0 3px rgba(42,127,110,0.2);
-    }
-    .checkbox-group {
-      display: flex;
+
+    /* ── gold pill tag ── */
+    .pill {
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
-      margin: 1rem 0;
-    }
-    .checkbox-group input {
-      width: auto;
-      transform: scale(1.1);
-    }
-    hr {
-      margin: 2rem 0;
-      border: none;
-      height: 1px;
-      background: linear-gradient(to right, var(--primary-light), transparent);
-    }
-    .guest-fields {
-      background: var(--gray-light);
-      padding: 20px;
-      border-radius: 24px;
-      margin-top: 12px;
-    }
-    .badge {
-      background: var(--accent-soft);
-      color: var(--primary-green);
-      padding: 4px 12px;
+      gap: 6px;
+      background: rgba(212,175,55,0.12);
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
+      padding: 4px 14px;
       border-radius: 40px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      display: inline-block;
-    }
-    footer {
-      background: var(--gray-dark);
-      color: var(--gray-light);
-      text-align: center;
-      padding: 2rem;
-      margin-top: 3rem;
-    }
-    @media (max-width: 768px) {
-      .nav-container {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .section {
-        padding: 50px 20px;
-      }
-      .hero {
-        padding: 2rem 1.5rem;
-      }
-    }
-    .whatsapp-note {
-      background: #E8F5E9;
-      border-left: 6px solid #25D366;
-      padding: 14px 20px;
-      border-radius: 20px;
-      margin: 20px 0;
-    }
-    .icon-text {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 1rem 0;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
   </style>
 </head>
 <body>
 
-<!-- navigation with HOME button (exact link) -->
-<div class="navbar">
+<!-- NAVBAR -->
+<nav class="navbar">
   <div class="nav-container">
-    <div class="logo">
-      <h2>Ultimate<span>Health</span></h2>
-    </div>
+    <a href="https://accessworldseminars-ship-it.github.io/results/" class="logo-wrap">
+      <img src="https://github.com/accessworldseminars-ship-it/results/blob/2fcfdae671b699ec0b578911336fcc3ffc346532/worldjjpgsf.png?raw=true" alt="AccessWorld Seminars Logo">
+      <span class="logo-text">ACCESSWORLD SEMINARS</span>
+    </a>
     <div class="nav-links">
-      <a href="https://accessworldseminars-ship-it.github.io/results/" class="active">
-        <i class="fas fa-home"></i> Home
-      </a>
-      <a href="#register"><i class="fas fa-calendar-check"></i> Register</a>
+      <a href="https://accessworldseminars-ship-it.github.io/results/" class="active"><i class="fas fa-home"></i> Home</a>
       <a href="#info"><i class="fas fa-info-circle"></i> Details</a>
+      <a href="#register"><i class="fas fa-calendar-check"></i> Register</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-content fade-in">
+      <div class="hero-badge"><i class="fas fa-brain"></i> Live Virtual Seminar · May 8–9, 2026</div>
+      <h1 class="hero-title">Mind Repatterning<br>for <span>Ultimate Health</span></h1>
+      <p class="hero-sub">Break free from physical &amp; emotional blocks. Heal your body, upgrade your mindset, and create lasting energy using NLP, gratitude &amp; holistic science.</p>
+
+      <!-- TIMEZONE PANEL -->
+      <div class="tz-panel">
+        <div class="tz-title"><i class="fas fa-globe"></i> Event Times — Your Local Timezone</div>
+        <div class="tz-grid" id="tzGrid">
+          <!-- populated by JS -->
+          <div class="tz-item"><div class="tz-label">Loading...</div></div>
+        </div>
+        <p style="font-size:0.72rem; color:var(--silver); margin-top:0.75rem;">
+          <i class="fas fa-info-circle"></i> Times shown in your detected local timezone. Base time: <strong style="color:var(--gold)">7:00 AM AEST (Brisbane, UTC+10)</strong> each day.
+        </p>
+      </div>
+
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="#register" class="btn"><i class="fab fa-whatsapp"></i> Secure Your Seat</a>
+        <a href="#info" class="btn btn-ghost"><i class="fas fa-chevron-down"></i> Learn More</a>
+      </div>
+    </div>
+
+    <!-- COUNTDOWN CARD -->
+    <div class="hero-card fade-in">
+      <div class="countdown-title"><i class="fas fa-clock"></i> Seminar Begins In</div>
+      <div class="countdown-grid">
+        <div class="cd-unit"><div class="cd-num" id="cd-days">--</div><div class="cd-label">Days</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-hours">--</div><div class="cd-label">Hours</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-mins">--</div><div class="cd-label">Mins</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-secs">--</div><div class="cd-label">Secs</div></div>
+      </div>
+      <div class="seats-note">🎁 <strong>Free guest pass</strong> included with every registration</div>
+      <div style="font-size:0.82rem; color:var(--text-gray); margin-bottom:1.2rem;">
+        <div style="display:flex;gap:8px;margin-bottom:6px;"><i class="fas fa-check" style="color:var(--gold);margin-top:3px;"></i> 8 hours/day with scheduled breaks</div>
+        <div style="display:flex;gap:8px;margin-bottom:6px;"><i class="fas fa-check" style="color:var(--gold);margin-top:3px;"></i> NLP Swish Pattern + Slingshot Method</div>
+        <div style="display:flex;gap:8px;margin-bottom:6px;"><i class="fas fa-check" style="color:var(--gold);margin-top:3px;"></i> Counts toward NLP certification hours</div>
+        <div style="display:flex;gap:8px;"><i class="fas fa-check" style="color:var(--gold);margin-top:3px;"></i> Recorded via CRISP for replay access</div>
+      </div>
+      <a href="#register" class="btn" style="width:100%;justify-content:center;"><i class="fas fa-arrow-right"></i> Register Now</a>
+      <p class="currency-note">All prices in AUD (Australian Dollars)</p>
     </div>
   </div>
 </div>
 
-<!-- HERO SECTION similar to main page style -->
-<div class="section">
-  <div class="hero fade-in">
-    <span class="badge"><i class="fas fa-brain"></i> Live Webinar · May 8–9</span>
-    <h1 style="font-size: 2.8rem; margin: 1rem 0 0.5rem;">Mind Repatterning<br>for Ultimate Health</h1>
-    <p style="font-size: 1.2rem; max-width: 700px; margin: 1rem 0;">Break free from physical & emotional blocks. Heal your body, upgrade your mindset, and create lasting energy using NLP, gratitude & holistic science.</p>
-    <div class="icon-text">
-      <i class="fas fa-clock" style="color: var(--primary-green);"></i> <strong>Fri & Sat · 7:00 AM AEST (Brisbane)</strong> &nbsp;|&nbsp; 
-      <i class="fas fa-chalkboard-user"></i> 8h/day with breaks
-    </div>
-    <a href="#register" class="btn"><i class="fab fa-whatsapp"></i> Secure Your Spot</a>
-  </div>
-</div>
-
-<!-- EVENT DETAILS + NLP METHODS CARD (slingshot + swish) -->
+<!-- WHAT TO EXPECT -->
 <div class="section" id="info">
+  <div class="fade-in">
+    <div class="section-label"><i class="fas fa-star"></i> Curriculum</div>
+    <h2 class="section-title">What You'll Experience</h2>
+    <div class="divider"></div>
+  </div>
   <div class="grid-2 fade-in">
     <div class="card">
-      <i class="fas fa-heartbeat" style="font-size: 2rem; color: var(--primary-green);"></i>
-      <h3 style="margin: 1rem 0 0.5rem;">What to Expect</h3>
-      <ul style="margin-left: 1.2rem; line-height: 1.6;">
-        <li>Morning tea (15min) | Lunch (45min) | Afternoon tea (15min)</li>
-        <li>HIIT, breathing, emotional stretching, cold plunge, meditation</li>
-        <li>Wheatgrass, celery juice & comprehensive morning routine</li>
-        <li><strong>Gratitude as the great healer</strong> — final step of healing</li>
-        <li>Certification track: counts toward full certification</li>
+      <div class="card-icon"><i class="fas fa-heartbeat"></i></div>
+      <h3>Daily Structure</h3>
+      <ul>
+        <li>Morning tea (15 min) · Lunch (45 min) · Afternoon tea (15 min)</li>
+        <li>HIIT, breathwork, emotional stretching, cold plunge &amp; meditation</li>
+        <li>Wheatgrass, celery juice &amp; ultimate morning routine</li>
+        <li><strong style="color:var(--gold)">Gratitude as the great healer</strong> — final integration step</li>
+        <li>Certification track: counts toward full certification hours</li>
       </ul>
     </div>
     <div class="card">
-      <i class="fas fa-brain" style="font-size: 2rem; color: var(--accent-gold);"></i>
-      <h3 style="margin: 1rem 0 0.5rem;">2 Powerful NLP Techniques</h3>
-      <p><strong>✨ Swish Pattern:</strong> Rewire unhealthy food cravings & old habits. Replace negative self-image with empowered health identity.</p>
-      <p style="margin-top: 12px;"><strong>🚀 Slingshot Method:</strong> Advanced NLP process to project your healed future self backward — instantly collapse pain patterns and launch into your highest potential. Amplifies motivation & emotional release.</p>
-      <p class="badge" style="margin-top: 12px;">Both techniques fully integrated</p>
+      <div class="card-icon"><i class="fas fa-brain"></i></div>
+      <h3>2 Powerful NLP Techniques</h3>
+      <p style="margin-bottom:1rem;"><strong style="color:var(--gold)">✨ Swish Pattern:</strong> Rewire unhealthy food cravings &amp; old habits. Replace negative self-image with an empowered health identity.</p>
+      <p><strong style="color:var(--gold)">🚀 Slingshot Method:</strong> Advanced NLP process — project your healed future self backward to instantly collapse pain patterns and launch into your highest potential. Amplifies motivation &amp; emotional release.</p>
+      <span class="pill" style="margin-top:1rem;">Both techniques fully integrated</span>
     </div>
   </div>
 </div>
 
-<!-- LEARNING OUTCOMES + ELIMINATE PAIN OVERVIEW -->
+<!-- OUTCOMES -->
 <div class="section">
+  <div class="fade-in">
+    <div class="section-label"><i class="fas fa-seedling"></i> Outcomes</div>
+    <h2 class="section-title">Transform in Two Days</h2>
+    <div class="divider"></div>
+  </div>
   <div class="grid-2 fade-in">
     <div class="card">
-      <h3><i class="fas fa-seedling"></i> Health Mind Repatterning</h3>
-      <p>For those with minor or major health challenges, low energy, or wanting to become a health coach. You'll discover:</p>
-      <ul style="margin: 1rem 0 0 1.2rem;">
-        <li>Body’s innate self-healing ability</li>
-        <li>Foods that move health forward & harmful effects of poor diet</li>
-        <li>Upgrade food selection & lifestyle commitment</li>
+      <div class="card-icon"><i class="fas fa-seedling"></i></div>
+      <h3>Health Mind Repatterning</h3>
+      <p style="margin-bottom:1rem; color:var(--silver);">For those with minor or major health challenges, low energy, or wanting to become a health coach. You'll discover:</p>
+      <ul>
+        <li>Your body's innate self-healing ability</li>
+        <li>Foods that move health forward &amp; harmful effects of poor diet</li>
+        <li>How to upgrade food selection &amp; lifestyle commitment</li>
         <li>NLP Swish Pattern for sustainable change</li>
       </ul>
     </div>
     <div class="card">
-      <h3><i class="fas fa-hand-holding-heart"></i> Eliminate Physical & Emotional Pain</h3>
-      <p>Rooted in repressed emotions, chronic pain & suffering. Using psychosomatic neuromodulation, you'll learn:</p>
-      <ul style="margin: 1rem 0 0 1.2rem;">
-        <li>Why pain persists & imagination-based relief</li>
-        <li>Communicate directly with unconscious mind</li>
-        <li>3 prerequisites to pain elimination</li>
+      <div class="card-icon"><i class="fas fa-hand-holding-heart"></i></div>
+      <h3>Eliminate Physical &amp; Emotional Pain</h3>
+      <p style="margin-bottom:1rem; color:var(--silver);">Rooted in repressed emotions, chronic pain &amp; suffering. Using psychosomatic neuromodulation, you'll learn:</p>
+      <ul>
+        <li>Why pain persists &amp; imagination-based relief techniques</li>
+        <li>How to communicate directly with the unconscious mind</li>
+        <li>The 3 prerequisites to pain elimination</li>
         <li>Become a healer for yourself and others</li>
       </ul>
     </div>
   </div>
 </div>
 
-<!-- REGISTRATION FORM SECTION (WhatsApp integration) -->
+<!-- MORNING ROUTINE + RECORDING -->
+<div class="section">
+  <div class="grid-3 fade-in">
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-sun"></i></div>
+      <h3>Ultimate Morning Routine</h3>
+      <p style="color:var(--text-gray);">HIIT, breathing, emotional stretching, cold plunge, meditation, wheatgrass &amp; celery juice — craft a powerful character-building habit stack.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-video"></i></div>
+      <h3>Recording &amp; Environment</h3>
+      <p style="color:var(--text-gray);">Recorded via CRISP. Please arrange a quiet, focused environment to fully absorb the material. Certification attendees: count this toward your hours.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-certificate"></i></div>
+      <h3>Certification Path</h3>
+      <p style="color:var(--text-gray);">Attending toward your NLP Coach Practitioner or Health Coaching certification? This seminar counts. Tick the option on the registration form.</p>
+    </div>
+  </div>
+</div>
+
+<!-- REGISTRATION FORM -->
 <div class="section" id="register">
-  <div class="card fade-in" style="background: var(--white);">
-    <h2 style="font-size: 2rem;"><i class="fab fa-whatsapp"></i> Reserve Your Seat</h2>
-    <p style="margin-bottom: 1.5rem;">Fill out the details — upon submit, you’ll review & send via WhatsApp directly to our team. <strong>Bring a guest FREE.</strong></p>
-    
+  <div class="fade-in">
+    <div class="section-label"><i class="fab fa-whatsapp"></i> Registration</div>
+    <h2 class="section-title">Reserve Your Seat</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="form-section fade-in">
+    <h2><i class="fab fa-whatsapp" style="color:#25D366;"></i> Register via WhatsApp</h2>
+    <p style="color:var(--silver); margin-bottom:1.5rem;">Fill in your details — on submit you'll be redirected to WhatsApp with a pre-filled message. Just review and tap <strong>Send</strong>. <strong style="color:var(--gold)">Bring a guest for FREE.</strong></p>
+
     <form id="seminarForm">
-      <!-- MAIN ATTENDEE -->
+      <!-- ATTENDEE -->
       <div class="form-group">
         <label><i class="fas fa-user"></i> Full Name *</label>
         <input type="text" id="fullName" required placeholder="e.g., Sarah Mitchell">
@@ -362,169 +795,249 @@
         <label><i class="fas fa-envelope"></i> Email (optional backup)</label>
         <input type="email" id="email" placeholder="hello@example.com">
       </div>
-      
-      <!-- GUEST SECTION -->
+
+      <!-- GUEST -->
       <div class="checkbox-group">
         <input type="checkbox" id="hasGuest">
-        <label for="hasGuest" style="margin:0; font-weight:500;">🎁 Bring a guest for FREE (same webinar access)</label>
+        <label for="hasGuest">🎁 Bring a guest for FREE (same full webinar access)</label>
       </div>
-      <div id="guestFields" style="display: none;" class="guest-fields">
+      <div id="guestFields" style="display:none;" class="guest-fields">
         <div class="form-group">
           <label>Guest Full Name</label>
           <input type="text" id="guestName" placeholder="Guest full name">
         </div>
         <div class="form-group">
-          <label>Guest Phone Number (with WhatsApp)</label>
+          <label>Guest Phone (WhatsApp)</label>
           <input type="tel" id="guestPhone" placeholder="+61 ... for updates">
         </div>
-        <p style="font-size: 0.85rem;"><i class="fab fa-whatsapp"></i> Guest will be encouraged to install WhatsApp to receive pre & post event info.</p>
+        <p style="font-size:0.8rem; color:var(--silver);"><i class="fab fa-whatsapp" style="color:#25D366;"></i> Guest will be encouraged to install WhatsApp to receive pre &amp; post-event info.</p>
       </div>
-      
+
       <hr>
-      
-      <!-- GOALS, HOPES, DREAMS (critical section) -->
+
+      <!-- GOALS -->
       <div class="form-group">
-        <label><i class="fas fa-star"></i> What are your hopes, dreams & goals for this training?</label>
-        <textarea id="goals" rows="3" placeholder="e.g., heal lower back pain, lose weight, become a certified health coach, gain more mobility, learn pain elimination for clients ..."></textarea>
+        <label><i class="fas fa-star" style="color:var(--gold);"></i> What are your hopes, dreams &amp; goals for this training?</label>
+        <textarea id="goals" rows="3" placeholder="e.g., heal lower back pain, lose weight, become a certified health coach, gain more mobility ..."></textarea>
       </div>
-      
-      <!-- COMMITMENTS & GRATITUDE & CERTIFICATION -->
+
+      <!-- COMMITMENTS -->
       <div class="checkbox-group">
         <input type="checkbox" id="attendCommit">
-        <label>✅ I commit to attending both full days (May 8 & 9) in a focused environment to integrate the material.</label>
+        <label>✅ I commit to attending both full days (May 8 &amp; 9) in a focused environment to fully integrate the material.</label>
       </div>
       <div class="checkbox-group">
         <input type="checkbox" id="gratitudeCommit">
-        <label>🙏 I understand that gratitude is the great healer — I am ready to practice an attitude of gratitude.</label>
+        <label>🙏 I understand that gratitude is the great healer — I am ready to practise an attitude of gratitude.</label>
       </div>
       <div class="checkbox-group">
         <input type="checkbox" id="certPath">
         <label>📜 I am attending toward certification requirements and wish to be certified sooner.</label>
       </div>
-      
-      <div class="whatsapp-note">
-        <i class="fab fa-whatsapp fa-lg"></i> <strong>How it works:</strong> After clicking "Register & Send via WhatsApp", you'll be redirected to WhatsApp with a pre-filled message. Just review and tap SEND. Your registration will be confirmed instantly!
+
+      <div class="wa-note">
+        <i class="fab fa-whatsapp fa-lg"></i>
+        <span><strong>How it works:</strong> After clicking Register, you'll be redirected to WhatsApp with a pre-filled message. Review and tap <strong>SEND</strong> — your registration is confirmed instantly!</span>
       </div>
-      
-      <button type="button" id="submitWhatsAppBtn" class="btn" style="width:100%; justify-content: center;"><i class="fab fa-whatsapp"></i> Register & Send via WhatsApp</button>
+
+      <button type="button" id="submitBtn" class="btn" style="width:100%;justify-content:center;font-size:1.05rem;padding:16px 32px;">
+        <i class="fab fa-whatsapp"></i> Register &amp; Send via WhatsApp
+      </button>
+      <p class="currency-note">All prices in AUD (Australian Dollars)</p>
     </form>
   </div>
 </div>
 
-<!-- ADDITIONAL INFO: morning routine + recording note -->
-<div class="section fade-in">
-  <div class="grid-2">
-    <div class="card">
-      <i class="fas fa-sun"></i>
-      <h3>Ultimate Morning Routine</h3>
-      <p>HIIT, breathing, emotional stretching, cold plunge, meditation, wheatgrass & celery juice — you'll learn to craft a powerful character-building habit stack.</p>
-    </div>
-    <div class="card">
-      <i class="fas fa-video"></i>
-      <h3>Recording & Environment</h3>
-      <p>This seminar is recorded using CRISP. Please arrange a quiet, focused training environment to fully absorb the content. Certification attendees: count this toward your hours.</p>
-    </div>
-  </div>
-</div>
-
 <footer>
-  <p>© Ultimate Health Mind Repatterning — Live Webinar | Brisbane AEST | May 8–9, 7:00 AM daily</p>
-  <p style="margin-top: 10px;"><i class="fab fa-whatsapp"></i> Registrations via WhatsApp | Guest WhatsApp required for updates</p>
+  <div class="footer-logo">ACCESSWORLD SEMINARS</div>
+  <p>Transformative Coaching &amp; Training Programs</p>
+  <p style="margin-top:8px;">© 2026 AccessWorld Seminars · ABN 72 546 137 885 · Brisbane, Queensland, Australia</p>
+  <p style="margin-top:6px;"><i class="fab fa-whatsapp" style="color:#25D366;"></i> Registrations via WhatsApp · All prices AUD</p>
 </footer>
 
 <script>
-  // Guest fields toggle
-  const hasGuestCheck = document.getElementById('hasGuest');
-  const guestDiv = document.getElementById('guestFields');
-  hasGuestCheck.addEventListener('change', function() {
-    guestDiv.style.display = this.checked ? 'block' : 'none';
+// ── TIMEZONE DISPLAY ──
+(function buildTZPanel() {
+  const eventDays = [
+    { label: 'Day 1 — Friday', iso: '2026-05-08T07:00:00+10:00' },
+    { label: 'Day 2 — Saturday', iso: '2026-05-09T07:00:00+10:00' }
+  ];
+
+  const zones = [
+    { name: 'Brisbane (AEST)',   tz: 'Australia/Brisbane' },
+    { name: 'Sydney/Melbourne',  tz: 'Australia/Sydney' },
+    { name: 'Perth',             tz: 'Australia/Perth' },
+    { name: 'Auckland (NZST)',   tz: 'Pacific/Auckland' },
+    { name: 'Singapore/KL',      tz: 'Asia/Singapore' },
+    { name: 'London (BST/GMT)',   tz: 'Europe/London' },
+    { name: 'New York (ET)',      tz: 'America/New_York' },
+    { name: 'Los Angeles (PT)',   tz: 'America/Los_Angeles' },
+  ];
+
+  // detect user's timezone
+  const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  // find a match or add user's tz
+  const foundUser = zones.find(z => z.tz === userTZ);
+  const displayZones = foundUser ? zones : [
+    { name: 'Your Location', tz: userTZ },
+    ...zones.filter(z => z.tz !== userTZ).slice(0, 5)
+  ];
+
+  function formatTime(isoStr, tz) {
+    const d = new Date(isoStr);
+    return d.toLocaleTimeString('en-AU', {
+      hour: '2-digit', minute: '2-digit',
+      timeZone: tz, hour12: true
+    });
+  }
+
+  function formatDate(isoStr, tz) {
+    const d = new Date(isoStr);
+    return d.toLocaleDateString('en-AU', {
+      weekday: 'short', day: 'numeric', month: 'short',
+      timeZone: tz
+    });
+  }
+
+  const grid = document.getElementById('tzGrid');
+  grid.innerHTML = '';
+
+  displayZones.forEach(zone => {
+    const item = document.createElement('div');
+    item.className = 'tz-item';
+    if (zone.tz === userTZ) {
+      item.style.border = '1px solid var(--gold-border)';
+      item.style.background = 'rgba(212,175,55,0.08)';
+    }
+    const d1 = formatDate(eventDays[0].iso, zone.tz);
+    const t1 = formatTime(eventDays[0].iso, zone.tz);
+    const d2 = formatDate(eventDays[1].iso, zone.tz);
+    const t2 = formatTime(eventDays[1].iso, zone.tz);
+    item.innerHTML = `
+      <div class="tz-label">${zone.tz === userTZ ? '📍 ' : ''}${zone.name}</div>
+      <div class="tz-day1">${d1}</div>
+      <div class="tz-time">${t1}</div>
+      <div class="tz-day2" style="margin-top:6px;">${d2}</div>
+      <div class="tz-time">${t2}</div>
+      ${zone.tz === userTZ ? '<div class="tz-note">← Your timezone</div>' : ''}
+    `;
+    grid.appendChild(item);
   });
+})();
 
-  // WhatsApp send logic: build message exactly
-  document.getElementById('submitWhatsAppBtn').addEventListener('click', function() {
-    // Get values
-    const name = document.getElementById('fullName').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const hasGuest = hasGuestCheck.checked;
-    const guestName = document.getElementById('guestName').value.trim();
-    const guestPhone = document.getElementById('guestPhone').value.trim();
-    const goalsText = document.getElementById('goals').value.trim() || "Not specified";
-    const attendCommit = document.getElementById('attendCommit').checked;
-    const gratitudeCommit = document.getElementById('gratitudeCommit').checked;
-    const certPath = document.getElementById('certPath').checked;
-
-    // Validation (name + phone required)
-    if (!name || !phone) {
-      alert("❌ Please enter your full name and phone number (WhatsApp) to register.");
+// ── COUNTDOWN ──
+(function startCountdown() {
+  const target = new Date('2026-05-08T07:00:00+10:00');
+  function tick() {
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-mins').textContent = '00';
+      document.getElementById('cd-secs').textContent = '00';
       return;
     }
-    
-    // Build WhatsApp message
-    let message = `*🟢 ULTIMATE HEALTH SEMINAR REGISTRATION*%0A%0A`;
-    message += `*Attendee Details*%0A`;
-    message += `👤 Name: ${name}%0A`;
-    message += `📞 Phone: ${phone}%0A`;
-    if (email) message += `📧 Email: ${email}%0A`;
-    
-    // Guest info
-    if (hasGuest) {
-      message += `%0A*🎁 Guest (Free)*%0A`;
-      message += `Guest Name: ${guestName || "Not provided"}%0A`;
-      message += `Guest Phone: ${guestPhone || "Not provided"}%0A`;
-      message += `(Guest encouraged to install WhatsApp for training updates)%0A`;
-    } else {
-      message += `%0A🎟️ Guest: No guest attending%0A`;
-    }
-    
-    // Goals section
-    message += `%0A*✨ GOALS, HOPES & DREAMS*%0A`;
-    message += `${goalsText}%0A`;
-    
-    // Commitments
-    message += `%0A*✅ COMMITMENTS*%0A`;
-    message += `📅 Both full days attendance: ${attendCommit ? "YES" : "❌ Not confirmed (but can adjust)"}%0A`;
-    message += `🙏 Gratitude as great healer: ${gratitudeCommit ? "Committed" : "Open to practice"}%0A`;
-    message += `📜 Certification track: ${certPath ? "Yes, aiming for certification" : "Not this time"}%0A`;
-    
-    // NLP methods & event info
-    message += `%0A*🧠 NLP TECHNIQUES COVERED:* Swish Pattern + Slingshot Method%0A`;
-    message += `*📅 EVENT:* May 8-9, 7:00 AM AEST (Brisbane) | 8h days with breaks%0A`;
-    message += `*🌿 TOPICS:* HIIT, breathing, cold plunge, gratitude, healing mindset, pain elimination, morning routine%0A`;
-    message += `%0A_Submitted via registration page_ — Please confirm my seat 🙏`;
-    
-    // Encode for WhatsApp
-    const encodedMsg = encodeURIComponent(message);
-    // Your WhatsApp number - REPLACE WITH YOUR ACTUAL NUMBER (country code without + but we add)
-    // For demo: using placeholder number +61 400 000 000 — you must replace with your real WhatsApp number with country code
-    // IMPORTANT: change this number to YOUR WhatsApp business or personal number where registrations land.
-    const whatsappNumber = "61400000000";   // <-- REPLACE with your real WhatsApp number (e.g., 61412345678 for Australia)
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMsg}`;
-    
-    // Open WhatsApp (works on mobile & desktop with web.whatsapp)
-    window.open(whatsappUrl, '_blank');
-  });
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
 
-  // fade-in on scroll
-  const faders = document.querySelectorAll('.fade-in');
-  const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -20px 0px" };
-  const appearOnScroll = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
+// ── GUEST TOGGLE ──
+document.getElementById('hasGuest').addEventListener('change', function() {
+  document.getElementById('guestFields').style.display = this.checked ? 'block' : 'none';
+});
+
+// ── WHATSAPP SUBMIT ──
+document.getElementById('submitBtn').addEventListener('click', function() {
+  const name  = document.getElementById('fullName').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const hasGuest = document.getElementById('hasGuest').checked;
+  const guestName = document.getElementById('guestName').value.trim();
+  const guestPhone = document.getElementById('guestPhone').value.trim();
+  const goals = document.getElementById('goals').value.trim() || 'Not specified';
+  const attendCommit = document.getElementById('attendCommit').checked;
+  const gratitudeCommit = document.getElementById('gratitudeCommit').checked;
+  const certPath = document.getElementById('certPath').checked;
+
+  if (!name || !phone) {
+    alert('❌ Please enter your full name and WhatsApp number to register.');
+    return;
+  }
+
+  // user's local time for both days
+  const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  function localTime(iso) {
+    return new Date(iso).toLocaleString('en-AU', {
+      weekday: 'long', day: 'numeric', month: 'long',
+      hour: '2-digit', minute: '2-digit', timeZoneName: 'short',
+      timeZone: userTZ, hour12: true
     });
-  }, appearOptions);
-  faders.forEach(fader => appearOnScroll.observe(fader));
-  
-  // add visible class to any that are already visible on load
-  setTimeout(() => {
-    faders.forEach(f => { if(f.getBoundingClientRect().top < window.innerHeight-80) f.classList.add('visible'); });
-  }, 100);
-</script>
+  }
 
-<!-- NOTE: For production, please replace whatsappNumber with your actual WhatsApp number with country code (no '+' sign).
-     Also ensure that the home button link matches your required URL (already set to: https://accessworldseminars-ship-it.github.io/results/) -->
+  const day1 = localTime('2026-05-08T07:00:00+10:00');
+  const day2 = localTime('2026-05-09T07:00:00+10:00');
+
+  let msg = `*🌟 ULTIMATE HEALTH SEMINAR REGISTRATION*%0A%0A`;
+  msg += `*Attendee Details*%0A`;
+  msg += `👤 Name: ${name}%0A`;
+  msg += `📞 Phone: ${phone}%0A`;
+  if (email) msg += `📧 Email: ${email}%0A`;
+
+  if (hasGuest) {
+    msg += `%0A*🎁 Guest (FREE Access)*%0A`;
+    msg += `Guest Name: ${guestName || 'Not provided'}%0A`;
+    msg += `Guest Phone: ${guestPhone || 'Not provided'}%0A`;
+  } else {
+    msg += `%0A🎟️ Guest: No guest attending%0A`;
+  }
+
+  msg += `%0A*📅 EVENT TIMES (your local timezone: ${userTZ})*%0A`;
+  msg += `Day 1: ${day1}%0A`;
+  msg += `Day 2: ${day2}%0A`;
+  msg += `(Base time: 7:00 AM AEST — Brisbane, Australia)%0A`;
+
+  msg += `%0A*✨ GOALS, HOPES & DREAMS*%0A${goals}%0A`;
+
+  msg += `%0A*✅ COMMITMENTS*%0A`;
+  msg += `📅 Both full days: ${attendCommit ? 'YES — committed' : 'Open (not confirmed yet)'}%0A`;
+  msg += `🙏 Gratitude practice: ${gratitudeCommit ? 'Committed' : 'Open to learning'}%0A`;
+  msg += `📜 Certification track: ${certPath ? 'Yes — aiming for certification' : 'Not this time'}%0A`;
+
+  msg += `%0A*🧠 NLP TECHNIQUES:* Swish Pattern + Slingshot Method%0A`;
+  msg += `*🌿 TOPICS:* HIIT, breathwork, cold plunge, gratitude, healing mindset, pain elimination%0A`;
+  msg += `*💰 Currency:* All prices in AUD%0A`;
+  msg += `%0A_Submitted via AccessWorld Seminars registration page_ — Please confirm my seat 🙏`;
+
+  const whatsappNumber = "61400000000"; // ← REPLACE with real number
+  window.open(`https://wa.me/${whatsappNumber}?text=${msg}`, '_blank');
+});
+
+// ── FADE-IN ON SCROLL ──
+const faders = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('visible');
+    obs.unobserve(e.target);
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+faders.forEach(f => observer.observe(f));
+setTimeout(() => {
+  faders.forEach(f => {
+    if (f.getBoundingClientRect().top < window.innerHeight - 80) f.classList.add('visible');
+  });
+}, 100);
+</script>
 </body>
 </html>
-```
