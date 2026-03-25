@@ -97,17 +97,19 @@
     .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
     .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
 
-    /* GALLERY */
-    .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
-    .gallery-item{border-radius:10px;overflow:hidden;border:1px solid var(--gold-border);transition:var(--transition);cursor:pointer;background:var(--navy-mid)}
-    .gallery-item:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.5);border-color:var(--gold)}
-    .gallery-item img{width:100%;height:260px;object-fit:cover;display:block;transition:var(--transition)}
-    .gallery-item:hover img{transform:scale(1.04)}
-    .lightbox{display:none;position:fixed;inset:0;z-index:999;background:rgba(5,10,26,.96);align-items:center;justify-content:center}
-    .lightbox.open{display:flex}
-    .lightbox img{max-width:90vw;max-height:88vh;border-radius:10px;border:1px solid var(--gold-border)}
-    .lightbox-close{position:absolute;top:20px;right:28px;color:var(--gold);font-size:2.2rem;cursor:pointer;line-height:1;transition:var(--transition)}
-    .lightbox-close:hover{transform:scale(1.2)}
+    /* CAROUSEL */
+    .carousel-wrap{position:relative;width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--gold-border);background:var(--navy-primary);box-shadow:var(--shadow);}
+    .carousel-track{position:relative;width:100%;}
+    .carousel-slide{display:none;width:100%;}
+    .carousel-slide.active{display:block;}
+    .carousel-slide img{width:100%;height:auto;max-height:620px;object-fit:contain;display:block;background:var(--navy-deep);}
+    .carousel-dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:10;}
+    .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:var(--transition);border:1px solid var(--gold-border);}
+    .dot.active{background:var(--gold);border-color:var(--gold);}
+    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(5,10,26,0.7);border:1px solid var(--gold-border);color:var(--gold);width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:var(--transition);z-index:10;}
+    .carousel-btn:hover{background:rgba(212,175,55,0.2);box-shadow:0 4px 16px rgba(212,175,55,0.3);}
+    .carousel-btn.prev{left:14px;}
+    .carousel-btn.next{right:14px;}
 
     /* CTA BAND */
     .cta-band{background:linear-gradient(135deg,rgba(26,43,94,.9),rgba(45,59,107,.7));border:1px solid var(--gold-border);border-radius:10px;padding:3.5rem 2.5rem;text-align:center;position:relative;overflow:hidden}
@@ -144,7 +146,7 @@
       <a href="#zoom"><i class="fas fa-video"></i> Join Zoom</a>
       <a href="#gallery"><i class="fas fa-images"></i> Gallery</a>
       <a href="https://form.jotform.com/251968752973071" target="_blank" class="btn" style="padding:9px 20px;font-size:.85rem;">
-        <i class="fas fa-calendar-check"></i> Register Now
+        <i class="fas fa-calendar-check"></i> Register Here
       </a>
     </div>
   </div>
@@ -173,7 +175,7 @@
 
       <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
         <a href="https://form.jotform.com/251968752973071" target="_blank" class="btn">
-          <i class="fas fa-calendar-check"></i> Register Now — It's Free
+          <i class="fas fa-calendar-check"></i> Register Here
         </a>
         <a href="#about" class="btn btn-ghost"><i class="fas fa-chevron-down"></i> Learn More</a>
       </div>
@@ -202,13 +204,12 @@
         <div style="display:flex;gap:8px;margin-bottom:6px;"><i class="fas fa-check" style="color:var(--gold);margin-top:3px;flex-shrink:0;"></i> 8 hours/day with scheduled breaks</div>
         <div style="display:flex;gap:8px;margin-bottom:6px;"><i class="fas fa-check" style="color:var(--gold);margin-top:3px;flex-shrink:0;"></i> NLP Swish Pattern + Slingshot Method</div>
         <div style="display:flex;gap:8px;margin-bottom:6px;"><i class="fas fa-check" style="color:var(--gold);margin-top:3px;flex-shrink:0;"></i> Counts toward NLP certification hours</div>
-        <div style="display:flex;gap:8px;"><i class="fas fa-check" style="color:var(--gold);margin-top:3px;flex-shrink:0;"></i> Recorded via CRISP for replay access</div>
+        <div style="display:flex;gap:8px;"><i class="fas fa-check" style="color:var(--gold);margin-top:3px;flex-shrink:0;"></i> Recorded for replay access</div>
       </div>
 
       <a href="https://form.jotform.com/251968752973071" target="_blank" class="btn" style="width:100%;justify-content:center;">
-        <i class="fas fa-calendar-check"></i> Secure Your Seat
+        <i class="fas fa-calendar-check"></i> Register Here
       </a>
-      <p style="font-size:.68rem;color:var(--silver);text-align:center;margin-top:.75rem;">All prices in AUD (Australian Dollars)</p>
     </div>
   </div>
 </div>
@@ -286,7 +287,7 @@
     <div class="card">
       <div class="card-icon"><i class="fas fa-video"></i></div>
       <h3>Recording &amp; Environment</h3>
-      <p style="color:var(--text-gray);">Recorded via CRISP. Please arrange a quiet, focused environment to fully absorb the material. Certification attendees: count this toward your hours.</p>
+      <p style="color:var(--text-gray);">This seminar is recorded for replay access. Please arrange a quiet, focused environment to fully absorb the material. Certification attendees: count this toward your hours.</p>
     </div>
     <div class="card">
       <div class="card-icon"><i class="fas fa-certificate"></i></div>
@@ -296,49 +297,55 @@
   </div>
 </div>
 
-<!-- GALLERY -->
+<!-- CAROUSEL -->
 <div class="section" id="gallery">
   <div class="fade-in">
-    <div class="section-label"><i class="fas fa-images"></i> Gallery</div>
-    <h2 class="section-title">See It in Action</h2>
+    <div class="section-label"><i class="fas fa-images"></i> Results</div>
+    <h2 class="section-title">Get Results Fast with Mind Repatterning Tools and NSR</h2>
     <div class="divider"></div>
   </div>
-  <div class="gallery-grid fade-in">
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="https://i.ibb.co/97mZvc6/Screenshot-2026-01-29-105636.png" alt="Event preview 1" loading="lazy">
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="https://i.ibb.co/0RmH3ghz/Screenshot-2026-01-29-105001.png" alt="Event preview 2" loading="lazy">
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="https://i.ibb.co/F4c0V58q/Screenshot-2025-12-12-162510.png" alt="Event preview 3" loading="lazy">
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="https://i.ibb.co/xqJbPqyQ/Picture1as.png" alt="Event preview 4" loading="lazy">
-    </div>
-  </div>
-</div>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <span class="lightbox-close">&times;</span>
-  <img id="lightboxImg" src="" alt="Enlarged view">
+  <div class="carousel-wrap fade-in">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-slide active">
+        <img src="https://i.ibb.co/97mZvc6/Screenshot-2026-01-29-105636.png" alt="Mind Repatterning results 1">
+      </div>
+      <div class="carousel-slide">
+        <img src="https://i.ibb.co/0RmH3ghz/Screenshot-2026-01-29-105001.png" alt="Mind Repatterning results 2">
+      </div>
+      <div class="carousel-slide">
+        <img src="https://i.ibb.co/F4c0V58q/Screenshot-2025-12-12-162510.png" alt="Mind Repatterning results 3">
+      </div>
+      <div class="carousel-slide">
+        <img src="https://i.ibb.co/xqJbPqyQ/Picture1as.png" alt="Mind Repatterning results 4">
+      </div>
+    </div>
+    <!-- dots -->
+    <div class="carousel-dots" id="carouselDots">
+      <span class="dot active" onclick="goToSlide(0)"></span>
+      <span class="dot" onclick="goToSlide(1)"></span>
+      <span class="dot" onclick="goToSlide(2)"></span>
+      <span class="dot" onclick="goToSlide(3)"></span>
+    </div>
+    <!-- arrows -->
+    <button class="carousel-btn prev" onclick="shiftSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="carousel-btn next" onclick="shiftSlide(1)"><i class="fas fa-chevron-right"></i></button>
+  </div>
 </div>
 
 <!-- CTA BAND -->
 <div class="section">
   <div class="cta-band fade-in">
     <h2>Ready to Transform Your Health?</h2>
-    <p>Seats are limited. Register now to secure your place at the Ultimate Health Mind Repatterning Seminar — May 8 &amp; 9, 2026.</p>
+    <p>Your membership gives you full access. Register below to confirm your place for May 8 &amp; 9, 2026.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;">
       <a href="https://form.jotform.com/251968752973071" target="_blank" class="btn" style="font-size:1.05rem;padding:15px 36px;">
-        <i class="fas fa-calendar-check"></i> Register Now — Free Entry
+        <i class="fas fa-calendar-check"></i> Register Now
       </a>
       <a href="https://us02web.zoom.us/j/2159283790?pwd=ZmhFQ0VveFp4N294ZXF2ZElrUzQyUT09" target="_blank" class="btn btn-ghost" style="font-size:1rem;padding:15px 28px;">
         <i class="fas fa-video"></i> Join Zoom Meeting
       </a>
     </div>
-    <p style="font-size:.75rem;color:var(--silver);margin-top:1.2rem;position:relative;">All prices in AUD (Australian Dollars)</p>
   </div>
 </div>
 
@@ -349,7 +356,6 @@
   <p style="margin-top:6px;font-size:.78rem;">
     Zoom: 215 928 3790 · Password: 664511 ·
     <a href="https://us02web.zoom.us/j/2159283790?pwd=ZmhFQ0VveFp4N294ZXF2ZElrUzQyUT09" target="_blank" style="color:var(--gold);text-decoration:none;">Join Link</a>
-    &nbsp;·&nbsp; All prices AUD
   </p>
 </footer>
 
@@ -403,17 +409,30 @@
   tick();setInterval(tick,1000);
 })();
 
-// LIGHTBOX
-function openLightbox(item){
-  document.getElementById('lightboxImg').src=item.querySelector('img').src;
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeLightbox(){
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow='';
-}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+// CAROUSEL
+(function(){
+  let current=0;
+  const slides=document.querySelectorAll('.carousel-slide');
+  const dots=document.querySelectorAll('.dot');
+  let timer=null;
+
+  function goTo(n){
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current=(n+slides.length)%slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  window.goToSlide=function(n){goTo(n);resetTimer();};
+  window.shiftSlide=function(d){goTo(current+d);resetTimer();};
+
+  function resetTimer(){
+    clearInterval(timer);
+    timer=setInterval(()=>goTo(current+1),5000);
+  }
+  resetTimer();
+})();
 
 // FADE IN
 const faders=document.querySelectorAll('.fade-in');
