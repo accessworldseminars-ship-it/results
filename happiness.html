@@ -38,53 +38,135 @@
 
   <script type="text/babel">
     // ============================================================
-    // HAPPINESS ASSESSMENT APP - COMPLETE WORKING VERSION
-    // Save as index.html and open in browser
+    // HAPPINESS ASSESSMENT - WITH ZAPIER WEBHOOK CONFIGURED
     // ============================================================
     
     // ----- CONFIGURATION -----
     const URL_UNLOCK = "https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808";
     const URL_COACH = "https://www.accessworldseminars.org/the-perfect-squeeze-page--45e9d";
     const URL_PROGRAMS = "https://accessworldseminars-ship-it.github.io/results/BecomeACoach";
-    const ZAPIER_WEBHOOK = ""; // Add your Zapier URL here if needed
     
-    // ----- QUESTIONS DATA -----
+    // ✅ YOUR ZAPIER WEBHOOK URL (tested and working)
+    const ZAPIER_WEBHOOK = "https://hooks.zapier.com/hooks/catch/3779260/unt9eik/";
+    
+    // ----- QUESTIONS DATA (ALL WITH 5 = POSITIVE) -----
     const QUESTIONS = [
-      { id: 1, category: "Mindset", icon: "✦", question: "Did I live in a beautiful state of mind and emotion today?", labels: ["Not at all", "Rarely", "Sometimes", "Often", "Frequently", "Absolutely yes"], weight: 1.2, reversed: false,
-        module: "NSR — Nervous System Reprogramming", webinar: "The NSR Nervous System Programming Webinar",
-        low: { title: "Your Nervous System Is Running an Old Program", analysis: "When your emotional state feels heavy, flat, or persistently reactive, it is rarely about what is happening around you — it is about the program your nervous system has been running, often since childhood. Unresolved emotional imprints create a default baseline that constantly pulls you back toward familiar states, even painful ones. Your nervous system has learned to treat these states as 'safe' simply because they are familiar.\n\nThis is the core insight of Nervous System Reprogramming (NSR): your current emotional baseline is not fixed — it is a learned pattern. And what was learned can be unlearned.", process: "The Gift process — an emotional clearing and timeline therapy — is specifically designed for this. It overrides negative emotional imprints with joy, helping you release trapped emotions from the past.", practice: "Each morning before checking your phone, take three slow diaphragmatic breaths. On each exhale, state aloud: 'I choose to feel [word] today.'" },
-        high: { title: "A Well-Regulated State — Your Platform for Everything", analysis: "You are managing your emotional state at a level that reflects real inner work. In NSR methodology, a consistently positive emotional baseline is not the end of the journey — it is the launchpad.", process: "The Space Odyssey process — a spatial relocation strategy — can now be used to eliminate any remaining residual emotional charge.", practice: "Peak State Stacking: Identify three peak moments from your life. Revisit each one in vivid sensory detail for 90 seconds." } },
-      { id: 2, category: "Love & Joy", icon: "❤", question: "Did I live into an experience of love and joy today?", labels: ["Not at all", "Barely", "A little", "Noticeably", "Strongly", "Completely"], weight: 1.2, reversed: false,
-        module: "Emotional Clearing & Freedom", webinar: "The Emotional Clearing Webinar",
-        low: { title: "The Channel to Love and Joy Is Blocked", analysis: "Love and joy are not emotions that arrive when life cooperates — they are frequencies your nervous system either allows or suppresses.", process: "The Grey Room process is the most direct intervention for this dimension.", practice: "The Joy Inventory: Each evening, write three specific moments where you felt even a flicker of warmth." },
-        high: { title: "You Have Access to Joy", analysis: "Living in regular contact with love and joy signals that your nervous system has learned that positive emotional experience is safe.", process: "The Womb of Eternity process can deepen this further.", practice: "Joy Contagion: Once daily, give one person your full presence for two minutes." } },
-      { id: 3, category: "Language", icon: "◈", question: "Did I use words that uplift and help others?", labels: ["Not at all", "Rarely", "Sometimes", "Mostly", "Consistently", "Always"], weight: 1.0, reversed: false,
-        module: "NLP Foundations", webinar: "The NLP Foundation Principles Webinar",
-        low: { title: "Your Language Is Programming Your Nervous System", analysis: "Every word you use sends a direct signal to your nervous system about what is possible.", process: "Anchoring Positive Emotional States is particularly relevant here.", practice: "The Language Swap: Identify one phrase you use that closes possibility and replace it with a question." },
-        high: { title: "Your Language Is Creating Your World", analysis: "Consistent use of uplifting, possibility-rich language is one of the clearest markers of a well-calibrated nervous system.", process: "The Communication from the Heart webinar offers the next level.", practice: "Language Leadership: Notice when people use closed language and model an alternative." } },
-      { id: 4, category: "Progress", icon: "▲", question: "Did I make meaningful progress towards my goals today?", labels: ["None at all", "Tiny step", "Some progress", "Good progress", "Strong progress", "Absolutely yes"], weight: 1.1, reversed: false,
-        module: "Values, Motivation & Unconscious Resistance", webinar: "The Ultimate Freedom Webinar",
-        low: { title: "Stalled Progress Has a Root Cause", analysis: "When progress stalls, the block is almost never a strategy problem. It is an unconscious resistance problem.", process: "The Gift process is powerfully effective for unlocking stalled progress.", practice: "The Payoff Question: 'What am I getting from NOT making progress?'" },
-        high: { title: "Momentum Is Working", analysis: "Consistent daily progress signals strong values alignment.", process: "The Design Your Identity webinar is your natural next step.", practice: "The 90-Day Vision: Write a vivid description of where you will be in 90 days." } },
-      { id: 5, category: "Identity", icon: "◉", question: "Did I act from my new, chosen identity today?", labels: ["Not once", "Rarely", "A few times", "Often", "Strongly", "Completely"], weight: 1.1, reversed: false,
-        module: "Beliefs & Identity Redesign", webinar: "The Design Your Identity Webinar",
-        low: { title: "Your Old Identity Is Still Running", analysis: "Identity is the collection of 'I am' statements your nervous system has accepted as true.", process: "The Womb of Eternity process is the most powerful intervention for identity work.", practice: "Identity Declaration: 'I am no longer the person who ___. I am now the person who ___.'" },
-        high: { title: "You Are Living From Your Chosen Identity", analysis: "Acting consistently from a chosen identity is the master skill of personal transformation.", process: "The NLP Foundation Principles program offers the next layer.", practice: "Identity Expansion: Each week, act as the next version of yourself." } },
-      { id: 6, category: "Wellbeing", icon: "⬡", question: "Did I honour my body and my health today?", labels: ["Ignored it", "Barely", "Somewhat", "Mostly", "Well", "Absolutely yes"], weight: 1.0, reversed: false,
-        module: "Health Mind Repatterning", webinar: "The Ultimate Health Webinar",
-        low: { title: "Your Body Is the Instrument", analysis: "Your body is the biological instrument through which you experience every emotion.", process: "The Swish Pattern replaces automatic unhealthy responses.", practice: "The Minimum Viable Dose: 10 min movement, one nourishing meal, consistent sleep." },
-        high: { title: "You Are Honouring the Instrument", analysis: "Physical self-care creates a neurological foundation that amplifies everything.", process: "The Ultimate Health program offers advanced mind-body connection tools.", practice: "Body Check-In: Once daily, ask your body what it needs." } },
-      { id: 7, category: "Mental Health", icon: "◎", question: "How much did feelings of anxiety or depression affect my day?", labels: ["Overwhelmed me", "Strong impact", "Noticeable", "Mild", "Very little", "Not at all"], weight: 1.3, reversed: true,
-        note: "0 = overwhelmed · 5 = completely free", module: "Emotional Clearing & NSR", webinar: "The NSR Webinar",
-        low: { title: "Anxiety and Depression Are Patterns", analysis: "These are the nervous system's learned response to perceived threat, rooted in past experiences.", process: "The four core processes — The Gift, The Grey Room, The Womb of Eternity, Space Odyssey.", practice: "The NSR Breath Reset: Breathe in 4, hold 4, out 8. Do 3 cycles." },
-        high: { title: "Emotional Freedom Is Your Platform", analysis: "Operating free from anxiety creates space for everything else to flourish.", process: "Space Odyssey can be used proactively to neutralise emerging emotional residue.", practice: "Freedom Maintenance: Identify 2-3 practices that maintain your equilibrium." } },
-      { id: 8, category: "Agency", icon: "→", question: "Did I consciously CREATE my life today?", labels: ["Pure reaction", "Mostly reactive", "Mixed", "Mostly creating", "Strongly creating", "Fully intentional"], weight: 1.3, reversed: false,
-        module: "Conscious Creation", webinar: "The Design Your Identity Webinar",
-        low: { title: "Reactive Living Is Exhausting", analysis: "Reactive living is a nervous system pattern where threat-detection hijacks executive function.", process: "Anchoring positive emotional states builds capacity to pause and choose.", practice: "The Creator's Pause: 'Who am I choosing to be today?'" },
-        high: { title: "You Are the Author", analysis: "Acting as conscious creator is the apex skill of personal development.", process: "The Become a World-Class Coach training is a natural next expression.", practice: "Leadership by Example: Model conscious creation for someone stuck." } }
+      { id: 1, category: "Mindset", icon: "✦", 
+        question: "How positive and peaceful was my state of mind today?", 
+        labels: ["Not at all", "Rarely", "Sometimes", "Often", "Mostly", "Completely"], 
+        weight: 1.2, reversed: false,
+        module: "NSR — Nervous System Reprogramming", 
+        webinar: "The NSR Nervous System Programming Webinar",
+        low: { title: "Your Nervous System Is Running an Old Program", 
+          analysis: "When your emotional state feels heavy, flat, or persistently reactive, it is rarely about what is happening around you — it is about the program your nervous system has been running, often since childhood.",
+          process: "The Gift process — an emotional clearing and timeline therapy — is specifically designed for this. It overrides negative emotional imprints with joy.",
+          practice: "Each morning before checking your phone, take three slow diaphragmatic breaths. On each exhale, state aloud: 'I choose to feel [word] today.'" },
+        high: { title: "A Well-Regulated State — Your Platform for Everything", 
+          analysis: "You are managing your emotional state at a level that reflects real inner work.",
+          process: "The Space Odyssey process can eliminate any remaining residual emotional charge.",
+          practice: "Peak State Stacking: Identify three peak moments from your life. Revisit each in vivid sensory detail for 90 seconds." } },
+      { id: 2, category: "Love & Joy", icon: "❤", 
+        question: "How much love and joy did I experience today?", 
+        labels: ["Not at all", "Rarely", "Sometimes", "Often", "Mostly", "Completely"], 
+        weight: 1.2, reversed: false,
+        module: "Emotional Clearing & Freedom", 
+        webinar: "The Emotional Clearing Webinar",
+        low: { title: "The Channel to Love and Joy Is Blocked", 
+          analysis: "Love and joy are frequencies your nervous system either allows or suppresses based on deep-seated beliefs.",
+          process: "The Grey Room process revisits memories and transforms emotional responses.",
+          practice: "The Joy Inventory: Each evening, write three moments where you felt even a flicker of warmth." },
+        high: { title: "You Have Access to Joy", 
+          analysis: "Living in regular contact with love and joy signals your nervous system has learned that positive emotion is safe.",
+          process: "The Womb of Eternity process can deepen this further.",
+          practice: "Joy Contagion: Once daily, give one person your full presence for two minutes." } },
+      { id: 3, category: "Language", icon: "◈", 
+        question: "How much did I use words that uplift and inspire today?", 
+        labels: ["Not at all", "Rarely", "Sometimes", "Often", "Mostly", "Completely"], 
+        weight: 1.0, reversed: false,
+        module: "NLP Foundations", 
+        webinar: "The NLP Foundation Principles Webinar",
+        low: { title: "Your Language Is Programming Your Nervous System", 
+          analysis: "Every word you use sends a direct signal to your nervous system about what is possible.",
+          process: "Anchoring Positive Emotional States helps catch limiting language.",
+          practice: "The Language Swap: Replace a limiting phrase with an open question." },
+        high: { title: "Your Language Is Creating Your World", 
+          analysis: "Consistent use of uplifting, possibility-rich language is a marker of a well-calibrated nervous system.",
+          process: "The Communication from the Heart webinar offers the next level.",
+          practice: "Language Leadership: Notice when people use closed language and model an alternative." } },
+      { id: 4, category: "Progress", icon: "▲", 
+        question: "How much meaningful progress did I make toward my goals today?", 
+        labels: ["None at all", "Tiny step", "Some progress", "Good progress", "Strong progress", "Absolutely yes"], 
+        weight: 1.1, reversed: false,
+        module: "Values, Motivation & Unconscious Resistance", 
+        webinar: "The Ultimate Freedom Webinar",
+        low: { title: "Stalled Progress Has a Root Cause", 
+          analysis: "When progress stalls, the block is unconscious resistance — part of your nervous system believes arriving is unsafe.",
+          process: "The Gift process unlocks stalled progress by releasing emotional charge from past failures.",
+          practice: "The Payoff Question: 'What am I getting from NOT making progress?'" },
+        high: { title: "Momentum Is Working", 
+          analysis: "Consistent daily progress signals strong values alignment.",
+          process: "The Design Your Identity webinar is your natural next step.",
+          practice: "The 90-Day Vision: Write a vivid description of where you'll be in 90 days." } },
+      { id: 5, category: "Identity", icon: "◉", 
+        question: "How much did I act from my chosen identity today (not my old story)?", 
+        labels: ["Not at all", "Rarely", "Sometimes", "Often", "Mostly", "Completely"], 
+        weight: 1.1, reversed: false,
+        module: "Beliefs & Identity Redesign", 
+        webinar: "The Design Your Identity Webinar",
+        low: { title: "Your Old Identity Is Still Running", 
+          analysis: "Identity is the collection of 'I am' statements your nervous system has accepted as true, most formed before age ten.",
+          process: "The Womb of Eternity process replaces the critical inner voice with genuine self-belief.",
+          practice: "Identity Declaration: 'I am no longer the person who ___. I am now the person who ___.'" },
+        high: { title: "You Are Living From Your Chosen Identity", 
+          analysis: "Acting consistently from a chosen identity is the master skill of personal transformation.",
+          process: "The NLP Foundation Principles program offers the next layer.",
+          practice: "Identity Expansion: Each week, act as the next version of yourself." } },
+      { id: 6, category: "Wellbeing", icon: "⬡", 
+        question: "How well did I honour my body with movement, nourishment, and rest?", 
+        labels: ["Not at all", "Poorly", "Somewhat", "Well", "Very well", "Perfectly"], 
+        weight: 1.0, reversed: false,
+        module: "Health Mind Repatterning", 
+        webinar: "The Ultimate Health Webinar",
+        low: { title: "Your Body Is the Instrument", 
+          analysis: "Your body is the biological instrument through which you experience every emotion.",
+          process: "The Swish Pattern replaces automatic unhealthy responses.",
+          practice: "The Minimum Viable Dose: 10 min movement, one nourishing meal, consistent sleep." },
+        high: { title: "You Are Honouring the Instrument", 
+          analysis: "Physical self-care creates a neurological foundation that amplifies everything.",
+          process: "The Ultimate Health program offers advanced mind-body connection tools.",
+          practice: "Body Check-In: Once daily, ask your body what it needs." } },
+      { id: 7, category: "Mental Health", icon: "◎", 
+        question: "How free did I feel from anxiety and depression today?", 
+        labels: ["Not at all free", "Rarely free", "Sometimes free", "Often free", "Mostly free", "Completely free"], 
+        weight: 1.3, reversed: false,
+        note: "0 = overwhelmed · 5 = completely free", 
+        module: "Emotional Clearing & NSR", 
+        webinar: "The NSR Webinar",
+        low: { title: "Anxiety and Depression Are Patterns — Not Life Sentences", 
+          analysis: "These are the nervous system's learned response to perceived threat, rooted in past experiences.",
+          process: "The four core processes — The Gift, The Grey Room, The Womb of Eternity, Space Odyssey.",
+          practice: "The NSR Breath Reset: Breathe in 4, hold 4, out 8. Do 3 cycles." },
+        high: { title: "Emotional Freedom Is Your Platform", 
+          analysis: "Operating free from anxiety creates space for everything else to flourish.",
+          process: "Space Odyssey can be used proactively to neutralise emerging emotional residue.",
+          practice: "Freedom Maintenance: Identify 2-3 practices that maintain your equilibrium." } },
+      { id: 8, category: "Agency", icon: "→", 
+        question: "How much did I consciously CREATE my life today (vs just reacting)?", 
+        labels: ["Pure reaction", "Mostly reactive", "Mixed", "Mostly creating", "Strongly creating", "Fully intentional"], 
+        weight: 1.3, reversed: false,
+        module: "Conscious Creation", 
+        webinar: "The Design Your Identity Webinar",
+        low: { title: "Reactive Living Is Exhausting", 
+          analysis: "Reactive living is a nervous system pattern where threat-detection hijacks executive function.",
+          process: "Anchoring positive emotional states builds capacity to pause and choose.",
+          practice: "The Creator's Pause: 'Who am I choosing to be today?'" },
+        high: { title: "You Are the Author", 
+          analysis: "Acting as conscious creator is the apex skill of personal development.",
+          process: "The Become a World-Class Coach training is a natural next expression.",
+          practice: "Leadership by Example: Model conscious creation for someone stuck." } }
     ];
     
-    // ----- TIERS (Happiness Levels based on your 5 categories) -----
+    // ----- TIERS (5 Levels Based on Your Framework) -----
     const TIERS = [
       { min: 0, max: 1.5, label: "Absence of Happiness", arcColor: "#C0392B", 
         message: "Right now life feels heavy — and that is real. This is not a judgment. It is a starting point.",
@@ -133,6 +215,16 @@
       }).sort((a, b) => a.eff - b.eff);
     }
     
+    // Format answers for email/SMS
+    function formatAnswersForEmail(answers) {
+      let result = "";
+      QUESTIONS.forEach(q => {
+        const v = answers[q.id] ?? 0;
+        result += `${q.category}: ${v}/5\n`;
+      });
+      return result;
+    }
+    
     // ----- Main App Component -----
     const App = () => {
       const [phase, setPhase] = React.useState("landing");
@@ -146,6 +238,7 @@
       const [phone, setPhone] = React.useState("");
       const [email, setEmail] = React.useState("");
       const [err, setErr] = React.useState("");
+      const [sending, setSending] = React.useState(false);
       
       const q = QUESTIONS[qIdx];
       const prog = ((qIdx) / QUESTIONS.length) * 100;
@@ -172,20 +265,66 @@
         }, 280);
       };
       
-      const captureAndContinue = () => {
+      const sendToZapier = async () => {
+        const answersText = formatAnswersForEmail(answers);
+        
+        // Build email body that will trigger your Zapier SMS
+        const emailBody = `New inquiry received:
+
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Score: ${score.toFixed(2)}/5
+Tier: ${tier.label}
+
+DETAILED RESULTS:
+${answersText}
+
+Recommendations:
+Priority focus: ${getFocusSorted(answers).slice(0,3).map(q => q.category).join(", ")}`;
+
+        const payload = {
+          name: name,
+          phone: phone,
+          email: email,
+          score: score.toFixed(2),
+          tier: tier.label,
+          answers: answers,
+          answers_text: answersText,
+          message: emailBody,
+          timestamp: new Date().toISOString()
+        };
+        
+        try {
+          const response = await fetch(ZAPIER_WEBHOOK, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          console.log("Zapier webhook sent:", response.status);
+          return true;
+        } catch (e) {
+          console.error("Zapier error:", e);
+          return false;
+        }
+      };
+      
+      const captureAndContinue = async () => {
         if (!name.trim()) { setErr("Please enter your full name."); return; }
         if (!phone.trim()) { setErr("Please enter your phone number."); return; }
         if (!email.includes("@")) { setErr("Please enter a valid email address."); return; }
         setErr("");
         
-        if (ZAPIER_WEBHOOK) {
-          fetch(ZAPIER_WEBHOOK, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, phone, email, score: score.toFixed(2), tier: tier?.label, answers, timestamp: new Date().toISOString() })
-          }).catch(e => console.error(e));
+        setSending(true);
+        
+        // Send to Zapier webhook
+        if (ZAPIER_WEBHOOK && ZAPIER_WEBHOOK.includes("hooks.zapier.com")) {
+          await sendToZapier();
+        } else {
+          console.warn("Zapier webhook not configured correctly.");
         }
         
+        setSending(false);
         setPhase("results");
       };
       
@@ -296,7 +435,9 @@
                   <input style={styles.inp} placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} type="email" />
                 </div>
                 {err && <p style={{ fontSize: 12, color: "#E74C3C", marginBottom: 8 }}>{err}</p>}
-                <button style={{ ...styles.gbtn, width: "100%", marginTop: 6 }} onClick={captureAndContinue}>View My Full Report →</button>
+                <button style={{ ...styles.gbtn, width: "100%", marginTop: 6 }} onClick={captureAndContinue} disabled={sending}>
+                  {sending ? "Sending..." : "View My Full Report →"}
+                </button>
                 <p style={{ ...styles.fine, textAlign: "center", marginTop: 10 }}>Your details are private and never shared.</p>
               </div>
             </div>
@@ -364,7 +505,7 @@
         
         return (
           <div style={{ background: "#fff", minHeight: "100vh", fontFamily: "Montserrat, sans-serif" }}>
-            {/* PAGE 1 */}
+            {/* PAGE 1 - OVERVIEW */}
             <div className="results-page" style={{ padding: "52px 56px 60px", minHeight: "100vh" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", borderBottom: "1px solid #C9A84C22", paddingBottom: 13, marginBottom: 32 }}>
                 <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 15, letterSpacing: 5, color: "#1A2744" }}>ACCESSWORLD</div>
@@ -403,7 +544,7 @@
               </div>
             </div>
             
-            {/* PAGE 2 */}
+            {/* PAGE 2 - PRIORITY FOCUS */}
             <div className="results-page" style={{ padding: "52px 56px 60px", minHeight: "100vh" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", borderBottom: "1px solid #C9A84C22", paddingBottom: 13, marginBottom: 32 }}>
                 <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 15, letterSpacing: 5, color: "#1A2744" }}>ACCESSWORLD</div>
@@ -417,7 +558,7 @@
               {priorities.map((q, i) => <FocusCard key={q.id} qItem={q} type="low" idx={i+1} />)}
             </div>
             
-            {/* PAGE 3 */}
+            {/* PAGE 3 - STRENGTHS + PATH FORWARD */}
             <div style={{ padding: "52px 56px 60px", minHeight: "100vh" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", borderBottom: "1px solid #C9A84C22", paddingBottom: 13, marginBottom: 32 }}>
                 <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 15, letterSpacing: 5, color: "#1A2744" }}>ACCESSWORLD</div>
