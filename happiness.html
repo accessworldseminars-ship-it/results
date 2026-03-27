@@ -5,203 +5,385 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AccessWorld · Happiness Assessment</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
-      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(160deg, #080d18 0%, #1A2744 100%);
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(160deg, #080d18 0%, #1A2744 50%, #080d18 100%);
       min-height: 100vh;
-      padding: 40px 20px;
+      padding: 30px 20px 60px;
     }
+    
     .container {
-      max-width: 700px;
+      max-width: 750px;
       margin: 0 auto;
-      background: rgba(255,255,255,0.05);
-      border-radius: 24px;
-      padding: 40px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(201,169,76,0.3);
     }
+    
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      letter-spacing: 8px;
+      color: #C9A84C;
+      margin-bottom: 8px;
+    }
+    
+    .logo-sub {
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: rgba(201, 169, 76, 0.5);
+    }
+    
     h1 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 42px;
+      font-weight: 300;
       color: #fff;
-      text-align: center;
-      margin-bottom: 10px;
+      margin: 20px 0 10px;
     }
-    .sub {
-      text-align: center;
+    
+    h1 em {
       color: #C9A84C;
-      font-size: 12px;
-      letter-spacing: 2px;
-      margin-bottom: 30px;
+      font-style: italic;
     }
+    
+    .subhead {
+      color: rgba(255,255,255,0.5);
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+    
+    /* Cards */
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 1px solid rgba(201, 169, 76, 0.2);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+    }
+    
+    /* Progress */
+    .progress-wrap {
+      margin-bottom: 24px;
+    }
+    
+    .progress-bar {
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #C9A84C, #e6c87a);
+      width: 0%;
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+    
+    .progress-text {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      text-align: right;
+      margin-top: 6px;
+    }
+    
+    /* Questions */
     .question {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.03);
       border-radius: 16px;
       padding: 20px;
       margin-bottom: 16px;
       border-left: 3px solid #C9A84C;
     }
+    
     .question-text {
       color: #fff;
       font-size: 16px;
-      margin-bottom: 12px;
+      font-weight: 400;
       line-height: 1.5;
+      margin-bottom: 16px;
     }
+    
     .scale {
       display: flex;
       gap: 8px;
       justify-content: space-between;
+      flex-wrap: wrap;
     }
+    
     .scale-btn {
       flex: 1;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
+      min-width: 55px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 12px;
-      padding: 10px 5px;
+      padding: 12px 5px;
       cursor: pointer;
-      text-align: center;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
       font-family: inherit;
     }
+    
     .scale-btn:hover {
-      background: rgba(201,169,76,0.3);
+      background: rgba(201, 169, 76, 0.2);
       border-color: #C9A84C;
     }
+    
     .scale-btn.selected {
       background: #C9A84C;
       border-color: #C9A84C;
     }
+    
     .scale-btn .num {
-      font-size: 18px;
-      font-weight: bold;
+      font-size: 20px;
+      font-weight: 600;
       color: #fff;
       display: block;
     }
+    
     .scale-btn .label {
-      font-size: 9px;
+      font-size: 8px;
       color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+      display: block;
     }
-    .progress {
-      height: 4px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 2px;
-      margin: 20px 0;
-      overflow: hidden;
+    
+    /* Form */
+    .form-group {
+      margin-bottom: 20px;
     }
-    .progress-fill {
-      height: 100%;
-      background: #C9A84C;
-      width: 0%;
-      transition: width 0.3s;
+    
+    .form-group label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #C9A84C;
+      margin-bottom: 8px;
     }
+    
+    .form-group input {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 14px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    
+    .form-group input:focus {
+      outline: none;
+      border-color: #C9A84C;
+    }
+    
+    .form-group input::placeholder {
+      color: rgba(255,255,255,0.3);
+    }
+    
+    /* Buttons */
     .btn {
       background: #C9A84C;
       border: none;
-      padding: 14px 28px;
+      padding: 16px 28px;
       border-radius: 40px;
       font-size: 14px;
-      font-weight: bold;
+      font-weight: 600;
+      letter-spacing: 1px;
       color: #1A2744;
       cursor: pointer;
       width: 100%;
-      margin-top: 20px;
-      transition: opacity 0.2s;
+      transition: opacity 0.2s, transform 0.2s;
+      font-family: inherit;
     }
+    
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+    
     .btn:disabled {
-      opacity: 0.5;
+      opacity: 0.4;
       cursor: not-allowed;
+      transform: none;
     }
-    .form-group {
-      margin-bottom: 16px;
-    }
-    .form-group label {
-      display: block;
-      color: #C9A84C;
-      font-size: 11px;
-      letter-spacing: 2px;
-      margin-bottom: 6px;
-    }
-    .form-group input {
-      width: 100%;
-      padding: 12px;
+    
+    .btn-secondary {
       background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      color: #fff;
-      font-size: 14px;
+      color: #C9A84C;
+      border: 1px solid #C9A84C;
+      margin-top: 16px;
     }
+    
+    /* Error */
     .error {
       color: #ff6b6b;
       font-size: 12px;
       margin-top: 8px;
+      text-align: center;
     }
+    
+    .success-msg {
+      color: #6bff9e;
+      font-size: 12px;
+      margin-top: 8px;
+      text-align: center;
+    }
+    
+    /* Results */
+    .result-hero {
+      text-align: center;
+      padding: 32px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+      margin-bottom: 24px;
+    }
+    
+    .result-score {
+      font-size: 64px;
+      font-weight: 300;
+      font-family: 'Cormorant Garamond', serif;
+      color: #C9A84C;
+    }
+    
+    .result-tier {
+      font-size: 28px;
+      font-family: 'Cormorant Garamond', serif;
+      margin: 12px 0;
+    }
+    
+    .result-desc {
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    .result-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    
+    .result-card h3 {
+      color: #C9A84C;
+      font-size: 16px;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
+    
+    .answer-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .answer-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+      flex: 1;
+    }
+    
+    .answer-score {
+      font-weight: 600;
+      color: #C9A84C;
+      margin-left: 16px;
+    }
+    
     .hidden {
       display: none;
     }
-    .result-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 20px;
-    }
-    .result-score {
-      font-size: 48px;
-      font-weight: bold;
+    
+    /* Utilities */
+    .text-center {
       text-align: center;
-      color: #1A2744;
     }
-    .result-tier {
-      text-align: center;
-      font-size: 20px;
-      margin: 10px 0;
+    
+    .mt-4 {
+      margin-top: 16px;
     }
   </style>
 </head>
 <body>
 <div class="container">
+  
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">ACCESSWORLD</div>
+    <div class="logo-sub">SEMINARS · JOSHUA ROY</div>
+    <h1>How happy are you — <em>really?</em></h1>
+    <div class="subhead">8 questions · 3 minutes · Your personalised report</div>
+  </div>
+  
+  <!-- QUIZ SECTION -->
   <div id="quiz-section">
-    <h1>How happy are you — <span style="color:#C9A84C">really?</span></h1>
-    <div class="sub">8 questions · 3 minutes</div>
-    <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
-    <div id="questions-container"></div>
-    <button class="btn" id="nextBtn" disabled>Next →</button>
+    <div class="card">
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-text" id="progress-text">0 of 8 answered</div>
+      </div>
+      <div id="questions-container"></div>
+    </div>
+    <button class="btn" id="next-btn" disabled>Continue →</button>
   </div>
-
+  
+  <!-- CONTACT SECTION -->
   <div id="contact-section" class="hidden">
-    <h1>Your results are <span style="color:#C9A84C">ready</span></h1>
-    <div class="sub">Enter your details to view your report</div>
-    <div class="form-group">
-      <label>Full Name</label>
-      <input type="text" id="name" placeholder="Your full name">
+    <div class="card">
+      <h1 style="font-size: 32px; margin-bottom: 8px;">Your results are <em style="color:#C9A84C">ready</em></h1>
+      <div class="subhead" style="margin-bottom: 32px;">Enter your details to view your report</div>
+      
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="name" placeholder="Your full name">
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="+61 4xx xxx xxx">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="email" placeholder="your@email.com">
+      </div>
+      <div id="contact-error" class="error"></div>
+      <div id="contact-success" class="success-msg"></div>
+      <button class="btn" id="submit-btn">View My Full Report →</button>
     </div>
-    <div class="form-group">
-      <label>Phone Number</label>
-      <input type="tel" id="phone" placeholder="+61 4xx xxx xxx">
-    </div>
-    <div class="form-group">
-      <label>Email Address</label>
-      <input type="email" id="email" placeholder="your@email.com">
-    </div>
-    <div id="contact-error" class="error"></div>
-    <button class="btn" id="submitBtn">View My Full Report →</button>
   </div>
-
+  
+  <!-- RESULTS SECTION -->
   <div id="results-section" class="hidden">
     <div id="results-content"></div>
-    <button class="btn" id="retakeBtn" style="background:#333; color:#fff;">Take Again</button>
+    <button class="btn btn-secondary" id="retake-btn">Take Assessment Again</button>
   </div>
+  
 </div>
 
 <script>
 // ============================================================
-// HAPPINESS ASSESSMENT - WORKING ZAPIER WEBHOOK
+// HAPPINESS ASSESSMENT - WORKING WITH CORS FIX
 // ============================================================
 
 // YOUR ZAPIER WEBHOOK URL
 const ZAPIER_WEBHOOK = "https://hooks.zapier.com/hooks/catch/3779260/unt9eik/";
 
-// QUESTIONS
+// QUESTIONS DATA
 const QUESTIONS = [
   { id: 1, text: "How positive and peaceful was my state of mind today?" },
   { id: 2, text: "How much love and joy did I experience today?" },
@@ -217,16 +399,38 @@ const LABELS = ["Not at all", "Rarely", "Sometimes", "Often", "Mostly", "Complet
 
 // State
 let answers = {};
-let currentQuestion = 0;
 let score = 0;
-let tier = { label: "" };
+let tier = { label: "", color: "" };
 
-// Render questions
+// Helper: Get tier based on score
+function getTier(scoreNum) {
+  if (scoreNum <= 1.5) return { label: "Absence of Happiness", color: "#C0392B" };
+  if (scoreNum <= 2.5) return { label: "Unhappiness", color: "#E67E22" };
+  if (scoreNum <= 3.5) return { label: "Fine / Neutral", color: "#C9A84C" };
+  if (scoreNum <= 4.5) return { label: "Happiness", color: "#27AE60" };
+  return { label: "Elevated Happiness", color: "#C9A84C" };
+}
+
+// Calculate score from answers
+function calculateScore() {
+  let total = 0;
+  let answered = 0;
+  QUESTIONS.forEach(q => {
+    if (answers[q.id] !== undefined) {
+      total += answers[q.id];
+      answered++;
+    }
+  });
+  if (answered === 0) return 0;
+  return total / QUESTIONS.length;
+}
+
+// Render all questions
 function renderQuestions() {
   const container = document.getElementById('questions-container');
   container.innerHTML = '';
   
-  QUESTIONS.forEach((q, idx) => {
+  QUESTIONS.forEach((q) => {
     const div = document.createElement('div');
     div.className = 'question';
     div.innerHTML = `
@@ -242,7 +446,7 @@ function renderQuestions() {
     `;
     container.appendChild(div);
     
-    // Highlight existing answer if any
+    // If already answered, highlight
     if (answers[q.id] !== undefined) {
       const btns = div.querySelectorAll('.scale-btn');
       btns[answers[q.id]].classList.add('selected');
@@ -252,10 +456,11 @@ function renderQuestions() {
   updateProgress();
 }
 
+// Select an answer
 function selectAnswer(qid, val) {
   answers[qid] = val;
   
-  // Update UI highlight
+  // Update UI
   const scaleDiv = document.querySelector(`.scale[data-qid="${qid}"]`);
   if (scaleDiv) {
     scaleDiv.querySelectorAll('.scale-btn').forEach(btn => btn.classList.remove('selected'));
@@ -265,61 +470,63 @@ function selectAnswer(qid, val) {
   updateProgress();
 }
 
+// Update progress bar
 function updateProgress() {
   const answered = Object.keys(answers).length;
   const total = QUESTIONS.length;
   const percent = (answered / total) * 100;
-  document.getElementById('progressFill').style.width = `${percent}%`;
-  document.getElementById('nextBtn').disabled = answered !== total;
-}
-
-function calculateScore() {
-  let total = 0;
-  QUESTIONS.forEach(q => {
-    total += answers[q.id] || 0;
-  });
-  return (total / QUESTIONS.length).toFixed(1);
-}
-
-function getTier(scoreNum) {
-  if (scoreNum <= 1.8) return { label: "Absence of Happiness", color: "#C0392B" };
-  if (scoreNum <= 2.6) return { label: "Unhappiness", color: "#E67E22" };
-  if (scoreNum <= 3.4) return { label: "Fine / Neutral", color: "#C9A84C" };
-  if (scoreNum <= 4.2) return { label: "Happiness", color: "#27AE60" };
-  return { label: "Elevated Happiness", color: "#C9A84C" };
-}
-
-// SEND TO ZAPIER - THIS IS WHAT YOU NEED
-async function sendToZapier(name, phone, email, scoreNum, tierLabel, answersData) {
-  // Format answers for SMS
-  let answersText = "";
-  QUESTIONS.forEach(q => {
-    const val = answersData[q.id] || 0;
-    answersText += `${q.text.substring(0, 40)}...: ${val}/5\n`;
-  });
   
-  const payload = {
+  document.getElementById('progress-fill').style.width = `${percent}%`;
+  document.getElementById('progress-text').textContent = `${answered} of ${total} answered`;
+  
+  const nextBtn = document.getElementById('next-btn');
+  if (nextBtn) {
+    nextBtn.disabled = answered !== total;
+  }
+}
+
+// Format answers for SMS
+function formatAnswersText() {
+  let text = "";
+  QUESTIONS.forEach(q => {
+    const val = answers[q.id] || 0;
+    text += `${q.text.substring(0, 45)}...: ${val}/5\n`;
+  });
+  return text;
+}
+
+// ============================================================
+// 🔥 FIXED: Send to Zapier with CORS bypass using GET + no-cors
+// ============================================================
+async function sendToZapier(name, phone, email, scoreNum, tierLabel) {
+  const answersText = formatAnswersText();
+  
+  // Build URL with all data as query parameters
+  const params = new URLSearchParams({
     name: name,
     phone: phone,
     email: email,
-    score: scoreNum,
+    score: scoreNum.toFixed(1),
     tier: tierLabel,
-    answers_text: answersText,
+    answers: answersText.substring(0, 500), // Limit length for URL
     timestamp: new Date().toISOString()
-  };
+  });
   
-  console.log("Sending to Zapier:", payload);
+  const url = `${ZAPIER_WEBHOOK}?${params.toString()}`;
+  console.log("📤 Sending to Zapier via GET (CORS-safe)");
   
   try {
-    const response = await fetch(ZAPIER_WEBHOOK, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+    // Use no-cors mode - this bypasses CORS restrictions
+    // The request will send, but we can't read the response (that's ok)
+    await fetch(url, { 
+      method: "GET", 
+      mode: "no-cors",
+      cache: "no-cache"
     });
-    console.log("Zapier response:", response.status);
-    return response.ok;
+    console.log("✅ Request sent to Zapier successfully");
+    return true;
   } catch (error) {
-    console.error("Zapier error:", error);
+    console.error("❌ Zapier send error:", error);
     return false;
   }
 }
@@ -330,72 +537,103 @@ async function showResults() {
   const phone = document.getElementById('phone').value.trim();
   const email = document.getElementById('email').value.trim();
   const errorDiv = document.getElementById('contact-error');
+  const successDiv = document.getElementById('contact-success');
   
-  if (!name) { errorDiv.textContent = "Please enter your name"; return; }
+  // Validation
+  if (!name) { errorDiv.textContent = "Please enter your full name"; return; }
   if (!phone) { errorDiv.textContent = "Please enter your phone number"; return; }
-  if (!email) { errorDiv.textContent = "Please enter your email"; return; }
-  if (!email.includes('@')) { errorDiv.textContent = "Enter a valid email"; return; }
+  if (!email) { errorDiv.textContent = "Please enter your email address"; return; }
+  if (!email.includes('@')) { errorDiv.textContent = "Please enter a valid email address"; return; }
   
   errorDiv.textContent = "";
   
   // Calculate score
-  const scoreNum = parseFloat(calculateScore());
+  const scoreNum = calculateScore();
   const tierData = getTier(scoreNum);
   
-  // SEND TO ZAPIER
-  const sent = await sendToZapier(name, phone, email, scoreNum, tierData.label, answers);
+  // Send to Zapier (CORS-safe)
+  successDiv.textContent = "Sending your results...";
+  const sent = await sendToZapier(name, phone, email, scoreNum, tierData.label);
   
   if (sent) {
-    console.log("✅ Data sent to Zapier successfully");
+    successDiv.textContent = "✅ Results sent! Displaying your report...";
+    console.log("✅ Successfully sent to Zapier");
   } else {
-    console.log("⚠️ Failed to send to Zapier, but continuing");
+    successDiv.textContent = "⚠️ Report displayed (email notification pending)";
+    console.log("⚠️ Zapier send may have issues, but continuing");
   }
   
-  // Display results
+  setTimeout(() => {
+    successDiv.textContent = "";
+  }, 3000);
+  
+  // Build results HTML
   const resultsDiv = document.getElementById('results-content');
+  const answersHtml = QUESTIONS.map(q => `
+    <div class="answer-row">
+      <span class="answer-text">${q.text.substring(0, 60)}${q.text.length > 60 ? '...' : ''}</span>
+      <span class="answer-score">${answers[q.id] || 0}/5</span>
+    </div>
+  `).join('');
+  
   resultsDiv.innerHTML = `
-    <div class="result-card" style="text-align:center; background:${tierData.color}20;">
-      <div class="result-score">${scoreNum}/5</div>
-      <div class="result-tier" style="color:${tierData.color}; font-size:24px;">${tierData.label}</div>
-      <p style="margin-top:16px; color:#333;">Thank you ${name}! Your results have been sent to your phone.</p>
+    <div class="result-hero">
+      <div class="result-score">${scoreNum.toFixed(1)}/5</div>
+      <div class="result-tier" style="color: ${tierData.color}">${tierData.label}</div>
+      <div class="result-desc">Thank you, ${name.split(' ')[0]}! Your personalised report is below.</div>
     </div>
     <div class="result-card">
       <h3>Your Answers</h3>
-      ${QUESTIONS.map((q, i) => `
-        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eee;">
-          <span style="flex:1;">${q.text.substring(0, 50)}...</span>
-          <span style="font-weight:bold;">${answers[q.id] || 0}/5</span>
-        </div>
-      `).join('')}
+      ${answersHtml}
+    </div>
+    <div class="result-card">
+      <h3>Your Daily Practice</h3>
+      <p style="color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.6;">
+        Each morning, before the world makes its demands, take 3 minutes and answer: 
+        <strong style="color: #C9A84C;">"Who am I choosing to be today?"</strong>
+        Name it. Speak it. Take one action consistent with that answer.
+      </p>
     </div>
   `;
   
+  // Switch views
   document.getElementById('contact-section').classList.add('hidden');
   document.getElementById('results-section').classList.remove('hidden');
+  
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function next() {
+// Go to contact page
+function goToContact() {
+  const answered = Object.keys(answers).length;
+  if (answered !== QUESTIONS.length) return;
+  
   document.getElementById('quiz-section').classList.add('hidden');
   document.getElementById('contact-section').classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function retake() {
+// Reset everything
+function resetAssessment() {
   answers = {};
-  currentQuestion = 0;
+  score = 0;
   renderQuestions();
   document.getElementById('quiz-section').classList.remove('hidden');
-  document.getElementById('results-section').classList.add('hidden');
   document.getElementById('contact-section').classList.add('hidden');
+  document.getElementById('results-section').classList.add('hidden');
   document.getElementById('name').value = '';
   document.getElementById('phone').value = '';
   document.getElementById('email').value = '';
+  document.getElementById('contact-error').textContent = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Initialize
 renderQuestions();
-document.getElementById('nextBtn').onclick = next;
-document.getElementById('submitBtn').onclick = showResults;
-document.getElementById('retakeBtn').onclick = retake;
+document.getElementById('next-btn').onclick = goToContact;
+document.getElementById('submit-btn').onclick = showResults;
+document.getElementById('retake-btn').onclick = resetAssessment;
 </script>
 </body>
 </html>
