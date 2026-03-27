@@ -1,543 +1,507 @@
-import { useState } from "react";
-
-const URL_UNLOCK = "https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808";
-const URL_COACH  = "https://www.accessworldseminars.org/the-perfect-squeeze-page--45e9d";
-const URL_FREE   = "https://form.jotform.com/250184868189875";
-const URL_PROGRAMS = "https://accessworldseminars-ship-it.github.io/results/BecomeACoach";
-
-// ─── QUESTIONS ────────────────────────────────────────────────────────────────
-const QUESTIONS = [
-  {
-    id: 1, category: "Mindset", icon: "✦",
-    question: "Did I live in a beautiful state of mind and emotion today?",
-    labels: ["Not at all", "Rarely", "Sometimes", "Often", "Frequently", "Absolutely yes"],
-    weight: 1.2, reversed: false,
-    module: "NSR — Nervous System Reprogramming",
-    webinar: "The NSR Nervous System Programming Webinar",
-    low: {
-      title: "Your Nervous System Is Running an Old Program",
-      analysis: "When your emotional state feels heavy, flat, or persistently reactive, it is rarely about what is happening around you — it is about the program your nervous system has been running, often since childhood. Unresolved emotional imprints create a default baseline that constantly pulls you back toward familiar states, even painful ones. Your nervous system has learned to treat these states as 'safe' simply because they are familiar.\n\nThis is the core insight of Nervous System Reprogramming (NSR): your current emotional baseline is not fixed — it is a learned pattern. And what was learned can be unlearned. Through processes such as The Gift (emotional clearing and timeline therapy) and The Grey Room (reframing and releasing past trauma), you can systematically dissolve the trapped emotional charge that keeps you operating below your natural level of joy and peace.",
-      process: "The Gift process — an emotional clearing and timeline therapy — is specifically designed for this. It overrides negative emotional imprints with joy, helping you release trapped emotions from the past so that your baseline state begins to rise naturally. Many people report feeling as though a weight has been lifted after their first session.",
-      practice: "Each morning before checking your phone, take three slow diaphragmatic breaths. On each exhale, state aloud: 'I choose to feel [word] today.' This is not positive thinking — it is nervous system priming. Repetition with emotional engagement begins wiring a new neural baseline within 21 days."
-    },
-    high: {
-      title: "A Well-Regulated State — Your Platform for Everything",
-      analysis: "You are managing your emotional state at a level that reflects real inner work. In NSR methodology, a consistently positive emotional baseline is not the end of the journey — it is the launchpad. Your nervous system is in a regulated state, which means you have the neurological capacity to go deeper: into expanded joy, into peak creative states, and into profound service to others.",
-      process: "The Space Odyssey process — a spatial relocation strategy — can now be used to eliminate any remaining residual emotional charge from past memories, so that you can recall events without being pulled back into old feeling states.",
-      practice: "Peak State Stacking: Identify three peak moments from your life when you felt most alive and joyful. Revisit each one in vivid sensory detail for 90 seconds. Notice where the feeling lives in your body. Practise triggering this state deliberately before high-stakes conversations, presentations, or coaching sessions."
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>AccessWorld · Happiness Assessment</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-  },
-  {
-    id: 2, category: "Love & Joy", icon: "❤",
-    question: "Did I live into an experience of love and joy today?",
-    labels: ["Not at all", "Barely", "A little", "Noticeably", "Strongly", "Completely"],
-    weight: 1.2, reversed: false,
-    module: "Emotional Clearing & Freedom",
-    webinar: "The Emotional Clearing Webinar + Ultimate Freedom Webinar",
-    low: {
-      title: "The Channel to Love and Joy Is Blocked — But It Can Be Cleared",
-      analysis: "Love and joy are not emotions that arrive when life cooperates — they are frequencies your nervous system either allows or suppresses based on deep-seated beliefs about whether you are safe, worthy, and enough. When this dimension scores low, it consistently points to one of three root causes: unprocessed grief or loss, chronic patterns of self-rejection, or the unconscious belief that joy must be earned before it can be felt.\n\nThe Emotional Clearing work in the AccessWorld curriculum addresses all three directly. The six reasons behind self-sabotage — explored in the Ultimate Freedom program — almost always include a hidden block to positive emotional experience. Until those blocks are named and cleared, joy will feel like a visitor rather than a resident.",
-      process: "The Grey Room process is the most direct intervention for this dimension. By revisiting memories that once triggered rejection, hurt, sadness, fear, anger, guilt, or shame — and transforming those emotional responses — you create genuine spaciousness inside. Participants consistently report renewed energy and freedom after this process, often experiencing joy spontaneously where numbness existed before.",
-      practice: "The Joy Inventory: Each evening, write three specific moments from the day where you felt even a flicker of warmth, connection, or aliveness — however brief. This is not gratitude journalling. It is nervous system retraining: you are teaching your reticular activating system to scan for positive experience rather than threat. Do this for 30 consecutive days."
-    },
-    high: {
-      title: "You Have Access to Joy — Now Amplify and Share It",
-      analysis: "Living in regular contact with love and joy signals that your nervous system has learned that positive emotional experience is safe to sustain — a more significant achievement than most people realise. The NSR principle here is expansion: your task is to move from accessing joy to living FROM joy as your default operating frequency.",
-      process: "The Womb of Eternity process — a timeline therapy that reimprints the inner voice of authority — can deepen this further by replacing any residual inner critical voice with one of genuine kindness and self-compassion, making your access to joy even more stable and unconditional.",
-      practice: "Joy Contagion: Once daily, give one person your full, undivided presence for two minutes — no agenda, no phone, no half-attention. Notice the neurological effect in both of you. Sustained, generous presence is one of the most powerful state-transmission tools available. It deepens your own joy while elevating those around you."
+    body {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #080d18;
     }
-  },
-  {
-    id: 3, category: "Language", icon: "◈",
-    question: "Did I use words that uplift and help others — and focus on uplifting words around me?",
-    labels: ["Not at all", "Rarely", "Sometimes", "Mostly", "Consistently", "Always"],
-    weight: 1.0, reversed: false,
-    module: "NLP Foundations",
-    webinar: "The NLP Foundation Principles Webinar",
-    low: {
-      title: "Your Language Is Literally Programming Your Nervous System",
-      analysis: "In NLP, language is understood not as a description of your inner world but as an instruction to it. Every word you use — especially in self-talk — sends a direct signal to your nervous system about what is possible, what is safe, and who you are. Chronic use of closed, limiting language ('I can't', 'I always', 'It's impossible', 'I'm just...') literally hardwires neural pathways that filter out evidence of possibility and amplify evidence of limitation.\n\nThe NLP Foundation Principles program begins with exactly this: a deep audit of your habitual language patterns, both spoken and internal. Through state elicitation, anchoring, and reframing techniques, you learn to catch the language that closes doors — and replace it with language that opens neural pathways toward new results.",
-      process: "The NLP process of Anchoring Positive Emotional States is particularly relevant here. When you anchor positive states to specific language patterns — 'I am capable of...', 'What if I could...', 'I am learning to...' — you begin creating an automatic positive neurological response to possibility-language. This is not willpower. It is conditioning.",
-      practice: "The Language Swap: This week, identify one phrase you use regularly that closes possibility. Common examples: 'I can't afford it', 'I'm terrible at that', 'That's just how I am'. Replace it with a question that opens possibility: 'How could I...?', 'What if I were capable of...?', 'What would need to be true for this to work?' Questions bypass the critical faculty of the conscious mind and go directly to the unconscious for answers."
-    },
-    high: {
-      title: "Your Language Is Creating Your World — Keep Elevating It",
-      analysis: "Consistent use of uplifting, possibility-rich language is one of the clearest external markers of a well-calibrated nervous system. NLP research confirms what your score reflects: people who habitually use empowering linguistic patterns experience higher wellbeing, more resilient responses to setbacks, and measurably greater positive influence on those around them.",
-      process: "The Communication from the Heart webinar offers the next level of language mastery for you — moving from positive self-language into the five levels of communication and the art of becoming the most impactful communicator in any room.",
-      practice: "Language Leadership: Begin consciously noticing when people around you use closed, limiting language. Rather than correcting them, model an alternative by asking an opening question. 'What if...' and 'How might you...' are two of the most powerful coaching openers available. You are already practicing this skill — formalise it."
-    }
-  },
-  {
-    id: 4, category: "Progress", icon: "▲",
-    question: "Did I make meaningful progress towards my goals today?",
-    labels: ["None at all", "Tiny step", "Some progress", "Good progress", "Strong progress", "Absolutely yes"],
-    weight: 1.1, reversed: false,
-    module: "Values, Motivation & Unconscious Resistance",
-    webinar: "The Ultimate Freedom Webinar + Stepping Into Wealth Webinar",
-    low: {
-      title: "Stalled Progress Has a Root Cause — and It Is Not Laziness",
-      analysis: "When progress consistently stalls despite genuine effort and clear intention, the block is almost never a strategy problem. It is an unconscious resistance problem. Part of your nervous system — operating below conscious awareness — has formed a belief that arriving at your goal is in some way unsafe: it might mean more responsibility, loss of belonging, exposure to judgment, or the terrifying possibility of still not being enough even after achieving it.\n\nThe Ultimate Freedom program addresses the six specific reasons behind self-sabotage, along with the three-step solution to each. The Stepping Into Wealth program adds the dimension of financial and achievement identity — exploring how your internal 'thermostat' for success has been set, often in early childhood, and how to raise it deliberately through NLP and identity reprogramming tools.",
-      process: "The Gift process is powerfully effective for unlocking stalled progress. When the emotional charge is released from past experiences of failure, disappointment, or criticism, the unconscious resistance that has been protecting you from risking again begins to dissolve. People describe experiencing sudden motivation and energy after clearing these emotional blocks — often toward the very goals they had been avoiding.",
-      practice: "The Payoff Question: Ask yourself with genuine curiosity — 'What am I getting from NOT making progress on this goal?' Write down the honest answer without judgment. The answer is always something: comfort, certainty, protection from failure, belonging, safety. Naming the hidden payoff is the essential first step to releasing it. You cannot dissolve what you cannot see."
-    },
-    high: {
-      title: "Momentum Is Working — Now Align It With Your Deepest Why",
-      analysis: "Consistent daily progress signals strong values alignment and a nervous system that is not running significant unconscious resistance in this area. This is worth recognising — most people experience chronic friction between what they say they want and what they unconsciously do. You have broken through that barrier in an important way.",
-      process: "The Design Your Identity webinar is your natural next step. When progress is flowing, the power move is to anchor the identity of 'someone who consistently achieves' into your nervous system at a deep level — so that progress becomes an expression of who you are rather than something you have to motivate yourself toward.",
-      practice: "The 90-Day Vision: Write a vivid, present-tense description of where you will be in 90 days if your current momentum continues. Read it aloud each morning. This activates the unconscious mind as a co-creator of your results rather than a passive observer."
-    }
-  },
-  {
-    id: 5, category: "Identity", icon: "◉",
-    question: "Did I act from my new, chosen identity today — not my old story?",
-    labels: ["Not once", "Rarely", "A few times", "Often", "Strongly", "Completely"],
-    weight: 1.1, reversed: false,
-    module: "Beliefs & Identity Redesign",
-    webinar: "The Design Your Identity Webinar",
-    low: {
-      title: "Your Old Identity Is Still Running the Show",
-      analysis: "Identity is not who you consciously think you are. It is the collection of 'I am' statements your nervous system has accepted as true — most of them formed before the age of ten, in response to experiences you had little power to interpret accurately at the time. These beliefs operate automatically, filtering every experience to confirm themselves and generating behaviour that is consistent with their content.\n\nWhen you act from your old story, you are not being weak or undisciplined. You are being neurologically consistent with your deepest programming. The Design Your Identity program addresses this directly: by discovering which 'I am' statements are quietly running your life, and using incantations, anchoring, and timeline work to install new, chosen identity statements that align with who you are becoming.",
-      process: "The Womb of Eternity process is the most powerful intervention available for identity work. By reimprinting the voice of authority in your inner world — replacing the critical, diminishing inner voice with one of genuine self-belief and possibility — you create the neurological space for a new identity to take root and grow. This is not about affirmations that feel hollow. This is about changing the source code.",
-      practice: "Identity Declaration: Write and complete this sentence: 'I am no longer the person who ___. I am now the person who ___.' Be specific and emotionally engaged. Read it aloud each morning for 21 consecutive days. The combination of repetition and emotional activation is the mechanism by which new neural grooves are formed — the old story loses its grip not through suppression but through replacement."
-    },
-    high: {
-      title: "You Are Living From Your Chosen Identity — Now Deepen the Roots",
-      analysis: "Acting consistently from a chosen, intentional identity is the master skill of personal transformation — and you are practising it. In the AccessWorld curriculum, this level of identity alignment is where coaching capacity naturally begins to emerge. When you have done the work to live from your chosen self, you develop a natural ability to recognise the identity patterns in others and know how to help them shift.",
-      process: "The NLP Foundation Principles program offers the next layer for you: learning how to use state elicitation, anchoring, and reframing to help others access and install new identity states — the same tools you have been applying to yourself.",
-      practice: "Identity Expansion: Each week, deliberately act as the next version of yourself — the person you are becoming, not just the person you have become. Stretch into one behaviour, one conversation, or one decision that this expanded self would make. Growth at the identity level always precedes growth in results."
-    }
-  },
-  {
-    id: 6, category: "Wellbeing", icon: "⬡",
-    question: "Did I honour my body and my health today — movement, nourishment, rest?",
-    labels: ["Ignored it", "Barely", "Somewhat", "Mostly", "Well", "Absolutely yes"],
-    weight: 1.0, reversed: false,
-    module: "Health Mind Repatterning",
-    webinar: "The Ultimate Health Webinar",
-    low: {
-      title: "Your Body Is the Instrument — Not the Vehicle",
-      analysis: "Your body is not simply a vehicle for transporting your head. It is the biological instrument through which you experience every emotion, every thought, every relationship, and every moment of your life. When physical care is low — through poor sleep, minimal movement, or nutrition that undermines neurological function — you are creating a chemical environment in your brain that makes happiness, clarity, and sustained energy biologically harder to access.\n\nThe Ultimate Health webinar addresses this through the lens of mindset as much as physiology: it includes the NLP Swish Pattern applied to food choices and health behaviours, helping you to change the way you think and feel about health habits at a neurological level. The result is that healthy choices begin to feel natural rather than forced — because the nervous system has been reprogrammed to support them.",
-      process: "The Swish Pattern — a core NLP technique taught in the AccessWorld Health program — is specifically designed to replace automatic, unhealthy behavioural responses with new, energising ones. Rather than using willpower (which depletes), it rewires the unconscious trigger itself so that the new behaviour becomes the path of least resistance.",
-      practice: "The Minimum Viable Dose: This week, commit to three non-negotiables — 10 minutes of movement, one genuinely nourishing meal, and a consistent sleep/wake time. These are not goals. They are identity markers. Each time you honour them, you send a message to your nervous system: 'I am someone who cares for this body.' Stack these wins daily."
-    },
-    high: {
-      title: "You Are Honouring the Instrument — Keep It Non-Negotiable",
-      analysis: "Physical self-care at a consistent level creates a neurological foundation that amplifies everything else in your life. You are generating the biochemical conditions — through movement, nourishment, and rest — that support a regulated nervous system, elevated mood, sharp cognition, and sustained energy.",
-      process: "The Ultimate Health program's advanced content on using the mind-body connection for healing offers powerful tools for anyone at your level who wants to move from good health to exceptional vitality — including psychosomatic neuromodulation techniques for communicating directly with the unconscious mind about physical wellbeing.",
-      practice: "Body Check-In: Once daily, pause for 60 seconds and ask your body: 'What do you need right now?' Not your mind — your body. The answer will come as a sensation, an impulse, or a quiet knowing. Honouring it deepens the mind-body connection that underpins long-term health."
-    }
-  },
-  {
-    id: 7, category: "Mental Health", icon: "◎",
-    question: "How much did feelings of anxiety or depression affect my day?",
-    labels: ["Overwhelmed me", "Strong impact", "Noticeable", "Mild", "Very little", "Not at all"],
-    weight: 1.3, reversed: true,
-    note: "0 = overwhelmed by anxiety/depression · 5 = completely free",
-    module: "Emotional Clearing & NSR",
-    webinar: "The NSR Webinar + The Emotional Clearing Webinar + Eliminate Physical and Emotional Pain Webinar",
-    low: {
-      title: "Anxiety and Depression Are Neurological Patterns — Not Life Sentences",
-      analysis: "When anxiety or depression significantly impacts your daily life, it deserves your full and compassionate attention first — before any other area of growth. These are not character flaws or signs of weakness. They are the nervous system's learned response to perceived threat, often rooted in experiences from the past that have left a residual emotional charge in the body and mind.\n\nThe NSR methodology offers a specific and powerful pathway through this. The four core processes — The Gift, The Grey Room, The Womb of Eternity, and Space Odyssey — each address different dimensions of the anxiety and depression cycle. The Gift and Grey Room work directly on the emotional imprints driving the pattern. The Womb of Eternity addresses the inner critical voice that feeds depressive thinking. Space Odyssey neutralises the emotional charge of specific memories so that they no longer trigger the anxiety response.\n\nImportant: if you are experiencing severe mental health symptoms, please also seek support from a qualified mental health professional alongside this work. These tools are powerful complements to professional care, not replacements for it.",
-      process: "The Eliminate Physical and Emotional Pain program includes a step-by-step process for communicating directly with the unconscious mind using psychosomatic neuromodulation — bypassing the conscious mind to address the source of emotional pain at the level where it actually lives. The three prerequisites to pain elimination taught in this program give you a clear framework for understanding your own experience.",
-      practice: "The NSR Breath Reset: When anxiety activates, it hijacks your prefrontal cortex — the thinking brain — and hands control to the amygdala — the threat brain. The fastest circuit-breaker is physiological: breathe in for 4 counts, hold for 4, out for 8. The extended exhale activates the parasympathetic nervous system directly. Do this for 3 cycles before responding to anything that feels threatening."
-    },
-    high: {
-      title: "Emotional Freedom Is Your Operating Platform — Protect and Expand It",
-      analysis: "Operating largely free from anxiety and depression dominating your daily experience creates the neurological space for everything else to flourish. This is not a small thing. Many people spend years working toward the level of inner freedom you are currently experiencing. The NSR principle at this level is sustainability: ensuring the practices that maintain your freedom are embedded deeply enough that they hold even under high-pressure conditions.",
-      process: "The Space Odyssey process is ideal for maintaining and deepening this freedom — it can be used proactively to neutralise any emerging emotional residue before it builds into a pattern, keeping your nervous system clear and responsive.",
-      practice: "Freedom Maintenance: Identify the two or three practices that most reliably maintain your emotional equilibrium — whether that is breathwork, movement, journalling, connection, or prayer. Treat these as non-negotiable infrastructure. The moment they feel optional is the moment the nervous system begins to drift back toward default patterns."
-    }
-  },
-  {
-    id: 8, category: "Agency", icon: "→",
-    question: "Did I consciously CREATE my life today — or did I react to whatever happened?",
-    labels: ["Pure reaction", "Mostly reactive", "Mixed", "Mostly creating", "Strongly creating", "Fully intentional"],
-    weight: 1.3, reversed: false,
-    module: "Conscious Creation & Identity Leadership",
-    webinar: "The Design Your Identity Webinar + The NLP Foundation Principles Webinar",
-    low: {
-      title: "Reactive Living Is Exhausting — And It Is a Nervous System Pattern",
-      analysis: "Reactive living — being constantly at the mercy of external events, other people's moods, and circumstances you did not choose — is not a personality type. It is a nervous system pattern. When the threat-detection system (amygdala) is chronically activated by unresolved emotional charge, it hijacks executive function and keeps you in a perpetual state of response rather than creation. You are not failing to be intentional. Your nervous system is simply prioritising survival over vision.\n\nThe shift from reaction to creation is the central theme of the NLP Foundation Principles program. Through state management tools, unconscious reprogramming, and the anchoring of positive emotional states to chosen behaviours, you begin to develop the neurological capacity to pause between stimulus and response — and in that pause, to choose who you want to be.",
-      process: "The complete step-by-step process for anchoring positive emotional states into the nervous system — taught in the NLP Foundation Principles program — is the most direct tool for building this capacity. When you can deliberately generate a resourceful state on demand, you are no longer at the mercy of whatever emotional weather is passing through.",
-      practice: "The Creator's Pause: Before your day begins — before the first message, the first demand, the first external input — take 3 minutes to answer this question in writing: 'Who am I choosing to be today, and what is one thing only that person would do?' This practice is not motivational. It is neurological. You are programming your reticular activating system to filter the day through the lens of your chosen identity."
-    },
-    high: {
-      title: "You Are the Author — Now Lead Others to Write Their Own Story",
-      analysis: "Acting as the conscious creator of your life — responding intentionally rather than reacting automatically — is the apex skill of personal development. It reflects a well-regulated nervous system, a chosen identity that is stronger than circumstance, and a values framework that guides decision-making even under pressure. You are living proof that this is possible.",
-      process: "The Become a World-Class Coach training is a natural next expression of this capacity. When you have learned to author your own life, you develop an instinctive ability to see the patterns in others' stories and to ask the questions that open the door to their own conscious creation. This is not a career pivot — it is an expansion of the work you are already doing on yourself.",
-      practice: "Leadership by Example: Identify one person in your life who is stuck in reactive patterns. Without advice or instruction, simply model conscious creation in their presence — show up with intention, respond rather than react, and choose your state deliberately. Your nervous system speaks to theirs. Watch what shifts."
-    }
-  }
-];
-
-// ─── TIERS ────────────────────────────────────────────────────────────────────
-const TIERS = [
-  { min: 0, max: 1.5, label: "Deeply Struggling", arcColor: "#C0392B",
-    message: "Right now life feels heavy — and that is real. This is not a judgment. It is a starting point. The fact that you answered these questions honestly shows a courage that most people never access.",
-    p1intro: "What this assessment has revealed is that your nervous system is currently carrying a significant load — emotionally, mentally, and energetically. This is not a life sentence. It is a description of a learned neurological pattern that can be changed. The tools, processes, and community of AccessWorld Seminars have been specifically designed for exactly this starting point.",
-    tier_note: "Priority focus: Nervous System Regulation before all else. Until the nervous system is brought into a more regulated state, progress in other areas will remain inconsistent. This is not a limitation — it is a sequence." },
-  { min: 1.5, max: 2.5, label: "Surviving", arcColor: "#E67E22",
-    message: "You are getting through each day — and that takes more strength than most people acknowledge. But surviving and thriving are not the same thing, and you already sense that something more is possible.",
-    p1intro: "Your assessment shows a person who is fundamentally capable and resilient, but whose nervous system is running enough unconscious resistance to keep thriving just out of reach. The gap between where you are and where you want to be is not a talent gap — it is an emotional clearing gap. The right tools, applied consistently, close that gap faster than you might imagine.",
-    tier_note: "Priority focus: Emotional Clearing and Identity work. These two dimensions, addressed together, produce the most rapid and lasting shift for people at this level." },
-  { min: 2.5, max: 3.5, label: "Growing", arcColor: "#C9A84C",
-    message: "You are genuinely growing — and more is going right than you probably give yourself credit for. The work now is precision: identifying the specific leverage points that will create disproportionate improvement.",
-    p1intro: "Your assessment reflects a person in active, genuine growth — with real momentum and real capacity. The NSR lens on your results shows that some areas of your nervous system are well-regulated and resourceful, while others still carry patterned responses that are limiting your full expression. Targeted work in these areas will accelerate your trajectory significantly.",
-    tier_note: "Priority focus: The two or three dimensions scoring lowest. At your level, broad-spectrum work is less important than precision. Find the specific emotional or identity blocks and clear them directly." },
-  { min: 3.5, max: 4.5, label: "Thriving", arcColor: "#27AE60",
-    message: "You are living with real intention and generating real results. Your nervous system is largely regulated, your identity is largely chosen, and life is responding to how you show up. You are close to extraordinary.",
-    p1intro: "This assessment reflects a person operating at a genuinely elevated level across most dimensions of daily living. From an NSR perspective, your nervous system is largely regulated, your emotional access is strong, and your capacity for conscious creation is well-developed. The work at this level is refinement and deepening — and often, the turning of your gifts outward in service of others.",
-    tier_note: "Priority focus: Depth over breadth. The final shifts that separate thriving from truly flourishing are almost always found in the dimensions that still feel effortful — and in the expansion of your gifts into genuine leadership and service." },
-  { min: 4.5, max: 5.01, label: "Flourishing", arcColor: "#C9A84C",
-    message: "You are living at a remarkable level of conscious, joyful engagement with your life. This is rare. It is the result of real work, real choices, and real courage. Your next mission: help others find what you have found.",
-    p1intro: "This assessment reflects a person operating at the highest level of the happiness scale — not through luck or circumstance, but through the kind of consistent inner work and conscious living that most people aspire to but few sustain. From an NSR perspective, your nervous system is well-regulated, your identity is intentional, and your emotional access is rich. The question at this level is not how to improve yourself — it is how to multiply your impact.",
-    tier_note: "Priority focus: Legacy and leadership. The most meaningful growth at this level comes through coaching, mentoring, and helping others access what you have built. The Become a World-Class Coach program was created for exactly this." }
-];
-
-// ─── HELPERS ─────────────────────────────────────────────────────────────────
-function calcScore(answers) {
-  let total = 0, ws = 0;
-  QUESTIONS.forEach(q => {
-    const v = answers[q.id]; if (v === undefined) return;
-    const n = q.reversed ? 5 - v : v;
-    total += n * q.weight; ws += 5 * q.weight;
-  });
-  return ws > 0 ? (total / ws) * 5 : 0;
-}
-function getTier(score) { return TIERS.find(t => score >= t.min && score < t.max) || TIERS[TIERS.length-1]; }
-function getFocusSorted(answers) {
-  return QUESTIONS.map(q => {
-    const v = answers[q.id] ?? 0;
-    const eff = q.reversed ? 5-v : v;
-    return { ...q, rawVal: v, eff };
-  }).sort((a,b) => a.eff - b.eff);
-}
-
-// ─── APP ──────────────────────────────────────────────────────────────────────
-export default function App() {
-  const [phase, setPhase]     = useState("landing");
-  const [qIdx, setQIdx]       = useState(0);
-  const [answers, setAnswers] = useState({});
-  const [selected, setSelected] = useState(null);
-  const [animOut, setAnimOut] = useState(false);
-  const [score, setScore]     = useState(0);
-  const [tier, setTier]       = useState(null);
-  const [name, setName]       = useState("");
-  const [phone, setPhone]     = useState("");
-  const [email, setEmail]     = useState("");
-  const [err, setErr]         = useState("");
-
-  const q   = QUESTIONS[qIdx];
-  const prog = (qIdx / QUESTIONS.length) * 100;
-  const bc  = tier ? tier.arcColor : "#C9A84C";
-  const sp  = (score / 5) * 100;
-  const fn  = name.split(" ")[0] || "there";
-
-  function next() {
-    if (selected === null) return;
-    const na = { ...answers, [q.id]: selected };
-    setAnswers(na); setAnimOut(true);
-    setTimeout(() => {
-      if (qIdx < QUESTIONS.length - 1) { setQIdx(qIdx+1); setSelected(null); setAnimOut(false); }
-      else { const s=calcScore(na); setScore(s); setTier(getTier(s)); setPhase("capture"); setAnimOut(false); }
-    }, 280);
-  }
-
-  function capture() {
-    if (!name.trim())          { setErr("Please enter your full name."); return; }
-    if (!phone.trim())         { setErr("Please enter your phone number."); return; }
-    if (!email.includes("@")) { setErr("Please enter a valid email address."); return; }
-    setErr("");
-    // Here you would send to your Zapier webhook or email service
-    // For now, just go to results
-    setPhase("results");
-  }
-
-  function reset() {
-    setPhase("landing"); setQIdx(0); setAnswers({}); setSelected(null);
-    setScore(0); setTier(null); setName(""); setPhone(""); setEmail("");
-    setErr("");
-  }
-
-  // ── LANDING ───────────────────────────────────────────────────────────────
-  if (phase==="landing") return (
-    <div style={S.dark}>
-      <div style={S.noise}/>
-      <div style={S.col}>
-        <div style={S.logoStack}><span style={S.logo}>ACCESSWORLD</span><span style={S.logosub}>SEMINARS · JOSHUA ROY</span></div>
-        <div style={S.gline}/>
-        <h1 style={S.lh1}>How happy are<br/>you — <em style={{fontStyle:"italic",color:"#C9A84C"}}>really?</em></h1>
-        <p style={S.lmeta}>8 questions · 3 minutes · Your personalised NSR report</p>
-        <p style={S.lbody}>Most people answer this question with a polite "fine." But fine is not flourishing. Take this assessment and discover your true happiness score — and the specific nervous system reprogramming work that will transform your daily experience.</p>
-        <button style={S.gbtn} onClick={()=>setPhase("quiz")}>Begin Your Assessment →</button>
-        <p style={S.fine}>Free · Confidential · No login required</p>
-      </div>
-    </div>
-  );
-
-  // ── QUIZ ──────────────────────────────────────────────────────────────────
-  if (phase==="quiz") return (
-    <div style={S.dark}>
-      <div style={S.noise}/>
-      <div style={S.pbar}><div style={{...S.pfill,width:`${prog}%`}}/></div>
-      <div style={{display:"flex",justifyContent:"space-between",width:"100%",maxWidth:560,padding:"14px 20px 0",zIndex:1}}>
-        <span style={{fontSize:9,letterSpacing:4,color:"#C9A84C",textTransform:"uppercase"}}>{q.category}</span>
-        <span style={{fontSize:12,color:"#ffffff33",fontFamily:"Cormorant Garamond,serif"}}>{qIdx+1}<span style={{opacity:.35}}> / {QUESTIONS.length}</span></span>
-      </div>
-      <div style={{...S.card, opacity:animOut?0:1, transform:animOut?"translateY(14px)":"translateY(0)"}}>
-        <div style={{fontSize:22,color:"#C9A84C",marginBottom:12}}>{q.icon}</div>
-        <h2 style={S.qt}>{q.question}</h2>
-        {q.note && <p style={{fontSize:10,color:"#C9A84C77",letterSpacing:1,marginBottom:16,lineHeight:1.6}}>{q.note}</p>}
-        <div style={S.sgrid}>
-          {[0,1,2,3,4,5].map(v=>(
-            <button key={v} style={{...S.sb,...(selected===v?S.sbon:{})}} onClick={()=>setSelected(v)}>
-              <span style={{fontFamily:"Cormorant Garamond,serif",fontSize:26,color:"#C9A84C",lineHeight:1}}>{v}</span>
-              <span style={{fontSize:9,color:"#ffffff55",marginTop:4,textAlign:"center",lineHeight:1.3}}>{q.labels[v]}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-      <button style={{...S.gbtn,opacity:selected===null?.3:1,marginTop:20}} onClick={next} disabled={selected===null}>
-        {qIdx<QUESTIONS.length-1?"Next →":"See My Results →"}
-      </button>
-    </div>
-  );
-
-  // ── CAPTURE ───────────────────────────────────────────────────────────────
-  if (phase==="capture") return (
-    <div style={S.dark}>
-      <div style={S.noise}/>
-      <div style={S.col}>
-        <div style={S.logoStack}><span style={S.logo}>ACCESSWORLD</span><span style={S.logosub}>SEMINARS</span></div>
-        <div style={S.gline}/>
-        <div style={{width:"100%",background:"#ffffff06",border:"1px solid #C9A84C22",borderRadius:4,padding:"24px 20px",marginBottom:18,textAlign:"center",zIndex:1}}>
-          <p style={{fontSize:9,letterSpacing:4,color:"#C9A84C",textTransform:"uppercase",marginBottom:10}}>Your Assessment Is Complete</p>
-          <svg viewBox="0 0 160 160" width="160" height="160" style={{display:"block",margin:"0 auto 10px"}}>
-            <circle cx="80" cy="80" r="64" fill="none" stroke="#ffffff08" strokeWidth="12"/>
-            <circle cx="80" cy="80" r="64" fill="none" stroke={bc} strokeWidth="12"
-              strokeLinecap="round"
-              strokeDasharray={`${2*Math.PI*64}`}
-              strokeDashoffset={`${2*Math.PI*64*(1-sp/100)}`}
-              transform="rotate(-90 80 80)"/>
-            <text x="80" y="74" textAnchor="middle" fill="#fff" fontFamily="Cormorant Garamond,serif" fontSize="38" fontWeight="300">{score.toFixed(1)}</text>
-            <text x="80" y="96" textAnchor="middle" fill="#C9A84C" fontFamily="Montserrat,sans-serif" fontSize="8" letterSpacing="3">OUT OF 5.0</text>
-          </svg>
-          <div style={{display:"inline-block",padding:"6px 18px",border:`1px solid ${bc}`,color:bc,fontSize:9,letterSpacing:4,marginBottom:12}}>{tier?.label}</div>
-          <p style={{fontSize:12,color:"#ffffff66",lineHeight:1.8,maxWidth:420,margin:"0 auto"}}>Your full <strong style={{color:"#C9A84C"}}>personalised NSR report</strong> includes your complete analysis, your top 3 nervous system intervention points, your foundation strengths, and specific daily practices drawn from the AccessWorld curriculum.</p>
-        </div>
-        <div style={{width:"100%",background:"#ffffff05",border:"1px solid #ffffff0d",borderRadius:4,padding:"22px 20px",zIndex:1,textAlign:"left"}}>
-          <p style={{fontFamily:"Cormorant Garamond,serif",fontSize:22,color:"#fff",marginBottom:4,fontWeight:400}}>Unlock Your Full Report</p>
-          <p style={{fontSize:12,color:"#ffffff44",marginBottom:16,lineHeight:1.6}}>Enter your details to view your complete personalised assessment.</p>
-          {[{l:"Full Name",p:"Your full name",v:name,s:setName,t:"text"},{l:"Phone Number",p:"+61 4xx xxx xxx",v:phone,s:setPhone,t:"tel"},{l:"Email Address",p:"your@email.com",v:email,s:setEmail,t:"email"}].map(f=>(
-            <div key={f.l} style={{marginBottom:12}}>
-              <label style={{fontSize:8,letterSpacing:3,color:"#C9A84C",textTransform:"uppercase",display:"block",marginBottom:5}}>{f.l}</label>
-              <input style={S.inp} placeholder={f.p} value={f.v} onChange={e=>f.s(e.target.value)} type={f.t}/>
-            </div>
-          ))}
-          {err && <p style={{fontSize:12,color:"#E74C3C",marginBottom:8}}>{err}</p>}
-          <button style={{...S.gbtn,width:"100%",marginTop:6}} onClick={capture}>View My Full Report →</button>
-          <p style={{...S.fine,textAlign:"center",marginTop:10}}>Your details are private and will never be shared or sold.</p>
-        </div>
-      </div>
-    </div>
-  );
-
-  // ── RESULTS PAGE (Full Report Displayed Directly) ─────────────────────────
-  if (phase==="results" && tier) {
-    const sorted = getFocusSorted(answers);
-    const priorities = sorted.slice(0,3);
-    const strengths = sorted.slice(-2);
-    const pct = Math.round((score/5)*100);
+    /* Import fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;700&display=swap');
     
-    const Bar = ({p, c="#C9A84C"}) => (
-      <div style={{height:5,background:"#e9e5db",borderRadius:3,marginTop:7}}>
-        <div style={{width:`${p}%`,height:"100%",background:c,borderRadius:3}}/>
-      </div>
-    );
+    /* Print styles for PDF saving */
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      .results-page {
+        page-break-after: always;
+      }
+      .results-page:last-child {
+        page-break-after: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    // ============================================================
+    // COMPLETE HAPPINESS ASSESSMENT APP
+    // Copy this entire file, save as index.html, open in browser
+    // ============================================================
     
-    const QDash = (q) => {
-      const v = answers[q.id]??0;
-      const e = q.reversed?5-v:v;
-      return (
-        <div style={{display:"flex",alignItems:"flex-start",gap:12,padding:"10px 0",borderBottom:"1px solid #f0ece3"}}>
-          <span style={{color:"#C9A84C",fontSize:15,width:20,flexShrink:0,paddingTop:1}}>{q.icon}</span>
-          <div style={{flex:1}}>
-            <div style={{fontSize:8,letterSpacing:3,color:"#C9A84C",textTransform:"uppercase",marginBottom:2}}>{q.category}</div>
-            <div style={{fontSize:11.5,color:"#333",lineHeight:1.4,marginBottom:4}}>{q.question}</div>
-            <div style={{display:"flex",alignItems:"center",gap:8}}>
-              <span style={{fontFamily:"Cormorant Garamond,serif",fontSize:20,color:"#1A2744"}}>{v}</span>
-              <span style={{fontSize:10,color:"#bbb"}}>/5</span>
-              <div style={{flex:1,height:4,background:"#ede9e0",borderRadius:2}}>
-                <div style={{width:`${Math.round((e/5)*100)}%`,height:"100%",background:tier.arcColor,borderRadius:2}}/>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    };
-    
-    const FocusCard = ({q, type, idx}) => {
-      const v = q.rawVal;
-      const e = q.eff;
-      const content = type === 'low' ? q.low : q.high;
-      const accent = type === 'low' ? "#1A2744" : "#C9A84C";
-      const bodyParas = content.analysis.split('\n\n').map((p, i) => 
-        <p key={i} style={{fontSize:12.5,color:"#444",lineHeight:1.85,marginBottom:10}}>{p}</p>
-      );
-      return (
-        <div style={{border:"1px solid #e8e4d9",borderLeft:`4px solid ${accent}`,borderRadius:2,padding:"22px 26px",marginBottom:22}}>
-          <div style={{float:"right",fontFamily:"Cormorant Garamond,serif",fontSize:38,color:accent,lineHeight:1,marginLeft:14}}>{v}/5</div>
-          <div style={{fontSize:8,letterSpacing:3,color:"#C9A84C",textTransform:"uppercase",marginBottom:4}}>
-            {type==='low' ? `PRIORITY FOCUS ${idx}` : 'FOUNDATION STRENGTH'} · {q.category}
-          </div>
-          <div style={{fontFamily:"Cormorant Garamond,serif",fontSize:21,color:"#1A2744",marginBottom:6}}>{content.title}</div>
-          <Bar p={Math.round((e/5)*100)} c={accent}/>
-          <div style={{fontSize:8,letterSpacing:2,color:"#888",margin:"8px 0 2px",textTransform:"uppercase"}}>Relevant Program</div>
-          <div style={{fontSize:11,color:"#C9A84C",fontStyle:"italic",marginBottom:14}}>{q.webinar}</div>
-          <div style={{clear:"both"}}/>
-          {bodyParas}
-          <div style={{background:"#f8f5ef",borderRadius:2,padding:"14px 18px",marginTop:6,marginBottom:10}}>
-            <div style={{fontSize:8,letterSpacing:3,color:"#1A2744",textTransform:"uppercase",marginBottom:6}}>The Process</div>
-            <p style={{fontSize:12,color:"#444",lineHeight:1.8,margin:0}}>{content.process}</p>
-          </div>
-          <div style={{background:"#1A2744",borderRadius:2,padding:"14px 18px",marginTop:0}}>
-            <div style={{fontSize:8,letterSpacing:3,color:"#C9A84C",textTransform:"uppercase",marginBottom:6}}>Your Daily Practice</div>
-            <p style={{fontSize:12,color:"#ffffffcc",lineHeight:1.8,margin:0}}>{content.practice}</p>
-          </div>
-        </div>
-      );
-    };
-    
-    return (
-      <div style={{background:"#fff",minHeight:"100vh",fontFamily:"Montserrat,sans-serif"}}>
-        {/* Page 1 — Overview */}
-        <div style={{padding:"52px 56px 60px",pageBreakAfter:"always",minHeight:"100vh"}}>
-          <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",borderBottom:"1px solid #C9A84C22",paddingBottom:13,marginBottom:32}}>
-            <div style={{fontFamily:"Cormorant Garamond,serif",fontSize:15,letterSpacing:5,color:"#1A2744"}}>ACCESSWORLD</div>
-            <div style={{fontSize:8,letterSpacing:3,color:"#C9A84C",textTransform:"uppercase"}}>Assessment Overview</div>
-          </div>
-          <h2 style={{fontFamily:"Cormorant Garamond,serif",fontSize:36,fontWeight:400,lineHeight:1.2,color:"#1A2744",marginBottom:5}}>Hello, {fn}.</h2>
-          <div style={{fontSize:8,letterSpacing:4,color:"#C9A84C",textTransform:"uppercase",marginBottom:24}}>
-            Your Nervous System Report · {new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'})}
-          </div>
-          <div style={{background:"#1A2744",padding:"22px 28px",borderRadius:2,marginBottom:28}}>
-            <p style={{fontFamily:"Cormorant Garamond,serif",fontSize:16,color:"#C9A84C",fontStyle:"italic",lineHeight:1.9}}>{tier.p1intro}</p>
-          </div>
-          <div style={{fontSize:11,color:"#555",fontStyle:"italic",borderLeft:"3px solid #C9A84C",padding:"10px 16px",background:"#fdfaf4",marginBottom:28,lineHeight:1.7}}>
-            <strong>Note from Joshua:</strong> {tier.tier_note}
-          </div>
-          <div style={{display:"flex",alignItems:"center",gap:24,background:"#f8f5ef",padding:"20px 24px",borderRadius:2,marginBottom:24}}>
-            <div style={{flexShrink:0}}>
-              <svg viewBox="0 0 120 120" width="100" height="100">
-                <circle cx="60" cy="60" r="48" fill="none" stroke="#e9e5db" strokeWidth="10"/>
-                <circle cx="60" cy="60" r="48" fill="none" stroke={tier.arcColor} strokeWidth="10"
-                  strokeLinecap="round"
-                  strokeDasharray={`${2*Math.PI*48}`}
-                  strokeDashoffset={`${2*Math.PI*48*(1-pct/100)}`}
-                  transform="rotate(-90 60 60)"/>
-                <text x="60" y="55" textAnchor="middle" fill="#1A2744" fontFamily="Cormorant Garamond,serif" fontSize="28" fontWeight="300">{score.toFixed(1)}</text>
-                <text x="60" y="72" textAnchor="middle" fill="#C9A84C" fontFamily="Montserrat,sans-serif" fontSize="7" letterSpacing="2">OUT OF 5</text>
-              </svg>
-            </div>
-            <div style={{flex:1}}>
-              <div style={{fontSize:8,letterSpacing:3,color:"#C9A84C",textTransform:"uppercase",marginBottom:3}}>Overall Happiness Score</div>
-              <div style={{fontFamily:"Cormorant Garamond,serif",fontSize:28,color:"#1A2744",marginBottom:4}}>
-                {score.toFixed(2)} / 5.00 &nbsp;<span style={{fontSize:16,color:tier.arcColor}}>{tier.label}</span>
-              </div>
-              <Bar p={pct} c={tier.arcColor}/>
-              <p style={{fontSize:11,color:"#666",marginTop:8,lineHeight:1.6}}>Weighted across 8 dimensions of daily living including mindset, emotional depth, language, progress, identity, physical wellbeing, mental health, and conscious agency.</p>
-            </div>
-          </div>
-          <div style={{marginBottom:8}}>
-            {QUESTIONS.map(q => QDash(q))}
-          </div>
-        </div>
+    (function() {
+      // ----- CONFIGURATION -----
+      const URL_UNLOCK = "https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808";
+      const URL_COACH = "https://www.accessworldseminars.org/the-perfect-squeeze-page--45e9d";
+      const URL_PROGRAMS = "https://accessworldseminars-ship-it.github.io/results/BecomeACoach";
+      
+      // ZAPIER WEBHOOK (replace with your actual URL)
+      const ZAPIER_WEBHOOK = ""; // Leave empty to skip, or add your URL: "https://hooks.zapier.com/..."
+      
+      // ----- QUESTIONS DATA -----
+      const QUESTIONS = [
+        { id: 1, category: "Mindset", icon: "✦", question: "Did I live in a beautiful state of mind and emotion today?", labels: ["Not at all", "Rarely", "Sometimes", "Often", "Frequently", "Absolutely yes"], weight: 1.2, reversed: false,
+          module: "NSR — Nervous System Reprogramming", webinar: "The NSR Nervous System Programming Webinar",
+          low: { title: "Your Nervous System Is Running an Old Program", analysis: "When your emotional state feels heavy, flat, or persistently reactive, it is rarely about what is happening around you — it is about the program your nervous system has been running, often since childhood. Unresolved emotional imprints create a default baseline that constantly pulls you back toward familiar states, even painful ones. Your nervous system has learned to treat these states as 'safe' simply because they are familiar.\n\nThis is the core insight of Nervous System Reprogramming (NSR): your current emotional baseline is not fixed — it is a learned pattern. And what was learned can be unlearned. Through processes such as The Gift (emotional clearing and timeline therapy) and The Grey Room (reframing and releasing past trauma), you can systematically dissolve the trapped emotional charge that keeps you operating below your natural level of joy and peace.", process: "The Gift process — an emotional clearing and timeline therapy — is specifically designed for this. It overrides negative emotional imprints with joy, helping you release trapped emotions from the past so that your baseline state begins to rise naturally. Many people report feeling as though a weight has been lifted after their first session.", practice: "Each morning before checking your phone, take three slow diaphragmatic breaths. On each exhale, state aloud: 'I choose to feel [word] today.' This is not positive thinking — it is nervous system priming. Repetition with emotional engagement begins wiring a new neural baseline within 21 days." },
+          high: { title: "A Well-Regulated State — Your Platform for Everything", analysis: "You are managing your emotional state at a level that reflects real inner work. In NSR methodology, a consistently positive emotional baseline is not the end of the journey — it is the launchpad. Your nervous system is in a regulated state, which means you have the neurological capacity to go deeper: into expanded joy, into peak creative states, and into profound service to others.", process: "The Space Odyssey process — a spatial relocation strategy — can now be used to eliminate any remaining residual emotional charge from past memories, so that you can recall events without being pulled back into old feeling states.", practice: "Peak State Stacking: Identify three peak moments from your life when you felt most alive and joyful. Revisit each one in vivid sensory detail for 90 seconds. Notice where the feeling lives in your body. Practise triggering this state deliberately before high-stakes conversations, presentations, or coaching sessions." } },
+        { id: 2, category: "Love & Joy", icon: "❤", question: "Did I live into an experience of love and joy today?", labels: ["Not at all", "Barely", "A little", "Noticeably", "Strongly", "Completely"], weight: 1.2, reversed: false,
+          module: "Emotional Clearing & Freedom", webinar: "The Emotional Clearing Webinar + Ultimate Freedom Webinar",
+          low: { title: "The Channel to Love and Joy Is Blocked — But It Can Be Cleared", analysis: "Love and joy are not emotions that arrive when life cooperates — they are frequencies your nervous system either allows or suppresses based on deep-seated beliefs about whether you are safe, worthy, and enough. When this dimension scores low, it consistently points to one of three root causes: unprocessed grief or loss, chronic patterns of self-rejection, or the unconscious belief that joy must be earned before it can be felt.\n\nThe Emotional Clearing work in the AccessWorld curriculum addresses all three directly. The six reasons behind self-sabotage — explored in the Ultimate Freedom program — almost always include a hidden block to positive emotional experience. Until those blocks are named and cleared, joy will feel like a visitor rather than a resident.", process: "The Grey Room process is the most direct intervention for this dimension. By revisiting memories that once triggered rejection, hurt, sadness, fear, anger, guilt, or shame — and transforming those emotional responses — you create genuine spaciousness inside. Participants consistently report renewed energy and freedom after this process, often experiencing joy spontaneously where numbness existed before.", practice: "The Joy Inventory: Each evening, write three specific moments from the day where you felt even a flicker of warmth, connection, or aliveness — however brief. This is not gratitude journalling. It is nervous system retraining: you are teaching your reticular activating system to scan for positive experience rather than threat. Do this for 30 consecutive days." },
+          high: { title: "You Have Access to Joy — Now Amplify and Share It", analysis: "Living in regular contact with love and joy signals that your nervous system has learned that positive emotional experience is safe to sustain — a more significant achievement than most people realise. The NSR principle here is expansion: your task is to move from accessing joy to living FROM joy as your default operating frequency.", process: "The Womb of Eternity process — a timeline therapy that reimprints the inner voice of authority — can deepen this further by replacing any residual inner critical voice with one of genuine kindness and self-compassion, making your access to joy even more stable and unconditional.", practice: "Joy Contagion: Once daily, give one person your full, undivided presence for two minutes — no agenda, no phone, no half-attention. Notice the neurological effect in both of you. Sustained, generous presence is one of the most powerful state-transmission tools available. It deepens your own joy while elevating those around you." } },
+        { id: 3, category: "Language", icon: "◈", question: "Did I use words that uplift and help others — and focus on uplifting words around me?", labels: ["Not at all", "Rarely", "Sometimes", "Mostly", "Consistently", "Always"], weight: 1.0, reversed: false,
+          module: "NLP Foundations", webinar: "The NLP Foundation Principles Webinar",
+          low: { title: "Your Language Is Literally Programming Your Nervous System", analysis: "In NLP, language is understood not as a description of your inner world but as an instruction to it. Every word you use — especially in self-talk — sends a direct signal to your nervous system about what is possible, what is safe, and who you are. Chronic use of closed, limiting language ('I can't', 'I always', 'It's impossible', 'I'm just...') literally hardwires neural pathways that filter out evidence of possibility and amplify evidence of limitation.\n\nThe NLP Foundation Principles program begins with exactly this: a deep audit of your habitual language patterns, both spoken and internal. Through state elicitation, anchoring, and reframing techniques, you learn to catch the language that closes doors — and replace it with language that opens neural pathways toward new results.", process: "The NLP process of Anchoring Positive Emotional States is particularly relevant here. When you anchor positive states to specific language patterns — 'I am capable of...', 'What if I could...', 'I am learning to...' — you begin creating an automatic positive neurological response to possibility-language. This is not willpower. It is conditioning.", practice: "The Language Swap: This week, identify one phrase you use regularly that closes possibility. Common examples: 'I can't afford it', 'I'm terrible at that', 'That's just how I am'. Replace it with a question that opens possibility: 'How could I...?', 'What if I were capable of...?', 'What would need to be true for this to work?' Questions bypass the critical faculty of the conscious mind and go directly to the unconscious for answers." },
+          high: { title: "Your Language Is Creating Your World — Keep Elevating It", analysis: "Consistent use of uplifting, possibility-rich language is one of the clearest external markers of a well-calibrated nervous system. NLP research confirms what your score reflects: people who habitually use empowering linguistic patterns experience higher wellbeing, more resilient responses to setbacks, and measurably greater positive influence on those around them.", process: "The Communication from the Heart webinar offers the next level of language mastery for you — moving from positive self-language into the five levels of communication and the art of becoming the most impactful communicator in any room.", practice: "Language Leadership: Begin consciously noticing when people around you use closed, limiting language. Rather than correcting them, model an alternative by asking an opening question. 'What if...' and 'How might you...' are two of the most powerful coaching openers available. You are already practicing this skill — formalise it." } },
+        { id: 4, category: "Progress", icon: "▲", question: "Did I make meaningful progress towards my goals today?", labels: ["None at all", "Tiny step", "Some progress", "Good progress", "Strong progress", "Absolutely yes"], weight: 1.1, reversed: false,
+          module: "Values, Motivation & Unconscious Resistance", webinar: "The Ultimate Freedom Webinar + Stepping Into Wealth Webinar",
+          low: { title: "Stalled Progress Has a Root Cause — and It Is Not Laziness", analysis: "When progress consistently stalls despite genuine effort and clear intention, the block is almost never a strategy problem. It is an unconscious resistance problem. Part of your nervous system — operating below conscious awareness — has formed a belief that arriving at your goal is in some way unsafe: it might mean more responsibility, loss of belonging, exposure to judgment, or the terrifying possibility of still not being enough even after achieving it.\n\nThe Ultimate Freedom program addresses the six specific reasons behind self-sabotage, along with the three-step solution to each. The Stepping Into Wealth program adds the dimension of financial and achievement identity — exploring how your internal 'thermostat' for success has been set, often in early childhood, and how to raise it deliberately through NLP and identity reprogramming tools.", process: "The Gift process is powerfully effective for unlocking stalled progress. When the emotional charge is released from past experiences of failure, disappointment, or criticism, the unconscious resistance that has been protecting you from risking again begins to dissolve. People describe experiencing sudden motivation and energy after clearing these emotional blocks — often toward the very goals they had been avoiding.", practice: "The Payoff Question: Ask yourself with genuine curiosity — 'What am I getting from NOT making progress on this goal?' Write down the honest answer without judgment. The answer is always something: comfort, certainty, protection from failure, belonging, safety. Naming the hidden payoff is the essential first step to releasing it. You cannot dissolve what you cannot see." },
+          high: { title: "Momentum Is Working — Now Align It With Your Deepest Why", analysis: "Consistent daily progress signals strong values alignment and a nervous system that is not running significant unconscious resistance in this area. This is worth recognising — most people experience chronic friction between what they say they want and what they unconsciously do. You have broken through that barrier in an important way.", process: "The Design Your Identity webinar is your natural next step. When progress is flowing, the power move is to anchor the identity of 'someone who consistently achieves' into your nervous system at a deep level — so that progress becomes an expression of who you are rather than something you have to motivate yourself toward.", practice: "The 90-Day Vision: Write a vivid, present-tense description of where you will be in 90 days if your current momentum continues. Read it aloud each morning. This activates the unconscious mind as a co-creator of your results rather than a passive observer." } },
+        { id: 5, category: "Identity", icon: "◉", question: "Did I act from my new, chosen identity today — not my old story?", labels: ["Not once", "Rarely", "A few times", "Often", "Strongly", "Completely"], weight: 1.1, reversed: false,
+          module: "Beliefs & Identity Redesign", webinar: "The Design Your Identity Webinar",
+          low: { title: "Your Old Identity Is Still Running the Show", analysis: "Identity is not who you consciously think you are. It is the collection of 'I am' statements your nervous system has accepted as true — most of them formed before the age of ten, in response to experiences you had little power to interpret accurately at the time. These beliefs operate automatically, filtering every experience to confirm themselves and generating behaviour that is consistent with their content.\n\nWhen you act from your old story, you are not being weak or undisciplined. You are being neurologically consistent with your deepest programming. The Design Your Identity program addresses this directly: by discovering which 'I am' statements are quietly running your life, and using incantations, anchoring, and timeline work to install new, chosen identity statements that align with who you are becoming.", process: "The Womb of Eternity process is the most powerful intervention available for identity work. By reimprinting the voice of authority in your inner world — replacing the critical, diminishing inner voice with one of genuine self-belief and possibility — you create the neurological space for a new identity to take root and grow. This is not about affirmations that feel hollow. This is about changing the source code.", practice: "Identity Declaration: Write and complete this sentence: 'I am no longer the person who ___. I am now the person who ___.' Be specific and emotionally engaged. Read it aloud each morning for 21 consecutive days. The combination of repetition and emotional activation is the mechanism by which new neural grooves are formed — the old story loses its grip not through suppression but through replacement." },
+          high: { title: "You Are Living From Your Chosen Identity — Now Deepen the Roots", analysis: "Acting consistently from a chosen, intentional identity is the master skill of personal transformation — and you are practising it. In the AccessWorld curriculum, this level of identity alignment is where coaching capacity naturally begins to emerge. When you have done the work to live from your chosen self, you develop a natural ability to recognise the identity patterns in others and know how to help them shift.", process: "The NLP Foundation Principles program offers the next layer for you: learning how to use state elicitation, anchoring, and reframing to help others access and install new identity states — the same tools you have been applying to yourself.", practice: "Identity Expansion: Each week, deliberately act as the next version of yourself — the person you are becoming, not just the person you have become. Stretch into one behaviour, one conversation, or one decision that this expanded self would make. Growth at the identity level always precedes growth in results." } },
+        { id: 6, category: "Wellbeing", icon: "⬡", question: "Did I honour my body and my health today — movement, nourishment, rest?", labels: ["Ignored it", "Barely", "Somewhat", "Mostly", "Well", "Absolutely yes"], weight: 1.0, reversed: false,
+          module: "Health Mind Repatterning", webinar: "The Ultimate Health Webinar",
+          low: { title: "Your Body Is the Instrument — Not the Vehicle", analysis: "Your body is not simply a vehicle for transporting your head. It is the biological instrument through which you experience every emotion, every thought, every relationship, and every moment of your life. When physical care is low — through poor sleep, minimal movement, or nutrition that undermines neurological function — you are creating a chemical environment in your brain that makes happiness, clarity, and sustained energy biologically harder to access.\n\nThe Ultimate Health webinar addresses this through the lens of mindset as much as physiology: it includes the NLP Swish Pattern applied to food choices and health behaviours, helping you to change the way you think and feel about health habits at a neurological level. The result is that healthy choices begin to feel natural rather than forced — because the nervous system has been reprogrammed to support them.", process: "The Swish Pattern — a core NLP technique taught in the AccessWorld Health program — is specifically designed to replace automatic, unhealthy behavioural responses with new, energising ones. Rather than using willpower (which depletes), it rewires the unconscious trigger itself so that the new behaviour becomes the path of least resistance.", practice: "The Minimum Viable Dose: This week, commit to three non-negotiables — 10 minutes of movement, one genuinely nourishing meal, and a consistent sleep/wake time. These are not goals. They are identity markers. Each time you honour them, you send a message to your nervous system: 'I am someone who cares for this body.' Stack these wins daily." },
+          high: { title: "You Are Honouring the Instrument — Keep It Non-Negotiable", analysis: "Physical self-care at a consistent level creates a neurological foundation that amplifies everything else in your life. You are generating the biochemical conditions — through movement, nourishment, and rest — that support a regulated nervous system, elevated mood, sharp cognition, and sustained energy.", process: "The Ultimate Health program's advanced content on using the mind-body connection for healing offers powerful tools for anyone at your level who wants to move from good health to exceptional vitality — including psychosomatic neuromodulation techniques for communicating directly with the unconscious mind about physical wellbeing.", practice: "Body Check-In: Once daily, pause for 60 seconds and ask your body: 'What do you need right now?' Not your mind — your body. The answer will come as a sensation, an impulse, or a quiet knowing. Honouring it deepens the mind-body connection that underpins long-term health." } },
+        { id: 7, category: "Mental Health", icon: "◎", question: "How much did feelings of anxiety or depression affect my day?", labels: ["Overwhelmed me", "Strong impact", "Noticeable", "Mild", "Very little", "Not at all"], weight: 1.3, reversed: true,
+          note: "0 = overwhelmed by anxiety/depression · 5 = completely free", module: "Emotional Clearing & NSR", webinar: "The NSR Webinar + The Emotional Clearing Webinar + Eliminate Physical and Emotional Pain Webinar",
+          low: { title: "Anxiety and Depression Are Neurological Patterns — Not Life Sentences", analysis: "When anxiety or depression significantly impacts your daily life, it deserves your full and compassionate attention first — before any other area of growth. These are not character flaws or signs of weakness. They are the nervous system's learned response to perceived threat, often rooted in experiences from the past that have left a residual emotional charge in the body and mind.\n\nThe NSR methodology offers a specific and powerful pathway through this. The four core processes — The Gift, The Grey Room, The Womb of Eternity, and Space Odyssey — each address different dimensions of the anxiety and depression cycle. The Gift and Grey Room work directly on the emotional imprints driving the pattern. The Womb of Eternity addresses the inner critical voice that feeds depressive thinking. Space Odyssey neutralises the emotional charge of specific memories so that they no longer trigger the anxiety response.\n\nImportant: if you are experiencing severe mental health symptoms, please also seek support from a qualified mental health professional alongside this work. These tools are powerful complements to professional care, not replacements for it.", process: "The Eliminate Physical and Emotional Pain program includes a step-by-step process for communicating directly with the unconscious mind using psychosomatic neuromodulation — bypassing the conscious mind to address the source of emotional pain at the level where it actually lives. The three prerequisites to pain elimination taught in this program give you a clear framework for understanding your own experience.", practice: "The NSR Breath Reset: When anxiety activates, it hijacks your prefrontal cortex — the thinking brain — and hands control to the amygdala — the threat brain. The fastest circuit-breaker is physiological: breathe in for 4 counts, hold for 4, out for 8. The extended exhale activates the parasympathetic nervous system directly. Do this for 3 cycles before responding to anything that feels threatening." },
+          high: { title: "Emotional Freedom Is Your Operating Platform — Protect and Expand It", analysis: "Operating largely free from anxiety and depression dominating your daily experience creates the neurological space for everything else to flourish. This is not a small thing. Many people spend years working toward the level of inner freedom you are currently experiencing. The NSR principle at this level is sustainability: ensuring the practices that maintain your freedom are embedded deeply enough that they hold even under high-pressure conditions.", process: "The Space Odyssey process is ideal for maintaining and deepening this freedom — it can be used proactively to neutralise any emerging emotional residue before it builds into a pattern, keeping your nervous system clear and responsive.", practice: "Freedom Maintenance: Identify the two or three practices that most reliably maintain your emotional equilibrium — whether that is breathwork, movement, journalling, connection, or prayer. Treat these as non-negotiable infrastructure. The moment they feel optional is the moment the nervous system begins to drift back toward default patterns." } },
+        { id: 8, category: "Agency", icon: "→", question: "Did I consciously CREATE my life today — or did I react to whatever happened?", labels: ["Pure reaction", "Mostly reactive", "Mixed", "Mostly creating", "Strongly creating", "Fully intentional"], weight: 1.3, reversed: false,
+          module: "Conscious Creation & Identity Leadership", webinar: "The Design Your Identity Webinar + The NLP Foundation Principles Webinar",
+          low: { title: "Reactive Living Is Exhausting — And It Is a Nervous System Pattern", analysis: "Reactive living — being constantly at the mercy of external events, other people's moods, and circumstances you did not choose — is not a personality type. It is a nervous system pattern. When the threat-detection system (amygdala) is chronically activated by unresolved emotional charge, it hijacks executive function and keeps you in a perpetual state of response rather than creation. You are not failing to be intentional. Your nervous system is simply prioritising survival over vision.\n\nThe shift from reaction to creation is the central theme of the NLP Foundation Principles program. Through state management tools, unconscious reprogramming, and the anchoring of positive emotional states to chosen behaviours, you begin to develop the neurological capacity to pause between stimulus and response — and in that pause, to choose who you want to be.", process: "The complete step-by-step process for anchoring positive emotional states into the nervous system — taught in the NLP Foundation Principles program — is the most direct tool for building this capacity. When you can deliberately generate a resourceful state on demand, you are no longer at the mercy of whatever emotional weather is passing through.", practice: "The Creator's Pause: Before your day begins — before the first message, the first demand, the first external input — take 3 minutes to answer this question in writing: 'Who am I choosing to be today, and what is one thing only that person would do?' This practice is not motivational. It is neurological. You are programming your reticular activating system to filter the day through the lens of your chosen identity." },
+          high: { title: "You Are the Author — Now Lead Others to Write Their Own Story", analysis: "Acting as the conscious creator of your life — responding intentionally rather than reacting automatically — is the apex skill of personal development. It reflects a well-regulated nervous system, a chosen identity that is stronger than circumstance, and a values framework that guides decision-making even under pressure. You are living proof that this is possible.", process: "The Become a World-Class Coach training is a natural next expression of this capacity. When you have learned to author your own life, you develop an instinctive ability to see the patterns in others' stories and to ask the questions that open the door to their own conscious creation. This is not a career pivot — it is an expansion of the work you are already doing on yourself.", practice: "Leadership by Example: Identify one person in your life who is stuck in reactive patterns. Without advice or instruction, simply model conscious creation in their presence — show up with intention, respond rather than react, and choose your state deliberately. Your nervous system speaks to theirs. Watch what shifts." } }
+      ];
+      
+      // ----- TIERS (Happiness Levels) -----
+      const TIERS = [
+        { min: 0, max: 1.5, label: "Absence of Happiness", arcColor: "#C0392B", message: "Right now life feels heavy — and that is real. This is not a judgment. It is a starting point. The fact that you answered these questions honestly shows a courage that most people never access.", p1intro: "What this assessment has revealed is that your nervous system is currently carrying a significant load — emotionally, mentally, and energetically. This is not a life sentence. It is a description of a learned neurological pattern that can be changed. The tools, processes, and community of AccessWorld Seminars have been specifically designed for exactly this starting point.", tier_note: "Priority focus: Nervous System Regulation before all else. Until the nervous system is brought into a more regulated state, progress in other areas will remain inconsistent. This is not a limitation — it is a sequence." },
+        { min: 1.5, max: 2.5, label: "Unhappiness", arcColor: "#E67E22", message: "You are getting through each day — and that takes more strength than most people acknowledge. But surviving and thriving are not the same thing, and you already sense that something more is possible.", p1intro: "Your assessment shows a person who is fundamentally capable and resilient, but whose nervous system is running enough unconscious resistance to keep thriving just out of reach. The gap between where you are and where you want to be is not a talent gap — it is an emotional clearing gap. The right tools, applied consistently, close that gap faster than you might imagine.", tier_note: "Priority focus: Emotional Clearing and Identity work. These two dimensions, addressed together, produce the most rapid and lasting shift for people at this level." },
+        { min: 2.5, max: 3.5, label: "Fine / Neutral", arcColor: "#C9A84C", message: "You are genuinely growing — and more is going right than you probably give yourself credit for. The work now is precision: identifying the specific leverage points that will create disproportionate improvement.", p1intro: "Your assessment reflects a person in active, genuine growth — with real momentum and real capacity. The NSR lens on your results shows that some areas of your nervous system are well-regulated and resourceful, while others still carry patterned responses that are limiting your full expression. Targeted work in these areas will accelerate your trajectory significantly.", tier_note: "Priority focus: The two or three dimensions scoring lowest. At your level, broad-spectrum work is less important than precision. Find the specific emotional or identity blocks and clear them directly." },
+        { min: 3.5, max: 4.5, label: "Happiness", arcColor: "#27AE60", message: "You are living with real intention and generating real results. Your nervous system is largely regulated, your identity is largely chosen, and life is responding to how you show up. You are close to extraordinary.", p1intro: "This assessment reflects a person operating at a genuinely elevated level across most dimensions of daily living. From an NSR perspective, your nervous system is largely regulated, your emotional access is strong, and your capacity for conscious creation is well-developed. The work at this level is refinement and deepening — and often, the turning of your gifts outward in service of others.", tier_note: "Priority focus: Depth over breadth. The final shifts that separate thriving from truly flourishing are almost always found in the dimensions that still feel effortful — and in the expansion of your gifts into genuine leadership and service." },
+        { min: 4.5, max: 5.01, label: "Elevated Happiness", arcColor: "#C9A84C", message: "You are living at a remarkable level of conscious, joyful engagement with your life. This is rare. It is the result of real work, real choices, and real courage. Your next mission: help others find what you have found.", p1intro: "This assessment reflects a person operating at the highest level of the happiness scale — not through luck or circumstance, but through the kind of consistent inner work and conscious living that most people aspire to but few sustain. From an NSR perspective, your nervous system is well-regulated, your identity is intentional, and your emotional access is rich. The question at this level is not how to improve yourself — it is how to multiply your impact.", tier_note: "Priority focus: Legacy and leadership. The most meaningful growth at this level comes through coaching, mentoring, and helping others access what you have built. The Become a World-Class Coach program was created for exactly this." }
+      ];
+      
+      // ----- Helper Functions -----
+      function calcScore(answers) {
+        let total = 0, ws = 0;
+        QUESTIONS.forEach(q => {
+          const v = answers[q.id];
+          if (v === undefined) return;
+          const n = q.reversed ? 5 - v : v;
+          total += n * q.weight;
+          ws += 5 * q.weight;
+        });
+        return ws > 0 ? (total / ws) * 5 : 0;
+      }
+      
+      function getTier(score) {
+        return TIERS.find(t => score >= t.min && score < t.max) || TIERS[TIERS.length-1];
+      }
+      
+      function getFocusSorted(answers) {
+        return QUESTIONS.map(q => {
+          const v = answers[q.id] ?? 0;
+          const eff = q.reversed ? 5 - v : v;
+          return { ...q, rawVal: v, eff };
+        }).sort((a, b) => a.eff - b.eff);
+      }
+      
+      // ----- React App -----
+      const { useState } = React;
+      
+      function App() {
+        const [phase, setPhase] = useState("landing");
+        const [qIdx, setQIdx] = useState(0);
+        const [answers, setAnswers] = useState({});
+        const [selected, setSelected] = useState(null);
+        const [animOut, setAnimOut] = useState(false);
+        const [score, setScore] = useState(0);
+        const [tier, setTier] = useState(null);
+        const [name, setName] = useState("");
+        const [phone, setPhone] = useState("");
+        const [email, setEmail] = useState("");
+        const [err, setErr] = useState("");
         
-        {/* Page 2 — Priority Focus Areas */}
-        <div style={{padding:"52px 56px 60px",pageBreakAfter:"always",minHeight:"100vh"}}>
-          <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",borderBottom:"1px solid #C9A84C22",paddingBottom:13,marginBottom:32}}>
-            <div style={{fontFamily:"Cormorant Garamond,serif",fontSize:15,letterSpacing:5,color:"#1A2744"}}>ACCESSWORLD</div>
-            <div style={{fontSize:8,letterSpacing:3,color:"#C9A84C",textTransform:"uppercase"}}>Priority Focus Areas</div>
-          </div>
-          <h2 style={{fontFamily:"Cormorant Garamond,serif",fontSize:36,fontWeight:400,lineHeight:1.2,color:"#1A2744",marginBottom:5}}>Where your energy<br/>is needed most.</h2>
-          <div style={{fontSize:8,letterSpacing:4,color:"#C9A84C",textTransform:"uppercase",marginBottom:24}}>Your Top 3 NSR Intervention Points</div>
-          <p style={{fontSize:13,color:"#555",lineHeight:1.8,marginBottom:26}}>
-            {fn}, these three dimensions emerged from your answers as the highest-leverage areas for your nervous system reprogramming work right now. Each analysis below draws directly from the AccessWorld program content and the NSR methodology. Apply the daily practices consistently — small, repeated neurological inputs create lasting change.
-          </p>
-          {priorities.map((q,i) => <FocusCard key={q.id} q={q} type="low" idx={i+1}/>)}
-        </div>
+        const q = QUESTIONS[qIdx];
+        const prog = (qIdx / QUESTIONS.length) * 100;
+        const bc = tier ? tier.arcColor : "#C9A84C";
+        const sp = (score / 5) * 100;
+        const fn = name.split(" ")[0] || "there";
         
-        {/* Page 3 — Strengths + Path Forward */}
-        <div style={{padding:"52px 56px 60px",minHeight:"100vh"}}>
-          <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",borderBottom:"1px solid #C9A84C22",paddingBottom:13,marginBottom:32}}>
-            <div style={{fontFamily:"Cormorant Garamond,serif",fontSize:15,letterSpacing:5,color:"#1A2744"}}>ACCESSWORLD</div>
-            <div style={{fontSize:8,letterSpacing:3,color:"#C9A84C",textTransform:"uppercase"}}>Your Foundations & Path Forward</div>
-          </div>
-          <h2 style={{fontFamily:"Cormorant Garamond,serif",fontSize:36,fontWeight:400,lineHeight:1.2,color:"#1A2744",marginBottom:5}}>What you are<br/>already doing right.</h2>
-          <div style={{fontSize:8,letterSpacing:4,color:"#C9A84C",textTransform:"uppercase",marginBottom:24}}>Your Neurological Foundation Strengths</div>
-          <p style={{fontSize:13,color:"#555",lineHeight:1.8,marginBottom:22}}>
-            These dimensions are your current strengths — areas where your nervous system is operating well and generating positive momentum. They are your anchors. Protect them, build on them, and in time, use them as the platform from which to coach and lead others.
-          </p>
-          {strengths.map(q => <FocusCard key={q.id} q={q} type="high"/>)}
+        function nextQuestion() {
+          if (selected === null) return;
+          const newAnswers = { ...answers, [q.id]: selected };
+          setAnswers(newAnswers);
+          setAnimOut(true);
+          setTimeout(() => {
+            if (qIdx < QUESTIONS.length - 1) {
+              setQIdx(qIdx + 1);
+              setSelected(null);
+              setAnimOut(false);
+            } else {
+              const s = calcScore(newAnswers);
+              setScore(s);
+              setTier(getTier(s));
+              setPhase("capture");
+              setAnimOut(false);
+            }
+          }, 280);
+        }
+        
+        async function captureAndContinue() {
+          if (!name.trim()) { setErr("Please enter your full name."); return; }
+          if (!phone.trim()) { setErr("Please enter your phone number."); return; }
+          if (!email.includes("@")) { setErr("Please enter a valid email address."); return; }
+          setErr("");
           
-          <div style={{background:"#f8f5ef",padding:"20px 24px",borderRadius:2,marginTop:4,marginBottom:28}}>
-            <div style={{fontSize:8,letterSpacing:3,color:"#C9A84C",textTransform:"uppercase",marginBottom:8}}>Your One Daily Non-Negotiable</div>
-            <p style={{fontSize:13,color:"#444",lineHeight:1.85}}>Each morning, before the world makes its demands, take 3 minutes and answer this question in writing: <em>"Who am I choosing to be today?"</em> Name it. Speak it aloud. Then take one action — however small — that is consistent with that answer. This single practice, repeated daily for 30 days, begins rewiring the neural pathways that determine your baseline happiness, energy, and sense of agency. It is the foundation of everything Joshua teaches — and it costs nothing but intention.</p>
-          </div>
+          // Send to Zapier if webhook is configured
+          if (ZAPIER_WEBHOOK) {
+            try {
+              await fetch(ZAPIER_WEBHOOK, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  name, phone, email,
+                  score: score.toFixed(2),
+                  tier: tier.label,
+                  answers: answers,
+                  timestamp: new Date().toISOString()
+                })
+              });
+            } catch(e) { console.error("Zapier error:", e); }
+          }
           
-          <div style={{background:"#1A2744",padding:"26px 28px",borderRadius:2,marginBottom:10}}>
-            <div style={{fontSize:9,letterSpacing:4,color:"#C9A84C",textTransform:"uppercase",marginBottom:10}}>For More Information</div>
-            <p style={{fontFamily:"Cormorant Garamond,serif",fontSize:20,color:"#fff",fontWeight:300,lineHeight:1.4,marginBottom:14}}>Two programs. One destination: the fullest version of you.</p>
-            <div style={{display:"flex",gap:14,flexWrap:"wrap",marginBottom:14}}>
-              <div style={{flex:1,minWidth:200,border:"1px solid #C9A84C44",padding:"14px 16px",borderRadius:2}}>
-                <div style={{fontSize:8,letterSpacing:3,color:"#C9A84C",marginBottom:5,textTransform:"uppercase"}}>Personal Transformation</div>
-                <div style={{fontFamily:"Cormorant Garamond,serif",fontSize:16,color:"#fff",marginBottom:6}}>Unlock Your Incredible Self</div>
-                <p style={{fontSize:11,color:"#ffffffaa",lineHeight:1.6,marginBottom:8}}>Emotional healing, mindset transformation, NSR processes, NLP tools, identity work, group coaching &amp; monthly live training.</p>
-                <div style={{fontSize:10,color:"#C9A84C",wordBreak:"break-all"}}>{URL_UNLOCK}</div>
-              </div>
-              <div style={{flex:1,minWidth:200,border:"1px solid #C9A84C44",padding:"14px 16px",borderRadius:2}}>
-                <div style={{fontSize:8,letterSpacing:3,color:"#C9A84C",marginBottom:5,textTransform:"uppercase"}}>Professional Certification</div>
-                <div style={{fontFamily:"Cormorant Garamond,serif",fontSize:16,color:"#fff",marginBottom:6}}>Become a World-Class Coach</div>
-                <p style={{fontSize:11,color:"#ffffffaa",lineHeight:1.6,marginBottom:8}}>Internationally recognised coaching certification, NLP &amp; NSR mastery, business development, ongoing mentorship from Joshua Roy.</p>
-                <div style={{fontSize:10,color:"#C9A84C",wordBreak:"break-all"}}>{URL_COACH}</div>
+          setPhase("results");
+        }
+        
+        function resetApp() {
+          setPhase("landing");
+          setQIdx(0);
+          setAnswers({});
+          setSelected(null);
+          setScore(0);
+          setTier(null);
+          setName("");
+          setPhone("");
+          setEmail("");
+          setErr("");
+        }
+        
+        function handlePrint() {
+          window.print();
+        }
+        
+        // Bar component
+        const Bar = ({ p, c = "#C9A84C" }) => (
+          <div style={{ height: 5, background: "#e9e5db", borderRadius: 3, marginTop: 7 }}>
+            <div style={{ width: `${p}%`, height: "100%", background: c, borderRadius: 3 }} />
+          </div>
+        );
+        
+        // ----- LANDING PAGE -----
+        if (phase === "landing") {
+          return (
+            <div style={styles.dark}>
+              <div style={styles.noise} />
+              <div style={styles.col}>
+                <div style={styles.logoStack}>
+                  <span style={styles.logo}>ACCESSWORLD</span>
+                  <span style={styles.logosub}>SEMINARS · JOSHUA ROY</span>
+                </div>
+                <div style={styles.gline} />
+                <h1 style={styles.lh1}>How happy are<br/>you — <em style={{ fontStyle: "italic", color: "#C9A84C" }}>really?</em></h1>
+                <p style={styles.lmeta}>8 questions · 3 minutes · Your personalised NSR report</p>
+                <p style={styles.lbody}>Most people answer this question with a polite "fine." But fine is not flourishing. Take this assessment and discover your true happiness score — and the specific nervous system reprogramming work that will transform your daily experience.</p>
+                <button style={styles.gbtn} onClick={() => setPhase("quiz")}>Begin Your Assessment →</button>
+                <p style={styles.fine}>Free · Confidential · No login required</p>
               </div>
             </div>
-            <p style={{fontSize:11,color:"#ffffff66",lineHeight:1.7}}>Not sure which path is right for you? Follow this link and explore both programs: <span style={{color:"#C9A84C"}}>{URL_PROGRAMS}</span></p>
-          </div>
+          );
+        }
+        
+        // ----- QUIZ PAGE -----
+        if (phase === "quiz") {
+          return (
+            <div style={styles.dark}>
+              <div style={styles.noise} />
+              <div style={styles.pbar}><div style={{ ...styles.pfill, width: `${prog}%` }} /></div>
+              <div style={{ display: "flex", justifyContent: "space-between", width: "100%", maxWidth: 560, padding: "14px 20px 0", zIndex: 1 }}>
+                <span style={{ fontSize: 9, letterSpacing: 4, color: "#C9A84C", textTransform: "uppercase" }}>{q.category}</span>
+                <span style={{ fontSize: 12, color: "#ffffff33", fontFamily: "Cormorant Garamond, serif" }}>{qIdx + 1}<span style={{ opacity: 0.35 }}> / {QUESTIONS.length}</span></span>
+              </div>
+              <div style={{ ...styles.card, opacity: animOut ? 0 : 1, transform: animOut ? "translateY(14px)" : "translateY(0)" }}>
+                <div style={{ fontSize: 22, color: "#C9A84C", marginBottom: 12 }}>{q.icon}</div>
+                <h2 style={styles.qt}>{q.question}</h2>
+                {q.note && <p style={{ fontSize: 10, color: "#C9A84C77", letterSpacing: 1, marginBottom: 16, lineHeight: 1.6 }}>{q.note}</p>}
+                <div style={styles.sgrid}>
+                  {[0, 1, 2, 3, 4, 5].map(v => (
+                    <button key={v} style={{ ...styles.sb, ...(selected === v ? styles.sbon : {}) }} onClick={() => setSelected(v)}>
+                      <span style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 26, color: "#C9A84C", lineHeight: 1 }}>{v}</span>
+                      <span style={{ fontSize: 9, color: "#ffffff55", marginTop: 4, textAlign: "center", lineHeight: 1.3 }}>{q.labels[v]}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <button style={{ ...styles.gbtn, opacity: selected === null ? 0.3 : 1, marginTop: 20 }} onClick={nextQuestion} disabled={selected === null}>
+                {qIdx < QUESTIONS.length - 1 ? "Next →" : "See My Results →"}
+              </button>
+            </div>
+          );
+        }
+        
+        // ----- CAPTURE PAGE (Name, Phone, Email) -----
+        if (phase === "capture") {
+          return (
+            <div style={styles.dark}>
+              <div style={styles.noise} />
+              <div style={styles.col}>
+                <div style={styles.logoStack}>
+                  <span style={styles.logo}>ACCESSWORLD</span>
+                  <span style={styles.logosub}>SEMINARS</span>
+                </div>
+                <div style={styles.gline} />
+                <div style={{ width: "100%", background: "#ffffff06", border: "1px solid #C9A84C22", borderRadius: 4, padding: "24px 20px", marginBottom: 18, textAlign: "center", zIndex: 1 }}>
+                  <p style={{ fontSize: 9, letterSpacing: 4, color: "#C9A84C", textTransform: "uppercase", marginBottom: 10 }}>Your Assessment Is Complete</p>
+                  <svg viewBox="0 0 160 160" width="160" height="160" style={{ display: "block", margin: "0 auto 10px" }}>
+                    <circle cx="80" cy="80" r="64" fill="none" stroke="#ffffff08" strokeWidth="12" />
+                    <circle cx="80" cy="80" r="64" fill="none" stroke={bc} strokeWidth="12" strokeLinecap="round" strokeDasharray={`${2 * Math.PI * 64}`} strokeDashoffset={`${2 * Math.PI * 64 * (1 - sp / 100)}`} transform="rotate(-90 80 80)" />
+                    <text x="80" y="74" textAnchor="middle" fill="#fff" fontFamily="Cormorant Garamond, serif" fontSize="38" fontWeight="300">{score.toFixed(1)}</text>
+                    <text x="80" y="96" textAnchor="middle" fill="#C9A84C" fontFamily="Montserrat, sans-serif" fontSize="8" letterSpacing="3">OUT OF 5.0</text>
+                  </svg>
+                  <div style={{ display: "inline-block", padding: "6px 18px", border: `1px solid ${bc}`, color: bc, fontSize: 9, letterSpacing: 4, marginBottom: 12 }}>{tier?.label}</div>
+                  <p style={{ fontSize: 12, color: "#ffffff66", lineHeight: 1.8, maxWidth: 420, margin: "0 auto" }}>Your full <strong style={{ color: "#C9A84C" }}>personalised NSR report</strong> includes your complete analysis, your top 3 nervous system intervention points, your foundation strengths, and specific daily practices drawn from the AccessWorld curriculum.</p>
+                </div>
+                <div style={{ width: "100%", background: "#ffffff05", border: "1px solid #ffffff0d", borderRadius: 4, padding: "22px 20px", zIndex: 1, textAlign: "left" }}>
+                  <p style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 22, color: "#fff", marginBottom: 4, fontWeight: 400 }}>Unlock Your Full Report</p>
+                  <p style={{ fontSize: 12, color: "#ffffff44", marginBottom: 16, lineHeight: 1.6 }}>Enter your details to view your complete personalised assessment.</p>
+                  <div style={{ marginBottom: 12 }}>
+                    <label style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase", display: "block", marginBottom: 5 }}>Full Name</label>
+                    <input style={styles.inp} placeholder="Your full name" value={name} onChange={e => setName(e.target.value)} type="text" />
+                  </div>
+                  <div style={{ marginBottom: 12 }}>
+                    <label style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase", display: "block", marginBottom: 5 }}>Phone Number</label>
+                    <input style={styles.inp} placeholder="+61 4xx xxx xxx" value={phone} onChange={e => setPhone(e.target.value)} type="tel" />
+                  </div>
+                  <div style={{ marginBottom: 12 }}>
+                    <label style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase", display: "block", marginBottom: 5 }}>Email Address</label>
+                    <input style={styles.inp} placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} type="email" />
+                  </div>
+                  {err && <p style={{ fontSize: 12, color: "#E74C3C", marginBottom: 8 }}>{err}</p>}
+                  <button style={{ ...styles.gbtn, width: "100%", marginTop: 6 }} onClick={captureAndContinue}>View My Full Report →</button>
+                  <p style={{ ...styles.fine, textAlign: "center", marginTop: 10 }}>Your details are private and will never be shared or sold.</p>
+                </div>
+              </div>
+            </div>
+          );
+        }
+        
+        // ----- RESULTS PAGE (Full 3-Page Report) -----
+        if (phase === "results" && tier) {
+          const sorted = getFocusSorted(answers);
+          const priorities = sorted.slice(0, 3);
+          const strengths = sorted.slice(-2);
+          const pct = Math.round((score / 5) * 100);
           
-          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:16}}>
-            <button style={{background:"none",border:"none",color:"#aaa",fontSize:10,cursor:"pointer",letterSpacing:1}} onClick={reset}>← Take Assessment Again</button>
-            <button style={{background:"none",border:"1px solid #C9A84C",color:"#C9A84C",padding:"8px 18px",fontSize:9,letterSpacing:2,cursor:"pointer",borderRadius:2}} onClick={()=>window.print()}>Save as PDF ↓</button>
-          </div>
-          <p style={{fontSize:9.5,color:"#aaa",lineHeight:1.7,marginTop:20}}>This assessment is for personal growth and educational purposes only. It is not a clinical diagnostic tool. If you are experiencing significant mental health challenges, please seek support from a qualified mental health professional in addition to this work. Joshua Roy · AccessWorld Seminars · ABN 72 546 137 885 · accessworldseminars.org</p>
-        </div>
-      </div>
-    );
-  }
-
-  return null;
-}
-
-// ─── STYLES ───────────────────────────────────────────────────────────────────
-const S = {
-  dark:{minHeight:"100vh",background:"linear-gradient(160deg,#080d18 0%,#1A2744 55%,#080d18 100%)",display:"flex",flexDirection:"column",alignItems:"center",fontFamily:"Montserrat,sans-serif",position:"relative",overflowX:"hidden",padding:"0 0 48px"},
-  noise:{position:"fixed",inset:0,pointerEvents:"none",zIndex:0,backgroundImage:"url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E\")"},
-  col:{display:"flex",flexDirection:"column",alignItems:"center",maxWidth:560,width:"100%",textAlign:"center",padding:"44px 20px 0",zIndex:1},
-  logoStack:{display:"flex",flexDirection:"column",alignItems:"center",marginBottom:4},
-  logo:{fontFamily:"Cormorant Garamond,serif",fontSize:20,letterSpacing:8,color:"#C9A84C"},
-  logosub:{fontSize:8,letterSpacing:7,color:"#C9A84C44",marginTop:2},
-  gline:{width:48,height:1,background:"linear-gradient(90deg,transparent,#C9A84C,transparent)",margin:"16px 0"},
-  lh1:{fontFamily:"Cormorant Garamond,serif",fontSize:"clamp(40px,9vw,70px)",color:"#fff",fontWeight:300,lineHeight:1.15,marginBottom:10},
-  lmeta:{fontSize:9,letterSpacing:4,color:"#C9A84C",textTransform:"uppercase",marginBottom:16},
-  lbody:{fontSize:14,lineHeight:1.9,color:"#ffffff77",marginBottom:32,maxWidth:460},
-  gbtn:{background:"transparent",border:"1px solid #C9A84C",color:"#C9A84C",padding:"14px 34px",fontSize:11,letterSpacing:3,textTransform:"uppercase",cursor:"pointer",fontFamily:"Montserrat,sans-serif",zIndex:1},
-  fine:{fontSize:9,color:"#ffffff22",marginTop:10,letterSpacing:1},
-  pbar:{width:"100%",height:3,background:"#ffffff08",flexShrink:0,zIndex:2},
-  pfill:{height:"100%",background:"linear-gradient(90deg,#C9A84C55,#C9A84C)",transition:"width .4s ease",borderRadius:"0 2px 2px 0"},
-  card:{width:"100%",maxWidth:560,margin:"16px 20px 0",background:"#ffffff06",border:"1px solid #ffffff0d",borderRadius:4,padding:"26px 22px",transition:"all .28s ease",zIndex:1},
-  qt:{fontFamily:"Cormorant Garamond,serif",fontSize:"clamp(19px,4vw,27px)",fontWeight:300,color:"#fff",lineHeight:1.4,marginBottom:8},
-  sgrid:{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:8,marginTop:20},
-  sb:{background:"transparent",border:"1px solid #ffffff10",borderRadius:3,padding:"11px 5px",cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",transition:"all .15s",fontFamily:"Montserrat,sans-serif"},
-  sbon:{border:"1px solid #C9A84C",background:"#C9A84C10"},
-  inp:{width:"100%",padding:"11px 13px",background:"#ffffff08",border:"1px solid #ffffff13",color:"#fff",fontSize:13,borderRadius:2,fontFamily:"Montserrat,sans-serif",outline:"none"},
-};
+          const QDash = (question) => {
+            const v = answers[question.id] ?? 0;
+            const e = question.reversed ? 5 - v : v;
+            return (
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12, padding: "10px 0", borderBottom: "1px solid #f0ece3" }}>
+                <span style={{ color: "#C9A84C", fontSize: 15, width: 20, flexShrink: 0, paddingTop: 1 }}>{question.icon}</span>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase", marginBottom: 2 }}>{question.category}</div>
+                  <div style={{ fontSize: 11.5, color: "#333", lineHeight: 1.4, marginBottom: 4 }}>{question.question}</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <span style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 20, color: "#1A2744" }}>{v}</span>
+                    <span style={{ fontSize: 10, color: "#bbb" }}>/5</span>
+                    <div style={{ flex: 1, height: 4, background: "#ede9e0", borderRadius: 2 }}>
+                      <div style={{ width: `${Math.round((e / 5) * 100)}%`, height: "100%", background: tier.arcColor, borderRadius: 2 }} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          };
+          
+          const FocusCard = ({ question, type, idx }) => {
+            const v = question.rawVal;
+            const e = question.eff;
+            const content = type === 'low' ? question.low : question.high;
+            const accent = type === 'low' ? "#1A2744" : "#C9A84C";
+            const bodyParas = content.analysis.split('\n\n').map((p, i) => <p key={i} style={{ fontSize: 12.5, color: "#444", lineHeight: 1.85, marginBottom: 10 }}>{p}</p>);
+            return (
+              <div style={{ border: "1px solid #e8e4d9", borderLeft: `4px solid ${accent}`, borderRadius: 2, padding: "22px 26px", marginBottom: 22 }}>
+                <div style={{ float: "right", fontFamily: "Cormorant Garamond, serif", fontSize: 38, color: accent, lineHeight: 1, marginLeft: 14 }}>{v}/5</div>
+                <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase", marginBottom: 4 }}>
+                  {type === 'low' ? `PRIORITY FOCUS ${idx}` : 'FOUNDATION STRENGTH'} · {question.category}
+                </div>
+                <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 21, color: "#1A2744", marginBottom: 6 }}>{content.title}</div>
+                <Bar p={Math.round((e / 5) * 100)} c={accent} />
+                <div style={{ fontSize: 8, letterSpacing: 2, color: "#888", margin: "8px 0 2px", textTransform: "uppercase" }}>Relevant Program</div>
+                <div style={{ fontSize: 11, color: "#C9A84C", fontStyle: "italic", marginBottom: 14 }}>{question.webinar}</div>
+                <div style={{ clear: "both" }} />
+                {bodyParas}
+                <div style={{ background: "#f8f5ef", borderRadius: 2, padding: "14px 18px", marginTop: 6, marginBottom: 10 }}>
+                  <div style={{ fontSize: 8, letterSpacing: 3, color: "#1A2744", textTransform: "uppercase", marginBottom: 6 }}>The Process</div>
+                  <p style={{ fontSize: 12, color: "#444", lineHeight: 1.8, margin: 0 }}>{content.process}</p>
+                </div>
+                <div style={{ background: "#1A2744", borderRadius: 2, padding: "14px 18px", marginTop: 0 }}>
+                  <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase", marginBottom: 6 }}>Your Daily Practice</div>
+                  <p style={{ fontSize: 12, color: "#ffffffcc", lineHeight: 1.8, margin: 0 }}>{content.practice}</p>
+                </div>
+              </div>
+            );
+          };
+          
+          return (
+            <div style={{ background: "#fff", minHeight: "100vh", fontFamily: "Montserrat, sans-serif" }}>
+              {/* PAGE 1 - OVERVIEW */}
+              <div className="results-page" style={{ padding: "52px 56px 60px", minHeight: "100vh" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", borderBottom: "1px solid #C9A84C22", paddingBottom: 13, marginBottom: 32 }}>
+                  <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 15, letterSpacing: 5, color: "#1A2744" }}>ACCESSWORLD</div>
+                  <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase" }}>Assessment Overview</div>
+                </div>
+                <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 36, fontWeight: 400, lineHeight: 1.2, color: "#1A2744", marginBottom: 5 }}>Hello, {fn}.</h2>
+                <div style={{ fontSize: 8, letterSpacing: 4, color: "#C9A84C", textTransform: "uppercase", marginBottom: 24 }}>
+                  Your Nervous System Report · {new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}
+                </div>
+                <div style={{ background: "#1A2744", padding: "22px 28px", borderRadius: 2, marginBottom: 28 }}>
+                  <p style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 16, color: "#C9A84C", fontStyle: "italic", lineHeight: 1.9 }}>{tier.p1intro}</p>
+                </div>
+                <div style={{ fontSize: 11, color: "#555", fontStyle: "italic", borderLeft: "3px solid #C9A84C", padding: "10px 16px", background: "#fdfaf4", marginBottom: 28, lineHeight: 1.7 }}>
+                  <strong>Note from Joshua:</strong> {tier.tier_note}
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 24, background: "#f8f5ef", padding: "20px 24px", borderRadius: 2, marginBottom: 24 }}>
+                  <div style={{ flexShrink: 0 }}>
+                    <svg viewBox="0 0 120 120" width="100" height="100">
+                      <circle cx="60" cy="60" r="48" fill="none" stroke="#e9e5db" strokeWidth="10" />
+                      <circle cx="60" cy="60" r="48" fill="none" stroke={tier.arcColor} strokeWidth="10" strokeLinecap="round" strokeDasharray={`${2 * Math.PI * 48}`} strokeDashoffset={`${2 * Math.PI * 48 * (1 - pct / 100)}`} transform="rotate(-90 60 60)" />
+                      <text x="60" y="55" textAnchor="middle" fill="#1A2744" fontFamily="Cormorant Garamond, serif" fontSize="28" fontWeight="300">{score.toFixed(1)}</text>
+                      <text x="60" y="72" textAnchor="middle" fill="#C9A84C" fontFamily="Montserrat, sans-serif" fontSize="7" letterSpacing="2">OUT OF 5</text>
+                    </svg>
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase", marginBottom: 3 }}>Overall Happiness Score</div>
+                    <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 28, color: "#1A2744", marginBottom: 4 }}>
+                      {score.toFixed(2)} / 5.00 &nbsp;<span style={{ fontSize: 16, color: tier.arcColor }}>{tier.label}</span>
+                    </div>
+                    <Bar p={pct} c={tier.arcColor} />
+                    <p style={{ fontSize: 11, color: "#666", marginTop: 8, lineHeight: 1.6 }}>Weighted across 8 dimensions of daily living including mindset, emotional depth, language, progress, identity, physical wellbeing, mental health, and conscious agency.</p>
+                  </div>
+                </div>
+                <div style={{ marginBottom: 8 }}>
+                  {QUESTIONS.map(q => QDash(q))}
+                </div>
+              </div>
+              
+              {/* PAGE 2 - PRIORITY FOCUS AREAS */}
+              <div className="results-page" style={{ padding: "52px 56px 60px", minHeight: "100vh" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", borderBottom: "1px solid #C9A84C22", paddingBottom: 13, marginBottom: 32 }}>
+                  <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 15, letterSpacing: 5, color: "#1A2744" }}>ACCESSWORLD</div>
+                  <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase" }}>Priority Focus Areas</div>
+                </div>
+                <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 36, fontWeight: 400, lineHeight: 1.2, color: "#1A2744", marginBottom: 5 }}>Where your energy<br/>is needed most.</h2>
+                <div style={{ fontSize: 8, letterSpacing: 4, color: "#C9A84C", textTransform: "uppercase", marginBottom: 24 }}>Your Top 3 NSR Intervention Points</div>
+                <p style={{ fontSize: 13, color: "#555", lineHeight: 1.8, marginBottom: 26 }}>
+                  {fn}, these three dimensions emerged from your answers as the highest-leverage areas for your nervous system reprogramming work right now. Each analysis below draws directly from the AccessWorld program content and the NSR methodology. Apply the daily practices consistently — small, repeated neurological inputs create lasting change.
+                </p>
+                {priorities.map((q, i) => <FocusCard key={q.id} question={q} type="low" idx={i+1} />)}
+              </div>
+              
+              {/* PAGE 3 - STRENGTHS + PATH FORWARD */}
+              <div style={{ padding: "52px 56px 60px", minHeight: "100vh" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", borderBottom: "1px solid #C9A84C22", paddingBottom: 13, marginBottom: 32 }}>
+                  <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 15, letterSpacing: 5, color: "#1A2744" }}>ACCESSWORLD</div>
+                  <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase" }}>Your Foundations & Path Forward</div>
+                </div>
+                <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 36, fontWeight: 400, lineHeight: 1.2, color: "#1A2744", marginBottom: 5 }}>What you are<br/>already doing right.</h2>
+                <div style={{ fontSize: 8, letterSpacing: 4, color: "#C9A84C", textTransform: "uppercase", marginBottom: 24 }}>Your Neurological Foundation Strengths</div>
+                <p style={{ fontSize: 13, color: "#555", lineHeight: 1.8, marginBottom: 22 }}>
+                  These dimensions are your current strengths — areas where your nervous system is operating well and generating positive momentum. They are your anchors. Protect them, build on them, and in time, use them as the platform from which to coach and lead others.
+                </p>
+                {strengths.map(q => <FocusCard key={q.id} question={q} type="high" />)}
+                
+                <div style={{ background: "#f8f5ef", padding: "20px 24px", borderRadius: 2, marginTop: 4, marginBottom: 28 }}>
+                  <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase", marginBottom: 8 }}>Your One Daily Non-Negotiable</div>
+                  <p style={{ fontSize: 13, color: "#444", lineHeight: 1.85 }}>Each morning, before the world makes its demands, take 3 minutes and answer this question in writing: <em>"Who am I choosing to be today?"</em> Name it. Speak it aloud. Then take one action — however small — that is consistent with that answer. This single practice, repeated daily for 30 days, begins rewiring the neural pathways that determine your baseline happiness, energy, and sense of agency. It is the foundation of everything Joshua teaches — and it costs nothing but intention.</p>
+                </div>
+                
+                <div style={{ background: "#1A2744", padding: "26px 28px", borderRadius: 2, marginBottom: 10 }}>
+                  <div style={{ fontSize: 9, letterSpacing: 4, color: "#C9A84C", textTransform: "uppercase", marginBottom: 10 }}>For More Information</div>
+                  <p style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 20, color: "#fff", fontWeight: 300, lineHeight: 1.4, marginBottom: 14 }}>Two programs. One destination: the fullest version of you.</p>
+                  <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 14 }}>
+                    <div style={{ flex: 1, minWidth: 200, border: "1px solid #C9A84C44", padding: "14px 16px", borderRadius: 2 }}>
+                      <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", marginBottom: 5, textTransform: "uppercase" }}>Personal Transformation</div>
+                      <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 16, color: "#fff", marginBottom: 6 }}>Unlock Your Incredible Self</div>
+                      <p style={{ fontSize: 11, color: "#ffffffaa", lineHeight: 1.6, marginBottom: 8 }}>Emotional healing, mindset transformation, NSR processes, NLP tools, identity work, group coaching & monthly live training.</p>
+                      <div style={{ fontSize: 10, color: "#C9A84C", wordBreak: "break-all" }}>{URL_UNLOCK}</div>
+                    </div>
+                    <div style={{ flex: 1, minWidth: 200, border: "1px solid #C9A84C44", padding: "14px 16px", borderRadius: 2 }}>
+                      <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", marginBottom: 5, textTransform: "uppercase" }}>Professional Certification</div>
+                      <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 16, color: "#fff", marginBottom: 6 }}>Become a World-Class Coach</div>
+                      <p style={{ fontSize: 11, color: "#ffffffaa", lineHeight: 1.6, marginBottom: 8 }}>Internationally recognised coaching certification, NLP & NSR mastery, business development, ongoing mentorship from Joshua Roy.</p>
+                      <div style={{ fontSize: 10, color: "#C9A84C", wordBreak: "break-all" }}>{URL_COACH}</div>
+                    </div>
+                  </div>
+                  <p style={{ fontSize: 11, color: "#ffffff66", lineHeight: 1.7 }}>Not sure which path is right for you? Follow this link and explore both programs: <span style={{ color: "#C9A84C" }}>{URL_PROGRAMS}</span></p>
+                </div>
+                
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 16 }}>
+                  <button className="no-print" style={{ background: "none", border: "none", color: "#aaa", fontSize: 10, cursor: "pointer", letterSpacing: 1 }} onClick={resetApp}>← Take Assessment Again</button>
+                  <button className="no-print" style={{ background: "none", border: "1px solid #C9A84C", color: "#C9A84C", padding: "8px 18px", fontSize: 9, letterSpacing: 2, cursor: "pointer", borderRadius: 2 }} onClick={handlePrint}>Save as PDF ↓</button>
+                </div>
+                <p style={{ fontSize: 9.5, color: "#aaa", lineHeight: 1.7, marginTop: 20 }}>This assessment is for personal growth and educational purposes only. It is not a clinical diagnostic tool. If you are experiencing significant mental health challenges, please seek support from a qualified mental health professional in addition to this work. Joshua Roy · AccessWorld Seminars · ABN 72 546 137 885 · accessworldseminars.org</p>
+              </div>
+            </div>
+          );
+        }
+        
+        return null;
+      }
+      
+      // ----- STYLES OBJECT -----
+      const styles = {
+        dark: { minHeight: "100vh", background: "linear-gradient(160deg,#080d18 0%,#1A2744 55%,#080d18 100%)", display: "flex", flexDirection: "column", alignItems: "center", fontFamily: "Montserrat, sans-serif", position: "relative", overflowX: "hidden", padding: "0 0 48px" },
+        noise: { position: "fixed", inset: 0, pointerEvents: "none", zIndex: 0, backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E\")" },
+        col: { display: "flex", flexDirection: "column", alignItems: "center", maxWidth: 560, width: "100%", textAlign: "center", padding: "44px 20px 0", zIndex: 1 },
+        logoStack: { display: "flex", flexDirection: "column", alignItems: "center", marginBottom: 4 },
+        logo: { fontFamily: "Cormorant Garamond, serif", fontSize: 20, letterSpacing: 8, color: "#C9A84C" },
+        logosub: { fontSize: 8, letterSpacing: 7, color: "#C9A84C44", marginTop: 2 },
+        gline: { width: 48, height: 1, background: "linear-gradient(90deg,transparent,#C9A84C,transparent)", margin: "16px 0" },
+        lh1: { fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(40px,9vw,70px)", color: "#fff", fontWeight: 300, lineHeight: 1.15, marginBottom: 10 },
+        lmeta: { fontSize: 9, letterSpacing: 4, color: "#C9A84C", textTransform: "uppercase", marginBottom: 16 },
+        lbody: { fontSize: 14, lineHeight: 1.9, color: "#ffffff77", marginBottom: 32, maxWidth: 460 },
+        gbtn: { background: "transparent", border: "1px solid #C9A84C", color: "#C9A84C", padding: "14px 34px", fontSize: 11, letterSpacing: 3, textTransform: "uppercase", cursor: "pointer", fontFamily: "Montserrat, sans-serif", zIndex: 1 },
+        fine: { fontSize: 9, color: "#ffffff22", marginTop: 10, letterSpacing: 1 },
+        pbar: { width: "100%", height: 3, background: "#ffffff08", flexShrink: 0, zIndex: 2 },
+        pfill: { height: "100%", background: "linear-gradient(90deg,#C9A84C55,#C9A84C)", transition: "width .4s ease", borderRadius: "0 2px 2px 0" },
+        card: { width: "100%", maxWidth: 560, margin: "16px 20px 0", background: "#ffffff06", border: "1px solid #ffffff0d", borderRadius: 4, padding: "26px 22px", transition: "all .28s ease", zIndex: 1 },
+        qt: { fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(19px,4vw,27px)", fontWeight: 300, color: "#fff", lineHeight: 1.4, marginBottom: 8 },
+        sgrid: { display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8, marginTop: 20 },
+        sb: { background: "transparent", border: "1px solid #ffffff10", borderRadius: 3, padding: "11px 5px", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", transition: "all .15s", fontFamily: "Montserrat, sans-serif" },
+        sbon: { border: "1px solid #C9A84C", background: "#C9A84C10" },
+        inp: { width: "100%", padding: "11px 13px", background: "#ffffff08", border: "1px solid #ffffff13", color: "#fff", fontSize: 13, borderRadius: 2, fontFamily: "Montserrat, sans-serif", outline: "none" }
+      };
+      
+      // Render the app
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(React.createElement(App));
+    })();
+  </script>
+  <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+</body>
+</html>
