@@ -2,638 +2,400 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AccessWorld · Happiness Assessment</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #080d18;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(160deg, #080d18 0%, #1A2744 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
     }
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;700&display=swap');
-    
-    @media print {
-      .no-print {
-        display: none !important;
-      }
-      .results-page {
-        page-break-after: always;
-      }
-      .results-page:last-child {
-        page-break-after: auto;
-      }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.05);
+      border-radius: 24px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(201,169,76,0.3);
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .sub {
+      text-align: center;
+      color: #C9A84C;
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+    .question {
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      border-left: 3px solid #C9A84C;
+    }
+    .question-text {
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .scale {
+      display: flex;
+      gap: 8px;
+      justify-content: space-between;
+    }
+    .scale-btn {
+      flex: 1;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 10px 5px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .scale-btn:hover {
+      background: rgba(201,169,76,0.3);
+      border-color: #C9A84C;
+    }
+    .scale-btn.selected {
+      background: #C9A84C;
+      border-color: #C9A84C;
+    }
+    .scale-btn .num {
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      display: block;
+    }
+    .scale-btn .label {
+      font-size: 9px;
+      color: rgba(255,255,255,0.6);
+    }
+    .progress {
+      height: 4px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: #C9A84C;
+      width: 0%;
+      transition: width 0.3s;
+    }
+    .btn {
+      background: #C9A84C;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #1A2744;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 20px;
+      transition: opacity 0.2s;
+    }
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      color: #C9A84C;
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 14px;
+    }
+    .error {
+      color: #ff6b6b;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+    .hidden {
+      display: none;
+    }
+    .result-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .result-score {
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+      color: #1A2744;
+    }
+    .result-tier {
+      text-align: center;
+      font-size: 20px;
+      margin: 10px 0;
     }
   </style>
 </head>
 <body>
-  <div id="root"></div>
+<div class="container">
+  <div id="quiz-section">
+    <h1>How happy are you — <span style="color:#C9A84C">really?</span></h1>
+    <div class="sub">8 questions · 3 minutes</div>
+    <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+    <div id="questions-container"></div>
+    <button class="btn" id="nextBtn" disabled>Next →</button>
+  </div>
 
-  <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <div id="contact-section" class="hidden">
+    <h1>Your results are <span style="color:#C9A84C">ready</span></h1>
+    <div class="sub">Enter your details to view your report</div>
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" id="name" placeholder="Your full name">
+    </div>
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="tel" id="phone" placeholder="+61 4xx xxx xxx">
+    </div>
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" id="email" placeholder="your@email.com">
+    </div>
+    <div id="contact-error" class="error"></div>
+    <button class="btn" id="submitBtn">View My Full Report →</button>
+  </div>
 
-  <script type="text/babel">
-    // ============================================================
-    // HAPPINESS ASSESSMENT - WITH ZAPIER WEBHOOK CONFIGURED
-    // ============================================================
+  <div id="results-section" class="hidden">
+    <div id="results-content"></div>
+    <button class="btn" id="retakeBtn" style="background:#333; color:#fff;">Take Again</button>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// HAPPINESS ASSESSMENT - WORKING ZAPIER WEBHOOK
+// ============================================================
+
+// YOUR ZAPIER WEBHOOK URL
+const ZAPIER_WEBHOOK = "https://hooks.zapier.com/hooks/catch/3779260/unt9eik/";
+
+// QUESTIONS
+const QUESTIONS = [
+  { id: 1, text: "How positive and peaceful was my state of mind today?" },
+  { id: 2, text: "How much love and joy did I experience today?" },
+  { id: 3, text: "How much did I use words that uplift and inspire today?" },
+  { id: 4, text: "How much meaningful progress did I make toward my goals today?" },
+  { id: 5, text: "How much did I act from my chosen identity today (not my old story)?" },
+  { id: 6, text: "How well did I honour my body with movement, nourishment, and rest?" },
+  { id: 7, text: "How free did I feel from anxiety and depression today?" },
+  { id: 8, text: "How much did I consciously CREATE my life today (vs just reacting)?" }
+];
+
+const LABELS = ["Not at all", "Rarely", "Sometimes", "Often", "Mostly", "Completely"];
+
+// State
+let answers = {};
+let currentQuestion = 0;
+let score = 0;
+let tier = { label: "" };
+
+// Render questions
+function renderQuestions() {
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+  
+  QUESTIONS.forEach((q, idx) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.innerHTML = `
+      <div class="question-text">${q.text}</div>
+      <div class="scale" data-qid="${q.id}">
+        ${[0,1,2,3,4,5].map(v => `
+          <button class="scale-btn" data-val="${v}" onclick="selectAnswer(${q.id}, ${v})">
+            <span class="num">${v}</span>
+            <span class="label">${LABELS[v]}</span>
+          </button>
+        `).join('')}
+      </div>
+    `;
+    container.appendChild(div);
     
-    // ----- CONFIGURATION -----
-    const URL_UNLOCK = "https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808";
-    const URL_COACH = "https://www.accessworldseminars.org/the-perfect-squeeze-page--45e9d";
-    const URL_PROGRAMS = "https://accessworldseminars-ship-it.github.io/results/BecomeACoach";
-    
-    // ✅ YOUR ZAPIER WEBHOOK URL (tested and working)
-    const ZAPIER_WEBHOOK = "https://hooks.zapier.com/hooks/catch/3779260/unt9eik/";
-    
-    // ----- QUESTIONS DATA (ALL WITH 5 = POSITIVE) -----
-    const QUESTIONS = [
-      { id: 1, category: "Mindset", icon: "✦", 
-        question: "How positive and peaceful was my state of mind today?", 
-        labels: ["Not at all", "Rarely", "Sometimes", "Often", "Mostly", "Completely"], 
-        weight: 1.2, reversed: false,
-        module: "NSR — Nervous System Reprogramming", 
-        webinar: "The NSR Nervous System Programming Webinar",
-        low: { title: "Your Nervous System Is Running an Old Program", 
-          analysis: "When your emotional state feels heavy, flat, or persistently reactive, it is rarely about what is happening around you — it is about the program your nervous system has been running, often since childhood.",
-          process: "The Gift process — an emotional clearing and timeline therapy — is specifically designed for this. It overrides negative emotional imprints with joy.",
-          practice: "Each morning before checking your phone, take three slow diaphragmatic breaths. On each exhale, state aloud: 'I choose to feel [word] today.'" },
-        high: { title: "A Well-Regulated State — Your Platform for Everything", 
-          analysis: "You are managing your emotional state at a level that reflects real inner work.",
-          process: "The Space Odyssey process can eliminate any remaining residual emotional charge.",
-          practice: "Peak State Stacking: Identify three peak moments from your life. Revisit each in vivid sensory detail for 90 seconds." } },
-      { id: 2, category: "Love & Joy", icon: "❤", 
-        question: "How much love and joy did I experience today?", 
-        labels: ["Not at all", "Rarely", "Sometimes", "Often", "Mostly", "Completely"], 
-        weight: 1.2, reversed: false,
-        module: "Emotional Clearing & Freedom", 
-        webinar: "The Emotional Clearing Webinar",
-        low: { title: "The Channel to Love and Joy Is Blocked", 
-          analysis: "Love and joy are frequencies your nervous system either allows or suppresses based on deep-seated beliefs.",
-          process: "The Grey Room process revisits memories and transforms emotional responses.",
-          practice: "The Joy Inventory: Each evening, write three moments where you felt even a flicker of warmth." },
-        high: { title: "You Have Access to Joy", 
-          analysis: "Living in regular contact with love and joy signals your nervous system has learned that positive emotion is safe.",
-          process: "The Womb of Eternity process can deepen this further.",
-          practice: "Joy Contagion: Once daily, give one person your full presence for two minutes." } },
-      { id: 3, category: "Language", icon: "◈", 
-        question: "How much did I use words that uplift and inspire today?", 
-        labels: ["Not at all", "Rarely", "Sometimes", "Often", "Mostly", "Completely"], 
-        weight: 1.0, reversed: false,
-        module: "NLP Foundations", 
-        webinar: "The NLP Foundation Principles Webinar",
-        low: { title: "Your Language Is Programming Your Nervous System", 
-          analysis: "Every word you use sends a direct signal to your nervous system about what is possible.",
-          process: "Anchoring Positive Emotional States helps catch limiting language.",
-          practice: "The Language Swap: Replace a limiting phrase with an open question." },
-        high: { title: "Your Language Is Creating Your World", 
-          analysis: "Consistent use of uplifting, possibility-rich language is a marker of a well-calibrated nervous system.",
-          process: "The Communication from the Heart webinar offers the next level.",
-          practice: "Language Leadership: Notice when people use closed language and model an alternative." } },
-      { id: 4, category: "Progress", icon: "▲", 
-        question: "How much meaningful progress did I make toward my goals today?", 
-        labels: ["None at all", "Tiny step", "Some progress", "Good progress", "Strong progress", "Absolutely yes"], 
-        weight: 1.1, reversed: false,
-        module: "Values, Motivation & Unconscious Resistance", 
-        webinar: "The Ultimate Freedom Webinar",
-        low: { title: "Stalled Progress Has a Root Cause", 
-          analysis: "When progress stalls, the block is unconscious resistance — part of your nervous system believes arriving is unsafe.",
-          process: "The Gift process unlocks stalled progress by releasing emotional charge from past failures.",
-          practice: "The Payoff Question: 'What am I getting from NOT making progress?'" },
-        high: { title: "Momentum Is Working", 
-          analysis: "Consistent daily progress signals strong values alignment.",
-          process: "The Design Your Identity webinar is your natural next step.",
-          practice: "The 90-Day Vision: Write a vivid description of where you'll be in 90 days." } },
-      { id: 5, category: "Identity", icon: "◉", 
-        question: "How much did I act from my chosen identity today (not my old story)?", 
-        labels: ["Not at all", "Rarely", "Sometimes", "Often", "Mostly", "Completely"], 
-        weight: 1.1, reversed: false,
-        module: "Beliefs & Identity Redesign", 
-        webinar: "The Design Your Identity Webinar",
-        low: { title: "Your Old Identity Is Still Running", 
-          analysis: "Identity is the collection of 'I am' statements your nervous system has accepted as true, most formed before age ten.",
-          process: "The Womb of Eternity process replaces the critical inner voice with genuine self-belief.",
-          practice: "Identity Declaration: 'I am no longer the person who ___. I am now the person who ___.'" },
-        high: { title: "You Are Living From Your Chosen Identity", 
-          analysis: "Acting consistently from a chosen identity is the master skill of personal transformation.",
-          process: "The NLP Foundation Principles program offers the next layer.",
-          practice: "Identity Expansion: Each week, act as the next version of yourself." } },
-      { id: 6, category: "Wellbeing", icon: "⬡", 
-        question: "How well did I honour my body with movement, nourishment, and rest?", 
-        labels: ["Not at all", "Poorly", "Somewhat", "Well", "Very well", "Perfectly"], 
-        weight: 1.0, reversed: false,
-        module: "Health Mind Repatterning", 
-        webinar: "The Ultimate Health Webinar",
-        low: { title: "Your Body Is the Instrument", 
-          analysis: "Your body is the biological instrument through which you experience every emotion.",
-          process: "The Swish Pattern replaces automatic unhealthy responses.",
-          practice: "The Minimum Viable Dose: 10 min movement, one nourishing meal, consistent sleep." },
-        high: { title: "You Are Honouring the Instrument", 
-          analysis: "Physical self-care creates a neurological foundation that amplifies everything.",
-          process: "The Ultimate Health program offers advanced mind-body connection tools.",
-          practice: "Body Check-In: Once daily, ask your body what it needs." } },
-      { id: 7, category: "Mental Health", icon: "◎", 
-        question: "How free did I feel from anxiety and depression today?", 
-        labels: ["Not at all free", "Rarely free", "Sometimes free", "Often free", "Mostly free", "Completely free"], 
-        weight: 1.3, reversed: false,
-        note: "0 = overwhelmed · 5 = completely free", 
-        module: "Emotional Clearing & NSR", 
-        webinar: "The NSR Webinar",
-        low: { title: "Anxiety and Depression Are Patterns — Not Life Sentences", 
-          analysis: "These are the nervous system's learned response to perceived threat, rooted in past experiences.",
-          process: "The four core processes — The Gift, The Grey Room, The Womb of Eternity, Space Odyssey.",
-          practice: "The NSR Breath Reset: Breathe in 4, hold 4, out 8. Do 3 cycles." },
-        high: { title: "Emotional Freedom Is Your Platform", 
-          analysis: "Operating free from anxiety creates space for everything else to flourish.",
-          process: "Space Odyssey can be used proactively to neutralise emerging emotional residue.",
-          practice: "Freedom Maintenance: Identify 2-3 practices that maintain your equilibrium." } },
-      { id: 8, category: "Agency", icon: "→", 
-        question: "How much did I consciously CREATE my life today (vs just reacting)?", 
-        labels: ["Pure reaction", "Mostly reactive", "Mixed", "Mostly creating", "Strongly creating", "Fully intentional"], 
-        weight: 1.3, reversed: false,
-        module: "Conscious Creation", 
-        webinar: "The Design Your Identity Webinar",
-        low: { title: "Reactive Living Is Exhausting", 
-          analysis: "Reactive living is a nervous system pattern where threat-detection hijacks executive function.",
-          process: "Anchoring positive emotional states builds capacity to pause and choose.",
-          practice: "The Creator's Pause: 'Who am I choosing to be today?'" },
-        high: { title: "You Are the Author", 
-          analysis: "Acting as conscious creator is the apex skill of personal development.",
-          process: "The Become a World-Class Coach training is a natural next expression.",
-          practice: "Leadership by Example: Model conscious creation for someone stuck." } }
-    ];
-    
-    // ----- TIERS (5 Levels Based on Your Framework) -----
-    const TIERS = [
-      { min: 0, max: 1.5, label: "Absence of Happiness", arcColor: "#C0392B", 
-        message: "Right now life feels heavy — and that is real. This is not a judgment. It is a starting point.",
-        p1intro: "Your nervous system is currently carrying a significant load. This is not a life sentence. It is a learned pattern that can be changed.",
-        tier_note: "Priority: Nervous System Regulation before all else." },
-      { min: 1.5, max: 2.5, label: "Unhappiness", arcColor: "#E67E22", 
-        message: "You are getting through each day — and that takes strength. But surviving and thriving are not the same.",
-        p1intro: "Your nervous system is running enough unconscious resistance to keep thriving just out of reach.",
-        tier_note: "Priority: Emotional Clearing and Identity work." },
-      { min: 2.5, max: 3.5, label: "Fine / Neutral", arcColor: "#C9A84C", 
-        message: "Things are fine — but fine isn't flourishing. You sense something more is possible.",
-        p1intro: "Some areas are well-regulated, others still carry patterned responses limiting your full expression.",
-        tier_note: "Priority: The two or three dimensions scoring lowest." },
-      { min: 3.5, max: 4.5, label: "Happiness", arcColor: "#27AE60", 
-        message: "You are living with real intention and generating real results. You are close to extraordinary.",
-        p1intro: "Your nervous system is largely regulated, your identity is chosen, your capacity for creation is well-developed.",
-        tier_note: "Priority: Depth over breadth — refinement and deepening." },
-      { min: 4.5, max: 5.01, label: "Elevated Happiness", arcColor: "#C9A84C", 
-        message: "You are living at a remarkable level of conscious, joyful engagement. This is rare.",
-        p1intro: "Your nervous system is well-regulated, your identity intentional, your emotional access rich.",
-        tier_note: "Priority: Legacy and leadership — helping others find what you have found." }
-    ];
-    
-    // ----- Helper Functions -----
-    function calcScore(answers) {
-      let total = 0, ws = 0;
-      QUESTIONS.forEach(q => {
-        const v = answers[q.id];
-        if (v === undefined) return;
-        const n = q.reversed ? 5 - v : v;
-        total += n * q.weight;
-        ws += 5 * q.weight;
-      });
-      return ws > 0 ? (total / ws) * 5 : 0;
+    // Highlight existing answer if any
+    if (answers[q.id] !== undefined) {
+      const btns = div.querySelectorAll('.scale-btn');
+      btns[answers[q.id]].classList.add('selected');
     }
-    
-    function getTier(score) {
-      return TIERS.find(t => score >= t.min && score < t.max) || TIERS[TIERS.length-1];
-    }
-    
-    function getFocusSorted(answers) {
-      return QUESTIONS.map(q => {
-        const v = answers[q.id] ?? 0;
-        const eff = q.reversed ? 5 - v : v;
-        return { ...q, rawVal: v, eff };
-      }).sort((a, b) => a.eff - b.eff);
-    }
-    
-    // Format answers for email/SMS
-    function formatAnswersForEmail(answers) {
-      let result = "";
-      QUESTIONS.forEach(q => {
-        const v = answers[q.id] ?? 0;
-        result += `${q.category}: ${v}/5\n`;
-      });
-      return result;
-    }
-    
-    // ----- Main App Component -----
-    const App = () => {
-      const [phase, setPhase] = React.useState("landing");
-      const [qIdx, setQIdx] = React.useState(0);
-      const [answers, setAnswers] = React.useState({});
-      const [selected, setSelected] = React.useState(null);
-      const [animOut, setAnimOut] = React.useState(false);
-      const [score, setScore] = React.useState(0);
-      const [tier, setTier] = React.useState(null);
-      const [name, setName] = React.useState("");
-      const [phone, setPhone] = React.useState("");
-      const [email, setEmail] = React.useState("");
-      const [err, setErr] = React.useState("");
-      const [sending, setSending] = React.useState(false);
-      
-      const q = QUESTIONS[qIdx];
-      const prog = ((qIdx) / QUESTIONS.length) * 100;
-      const sp = (score / 5) * 100;
-      const fn = name.split(" ")[0] || "there";
-      
-      const nextQuestion = () => {
-        if (selected === null) return;
-        const newAnswers = { ...answers, [q.id]: selected };
-        setAnswers(newAnswers);
-        setAnimOut(true);
-        setTimeout(() => {
-          if (qIdx < QUESTIONS.length - 1) {
-            setQIdx(qIdx + 1);
-            setSelected(null);
-            setAnimOut(false);
-          } else {
-            const s = calcScore(newAnswers);
-            setScore(s);
-            setTier(getTier(s));
-            setPhase("capture");
-            setAnimOut(false);
-          }
-        }, 280);
-      };
-      
-      const sendToZapier = async () => {
-        const answersText = formatAnswersForEmail(answers);
-        
-        // Build email body that will trigger your Zapier SMS
-        const emailBody = `New inquiry received:
+  });
+  
+  updateProgress();
+}
 
-Name: ${name}
-Phone: ${phone}
-Email: ${email}
-Score: ${score.toFixed(2)}/5
-Tier: ${tier.label}
+function selectAnswer(qid, val) {
+  answers[qid] = val;
+  
+  // Update UI highlight
+  const scaleDiv = document.querySelector(`.scale[data-qid="${qid}"]`);
+  if (scaleDiv) {
+    scaleDiv.querySelectorAll('.scale-btn').forEach(btn => btn.classList.remove('selected'));
+    scaleDiv.querySelectorAll('.scale-btn')[val].classList.add('selected');
+  }
+  
+  updateProgress();
+}
 
-DETAILED RESULTS:
-${answersText}
+function updateProgress() {
+  const answered = Object.keys(answers).length;
+  const total = QUESTIONS.length;
+  const percent = (answered / total) * 100;
+  document.getElementById('progressFill').style.width = `${percent}%`;
+  document.getElementById('nextBtn').disabled = answered !== total;
+}
 
-Recommendations:
-Priority focus: ${getFocusSorted(answers).slice(0,3).map(q => q.category).join(", ")}`;
+function calculateScore() {
+  let total = 0;
+  QUESTIONS.forEach(q => {
+    total += answers[q.id] || 0;
+  });
+  return (total / QUESTIONS.length).toFixed(1);
+}
 
-        const payload = {
-          name: name,
-          phone: phone,
-          email: email,
-          score: score.toFixed(2),
-          tier: tier.label,
-          answers: answers,
-          answers_text: answersText,
-          message: emailBody,
-          timestamp: new Date().toISOString()
-        };
-        
-        try {
-          const response = await fetch(ZAPIER_WEBHOOK, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-          });
-          console.log("Zapier webhook sent:", response.status);
-          return true;
-        } catch (e) {
-          console.error("Zapier error:", e);
-          return false;
-        }
-      };
-      
-      const captureAndContinue = async () => {
-        if (!name.trim()) { setErr("Please enter your full name."); return; }
-        if (!phone.trim()) { setErr("Please enter your phone number."); return; }
-        if (!email.includes("@")) { setErr("Please enter a valid email address."); return; }
-        setErr("");
-        
-        setSending(true);
-        
-        // Send to Zapier webhook
-        if (ZAPIER_WEBHOOK && ZAPIER_WEBHOOK.includes("hooks.zapier.com")) {
-          await sendToZapier();
-        } else {
-          console.warn("Zapier webhook not configured correctly.");
-        }
-        
-        setSending(false);
-        setPhase("results");
-      };
-      
-      const resetApp = () => {
-        setPhase("landing");
-        setQIdx(0);
-        setAnswers({});
-        setSelected(null);
-        setScore(0);
-        setTier(null);
-        setName("");
-        setPhone("");
-        setEmail("");
-        setErr("");
-      };
-      
-      const handlePrint = () => window.print();
-      
-      const Bar = ({ p, c = "#C9A84C" }) => (
-        <div style={{ height: 5, background: "#e9e5db", borderRadius: 3, marginTop: 7 }}>
-          <div style={{ width: `${p}%`, height: "100%", background: c, borderRadius: 3 }} />
+function getTier(scoreNum) {
+  if (scoreNum <= 1.8) return { label: "Absence of Happiness", color: "#C0392B" };
+  if (scoreNum <= 2.6) return { label: "Unhappiness", color: "#E67E22" };
+  if (scoreNum <= 3.4) return { label: "Fine / Neutral", color: "#C9A84C" };
+  if (scoreNum <= 4.2) return { label: "Happiness", color: "#27AE60" };
+  return { label: "Elevated Happiness", color: "#C9A84C" };
+}
+
+// SEND TO ZAPIER - THIS IS WHAT YOU NEED
+async function sendToZapier(name, phone, email, scoreNum, tierLabel, answersData) {
+  // Format answers for SMS
+  let answersText = "";
+  QUESTIONS.forEach(q => {
+    const val = answersData[q.id] || 0;
+    answersText += `${q.text.substring(0, 40)}...: ${val}/5\n`;
+  });
+  
+  const payload = {
+    name: name,
+    phone: phone,
+    email: email,
+    score: scoreNum,
+    tier: tierLabel,
+    answers_text: answersText,
+    timestamp: new Date().toISOString()
+  };
+  
+  console.log("Sending to Zapier:", payload);
+  
+  try {
+    const response = await fetch(ZAPIER_WEBHOOK, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    console.log("Zapier response:", response.status);
+    return response.ok;
+  } catch (error) {
+    console.error("Zapier error:", error);
+    return false;
+  }
+}
+
+// Show results and send to Zapier
+async function showResults() {
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const errorDiv = document.getElementById('contact-error');
+  
+  if (!name) { errorDiv.textContent = "Please enter your name"; return; }
+  if (!phone) { errorDiv.textContent = "Please enter your phone number"; return; }
+  if (!email) { errorDiv.textContent = "Please enter your email"; return; }
+  if (!email.includes('@')) { errorDiv.textContent = "Enter a valid email"; return; }
+  
+  errorDiv.textContent = "";
+  
+  // Calculate score
+  const scoreNum = parseFloat(calculateScore());
+  const tierData = getTier(scoreNum);
+  
+  // SEND TO ZAPIER
+  const sent = await sendToZapier(name, phone, email, scoreNum, tierData.label, answers);
+  
+  if (sent) {
+    console.log("✅ Data sent to Zapier successfully");
+  } else {
+    console.log("⚠️ Failed to send to Zapier, but continuing");
+  }
+  
+  // Display results
+  const resultsDiv = document.getElementById('results-content');
+  resultsDiv.innerHTML = `
+    <div class="result-card" style="text-align:center; background:${tierData.color}20;">
+      <div class="result-score">${scoreNum}/5</div>
+      <div class="result-tier" style="color:${tierData.color}; font-size:24px;">${tierData.label}</div>
+      <p style="margin-top:16px; color:#333;">Thank you ${name}! Your results have been sent to your phone.</p>
+    </div>
+    <div class="result-card">
+      <h3>Your Answers</h3>
+      ${QUESTIONS.map((q, i) => `
+        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eee;">
+          <span style="flex:1;">${q.text.substring(0, 50)}...</span>
+          <span style="font-weight:bold;">${answers[q.id] || 0}/5</span>
         </div>
-      );
-      
-      // ----- LANDING PAGE -----
-      if (phase === "landing") {
-        return (
-          <div style={styles.dark}>
-            <div style={styles.noise} />
-            <div style={styles.col}>
-              <div style={styles.logoStack}>
-                <span style={styles.logo}>ACCESSWORLD</span>
-                <span style={styles.logosub}>SEMINARS · JOSHUA ROY</span>
-              </div>
-              <div style={styles.gline} />
-              <h1 style={styles.lh1}>How happy are<br/>you — <em style={{ fontStyle: "italic", color: "#C9A84C" }}>really?</em></h1>
-              <p style={styles.lmeta}>8 questions · 3 minutes · Your personalised NSR report</p>
-              <p style={styles.lbody}>Most people answer this question with a polite "fine." But fine is not flourishing. Take this assessment and discover your true happiness score — and the specific nervous system reprogramming work that will transform your daily experience.</p>
-              <button style={styles.gbtn} onClick={() => setPhase("quiz")}>Begin Your Assessment →</button>
-              <p style={styles.fine}>Free · Confidential · No login required</p>
-            </div>
-          </div>
-        );
-      }
-      
-      // ----- QUIZ PAGE -----
-      if (phase === "quiz" && q) {
-        return (
-          <div style={styles.dark}>
-            <div style={styles.noise} />
-            <div style={styles.pbar}><div style={{ ...styles.pfill, width: `${prog}%` }} /></div>
-            <div style={{ display: "flex", justifyContent: "space-between", width: "100%", maxWidth: 560, padding: "14px 20px 0", zIndex: 1 }}>
-              <span style={{ fontSize: 9, letterSpacing: 4, color: "#C9A84C", textTransform: "uppercase" }}>{q.category}</span>
-              <span style={{ fontSize: 12, color: "#ffffff33", fontFamily: "Cormorant Garamond, serif" }}>{qIdx + 1}<span style={{ opacity: 0.35 }}> / {QUESTIONS.length}</span></span>
-            </div>
-            <div style={{ ...styles.card, opacity: animOut ? 0 : 1, transform: animOut ? "translateY(14px)" : "translateY(0)" }}>
-              <div style={{ fontSize: 22, color: "#C9A84C", marginBottom: 12 }}>{q.icon}</div>
-              <h2 style={styles.qt}>{q.question}</h2>
-              {q.note && <p style={{ fontSize: 10, color: "#C9A84C77", letterSpacing: 1, marginBottom: 16 }}>{q.note}</p>}
-              <div style={styles.sgrid}>
-                {[0, 1, 2, 3, 4, 5].map(v => (
-                  <button key={v} style={{ ...styles.sb, ...(selected === v ? styles.sbon : {}) }} onClick={() => setSelected(v)}>
-                    <span style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 26, color: "#C9A84C", lineHeight: 1 }}>{v}</span>
-                    <span style={{ fontSize: 9, color: "#ffffff55", marginTop: 4, textAlign: "center" }}>{q.labels[v]}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-            <button style={{ ...styles.gbtn, opacity: selected === null ? 0.3 : 1, marginTop: 20 }} onClick={nextQuestion} disabled={selected === null}>
-              {qIdx < QUESTIONS.length - 1 ? "Next →" : "See My Results →"}
-            </button>
-          </div>
-        );
-      }
-      
-      // ----- CAPTURE PAGE -----
-      if (phase === "capture" && tier) {
-        return (
-          <div style={styles.dark}>
-            <div style={styles.noise} />
-            <div style={styles.col}>
-              <div style={styles.logoStack}><span style={styles.logo}>ACCESSWORLD</span><span style={styles.logosub}>SEMINARS</span></div>
-              <div style={styles.gline} />
-              <div style={{ width: "100%", background: "#ffffff06", border: "1px solid #C9A84C22", borderRadius: 4, padding: "24px 20px", marginBottom: 18, textAlign: "center" }}>
-                <p style={{ fontSize: 9, letterSpacing: 4, color: "#C9A84C", textTransform: "uppercase", marginBottom: 10 }}>Your Assessment Is Complete</p>
-                <svg viewBox="0 0 160 160" width="160" height="160" style={{ display: "block", margin: "0 auto 10px" }}>
-                  <circle cx="80" cy="80" r="64" fill="none" stroke="#ffffff08" strokeWidth="12" />
-                  <circle cx="80" cy="80" r="64" fill="none" stroke={tier.arcColor} strokeWidth="12" strokeLinecap="round" strokeDasharray={`${2 * Math.PI * 64}`} strokeDashoffset={`${2 * Math.PI * 64 * (1 - sp / 100)}`} transform="rotate(-90 80 80)" />
-                  <text x="80" y="74" textAnchor="middle" fill="#fff" fontFamily="Cormorant Garamond, serif" fontSize="38" fontWeight="300">{score.toFixed(1)}</text>
-                  <text x="80" y="96" textAnchor="middle" fill="#C9A84C" fontFamily="Montserrat, sans-serif" fontSize="8" letterSpacing="3">OUT OF 5.0</text>
-                </svg>
-                <div style={{ display: "inline-block", padding: "6px 18px", border: `1px solid ${tier.arcColor}`, color: tier.arcColor, fontSize: 9, letterSpacing: 4, marginBottom: 12 }}>{tier.label}</div>
-                <p style={{ fontSize: 12, color: "#ffffff66", lineHeight: 1.8, maxWidth: 420, margin: "0 auto" }}>Your full personalised NSR report includes complete analysis, top 3 intervention points, foundation strengths, and daily practices.</p>
-              </div>
-              <div style={{ width: "100%", background: "#ffffff05", border: "1px solid #ffffff0d", borderRadius: 4, padding: "22px 20px", textAlign: "left" }}>
-                <p style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 22, color: "#fff", marginBottom: 4, fontWeight: 400 }}>Unlock Your Full Report</p>
-                <p style={{ fontSize: 12, color: "#ffffff44", marginBottom: 16 }}>Enter your details to view your complete personalised assessment.</p>
-                <div style={{ marginBottom: 12 }}>
-                  <label style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase", display: "block", marginBottom: 5 }}>Full Name</label>
-                  <input style={styles.inp} placeholder="Your full name" value={name} onChange={e => setName(e.target.value)} type="text" />
-                </div>
-                <div style={{ marginBottom: 12 }}>
-                  <label style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase", display: "block", marginBottom: 5 }}>Phone Number</label>
-                  <input style={styles.inp} placeholder="+61 4xx xxx xxx" value={phone} onChange={e => setPhone(e.target.value)} type="tel" />
-                </div>
-                <div style={{ marginBottom: 12 }}>
-                  <label style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase", display: "block", marginBottom: 5 }}>Email Address</label>
-                  <input style={styles.inp} placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} type="email" />
-                </div>
-                {err && <p style={{ fontSize: 12, color: "#E74C3C", marginBottom: 8 }}>{err}</p>}
-                <button style={{ ...styles.gbtn, width: "100%", marginTop: 6 }} onClick={captureAndContinue} disabled={sending}>
-                  {sending ? "Sending..." : "View My Full Report →"}
-                </button>
-                <p style={{ ...styles.fine, textAlign: "center", marginTop: 10 }}>Your details are private and never shared.</p>
-              </div>
-            </div>
-          </div>
-        );
-      }
-      
-      // ----- RESULTS PAGE (Full 3-Page Report) -----
-      if (phase === "results" && tier) {
-        const sorted = getFocusSorted(answers);
-        const priorities = sorted.slice(0, 3);
-        const strengths = sorted.slice(-2);
-        const pct = Math.round((score / 5) * 100);
-        
-        const QDash = (qItem) => {
-          const v = answers[qItem.id] ?? 0;
-          const e = qItem.reversed ? 5 - v : v;
-          return (
-            <div style={{ display: "flex", alignItems: "flex-start", gap: 12, padding: "10px 0", borderBottom: "1px solid #f0ece3" }}>
-              <span style={{ color: "#C9A84C", fontSize: 15, width: 20 }}>{qItem.icon}</span>
-              <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase" }}>{qItem.category}</div>
-                <div style={{ fontSize: 11.5, color: "#333", lineHeight: 1.4, marginBottom: 4 }}>{qItem.question}</div>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <span style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 20, color: "#1A2744" }}>{v}</span>
-                  <span style={{ fontSize: 10, color: "#bbb" }}>/5</span>
-                  <div style={{ flex: 1, height: 4, background: "#ede9e0", borderRadius: 2 }}>
-                    <div style={{ width: `${Math.round((e / 5) * 100)}%`, height: "100%", background: tier.arcColor, borderRadius: 2 }} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        };
-        
-        const FocusCard = ({ qItem, type, idx }) => {
-          const v = qItem.rawVal;
-          const e = qItem.eff;
-          const content = type === 'low' ? qItem.low : qItem.high;
-          const accent = type === 'low' ? "#1A2744" : "#C9A84C";
-          const paras = content.analysis.split('\n\n').map((p, i) => <p key={i} style={{ fontSize: 12.5, color: "#444", lineHeight: 1.85, marginBottom: 10 }}>{p}</p>);
-          return (
-            <div style={{ border: "1px solid #e8e4d9", borderLeft: `4px solid ${accent}`, borderRadius: 2, padding: "22px 26px", marginBottom: 22 }}>
-              <div style={{ float: "right", fontFamily: "Cormorant Garamond, serif", fontSize: 38, color: accent, marginLeft: 14 }}>{v}/5</div>
-              <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase", marginBottom: 4 }}>
-                {type === 'low' ? `PRIORITY FOCUS ${idx}` : 'FOUNDATION STRENGTH'} · {qItem.category}
-              </div>
-              <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 21, color: "#1A2744", marginBottom: 6 }}>{content.title}</div>
-              <Bar p={Math.round((e / 5) * 100)} c={accent} />
-              <div style={{ fontSize: 8, letterSpacing: 2, color: "#888", margin: "8px 0 2px", textTransform: "uppercase" }}>Relevant Program</div>
-              <div style={{ fontSize: 11, color: "#C9A84C", fontStyle: "italic", marginBottom: 14 }}>{qItem.webinar}</div>
-              <div style={{ clear: "both" }} />
-              {paras}
-              <div style={{ background: "#f8f5ef", borderRadius: 2, padding: "14px 18px", marginTop: 6, marginBottom: 10 }}>
-                <div style={{ fontSize: 8, letterSpacing: 3, color: "#1A2744", textTransform: "uppercase", marginBottom: 6 }}>The Process</div>
-                <p style={{ fontSize: 12, color: "#444", lineHeight: 1.8 }}>{content.process}</p>
-              </div>
-              <div style={{ background: "#1A2744", borderRadius: 2, padding: "14px 18px" }}>
-                <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase", marginBottom: 6 }}>Your Daily Practice</div>
-                <p style={{ fontSize: 12, color: "#ffffffcc", lineHeight: 1.8 }}>{content.practice}</p>
-              </div>
-            </div>
-          );
-        };
-        
-        return (
-          <div style={{ background: "#fff", minHeight: "100vh", fontFamily: "Montserrat, sans-serif" }}>
-            {/* PAGE 1 - OVERVIEW */}
-            <div className="results-page" style={{ padding: "52px 56px 60px", minHeight: "100vh" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", borderBottom: "1px solid #C9A84C22", paddingBottom: 13, marginBottom: 32 }}>
-                <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 15, letterSpacing: 5, color: "#1A2744" }}>ACCESSWORLD</div>
-                <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase" }}>Assessment Overview</div>
-              </div>
-              <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 36, fontWeight: 400, lineHeight: 1.2, color: "#1A2744", marginBottom: 5 }}>Hello, {fn}.</h2>
-              <div style={{ fontSize: 8, letterSpacing: 4, color: "#C9A84C", textTransform: "uppercase", marginBottom: 24 }}>
-                Your Nervous System Report · {new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}
-              </div>
-              <div style={{ background: "#1A2744", padding: "22px 28px", borderRadius: 2, marginBottom: 28 }}>
-                <p style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 16, color: "#C9A84C", fontStyle: "italic", lineHeight: 1.9 }}>{tier.p1intro}</p>
-              </div>
-              <div style={{ fontSize: 11, color: "#555", fontStyle: "italic", borderLeft: "3px solid #C9A84C", padding: "10px 16px", background: "#fdfaf4", marginBottom: 28 }}>
-                <strong>Note from Joshua:</strong> {tier.tier_note}
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 24, background: "#f8f5ef", padding: "20px 24px", borderRadius: 2, marginBottom: 24 }}>
-                <div>
-                  <svg viewBox="0 0 120 120" width="100" height="100">
-                    <circle cx="60" cy="60" r="48" fill="none" stroke="#e9e5db" strokeWidth="10" />
-                    <circle cx="60" cy="60" r="48" fill="none" stroke={tier.arcColor} strokeWidth="10" strokeLinecap="round" strokeDasharray={`${2 * Math.PI * 48}`} strokeDashoffset={`${2 * Math.PI * 48 * (1 - pct / 100)}`} transform="rotate(-90 60 60)" />
-                    <text x="60" y="55" textAnchor="middle" fill="#1A2744" fontFamily="Cormorant Garamond, serif" fontSize="28" fontWeight="300">{score.toFixed(1)}</text>
-                    <text x="60" y="72" textAnchor="middle" fill="#C9A84C" fontFamily="Montserrat, sans-serif" fontSize="7" letterSpacing="2">OUT OF 5</text>
-                  </svg>
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase" }}>Overall Happiness Score</div>
-                  <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 28, color: "#1A2744" }}>
-                    {score.toFixed(2)} / 5.00 &nbsp;<span style={{ fontSize: 16, color: tier.arcColor }}>{tier.label}</span>
-                  </div>
-                  <Bar p={pct} c={tier.arcColor} />
-                  <p style={{ fontSize: 11, color: "#666", marginTop: 8 }}>Weighted across 8 dimensions of daily living.</p>
-                </div>
-              </div>
-              <div>
-                {QUESTIONS.map(q => QDash(q))}
-              </div>
-            </div>
-            
-            {/* PAGE 2 - PRIORITY FOCUS */}
-            <div className="results-page" style={{ padding: "52px 56px 60px", minHeight: "100vh" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", borderBottom: "1px solid #C9A84C22", paddingBottom: 13, marginBottom: 32 }}>
-                <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 15, letterSpacing: 5, color: "#1A2744" }}>ACCESSWORLD</div>
-                <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase" }}>Priority Focus Areas</div>
-              </div>
-              <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 36, fontWeight: 400, lineHeight: 1.2, color: "#1A2744" }}>Where your energy<br/>is needed most.</h2>
-              <div style={{ fontSize: 8, letterSpacing: 4, color: "#C9A84C", textTransform: "uppercase", marginBottom: 24 }}>Your Top 3 NSR Intervention Points</div>
-              <p style={{ fontSize: 13, color: "#555", lineHeight: 1.8, marginBottom: 26 }}>
-                {fn}, these three dimensions emerged as the highest-leverage areas for your nervous system reprogramming work right now.
-              </p>
-              {priorities.map((q, i) => <FocusCard key={q.id} qItem={q} type="low" idx={i+1} />)}
-            </div>
-            
-            {/* PAGE 3 - STRENGTHS + PATH FORWARD */}
-            <div style={{ padding: "52px 56px 60px", minHeight: "100vh" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", borderBottom: "1px solid #C9A84C22", paddingBottom: 13, marginBottom: 32 }}>
-                <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 15, letterSpacing: 5, color: "#1A2744" }}>ACCESSWORLD</div>
-                <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase" }}>Your Foundations & Path Forward</div>
-              </div>
-              <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 36, fontWeight: 400, lineHeight: 1.2, color: "#1A2744" }}>What you are<br/>already doing right.</h2>
-              <div style={{ fontSize: 8, letterSpacing: 4, color: "#C9A84C", textTransform: "uppercase", marginBottom: 24 }}>Your Neurological Foundation Strengths</div>
-              <p style={{ fontSize: 13, color: "#555", lineHeight: 1.8, marginBottom: 22 }}>
-                These are your anchors. Protect them, build on them, and use them as the platform to coach and lead others.
-              </p>
-              {strengths.map(q => <FocusCard key={q.id} qItem={q} type="high" />)}
-              
-              <div style={{ background: "#f8f5ef", padding: "20px 24px", borderRadius: 2, marginBottom: 28 }}>
-                <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase", marginBottom: 8 }}>Your One Daily Non-Negotiable</div>
-                <p style={{ fontSize: 13, color: "#444", lineHeight: 1.85 }}>Each morning, before the world makes its demands, take 3 minutes and answer: <em>"Who am I choosing to be today?"</em> Name it. Speak it. Take one action consistent with that answer. This single practice rewires the neural pathways that determine your baseline happiness.</p>
-              </div>
-              
-              <div style={{ background: "#1A2744", padding: "26px 28px", borderRadius: 2, marginBottom: 10 }}>
-                <div style={{ fontSize: 9, letterSpacing: 4, color: "#C9A84C", textTransform: "uppercase", marginBottom: 10 }}>For More Information</div>
-                <p style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 20, color: "#fff", fontWeight: 300, marginBottom: 14 }}>Two programs. One destination: the fullest version of you.</p>
-                <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 14 }}>
-                  <div style={{ flex: 1, minWidth: 200, border: "1px solid #C9A84C44", padding: "14px 16px", borderRadius: 2 }}>
-                    <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase" }}>Personal Transformation</div>
-                    <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 16, color: "#fff" }}>Unlock Your Incredible Self</div>
-                    <p style={{ fontSize: 11, color: "#ffffffaa", marginBottom: 8 }}>Emotional healing, NSR processes, NLP tools, identity work, group coaching.</p>
-                    <div style={{ fontSize: 10, color: "#C9A84C" }}>{URL_UNLOCK}</div>
-                  </div>
-                  <div style={{ flex: 1, minWidth: 200, border: "1px solid #C9A84C44", padding: "14px 16px", borderRadius: 2 }}>
-                    <div style={{ fontSize: 8, letterSpacing: 3, color: "#C9A84C", textTransform: "uppercase" }}>Professional Certification</div>
-                    <div style={{ fontFamily: "Cormorant Garamond, serif", fontSize: 16, color: "#fff" }}>Become a World-Class Coach</div>
-                    <p style={{ fontSize: 11, color: "#ffffffaa", marginBottom: 8 }}>Coaching certification, NLP & NSR mastery, business development, mentorship.</p>
-                    <div style={{ fontSize: 10, color: "#C9A84C" }}>{URL_COACH}</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div style={{ display: "flex", justifyContent: "space-between", marginTop: 16 }}>
-                <button className="no-print" style={{ background: "none", border: "none", color: "#aaa", fontSize: 10, cursor: "pointer" }} onClick={resetApp}>← Take Assessment Again</button>
-                <button className="no-print" style={{ background: "none", border: "1px solid #C9A84C", color: "#C9A84C", padding: "8px 18px", fontSize: 9, cursor: "pointer", borderRadius: 2 }} onClick={handlePrint}>Save as PDF ↓</button>
-              </div>
-              <p style={{ fontSize: 9.5, color: "#aaa", marginTop: 20 }}>Joshua Roy · AccessWorld Seminars · accessworldseminars.org</p>
-            </div>
-          </div>
-        );
-      }
-      
-      return null;
-    };
-    
-    // ----- STYLES -----
-    const styles = {
-      dark: { minHeight: "100vh", background: "linear-gradient(160deg,#080d18 0%,#1A2744 55%,#080d18 100%)", display: "flex", flexDirection: "column", alignItems: "center", fontFamily: "Montserrat, sans-serif", position: "relative", overflowX: "hidden", padding: "0 0 48px" },
-      noise: { position: "fixed", inset: 0, pointerEvents: "none", zIndex: 0, backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E\")" },
-      col: { display: "flex", flexDirection: "column", alignItems: "center", maxWidth: 560, width: "100%", textAlign: "center", padding: "44px 20px 0", zIndex: 1 },
-      logoStack: { display: "flex", flexDirection: "column", alignItems: "center", marginBottom: 4 },
-      logo: { fontFamily: "Cormorant Garamond, serif", fontSize: 20, letterSpacing: 8, color: "#C9A84C" },
-      logosub: { fontSize: 8, letterSpacing: 7, color: "#C9A84C44", marginTop: 2 },
-      gline: { width: 48, height: 1, background: "linear-gradient(90deg,transparent,#C9A84C,transparent)", margin: "16px 0" },
-      lh1: { fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(40px,9vw,70px)", color: "#fff", fontWeight: 300, lineHeight: 1.15, marginBottom: 10 },
-      lmeta: { fontSize: 9, letterSpacing: 4, color: "#C9A84C", textTransform: "uppercase", marginBottom: 16 },
-      lbody: { fontSize: 14, lineHeight: 1.9, color: "#ffffff77", marginBottom: 32, maxWidth: 460 },
-      gbtn: { background: "transparent", border: "1px solid #C9A84C", color: "#C9A84C", padding: "14px 34px", fontSize: 11, letterSpacing: 3, textTransform: "uppercase", cursor: "pointer", fontFamily: "Montserrat, sans-serif", zIndex: 1 },
-      fine: { fontSize: 9, color: "#ffffff22", marginTop: 10, letterSpacing: 1 },
-      pbar: { width: "100%", height: 3, background: "#ffffff08", flexShrink: 0, zIndex: 2 },
-      pfill: { height: "100%", background: "linear-gradient(90deg,#C9A84C55,#C9A84C)", transition: "width .4s ease", borderRadius: "0 2px 2px 0" },
-      card: { width: "100%", maxWidth: 560, margin: "16px 20px 0", background: "#ffffff06", border: "1px solid #ffffff0d", borderRadius: 4, padding: "26px 22px", transition: "all .28s ease", zIndex: 1 },
-      qt: { fontFamily: "Cormorant Garamond, serif", fontSize: "clamp(19px,4vw,27px)", fontWeight: 300, color: "#fff", lineHeight: 1.4, marginBottom: 8 },
-      sgrid: { display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8, marginTop: 20 },
-      sb: { background: "transparent", border: "1px solid #ffffff10", borderRadius: 3, padding: "11px 5px", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", transition: "all .15s", fontFamily: "Montserrat, sans-serif" },
-      sbon: { border: "1px solid #C9A84C", background: "#C9A84C10" },
-      inp: { width: "100%", padding: "11px 13px", background: "#ffffff08", border: "1px solid #ffffff13", color: "#fff", fontSize: 13, borderRadius: 2, fontFamily: "Montserrat, sans-serif", outline: "none" }
-    };
-    
-    // Render the app
-    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
-  </script>
+      `).join('')}
+    </div>
+  `;
+  
+  document.getElementById('contact-section').classList.add('hidden');
+  document.getElementById('results-section').classList.remove('hidden');
+}
+
+function next() {
+  document.getElementById('quiz-section').classList.add('hidden');
+  document.getElementById('contact-section').classList.remove('hidden');
+}
+
+function retake() {
+  answers = {};
+  currentQuestion = 0;
+  renderQuestions();
+  document.getElementById('quiz-section').classList.remove('hidden');
+  document.getElementById('results-section').classList.add('hidden');
+  document.getElementById('contact-section').classList.add('hidden');
+  document.getElementById('name').value = '';
+  document.getElementById('phone').value = '';
+  document.getElementById('email').value = '';
+}
+
+// Initialize
+renderQuestions();
+document.getElementById('nextBtn').onclick = next;
+document.getElementById('submitBtn').onclick = showResults;
+document.getElementById('retakeBtn').onclick = retake;
+</script>
 </body>
 </html>
