@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Alma 5 | Readiness to Meet God – Personal Preparation Review</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: radial-gradient(circle at 10% 20%, #080d18, #0a1022, #1A2744);
+            font-family: 'Montserrat', sans-serif;
+            color: #eef2ff;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+        .quiz-container { max-width: 1000px; margin: 0 auto; }
+        .card {
+            background: rgba(10, 18, 32, 0.8);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            border: 1px solid rgba(201, 168, 76, 0.35);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.2s;
+        }
+        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; letter-spacing: -0.01em; }
+        h1 { font-size: 2.6rem; background: linear-gradient(135deg, #fff 30%, #C9A84C 80%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 0.5rem; }
+        .gold-accent { color: #C9A84C; }
+        .subhead { font-size: 0.9rem; opacity: 0.85; border-left: 3px solid #C9A84C; padding-left: 1rem; margin: 0.5rem 0 1rem 0; }
+        .question-item {
+            background: rgba(0,0,0,0.35);
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #C9A84C;
+        }
+        .question-text { font-weight: 600; font-size: 1.05rem; margin-bottom: 1rem; line-height: 1.4; }
+        .scale-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: space-between; }
+        .scale-btn {
+            background: #1e2a44; border: none; color: #ddd; font-family: 'Montserrat', monospace;
+            font-weight: 600; font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 40px; cursor: pointer;
+            transition: all 0.2s; flex: 1; min-width: 55px; text-align: center;
+        }
+        .scale-btn:hover { background: #2f3e62; color: white; }
+        .scale-btn.active { background: #C9A84C; color: #0a1022; font-weight: bold; box-shadow: 0 0 8px rgba(201,168,76,0.5); }
+        .user-form { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+        input, button { font-family: 'Montserrat', sans-serif; padding: 0.9rem 1rem; border-radius: 60px; border: none; background: #111a2b; color: white; font-size: 1rem; }
+        input { border: 1px solid #2a3a55; }
+        input:focus { outline: none; border-color: #C9A84C; background: #0f172a; }
+        button { background: #C9A84C; color: #0a0f1c; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .btn-secondary { background: #2a3a55; color: #eef2ff; border: 1px solid #C9A84C80; }
+        .flex-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+        .results-page { display: none; }
+        .active-page { display: block; }
+        .answer-bar { background: #1e2a44; border-radius: 20px; height: 10px; width: 100%; margin: 8px 0; }
+        .answer-fill { background: #C9A84C; width: 0%; height: 10px; border-radius: 20px; }
+        .dimension-card { background: rgba(0,0,0,0.45); border-radius: 1.5rem; padding: 1.2rem; margin-bottom: 1.2rem; border-left: 3px solid #C9A84C; }
+        .icon-badge { font-size: 1.8rem; margin-right: 0.6rem; }
+        hr { border-color: #2e3b4e; margin: 1rem 0; }
+        .quote-text { font-style: italic; border-left: 3px solid #C9A84C; padding-left: 1rem; margin: 1rem 0; font-size: 0.9rem; background: #00000020; border-radius: 1rem; padding: 1rem; }
+        @media (max-width: 700px) { .card { padding: 1.3rem; } .scale-btn { font-size: 0.7rem; padding: 0.4rem 0.5rem; min-width: 45px; } }
+    </style>
+</head>
+<body>
+<div class="quiz-container" id="app">
+    <!-- QUIZ SECTION -->
+    <div id="quizSection" class="card">
+        <h1>✦ Prepare to Meet God ✦</h1>
+        <div class="subhead">Based on Alma 5 · Personal Preparation Review · Inspired by Elder Renlund & President Nelson</div>
+        <form id="quizForm">
+            <div id="questionsContainer"></div>
+            <button type="button" id="submitQuizBtn" style="margin-top: 1rem;">→ Review My Readiness</button>
+        </form>
+    </div>
+
+    <!-- INFO COLLECTION -->
+    <div id="infoSection" class="card" style="display:none;">
+        <h2>Before your 3‑Page Preparation Review</h2>
+        <p>Receive your personalized readiness analysis rooted in the parables of the ten virgins, talents, and sheep & goats.</p>
+        <div class="user-form">
+            <input type="text" id="userName" placeholder="Full name" autocomplete="name">
+            <input type="tel" id="userPhone" placeholder="Phone number">
+            <input type="email" id="userEmail" placeholder="Email address">
+            <div class="flex-btns">
+                <button id="confirmInfoBtn">Continue to Results →</button>
+                <button id="resetFromInfoBtn" class="btn-secondary">← Retake Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3-PAGE RESULTS -->
+    <div id="resultsSection" style="display:none;">
+        <div id="resultsPage1" class="card results-page"></div>
+        <div id="resultsPage2" class="card results-page"></div>
+        <div id="resultsPage3" class="card results-page"></div>
+        <div class="flex-btns" style="justify-content: center; margin-top: 0.5rem;">
+            <button id="prevPageBtn" class="btn-secondary" disabled>← Previous</button>
+            <button id="nextPageBtn">Next →</button>
+            <button id="resetResultsBtn" class="btn-secondary">Take Quiz Again</button>
+            <button id="printPdfBtn" class="btn-secondary">📄 Save as PDF</button>
+        </div>
+        <div style="text-align: center; font-size: 0.8rem; margin-top: 1rem;">Page <span id="pageIndicator">1</span> / 3</div>
+    </div>
+</div>
+
+<script>
+    // ======================== ALMA 5 QUESTIONS (18) ========================
+    const QUESTIONS = [
+        { id:0, text:"Have you spiritually been born of God? Have you experienced a mighty change in your heart?", category:"New Birth", icon:"✦", lowTitle:"Spiritual Slumber", highTitle:"Born of God" },
+        { id:1, text:"Do you exercise faith in the redemption of Christ? Do you look forward with an eye of faith to the resurrection?", category:"Faith in Christ", icon:"◉", lowTitle:"Faint Hope", highTitle:"Eye of Faith" },
+        { id:2, text:"Can you imagine hearing the Lord say: 'Come unto me ye blessed, your works have been righteous'?", category:"Righteous Works", icon:"▲", lowTitle:"Uncertain Works", highTitle:"Blessed Invitation" },
+        { id:3, text:"Have you walked keeping yourselves blameless before God? Are your garments cleansed through the blood of Christ?", category:"Cleansing", icon:"⬡", lowTitle:"Stained Garments", highTitle:"Washed White" },
+        { id:4, text:"Are you stripped of pride? (Alma 5:28) — are you humble before God and others?", category:"Humility vs Pride", icon:"✦", lowTitle:"Pride Unbroken", highTitle:"Stripped of Pride" },
+        { id:5, text:"Are you stripped of envy? Do you rejoice in others' blessings?", category:"Freedom from Envy", icon:"❤", lowTitle:"Envy Remains", highTitle:"Charitable Heart" },
+        { id:6, text:"Do you make a mock of your brother or heap persecutions? Do you hold any bitterness?", category:"Brotherly Kindness", icon:"◈", lowTitle:"Mockery or Strife", highTitle:"Peace & Mercy" },
+        { id:7, text:"Are you puffed up with the vain things of the world? Costly apparel, riches, worldly status?", category:"Worldly Attachments", icon:"→", lowTitle:"Vain Aspirations", highTitle:"Heart Set on God" },
+        { id:8, text:"Do you suppose you are better than another? Do you look down on anyone?", category:"Equality & Humility", icon:"✦", lowTitle:"Superiority", highTitle:"Lowly of Heart" },
+        { id:9, text:"Do you turn your backs upon the poor and needy? Do you withhold substance from them?", category:"Charity & Giving", icon:"❤", lowTitle:"Withholding Hand", highTitle:"Open & Willing" },
+        { id:10, text:"Do you hearken to the voice of the Good Shepherd? Do you follow Christ as your Shepherd?", category:"Following Christ", icon:"◉", lowTitle:"Straying Sheep", highTitle:"In His Fold" },
+        { id:11, text:"Do you bring forth good fruit? Are your works righteousness or iniquity?", category:"Fruit of Works", icon:"▲", lowTitle:"Fruit of Flesh", highTitle:"Fruit of Righteousness" },
+        { id:12, text:"Is your soul filled with the song of redeeming love? Do you feel the joy of salvation now?", category:"Redeeming Love", icon:"❤", lowTitle:"Distant Joy", highTitle:"Sing Redeeming Love" },
+        { id:13, text:"If called to die today, could you say you are sufficiently humble, your garments made white?", category:"Death Readiness", icon:"◎", lowTitle:"Unprepared Heart", highTitle:"Ready to Meet God" },
+        { id:14, text:"Do you feel the arms of mercy extended toward you? Have you truly repented?", category:"Repentance", icon:"→", lowTitle:"Unrepentant", highTitle:"Wrapped in Mercy" },
+        { id:15, text:"Have you come out from the wicked and separated from unclean things?", category:"Holiness", icon:"⬡", lowTitle:"Compromised", highTitle:"Set Apart" },
+        { id:16, text:"Do you trust that your name will be written in the book of life? Are you a faithful disciple?", category:"Eternal Security", icon:"◉", lowTitle:"Fear of Falling", highTitle:"Written in the Lamb's Book" },
+        { id:17, text:"Do you observe to do the words of Christ? Do you follow the commandments with exactness?", category:"Obedience", icon:"▲", lowTitle:"Neglect", highTitle:"Faithful & Steadfast" }
+    ];
+
+    // TIERS based on average 0-5
+    const TIERS = [
+        { min:0, max:1.5, name:"❄️ Awakening Needed", desc:"Like the five foolish virgins, the oil of spiritual preparedness is scarce. Now is the time to fill your lamp — drop by drop through righteous living. 'This life is the time to prepare to meet God' (Alma 34:32)." },
+        { min:1.5, max:2.5, name:"🌱 Stirring Spirit", desc:"You feel the Good Shepherd calling but the chains of pride or worldliness linger. Heed Elder Renlund: 'Consistent, personal, private acts of devotion invite the Holy Ghost.' Begin today to avoid deception and seek true disciples." },
+        { min:2.5, max:3.5, name:"🕯️ Growing in Light", desc:"You are doubling your talents. The Lord sees your efforts. Continue to 'mix bark with the flour' — sacrifice and service refine your soul. Be like Zusya: become the person God gave you capacity to be." },
+        { min:3.5, max:4.5, name:"🕊️ Near the Fold", desc:"You have oil in your lamp and are learning to serve the 'least of these.' Your garment is being washed. President Nelson: 'Now is the time to align our goals with God’s goals.' Press forward with joyful optimism." },
+        { min:4.5, max:5, name:"👑 Clothed in Righteousness", desc:"Stripped of pride and envy, you are among the wise virgins. You feed the hungry, visit the sick, and your name is written in the book of life. 'Enter thou into the joy of thy Lord.' Ready to meet the Savior." }
+    ];
+
+    let userAnswers = new Array(QUESTIONS.length).fill(null);
+    let currentResultData = null;
+    let currentPage = 1;
+
+    function renderQuiz() {
+        const container = document.getElementById('questionsContainer');
+        container.innerHTML = '';
+        QUESTIONS.forEach((q, idx) => {
+            const qDiv = document.createElement('div');
+            qDiv.className = 'question-item';
+            qDiv.innerHTML = `
+                <div class="question-text">${idx+1}. ${q.text}</div>
+                <div class="scale-buttons" data-qid="${idx}">
+                    ${[0,1,2,3,4,5].map(val => `<button type="button" class="scale-btn" data-value="${val}">${val}<br><span style="font-size:0.65rem;">${val===0?'Not':val===5?'Completely':''}</span></button>`).join('')}
+                </div>
+            `;
+            container.appendChild(qDiv);
+            const btns = qDiv.querySelectorAll('.scale-btn');
+            btns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const value = parseInt(btn.dataset.value);
+                    userAnswers[idx] = value;
+                    btns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+            if (userAnswers[idx] !== null) {
+                const activeBtn = qDiv.querySelector(`.scale-btn[data-value="${userAnswers[idx]}"]`);
+                if(activeBtn) activeBtn.classList.add('active');
+            }
+        });
+    }
+
+    // per-question analysis infused with Renlund/Nelson counsel
+    function getPersonalAnalysis(q, score) {
+        const low = score <= 2;
+        const high = score >= 4;
+        if (low) {
+            let text = `This area needs attention. Like the foolish virgins, spiritual oil cannot be borrowed — prepare daily. “The oil of spiritual preparedness cannot be shared; it is accumulated by righteous living, a drop at a time” (Elder Ashton).`;
+            let process = "Process: Identify one consistent act of devotion: daily scripture study, prayer, or temple worship.";
+            let practice = "Practice: Each evening ask: 'Did I invite the Holy Ghost as my guide today?' Repent quickly.";
+            if (q.id === 4) { text = "Pride keeps us from God. Alma 5:28 warns: 'if ye are not ye are not prepared to meet God.' Humility opens the door to grace."; process = "Process: Prayerfully confess any pride and seek to serve without recognition."; practice = "Practice: Compliment someone you envy or look down on."; }
+            if (q.id === 9) { text = "The parable of the sheep and goats: when we serve the poor, we serve Christ. Elder Renlund: 'The divine impulse to serve others' defines discipleship."; process = "Process: Find one vulnerable individual to help this week."; practice = "Practice: Give anonymously, even if it requires sacrifice like Farmer Paavo mixing bark with flour."; }
+            if (q.id === 10) { text = "The Good Shepherd calls; deception comes from false shepherds. Follow those who are faithful disciples."; process = "Process: Study Matthew 25 and the parables of preparation."; practice = "Practice: Listen to general conference talks and heed prophetic counsel."; }
+            return { title: `⚠️ ${q.lowTitle}`, analysis: text, process, practice };
+        } else if (high) {
+            let text = `You are wise, like the five wise virgins, taking the Holy Spirit for your guide. You magnify your talents. President Nelson taught: 'Now is the time to align our goals with God's goals.' You are becoming the best version of yourself.`;
+            let process = "Process: Share your strength with others — mentor someone in faith.";
+            let practice = "Practice: Continue to serve the 'least of these' and worship regularly in the temple to maintain protection.";
+            if (q.id === 4) { text = "Stripped of pride, you walk in meekness. 'The Lord will be with you, and you shall abide the day.'"; process = "Process: Remain teachable and quick to repent."; practice = "Practice: Thank God for all blessings, acknowledging your dependence on Him."; }
+            if (q.id === 9) { text = "Your charity mirrors the Savior. As Elder Pingree taught: 'Little by little our charitable acts change our natures.'"; process = "Process: Look beyond your own circle to serve."; practice = "Practice: Once a week, ask: whom can I feed, clothe, or visit?"; }
+            return { title: `✨ ${q.highTitle}`, analysis: text, process, practice };
+        } else {
+            return { title: `🌿 Growing in ${q.category}`, analysis: "You are on the covenant path. Continue to add oil to your lamp and exercise faith. The Lord is pleased with your direction.", process: "Process: Identify one small but consistent improvement.", practice: "Practice: Daily ponder: 'What lack I yet?'" };
+        }
+    }
+
+    function computeResults() {
+        let allAnswered = true;
+        let sum = 0;
+        for (let i=0;i<QUESTIONS.length;i++) {
+            if (userAnswers[i] === null) { allAnswered = false; break; }
+            sum += userAnswers[i];
+        }
+        if (!allAnswered) return null;
+        const avg = sum / QUESTIONS.length;
+        const tierObj = TIERS.find(t => avg >= t.min && avg <= t.max) || TIERS[TIERS.length-1];
+        const details = QUESTIONS.map((q,idx) => {
+            const score = userAnswers[idx];
+            const analysis = getPersonalAnalysis(q, score);
+            return { ...q, score, analysis };
+        });
+        const lowest = [...details].filter(d => d.score <= 2).sort((a,b)=> a.score - b.score).slice(0,3);
+        const highest = [...details].filter(d => d.score >= 4).sort((a,b)=> b.score - a.score).slice(0,2);
+        return { avg, tier: tierObj, details, lowest, highest };
+    }
+
+    // 3-PAGE RENDERING WITH RENLUND/NELSON THEMES
+    function renderPage1(data) {
+        const pageDiv = document.getElementById('resultsPage1');
+        const barsHtml = data.details.map(d => `
+            <div style="margin-bottom: 1rem;">
+                <div style="display:flex; justify-content:space-between;"><span><strong>${d.category}</strong> (${d.score}/5) ${d.icon}</span><span>${d.score}</span></div>
+                <div class="answer-bar"><div class="answer-fill" style="width: ${(d.score/5)*100}%;"></div></div>
+                <div style="font-size:0.8rem;">${d.text.substring(0,70)}${d.text.length>70?'…':''}</div>
+            </div>
+        `).join('');
+        pageDiv.innerHTML = `
+            <h2>📖 Personal Preparation to Meet the Savior</h2>
+            <div style="text-align:center; margin:1rem 0;">
+                <span style="font-size:2.8rem; font-weight:bold; background:#C9A84C20; padding:0.4rem 1.5rem; border-radius:60px;">${data.avg.toFixed(1)} / 5</span>
+                <h3 style="margin-top:0.8rem;">${data.tier.name}</h3>
+                <p>${data.tier.desc}</p>
+            </div>
+            <div class="quote-text">“Now is the time to prepare to meet God. Tomorrow may be too late.” — President Russell M. Nelson</div>
+            <hr>
+            <h3>Your readiness summary: all answers</h3>
+            ${barsHtml}
+            <p style="margin-top:1rem; font-size:0.85rem;">The parable of the ten virgins teaches: we must personally acquire oil through covenants, the Holy Ghost as guide, and avoiding deception.</p>
+        `;
+    }
+
+    function renderPage2(data) {
+        const pageDiv = document.getElementById('resultsPage2');
+        if (data.lowest.length === 0) {
+            pageDiv.innerHTML = `<h2>🔍 Top 3 Areas for Growth — Parable of the Talents</h2><div class="dimension-card"><p>You show remarkable consistency! Continue to magnify your gifts. Elder Renlund taught: God expects us to become the best version of ourselves. “Well done, good and faithful servant.”</p><p>Guard against pride and remain humble.</p></div>`;
+            return;
+        }
+        const lowHtml = data.lowest.map(d => `
+            <div class="dimension-card">
+                <div><span class="icon-badge">${d.icon}</span> <strong style="font-size:1.2rem;">${d.category}</strong> (Score: ${d.score}/5)</div>
+                <p><strong>${d.analysis.title}</strong><br>${d.analysis.analysis}</p>
+                <p><strong>📌 Process recommendation:</strong> ${d.analysis.process}</p>
+                <p><strong>🙏 Daily practice:</strong> ${d.analysis.practice}</p>
+            </div>
+        `).join('');
+        pageDiv.innerHTML = `<h2>🔍 Top 3 Areas for Growth — The Parable of the Talents</h2><p style="margin-bottom:1rem;">God expects us to magnify our abilities, not compare. As Zusya said: “Why were you not Zusya?” Develop the gifts He gave you.</p>${lowHtml}<div class="quote-text">“If we are wise, we receive the truth by accepting the gospel through covenants, and strive to remain worthy of the Holy Ghost.” — Elder Dale G. Renlund</div>`;
+    }
+
+    function renderPage3(data) {
+        const pageDiv = document.getElementById('resultsPage3');
+        const highHtml = data.highest.map(d => `
+            <div class="dimension-card">
+                <div><span class="icon-badge">${d.icon}</span> <strong>${d.category}</strong> (Score: ${d.score}/5)</div>
+                <p><strong>${d.analysis.title}</strong><br>${d.analysis.analysis}</p>
+                <p><strong>📌 Strengthen further:</strong> ${d.analysis.process}</p>
+                <p><strong>✨ Keep practicing:</strong> ${d.analysis.practice}</p>
+            </div>
+        `).join('');
+        const daily = `
+            <div class="dimension-card">
+                <h3>🕯️ A Daily Practice Rooted in the Sheep & Goats</h3>
+                <p>“When we serve others, we serve God.” (Elder Renlund) — Each day, look for one person to help: feed the hungry, clothe the naked, visit the sick. Even small acts mix bark with the flour for others. <br><br>
+                <strong>“Mix half the flour with bark, for our neighbor’s fields have frosted over.”</strong> — Farmer Paavo’s sacrifice shows pure charity. <br><br>
+                Also, worship in the temple regularly to maintain an eternal perspective and be protected from deception. Drop by drop, fill your lamp with oil.</p>
+                <p><em>“Rejoice! And prepare for that day! … It will be a joyful day when our beloved Savior comes again.”</em></p>
+            </div>
+        `;
+        pageDiv.innerHTML = `<h2>✨ Your Strengths & Daily Preparation — Sheep & Goats</h2>${highHtml || '<p>Your strengths are growing; continue to serve with charity.</p>'}${daily}`;
+    }
+
+    function showResults(data) {
+        currentResultData = data;
+        renderPage1(data);
+        renderPage2(data);
+        renderPage3(data);
+        document.getElementById('quizSection').style.display = 'none';
+        document.getElementById('infoSection').style.display = 'none';
+        document.getElementById('resultsSection').style.display = 'block';
+        currentPage = 1;
+        updatePageVisibility();
+    }
+
+    function updatePageVisibility() {
+        document.querySelectorAll('.results-page').forEach((pg, idx) => {
+            pg.classList.toggle('active-page', idx+1 === currentPage);
+        });
+        document.getElementById('prevPageBtn').disabled = (currentPage === 1);
+        document.getElementById('nextPageBtn').disabled = (currentPage === 3);
+        document.getElementById('pageIndicator').innerText = currentPage;
+    }
+
+    // ZAPIER/TELEGRAM INTEGRATION
+    const ZAPIER_WEBHOOK = "https://hooks.zapier.com/hooks/catch/3779260/unt9eik/";
+    async function sendToZapier(name, phone, email, scoreNum, tierLabel, answersData) {
+        let answersText = "";
+        QUESTIONS.forEach((q, idx) => {
+            const val = answersData[idx] || 0;
+            answersText += `${q.category}: ${val}/5\n`;
+        });
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('phone', phone);
+        formData.append('email', email);
+        formData.append('score', scoreNum.toFixed(1));
+        formData.append('tier', tierLabel);
+        formData.append('answers_text', answersText);
+        formData.append('timestamp', new Date().toISOString());
+        try {
+            await fetch(ZAPIER_WEBHOOK, { method: "POST", body: formData, mode: "no-cors" });
+        } catch(e) { console.warn("Zapier webhook error", e); }
+    }
+
+    // EVENT HANDLERS
+    document.getElementById('submitQuizBtn').addEventListener('click', () => {
+        if (userAnswers.some(a => a === null)) { alert("Please answer all 18 questions using the 0–5 scale."); return; }
+        document.getElementById('quizSection').style.display = 'none';
+        document.getElementById('infoSection').style.display = 'block';
+    });
+
+    document.getElementById('confirmInfoBtn').addEventListener('click', async () => {
+        const name = document.getElementById('userName').value.trim();
+        const phone = document.getElementById('userPhone').value.trim();
+        const email = document.getElementById('userEmail').value.trim();
+        if (!name || !phone || !email) { alert("Please enter name, phone, and email for your personal preparation review."); return; }
+        const results = computeResults();
+        if (!results) return;
+        await sendToZapier(name, phone, email, results.avg, results.tier.name, userAnswers);
+        showResults(results);
+    });
+
+    document.getElementById('resetFromInfoBtn').addEventListener('click', () => {
+        userAnswers.fill(null);
+        renderQuiz();
+        document.getElementById('infoSection').style.display = 'none';
+        document.getElementById('quizSection').style.display = 'block';
+        document.getElementById('userName').value = '';
+        document.getElementById('userPhone').value = '';
+        document.getElementById('userEmail').value = '';
+    });
+
+    document.getElementById('resetResultsBtn').addEventListener('click', () => {
+        userAnswers.fill(null);
+        renderQuiz();
+        document.getElementById('resultsSection').style.display = 'none';
+        document.getElementById('quizSection').style.display = 'block';
+        document.getElementById('infoSection').style.display = 'none';
+        currentPage = 1;
+    });
+
+    document.getElementById('prevPageBtn').addEventListener('click', () => { if(currentPage > 1) { currentPage--; updatePageVisibility(); } });
+    document.getElementById('nextPageBtn').addEventListener('click', () => { if(currentPage < 3) { currentPage++; updatePageVisibility(); } });
+    document.getElementById('printPdfBtn').addEventListener('click', () => { window.print(); });
+
+    renderQuiz();
+</script>
+</body>
+</html>
