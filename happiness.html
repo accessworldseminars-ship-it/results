@@ -1,0 +1,26 @@
+async function sendToZapier() {
+  const payload = {
+    name: name,
+    phone: phone,
+    email: email,
+    score: score.toFixed(2),
+    tier: tier.label,
+    answers: answers,
+    timestamp: new Date().toISOString()
+  };
+  
+  try {
+    await fetch("YOUR_ZAPIER_WEBHOOK_URL_HERE", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+  } catch (e) {
+    console.error("Zapier webhook failed:", e);
+  }
+}
+
+// Then in capture(), after validation:
+setErr("");
+await sendToZapier();  // silent — don't block user
+setPhase("results");
