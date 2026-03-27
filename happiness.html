@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>AccessWorld · Happiness Assessment</title>
   <style>
     * {
@@ -10,630 +10,876 @@
       padding: 0;
       box-sizing: border-box;
     }
-    
     body {
       font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(160deg, #080d18 0%, #1A2744 50%, #080d18 100%);
+      background: linear-gradient(160deg, #080d18 0%, #1A2744 55%, #080d18 100%);
       min-height: 100vh;
-      padding: 30px 20px 60px;
+      position: relative;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;700&display=swap');
+    
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      .results-page {
+        page-break-after: always;
+      }
     }
     
+    /* Dark background with noise */
+    .dark-bg {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #080d18 0%, #1A2744 55%, #080d18 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+      padding: 0 0 48px;
+    }
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
     .container {
-      max-width: 750px;
-      margin: 0 auto;
-    }
-    
-    /* Header */
-    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 560px;
+      width: 100%;
       text-align: center;
-      margin-bottom: 40px;
+      padding: 44px 20px 0;
+      z-index: 1;
     }
-    
     .logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
+      font-size: 20px;
       letter-spacing: 8px;
       color: #C9A84C;
-      margin-bottom: 8px;
     }
-    
     .logo-sub {
-      font-size: 10px;
-      letter-spacing: 4px;
-      color: rgba(201, 169, 76, 0.5);
+      font-size: 8px;
+      letter-spacing: 7px;
+      color: #C9A84C44;
+      margin-top: 2px;
     }
-    
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #C9A84C, transparent);
+      margin: 16px 0;
+    }
     h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 42px;
-      font-weight: 300;
+      font-size: clamp(40px, 9vw, 70px);
       color: #fff;
-      margin: 20px 0 10px;
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 10px;
     }
-    
     h1 em {
-      color: #C9A84C;
       font-style: italic;
+      color: #C9A84C;
     }
-    
-    .subhead {
-      color: rgba(255,255,255,0.5);
+    .meta {
+      font-size: 9px;
+      letter-spacing: 4px;
+      color: #C9A84C;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .description {
       font-size: 14px;
-      letter-spacing: 2px;
+      line-height: 1.9;
+      color: #ffffff77;
+      margin-bottom: 32px;
+      max-width: 460px;
     }
-    
-    /* Cards */
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      border: 1px solid rgba(201, 169, 76, 0.2);
-      padding: 28px 32px;
-      margin-bottom: 20px;
+    .btn {
+      background: transparent;
+      border: 1px solid #C9A84C;
+      color: #C9A84C;
+      padding: 14px 34px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.2s;
     }
-    
-    /* Progress */
-    .progress-wrap {
-      margin-bottom: 24px;
+    .btn:hover {
+      background: rgba(201, 169, 76, 0.1);
     }
-    
+    .btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    .fine-print {
+      font-size: 9px;
+      color: #ffffff22;
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
     .progress-bar {
-      height: 4px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 2px;
-      overflow: hidden;
+      width: 100%;
+      height: 3px;
+      background: #ffffff08;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
     }
-    
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, #C9A84C, #e6c87a);
+      background: linear-gradient(90deg, #C9A84C55, #C9A84C);
+      transition: width 0.4s ease;
       width: 0%;
-      transition: width 0.3s ease;
-      border-radius: 2px;
     }
-    
-    .progress-text {
-      font-size: 11px;
-      color: rgba(255,255,255,0.4);
-      text-align: right;
-      margin-top: 6px;
+    .quiz-card {
+      width: 100%;
+      max-width: 560px;
+      margin: 16px 20px 0;
+      background: #ffffff06;
+      border: 1px solid #ffffff0d;
+      border-radius: 4px;
+      padding: 26px 22px;
+      transition: all 0.28s ease;
+      z-index: 1;
     }
-    
-    /* Questions */
-    .question {
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 16px;
-      border-left: 3px solid #C9A84C;
-    }
-    
-    .question-text {
-      color: #fff;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.5;
-      margin-bottom: 16px;
-    }
-    
-    .scale {
-      display: flex;
-      gap: 8px;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    
-    .scale-btn {
-      flex: 1;
-      min-width: 55px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 12px;
-      padding: 12px 5px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-family: inherit;
-    }
-    
-    .scale-btn:hover {
-      background: rgba(201, 169, 76, 0.2);
-      border-color: #C9A84C;
-    }
-    
-    .scale-btn.selected {
-      background: #C9A84C;
-      border-color: #C9A84C;
-    }
-    
-    .scale-btn .num {
-      font-size: 20px;
-      font-weight: 600;
-      color: #fff;
-      display: block;
-    }
-    
-    .scale-btn .label {
-      font-size: 8px;
-      color: rgba(255,255,255,0.6);
-      margin-top: 4px;
-      display: block;
-    }
-    
-    /* Form */
-    .form-group {
-      margin-bottom: 20px;
-    }
-    
-    .form-group label {
-      display: block;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .quiz-icon {
+      font-size: 22px;
       color: #C9A84C;
+      margin-bottom: 12px;
+    }
+    .quiz-question {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(19px, 4vw, 27px);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.4;
       margin-bottom: 8px;
     }
-    
-    .form-group input {
-      width: 100%;
-      padding: 14px 16px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 12px;
-      color: #fff;
-      font-size: 14px;
-      font-family: inherit;
-      transition: border-color 0.2s;
-    }
-    
-    .form-group input:focus {
-      outline: none;
-      border-color: #C9A84C;
-    }
-    
-    .form-group input::placeholder {
-      color: rgba(255,255,255,0.3);
-    }
-    
-    /* Buttons */
-    .btn {
-      background: #C9A84C;
-      border: none;
-      padding: 16px 28px;
-      border-radius: 40px;
-      font-size: 14px;
-      font-weight: 600;
+    .quiz-note {
+      font-size: 10px;
+      color: #C9A84C77;
       letter-spacing: 1px;
-      color: #1A2744;
-      cursor: pointer;
-      width: 100%;
-      transition: opacity 0.2s, transform 0.2s;
-      font-family: inherit;
-    }
-    
-    .btn:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
-    }
-    
-    .btn:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-      transform: none;
-    }
-    
-    .btn-secondary {
-      background: rgba(255,255,255,0.1);
-      color: #C9A84C;
-      border: 1px solid #C9A84C;
-      margin-top: 16px;
-    }
-    
-    /* Error */
-    .error {
-      color: #ff6b6b;
-      font-size: 12px;
-      margin-top: 8px;
-      text-align: center;
-    }
-    
-    .success-msg {
-      color: #6bff9e;
-      font-size: 12px;
-      margin-top: 8px;
-      text-align: center;
-    }
-    
-    /* Results */
-    .result-hero {
-      text-align: center;
-      padding: 32px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 24px;
-      margin-bottom: 24px;
-    }
-    
-    .result-score {
-      font-size: 64px;
-      font-weight: 300;
-      font-family: 'Cormorant Garamond', serif;
-      color: #C9A84C;
-    }
-    
-    .result-tier {
-      font-size: 28px;
-      font-family: 'Cormorant Garamond', serif;
-      margin: 12px 0;
-    }
-    
-    .result-desc {
-      color: rgba(255,255,255,0.7);
-      font-size: 14px;
+      margin-bottom: 16px;
       line-height: 1.6;
     }
-    
-    .result-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 16px;
+    .scale-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 20px;
     }
-    
-    .result-card h3 {
-      color: #C9A84C;
-      font-size: 16px;
-      margin-bottom: 16px;
-      letter-spacing: 1px;
-    }
-    
-    .answer-row {
+    .scale-btn {
+      background: transparent;
+      border: 1px solid #ffffff10;
+      border-radius: 3px;
+      padding: 11px 5px;
+      cursor: pointer;
       display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.15s;
+      font-family: 'Montserrat', sans-serif;
     }
-    
-    .answer-text {
-      font-size: 13px;
-      color: rgba(255,255,255,0.8);
-      flex: 1;
+    .scale-btn:hover {
+      border-color: #C9A84C;
+      background: #C9A84C10;
     }
-    
-    .answer-score {
-      font-weight: 600;
+    .scale-btn.selected {
+      border: 1px solid #C9A84C;
+      background: #C9A84C10;
+    }
+    .scale-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
       color: #C9A84C;
-      margin-left: 16px;
+      line-height: 1;
     }
-    
+    .scale-label {
+      font-size: 9px;
+      color: #ffffff55;
+      margin-top: 4px;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .capture-card {
+      width: 100%;
+      max-width: 560px;
+      background: #ffffff06;
+      border: 1px solid #ffffff0d;
+      border-radius: 4px;
+      padding: 24px 20px;
+      text-align: left;
+    }
+    .form-group {
+      margin-bottom: 12px;
+    }
+    .form-group label {
+      font-size: 8px;
+      letter-spacing: 3px;
+      color: #C9A84C;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 11px 13px;
+      background: #ffffff08;
+      border: 1px solid #ffffff13;
+      color: #fff;
+      font-size: 13px;
+      border-radius: 2px;
+      font-family: 'Montserrat', sans-serif;
+      outline: none;
+    }
+    .error {
+      font-size: 12px;
+      color: #E74C3C;
+      margin-bottom: 8px;
+    }
     .hidden {
       display: none;
     }
     
-    /* Utilities */
-    .text-center {
-      text-align: center;
+    /* Results Page Styles */
+    .results-wrapper {
+      background: #fff;
+      min-height: 100vh;
+      font-family: 'Montserrat', sans-serif;
     }
-    
-    .mt-4 {
+    .results-page {
+      padding: 52px 56px 60px;
+      min-height: 100vh;
+    }
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid #C9A84C22;
+      padding-bottom: 13px;
+      margin-bottom: 32px;
+    }
+    .results-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      letter-spacing: 5px;
+      color: #1A2744;
+    }
+    .results-tag {
+      font-size: 8px;
+      letter-spacing: 3px;
+      color: #C9A84C;
+      text-transform: uppercase;
+    }
+    .results-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #1A2744;
+      margin-bottom: 5px;
+    }
+    .results-eyebrow {
+      font-size: 8px;
+      letter-spacing: 4px;
+      color: #C9A84C;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .intro-quote {
+      background: #1A2744;
+      padding: 22px 28px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+    .intro-quote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      color: #C9A84C;
+      font-style: italic;
+      line-height: 1.9;
+    }
+    .tier-note {
+      font-size: 11px;
+      color: #555;
+      font-style: italic;
+      border-left: 3px solid #C9A84C;
+      padding: 10px 16px;
+      background: #fdfaf4;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+    .score-band {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: #f8f5ef;
+      padding: 20px 24px;
+      border-radius: 2px;
+      margin-bottom: 24px;
+    }
+    .dimension-list {
+      margin-bottom: 8px;
+    }
+    .dimension-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0ece3;
+    }
+    .dimension-icon {
+      color: #C9A84C;
+      font-size: 15px;
+      width: 20px;
+      flex-shrink: 0;
+      padding-top: 1px;
+    }
+    .dimension-category {
+      font-size: 8px;
+      letter-spacing: 3px;
+      color: #C9A84C;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .dimension-question {
+      font-size: 11.5px;
+      color: #333;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .dimension-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dimension-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      color: #1A2744;
+    }
+    .dimension-max {
+      font-size: 10px;
+      color: #bbb;
+    }
+    .focus-card {
+      border: 1px solid #e8e4d9;
+      border-radius: 2px;
+      padding: 22px 26px;
+      margin-bottom: 22px;
+    }
+    .focus-card.priority {
+      border-left: 4px solid #1A2744;
+    }
+    .focus-card.strength {
+      border-left: 4px solid #C9A84C;
+    }
+    .focus-badge {
+      font-size: 8px;
+      letter-spacing: 3px;
+      color: #C9A84C;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .focus-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 21px;
+      color: #1A2744;
+      margin-bottom: 6px;
+    }
+    .process-block {
+      background: #f8f5ef;
+      border-radius: 2px;
+      padding: 14px 18px;
+      margin: 10px 0;
+    }
+    .practice-block {
+      background: #1A2744;
+      border-radius: 2px;
+      padding: 14px 18px;
+      margin-top: 10px;
+    }
+    .practice-block p {
+      color: #ffffffcc;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+    .cta-dark {
+      background: #1A2744;
+      padding: 26px 28px;
+      border-radius: 2px;
+      margin-top: 20px;
+    }
+    .actions-row {
+      display: flex;
+      justify-content: space-between;
       margin-top: 16px;
+    }
+    @media (max-width: 640px) {
+      .results-page { padding: 32px 20px; }
+      .score-band { flex-direction: column; text-align: center; }
+      .focus-card { padding: 16px 18px; }
     }
   </style>
 </head>
 <body>
-<div class="container">
-  
-  <!-- Header -->
-  <div class="header">
-    <div class="logo">ACCESSWORLD</div>
-    <div class="logo-sub">SEMINARS · JOSHUA ROY</div>
-    <h1>How happy are you — <em>really?</em></h1>
-    <div class="subhead">8 questions · 3 minutes · Your personalised report</div>
-  </div>
-  
-  <!-- QUIZ SECTION -->
-  <div id="quiz-section">
-    <div class="card">
-      <div class="progress-wrap">
-        <div class="progress-bar">
-          <div class="progress-fill" id="progress-fill"></div>
-        </div>
-        <div class="progress-text" id="progress-text">0 of 8 answered</div>
-      </div>
-      <div id="questions-container"></div>
-    </div>
-    <button class="btn" id="next-btn" disabled>Continue →</button>
-  </div>
-  
-  <!-- CONTACT SECTION -->
-  <div id="contact-section" class="hidden">
-    <div class="card">
-      <h1 style="font-size: 32px; margin-bottom: 8px;">Your results are <em style="color:#C9A84C">ready</em></h1>
-      <div class="subhead" style="margin-bottom: 32px;">Enter your details to view your report</div>
-      
-      <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" id="name" placeholder="Your full name">
-      </div>
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input type="tel" id="phone" placeholder="+61 4xx xxx xxx">
-      </div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" id="email" placeholder="your@email.com">
-      </div>
-      <div id="contact-error" class="error"></div>
-      <div id="contact-success" class="success-msg"></div>
-      <button class="btn" id="submit-btn">View My Full Report →</button>
-    </div>
-  </div>
-  
-  <!-- RESULTS SECTION -->
-  <div id="results-section" class="hidden">
-    <div id="results-content"></div>
-    <button class="btn btn-secondary" id="retake-btn">Take Assessment Again</button>
-  </div>
-  
-</div>
+<div id="root"></div>
 
 <script>
 // ============================================================
-// HAPPINESS ASSESSMENT - WORKING WITH CORS FIX
+// HAPPINESS ASSESSMENT - ORIGINAL DESIGN WITH WORKING ZAPIER
 // ============================================================
 
-// YOUR ZAPIER WEBHOOK URL
+// ZAPIER WEBHOOK URL
 const ZAPIER_WEBHOOK = "https://hooks.zapier.com/hooks/catch/3779260/unt9eik/";
 
 // QUESTIONS DATA
 const QUESTIONS = [
-  { id: 1, text: "How positive and peaceful was my state of mind today?" },
-  { id: 2, text: "How much love and joy did I experience today?" },
-  { id: 3, text: "How much did I use words that uplift and inspire today?" },
-  { id: 4, text: "How much meaningful progress did I make toward my goals today?" },
-  { id: 5, text: "How much did I act from my chosen identity today (not my old story)?" },
-  { id: 6, text: "How well did I honour my body with movement, nourishment, and rest?" },
-  { id: 7, text: "How free did I feel from anxiety and depression today?" },
-  { id: 8, text: "How much did I consciously CREATE my life today (vs just reacting)?" }
+  { id: 1, category: "Mindset", icon: "✦", question: "How positive and peaceful was my state of mind today?", labels: ["Not at all", "Rarely", "Sometimes", "Often", "Mostly", "Completely"], weight: 1.2, reversed: false,
+    module: "NSR — Nervous System Reprogramming", webinar: "The NSR Nervous System Programming Webinar",
+    low: { title: "Your Nervous System Is Running an Old Program", analysis: "When your emotional state feels heavy, flat, or persistently reactive, it is rarely about what is happening around you — it is about the program your nervous system has been running, often since childhood. Unresolved emotional imprints create a default baseline that constantly pulls you back toward familiar states, even painful ones. Your nervous system has learned to treat these states as 'safe' simply because they are familiar.\n\nThis is the core insight of Nervous System Reprogramming (NSR): your current emotional baseline is not fixed — it is a learned pattern. And what was learned can be unlearned.", process: "The Gift process — an emotional clearing and timeline therapy — is specifically designed for this. It overrides negative emotional imprints with joy, helping you release trapped emotions from the past.", practice: "Each morning before checking your phone, take three slow diaphragmatic breaths. On each exhale, state aloud: 'I choose to feel [word] today.'" },
+    high: { title: "A Well-Regulated State — Your Platform for Everything", analysis: "You are managing your emotional state at a level that reflects real inner work. In NSR methodology, a consistently positive emotional baseline is not the end of the journey — it is the launchpad.", process: "The Space Odyssey process — a spatial relocation strategy — can now be used to eliminate any remaining residual emotional charge.", practice: "Peak State Stacking: Identify three peak moments from your life. Revisit each in vivid sensory detail for 90 seconds." } },
+  { id: 2, category: "Love & Joy", icon: "❤", question: "How much love and joy did I experience today?", labels: ["Not at all", "Rarely", "Sometimes", "Often", "Mostly", "Completely"], weight: 1.2, reversed: false,
+    module: "Emotional Clearing & Freedom", webinar: "The Emotional Clearing Webinar",
+    low: { title: "The Channel to Love and Joy Is Blocked", analysis: "Love and joy are frequencies your nervous system either allows or suppresses based on deep-seated beliefs.", process: "The Grey Room process revisits memories and transforms emotional responses.", practice: "The Joy Inventory: Each evening, write three moments where you felt even a flicker of warmth." },
+    high: { title: "You Have Access to Joy", analysis: "Living in regular contact with love and joy signals your nervous system has learned that positive emotion is safe.", process: "The Womb of Eternity process can deepen this further.", practice: "Joy Contagion: Once daily, give one person your full presence for two minutes." } },
+  { id: 3, category: "Language", icon: "◈", question: "How much did I use words that uplift and inspire today?", labels: ["Not at all", "Rarely", "Sometimes", "Often", "Mostly", "Completely"], weight: 1.0, reversed: false,
+    module: "NLP Foundations", webinar: "The NLP Foundation Principles Webinar",
+    low: { title: "Your Language Is Programming Your Nervous System", analysis: "Every word you use sends a direct signal to your nervous system about what is possible.", process: "Anchoring Positive Emotional States helps catch limiting language.", practice: "The Language Swap: Replace a limiting phrase with an open question." },
+    high: { title: "Your Language Is Creating Your World", analysis: "Consistent use of uplifting, possibility-rich language is a marker of a well-calibrated nervous system.", process: "The Communication from the Heart webinar offers the next level.", practice: "Language Leadership: Notice when people use closed language and model an alternative." } },
+  { id: 4, category: "Progress", icon: "▲", question: "How much meaningful progress did I make toward my goals today?", labels: ["None at all", "Tiny step", "Some progress", "Good progress", "Strong progress", "Absolutely yes"], weight: 1.1, reversed: false,
+    module: "Values, Motivation & Unconscious Resistance", webinar: "The Ultimate Freedom Webinar",
+    low: { title: "Stalled Progress Has a Root Cause", analysis: "When progress stalls, the block is unconscious resistance — part of your nervous system believes arriving is unsafe.", process: "The Gift process unlocks stalled progress by releasing emotional charge from past failures.", practice: "The Payoff Question: 'What am I getting from NOT making progress?'" },
+    high: { title: "Momentum Is Working", analysis: "Consistent daily progress signals strong values alignment.", process: "The Design Your Identity webinar is your natural next step.", practice: "The 90-Day Vision: Write a vivid description of where you'll be in 90 days." } },
+  { id: 5, category: "Identity", icon: "◉", question: "How much did I act from my chosen identity today (not my old story)?", labels: ["Not at all", "Rarely", "Sometimes", "Often", "Mostly", "Completely"], weight: 1.1, reversed: false,
+    module: "Beliefs & Identity Redesign", webinar: "The Design Your Identity Webinar",
+    low: { title: "Your Old Identity Is Still Running", analysis: "Identity is the collection of 'I am' statements your nervous system has accepted as true, most formed before age ten.", process: "The Womb of Eternity process replaces the critical inner voice with genuine self-belief.", practice: "Identity Declaration: 'I am no longer the person who ___. I am now the person who ___.'" },
+    high: { title: "You Are Living From Your Chosen Identity", analysis: "Acting consistently from a chosen identity is the master skill of personal transformation.", process: "The NLP Foundation Principles program offers the next layer.", practice: "Identity Expansion: Each week, act as the next version of yourself." } },
+  { id: 6, category: "Wellbeing", icon: "⬡", question: "How well did I honour my body with movement, nourishment, and rest?", labels: ["Not at all", "Poorly", "Somewhat", "Well", "Very well", "Perfectly"], weight: 1.0, reversed: false,
+    module: "Health Mind Repatterning", webinar: "The Ultimate Health Webinar",
+    low: { title: "Your Body Is the Instrument", analysis: "Your body is the biological instrument through which you experience every emotion.", process: "The Swish Pattern replaces automatic unhealthy responses.", practice: "The Minimum Viable Dose: 10 min movement, one nourishing meal, consistent sleep." },
+    high: { title: "You Are Honouring the Instrument", analysis: "Physical self-care creates a neurological foundation that amplifies everything.", process: "The Ultimate Health program offers advanced mind-body connection tools.", practice: "Body Check-In: Once daily, ask your body what it needs." } },
+  { id: 7, category: "Mental Health", icon: "◎", question: "How free did I feel from anxiety and depression today?", labels: ["Not at all free", "Rarely free", "Sometimes free", "Often free", "Mostly free", "Completely free"], weight: 1.3, reversed: false,
+    module: "Emotional Clearing & NSR", webinar: "The NSR Webinar",
+    low: { title: "Anxiety and Depression Are Patterns", analysis: "These are the nervous system's learned response to perceived threat, rooted in past experiences.", process: "The four core processes — The Gift, The Grey Room, The Womb of Eternity, Space Odyssey.", practice: "The NSR Breath Reset: Breathe in 4, hold 4, out 8. Do 3 cycles." },
+    high: { title: "Emotional Freedom Is Your Platform", analysis: "Operating free from anxiety creates space for everything else to flourish.", process: "Space Odyssey can be used proactively to neutralise emerging emotional residue.", practice: "Freedom Maintenance: Identify 2-3 practices that maintain your equilibrium." } },
+  { id: 8, category: "Agency", icon: "→", question: "How much did I consciously CREATE my life today (vs just reacting)?", labels: ["Pure reaction", "Mostly reactive", "Mixed", "Mostly creating", "Strongly creating", "Fully intentional"], weight: 1.3, reversed: false,
+    module: "Conscious Creation", webinar: "The Design Your Identity Webinar",
+    low: { title: "Reactive Living Is Exhausting", analysis: "Reactive living is a nervous system pattern where threat-detection hijacks executive function.", process: "Anchoring positive emotional states builds capacity to pause and choose.", practice: "The Creator's Pause: 'Who am I choosing to be today?'" },
+    high: { title: "You Are the Author", analysis: "Acting as conscious creator is the apex skill of personal development.", process: "The Become a World-Class Coach training is a natural next expression.", practice: "Leadership by Example: Model conscious creation for someone stuck." } }
 ];
 
-const LABELS = ["Not at all", "Rarely", "Sometimes", "Often", "Mostly", "Completely"];
+// TIERS
+const TIERS = [
+  { min: 0, max: 1.5, label: "Absence of Happiness", arcColor: "#C0392B", message: "Right now life feels heavy — and that is real. This is not a judgment. It is a starting point.", p1intro: "Your nervous system is currently carrying a significant load. This is not a life sentence. It is a learned pattern that can be changed.", tier_note: "Priority: Nervous System Regulation before all else." },
+  { min: 1.5, max: 2.5, label: "Unhappiness", arcColor: "#E67E22", message: "You are getting through each day — and that takes strength. But surviving and thriving are not the same.", p1intro: "Your nervous system is running enough unconscious resistance to keep thriving just out of reach.", tier_note: "Priority: Emotional Clearing and Identity work." },
+  { min: 2.5, max: 3.5, label: "Fine / Neutral", arcColor: "#C9A84C", message: "Things are fine — but fine isn't flourishing. You sense something more is possible.", p1intro: "Some areas are well-regulated, others still carry patterned responses limiting your full expression.", tier_note: "Priority: The two or three dimensions scoring lowest." },
+  { min: 3.5, max: 4.5, label: "Happiness", arcColor: "#27AE60", message: "You are living with real intention and generating real results. You are close to extraordinary.", p1intro: "Your nervous system is largely regulated, your identity is chosen, your capacity for creation is well-developed.", tier_note: "Priority: Depth over breadth — refinement and deepening." },
+  { min: 4.5, max: 5.01, label: "Elevated Happiness", arcColor: "#C9A84C", message: "You are living at a remarkable level of conscious, joyful engagement. This is rare.", p1intro: "Your nervous system is well-regulated, your identity intentional, your emotional access rich.", tier_note: "Priority: Legacy and leadership — helping others find what you have found." }
+];
 
-// State
-let answers = {};
-let score = 0;
-let tier = { label: "", color: "" };
-
-// Helper: Get tier based on score
-function getTier(scoreNum) {
-  if (scoreNum <= 1.5) return { label: "Absence of Happiness", color: "#C0392B" };
-  if (scoreNum <= 2.5) return { label: "Unhappiness", color: "#E67E22" };
-  if (scoreNum <= 3.5) return { label: "Fine / Neutral", color: "#C9A84C" };
-  if (scoreNum <= 4.5) return { label: "Happiness", color: "#27AE60" };
-  return { label: "Elevated Happiness", color: "#C9A84C" };
-}
-
-// Calculate score from answers
-function calculateScore() {
-  let total = 0;
-  let answered = 0;
+// Helper functions
+function calcScore(answers) {
+  let total = 0, ws = 0;
   QUESTIONS.forEach(q => {
-    if (answers[q.id] !== undefined) {
-      total += answers[q.id];
-      answered++;
-    }
+    const v = answers[q.id];
+    if (v === undefined) return;
+    const n = q.reversed ? 5 - v : v;
+    total += n * q.weight;
+    ws += 5 * q.weight;
   });
-  if (answered === 0) return 0;
-  return total / QUESTIONS.length;
+  return ws > 0 ? (total / ws) * 5 : 0;
 }
 
-// Render all questions
-function renderQuestions() {
-  const container = document.getElementById('questions-container');
-  container.innerHTML = '';
-  
-  QUESTIONS.forEach((q) => {
-    const div = document.createElement('div');
-    div.className = 'question';
-    div.innerHTML = `
-      <div class="question-text">${q.text}</div>
-      <div class="scale" data-qid="${q.id}">
-        ${[0,1,2,3,4,5].map(v => `
-          <button class="scale-btn" data-val="${v}" onclick="selectAnswer(${q.id}, ${v})">
-            <span class="num">${v}</span>
-            <span class="label">${LABELS[v]}</span>
-          </button>
-        `).join('')}
-      </div>
-    `;
-    container.appendChild(div);
-    
-    // If already answered, highlight
-    if (answers[q.id] !== undefined) {
-      const btns = div.querySelectorAll('.scale-btn');
-      btns[answers[q.id]].classList.add('selected');
-    }
-  });
-  
-  updateProgress();
+function getTier(score) {
+  return TIERS.find(t => score >= t.min && score < t.max) || TIERS[TIERS.length-1];
 }
 
-// Select an answer
-function selectAnswer(qid, val) {
-  answers[qid] = val;
-  
-  // Update UI
-  const scaleDiv = document.querySelector(`.scale[data-qid="${qid}"]`);
-  if (scaleDiv) {
-    scaleDiv.querySelectorAll('.scale-btn').forEach(btn => btn.classList.remove('selected'));
-    scaleDiv.querySelectorAll('.scale-btn')[val].classList.add('selected');
-  }
-  
-  updateProgress();
-}
-
-// Update progress bar
-function updateProgress() {
-  const answered = Object.keys(answers).length;
-  const total = QUESTIONS.length;
-  const percent = (answered / total) * 100;
-  
-  document.getElementById('progress-fill').style.width = `${percent}%`;
-  document.getElementById('progress-text').textContent = `${answered} of ${total} answered`;
-  
-  const nextBtn = document.getElementById('next-btn');
-  if (nextBtn) {
-    nextBtn.disabled = answered !== total;
-  }
-}
-
-// Format answers for SMS
-function formatAnswersText() {
-  let text = "";
-  QUESTIONS.forEach(q => {
-    const val = answers[q.id] || 0;
-    text += `${q.text.substring(0, 45)}...: ${val}/5\n`;
-  });
-  return text;
+function getFocusSorted(answers) {
+  return QUESTIONS.map(q => {
+    const v = answers[q.id] ?? 0;
+    const eff = q.reversed ? 5 - v : v;
+    return { ...q, rawVal: v, eff };
+  }).sort((a, b) => a.eff - b.eff);
 }
 
 // ============================================================
-// 🔥 FIXED: Send to Zapier with CORS bypass using GET + no-cors
+// 🔥 FIXED: Send to Zapier using FormData (bypasses CORS)
 // ============================================================
-async function sendToZapier(name, phone, email, scoreNum, tierLabel) {
-  const answersText = formatAnswersText();
-  
-  // Build URL with all data as query parameters
-  const params = new URLSearchParams({
-    name: name,
-    phone: phone,
-    email: email,
-    score: scoreNum.toFixed(1),
-    tier: tierLabel,
-    answers: answersText.substring(0, 500), // Limit length for URL
-    timestamp: new Date().toISOString()
+async function sendToZapier(name, phone, email, scoreNum, tierLabel, answersData) {
+  // Format answers for SMS
+  let answersText = "";
+  QUESTIONS.forEach(q => {
+    const val = answersData[q.id] || 0;
+    answersText += `${q.category}: ${val}/5\n`;
   });
   
-  const url = `${ZAPIER_WEBHOOK}?${params.toString()}`;
-  console.log("📤 Sending to Zapier via GET (CORS-safe)");
+  // Create FormData (this bypasses CORS restrictions)
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('phone', phone);
+  formData.append('email', email);
+  formData.append('score', scoreNum.toFixed(1));
+  formData.append('tier', tierLabel);
+  formData.append('answers_text', answersText);
+  formData.append('timestamp', new Date().toISOString());
+  
+  console.log("📤 Sending to Zapier via FormData");
   
   try {
-    // Use no-cors mode - this bypasses CORS restrictions
-    // The request will send, but we can't read the response (that's ok)
-    await fetch(url, { 
-      method: "GET", 
-      mode: "no-cors",
-      cache: "no-cache"
+    const response = await fetch(ZAPIER_WEBHOOK, {
+      method: "POST",
+      body: formData,
+      mode: "no-cors"  // Bypasses CORS
     });
-    console.log("✅ Request sent to Zapier successfully");
+    console.log("✅ Request sent to Zapier");
     return true;
   } catch (error) {
-    console.error("❌ Zapier send error:", error);
+    console.error("❌ Zapier error:", error);
     return false;
   }
 }
 
-// Show results and send to Zapier
-async function showResults() {
-  const name = document.getElementById('name').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const errorDiv = document.getElementById('contact-error');
-  const successDiv = document.getElementById('contact-success');
-  
-  // Validation
-  if (!name) { errorDiv.textContent = "Please enter your full name"; return; }
-  if (!phone) { errorDiv.textContent = "Please enter your phone number"; return; }
-  if (!email) { errorDiv.textContent = "Please enter your email address"; return; }
-  if (!email.includes('@')) { errorDiv.textContent = "Please enter a valid email address"; return; }
-  
-  errorDiv.textContent = "";
-  
-  // Calculate score
-  const scoreNum = calculateScore();
-  const tierData = getTier(scoreNum);
-  
-  // Send to Zapier (CORS-safe)
-  successDiv.textContent = "Sending your results...";
-  const sent = await sendToZapier(name, phone, email, scoreNum, tierData.label);
-  
-  if (sent) {
-    successDiv.textContent = "✅ Results sent! Displaying your report...";
-    console.log("✅ Successfully sent to Zapier");
-  } else {
-    successDiv.textContent = "⚠️ Report displayed (email notification pending)";
-    console.log("⚠️ Zapier send may have issues, but continuing");
-  }
-  
-  setTimeout(() => {
-    successDiv.textContent = "";
-  }, 3000);
-  
-  // Build results HTML
-  const resultsDiv = document.getElementById('results-content');
-  const answersHtml = QUESTIONS.map(q => `
-    <div class="answer-row">
-      <span class="answer-text">${q.text.substring(0, 60)}${q.text.length > 60 ? '...' : ''}</span>
-      <span class="answer-score">${answers[q.id] || 0}/5</span>
-    </div>
-  `).join('');
-  
-  resultsDiv.innerHTML = `
-    <div class="result-hero">
-      <div class="result-score">${scoreNum.toFixed(1)}/5</div>
-      <div class="result-tier" style="color: ${tierData.color}">${tierData.label}</div>
-      <div class="result-desc">Thank you, ${name.split(' ')[0]}! Your personalised report is below.</div>
-    </div>
-    <div class="result-card">
-      <h3>Your Answers</h3>
-      ${answersHtml}
-    </div>
-    <div class="result-card">
-      <h3>Your Daily Practice</h3>
-      <p style="color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.6;">
-        Each morning, before the world makes its demands, take 3 minutes and answer: 
-        <strong style="color: #C9A84C;">"Who am I choosing to be today?"</strong>
-        Name it. Speak it. Take one action consistent with that answer.
-      </p>
+// App state
+let currentPhase = "landing";
+let currentQIdx = 0;
+let answers = {};
+let selectedAnswer = null;
+let animOut = false;
+let score = 0;
+let currentTier = null;
+let userName = "";
+let userPhone = "";
+let userEmail = "";
+let errorMsg = "";
+
+// Render functions
+function render() {
+  if (currentPhase === "landing") renderLanding();
+  else if (currentPhase === "quiz") renderQuiz();
+  else if (currentPhase === "capture") renderCapture();
+  else if (currentPhase === "results") renderResults();
+}
+
+function renderLanding() {
+  const html = `
+    <div class="dark-bg">
+      <div class="noise"></div>
+      <div class="container">
+        <div class="logo">ACCESSWORLD</div>
+        <div class="logo-sub">SEMINARS · JOSHUA ROY</div>
+        <div class="divider"></div>
+        <h1>How happy are<br/>you — <em>really?</em></h1>
+        <div class="meta">8 questions · 3 minutes · Your personalised NSR report</div>
+        <div class="description">Most people answer this question with a polite "fine." But fine is not flourishing. Take this assessment and discover your true happiness score — and the specific nervous system reprogramming work that will transform your daily experience.</div>
+        <button class="btn" onclick="startQuiz()">Begin Your Assessment →</button>
+        <div class="fine-print">Free · Confidential · No login required</div>
+      </div>
     </div>
   `;
-  
-  // Switch views
-  document.getElementById('contact-section').classList.add('hidden');
-  document.getElementById('results-section').classList.remove('hidden');
-  
-  // Scroll to top
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('root').innerHTML = html;
 }
 
-// Go to contact page
-function goToContact() {
-  const answered = Object.keys(answers).length;
-  if (answered !== QUESTIONS.length) return;
-  
-  document.getElementById('quiz-section').classList.add('hidden');
-  document.getElementById('contact-section').classList.remove('hidden');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// Reset everything
-function resetAssessment() {
+function startQuiz() {
+  currentPhase = "quiz";
+  currentQIdx = 0;
   answers = {};
-  score = 0;
-  renderQuestions();
-  document.getElementById('quiz-section').classList.remove('hidden');
-  document.getElementById('contact-section').classList.add('hidden');
-  document.getElementById('results-section').classList.add('hidden');
-  document.getElementById('name').value = '';
-  document.getElementById('phone').value = '';
-  document.getElementById('email').value = '';
-  document.getElementById('contact-error').textContent = '';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  selectedAnswer = null;
+  render();
 }
+
+function renderQuiz() {
+  const q = QUESTIONS[currentQIdx];
+  const progress = ((currentQIdx) / QUESTIONS.length) * 100;
+  
+  const html = `
+    <div class="dark-bg">
+      <div class="noise"></div>
+      <div class="progress-bar"><div class="progress-fill" style="width: ${progress}%"></div></div>
+      <div style="display: flex; justify-content: space-between; width: 100%; max-width: 560px; padding: 14px 20px 0; z-index: 1;">
+        <span style="font-size: 9px; letter-spacing: 4px; color: #C9A84C; text-transform: uppercase;">${q.category}</span>
+        <span style="font-size: 12px; color: #ffffff33; font-family: 'Cormorant Garamond', serif;">${currentQIdx + 1}<span style="opacity: 0.35;"> / ${QUESTIONS.length}</span></span>
+      </div>
+      <div class="quiz-card" style="opacity: ${animOut ? 0 : 1}; transform: ${animOut ? 'translateY(14px)' : 'translateY(0)'};">
+        <div class="quiz-icon">${q.icon}</div>
+        <div class="quiz-question">${q.question}</div>
+        ${q.note ? `<div class="quiz-note">${q.note}</div>` : ''}
+        <div class="scale-grid">
+          ${[0,1,2,3,4,5].map(v => `
+            <button class="scale-btn ${selectedAnswer === v ? 'selected' : ''}" onclick="selectAnswer(${v})">
+              <span class="scale-num">${v}</span>
+              <span class="scale-label">${q.labels[v]}</span>
+            </button>
+          `).join('')}
+        </div>
+      </div>
+      <button class="btn" style="margin-top: 20px; opacity: ${selectedAnswer !== null ? 1 : 0.3};" onclick="nextQuestion()" ${selectedAnswer === null ? 'disabled' : ''}>
+        ${currentQIdx < QUESTIONS.length - 1 ? "Next →" : "See My Results →"}
+      </button>
+    </div>
+  `;
+  document.getElementById('root').innerHTML = html;
+}
+
+function selectAnswer(val) {
+  selectedAnswer = val;
+  renderQuiz();
+}
+
+function nextQuestion() {
+  if (selectedAnswer === null) return;
+  answers[QUESTIONS[currentQIdx].id] = selectedAnswer;
+  
+  if (currentQIdx < QUESTIONS.length - 1) {
+    currentQIdx++;
+    selectedAnswer = null;
+    renderQuiz();
+  } else {
+    const s = calcScore(answers);
+    score = s;
+    currentTier = getTier(s);
+    currentPhase = "capture";
+    render();
+  }
+}
+
+function renderCapture() {
+  const sp = (score / 5) * 100;
+  const bc = currentTier ? currentTier.arcColor : "#C9A84C";
+  
+  const html = `
+    <div class="dark-bg">
+      <div class="noise"></div>
+      <div class="container">
+        <div class="logo">ACCESSWORLD</div>
+        <div class="logo-sub">SEMINARS</div>
+        <div class="divider"></div>
+        <div style="width: 100%; background: #ffffff06; border: 1px solid #C9A84C22; border-radius: 4px; padding: 24px 20px; margin-bottom: 18px; text-align: center;">
+          <div style="font-size: 9px; letter-spacing: 4px; color: #C9A84C; text-transform: uppercase; margin-bottom: 10px;">Your Assessment Is Complete</div>
+          <svg viewBox="0 0 160 160" width="160" height="160" style="display: block; margin: 0 auto 10px;">
+            <circle cx="80" cy="80" r="64" fill="none" stroke="#ffffff08" stroke-width="12"/>
+            <circle cx="80" cy="80" r="64" fill="none" stroke="${bc}" stroke-width="12" stroke-linecap="round" stroke-dasharray="${2 * Math.PI * 64}" stroke-dashoffset="${2 * Math.PI * 64 * (1 - sp / 100)}" transform="rotate(-90 80 80)"/>
+            <text x="80" y="74" text-anchor="middle" fill="#fff" font-family="Cormorant Garamond, serif" font-size="38" font-weight="300">${score.toFixed(1)}</text>
+            <text x="80" y="96" text-anchor="middle" fill="#C9A84C" font-family="Montserrat, sans-serif" font-size="8" letter-spacing="3">OUT OF 5.0</text>
+          </svg>
+          <div style="display: inline-block; padding: 6px 18px; border: 1px solid ${bc}; color: ${bc}; font-size: 9px; letter-spacing: 4px; margin-bottom: 12px;">${currentTier?.label}</div>
+          <div style="font-size: 12px; color: #ffffff66; line-height: 1.8; max-width: 420px; margin: 0 auto;">Your full personalised NSR report includes complete analysis, top 3 intervention points, foundation strengths, and daily practices.</div>
+        </div>
+        <div style="width: 100%; background: #ffffff05; border: 1px solid #ffffff0d; border-radius: 4px; padding: 22px 20px; text-align: left;">
+          <div style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #fff; margin-bottom: 4px; font-weight: 400;">Unlock Your Full Report</div>
+          <div style="font-size: 12px; color: #ffffff44; margin-bottom: 16px;">Enter your details to view your complete personalised assessment.</div>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="capture-name" placeholder="Your full name" value="${userName}">
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="capture-phone" placeholder="+61 4xx xxx xxx" value="${userPhone}">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="capture-email" placeholder="your@email.com" value="${userEmail}">
+          </div>
+          ${errorMsg ? `<div class="error">${errorMsg}</div>` : ''}
+          <button class="btn" style="width: 100%; margin-top: 6px;" onclick="submitCapture()">View My Full Report →</button>
+          <div class="fine-print" style="text-align: center; margin-top: 10px;">Your details are private and never shared.</div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById('root').innerHTML = html;
+}
+
+async function submitCapture() {
+  const name = document.getElementById('capture-name')?.value.trim() || "";
+  const phone = document.getElementById('capture-phone')?.value.trim() || "";
+  const email = document.getElementById('capture-email')?.value.trim() || "";
+  
+  if (!name) { errorMsg = "Please enter your full name"; render(); return; }
+  if (!phone) { errorMsg = "Please enter your phone number"; render(); return; }
+  if (!email) { errorMsg = "Please enter your email address"; render(); return; }
+  if (!email.includes('@')) { errorMsg = "Please enter a valid email address"; render(); return; }
+  
+  errorMsg = "";
+  userName = name;
+  userPhone = phone;
+  userEmail = email;
+  
+  // Send to Zapier (CORS fixed!)
+  await sendToZapier(name, phone, email, score, currentTier.label, answers);
+  
+  currentPhase = "results";
+  render();
+}
+
+function renderResults() {
+  const sorted = getFocusSorted(answers);
+  const priorities = sorted.slice(0, 3);
+  const strengths = sorted.slice(-2);
+  const pct = Math.round((score / 5) * 100);
+  const fn = userName.split(" ")[0] || "there";
+  
+  const Bar = ({ p, c }) => `<div style="height:5px;background:#e9e5db;border-radius:3px;margin-top:7px;"><div style="width:${p}%;height:100%;background:${c};border-radius:3px;"></div></div>`;
+  
+  const QDash = (q) => {
+    const v = answers[q.id] ?? 0;
+    const e = q.reversed ? 5 - v : v;
+    return `
+      <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid #f0ece3;">
+        <span style="color:#C9A84C;font-size:15px;width:20px;flex-shrink:0;">${q.icon}</span>
+        <div style="flex:1;">
+          <div style="font-size:8px;letter-spacing:3px;color:#C9A84C;text-transform:uppercase;margin-bottom:2px;">${q.category}</div>
+          <div style="font-size:11.5px;color:#333;line-height:1.4;margin-bottom:4px;">${q.question}</div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#1A2744;">${v}</span>
+            <span style="font-size:10px;color:#bbb;">/5</span>
+            <div style="flex:1;height:4px;background:#ede9e0;border-radius:2px;"><div style="width:${Math.round((e/5)*100)}%;height:100%;background:${currentTier.arcColor};border-radius:2px;"></div></div>
+          </div>
+        </div>
+      </div>
+    `;
+  };
+  
+  const FocusCard = (q, type, idx) => {
+    const v = q.rawVal;
+    const e = q.eff;
+    const content = type === 'low' ? q.low : q.high;
+    const accent = type === 'low' ? "#1A2744" : "#C9A84C";
+    const bodyParas = content.analysis.split('\n\n').map(p => `<p style="font-size:12.5px;color:#444;line-height:1.85;margin-bottom:10px;">${p}</p>`).join('');
+    return `
+      <div style="border:1px solid #e8e4d9;border-left:4px solid ${accent};border-radius:2px;padding:22px 26px;margin-bottom:22px;">
+        <div style="float:right;font-family:'Cormorant Garamond',serif;font-size:38px;color:${accent};line-height:1;margin-left:14px;">${v}/5</div>
+        <div style="font-size:8px;letter-spacing:3px;color:#C9A84C;text-transform:uppercase;margin-bottom:4px;">${type === 'low' ? `PRIORITY FOCUS ${idx}` : 'FOUNDATION STRENGTH'} · ${q.category}</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:21px;color:#1A2744;margin-bottom:6px;">${content.title}</div>
+        ${Bar({ p: Math.round((e/5)*100), c: accent })}
+        <div style="font-size:8px;letter-spacing:2px;color:#888;margin:8px 0 2px;text-transform:uppercase;">Relevant Program</div>
+        <div style="font-size:11px;color:#C9A84C;font-style:italic;margin-bottom:14px;">${q.webinar}</div>
+        <div style="clear:both;"></div>
+        ${bodyParas}
+        <div style="background:#f8f5ef;border-radius:2px;padding:14px 18px;margin-top:6px;margin-bottom:10px;">
+          <div style="font-size:8px;letter-spacing:3px;color:#1A2744;text-transform:uppercase;margin-bottom:6px;">The Process</div>
+          <p style="font-size:12px;color:#444;line-height:1.8;margin:0;">${content.process}</p>
+        </div>
+        <div style="background:#1A2744;border-radius:2px;padding:14px 18px;">
+          <div style="font-size:8px;letter-spacing:3px;color:#C9A84C;text-transform:uppercase;margin-bottom:6px;">Your Daily Practice</div>
+          <p style="font-size:12px;color:#ffffffcc;line-height:1.8;margin:0;">${content.practice}</p>
+        </div>
+      </div>
+    `;
+  };
+  
+  const resultsHtml = `
+    <div class="results-wrapper">
+      <div class="results-page">
+        <div class="results-header">
+          <div class="results-logo">ACCESSWORLD</div>
+          <div class="results-tag">Assessment Overview</div>
+        </div>
+        <div class="results-title">Hello, ${fn}.</div>
+        <div class="results-eyebrow">Your Nervous System Report · ${new Date().toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}</div>
+        <div class="intro-quote"><p>${currentTier.p1intro}</p></div>
+        <div class="tier-note"><strong>Note from Joshua:</strong> ${currentTier.tier_note}</div>
+        <div class="score-band">
+          <div>
+            <svg viewBox="0 0 120 120" width="100" height="100">
+              <circle cx="60" cy="60" r="48" fill="none" stroke="#e9e5db" stroke-width="10"/>
+              <circle cx="60" cy="60" r="48" fill="none" stroke="${currentTier.arcColor}" stroke-width="10" stroke-linecap="round" stroke-dasharray="${2 * Math.PI * 48}" stroke-dashoffset="${2 * Math.PI * 48 * (1 - pct / 100)}" transform="rotate(-90 60 60)"/>
+              <text x="60" y="55" text-anchor="middle" fill="#1A2744" font-family="Cormorant Garamond, serif" font-size="28" font-weight="300">${score.toFixed(1)}</text>
+              <text x="60" y="72" text-anchor="middle" fill="#C9A84C" font-family="Montserrat, sans-serif" font-size="7" letter-spacing="2">OUT OF 5</text>
+            </svg>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:8px;letter-spacing:3px;color:#C9A84C;text-transform:uppercase;margin-bottom:3px;">Overall Happiness Score</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#1A2744;margin-bottom:4px;">${score.toFixed(2)} / 5.00 &nbsp;<span style="font-size:16px;color:${currentTier.arcColor};">${currentTier.label}</span></div>
+            ${Bar({ p: pct, c: currentTier.arcColor })}
+            <p style="font-size:11px;color:#666;margin-top:8px;line-height:1.6;">Weighted across 8 dimensions of daily living.</p>
+          </div>
+        </div>
+        <div class="dimension-list">
+          ${QUESTIONS.map(q => QDash(q)).join('')}
+        </div>
+      </div>
+      <div class="results-page">
+        <div class="results-header">
+          <div class="results-logo">ACCESSWORLD</div>
+          <div class="results-tag">Priority Focus Areas</div>
+        </div>
+        <div class="results-title">Where your energy<br/>is needed most.</div>
+        <div class="results-eyebrow">Your Top 3 NSR Intervention Points</div>
+        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:26px;">${fn}, these three dimensions emerged as the highest-leverage areas for your nervous system reprogramming work right now.</p>
+        ${priorities.map((q, i) => FocusCard(q, 'low', i+1)).join('')}
+      </div>
+      <div class="results-page">
+        <div class="results-header">
+          <div class="results-logo">ACCESSWORLD</div>
+          <div class="results-tag">Your Foundations & Path Forward</div>
+        </div>
+        <div class="results-title">What you are<br/>already doing right.</div>
+        <div class="results-eyebrow">Your Neurological Foundation Strengths</div>
+        <p style="font-size:13px;color:#555;line-height:1.8;margin-bottom:22px;">These are your anchors. Protect them, build on them, and use them as the platform to coach and lead others.</p>
+        ${strengths.map(q => FocusCard(q, 'high')).join('')}
+        <div style="background:#f8f5ef;padding:20px 24px;border-radius:2px;margin-bottom:28px;">
+          <div style="font-size:8px;letter-spacing:3px;color:#C9A84C;text-transform:uppercase;margin-bottom:8px;">Your One Daily Non-Negotiable</div>
+          <p style="font-size:13px;color:#444;line-height:1.85;">Each morning, before the world makes its demands, take 3 minutes and answer: <em>"Who am I choosing to be today?"</em> Name it. Speak it. Take one action consistent with that answer.</p>
+        </div>
+        <div class="cta-dark">
+          <div style="font-size:9px;letter-spacing:4px;color:#C9A84C;text-transform:uppercase;margin-bottom:10px;">For More Information</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#fff;font-weight:300;margin-bottom:14px;">Two programs. One destination: the fullest version of you.</p>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px;">
+            <div style="flex:1;min-width:200px;border:1px solid #C9A84C44;padding:14px 16px;border-radius:2px;">
+              <div style="font-size:8px;letter-spacing:3px;color:#C9A84C;text-transform:uppercase;">Personal Transformation</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:#fff;">Unlock Your Incredible Self</div>
+              <div style="font-size:10px;color:#C9A84C;">https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808</div>
+            </div>
+            <div style="flex:1;min-width:200px;border:1px solid #C9A84C44;padding:14px 16px;border-radius:2px;">
+              <div style="font-size:8px;letter-spacing:3px;color:#C9A84C;text-transform:uppercase;">Professional Certification</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:#fff;">Become a World-Class Coach</div>
+              <div style="font-size:10px;color:#C9A84C;">https://www.accessworldseminars.org/the-perfect-squeeze-page--45e9d</div>
+            </div>
+          </div>
+        </div>
+        <div class="actions-row">
+          <button class="btn" style="background:none; border:none; color:#aaa; font-size:10px; padding:0;" onclick="resetAssessment()">← Take Assessment Again</button>
+          <button class="btn" style="background:none; border:1px solid #C9A84C; color:#C9A84C; padding:8px 18px; font-size:9px;" onclick="window.print()">Save as PDF ↓</button>
+        </div>
+        <p style="font-size:9.5px;color:#aaa;margin-top:20px;">Joshua Roy · AccessWorld Seminars · accessworldseminars.org</p>
+      </div>
+    </div>
+  `;
+  document.getElementById('root').innerHTML = resultsHtml;
+}
+
+function resetAssessment() {
+  currentPhase = "landing";
+  currentQIdx = 0;
+  answers = {};
+  selectedAnswer = null;
+  score = 0;
+  currentTier = null;
+  userName = "";
+  userPhone = "";
+  userEmail = "";
+  errorMsg = "";
+  render();
+}
+
+// Expose functions globally
+window.startQuiz = startQuiz;
+window.selectAnswer = selectAnswer;
+window.nextQuestion = nextQuestion;
+window.submitCapture = submitCapture;
+window.resetAssessment = resetAssessment;
 
 // Initialize
-renderQuestions();
-document.getElementById('next-btn').onclick = goToContact;
-document.getElementById('submit-btn').onclick = showResults;
-document.getElementById('retake-btn').onclick = resetAssessment;
+render();
 </script>
 </body>
 </html>
