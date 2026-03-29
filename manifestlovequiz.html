@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Mum, Is Your Heart Ready to Manifest the Love You Truly Deserve?</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;family=Montserrat:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;family=Montserrat:wght@400;500;600&amp;display=swap');
+        
+        :root {
+            --accent: #C9A84C;
+        }
+        
+        body {
+            font-family: 'Montserrat', system_ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .dark-bg {
+            background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+        }
+
+        .gold-accent {
+            color: #C9A84C;
+        }
+
+        .scale-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .scale-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 10px 15px -3px rgb(201 168 76 / 0.3);
+        }
+        
+        .scale-btn.selected {
+            background-color: #C9A84C !important;
+            color: #111827 !important;
+            border-color: #C9A84C;
+            transform: scale(1.08);
+        }
+
+        .progress-bar {
+            transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .result-page {
+            display: none;
+        }
+        
+        .result-page.active {
+            display: block;
+        }
+
+        .bar-container {
+            height: 12px;
+            background: rgba(201, 168, 76, 0.2);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .score-bar {
+            height: 100%;
+            background: linear-gradient(to right, #C9A84C, #f5d07a);
+            transition: width 1.2s ease-out;
+        }
+
+        .icon {
+            font-size: 1.75rem;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="dark-bg text-white min-h-screen">
+    <div class="max-w-2xl mx-auto">
+        <!-- HEADER -->
+        <header class="pt-8 pb-6 px-6 text-center border-b border-white/10">
+            <div class="inline-flex items-center gap-3 mb-4">
+                <span class="text-4xl">❤</span>
+                <h1 class="heading-font text-4xl md:text-5xl tracking-tight gold-accent">
+                    Single Mum, Is Your Heart Ready to Manifest the Love You Truly Deserve?
+                </h1>
+            </div>
+            <p class="text-lg text-white/80 max-w-md mx-auto">
+                You've been strong for everyone else. Now discover where you truly are on the journey to calling in healthy, soul-aligned love.
+            </p>
+        </header>
+
+        <!-- SCREENS -->
+        <div id="screens">
+
+            <!-- INTRO SCREEN -->
+            <div id="intro-screen" class="screen p-8">
+                <div class="bg-white/5 backdrop-blur-xl rounded-3xl p-10 border border-white/10">
+                    <div class="text-center mb-10">
+                        <div class="mx-auto w-20 h-20 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-2xl flex items-center justify-center text-5xl mb-6 shadow-xl">❤</div>
+                        <p class="text-xl leading-relaxed text-white/90">
+                            After separation or divorce, many single mums carry hidden heartbreak while longing to manifest real love. 
+                            This quiz reveals your current readiness and gives you a clear path forward.
+                        </p>
+                    </div>
+                    
+                    <button onclick="startQuiz()" 
+                            class="w-full py-6 bg-gradient-to-r from-[#C9A84C] to-amber-500 hover:from-amber-500 hover:to-[#C9A84C] text-black font-semibold text-xl rounded-2xl transition-all active:scale-95 shadow-2xl">
+                        START THE QUIZ
+                    </button>
+                    
+                    <p class="text-center text-white/60 text-sm mt-8">10 questions • Takes ~6 minutes • Private &amp; anonymous until you choose to submit</p>
+                </div>
+            </div>
+
+            <!-- QUIZ SCREEN -->
+            <div id="quiz-screen" class="screen hidden p-6">
+                <div class="sticky top-0 bg-[#080d18]/95 backdrop-blur-md z-50 py-4 border-b border-white/10">
+                    <div class="flex justify-between items-center px-2">
+                        <div class="text-sm text-white/70">Question <span id="current-q" class="font-mono text-[#C9A84C]">1</span>/10</div>
+                        <div class="w-48 h-2 bg-white/10 rounded-full overflow-hidden">
+                            <div id="progress" class="progress-bar h-full bg-gradient-to-r from-[#C9A84C] to-amber-400 w-1/10"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <div id="question-text" class="text-2xl leading-tight heading-font mb-10 min-h-[120px]"></div>
+                    
+                    <div id="options" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-12">
+                    <button onclick="prevQuestion()" id="prev-btn"
+                            class="px-8 py-4 text-white/70 hover:text-white transition-colors flex items-center gap-2">
+                        ← Previous
+                    </button>
+                    <button onclick="nextQuestion()" id="next-btn"
+                            class="px-10 py-4 bg-white/10 hover:bg-white/20 rounded-2xl transition-all font-medium">
+                        Next →
+                    </button>
+                </div>
+            </div>
+
+            <!-- CONTACT SCREEN -->
+            <div id="contact-screen" class="screen hidden p-8">
+                <div class="bg-white/5 backdrop-blur-xl rounded-3xl p-10 border border-white/10">
+                    <h2 class="heading-font text-3xl text-center mb-8 gold-accent">Almost there...</h2>
+                    <p class="text-center text-white/80 mb-10">Enter your details to receive your personalised 3-page results PDF with powerful next steps to heal and manifest love.</p>
+                    
+                    <form id="contact-form" onsubmit="handleSubmit(event)" class="space-y-6">
+                        <div>
+                            <label class="block text-sm text-white/70 mb-2">Your first name</label>
+                            <input type="text" id="name" required 
+                                   class="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-5 text-white placeholder:text-white/40 focus:outline-none focus:border-[#C9A84C]">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-white/70 mb-2">Phone number</label>
+                            <input type="tel" id="phone" required 
+                                   class="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-5 text-white placeholder:text-white/40 focus:outline-none focus:border-[#C9A84C]">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-white/70 mb-2">Email address</label>
+                            <input type="email" id="email" required 
+                                   class="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-5 text-white placeholder:text-white/40 focus:outline-none focus:border-[#C9A84C]">
+                        </div>
+                        
+                        <button type="submit"
+                                class="w-full mt-8 py-6 bg-gradient-to-r from-[#C9A84C] to-amber-500 text-black font-semibold text-xl rounded-2xl transition-all active:scale-95">
+                            SEE MY RESULTS &amp; RECEIVE PDF
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- RESULTS CONTAINER -->
+            <div id="results-screen" class="screen hidden p-6">
+
+                <!-- Page Navigation -->
+                <div class="flex border-b border-white/10 mb-8 sticky top-0 bg-[#080d18]/95 z-50">
+                    <button onclick="showResultPage(1)" id="tab1"
+                            class="result-tab flex-1 py-5 text-center border-b-4 border-transparent hover:text-[#C9A84C] active-tab">Overview</button>
+                    <button onclick="showResultPage(2)" id="tab2"
+                            class="result-tab flex-1 py-5 text-center border-b-4 border-transparent hover:text-[#C9A84C]">Areas to Grow</button>
+                    <button onclick="showResultPage(3)" id="tab3"
+                            class="result-tab flex-1 py-5 text-center border-b-4 border-transparent hover:text-[#C9A84C]">Your Strengths</button>
+                </div>
+
+                <!-- RESULT PAGE 1: Overview -->
+                <div id="result-page-1" class="result-page active">
+                    <div class="text-center mb-12">
+                        <div id="tier-badge" 
+                             class="inline-block px-8 py-3 rounded-3xl text-xl font-medium mb-6"></div>
+                        <div class="text-7xl font-bold heading-font mb-2 gold-accent" id="average-score">3.4</div>
+                        <p class="text-white/70">Your average readiness score</p>
+                    </div>
+
+                    <div class="mb-16">
+                        <h3 class="text-xl mb-6 flex items-center gap-3">
+                            <span class="text-3xl">📊</span> Your Answers
+                        </h3>
+                        <div id="all-answers" class="space-y-8"></div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button onclick="printPDF()" 
+                                class="flex-1 py-5 border border-white/30 hover:border-[#C9A84C] rounded-2xl transition-colors">
+                            📄 Save / Print PDF
+                        </button>
+                        <button onclick="retakeQuiz()" 
+                                class="flex-1 py-5 bg-white/10 hover:bg-white/20 rounded-2xl transition-colors">
+                            Retake Quiz
+                        </button>
+                    </div>
+                </div>
+
+                <!-- RESULT PAGE 2: Lowest 3 -->
+                <div id="result-page-2" class="result-page">
+                    <h2 class="heading-font text-3xl mb-8 text-center">Top 3 Areas to Strengthen</h2>
+                    <div id="lowest-areas" class="space-y-10"></div>
+                </div>
+
+                <!-- RESULT PAGE 3: Highest 2 + Practices -->
+                <div id="result-page-3" class="result-page">
+                    <h2 class="heading-font text-3xl mb-8 text-center">Your Strongest Foundations</h2>
+                    <div id="highest-areas" class="space-y-10"></div>
+                    
+                    <div class="mt-16 bg-white/5 rounded-3xl p-8 border border-white/10">
+                        <h3 class="gold-accent text-2xl mb-6 heading-font">Your Daily Practice to Manifest Love</h3>
+                        <div id="daily-practice" class="prose prose-invert text-white/90"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ====================== QUIZ DATA ======================
+        const QUESTIONS = [
+            {
+                id: 1,
+                text: "I have fully released the emotional pain, resentment, and heartbreak from my past relationship or divorce.",
+                category: "Mental Health",
+                icon: "◎"
+            },
+            {
+                id: 2,
+                text: "I feel emotionally open and excited about welcoming a new, healthy love into my life.",
+                category: "Love & Joy",
+                icon: "❤"
+            },
+            {
+                id: 3,
+                text: "As a single mum, I have created real space in my daily life and schedule for dating and a new relationship without feeling guilty.",
+                category: "Wellbeing",
+                icon: "⬡"
+            },
+            {
+                id: 4,
+                text: "I trust my own judgment and instincts to choose a partner who is right for both me and my children.",
+                category: "Agency",
+                icon: "→"
+            },
+            {
+                id: 5,
+                text: "My self-worth and identity as a woman feel strong and complete — even without a partner.",
+                category: "Identity",
+                icon: "◉"
+            },
+            {
+                id: 6,
+                text: "I regularly use manifestation practices (visualisation, affirmations, etc.) to attract the loving relationship I desire.",
+                category: "Mindset",
+                icon: "✦"
+            },
+            {
+                id: 7,
+                text: "I no longer compare new potential partners to my ex or fear repeating the same painful patterns.",
+                category: "Mindset",
+                icon: "✦"
+            },
+            {
+                id: 8,
+                text: "I clearly and confidently communicate my needs and boundaries in relationships.",
+                category: "Language",
+                icon: "◈"
+            },
+            {
+                id: 9,
+                text: "When I think about being in a new relationship, I feel more joy and excitement than anxiety or fear.",
+                category: "Love & Joy",
+                icon: "❤"
+            },
+            {
+                id: 10,
+                text: "I take consistent daily actions toward my own healing and personal growth so I can show up as the best version of myself in love.",
+                category: "Progress",
+                icon: "▲"
+            }
+        ];
+
+        const SCALE_LABELS = [
+            "Not at all",
+            "Slightly",
+            "Somewhat",
+            "Mostly",
+            "Very much",
+            "Completely"
+        ];
+
+        const TIERS = [
+            { min: 0, max: 1.5, name: "Still Healing", color: "#f87171", desc: "Your heart is still tender and carrying heavy emotional weight from the past. You’re in the deep healing phase — and that’s exactly where you need to be right now. Focus on gentle self-compassion and clearing old pain before opening to new love." },
+            { min: 1.5, max: 2.5, name: "Rebuilding Your Foundation", color: "#fb923c", desc: "You’ve started to heal and are finding your feet again as a woman and mum. There’s progress, but old fears and patterns are still holding you back from fully opening up. Keep building safety within yourself." },
+            { min: 2.5, max: 3.5, name: "Awakening & Opening", color: "#fbbf24", desc: "You’re in the beautiful middle space — doing the inner work and starting to believe love can be different this time. You’re becoming magnetic. Continue the daily practices that make you feel whole." },
+            { min: 3.5, max: 4.5, name: "Ready to Receive", color: "#a3e635", desc: "You’ve done significant healing and are creating space for love. Your energy is shifting and you’re becoming a clear match for the relationship you desire. Trust the timing." },
+            { min: 4.5, max: 5, name: "Manifesting Your Next Chapter", color: "#4ade80", desc: "Your heart is wide open, your self-worth is strong, and you are genuinely ready to call in (and keep) the healthy, joyful love you deserve. You’re magnetic — keep shining." }
+        ];
+
+        // Dimension analysis (based on coaching-style content from the provided material)
+        const DIMENSION_ANALYSIS = {
+            "Mental Health": {
+                low: {
+                    title: "Releasing the Weight of the Past",
+                    body: "The pain from your previous relationship or divorce is still very present. This is normal and human. Carrying unresolved resentment blocks the flow of new love. The good news is you can begin deliberate release work today.",
+                    process: "Practice 'Blaming Deliberately' — reframe what happened as the catalyst for your strength and resilience.",
+                    practice: "Every morning, write one thing you can 'blame' your ex for in a positive way (e.g., 'I blame you for teaching me my own worth')."
+                },
+                high: {
+                    title: "Emotionally Free & Open",
+                    body: "You have done powerful healing work. The past no longer defines your future. This emotional freedom creates beautiful space for new, healthy love to enter.",
+                    process: "Continue daily gratitude and visualisation practices to maintain this openness.",
+                    practice: "Spend 5 minutes each evening visualising the feeling of safe, joyful love flowing toward you."
+                }
+            },
+            "Love & Joy": {
+                low: {
+                    title: "Reigniting Excitement for Love",
+                    body: "Fear and past hurt are currently stronger than your sense of joy about new love. This is common after heartbreak. Joy is the magnetic frequency for manifesting.",
+                    process: "Use the Magic Frame technique — make positive future images of love bigger and brighter in your mind.",
+                    practice: "Listen to uplifting love songs or watch romantic movies that make you feel hopeful, 10 minutes daily."
+                },
+                high: {
+                    title: "Open Heart Magnetism",
+                    body: "You feel genuine excitement about love again. This openness is incredibly attractive and aligns you with the right partner.",
+                    process: "Share this joyful energy with friends and community — it multiplies.",
+                    practice: "Write a love letter to your future partner every Sunday."
+                }
+            },
+            // Add more dimensions as needed for completeness (shortened for space)
+            "Wellbeing": {
+                low: { title: "Creating Space for You", body: "Guilt around carving out time for yourself and dating is common for single mums. Your wellbeing is the foundation for everything.", process: "Schedule non-negotiable 'me time' blocks.", practice: "One evening per week with no chores — just rest or joy." },
+                high: { title: "Balanced & Radiant", body: "You honour your own needs while caring for your children. This balance makes you a powerful role model and magnet for healthy love.", process: "Protect your energy fiercely.", practice: "Daily movement or nature time." }
+            },
+            "Agency": {
+                low: { title: "Reclaiming Your Inner Compass", body: "Doubt in your own judgment after past pain is understandable. Rebuilding trust in yourself is key to choosing wisely.", process: "Journal past decisions you made that were actually strong.", practice: "Make one small decision daily based purely on your intuition." },
+                high: { title: "Confident Choice-Maker", body: "You trust yourself deeply. This confidence protects you and your children while opening doors to aligned partners.", process: "Continue listening to your inner voice.", practice: "Affirm: 'I choose partners who choose me fully'." }
+            },
+            "Identity": {
+                low: { title: "Rebuilding Your Sense of Self", body: "Your identity has been tied to roles (mum, ex-partner). Rediscovering who you are as a woman is liberating.", process: "Explore new hobbies or skills just for you.", practice: "Mirror work: name 3 things you love about yourself daily." },
+                high: { title: "Whole & Radiant Woman", body: "You feel complete on your own. This wholeness is the most attractive energy for a healthy relationship.", process: "Celebrate your independence.", practice: "Weekly 'date with self'." }
+            },
+            "Mindset": {
+                low: { title: "Shifting from Fear to Possibility", body: "Old patterns and comparison are loud right now. Manifestation begins in the mind.", process: "Catch and reframe fearful thoughts immediately.", practice: "Morning visualisation of your ideal love story (5 min)." },
+                high: { title: "Manifestation-Ready Mind", body: "Your mindset is aligned with receiving love. You are actively creating your future.", process: "Stay consistent with practices.", practice: "Gratitude list focused on future love every night." }
+            },
+            "Language": {
+                low: { title: "Finding Your Voice Again", body: "Clear communication of needs and boundaries may feel scary after past dynamics. This skill changes everything.", process: "Practice with safe people first.", practice: "Use 'I feel... I need...' statements daily in low-stakes situations." },
+                high: { title: "Clear & Powerful Communicator", body: "You express your truth with confidence. Healthy partners are drawn to this clarity.", process: "Continue refining your words.", practice: "Weekly boundary check-in with yourself." }
+            },
+            "Progress": {
+                low: { title: "Building Daily Momentum", body: "Consistent small actions toward healing create massive transformation over time.", process: "Focus on tiny daily wins.", practice: "One healing action every single day (journal, walk, affirmation)." },
+                high: { title: "Consistent Growth Energy", body: "You show up for yourself daily. This discipline makes you incredibly attractive and ready for deep love.", process: "Celebrate your consistency.", practice: "Track your growth weekly." }
+            }
+        };
+
+        // State
+        let currentQuestionIndex = 0;
+        let answers = {}; // id -> score (0-5)
+
+        // ====================== CORE FUNCTIONS ======================
+        function startQuiz() {
+            document.getElementById('intro-screen').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.remove('hidden');
+            currentQuestionIndex = 0;
+            answers = {};
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = QUESTIONS[currentQuestionIndex];
+            document.getElementById('current-q').textContent = currentQuestionIndex + 1;
+            document.getElementById('question-text').textContent = q.text;
+
+            const progressPercent = ((currentQuestionIndex) / QUESTIONS.length) * 100;
+            document.getElementById('progress').style.width = `${progressPercent}%`;
+
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+
+            SCALE_LABELS.forEach((label, index) => {
+                const score = index;
+                const btn = document.createElement('button');
+                btn.className = `scale-btn w-full py-6 px-4 rounded-2xl border border-white/20 text-left flex flex-col items-center justify-center bg-white/5 hover:bg-white/10 ${answers[q.id] === score ? 'selected' : ''}`;
+                btn.innerHTML = `
+                    <span class="text-4xl mb-2">${score}</span>
+                    <span class="text-sm text-center leading-tight">${label}</span>
+                `;
+                btn.onclick = () => selectAnswer(q.id, score);
+                optionsDiv.appendChild(btn);
+            });
+
+            document.getElementById('prev-btn').style.display = currentQuestionIndex === 0 ? 'none' : 'flex';
+        }
+
+        function selectAnswer(qId, score) {
+            answers[qId] = score;
+            
+            // Auto advance after selection (better UX for mobile)
+            setTimeout(() => {
+                if (currentQuestionIndex < QUESTIONS.length - 1) {
+                    currentQuestionIndex++;
+                    showQuestion();
+                } else {
+                    finishQuiz();
+                }
+            }, 420);
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion();
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < QUESTIONS.length - 1) {
+                currentQuestionIndex++;
+                showQuestion();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function finishQuiz() {
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('contact-screen').classList.remove('hidden');
+        }
+
+        async function handleSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            if (!name || !phone || !email) return;
+
+            // Calculate score
+            let total = 0;
+            QUESTIONS.forEach(q => {
+                total += (answers[q.id] || 0);
+            });
+            const average = (total / QUESTIONS.length).toFixed(1);
+            const scoreNum = parseFloat(average);
+
+            // Determine tier
+            let tier = TIERS[0];
+            for (let t of TIERS) {
+                if (scoreNum >= t.min && scoreNum <= t.max) {
+                    tier = t;
+                    break;
+                }
+            }
+
+            // Send to Zapier (exact function provided)
+            try {
+                await sendToZapier(name, phone, email, scoreNum, tier.name, answers);
+            } catch (err) {
+                console.warn("Zapier send failed (no-cors mode)", err);
+            }
+
+            // Show results
+            document.getElementById('contact-screen').classList.add('hidden');
+            document.getElementById('results-screen').classList.remove('hidden');
+            
+            renderResults(scoreNum, tier);
+        }
+
+        function renderResults(average, tier) {
+            // Page 1 - Overview
+            document.getElementById('average-score').textContent = average;
+            const badge = document.getElementById('tier-badge');
+            badge.textContent = tier.name;
+            badge.style.backgroundColor = tier.color + '33';
+            badge.style.color = tier.color;
+
+            // All answers
+            const answersContainer = document.getElementById('all-answers');
+            answersContainer.innerHTML = '';
+            
+            QUESTIONS.forEach(q => {
+                const score = answers[q.id] || 0;
+                const percent = (score / 5) * 100;
+                
+                const div = document.createElement('div');
+                div.className = "flex gap-6 items-center";
+                div.innerHTML = `
+                    <div class="flex-shrink-0 w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-2xl">${q.icon}</div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="text-white/80">${q.category}</span>
+                            <span class="font-mono">${score}/5</span>
+                        </div>
+                        <div class="bar-container">
+                            <div class="score-bar" style="width: ${percent}%"></div>
+                        </div>
+                        <p class="text-xs text-white/60 mt-1 line-clamp-2">${q.text}</p>
+                    </div>
+                `;
+                answersContainer.appendChild(div);
+            });
+
+            // Calculate lowest & highest
+            const scoredQuestions = QUESTIONS.map(q => ({
+                ...q,
+                score: answers[q.id] || 0
+            })).sort((a, b) => a.score - b.score);
+
+            const lowest3 = scoredQuestions.slice(0, 3);
+            const highest2 = scoredQuestions.slice(-2).reverse();
+
+            // Page 2 - Lowest
+            const lowestContainer = document.getElementById('lowest-areas');
+            lowestContainer.innerHTML = '';
+            lowest3.forEach(item => {
+                const analysis = DIMENSION_ANALYSIS[item.category] ? DIMENSION_ANALYSIS[item.category].low : {
+                    title: "Growth Opportunity",
+                    body: "This area needs attention to open the door to healthy love.",
+                    process: "Daily reflection and small consistent actions.",
+                    practice: "Journal for 10 minutes on this topic."
+                };
+                
+                const div = document.createElement('div');
+                div.className = "bg-white/5 rounded-3xl p-8 border border-white/10";
+                div.innerHTML = `
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-4xl">${item.icon}</span>
+                        <div>
+                            <div class="text-sm text-white/60">${item.category}</div>
+                            <div class="text-xl heading-font">${analysis.title}</div>
+                        </div>
+                    </div>
+                    <p class="text-white/90 leading-relaxed mb-6">${analysis.body}</p>
+                    <div class="grid grid-cols-1 gap-6 text-sm">
+                        <div><span class="gold-accent font-medium">Process:</span> ${analysis.process}</div>
+                        <div><span class="gold-accent font-medium">Daily Practice:</span> ${analysis.practice}</div>
+                    </div>
+                `;
+                lowestContainer.appendChild(div);
+            });
+
+            // Page 3 - Highest
+            const highestContainer = document.getElementById('highest-areas');
+            highestContainer.innerHTML = '';
+            highest2.forEach(item => {
+                const analysis = DIMENSION_ANALYSIS[item.category] ? DIMENSION_ANALYSIS[item.category].high : {
+                    title: "Beautiful Strength",
+                    body: "This is already working powerfully for you.",
+                    process: "Continue nurturing this area.",
+                    practice: "Celebrate it daily."
+                };
+                
+                const div = document.createElement('div');
+                div.className = "bg-white/5 rounded-3xl p-8 border border-white/10";
+                div.innerHTML = `
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-4xl">${item.icon}</span>
+                        <div>
+                            <div class="text-sm text-white/60">${item.category}</div>
+                            <div class="text-xl heading-font">${analysis.title}</div>
+                        </div>
+                    </div>
+                    <p class="text-white/90 leading-relaxed mb-6">${analysis.body}</p>
+                    <div class="grid grid-cols-1 gap-6 text-sm">
+                        <div><span class="gold-accent font-medium">Process:</span> ${analysis.process}</div>
+                        <div><span class="gold-accent font-medium">Daily Practice:</span> ${analysis.practice}</div>
+                    </div>
+                `;
+                highestContainer.appendChild(div);
+            });
+
+            // Daily practice (personalised)
+            const practiceEl = document.getElementById('daily-practice');
+            practiceEl.innerHTML = `
+                <p class="mb-6">Based on your score of <strong>${average}</strong>, focus on one small daily action that moves you toward the next tier.</p>
+                <div class="p-6 bg-black/30 rounded-2xl border-l-4 border-[#C9A84C]">
+                    <p class="italic">"The path to manifesting love is built one conscious choice at a time. You are already on the journey. Keep going — your heart knows the way."</p>
+                </div>
+                <p class="mt-8 text-white/70">Print this entire results page or save as PDF for your daily reference.</p>
+            `;
+
+            // Default to page 1
+            showResultPage(1);
+        }
+
+        function showResultPage(page) {
+            document.querySelectorAll('.result-page').forEach(p => p.classList.remove('active'));
+            document.getElementById(`result-page-${page}`).classList.add('active');
+            
+            document.querySelectorAll('.result-tab').forEach(tab => tab.classList.remove('border-[#C9A84C]', 'text-[#C9A84C]'));
+            document.getElementById(`tab${page}`).classList.add('border-[#C9A84C]', 'text-[#C9A84C]');
+        }
+
+        function printPDF() {
+            window.print();
+        }
+
+        function retakeQuiz() {
+            // Reset everything
+            window.location.reload();
+        }
+
+        // ====================== ZAPIER INTEGRATION ======================
+        const ZAPIER_WEBHOOK = "https://hooks.zapier.com/hooks/catch/3779260/unt9eik/";
+
+        async function sendToZapier(name, phone, email, scoreNum, tierLabel, answersData) {
+            let answersText = "";
+            QUESTIONS.forEach(q => {
+                const val = answersData[q.id] || 0;
+                answersText += `${q.category}: ${val}/5\n`;
+            });
+            
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('phone', phone);
+            formData.append('email', email);
+            formData.append('score', scoreNum.toFixed(1));
+            formData.append('tier', tierLabel);
+            formData.append('answers_text', answersText);
+            formData.append('timestamp', new Date().toISOString());
+            
+            await fetch(ZAPIER_WEBHOOK, {
+                method: "POST",
+                body: formData,
+                mode: "no-cors"
+            });
+        }
+
+        // Keyboard support
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('quiz-screen').classList.contains('hidden')) return;
+            
+            if (e.key === "ArrowRight") nextQuestion();
+            if (e.key === "ArrowLeft") prevQuestion();
+        });
+
+        // Tailwind script already loaded via CDN
+        console.log("%cQuiz ready for single mums ready to manifest love ❤️", "color:#C9A84C; font-family:monospace");
+    </script>
+</body>
+</html>
