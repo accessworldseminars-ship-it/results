@@ -1,0 +1,176 @@
+<!--
+  ============================================================
+  ACCESSWORLD SEMINARS — QUIZ PROMO SECTION
+  Drop this block into index.html (or any page) where you want
+  the quiz call-to-action to appear. 
+  Link the button to wherever the quiz is hosted.
+  ============================================================
+-->
+
+<!-- Paste this CSS into your <style> tag or site stylesheet -->
+<style>
+.aw-quiz-section {
+  background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 80px 24px;
+  text-align: center;
+}
+.aw-quiz-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 20% 25%, rgba(201,168,76,0.5), transparent),
+    radial-gradient(1px 1px at 55% 10%, rgba(201,168,76,0.4), transparent),
+    radial-gradient(1px 1px at 80% 40%, rgba(201,168,76,0.3), transparent),
+    radial-gradient(1px 1px at 35% 80%, rgba(201,168,76,0.3), transparent),
+    radial-gradient(1px 1px at 70% 70%, rgba(201,168,76,0.4), transparent);
+  pointer-events: none;
+}
+.aw-quiz-section .aw-inner {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.aw-quiz-eyebrow {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #C9A84C;
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 50px;
+  padding: 6px 20px;
+  margin-bottom: 24px;
+}
+.aw-quiz-rule {
+  width: 50px;
+  height: 2px;
+  background: #C9A84C;
+  margin: 0 auto 24px;
+}
+.aw-quiz-headline {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #f5f0e8;
+  margin-bottom: 16px;
+}
+.aw-quiz-headline em {
+  color: #C9A84C;
+  font-style: italic;
+}
+.aw-quiz-free-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.06));
+  border: 1px solid rgba(201,168,76,0.5);
+  border-radius: 12px;
+  padding: 16px 28px;
+  margin: 20px auto 28px;
+  max-width: 580px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  color: #ddd5c4;
+  font-weight: 300;
+  line-height: 1.6;
+}
+.aw-quiz-free-badge strong { color: #C9A84C; font-weight: 600; }
+.aw-quiz-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+.aw-quiz-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.22);
+  border-radius: 50px;
+  padding: 8px 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #ddd5c4;
+}
+.aw-quiz-subtext {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  color: #8a9ab5;
+  margin-bottom: 32px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+.aw-quiz-cta {
+  display: inline-block;
+  background: linear-gradient(135deg, #a07c32, #C9A84C, #e8c96a);
+  color: #080d18;
+  border: none;
+  border-radius: 50px;
+  padding: 20px 48px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 28px rgba(201,168,76,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.aw-quiz-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 36px rgba(201,168,76,0.5);
+  color: #080d18;
+  text-decoration: none;
+}
+.aw-quiz-disclaimer {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(138,154,181,0.7);
+  margin-top: 14px;
+}
+</style>
+
+<!-- ====== PASTE THIS SECTION BLOCK INTO YOUR PAGE ====== -->
+<section class="aw-quiz-section">
+  <div class="aw-inner">
+
+    <div class="aw-quiz-eyebrow">✦ Free Quiz for Single Mums ✦</div>
+    <div class="aw-quiz-rule"></div>
+
+    <h2 class="aw-quiz-headline">
+      Is Your Heart Ready to<br><em>Manifest the Love You Deserve?</em>
+    </h2>
+
+    <div class="aw-quiz-free-badge">
+      Take this 5-minute quiz and instantly receive a <strong>FREE personalised 3-page PDF report</strong> + <strong>FREE step-by-step recommendations</strong> to get yourself ready to manifest a lover and create a relationship filled with love and passion
+    </div>
+
+    <div class="aw-quiz-pills">
+      <div class="aw-quiz-pill">📄 Free 3-Page PDF Report</div>
+      <div class="aw-quiz-pill">💡 Personalised Recommendations</div>
+      <div class="aw-quiz-pill">❤️ Love Readiness Roadmap</div>
+      <div class="aw-quiz-pill">⏱️ Only 3 Minutes</div>
+    </div>
+
+    <p class="aw-quiz-subtext">
+      You've been strong for everyone else. Now it's your turn.<br>
+      Discover exactly where you are — and what's next on your journey to real, lasting love.
+    </p>
+
+    <!-- UPDATE THIS HREF to the URL where your quiz is hosted -->
+    <a class="aw-quiz-cta" href="YOUR-QUIZ-URL-HERE" target="_blank">
+      Get My Free Report ✦
+    </a>
+
+
+  </div>
+</section>
+<!-- ====== END OF SECTION BLOCK ====== -->
