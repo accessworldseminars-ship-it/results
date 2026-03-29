@@ -1,176 +1,1029 @@
-<!--
-  ============================================================
-  ACCESSWORLD SEMINARS — QUIZ PROMO SECTION
-  Drop this block into index.html (or any page) where you want
-  the quiz call-to-action to appear. 
-  Link the button to wherever the quiz is hosted.
-  ============================================================
--->
-
-<!-- Paste this CSS into your <style> tag or site stylesheet -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Love Readiness Quiz | Single Mum | AccessWorld Seminars</title>
+<meta name="description" content="Take this free 3-minute quiz and get a personalised 3-page PDF report + recommendations to manifest a loving relationship. By Joshua Roy, AccessWorld Seminars.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-.aw-quiz-section {
-  background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
-  position: relative;
-  overflow: hidden;
-  padding: 80px 24px;
-  text-align: center;
-}
-.aw-quiz-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(1px 1px at 20% 25%, rgba(201,168,76,0.5), transparent),
-    radial-gradient(1px 1px at 55% 10%, rgba(201,168,76,0.4), transparent),
-    radial-gradient(1px 1px at 80% 40%, rgba(201,168,76,0.3), transparent),
-    radial-gradient(1px 1px at 35% 80%, rgba(201,168,76,0.3), transparent),
-    radial-gradient(1px 1px at 70% 70%, rgba(201,168,76,0.4), transparent);
-  pointer-events: none;
-}
-.aw-quiz-section .aw-inner {
-  position: relative;
-  max-width: 720px;
-  margin: 0 auto;
-}
-.aw-quiz-eyebrow {
-  display: inline-block;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #C9A84C;
-  border: 1px solid rgba(201,168,76,0.4);
-  border-radius: 50px;
-  padding: 6px 20px;
-  margin-bottom: 24px;
-}
-.aw-quiz-rule {
-  width: 50px;
-  height: 2px;
-  background: #C9A84C;
-  margin: 0 auto 24px;
-}
-.aw-quiz-headline {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.9rem, 4.5vw, 3rem);
-  font-weight: 400;
-  line-height: 1.2;
-  color: #f5f0e8;
-  margin-bottom: 16px;
-}
-.aw-quiz-headline em {
-  color: #C9A84C;
-  font-style: italic;
-}
-.aw-quiz-free-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.06));
-  border: 1px solid rgba(201,168,76,0.5);
-  border-radius: 12px;
-  padding: 16px 28px;
-  margin: 20px auto 28px;
-  max-width: 580px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem;
-  color: #ddd5c4;
-  font-weight: 300;
-  line-height: 1.6;
-}
-.aw-quiz-free-badge strong { color: #C9A84C; font-weight: 600; }
-.aw-quiz-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 32px;
-}
-.aw-quiz-pill {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(201,168,76,0.08);
-  border: 1px solid rgba(201,168,76,0.22);
-  border-radius: 50px;
-  padding: 8px 18px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: #ddd5c4;
-}
-.aw-quiz-subtext {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem;
-  color: #8a9ab5;
-  margin-bottom: 32px;
-  line-height: 1.7;
-  font-weight: 300;
-}
-.aw-quiz-cta {
-  display: inline-block;
-  background: linear-gradient(135deg, #a07c32, #C9A84C, #e8c96a);
-  color: #080d18;
-  border: none;
-  border-radius: 50px;
-  padding: 20px 48px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: 0 4px 28px rgba(201,168,76,0.35);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.aw-quiz-cta:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 36px rgba(201,168,76,0.5);
-  color: #080d18;
-  text-decoration: none;
-}
-.aw-quiz-disclaimer {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.75rem;
-  color: rgba(138,154,181,0.7);
-  margin-top: 14px;
-}
+  :root {
+    --navy: #080d18;
+    --navy2: #1A2744;
+    --navy3: #0f1d36;
+    --gold: #C9A84C;
+    --gold2: #e8c96a;
+    --gold3: #a07c32;
+    --white: #f5f0e8;
+    --white2: #ddd5c4;
+    --muted: #8a9ab5;
+    --danger: #e05c5c;
+    --success: #5cbc8a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--white);
+    line-height: 1.7;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      radial-gradient(1px 1px at 15% 20%, rgba(201,168,76,0.4), transparent),
+      radial-gradient(1px 1px at 45% 8%,  rgba(201,168,76,0.3), transparent),
+      radial-gradient(1px 1px at 75% 30%, rgba(201,168,76,0.2), transparent),
+      radial-gradient(1px 1px at 90% 60%, rgba(201,168,76,0.3), transparent),
+      radial-gradient(1px 1px at 30% 75%, rgba(201,168,76,0.2), transparent),
+      radial-gradient(1px 1px at 60% 85%, rgba(201,168,76,0.3), transparent),
+      radial-gradient(1px 1px at 10% 50%, rgba(201,168,76,0.2), transparent),
+      radial-gradient(1px 1px at 80% 10%, rgba(201,168,76,0.4), transparent);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ===================================================
+     LANDING PROMO SECTION
+  =================================================== */
+  #landing-section {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px 80px;
+    text-align: center;
+  }
+
+  .site-logo {
+    width: 70px;
+    margin-bottom: 32px;
+    opacity: 0.9;
+  }
+
+  .gold-rule {
+    width: 55px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 28px;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 50px;
+    padding: 7px 22px;
+    margin-bottom: 28px;
+  }
+
+  .landing-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 12px;
+    max-width: 720px;
+  }
+  .landing-headline em { color: var(--gold); font-style: italic; }
+
+  .landing-subhead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--white2);
+    margin-bottom: 36px;
+    max-width: 600px;
+  }
+
+  /* FREE offer box */
+  .free-offer-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.16), rgba(201,168,76,0.05));
+    border: 1px solid rgba(201,168,76,0.5);
+    border-radius: 16px;
+    padding: 22px 32px;
+    max-width: 620px;
+    width: 100%;
+    margin: 0 auto 28px;
+  }
+  .free-offer-box .free-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .free-offer-box .free-copy {
+    font-size: 0.95rem;
+    color: var(--white2);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .free-offer-box .free-copy strong { color: var(--gold); font-weight: 600; }
+
+  /* Pills */
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 36px;
+    max-width: 640px;
+    width: 100%;
+  }
+  .pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.22);
+    border-radius: 50px;
+    padding: 8px 18px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--white2);
+  }
+
+  /* Story hooks */
+  .story-hooks {
+    max-width: 540px;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .story-hooks p {
+    font-size: 0.97rem;
+    color: var(--white2);
+    font-weight: 300;
+    margin-bottom: 10px;
+    line-height: 1.7;
+  }
+  .story-hooks .highlight {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--gold);
+    margin: 16px 0;
+    line-height: 1.5;
+    display: block;
+  }
+
+  /* CTA button */
+  .btn-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold3), var(--gold), var(--gold2));
+    color: var(--navy);
+    border: none;
+    border-radius: 50px;
+    padding: 20px 52px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 28px rgba(201,168,76,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+  }
+  .btn-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 36px rgba(201,168,76,0.5); }
+  .btn-cta:active { transform: translateY(0); }
+
+  /* Joshua byline */
+  .byline {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 40px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 50px;
+    padding: 10px 20px 10px 10px;
+  }
+  .byline img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(201,168,76,0.4);
+  }
+  .byline-text { text-align: left; }
+  .byline-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+  .byline-role {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  /* Scroll arrow */
+  .scroll-hint {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+  }
+  .scroll-hint svg { width: 20px; height: 20px; fill: none; stroke: var(--gold); stroke-width: 2; }
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* Divider */
+  .section-divider {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 16px 0;
+  }
+  .section-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 1px;
+    background: rgba(201,168,76,0.2);
+  }
+  .section-divider span {
+    position: relative;
+    background: var(--navy);
+    padding: 0 20px;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* ===================================================
+     QUIZ SECTION
+  =================================================== */
+  #quiz-section {
+    position: relative;
+    z-index: 1;
+    display: none; /* hidden until CTA clicked */
+  }
+  #quiz-section.visible { display: block; animation: fadeIn 0.5s ease; }
+
+  .wrapper {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+  }
+
+  .screen { display: none; animation: fadeIn 0.5s ease; }
+  .screen.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Progress */
+  .progress-bar-wrap { margin-bottom: 28px; }
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .progress-track { height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold3), var(--gold)); border-radius: 2px; transition: width 0.4s ease; }
+
+  /* Question card */
+  .question-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 20px;
+    padding: 40px 36px 36px;
+    margin-bottom: 24px;
+  }
+  .q-category {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .q-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+  .scale-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .scale-options { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+  .scale-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 16px 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: var(--white2);
+  }
+  .scale-btn .num { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; line-height: 1; }
+  .scale-btn .lbl { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.04em; color: var(--muted); text-transform: uppercase; line-height: 1.2; text-align: center; }
+  .scale-btn:hover { border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.08); }
+  .scale-btn.selected { background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.1)); border-color: var(--gold); color: var(--gold); }
+  .scale-btn.selected .lbl { color: var(--gold); }
+
+  @media (max-width: 500px) {
+    .scale-options { grid-template-columns: repeat(3, 1fr); }
+    .question-card { padding: 28px 20px 24px; }
+    .free-offer-box { padding: 18px 20px; }
+    .landing-headline { font-size: 1.9rem; }
+  }
+
+  .nav-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 8px; }
+  .btn-nav {
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-nav:hover { background: rgba(201,168,76,0.1); }
+  .btn-nav.primary { background: linear-gradient(135deg, var(--gold3), var(--gold)); color: var(--navy); border-color: transparent; font-weight: 600; }
+  .btn-nav.primary:hover { box-shadow: 0 4px 16px rgba(201,168,76,0.4); }
+  .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  /* Contact form */
+  .form-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.2); border-radius: 20px; padding: 40px 36px; }
+  .form-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; margin-bottom: 8px; color: var(--white); }
+  .form-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 32px; line-height: 1.6; }
+  .form-group { margin-bottom: 20px; }
+  .form-label { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .form-input { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 14px 16px; color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 1rem; transition: border-color 0.2s; outline: none; }
+  .form-input:focus { border-color: var(--gold); }
+  .form-input::placeholder { color: rgba(255,255,255,0.25); }
+  .form-error { color: var(--danger); font-size: 0.8rem; margin-top: 4px; display: none; }
+  .form-error.show { display: block; }
+
+  .btn-primary {
+    display: block; width: 100%; max-width: 360px; margin: 0 auto;
+    background: linear-gradient(135deg, var(--gold3), var(--gold), var(--gold2));
+    color: var(--navy); border: none; border-radius: 50px; padding: 18px 32px;
+    font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(201,168,76,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.45); }
+
+  .btn-secondary { display: inline-block; background: transparent; color: var(--gold); border: 1px solid rgba(201,168,76,0.5); border-radius: 50px; padding: 12px 28px; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+  .btn-secondary:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+
+  /* Results */
+  .results-header { text-align: center; padding: 40px 0 32px; }
+  .tier-badge { display: inline-block; background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05)); border: 1px solid rgba(201,168,76,0.4); border-radius: 50px; padding: 8px 24px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  .results-score-big { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 10vw, 6rem); font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+  .results-score-big span { font-size: 0.4em; color: var(--muted); }
+  .tier-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 400; color: var(--white); margin-bottom: 24px; font-style: italic; }
+  .score-bar-outer { height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden; margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .score-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold3), var(--gold), var(--gold2)); border-radius: 5px; transition: width 1s ease 0.3s; }
+
+  .result-tabs { display: flex; gap: 0; border-bottom: 1px solid rgba(201,168,76,0.2); margin-bottom: 32px; overflow-x: auto; }
+  .result-tab { flex: 1; min-width: 100px; background: transparent; border: none; border-bottom: 2px solid transparent; padding: 14px 12px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+  .result-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .result-panel { display: none; }
+  .result-panel.active { display: block; animation: fadeIn 0.3s ease; }
+
+  .q-score-item { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .q-score-item:last-child { border-bottom: none; }
+  .q-score-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 8px; }
+  .q-score-label { font-size: 0.85rem; color: var(--white2); flex: 1; font-weight: 300; }
+  .q-score-val { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--gold); white-space: nowrap; }
+  .q-score-bar { height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+  .q-score-bar-fill { height: 100%; border-radius: 2px; transition: width 0.8s ease; }
+
+  .report-section { background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.12); border-radius: 16px; padding: 32px; margin-bottom: 20px; }
+  .report-section h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--gold); margin-bottom: 16px; line-height: 1.3; }
+  .report-section p { font-size: 0.92rem; color: var(--white2); margin-bottom: 14px; font-weight: 300; line-height: 1.8; }
+  .report-section p:last-child { margin-bottom: 0; }
+  .report-tag { display: inline-block; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.25); border-radius: 50px; padding: 4px 14px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .practice-box { background: rgba(201,168,76,0.07); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0; padding: 18px 20px; margin-top: 16px; }
+  .practice-box strong { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .practice-box p { font-size: 0.88rem; color: var(--white2); margin: 0; line-height: 1.7; }
+  .report-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--white2); text-align: center; padding: 0 0 28px; line-height: 1.6; border-bottom: 1px solid rgba(201,168,76,0.15); margin-bottom: 28px; }
+  .actions-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(201,168,76,0.15); }
+  .section-heading { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 400; color: var(--white); margin-bottom: 8px; }
+  .section-sub { color: var(--muted); font-size: 0.88rem; margin-bottom: 24px; }
+  .divider { height: 1px; background: rgba(201,168,76,0.12); margin: 28px 0; }
+
+  /* ===================================================
+     PRINT
+  =================================================== */
+  @media print {
+    body { background: white; color: #1a1a2e; }
+    body::before { display: none; }
+    #landing-section, .section-divider, .result-tabs, .actions-row { display: none !important; }
+    #quiz-section { display: block !important; }
+    .screen { display: none !important; }
+    #results-screen { display: block !important; }
+    .result-panel { display: block !important; }
+    .report-section { border: 1px solid #ccc; page-break-inside: avoid; }
+    h1,h2,h3 { color: #1a1a2e !important; }
+    .report-section h3, .tier-name, .results-score-big { color: #8b6914 !important; }
+    .report-section p, .q-score-label { color: #333 !important; }
+    .practice-box { background: #f5f0e0; border-left-color: #8b6914; }
+  }
 </style>
+</head>
+<body>
 
-<!-- ====== PASTE THIS SECTION BLOCK INTO YOUR PAGE ====== -->
-<section class="aw-quiz-section">
-  <div class="aw-inner">
+<!-- =====================================================
+     LANDING PROMO SECTION
+===================================================== -->
+<section id="landing-section">
 
-    <div class="aw-quiz-eyebrow">✦ Free Quiz for Single Mums ✦</div>
-    <div class="aw-quiz-rule"></div>
+  <a href="https://accessworldseminars-ship-it.github.io/results" target="_blank">
+    <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" class="site-logo">
+  </a>
 
-    <h2 class="aw-quiz-headline">
-      Is Your Heart Ready to<br><em>Manifest the Love You Deserve?</em>
-    </h2>
+  <div class="eyebrow">✦ Free Quiz for Single Mums ✦</div>
 
-    <div class="aw-quiz-free-badge">
-      Take this 5-minute quiz and instantly receive a <strong>FREE personalised 3-page PDF report</strong> + <strong>FREE step-by-step recommendations</strong> to get yourself ready to manifest a lover and create a relationship filled with love and passion
+  <h1 class="landing-headline">
+    Single Mum, Is Your Heart Ready to<br>
+    <em>Manifest the Love You Deserve?</em>
+  </h1>
+
+  <p class="landing-subhead">
+    A 3-minute quiz that reveals exactly where you are — and how to get where you want to be.
+  </p>
+
+  <div class="free-offer-box">
+    <div class="free-label">✦ 100% Free — No Catch ✦</div>
+    <div class="free-copy">
+      Take this quiz and instantly receive a <strong>FREE personalised 3-page PDF report</strong> + <strong>FREE step-by-step recommendations</strong> to get yourself ready to manifest a lover and create a relationship filled with love and passion
     </div>
-
-    <div class="aw-quiz-pills">
-      <div class="aw-quiz-pill">📄 Free 3-Page PDF Report</div>
-      <div class="aw-quiz-pill">💡 Personalised Recommendations</div>
-      <div class="aw-quiz-pill">❤️ Love Readiness Roadmap</div>
-      <div class="aw-quiz-pill">⏱️ Only 3 Minutes</div>
-    </div>
-
-    <p class="aw-quiz-subtext">
-      You've been strong for everyone else. Now it's your turn.<br>
-      Discover exactly where you are — and what's next on your journey to real, lasting love.
-    </p>
-
-    <!-- UPDATE THIS HREF to the URL where your quiz is hosted -->
-    <a class="aw-quiz-cta" href="YOUR-QUIZ-URL-HERE" target="_blank">
-      Get My Free Report ✦
-    </a>
-
-
   </div>
+
+  <div class="pills">
+    <div class="pill">📄 Free 3-Page PDF Report</div>
+    <div class="pill">💡 Personalised Recommendations</div>
+    <div class="pill">❤️ Love Readiness Roadmap</div>
+    <div class="pill">⏱️ Only 3 Minutes</div>
+  </div>
+
+  <div class="story-hooks">
+    <p>You've been strong for everyone else after the separation or divorce.</p>
+    <p>You've carried the heartbreak, raised your kids, and kept going.</p>
+    <p>Now it's time to ask yourself the honest question:</p>
+    <span class="highlight">"Are you truly ready to call in the healthy, joyful,<br>soul-aligned love you deserve?"</span>
+    <p>Answer 10 honest questions and get your free personalised report — showing you exactly where you are and giving you a clear, proven path to manifesting a relationship filled with real love and lasting passion.</p>
+  </div>
+
+  <button class="btn-cta" onclick="startQuizFromLanding()">
+    Get My Free Report ✦
+  </button>
+
+  <div class="byline">
+    <img src="https://i.ibb.co/Cs9QFSnF/23905360-10155857231059785-7730782653856996330-n.jpg" alt="Joshua Roy">
+    <div class="byline-text">
+      <div class="byline-name">Joshua Roy</div>
+      <div class="byline-role">Results Coach · NLP · NSR Specialist · AccessWorld Seminars</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint" onclick="startQuizFromLanding()">
+    <span>Begin</span>
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+  </div>
+
 </section>
-<!-- ====== END OF SECTION BLOCK ====== -->
+
+<!-- =====================================================
+     QUIZ SECTION (hidden until CTA clicked)
+===================================================== -->
+<section id="quiz-section">
+  <div class="wrapper">
+
+    <!-- QUESTIONS SCREEN -->
+    <div id="questions-screen" class="screen active">
+      <div class="progress-bar-wrap">
+        <div class="progress-info">
+          <span id="q-counter">Question 1 of 10</span>
+          <span id="q-pct">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+        </div>
+      </div>
+      <div class="question-card">
+        <div class="q-category" id="q-category"></div>
+        <div class="q-text" id="q-text"></div>
+        <div class="scale-labels">
+          <span>Not at all</span>
+          <span>Completely</span>
+        </div>
+        <div class="scale-options" id="scale-options"></div>
+      </div>
+      <div class="nav-row">
+        <button class="btn-nav" id="prev-btn" onclick="prevQuestion()">← Back</button>
+        <button class="btn-nav primary" id="next-btn" onclick="nextQuestion()">Next →</button>
+      </div>
+    </div>
+
+    <!-- CONTACT FORM SCREEN -->
+    <div id="form-screen" class="screen">
+      <div class="form-card">
+        <div style="text-align:center;margin-bottom:28px;">
+          <div class="gold-rule"></div>
+          <div class="form-title">Almost There! ✦</div>
+          <div class="form-sub">Enter your details below to instantly unlock your <strong style="color:var(--gold)">FREE personalised 3-page PDF report</strong> + your custom recommendations to manifest love and create a relationship filled with love and passion.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Your First Name</label>
+          <input type="text" id="f-name" class="form-input" placeholder="e.g. Sarah">
+          <div class="form-error" id="err-name">Please enter your name.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mobile Number</label>
+          <input type="tel" id="f-phone" class="form-input" placeholder="e.g. 0412 345 678">
+          <div class="form-error" id="err-phone">Please enter a valid phone number.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" id="f-email" class="form-input" placeholder="e.g. sarah@email.com">
+          <div class="form-error" id="err-email">Please enter a valid email address.</div>
+        </div>
+        <button class="btn-primary" onclick="submitForm()" style="margin-top:12px;">Reveal My Results →</button>
+        <p style="text-align:center;font-size:0.75rem;color:var(--muted);margin-top:16px;">Your privacy is respected. No spam, ever.</p>
+      </div>
+    </div>
+
+    <!-- RESULTS SCREEN -->
+    <div id="results-screen" class="screen">
+      <div class="results-header">
+        <div class="gold-rule"></div>
+        <div class="tier-badge" id="res-badge">Your Results</div>
+        <div class="results-score-big" id="res-score">0.0<span>/5</span></div>
+        <div class="tier-name" id="res-tier-name">Loading...</div>
+        <div class="score-bar-outer">
+          <div class="score-bar-fill" id="res-score-bar" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="result-tabs">
+        <button class="result-tab active" onclick="showTab(0)">📊 Overview</button>
+        <button class="result-tab" onclick="showTab(1)">📖 Your Report</button>
+        <button class="result-tab" onclick="showTab(2)">✦ Your Path</button>
+      </div>
+
+      <div class="result-panel active" id="panel-0">
+        <p class="section-sub" style="text-align:center;margin-bottom:24px;">Here's how you scored across all 10 dimensions of love readiness.</p>
+        <div id="q-score-list"></div>
+      </div>
+
+      <div class="result-panel" id="panel-1">
+        <div class="report-intro" id="report-intro-text"></div>
+        <div id="report-content"></div>
+      </div>
+
+      <div class="result-panel" id="panel-2">
+        <div id="path-content"></div>
+      </div>
+
+      <div class="actions-row">
+        <button class="btn-secondary" onclick="window.print()">🖨 Print / Save as PDF</button>
+        <button class="btn-secondary" onclick="retakeQuiz()">↺ Start Again</button>
+      </div>
+    </div>
+
+  </div><!-- /wrapper -->
+</section>
+
+<script>
+// ======================== DATA ========================
+const QUESTIONS = [
+  { id: 1,  text: "I have fully released the emotional pain, resentment, and heartbreak from my past relationship or divorce.", category: "Emotional Clearing", icon: "◎" },
+  { id: 2,  text: "I feel emotionally open and excited about welcoming a new, healthy love into my life.", category: "Love & Openness", icon: "❤" },
+  { id: 3,  text: "As a single mum, I have created real space in my daily life and schedule for dating and a new relationship without feeling guilty.", category: "Life Space", icon: "⬡" },
+  { id: 4,  text: "I trust my own judgment and instincts to choose a partner who is right for both me and my children.", category: "Self-Trust", icon: "→" },
+  { id: 5,  text: "My self-worth and identity as a woman feel strong and complete — even without a partner.", category: "Identity & Worth", icon: "◉" },
+  { id: 6,  text: "I regularly use manifestation practices (visualisation, affirmations, etc.) to attract the loving relationship I desire.", category: "Mindset & Vision", icon: "✦" },
+  { id: 7,  text: "I no longer compare new potential partners to my ex or fear repeating the same painful patterns.", category: "Pattern Freedom", icon: "✦" },
+  { id: 8,  text: "I clearly and confidently communicate my needs and boundaries in relationships.", category: "Communication", icon: "◈" },
+  { id: 9,  text: "When I think about being in a new relationship, I feel more joy and excitement than anxiety or fear.", category: "Emotional Readiness", icon: "❤" },
+  { id: 10, text: "I take consistent daily actions toward my own healing and personal growth so I can show up as the best version of myself in love.", category: "Growth & Action", icon: "▲" }
+];
+
+const SCALE_LABELS = ["Not at all", "Slightly", "Somewhat", "Mostly", "Very much", "Completely"];
+
+const TIERS = [
+  { min: 0,   max: 1.5, name: "Still Healing",              badge: "Stage 1 of 5" },
+  { min: 1.5, max: 2.5, name: "Rebuilding Your Foundation", badge: "Stage 2 of 5" },
+  { min: 2.5, max: 3.5, name: "Awakening & Opening",        badge: "Stage 3 of 5" },
+  { min: 3.5, max: 4.5, name: "Ready to Receive",           badge: "Stage 4 of 5" },
+  { min: 4.5, max: 5.1, name: "Manifesting Your Next Chapter", badge: "Stage 5 of 5" }
+];
+
+const ZAPIER_WEBHOOK = "https://hooks.zapier.com/hooks/catch/3779260/unt9eik/";
+
+async function sendToZapier(name, phone, email, scoreNum, tierLabel, answersData) {
+  let answersText = "";
+  QUESTIONS.forEach(q => {
+    const val = answersData[q.id] || 0;
+    answersText += `${q.category}: ${val}/5\n`;
+  });
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('phone', phone);
+  formData.append('email', email);
+  formData.append('score', scoreNum.toFixed(1));
+  formData.append('tier', tierLabel);
+  formData.append('answers_text', answersText);
+  formData.append('timestamp', new Date().toISOString());
+  await fetch(ZAPIER_WEBHOOK, { method: "POST", body: formData, mode: "no-cors" });
+}
+
+// ======================== STATE ========================
+let currentQ = 0;
+let answers  = {};
+let userName = "";
+
+// ======================== NAVIGATION ========================
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function startQuizFromLanding() {
+  // Hide landing, show quiz section
+  document.getElementById('landing-section').style.display = 'none';
+  const qs = document.getElementById('quiz-section');
+  qs.classList.add('visible');
+  currentQ = 0;
+  answers = {};
+  showScreen('questions-screen');
+  renderQuestion();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function retakeQuiz() {
+  currentQ = 0;
+  answers   = {};
+  userName  = "";
+  document.getElementById('f-name').value  = '';
+  document.getElementById('f-phone').value = '';
+  document.getElementById('f-email').value = '';
+  // Show landing again
+  document.getElementById('landing-section').style.display = '';
+  document.getElementById('quiz-section').classList.remove('visible');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ======================== QUESTIONS ========================
+function renderQuestion() {
+  const q = QUESTIONS[currentQ];
+  document.getElementById('q-counter').textContent = `Question ${currentQ + 1} of ${QUESTIONS.length}`;
+  const pct = Math.round((currentQ / QUESTIONS.length) * 100);
+  document.getElementById('q-pct').textContent = pct + '%';
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('q-category').textContent = q.icon + '  ' + q.category;
+  document.getElementById('q-text').textContent = q.text;
+
+  const container = document.getElementById('scale-options');
+  container.innerHTML = '';
+  for (let i = 0; i <= 5; i++) {
+    const btn = document.createElement('button');
+    btn.className = 'scale-btn' + (answers[q.id] === i ? ' selected' : '');
+    btn.setAttribute('aria-label', `Score ${i}: ${SCALE_LABELS[i]}`);
+    btn.innerHTML = `<span class="num">${i}</span><span class="lbl">${SCALE_LABELS[i]}</span>`;
+    btn.onclick = () => selectAnswer(i);
+    container.appendChild(btn);
+  }
+
+  document.getElementById('prev-btn').disabled = (currentQ === 0);
+  document.getElementById('next-btn').textContent = currentQ === QUESTIONS.length - 1 ? 'See My Results →' : 'Next →';
+}
+
+function selectAnswer(val) {
+  answers[QUESTIONS[currentQ].id] = val;
+  document.querySelectorAll('.scale-btn').forEach((btn, i) => btn.classList.toggle('selected', i === val));
+}
+
+function nextQuestion() {
+  if (answers[QUESTIONS[currentQ].id] === undefined) {
+    const btns = document.querySelectorAll('.scale-btn');
+    btns.forEach(b => { b.style.borderColor = 'rgba(224,92,92,0.5)'; });
+    setTimeout(() => btns.forEach(b => { b.style.borderColor = ''; }), 800);
+    return;
+  }
+  if (currentQ < QUESTIONS.length - 1) { currentQ++; renderQuestion(); }
+  else { showScreen('form-screen'); }
+}
+
+function prevQuestion() {
+  if (currentQ > 0) { currentQ--; renderQuestion(); }
+}
+
+// ======================== FORM ========================
+function submitForm() {
+  const name  = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  let valid = true;
+  const showErr = (id, show) => document.getElementById(id).classList.toggle('show', show);
+  if (!name)                          { showErr('err-name',  true); valid = false; } else showErr('err-name',  false);
+  if (!phone || phone.length < 8)     { showErr('err-phone', true); valid = false; } else showErr('err-phone', false);
+  if (!email || !email.includes('@')) { showErr('err-email', true); valid = false; } else showErr('err-email', false);
+  if (!valid) return;
+
+  userName = name;
+  const total = Object.values(answers).reduce((a, b) => a + b, 0);
+  const avg   = total / QUESTIONS.length;
+  const tier  = TIERS.find(t => avg >= t.min && avg < t.max) || TIERS[TIERS.length - 1];
+
+  sendToZapier(name, phone, email, avg, tier.name, answers).catch(() => {});
+  buildResults(name, avg, tier);
+  showScreen('results-screen');
+  setTimeout(() => { document.getElementById('res-score-bar').style.width = ((avg / 5) * 100) + '%'; }, 100);
+}
+
+// ======================== RESULTS ========================
+function getBarColor(score) {
+  if (score <= 1.5) return '#e05c5c';
+  if (score <= 2.5) return '#e08c5c';
+  if (score <= 3.5) return '#C9A84C';
+  if (score <= 4.5) return '#8cbc5c';
+  return '#5cbc8a';
+}
+
+function buildResults(name, avg, tier) {
+  document.getElementById('res-badge').textContent     = tier.badge;
+  document.getElementById('res-score').innerHTML       = avg.toFixed(1) + '<span>/5</span>';
+  document.getElementById('res-tier-name').textContent = tier.name;
+
+  const sorted   = QUESTIONS.map(q => ({ ...q, score: answers[q.id] || 0 })).sort((a, b) => a.score - b.score);
+  const lowest3  = sorted.slice(0, 3);
+  const highest2 = sorted.slice(-2).reverse();
+
+  // TAB 1
+  const list = document.getElementById('q-score-list');
+  list.innerHTML = '';
+  QUESTIONS.forEach(q => {
+    const score = answers[q.id] || 0;
+    const pct   = (score / 5) * 100;
+    const color = getBarColor(score);
+    list.innerHTML += `
+      <div class="q-score-item">
+        <div class="q-score-top">
+          <div class="q-score-label">${q.text}</div>
+          <div class="q-score-val">${score}/5</div>
+        </div>
+        <div class="q-score-bar">
+          <div class="q-score-bar-fill" style="width:${pct}%;background:${color};"></div>
+        </div>
+      </div>`;
+  });
+
+  buildReport(name, avg, tier, lowest3, highest2);
+  buildPath(name, avg, tier, lowest3, highest2);
+}
+
+function buildReport(name, avg, tier, lowest3, highest2) {
+  const tierIdx = TIERS.findIndex(t => t.name === tier.name);
+
+  const introTexts = [
+    `${name}, your heart has been through the fire. The score you've received today isn't a judgment — it's a map. You are in a tender and important chapter of your life, and this report is written with profound respect for how far you have already come.`,
+    `${name}, you are building something real. The foundation beneath your feet is becoming more solid, even if it doesn't always feel that way. This report will show you exactly where your strength already lives — and where the next layer of healing wants to happen.`,
+    `${name}, something beautiful is awakening in you. You are in the sacred middle space between who you were and who you are becoming. This report will honour what you've achieved and illuminate the path that leads all the way to the love you deserve.`,
+    `${name}, you have done significant inner work — and it shows. Your score reflects a heart that is genuinely preparing to receive great love. This report celebrates your readiness and gives you the final keys to step fully into the relationship you've been calling in.`,
+    `${name}, your heart is wide open and your light is magnetic. You are genuinely prepared for the love you have always dreamed of. This report is a celebration of how far you've come — and a final set of tools to ensure the love you call in is everything you deserve.`
+  ];
+
+  document.getElementById('report-intro-text').textContent = introTexts[tierIdx];
+
+  const tierDescriptions = [
+    { overview: `Your score of ${avg.toFixed(1)} out of 5 places you in the "Still Healing" stage of your love readiness journey. This is not a place of failure — it is a place of profound courage. The emotional terrain you are navigating after your separation or divorce is arguably the most difficult internal work a human being can do. You are doing it.`, detail: `Joshua Roy teaches that before we can build the architecture of Consummate Love — the trinity of Shared Vision, Intimacy, and Passion — we must first lay two essential pillars: Personal Growth, and Contribution. Right now, your primary work is not outward connection. It is inward reconstruction. The pain you carry from your past relationship contains the very lessons that will make your future love extraordinary.`, detail2: `The emotional weight you may still be carrying — what Joshua calls "The Five Most Debilitating Emotions": Blame, Shame, Guilt, Regret, and Anger — are like emotional toxins in the soil of your heart. If love is the garden, you cannot expect flowers to bloom in poisoned earth. This is not a criticism of where you are. It is simply an honest assessment of the clearing work that wants to happen.`, detail3: `One of the most powerful reframes available to you right now is what Joshua calls "Blaming Deliberately." Rather than blaming your ex for what was taken, you begin to consciously "blame" them for what you were forced to become. "I blame you for teaching me what I truly deserve." "I blame you for showing me how strong I am." This shifts you from victim to architect — and it is the very first brick of your new foundation.` },
+    { overview: `Your score of ${avg.toFixed(1)} out of 5 places you in the "Rebuilding Your Foundation" stage. You have moved through the initial shock and devastation of your relationship ending. The raw, consuming grief is softening. You are beginning to find your feet again — both as a woman and as a mother. This is real progress, and it deserves acknowledgment.`, detail: `You are working through what Joshua calls "Clearing the Debris." The five debilitating emotions — Blame, Shame, Guilt, Regret, and Anger — are losing some of their grip, but they have not fully released. You may notice old thought patterns surfacing: comparing yourself to who you were before, wondering if you are "too broken" to attract a great love, or swinging between excitement about the future and fear that history will repeat itself.`, detail2: `This is the stage where the work of building your First Pillar — Personal Growth — becomes most important. Joshua teaches that "fulfillment is impossible without growth." Your commitment to healing, to learning, to showing up to this quiz — these are not small things. They are the foundations of the woman you are becoming. Every step toward your own expansion is a step toward the love you desire.`, detail3: `The critical insight for your stage: "Unless you change sufficiently, you will continue to attract the same type of person into your life." This is not a threat — it is the most empowering truth available to you. You are not powerless in love. Your inner world is a magnetic field. As you heal, as you grow, as you change sufficiently, the kind of partner you attract will change with you.` },
+    { overview: `Your score of ${avg.toFixed(1)} out of 5 places you in the "Awakening & Opening" stage — and it is a beautiful place to be. You are no longer simply surviving. You are beginning to believe, maybe tentatively, that a great love is not just possible for other women. It might actually be possible for you.`, detail: `In the architecture of Consummate Love, you are at the stage where your internal foundation is becoming solid enough to begin looking outward. The two pillars — Growth and Contribution — are being actively built. You are investing in yourself. You may even be beginning to pour some of that expanded self back into the world around you, in your children, your community, your work. This generosity of spirit is incredibly attractive.`, detail2: `Your scores reveal a woman who has done real work but who still holds some tension between the old story and the new one. You might oscillate between openness and contraction. Between "I am ready for love" and "But what if I get hurt again?" This is perfectly normal. You can see the horizon of the love you desire, and you are becoming magnetic, but old fears and unresolved patterns occasionally pull you back from the edge.`, detail3: `This is the stage to begin working with what Joshua calls the "GAME" framework: Getting a big enough WHY for love, Adopting a winning mindset, Mastering the basics of connection, and Enjoying the experience of your own becoming. The most important shift is moving from "playing not to lose" to "playing to win" — engaged, open, skillful, and joyful.` },
+    { overview: `Your score of ${avg.toFixed(1)} out of 5 places you in the "Ready to Receive" stage — and you have earned every point. You have done significant, courageous inner work. Your emotional foundation is strong. Your self-worth is no longer contingent on having a partner. You are beginning to carry yourself with the quiet confidence of a woman who knows her own value.`, detail: `You are approaching the stage where all three cornerstones of Consummate Love — Shared Vision, Intimacy, and Passion — are not just concepts you understand, but realities you are genuinely prepared to build. Your "emotional debris" has been largely cleared. You are selecting from a place of wisdom, not desperation. This is rare. This is powerful.`, detail2: `Your magnetic field is shifting. You are no longer broadcasting "I need someone to complete me." You are broadcasting "I am a whole, growing woman who would love to share her life with an equally whole, growing man." That distinction is not subtle — it changes everything about who responds to your energy.`, detail3: `The work at your stage moves from clearing debris to active co-creation. Begin working with your Relationship Vision — a vivid, specific, sensory-rich picture of the love you are calling in. Joshua's wife Rebecca held such a vision from the time she was a little girl. That vision was so clear, it became a filter — it repelled what wasn't it and magnetised what was. Build your vision now. Write it. Feel it. Amplify it.` },
+    { overview: `Your score of ${avg.toFixed(1)} out of 5 places you in the "Manifesting Your Next Chapter" stage. Your heart is genuinely open. Your self-worth is strong and self-sourced. You are not looking for someone to complete you; you are looking for someone worthy of standing beside you. That distinction is everything.`, detail: `You have done the work that most people avoid. You have faced the Five Most Debilitating Emotions and cleared enough of their weight to walk lightly. You are living from the Two Spiritual Needs — Growth and Contribution — rather than being driven by the insatiable needs of Certainty and Significance. This makes you extraordinarily attractive to a partner of similar depth.`, detail2: `Your emotional readiness reflects a woman who can do what Joshua describes as the master skill of all great relationships: choose your emotional state. You are no longer a passenger in the car of your feelings. You are the driver. You can reach for gratitude when disappointment arises. You can access love when fear knocks. You can hold the vision even when the road is temporarily unclear.`, detail3: `The work at your stage is refinement and conscious selection. Look for a partner whose top two driving needs include at least one Spiritual Need — Growth or Contribution. Watch the movie of their life, not just the highlight reel of a first date. Observe how they treat others, how they speak about their past, how they show up for people. You are not looking for perfect. You are looking for spiritually aligned.` }
+  ];
+
+  const td = tierDescriptions[tierIdx];
+  let reportHTML = `
+    <div class="report-section">
+      <div class="report-tag">Where You Are Now</div>
+      <h3>Your Love Readiness: An Honest, Compassionate Assessment</h3>
+      <p>${td.overview}</p><p>${td.detail}</p><p>${td.detail2}</p><p>${td.detail3}</p>
+    </div>`;
+
+  reportHTML += `
+    <div class="report-section">
+      <div class="report-tag">Your Growth Edges</div>
+      <h3>The Three Dimensions Calling for Your Attention</h3>
+      <p>These are the areas where your heart has the most opportunity to expand. They are not weaknesses — they are invitations. Every master was once a beginner in their greatest strength.</p>`;
+
+  const lowInsights = {
+    "Emotional Clearing": { title: "Releasing the Emotional Weight of the Past", body: "Your score in Emotional Clearing suggests you may still be carrying significant emotional residue from your past relationship — hurt, resentment, or grief that hasn't yet been fully processed. Joshua teaches that these emotions — Blame, Shame, Guilt, Regret, and Anger — are \"debilitating\" not just emotionally, but physiologically. Holding onto resentment is like drinking poison and hoping the other person gets sick. The clearing work is not for them. It is for you.", practice: "Begin with the 'Deliberate Blame' practice daily. Write one sentence completing: 'I blame you for teaching me ________________.' Focus on what the experience forged in you — resilience, clarity, self-knowledge. Notice the subtle release. This is the beginning of reclaiming your power." },
+    "Love & Openness": { title: "Opening Your Heart to New Possibility", body: "Your score here suggests that while part of you wants love, another part may be guarding the door. This is protective and understandable — but as Joshua teaches, you cannot attract what you are closed to. The work here is to shift from 'playing not to lose' to beginning to 'play to win.'", practice: "Use Joshua's 'Love Dial' visualisation each morning. Close your eyes. Recall a moment of feeling completely loved. See a dial labeled 'LOVE.' Turn it up — from 5 to 10, from 10 to 100. Feel that amplified love as a self-generated resource. You are training your nervous system to be the source of love, not just the seeker of it." },
+    "Life Space": { title: "Creating Real Space in Your Life for Love", body: "As a single mum, your life is full. Your score suggests you haven't yet created the physical and psychological space a new relationship requires. Joshua teaches that commitment to a relationship is an active investment of three currencies: Time, Talents, and Energy. If all three are already fully allocated, there is nothing left to invest. Love needs room to grow.", practice: "This week, identify one hour you can protect as 'soul time.' Begin to notice what it feels like to prioritise yourself as a woman, not just as a mum or employee. This is not selfish — it is the foundation of having something real to offer another person." },
+    "Self-Trust": { title: "Rebuilding Trust in Your Own Instincts", body: "If you've been badly hurt, it's common to stop trusting your own judgment. Your score suggests this may be an area of ongoing conflict. Joshua teaches that wisdom doesn't come from avoiding risk — it comes from learning the right selection filters and applying them consciously. You don't need to be perfect at reading people. You need a framework for observing patterns of character over time.", practice: "Begin to observe, rather than just feel, the people in your life. Apply Joshua's Three-Filter lens: Attraction (do I feel drawn to this person?), Connection (do I enjoy their company?), and Spiritual Alignment (do they show evidence of Growth and Contribution in their daily life?). Trust is rebuilt through evidence-gathering, not leaps of faith." },
+    "Identity & Worth": { title: "Knowing Your Worth, Independent of a Partner", body: "Your score suggests your sense of identity may still be partially tied to your role as someone's partner. The end of a relationship can feel like the end of a version of yourself. Rebuilding who you are as a woman — separate from the role of wife or girlfriend — is some of the most important inner work you will do. Joshua's First Pillar is fundamentally about this: investing in yourself so deeply that your worth becomes self-sourced, not other-dependent.", practice: "Write your 'I Am' list. 10 qualities you possess as a woman — not as a mum, not as someone's partner — that you value and are proud of. Read it every morning. Add to it every week. You are not rebuilding your worth — you are remembering it." },
+    "Mindset & Vision": { title: "Building a Compelling Vision for Your Future Love", body: "Your score suggests you may not yet have a clear, compelling picture of the love you are calling in. But Joshua's wife Rebecca held a specific, unwavering vision of her perfect love from the time she was a little girl. That vision became a filter — it repelled what wasn't it, and magnetised what was. You have that same creative power.", practice: "Write your Relationship Vision this week. Not a list of his qualities, but a description of how it feels. How does a Tuesday evening feel? What is the emotional tone? What adventures do you share? Make it vivid and joyful. Then read it each morning and amplify the feeling using the Magic Frame technique." },
+    "Pattern Freedom": { title: "Breaking Free from Old Relationship Patterns", body: "Your score suggests you may still be carrying echoes of your past relationship into your present. Joshua's most important teaching: 'Unless you change sufficiently, you will continue to attract the same type of person.' The pattern repeats not because you are cursed, but because the magnetic field of your inner world hasn't changed enough yet to attract a different outcome.", practice: "For each painful pattern you've identified, complete this journaling exercise: 'The pattern was ___. What it taught me about what I truly need is ___. The way I am choosing to show up differently now is ___.' This moves you from repeating history to authoring a new story." },
+    "Communication": { title: "Speaking Your Needs with Clarity and Confidence", body: "Great love requires great communication — not just the ability to speak, but the courage to be honest about your needs and boundaries. Your score suggests some hesitation around expressing yourself fully. Joshua teaches the concept of 'Putting In Your Order' — giving your partner the gift of knowing exactly how to love you, through clear, specific, loving requests rather than expectations they're meant to intuit.", practice: "Practice the SBI framework: Situation ('When we were talking about X...'), Behaviour ('You said Y...'), Impact ('The impact on me was Z...'). Use this structure to express a need with someone safe in your life this week. You are building the communication muscle that healthy relationships run on." },
+    "Emotional Readiness": { title: "Moving from Fear to Joy in Anticipating Love", body: "Your score suggests that when you think about a new relationship, anxiety and fear may be louder than joy and excitement. Joshua teaches that the emotional state you carry into the search for love is the most powerful determinant of what you attract. A nervous system running on fear attracts guardedness. A nervous system running on joy and possibility attracts the same.", practice: "Use the 'Power Pose' and 'Love Dial' combination daily. Stand tall — feet shoulder-width, chest open, shoulders back. Breathe deeply for 60 seconds. Then access the Love Dial, amplifying your sense of inner love until it fills your body. Do this before any social interaction or any moment you need to access your most radiant self." },
+    "Growth & Action": { title: "Taking Consistent Daily Action Toward Your Healing", body: "Your score suggests that while you may understand what growth requires, consistency in daily healing practices may be a challenge. Life is full. But Joshua teaches that fulfillment — and the ability to attract Consummate Love — is built through the daily, compounded investment of growth. Even ten minutes a day of intentional inner work creates momentum that transforms your life over months.", practice: "Commit to one small, daily growth practice for the next 30 days. 10 minutes of journaling, a short meditation, writing one line in your Relationship Vision. The content matters less than the consistency. You are training your nervous system to prioritise your own becoming — and that changes everything." }
+  };
+
+  lowest3.forEach(q => {
+    const insight = lowInsights[q.category] || { title: q.category + ": An Invitation to Grow", body: `Your score of ${q.score}/5 in this dimension is an honest invitation to focus your energy here.`, practice: "Reflect on this dimension and write one small action you can take this week to strengthen it." };
+    reportHTML += `
+      <div class="report-section" style="margin-top:16px;">
+        <div class="report-tag" style="background:rgba(224,92,92,0.08);border-color:rgba(224,92,92,0.3);color:#e08c8c;">Score: ${q.score}/5</div>
+        <h3>${insight.title}</h3>
+        <p>${insight.body}</p>
+        <div class="practice-box"><strong>Daily Practice</strong><p>${insight.practice}</p></div>
+      </div>`;
+  });
+  reportHTML += `</div>`;
+
+  reportHTML += `
+    <div class="report-section">
+      <div class="report-tag" style="background:rgba(92,188,138,0.08);border-color:rgba(92,188,138,0.3);color:#8cbc8c;">Your Strengths</div>
+      <h3>Where Your Light Already Shines</h3>
+      <p>These are the dimensions where you are already operating from genuine strength. They are not just things to celebrate — they are the scaffold upon which your future love will be built.</p>`;
+
+  const highInsights = {
+    "Emotional Clearing": "Your high score in Emotional Clearing is remarkable. It means you have done the courageous, uncomfortable work of processing and releasing the weight of your past. You are not dragging old resentments into new connections. Your heart has capacity for something genuinely new. This is the rarest and most valuable quality you can bring to a new relationship — a clean emotional slate.",
+    "Love & Openness": "Your high score tells us your heart is genuinely available — not just theoretically, but in an embodied, felt sense. You are no longer armoured against love. You have allowed yourself to become vulnerable again, which is the bravest thing a person who has been hurt can do. This openness is your greatest magnetic quality.",
+    "Life Space": "Your high score tells us you have done the practical work of creating room in your life for love. As a single mum, this is no small feat. You have reorganised your priorities to signal — to the universe and to yourself — that you are genuinely ready. That signal will be received.",
+    "Self-Trust": "Your high score is one of the most empowering qualities you can bring to a new relationship. You trust your instincts. You have learned from the past without being imprisoned by it. You know what you are looking for and you trust yourself to recognise it and choose wisely.",
+    "Identity & Worth": "Your high score tells us something powerful: you know who you are. Your worth is not contingent on being in a relationship. You are a whole person seeking partnership, not a half-person seeking completion. This is the single most attractive quality you can possess — and the foundation upon which great love is built.",
+    "Mindset & Vision": "Your high score tells us you have the most important ingredient: a clear, compelling picture of the love you are calling in. Like Joshua's wife Rebecca, you have held your vision with enough clarity that it functions as a filter — drawing toward you what belongs, and releasing what doesn't.",
+    "Pattern Freedom": "Your high score means you have done the deep work of understanding and breaking free from old relationship patterns. You are no longer unconsciously recreating the past. You are bringing wisdom, not just hope, to your search for love. This is freedom. This is readiness.",
+    "Communication": "Your high score is a superpower in love. The ability to speak your needs clearly, set boundaries with confidence, and express yourself authentically is one of the rarest and most valuable relationship skills. Most couples suffer not from lack of love, but from lack of honest, safe communication. You are already fluent in this language.",
+    "Emotional Readiness": "Your high score tells us that when you think about love, joy leads the way. You are more excited than afraid. More open than guarded. This emotional state — this energy of joyful anticipation — is one of the most powerful magnets for great love. What you emanate, you attract.",
+    "Growth & Action": "Your high score reveals a woman who doesn't just wish for change — she works for it. You are showing up, day after day, in your own becoming. Joshua teaches that this commitment to growth is the First Pillar of a fulfilled life, and of a great relationship. Your consistency here will compound into a transformation that surprises even you."
+  };
+
+  highest2.forEach(q => {
+    const insight = highInsights[q.category] || `Your score of ${q.score}/5 in ${q.category} is a genuine strength. Build on this.`;
+    reportHTML += `
+      <div class="report-section" style="margin-top:16px;">
+        <div class="report-tag" style="background:rgba(92,188,138,0.08);border-color:rgba(92,188,138,0.3);color:#8cbc8c;">Score: ${q.score}/5</div>
+        <h3>${q.category}: Your Foundation of Strength</h3>
+        <p>${insight}</p>
+      </div>`;
+  });
+  reportHTML += `</div>`;
+
+  const overallMessages = [
+    `${name}, the journey from where you are to Consummate Love is real, and it is yours to walk. The tools exist. The path is clear. The only question is your willingness to begin — one small, brave step at a time. You deserve a love story as strong and as beautiful as the mother you already are.`,
+    `${name}, you are further along than you may feel. The fact that you are here, doing this work, asking these questions — that is the evidence of your growth. The love you are calling in is becoming more possible with every day you choose to invest in yourself. Keep going.`,
+    `${name}, you are in the most exciting part of the journey — the becoming. The woman you are right now is becoming someone extraordinary. And the love that is coming to meet her is extraordinary too. Trust the process. Do the work. Stay open.`,
+    `${name}, you are so close. The love you desire is not a distant fantasy — it is the natural, inevitable next chapter for a woman who has done what you have done. Hold your vision with unwavering clarity, and trust that the right person is also doing their work, moving toward you.`,
+    `${name}, you are not waiting for love. Love is being drawn to you. Your work now is to stay in this radiant state of wholeness, to select consciously and wisely, and to allow yourself to receive the great love you have so thoroughly prepared yourself for. Your next chapter begins now.`
+  ];
+
+  reportHTML += `
+    <div class="report-section" style="text-align:center;border-color:rgba(201,168,76,0.3);">
+      <div style="font-size:2rem;margin-bottom:16px;">✦</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--white);line-height:1.6;">${overallMessages[tierIdx]}</p>
+      <p style="font-size:0.85rem;color:var(--muted);margin-top:12px;">— Joshua Roy, AccessWorld Seminars</p>
+    </div>`;
+
+  document.getElementById('report-content').innerHTML = reportHTML;
+}
+
+function buildPath(name, avg, tier, lowest3, highest2) {
+  const tierIdx = TIERS.findIndex(t => t.name === tier.name);
+
+  const nextSteps = [
+    [
+      { icon: "💛", title: "Begin the Emotional Clearing", body: "Your most important next step is gentle, consistent emotional clearing. Consider working with a coach or therapist who specialises in post-divorce healing. Joshua's NSR (Nervous System Reprogramming) methodology is specifically designed to accelerate the release of emotional weight from painful past relationships — shifting your nervous system from a state of threat to a state of genuine openness." },
+      { icon: "📓", title: "Start Your 'Blame Deliberately' Journal", body: "Each morning, write one sentence completing: 'I blame [my ex] for teaching me ________________.' Over 30 days, you will transform the narrative of your past from a story of what was done to you into a story of what you were forged into. This is where your power lives." },
+      { icon: "🌱", title: "Build Your First Pillar: Growth", body: "Commit to one personal growth practice per day — a podcast, a book chapter, a journal entry, a meditation. You are not just healing from the past. You are building the future version of yourself who is ready for and worthy of Consummate Love. Every investment in your own growth is an investment in your future relationship." }
+    ],
+    [
+      { icon: "🔮", title: "Create Your Relationship Vision", body: "You are ready to begin building toward love. This week, write your Relationship Vision — a vivid, specific, felt description of the love you are calling in. Don't describe a person. Describe a feeling. A Tuesday evening. The sense of safety. The laughter. The teamwork. Make it so real you can step inside it." },
+      { icon: "💪", title: "Identify and Shift Your Core Needs", body: "Joshua's Six Human Needs framework is your most powerful lens for understanding your relationship patterns. Are your top two driving needs Certainty and Significance? If so, the invitation is to consciously shift toward Growth and Contribution as your primary engines. This single shift changes the entire trajectory of your love life." },
+      { icon: "🌿", title: "Begin the 'GAME' of Relationships", body: "Start applying the GAME framework to your daily life: Get a big enough WHY for love. Adopt a winning mindset ('This is possible for me'). Master the basics through tools like this program. Enjoy the experience of your own becoming. Joy is not the reward at the end of the journey — it is the energy that fuels it." }
+    ],
+    [
+      { icon: "✨", title: "Amplify Your Vision Daily", body: "You have a vision — now supercharge it. Each morning, use the Magic Frame process: close your eyes, see the picture of your relationship vision, and make it twice as big. Then four times. Then IMAX-screen size. Feel the emotion amplify with it. This 5-minute practice, done consistently, is more powerful than any dating app." },
+      { icon: "🎯", title: "Apply Conscious Selection Filters", body: "As you begin to put yourself out there, use Joshua's selection filters deliberately. Attraction + Connection + Spiritual Alignment. Watch the movie of a potential partner's life. How do they treat others? What do they talk about when they're not trying to impress you? Are they growing? Are they giving? These patterns reveal character more accurately than any first-date conversation." },
+      { icon: "💬", title: "Practice Putting In Your Order", body: "Begin practicing the art of articulating your needs with clarity and warmth. 'One thing that really makes me feel loved is... When that happens, I feel...' You are giving the people in your life the gift of knowing how to love you well. This is not neediness. This is emotional intelligence." }
+    ],
+    [
+      { icon: "🔥", title: "Commit Fully to Your Vision", body: "Joshua teaches that partial commitment guarantees a partial, unfulfilling relationship. At your stage, the invitation is to move from 'I'm open to love' to 'I am actively building toward love.' Set a clear, time-bound intention: 'For the next 90 days, I am fully investing in creating the conditions for Consummate Love in my life.' Then act from that commitment every day." },
+      { icon: "💎", title: "Master the Love Languages Ahead of Time", body: "Study the Five Love Languages (Words of Affirmation, Acts of Service, Gifts, Quality Time, Physical Touch) and diagnose your own primary language honestly. Know what fills your heart. Begin practicing each language in your daily relationships. You are not just preparing for a partner; you are becoming a more deeply loving person right now." },
+      { icon: "🌟", title: "Embrace Your Most Radiant Self", body: "At your stage, the greatest work is not more healing — it is full emergence. Allow yourself to be seen. To take up space. To enjoy your own company and your own beauty. Joshua teaches that the energy of joy and radiance is the most powerful attractor. Stop waiting to shine until you're in a relationship. Shine now. The right person is drawn to the light." }
+    ],
+    [
+      { icon: "🏛️", title: "Select with Wisdom, Not Just Feeling", body: "At your level of readiness, the work is conscious, wise selection. You know yourself. Now apply Joshua's deepest filter: look for a partner whose top needs include at least one Spiritual Need — Growth or Contribution. Watch their life, not just their words. A person who is genuinely growing and genuinely giving is a person who will grow and give in a relationship with you." },
+      { icon: "✦", title: "Build the Triangle Deliberately", body: "When you meet someone who passes your initial filters, begin deliberately building all three cornerstones from the start: Shared Vision (do we see a similar future?), Intimacy (can we be honest and vulnerable with each other?), and Passion (is there genuine attraction and polarity?). A relationship with all three is not a fantasy — it is what you have prepared yourself for." },
+      { icon: "🌸", title: "Tend Your Own Garden Daily", body: "Joshua shares the parable of the most beautiful soul placed in a humble vessel — but those who looked past the pot saw the flower. Your work is to keep tending your own garden — your growth, your joy, your healing, your contribution — so that when your person arrives, they find a woman in full bloom, ready to garden with them forever." }
+    ]
+  ];
+
+  const steps = nextSteps[tierIdx];
+
+  let pathHTML = `
+    <div class="report-section" style="text-align:center;">
+      <div class="report-tag">Your Personalised Roadmap</div>
+      <h3 style="margin-bottom:8px;">Your Next Three Steps, ${name}</h3>
+      <p>Based on your unique results, here are the three most powerful actions you can take right now to accelerate your journey toward the love you deserve.</p>
+    </div>`;
+
+  steps.forEach((step, i) => {
+    pathHTML += `
+      <div class="report-section">
+        <div style="font-size:2rem;margin-bottom:12px;">${step.icon}</div>
+        <div class="report-tag">Step ${i + 1}</div>
+        <h3>${step.title}</h3>
+        <p>${step.body}</p>
+      </div>`;
+  });
+
+  pathHTML += `
+    <div class="report-section">
+      <div class="report-tag">Daily Practice</div>
+      <h3>Your 10-Minute Morning Love Readiness Ritual</h3>
+      <p>Joshua teaches that a fulfilled life — and a great relationship — is built through the compounding of small, daily investments. Here is a simple, powerful morning ritual designed for exactly your stage of readiness:</p>
+      <div class="practice-box" style="margin-top:16px;"><strong>Minutes 1–2: The Power Pose</strong><p>Stand tall. Feet shoulder-width. Chest open. Breathe deeply. Let your body send signals of confidence and safety to your nervous system.</p></div>
+      <div class="practice-box" style="margin-top:12px;"><strong>Minutes 3–5: The Love Dial</strong><p>Close your eyes. Recall or imagine a moment of feeling completely loved. See the 'LOVE' dial in your mind's eye. Turn it up — 5, 10, 100, 1,000. Let love become a self-generated, abundant resource you carry into every interaction.</p></div>
+      <div class="practice-box" style="margin-top:12px;"><strong>Minutes 6–8: Vision Amplification</strong><p>Read or recall your Relationship Vision. Use the Magic Frame: make the picture bigger, brighter, more vivid. Feel it as already real. Say aloud: "This is not just possible. It is probable. It is coming."</p></div>
+      <div class="practice-box" style="margin-top:12px;"><strong>Minutes 9–10: One Growth Action</strong><p>Write one sentence in your journal, read one page of a growth book, or listen to two minutes of a coaching audio. You are investing in the most important person in your love story: you.</p></div>
+    </div>
+
+    <div class="report-section" style="text-align:center;border-color:rgba(201,168,76,0.3);">
+      <div style="font-size:2rem;margin-bottom:16px;">✦</div>
+      <h3 style="color:var(--white);font-style:italic;">"Shoot for the stars. And if you miss, at least you hit the moon."</h3>
+      <p style="font-size:0.85rem;color:var(--muted);margin-top:8px;">— Joshua Roy</p>
+      <div style="height:1px;background:rgba(201,168,76,0.12);margin:24px 0;"></div>
+      <p style="font-size:0.9rem;color:var(--white2);line-height:1.8;">If you'd like to accelerate your journey with personal coaching from Joshua Roy — including his NSR (Nervous System Reprogramming) methodology designed specifically for women ready to call in great love — reach out to AccessWorld Seminars today.</p>
+      <div style="margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="https://wa.me/61432119091" style="color:var(--gold);font-size:0.85rem;text-decoration:none;">💬 WhatsApp Joshua</a>
+        <span style="color:var(--muted);">·</span>
+        <a href="https://accessworldseminars-ship-it.github.io/results" style="color:var(--gold);font-size:0.85rem;text-decoration:none;">🌐 AccessWorld Seminars</a>
+      </div>
+    </div>`;
+
+  document.getElementById('path-content').innerHTML = pathHTML;
+}
+
+function showTab(idx) {
+  document.querySelectorAll('.result-tab').forEach((t, i)  => t.classList.toggle('active', i === idx));
+  document.querySelectorAll('.result-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+}
+</script>
+</body>
+</html>
