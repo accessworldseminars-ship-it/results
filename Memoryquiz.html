@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AccessWorld: Memory Mastery Assessment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+```
+body {
+  background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+  font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: #eef2ff;
+  line-height: 1.5;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+h1, h2, h3, .heading-font {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, #fff 30%, #C9A84C 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.gold-accent { color: #C9A84C; }
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(10, 18, 30, 0.65);
+  backdrop-filter: blur(2px);
+  border-radius: 2rem;
+  padding: 1.8rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+button, .btn-like {
+  background: transparent;
+  border: 1.5px solid #C9A84C;
+  color: #C9A84C;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0.75rem 1.6rem;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+}
+
+button:hover {
+  background: #C9A84C;
+  color: #080d18;
+  transform: scale(0.98);
+  box-shadow: 0 8px 18px rgba(201,168,76,0.3);
+}
+
+.btn-primary {
+  background: #C9A84C;
+  color: #080d18;
+  border: none;
+  font-weight: 700;
+}
+
+.btn-primary:hover {
+  background: #e0bc6e;
+  transform: translateY(-2px);
+}
+
+.options-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  justify-content: center;
+}
+
+.likert-btn {
+  flex: 1 0 100px;
+  background: #1f2a3e;
+  border: 1px solid #2d3a50;
+  border-radius: 48px;
+  padding: 0.7rem 0.5rem;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.15s;
+  cursor: pointer;
+  color: #cfdfed;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.likert-btn.selected {
+  background: #C9A84C;
+  border-color: #C9A84C;
+  color: #0a0f1a;
+  font-weight: bold;
+  box-shadow: 0 0 0 2px rgba(201,168,76,0.5);
+}
+
+.progress-bar-container {
+  background: #1e2a3a;
+  border-radius: 40px;
+  height: 10px;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.progress-fill {
+  background: #C9A84C;
+  width: 0%;
+  height: 100%;
+  border-radius: 40px;
+  transition: width 0.3s ease;
+}
+
+.question-card {
+  background: rgba(20, 30, 45, 0.7);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+
+.result-tabs {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.8rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #2d3e5a;
+  padding-bottom: 0.75rem;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  border-radius: 40px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  opacity: 0.7;
+  font-family: 'Montserrat', sans-serif;
+  color: #eef2ff;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background: #C9A84C;
+  color: #080d18;
+  opacity: 1;
+}
+
+.tab-btn:hover { background: rgba(201,168,76,0.2); transform: none; box-shadow: none; }
+.tab-btn.active:hover { background: #C9A84C; }
+
+.result-page { display: none; animation: fade 0.25s ease; }
+.result-page.active-page { display: block; }
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.question-result-item {
+  background: #0e1725;
+  margin: 0.75rem 0;
+  padding: 0.8rem;
+  border-radius: 1rem;
+}
+
+.score-bar-bg {
+  background: #232f40;
+  height: 8px;
+  border-radius: 8px;
+  margin-top: 6px;
+  width: 100%;
+}
+
+.score-bar-fill {
+  background: #C9A84C;
+  height: 8px;
+  border-radius: 8px;
+}
+
+.insight-card {
+  background: #0f1a28;
+  border-left: 5px solid #C9A84C;
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  margin: 0.5rem 0;
+  background: #101b2b;
+  border: 1px solid #2e405b;
+  border-radius: 28px;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+}
+
+input:focus { outline: none; border-color: #C9A84C; }
+
+.error-msg {
+  color: #f0a3a3;
+  font-size: 0.8rem;
+  margin-top: -0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 560px) {
+  .container { padding: 1.2rem; }
+  .likert-btn { flex: 1 0 70px; font-size: 0.75rem; padding: 0.5rem 0.2rem; }
+  h1 { font-size: 1.8rem; }
+}
+
+footer { text-align: center; margin-top: 2rem; font-size: 0.75rem; opacity: 0.6; }
+```
+
+  </style>
+</head>
+<body>
+<div class="container" id="appRoot"></div>
+<footer>AccessWorld Seminars — Memory Empowerment Assessment</footer>
+
+<script>
+  const QUESTIONS = [
+    { id: 0, text: "I regularly prepare myself mentally (excitement, childlike curiosity) before learning something new.", category: "Preparation State", dimension: "Learning Readiness" },
+    { id: 1, text: "I use visualisation or 'memory pegs' to install and recall information.", category: "Installation Tools", dimension: "Mnemonics" },
+    { id: 2, text: "I understand how to combine emotion + movement + information to enhance memory (three brains).", category: "Neural Integration", dimension: "Neuroplasticity" },
+    { id: 3, text: "I apply spaced repetition (Anki or similar) to retain key knowledge over time.", category: "Recall Strategy", dimension: "Spaced Repetition" },
+    { id: 4, text: "I actively teach new concepts to others to deepen my own understanding.", category: "Application", dimension: "Mastery Cycle" },
+    { id: 5, text: "I feel confident using the Conversation Stack to connect with new people and remember details.", category: "Social Memory", dimension: "Communication" },
+    { id: 6, text: "I have a morning routine that dominates my limitations and primes my memory.", category: "Empowerment Habits", dimension: "Morning Routine" },
+    { id: 7, text: "I regularly use the Memory Palace technique to store and recall complex information.", category: "Advanced Recall", dimension: "Spatial Memory" },
+    { id: 8, text: "I review and journal to reinforce learnings, avoiding the 'forgetting curve'.", category: "Reinforcement", dimension: "Spaced Learning" },
+    { id: 9, text: "I can easily recall facts by linking them to bizarre, graphical, or emotion-rich images.", category: "Creative Mnemonics", dimension: "Imagination" }
+  ];
+
+  const TIERS = [
+    { min: 0,   max: 1.4, label: "Foundation Seeker",    desc: "You're at the beginning of your memory transformation. Every expert was once a beginner." },
+    { min: 1.5, max: 2.4, label: "Curious Explorer",     desc: "You show awareness; with intentional practices you'll unlock rapid growth." },
+    { min: 2.5, max: 3.4, label: "Capable Practitioner", desc: "Solid foundations — applying advanced tools like Memory Palace will elevate you." },
+    { min: 3.5, max: 4.2, label: "Skilled Memory Athlete",desc: "Impressive! You leverage emotion, repetition and state. Refine further for mastery." },
+    { min: 4.3, max: 5.0, label: "Elite Empowered Mind", desc: "Exceptional command of neuroplasticity & learning. You inspire others!" }
+  ];
+
+  const likertLabels = ["Not at all", "Slightly", "Somewhat", "Mostly", "Very much", "Completely"];
+
+  let userAnswers = new Array(QUESTIONS.length).fill(null);
+  let currentScreen = 'intro';
+  let currentQuestionIdx = 0;
+  let avgScore = 0, currentTier = null;
+  let userContact = { name: '', phone: '', email: '' };
+
+  const ZAPIER_WEBHOOK = "https://hooks.zapier.com/hooks/catch/3779260/unt9eik/";
+
+  async function sendToZapier(name, phone, email, score, tier, answers) {
+    let answersText = "";
+    QUESTIONS.forEach(q => { answersText += `${q.category}: ${answers[q.id] ?? 0}/5\n`; });
+    const fd = new FormData();
+    fd.append('name', name); fd.append('phone', phone); fd.append('email', email);
+    fd.append('score', score.toFixed(1)); fd.append('tier', tier);
+    fd.append('answers_text', answersText); fd.append('timestamp', new Date().toISOString());
+    await fetch(ZAPIER_WEBHOOK, { method: "POST", body: fd, mode: "no-cors" });
+  }
+
+  function computeStats() {
+    let sum = userAnswers.reduce((a, b) => a + (b ?? 0), 0);
+    let avg = sum / QUESTIONS.length;
+    let tier = TIERS.find(t => avg >= t.min && avg <= t.max) || TIERS[0];
+    return { avg, tier };
+  }
+
+  const root = document.getElementById('appRoot');
+
+  function render() {
+    if (currentScreen === 'intro')   renderIntro();
+    else if (currentScreen === 'quiz')    renderQuiz();
+    else if (currentScreen === 'contact') renderContact();
+    else if (currentScreen === 'results') renderResults();
+  }
+
+  function renderIntro() {
+    root.innerHTML = `
+      <div style="text-align:center;">
+        <h1>🧠 MEMORY MASTERY<br>EMPOWERMENT QUIZ</h1>
+        <p style="font-size:1.1rem; margin:1rem 0;">Based on the neuroscience of <strong class="gold-accent">AccessWorld Seminars</strong> — discover how you harness excitement, neural re-patterning, and the three brains to skyrocket your memory.</p>
+        <div style="background:rgba(0,0,0,0.3); border-radius:1.5rem; padding:1rem; margin:1.5rem 0;">
+          <p>✨ Assess your skills in: <strong>Preparation state, spaced repetition, memory palace, conversation stack & morning rituals.</strong></p>
+          <p style="margin-top:0.5rem;">🎯 10 questions · 0–5 scale · instant personalised coaching</p>
+        </div>
+        <button class="btn-primary" id="startBtn">🌟 START YOUR JOURNEY</button>
+      </div>`;
+    document.getElementById('startBtn').addEventListener('click', () => {
+      currentScreen = 'quiz';
+      currentQuestionIdx = 0;
+      render();
+    });
+  }
+
+  function renderQuiz() {
+    const q = QUESTIONS[currentQuestionIdx];
+    const currentVal = userAnswers[currentQuestionIdx];
+    const answeredCount = userAnswers.filter(a => a !== null).length;
+    const progress = (answeredCount / QUESTIONS.length) * 100;
+
+    let optionsHtml = '';
+    for (let i = 0; i <= 5; i++) {
+      optionsHtml += `<div class="likert-btn ${currentVal === i ? 'selected' : ''}" data-score="${i}">
+        <div style="font-size:1.1rem; font-weight:800;">${i}</div>
+        <div style="font-size:0.72rem; margin-top:2px;">${likertLabels[i]}</div>
+      </div>`;
+    }
+
+    root.innerHTML = `
+      <div class="flex-between" style="margin-bottom:0.5rem;">
+        <h2>🧠 Question ${currentQuestionIdx+1} of ${QUESTIONS.length}</h2>
+        <span style="font-size:0.85rem;">${answeredCount}/${QUESTIONS.length} answered</span>
+      </div>
+      <div class="progress-bar-container"><div class="progress-fill" style="width:${progress}%"></div></div>
+      <div class="question-card">
+        <p style="font-size:1.3rem; font-weight:500; margin-bottom:1rem; line-height:1.4;">${q.text}</p>
+        <p style="font-size:0.8rem; color:#a0b3cc; margin-bottom:0.5rem;">${q.category} · ${q.dimension}</p>
+        <div class="options-grid">${optionsHtml}</div>
+      </div>
+      <div class="flex-between" style="margin-top:1rem; gap:0.5rem;">
+        <button id="prevBtn" ${currentQuestionIdx === 0 ? 'disabled style="opacity:0.4"' : ''}>← Previous</button>
+        <button class="btn-primary" id="nextBtn">${currentQuestionIdx === QUESTIONS.length - 1 ? 'Finish & Continue' : 'Next →'}</button>
+      </div>`;
+
+    document.querySelectorAll('.likert-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        userAnswers[currentQuestionIdx] = parseInt(btn.dataset.score);
+        renderQuiz();
+      });
+    });
+
+    document.getElementById('prevBtn')?.addEventListener('click', () => {
+      if (currentQuestionIdx > 0) { currentQuestionIdx--; renderQuiz(); }
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      if (userAnswers[currentQuestionIdx] === null) {
+        alert("Please select an answer (0–5) before proceeding.");
+        return;
+      }
+      if (currentQuestionIdx < QUESTIONS.length - 1) {
+        currentQuestionIdx++;
+        renderQuiz();
+      } else {
+        currentScreen = 'contact';
+        render();
+      }
+    });
+  }
+
+  function renderContact() {
+    root.innerHTML = `
+      <div style="text-align:center;">
+        <h2>✨ Almost there ✨</h2>
+        <p style="margin-bottom:1.5rem;">Enter your details to receive your personalised 3-page Memory Blueprint & coaching insights.</p>
+      </div>
+      <input type="text"  id="cName"  placeholder="Full name *"       value="">
+      <input type="tel"   id="cPhone" placeholder="Phone number *"     value="" style="margin-top:0.8rem;">
+      <input type="email" id="cEmail" placeholder="Email address *"    value="" style="margin-top:0.8rem;">
+      <div id="contactErr" class="error-msg" style="min-height:1.2rem; margin-top:0.5rem;"></div>
+      <div style="display:flex; gap:1rem; margin-top:1rem; flex-wrap:wrap;">
+        <button id="backBtn" style="flex:1;">← Back to Quiz</button>
+        <button class="btn-primary" id="submitBtn" style="flex:2;">💾 UNLOCK MY RESULTS</button>
+      </div>`;
+
+    document.getElementById('backBtn').addEventListener('click', () => { currentScreen = 'quiz'; render(); });
+
+    document.getElementById('submitBtn').addEventListener('click', async () => {
+      const name  = document.getElementById('cName').value.trim();
+      const phone = document.getElementById('cPhone').value.trim();
+      const email = document.getElementById('cEmail').value.trim();
+      const errEl = document.getElementById('contactErr');
+      if (!name || !phone || !email) { errEl.innerText = "All fields are required."; return; }
+      if (!email.includes('@')) { errEl.innerText = "Please enter a valid email address."; return; }
+      userContact = { name, phone, email };
+      const { avg, tier } = computeStats();
+      avgScore = avg; currentTier = tier;
+      try { await sendToZapier(name, phone, email, avg, tier.label, userAnswers); }
+      catch(e) { console.warn("Zapier non-critical", e); }
+      currentScreen = 'results';
+      render();
+    });
+  }
+
+  function renderResults() {
+    const { avg, tier } = computeStats();
+    const qScores = QUESTIONS.map((q, idx) => ({ ...q, score: userAnswers[idx] ?? 0 }));
+    const sorted  = [...qScores].sort((a,b) => a.score - b.score);
+    const lowest3  = sorted.slice(0, 3);
+    const highest2 = sorted.slice(-2).reverse();
+
+    // Page 1 — overview + all question bars
+    let allQHtml = '';
+    qScores.forEach(q => {
+      const pct = (q.score / 5) * 100;
+      allQHtml += `<div class="question-result-item">
+        <div class="flex-between"><strong style="font-size:0.9rem;">${q.text}</strong><span>${q.score}/5</span></div>
+        <div class="score-bar-bg"><div class="score-bar-fill" style="width:${pct}%;"></div></div>
+        <div style="font-size:0.72rem; margin-top:4px; color:#a0b3cc;">${q.category}</div>
+      </div>`;
+    });
+
+    // Page 2 — lowest 3
+    let lowHtml = '<h3 style="margin-bottom:0.5rem;">🌱 Top 3 Areas for Breakthrough Growth</h3><p class="gold-accent" style="margin-bottom:0.5rem;">Lowest scores = biggest leverage points.</p>';
+    lowest3.forEach(item => {
+      lowHtml += `<div class="insight-card">
+        <h3>${item.category} · <span class="gold-accent">${item.score}/5</span></h3>
+        <p style="margin-top:0.5rem;">${getLowInsight(item.dimension)}</p>
+        <p style="margin-top:0.6rem;"><em>✨ Daily practice:</em> ${getDailyLow(item.dimension)}</p>
+      </div>`;
+    });
+    lowHtml += `<div style="margin-top:1rem; background:#0f1c2c; border-radius:1rem; padding:1rem;">
+      <p><strong>🎯 Process recommendation:</strong> Use spaced repetition with flashcards for each low dimension. Commit 10 min/day with emotional activation (excitement state) to rewire.</p>
+    </div>`;
+
+    // Page 3 — highest 2
+    let highHtml = '<h3 style="margin-bottom:0.5rem;">✨ Your Signature Memory Powers</h3>';
+    highest2.forEach(item => {
+      highHtml += `<div class="insight-card" style="border-left-color:#e6c87a;">
+        <h3>${item.category} · <span class="gold-accent">${item.score}/5</span></h3>
+        <p style="margin-top:0.5rem;">${getHighInsight(item.dimension)}</p>
+        <p style="margin-top:0.6rem;"><strong>⚡ Advanced practice:</strong> Combine with memory stacking — create visual journeys for professional talks or speeches.</p>
+      </div>`;
+    });
+    highHtml += `<div style="margin-top:1rem; background:#1e2a3a; border-radius:1rem; padding:1rem;">
+      <p><strong>Daily practice to sustain:</strong> Teach one strength technique to a friend weekly. As Joshua Roy says: "Application is the real knowledge."</p>
+    </div>`;
+
+    root.innerHTML = `
+      <div style="text-align:center; margin-bottom:1rem;">
+        <div style="font-size:2.8rem; font-weight:bold; color:#C9A84C;">${avg.toFixed(1)}<span style="font-size:1.1rem; color:#eef2ff;"> / 5.0</span></div>
+        <div style="background:#0e1a2a; border-radius:60px; padding:0.2rem; width:75%; margin:0.5rem auto;">
+          <div style="background:#C9A84C; width:${(avg/5)*100}%; height:12px; border-radius:60px;"></div>
+        </div>
+        <h2 class="gold-accent" style="font-size:1.5rem;">${tier.label}</h2>
+        <p style="margin-top:0.3rem;">${tier.desc}</p>
+      </div>
+      <div class="result-tabs">
+        <button class="tab-btn active" data-tab="p1">📊 Overview & Scores</button>
+        <button class="tab-btn" data-tab="p2">📘 Growth Zones</button>
+        <button class="tab-btn" data-tab="p3">🌟 Peak Strengths</button>
+      </div>
+      <div id="p1" class="result-page active-page">${allQHtml}</div>
+      <div id="p2" class="result-page">${lowHtml}</div>
+      <div id="p3" class="result-page">${highHtml}</div>
+      <div class="flex-between" style="margin-top:2rem; gap:1rem; flex-wrap:wrap;">
+        <button id="printBtn">🖨️ Print / Save PDF</button>
+        <button id="retakeBtn" class="btn-primary">⟳ Retake Quiz</button>
+      </div>`;
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.result-page').forEach(p => p.classList.remove('active-page'));
+        document.getElementById(btn.dataset.tab).classList.add('active-page');
+      });
+    });
+
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+    document.getElementById('retakeBtn').addEventListener('click', () => {
+      userAnswers = new Array(QUESTIONS.length).fill(null);
+      currentScreen = 'intro';
+      render();
+    });
+  }
+
+  function getLowInsight(dim) {
+    const map = {
+      "Learning Readiness":  "You rarely activate an early learning state. Before studying, generate childlike wonder — move your body, breathe deeply, and anchor a peak emotion to prime neuroplasticity.",
+      "Mnemonics":           "Visual pegs and graphical stories are underused. Practice linking facts to wild images (e.g., heart + 1000s sprinkles). Install one memory peg daily.",
+      "Neuroplasticity":     "You miss the power of combining emotion + movement. Dance, stretch, and laugh while reviewing — this activates all three brains for deeper encoding.",
+      "Spaced Repetition":   "Cramming leads to rapid forgetting. Use Anki or spaced notebooks: review after 1 day, 3 days, 1 week. Tiny consistent reviews = massive recall.",
+      "Mastery Cycle":       "Teaching locks in knowledge. Share one new insight each week with a friend or journal as if explaining. Become a mentor in your community.",
+      "Communication":       "Conversation Stack eases social fear. Practice asking about name meaning, home, family, work, travel — active listening rewires social confidence.",
+      "Morning Routine":     "Morning routine sets the tone. Adopt a 10-min ritual: movement, gratitude, mental rehearsal. Joshua Roy's 2-hour routine skyrocketed transformation.",
+      "Spatial Memory":      "Memory Palace is your superpower. Pick one room, place 5 objects, associate with grocery items. Repeat daily; extend to 10 loci.",
+      "Spaced Learning":     "Journaling and recall beats passive reading. Use the 'testing effect' — after each lesson, write 3 main points from memory without looking.",
+      "Imagination":         "Bizarre imagery sticks. Link abstract facts to cartoonish, multi-sensory scenes instead of rote repetition. Weird = memorable."
+    };
+    return map[dim] || "Commit to daily micro-practice — repetition is the mother of skill.";
+  }
+
+  function getDailyLow(dim) {
+    const map = {
+      "Learning Readiness":  "Before any learning session, do 10 jumping jacks and say 'I am excited to learn!' aloud.",
+      "Mnemonics":           "Each morning, link one new fact to a bizarre visual story. Build your peg library slowly.",
+      "Neuroplasticity":     "Review last week's notes while stretching or walking — movement and memory reinforce each other.",
+      "Spaced Repetition":   "Create 3 Anki flashcards each evening on what you learned that day.",
+      "Mastery Cycle":       "Explain one concept you learned this week to someone — even a pet counts!",
+      "Communication":       "In each new conversation, focus on remembering one unique detail about the person.",
+      "Morning Routine":     "Add one memory technique to your morning: visualise your day's goals as a vivid story.",
+      "Spatial Memory":      "Place 5 imaginary objects along your hallway and recall them in reverse order.",
+      "Spaced Learning":     "Before bed, write 3 things you want to remember tomorrow — no notes allowed.",
+      "Imagination":         "Turn one boring fact into a comedy sketch in your mind. Make it ridiculous."
+    };
+    return map[dim] || "Set a 5-min daily reminder to practise one new memory trick.";
+  }
+
+  function getHighInsight(dim) {
+    const map = {
+      "Learning Readiness":  "Excellent! Now deepen by adding emotional anchors to every study session — associate powerful meaning to facts.",
+      "Mnemonics":           "Your peg system is strong. Expand by creating story chains that link 20+ items in sequence.",
+      "Neuroplasticity":     "You activate all three brains. Push further by adding music and rhythm during review sessions.",
+      "Spaced Repetition":   "Keep expanding your intervals. Share your Anki decks or spaced schedule with peers to deepen mastery.",
+      "Mastery Cycle":       "You're mastering through teaching — consider creating a small workshop or blog about memory hacks.",
+      "Communication":       "Your social memory is sharp. Challenge yourself to remember 5 details per new person you meet.",
+      "Morning Routine":     "Your ritual is firing well. Add cold exposure or breathwork to turbocharge neural priming.",
+      "Spatial Memory":      "Expand to larger palaces — your whole street, childhood home. Challenge yourself with 50+ items.",
+      "Spaced Learning":     "Your review habits are elite. Try interleaving — mix different subjects in single sessions.",
+      "Imagination":         "Your creative encoding is powerful. Use it for speeches, presentations, and teaching others."
+    };
+    return map[dim] || "Continue pushing boundaries — explore advanced neural re-patterning with Joshua Roy's methodologies.";
+  }
+
+  render();
+</script>
+
+</body>
+</html>
