@@ -1,547 +1,544 @@
+Here is the corrected HTML document that resolves the display and functionality issues you were experiencing.
+```html
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>AccessWorld: Memory Mastery Assessment</title>
+  <title>AccessWorld Health Audit | Cellular Vitality Report</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-```
-body {
-  background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
-  font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  color: #eef2ff;
-  line-height: 1.5;
-  min-height: 100vh;
-  padding: 2rem 1rem;
-}
-
-h1, h2, h3, .heading-font {
-  font-family: 'Cormorant Garamond', 'Georgia', serif;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-h1 {
-  font-size: 2.5rem;
-  background: linear-gradient(135deg, #fff 30%, #C9A84C 80%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  margin-bottom: 0.5rem;
-}
-
-.gold-accent { color: #C9A84C; }
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  background: rgba(10, 18, 30, 0.65);
-  backdrop-filter: blur(2px);
-  border-radius: 2rem;
-  padding: 1.8rem;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-}
-
-button, .btn-like {
-  background: transparent;
-  border: 1.5px solid #C9A84C;
-  color: #C9A84C;
-  font-weight: 600;
-  font-family: 'Montserrat', sans-serif;
-  padding: 0.75rem 1.6rem;
-  border-radius: 60px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 1rem;
-  letter-spacing: 0.3px;
-}
-
-button:hover {
-  background: #C9A84C;
-  color: #080d18;
-  transform: scale(0.98);
-  box-shadow: 0 8px 18px rgba(201,168,76,0.3);
-}
-
-.btn-primary {
-  background: #C9A84C;
-  color: #080d18;
-  border: none;
-  font-weight: 700;
-}
-
-.btn-primary:hover {
-  background: #e0bc6e;
-  transform: translateY(-2px);
-}
-
-.options-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin: 1.5rem 0;
-  justify-content: center;
-}
-
-.likert-btn {
-  flex: 1 0 100px;
-  background: #1f2a3e;
-  border: 1px solid #2d3a50;
-  border-radius: 48px;
-  padding: 0.7rem 0.5rem;
-  text-align: center;
-  font-weight: 500;
-  transition: all 0.15s;
-  cursor: pointer;
-  color: #cfdfed;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.likert-btn.selected {
-  background: #C9A84C;
-  border-color: #C9A84C;
-  color: #0a0f1a;
-  font-weight: bold;
-  box-shadow: 0 0 0 2px rgba(201,168,76,0.5);
-}
-
-.progress-bar-container {
-  background: #1e2a3a;
-  border-radius: 40px;
-  height: 10px;
-  width: 100%;
-  margin: 1rem 0;
-}
-
-.progress-fill {
-  background: #C9A84C;
-  width: 0%;
-  height: 100%;
-  border-radius: 40px;
-  transition: width 0.3s ease;
-}
-
-.question-card {
-  background: rgba(20, 30, 45, 0.7);
-  border-radius: 1.5rem;
-  padding: 1.5rem;
-  margin: 1rem 0;
-}
-
-.result-tabs {
-  display: flex;
-  gap: 0.75rem;
-  margin-bottom: 1.8rem;
-  flex-wrap: wrap;
-  border-bottom: 1px solid #2d3e5a;
-  padding-bottom: 0.75rem;
-}
-
-.tab-btn {
-  background: none;
-  border: none;
-  border-radius: 40px;
-  padding: 0.5rem 1.2rem;
-  font-weight: 600;
-  opacity: 0.7;
-  font-family: 'Montserrat', sans-serif;
-  color: #eef2ff;
-  cursor: pointer;
-}
-
-.tab-btn.active {
-  background: #C9A84C;
-  color: #080d18;
-  opacity: 1;
-}
-
-.tab-btn:hover { background: rgba(201,168,76,0.2); transform: none; box-shadow: none; }
-.tab-btn.active:hover { background: #C9A84C; }
-
-.result-page { display: none; animation: fade 0.25s ease; }
-.result-page.active-page { display: block; }
-
-@keyframes fade {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.question-result-item {
-  background: #0e1725;
-  margin: 0.75rem 0;
-  padding: 0.8rem;
-  border-radius: 1rem;
-}
-
-.score-bar-bg {
-  background: #232f40;
-  height: 8px;
-  border-radius: 8px;
-  margin-top: 6px;
-  width: 100%;
-}
-
-.score-bar-fill {
-  background: #C9A84C;
-  height: 8px;
-  border-radius: 8px;
-}
-
-.insight-card {
-  background: #0f1a28;
-  border-left: 5px solid #C9A84C;
-  padding: 1rem;
-  border-radius: 1rem;
-  width: 100%;
-  margin-top: 1rem;
-}
-
-input {
-  width: 100%;
-  padding: 0.9rem 1rem;
-  margin: 0.5rem 0;
-  background: #101b2b;
-  border: 1px solid #2e405b;
-  border-radius: 28px;
-  color: white;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-}
-
-input:focus { outline: none; border-color: #C9A84C; }
-
-.error-msg {
-  color: #f0a3a3;
-  font-size: 0.8rem;
-  margin-top: -0.3rem;
-  margin-bottom: 0.5rem;
-}
-
-.flex-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-@media (max-width: 560px) {
-  .container { padding: 1.2rem; }
-  .likert-btn { flex: 1 0 70px; font-size: 0.75rem; padding: 0.5rem 0.2rem; }
-  h1 { font-size: 1.8rem; }
-}
-
-footer { text-align: center; margin-top: 2rem; font-size: 0.75rem; opacity: 0.6; }
-```
-
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(135deg, #0a0f1c 0%, #141e2f 100%);
+      font-family: 'Montserrat', sans-serif;
+      color: #eef2ff;
+      padding: 1.5rem;
+      min-height: 100vh;
+    }
+    .quiz-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      background: rgba(12, 20, 30, 0.75);
+      backdrop-filter: blur(3px);
+      border-radius: 2rem;
+      padding: 1.8rem;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.6);
+    }
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+    h1 { font-size: 2.4rem; color: #C9A84C; margin-bottom: 0.5rem; }
+    .gold { color: #C9A84C; }
+    .btn {
+      background: transparent;
+      border: 1.5px solid #C9A84C;
+      color: #C9A84C;
+      padding: 0.7rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: 'Montserrat', sans-serif;
+      margin: 0.3rem;
+    }
+    .btn-primary {
+      background: #C9A84C;
+      color: #0a0f1c;
+      border: none;
+      font-weight: 700;
+    }
+    .btn-primary:hover { background: #b6902e; transform: translateY(-2px); }
+    .btn:hover { background: #C9A84C; color: #0a0f1c; }
+    .scale-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 1.5rem 0;
+      justify-content: space-between;
+    }
+    .scale-opt {
+      flex: 1;
+      min-width: 70px;
+      text-align: center;
+      background: rgba(255,255,240,0.05);
+      border-radius: 60px;
+      padding: 0.6rem 0.2rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: 0.1s;
+    }
+    .scale-opt.selected {
+      background: #C9A84C;
+      color: #0a0f1c;
+      border-color: #C9A84C;
+      font-weight: 700;
+    }
+    .progress-bar {
+      background: #2a3650;
+      border-radius: 40px;
+      height: 8px;
+      width: 100%;
+      margin: 1rem 0;
+    }
+    .progress-fill {
+      background: #C9A84C;
+      width: 0%;
+      height: 8px;
+      border-radius: 40px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      background: #111c2a;
+      border: 1px solid #2c3b55;
+      border-radius: 2rem;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 1rem;
+    }
+    .report-card {
+      background: #0e1624;
+      border-radius: 1.8rem;
+      padding: 1.5rem;
+      margin-bottom: 1.2rem;
+      border-left: 5px solid #C9A84C;
+    }
+    @media print {
+      body { background: white; padding: 0; margin: 0; }
+      .quiz-wrapper { background: white; box-shadow: none; padding: 0.5rem; color: black; }
+      .btn, .no-print { display: none; }
+      .gold, h1 { color: #b8860b; }
+      .report-card { background: #f8f9fa; border-left: 4px solid #b8860b; color: black; }
+    }
+    .tab-bar { display: flex; gap: 0.5rem; margin: 1.5rem 0 1rem; flex-wrap: wrap; border-bottom: 1px solid #2f3b5c; padding-bottom: 0.5rem; }
+    .tab-btn { background: none; border: none; color: #b9c7dd; font-weight: 600; padding: 0.4rem 1.2rem; border-radius: 40px; cursor: pointer; }
+    .tab-btn.active { background: #C9A84C; color: #0a0f1c; }
+    .tab-pane { display: none; animation: fade 0.2s; }
+    .tab-pane.active-pane { display: block; }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    footer { font-size: 0.7rem; text-align: center; margin-top: 2rem; opacity: 0.7; }
   </style>
 </head>
 <body>
-<div class="container" id="appRoot"></div>
-<footer>AccessWorld Seminars — Memory Empowerment Assessment</footer>
+<div class="quiz-wrapper" id="app"></div>
 
 <script>
+  // ------------------- DATA -------------------
   const QUESTIONS = [
-    { id: 0, text: "I regularly prepare myself mentally (excitement, childlike curiosity) before learning something new.", category: "Preparation State", dimension: "Learning Readiness" },
-    { id: 1, text: "I use visualisation or 'memory pegs' to install and recall information.", category: "Installation Tools", dimension: "Mnemonics" },
-    { id: 2, text: "I understand how to combine emotion + movement + information to enhance memory (three brains).", category: "Neural Integration", dimension: "Neuroplasticity" },
-    { id: 3, text: "I apply spaced repetition (Anki or similar) to retain key knowledge over time.", category: "Recall Strategy", dimension: "Spaced Repetition" },
-    { id: 4, text: "I actively teach new concepts to others to deepen my own understanding.", category: "Application", dimension: "Mastery Cycle" },
-    { id: 5, text: "I feel confident using the Conversation Stack to connect with new people and remember details.", category: "Social Memory", dimension: "Communication" },
-    { id: 6, text: "I have a morning routine that dominates my limitations and primes my memory.", category: "Empowerment Habits", dimension: "Morning Routine" },
-    { id: 7, text: "I regularly use the Memory Palace technique to store and recall complex information.", category: "Advanced Recall", dimension: "Spatial Memory" },
-    { id: 8, text: "I review and journal to reinforce learnings, avoiding the 'forgetting curve'.", category: "Reinforcement", dimension: "Spaced Learning" },
-    { id: 9, text: "I can easily recall facts by linking them to bizarre, graphical, or emotion-rich images.", category: "Creative Mnemonics", dimension: "Imagination" }
+    { id: 0, text: "I breathe using my belly (diaphragm) with shoulders relaxed, not shallow chest breathing.", category: "Breathwork", pillar: "Oxygen & Energy" },
+    { id: 1, text: "I can hold my breath after exhale for at least 30 seconds comfortably.", category: "Lung Capacity", pillar: "Oxygen & Energy" },
+    { id: 2, text: "I eat fresh fruits/vegetables daily and avoid hybridized wheat (white bread/pasta).", category: "Diet", pillar: "Alkaline Nutrition" },
+    { id: 3, text: "I consume healing foods: coriander/cilantro, celery juice, zucchini/squash weekly.", category: "Food as Medicine", pillar: "Cellular Detox" },
+    { id: 4, text: "My energy is stable throughout the day (no afternoon crash or sugar cravings).", category: "Energy", pillar: "Mitochondrial Health" },
+    { id: 5, text: "I move my body daily to stimulate lymphatic flow (bouncing, walking, rebounder).", category: "Mobility & Lymph", pillar: "Lymphatic System" },
+    { id: 6, text: "I avoid processed sugar & excess dairy to reduce brain fog and metal toxicity.", category: "Mindset & Clarity", pillar: "Neuro Health" },
+    { id: 7, text: "I feel I'm proactively alkalizing my body (reduce acid, increase alkaline foods).", category: "Alkaline Balance", pillar: "Disease Prevention" },
+    { id: 8, text: "I can get up from the floor without using my hands.", category: "Mobility", pillar: "Longevity" },
+    { id: 9, text: "I incorporate posture exercises or stretching at least once each week.", category: "Posture & Flexibility", pillar: "Stress Resilience" },
+    { id: 10, text: "I prioritise my health even when life gets busy or I have a lot on my plate.", category: "Mindset", pillar: "Decide · Commit · Resolve" }
   ];
 
-  const TIERS = [
-    { min: 0,   max: 1.4, label: "Foundation Seeker",    desc: "You're at the beginning of your memory transformation. Every expert was once a beginner." },
-    { min: 1.5, max: 2.4, label: "Curious Explorer",     desc: "You show awareness; with intentional practices you'll unlock rapid growth." },
-    { min: 2.5, max: 3.4, label: "Capable Practitioner", desc: "Solid foundations — applying advanced tools like Memory Palace will elevate you." },
-    { min: 3.5, max: 4.2, label: "Skilled Memory Athlete",desc: "Impressive! You leverage emotion, repetition and state. Refine further for mastery." },
-    { min: 4.3, max: 5.0, label: "Elite Empowered Mind", desc: "Exceptional command of neuroplasticity & learning. You inspire others!" }
-  ];
+  // helper: get tier based on average (0-5)
+  const getTierData = (avg) => {
+    if (avg < 1.8) return { label: "Acidic Overload", color: "#C9A84C", message: "Your terrain is highly acidic. Disease thrives here. Immediate lifestyle shift needed." };
+    if (avg < 2.6) return { label: "Compensation Mode", color: "#C9A84C", message: "You're surviving, not thriving. Cells lack oxygen & alkaline minerals." };
+    if (avg < 3.5) return { label: "Transitioning Vitality", color: "#C9A84C", message: "Good awareness! Your body is ready to heal if you commit to breath & whole foods." };
+    if (avg < 4.3) return { label: "Alkaline Momentum", color: "#C9A84C", message: "You're building a fortress. Keep expanding lung capacity & green juices." };
+    return { label: "Cellular Mastery", color: "#C9A84C", message: "Exceptional! You embody the Warburg principle — alkaline & oxygen-rich environment." };
+  };
 
-  const likertLabels = ["Not at all", "Slightly", "Somewhat", "Mostly", "Very much", "Completely"];
-
-  let userAnswers = new Array(QUESTIONS.length).fill(null);
-  let currentScreen = 'intro';
-  let currentQuestionIdx = 0;
-  let avgScore = 0, currentTier = null;
-  let userContact = { name: '', phone: '', email: '' };
-
-  const ZAPIER_WEBHOOK = "https://hooks.zapier.com/hooks/catch/3779260/unt9eik/";
-
-  async function sendToZapier(name, phone, email, score, tier, answers) {
-    let answersText = "";
-    QUESTIONS.forEach(q => { answersText += `${q.category}: ${answers[q.id] ?? 0}/5\n`; });
-    const fd = new FormData();
-    fd.append('name', name); fd.append('phone', phone); fd.append('email', email);
-    fd.append('score', score.toFixed(1)); fd.append('tier', tier);
-    fd.append('answers_text', answersText); fd.append('timestamp', new Date().toISOString());
-    await fetch(ZAPIER_WEBHOOK, { method: "POST", body: fd, mode: "no-cors" });
+  // compute average per category (string -> float)
+  function computeCategoryAverages(answers) {
+    const sums = {}, counts = {};
+    QUESTIONS.forEach(q => {
+      const cat = q.category;
+      const val = answers[q.id];
+      // if answer is null treat as 0 (should not happen when reaching report)
+      const numeric = (typeof val === 'number' && !isNaN(val)) ? val : 0;
+      sums[cat] = (sums[cat] || 0) + numeric;
+      counts[cat] = (counts[cat] || 0) + 1;
+    });
+    const avgs = {};
+    for (let c in sums) avgs[c] = sums[c] / counts[c];
+    return avgs;
   }
 
-  function computeStats() {
-    let sum = userAnswers.reduce((a, b) => a + (b ?? 0), 0);
-    let avg = sum / QUESTIONS.length;
-    let tier = TIERS.find(t => avg >= t.min && avg <= t.max) || TIERS[0];
-    return { avg, tier };
-  }
+  // ---------- STATE ----------
+  let screen = "intro";     // intro, quiz, contact, report
+  let currentQ = 0;
+  let answers = new Array(QUESTIONS.length).fill(null);
+  let contact = { name: "", email: "", phone: "" };
+  let finalScore = 0;
+  let finalTier = null;
+  let categoryAvgs = {};
 
-  const root = document.getElementById('appRoot');
+  const root = document.getElementById("app");
 
   function render() {
-    if (currentScreen === 'intro')   renderIntro();
-    else if (currentScreen === 'quiz')    renderQuiz();
-    else if (currentScreen === 'contact') renderContact();
-    else if (currentScreen === 'results') renderResults();
+    if (screen === "intro") renderIntro();
+    else if (screen === "quiz") renderQuiz();
+    else if (screen === "contact") renderContact();
+    else if (screen === "report") renderReport();
   }
 
+  // ------------------- INTRO -------------------
   function renderIntro() {
     root.innerHTML = `
       <div style="text-align:center;">
-        <h1>🧠 MEMORY MASTERY<br>EMPOWERMENT QUIZ</h1>
-        <p style="font-size:1.1rem; margin:1rem 0;">Based on the neuroscience of <strong class="gold-accent">AccessWorld Seminars</strong> — discover how you harness excitement, neural re-patterning, and the three brains to skyrocket your memory.</p>
-        <div style="background:rgba(0,0,0,0.3); border-radius:1.5rem; padding:1rem; margin:1.5rem 0;">
-          <p>✨ Assess your skills in: <strong>Preparation state, spaced repetition, memory palace, conversation stack & morning rituals.</strong></p>
-          <p style="margin-top:0.5rem;">🎯 10 questions · 0–5 scale · instant personalised coaching</p>
+        <h1>⚡ Cellular Vitality Audit</h1>
+        <p style="font-size:1rem; margin:0.5rem 0;">Based on AccessWorld Seminars · Breathwork · Alkaline Principle</p>
+        <div style="background: rgba(0,0,0,0.4); border-radius: 2rem; padding: 1.5rem; margin: 1rem 0;">
+          <p style="margin-bottom: 1rem;"><span class="gold">"No disease, including cancer, can live in an alkaline environment."</span> — Dr. Otto Warburg</p>
+          <p>This 11-question quiz reveals your <strong>Oxygen + Alkaline + Lymph + Mindset</strong> score. Get a personalised PDF with healing foods, breath protocols, and lifestyle roadmap.</p>
+          <p style="margin-top: 1rem;">🔥 3 pillars: Mindset · Diet · Exercise<br>🔥 4 principles: Energy · Longevity · Mobility · Alkaline Diet<br>🔥 Foundation: Decide · Commit · Resolve</p>
         </div>
-        <button class="btn-primary" id="startBtn">🌟 START YOUR JOURNEY</button>
-      </div>`;
-    document.getElementById('startBtn').addEventListener('click', () => {
-      currentScreen = 'quiz';
-      currentQuestionIdx = 0;
-      render();
-    });
+        <button class="btn btn-primary" id="startBtn">🌿 Start My Health Audit →</button>
+      </div>
+    `;
+    const startBtn = document.getElementById("startBtn");
+    if (startBtn) {
+      startBtn.addEventListener("click", () => {
+        screen = "quiz";
+        currentQ = 0;
+        answers = new Array(QUESTIONS.length).fill(null);
+        render();
+      });
+    }
   }
 
+  // ------------------- QUIZ -------------------
   function renderQuiz() {
-    const q = QUESTIONS[currentQuestionIdx];
-    const currentVal = userAnswers[currentQuestionIdx];
-    const answeredCount = userAnswers.filter(a => a !== null).length;
-    const progress = (answeredCount / QUESTIONS.length) * 100;
-
-    let optionsHtml = '';
+    const q = QUESTIONS[currentQ];
+    const selected = answers[q.id];
+    const progress = ((currentQ) / QUESTIONS.length) * 100;
+    const labels = ["0 - Never", "1 - Rarely", "2 - Sometimes", "3 - Often", "4 - Mostly", "5 - Always"];
+    
+    let scaleHtml = "";
     for (let i = 0; i <= 5; i++) {
-      optionsHtml += `<div class="likert-btn ${currentVal === i ? 'selected' : ''}" data-score="${i}">
-        <div style="font-size:1.1rem; font-weight:800;">${i}</div>
-        <div style="font-size:0.72rem; margin-top:2px;">${likertLabels[i]}</div>
-      </div>`;
+      const isSelected = (selected === i);
+      scaleHtml += `<div class="scale-opt ${isSelected ? 'selected' : ''}" data-val="${i}"><div style="font-weight:800;">${i}</div><div style="font-size:0.7rem;">${labels[i]}</div></div>`;
     }
-
+    
     root.innerHTML = `
-      <div class="flex-between" style="margin-bottom:0.5rem;">
-        <h2>🧠 Question ${currentQuestionIdx+1} of ${QUESTIONS.length}</h2>
-        <span style="font-size:0.85rem;">${answeredCount}/${QUESTIONS.length} answered</span>
+      <div>
+        <div class="progress-bar"><div class="progress-fill" style="width: ${progress}%;"></div></div>
+        <p>Question ${currentQ+1} of ${QUESTIONS.length}</p>
+        <div class="report-card" style="margin-top:0.5rem;">
+          <h3>${q.text}</h3>
+          <div class="scale-group" id="scaleGroup">${scaleHtml}</div>
+        </div>
+        <div style="display:flex; justify-content:space-between;">
+          <button class="btn" id="prevBtn" ${currentQ === 0 ? 'disabled style="opacity:0.4;"' : ""}>← Back</button>
+          <button class="btn btn-primary" id="nextBtn">${currentQ === QUESTIONS.length-1 ? "Complete →" : "Next"}</button>
+        </div>
       </div>
-      <div class="progress-bar-container"><div class="progress-fill" style="width:${progress}%"></div></div>
-      <div class="question-card">
-        <p style="font-size:1.3rem; font-weight:500; margin-bottom:1rem; line-height:1.4;">${q.text}</p>
-        <p style="font-size:0.8rem; color:#a0b3cc; margin-bottom:0.5rem;">${q.category} · ${q.dimension}</p>
-        <div class="options-grid">${optionsHtml}</div>
-      </div>
-      <div class="flex-between" style="margin-top:1rem; gap:0.5rem;">
-        <button id="prevBtn" ${currentQuestionIdx === 0 ? 'disabled style="opacity:0.4"' : ''}>← Previous</button>
-        <button class="btn-primary" id="nextBtn">${currentQuestionIdx === QUESTIONS.length - 1 ? 'Finish & Continue' : 'Next →'}</button>
-      </div>`;
-
-    document.querySelectorAll('.likert-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        userAnswers[currentQuestionIdx] = parseInt(btn.dataset.score);
-        renderQuiz();
+    `;
+    
+    // attach scale selection
+    const scaleOptions = document.querySelectorAll(".scale-opt");
+    scaleOptions.forEach(opt => {
+      opt.addEventListener("click", (e) => {
+        const val = parseInt(opt.dataset.val, 10);
+        answers[q.id] = val;
+        renderQuiz();  // re-render to update selected state
       });
     });
-
-    document.getElementById('prevBtn')?.addEventListener('click', () => {
-      if (currentQuestionIdx > 0) { currentQuestionIdx--; renderQuiz(); }
-    });
-
-    document.getElementById('nextBtn').addEventListener('click', () => {
-      if (userAnswers[currentQuestionIdx] === null) {
-        alert("Please select an answer (0–5) before proceeding.");
-        return;
-      }
-      if (currentQuestionIdx < QUESTIONS.length - 1) {
-        currentQuestionIdx++;
-        renderQuiz();
-      } else {
-        currentScreen = 'contact';
-        render();
-      }
-    });
+    
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        if (currentQ > 0) {
+          currentQ--;
+          renderQuiz();
+        }
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        // check if current question answered
+        if (answers[q.id] === null || answers[q.id] === undefined) {
+          alert("Please select a rating (0-5). This helps your personalised report.");
+          return;
+        }
+        if (currentQ === QUESTIONS.length - 1) {
+          screen = "contact";
+          render();
+        } else {
+          currentQ++;
+          renderQuiz();
+        }
+      });
+    }
   }
 
+  // ------------------- CONTACT -------------------
   function renderContact() {
     root.innerHTML = `
       <div style="text-align:center;">
-        <h2>✨ Almost there ✨</h2>
-        <p style="margin-bottom:1.5rem;">Enter your details to receive your personalised 3-page Memory Blueprint & coaching insights.</p>
+        <h2>✨ Your Health Report Awaits ✨</h2>
+        <p>Enter your details to unlock the full <strong>Cellular Vitality PDF</strong> with personalised protocols.</p>
+        <div style="max-width:450px; margin:1rem auto;">
+          <input type="text" id="contactName" placeholder="Full name" value="${escapeHtml(contact.name)}">
+          <input type="email" id="contactEmail" placeholder="Email address" value="${escapeHtml(contact.email)}">
+          <input type="tel" id="contactPhone" placeholder="Phone (optional)" value="${escapeHtml(contact.phone)}">
+          <div style="display:flex; gap:1rem; justify-content:center;">
+            <button class="btn" id="backQuizBtn">← Back</button>
+            <button class="btn btn-primary" id="genReportBtn">Generate My Report →</button>
+          </div>
+        </div>
       </div>
-      <input type="text"  id="cName"  placeholder="Full name *"       value="">
-      <input type="tel"   id="cPhone" placeholder="Phone number *"     value="" style="margin-top:0.8rem;">
-      <input type="email" id="cEmail" placeholder="Email address *"    value="" style="margin-top:0.8rem;">
-      <div id="contactErr" class="error-msg" style="min-height:1.2rem; margin-top:0.5rem;"></div>
-      <div style="display:flex; gap:1rem; margin-top:1rem; flex-wrap:wrap;">
-        <button id="backBtn" style="flex:1;">← Back to Quiz</button>
-        <button class="btn-primary" id="submitBtn" style="flex:2;">💾 UNLOCK MY RESULTS</button>
-      </div>`;
-
-    document.getElementById('backBtn').addEventListener('click', () => { currentScreen = 'quiz'; render(); });
-
-    document.getElementById('submitBtn').addEventListener('click', async () => {
-      const name  = document.getElementById('cName').value.trim();
-      const phone = document.getElementById('cPhone').value.trim();
-      const email = document.getElementById('cEmail').value.trim();
-      const errEl = document.getElementById('contactErr');
-      if (!name || !phone || !email) { errEl.innerText = "All fields are required."; return; }
-      if (!email.includes('@')) { errEl.innerText = "Please enter a valid email address."; return; }
-      userContact = { name, phone, email };
-      const { avg, tier } = computeStats();
-      avgScore = avg; currentTier = tier;
-      try { await sendToZapier(name, phone, email, avg, tier.label, userAnswers); }
-      catch(e) { console.warn("Zapier non-critical", e); }
-      currentScreen = 'results';
-      render();
+    `;
+    const backBtn = document.getElementById("backQuizBtn");
+    const genBtn = document.getElementById("genReportBtn");
+    if (backBtn) {
+      backBtn.addEventListener("click", () => {
+        screen = "quiz";
+        render();
+      });
+    }
+    if (genBtn) {
+      genBtn.addEventListener("click", () => {
+        const nameInput = document.getElementById("contactName");
+        const emailInput = document.getElementById("contactEmail");
+        const phoneInput = document.getElementById("contactPhone");
+        const name = nameInput ? nameInput.value.trim() : "";
+        const email = emailInput ? emailInput.value.trim() : "";
+        const phone = phoneInput ? phoneInput.value.trim() : "";
+        if (!name || !email) {
+          alert("Please provide name and email to receive your health blueprint.");
+          return;
+        }
+        contact = { name, email, phone };
+        
+        // compute final results
+        let sum = 0;
+        let allValid = true;
+        for (let i = 0; i < QUESTIONS.length; i++) {
+          const val = answers[i];
+          if (val === null || val === undefined) {
+            allValid = false;
+            break;
+          }
+          sum += val;
+        }
+        if (!allValid) {
+          alert("Something went wrong: some answers missing. Please retake the quiz.");
+          screen = "intro";
+          render();
+          return;
+        }
+        const avg = sum / QUESTIONS.length;
+        finalScore = avg;
+        finalTier = getTierData(avg);
+        categoryAvgs = computeCategoryAverages(answers);
+        screen = "report";
+        render();
+      });
+    }
+  }
+  
+  // simple escape to avoid injection
+  function escapeHtml(str) {
+    if (!str) return "";
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
     });
   }
 
-  function renderResults() {
-    const { avg, tier } = computeStats();
-    const qScores = QUESTIONS.map((q, idx) => ({ ...q, score: userAnswers[idx] ?? 0 }));
-    const sorted  = [...qScores].sort((a,b) => a.score - b.score);
-    const lowest3  = sorted.slice(0, 3);
+  // ------------------- REPORT with detailed dynamic tabs -------------------
+  function renderReport() {
+    const avgScore = finalScore;
+    const tier = finalTier;
+    // compute sorted categories for low/high
+    const catEntries = Object.entries(categoryAvgs);
+    const sorted = [...catEntries].sort((a, b) => a[1] - b[1]);
+    const lowest3 = sorted.slice(0, 3);
     const highest2 = sorted.slice(-2).reverse();
-
-    // Page 1 — overview + all question bars
-    let allQHtml = '';
-    qScores.forEach(q => {
-      const pct = (q.score / 5) * 100;
-      allQHtml += `<div class="question-result-item">
-        <div class="flex-between"><strong style="font-size:0.9rem;">${q.text}</strong><span>${q.score}/5</span></div>
-        <div class="score-bar-bg"><div class="score-bar-fill" style="width:${pct}%;"></div></div>
-        <div style="font-size:0.72rem; margin-top:4px; color:#a0b3cc;">${q.category}</div>
-      </div>`;
-    });
-
-    // Page 2 — lowest 3
-    let lowHtml = '<h3 style="margin-bottom:0.5rem;">🌱 Top 3 Areas for Breakthrough Growth</h3><p class="gold-accent" style="margin-bottom:0.5rem;">Lowest scores = biggest leverage points.</p>';
-    lowest3.forEach(item => {
-      lowHtml += `<div class="insight-card">
-        <h3>${item.category} · <span class="gold-accent">${item.score}/5</span></h3>
-        <p style="margin-top:0.5rem;">${getLowInsight(item.dimension)}</p>
-        <p style="margin-top:0.6rem;"><em>✨ Daily practice:</em> ${getDailyLow(item.dimension)}</p>
-      </div>`;
-    });
-    lowHtml += `<div style="margin-top:1rem; background:#0f1c2c; border-radius:1rem; padding:1rem;">
-      <p><strong>🎯 Process recommendation:</strong> Use spaced repetition with flashcards for each low dimension. Commit 10 min/day with emotional activation (excitement state) to rewire.</p>
-    </div>`;
-
-    // Page 3 — highest 2
-    let highHtml = '<h3 style="margin-bottom:0.5rem;">✨ Your Signature Memory Powers</h3>';
-    highest2.forEach(item => {
-      highHtml += `<div class="insight-card" style="border-left-color:#e6c87a;">
-        <h3>${item.category} · <span class="gold-accent">${item.score}/5</span></h3>
-        <p style="margin-top:0.5rem;">${getHighInsight(item.dimension)}</p>
-        <p style="margin-top:0.6rem;"><strong>⚡ Advanced practice:</strong> Combine with memory stacking — create visual journeys for professional talks or speeches.</p>
-      </div>`;
-    });
-    highHtml += `<div style="margin-top:1rem; background:#1e2a3a; border-radius:1rem; padding:1rem;">
-      <p><strong>Daily practice to sustain:</strong> Teach one strength technique to a friend weekly. As Joshua Roy says: "Application is the real knowledge."</p>
-    </div>`;
-
-    root.innerHTML = `
-      <div style="text-align:center; margin-bottom:1rem;">
-        <div style="font-size:2.8rem; font-weight:bold; color:#C9A84C;">${avg.toFixed(1)}<span style="font-size:1.1rem; color:#eef2ff;"> / 5.0</span></div>
-        <div style="background:#0e1a2a; border-radius:60px; padding:0.2rem; width:75%; margin:0.5rem auto;">
-          <div style="background:#C9A84C; width:${(avg/5)*100}%; height:12px; border-radius:60px;"></div>
+    
+    // dynamic suggestions based on actual answers
+    const healingFoodSuggestion = (answers[3] < 2)
+      ? "🥬 Start eating cilantro/coriander on salads & celery juice in the morning. These bind to heavy metals and support the liver."
+      : "🌿 Keep using healing herbs — add zucchini for prefrontal cortex fuel. Consider increasing cilantro intake if metal toxicity symptoms persist.";
+    
+    const breathProtocol = (answers[0] < 3)
+      ? "Practice belly breathing (5 min morning): inhale 4s, exhale 6s. Expand diaphragm. Also practice 'exhale hold' - after normal exhale, hold for 5-10 sec, build up gradually."
+      : "Maintain with 30 power breaths + 60sec hold (Wim Hof style). Try cold exposure after breathwork to amplify alkaline response.";
+    
+    // generate detailed answers list
+    let detailsHtml = "";
+    QUESTIONS.forEach((q, idx) => {
+      const val = (answers[idx] !== null && answers[idx] !== undefined) ? answers[idx] : 0;
+      const percent = (val / 5) * 100;
+      const shortText = q.text.length > 70 ? q.text.substring(0, 67) + '...' : q.text;
+      detailsHtml += `<div style="margin-bottom:0.8rem;">
+        <div style="display:flex; justify-content:space-between;">
+          <span style="font-size:0.85rem;">${escapeHtml(shortText)}</span>
+          <span class="gold">${val}/5</span>
         </div>
-        <h2 class="gold-accent" style="font-size:1.5rem;">${tier.label}</h2>
-        <p style="margin-top:0.3rem;">${tier.desc}</p>
-      </div>
-      <div class="result-tabs">
-        <button class="tab-btn active" data-tab="p1">📊 Overview & Scores</button>
-        <button class="tab-btn" data-tab="p2">📘 Growth Zones</button>
-        <button class="tab-btn" data-tab="p3">🌟 Peak Strengths</button>
-      </div>
-      <div id="p1" class="result-page active-page">${allQHtml}</div>
-      <div id="p2" class="result-page">${lowHtml}</div>
-      <div id="p3" class="result-page">${highHtml}</div>
-      <div class="flex-between" style="margin-top:2rem; gap:1rem; flex-wrap:wrap;">
-        <button id="printBtn">🖨️ Print / Save PDF</button>
-        <button id="retakeBtn" class="btn-primary">⟳ Retake Quiz</button>
+        <div class="progress-bar" style="height:6px;"><div class="progress-fill" style="width:${percent}%; height:6px;"></div></div>
       </div>`;
-
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        document.querySelectorAll('.result-page').forEach(p => p.classList.remove('active-page'));
-        document.getElementById(btn.dataset.tab).classList.add('active-page');
+    });
+    
+    // low areas with customized advice per category (better than generic)
+    let lowHtml = "";
+    if (lowest3.length) {
+      for (let [cat, scoreAvg] of lowest3) {
+        let advice = "";
+        if (cat.includes("Breathwork") || cat.includes("Lung Capacity")) {
+          advice = "🔥 Your lung capacity is the #1 energy lever. Start 2-min daily breath holds after exhale — like the karate pre-oxygenation technique. You will feel tingling within 3 days. The body's primary energy (ATP) requires oxygen.";
+        } else if (cat.includes("Diet") || cat.includes("Alkaline") || cat.includes("Food as Medicine")) {
+          advice = "🥑 Your terrain is acidic. Remember Dr. Warburg: cancer can't thrive in alkaline. Add green juice, lemon water, and reduce hybrid wheat (bread/pasta). Coriander and celery juice are powerful.";
+        } else if (cat.includes("Energy")) {
+          advice = "⚡ You're stuck in the 2-unit energy pathway (glycolysis). Oxygen is missing! Implement belly breathing before meals to unlock 32 units of cellular energy. Hydration and magnesium also help.";
+        } else if (cat.includes("Mobility") || cat.includes("Lymph")) {
+          advice = "🦵 Lymphatic system relies on calf pump and movement. Start rebounding or heel bouncing while brushing teeth. Your body will flush toxins stored for years. Even 5 minutes of bouncing reduces stagnation.";
+        } else if (cat.includes("Posture") || cat.includes("Flexibility")) {
+          advice = "🧍 Posture and flexibility are the scaffolding of your body. Tight hips, rounded shoulders, and a stiff spine compress organs and restrict breathing. Even 10 minutes of gentle stretching — neck rolls, chest openers, hip flexor stretches — once a week is a powerful start.";
+        } else if (cat.includes("Mindset") || cat.includes("Clarity")) {
+          advice = "🧠 Mindset is the master switch. Every habit, every healing food, every breath protocol only works if you've decided — truly decided — that your health comes first. Not when it's convenient. Not when life slows down. Now. Decide. Commit. Resolve. Write it down: 'I prioritise my health because I am worth it.'";
+        } else {
+          advice = "🌱 Small daily habits: 10min morning sunlight, one raw veggie per meal, and gratitude journaling reduce inflammation. Start with one habit and anchor it to an existing routine.";
+        }
+        lowHtml += `<div class="report-card"><h3>⚠️ ${cat} · Score: ${scoreAvg.toFixed(1)}/5</h3><p>${advice}</p><p style="margin-top:0.6rem;"><strong>Daily practice:</strong> ${cat.includes("Breathwork") ? "30 power breaths + 30s hold, twice daily" : cat.includes("Energy") ? "Hydrate + 3 min belly breathing at 2pm" : cat.includes("Posture") ? "10 min stretching routine: chest opener, hip flexor, neck rolls — YouTube 'morning posture stretch' to get started." : cat.includes("Mindset") ? "Each morning, say aloud: 'I decide, I commit, I resolve.' Then take one small health action — a glass of water, a breath, a stretch." : "Add one healing food: coriander, papaya, or zucchini. Also, set a phone reminder to move every 90 minutes."}</p></div>`;
+      }
+    } else {
+      lowHtml = '<div class="report-card">✨ Impressive balance! Focus on breath retention and seasonal detox to reach elite vitality.</div>';
+    }
+    
+    let highHtml = "";
+    if (highest2.length) {
+      for (let [cat, scoreAvg] of highest2) {
+        highHtml += `<div class="report-card"><h3>🌟 ${cat} · Score: ${scoreAvg.toFixed(1)}/5</h3><p>You've built resilience here. Use this strength to inspire other areas: e.g., if your breathwork is high, add cold exposure. If diet is high, mentor a friend.</p><p style="margin-top:0.6rem;"><strong>Next level:</strong> Combine with a low-scoring pillar for exponential healing.</p></div>`;
+      }
+    } else {
+      highHtml = '<div class="report-card">✨ Build on your awareness — start with breathwork to unlock energy.</div>';
+    }
+    
+    root.innerHTML = `
+      <div>
+        <div style="text-align:center; margin-bottom:0.5rem;">
+          <h2 style="font-size:1.1rem; color:#b9c7dd;">Cellular Vitality Report · ${escapeHtml(contact.name)}</h2>
+        </div>
+        <div class="tab-bar" id="tabBar">
+          <button class="tab-btn active" data-tab="tab1">📊 Score & Oxygen</button>
+          <button class="tab-btn" data-tab="tab2">🌱 Low 3 Areas</button>
+          <button class="tab-btn" data-tab="tab3">🏆 High Assets & Foods</button>
+        </div>
+        <div id="tab1" class="tab-pane active-pane">
+          <div style="text-align:center;">
+            <div style="font-size:3rem; font-weight:bold; color:#C9A84C;">${avgScore.toFixed(1)}<span style="font-size:1.2rem; color:#eef2ff;">/5</span></div>
+            <div class="progress-bar" style="width:70%; margin:0.5rem auto;"><div class="progress-fill" style="width: ${(avgScore / 5) * 100}%;"></div></div>
+            <h2 style="margin:0.5rem 0;">${tier.label}</h2>
+            <p><em>${tier.message}</em></p>
+            <div class="report-card" style="text-align:left; margin-top:1.2rem;">
+              <h3>🧬 Your Cellular Blueprint</h3>
+              <p style="margin-top:0.5rem;">🔹 <strong>Oxygen status:</strong> ${answers[0] > 3 ? "Good diaphragmatic breathing detected." : "Shallow chest breathing = fatigue. Your cells are missing the 32-unit energy boost."}</p>
+              <p style="margin-top:0.4rem;">🔹 <strong>Alkaline terrain:</strong> ${answers[7] > 3 ? "You're creating a cancer-resistant environment." : "Acidic overload — processed foods & lack of greens. Immediate shift needed."}</p>
+              <p style="margin-top:0.4rem;">🔹 <strong>Lymphatic flow:</strong> ${answers[5] > 3 ? "Moving body = clearing toxins." : "Sedentary lymph = toxin buildup. Start mini-trampoline or heel drops."}</p>
+            </div>
+          </div>
+          <hr style="margin:1rem 0; border-color:#2a3650;">
+          <h3>📋 Detailed Answers</h3>
+          <div style="margin-top:0.8rem;">${detailsHtml}</div>
+        </div>
+        <div id="tab2" class="tab-pane">
+          <h3 style="margin-bottom:1rem;">Priority healing zones (lowest scores)</h3>
+          ${lowHtml}
+          <div class="report-card" style="margin-top:1rem;">
+            <h3>🥗 Specific Healing Foods (From AccessWorld Seminars)</h3>
+            <p style="margin-top:0.5rem; line-height:1.8;">
+              ✔ <strong>Coriander/Cilantro:</strong> Chelates heavy metals from brain — reduces short-circuiting.<br>
+              ✔ <strong>Celery juice:</strong> Restores gut & lymphatic flow.<br>
+              ✔ <strong>Zucchini/Squash:</strong> Feeds prefrontal cortex, lifts brain fog.<br>
+              ✔ <strong>Papaya:</strong> Peristaltic food pusher — prevents toxic fecal compaction.<br>
+              ✔ <strong>Limit hybrid wheat:</strong> Spelt & ancient grains only.
+            </p>
+            <p style="margin-top:0.8rem;"><strong>${healingFoodSuggestion}</strong></p>
+          </div>
+        </div>
+        <div id="tab3" class="tab-pane">
+          <h3 style="margin-bottom:1rem;">Your strengths to leverage</h3>
+          ${highHtml}
+          <div class="report-card">
+            <h3>🧘 Breathwork Protocol (Wim Hof & Karate Pre-oxygenation)</h3>
+            <p style="margin-top:0.5rem;">${breathProtocol}</p>
+            <p style="margin-top:0.6rem;"><strong>Morning routine:</strong> 30 full breaths (belly out), exhale hold 45sec → inhale hold 15sec. Do 3 rounds. This alkalizes cells instantly.</p>
+            <p style="margin-top:0.6rem;">🔥 <em>"I pre-oxygenated on the way to karate — my energy doubled." — Joshua Roy</em></p>
+          </div>
+          <div class="report-card">
+            <h3>📅 7-Day Alkaline Jumpstart (Score: ${avgScore.toFixed(1)}/5)</h3>
+            <p style="margin-top:0.5rem; line-height:1.8;">
+              🌞 <strong>Day 1–2:</strong> Replace breakfast with fruit + 20min belly breathing.<br>
+              🚰 <strong>Day 3–4:</strong> Celery juice upon waking + rebounding 5min.<br>
+              🥦 <strong>Day 5–7:</strong> No hybrid wheat, add cilantro to dinner, hold breath 1min after exhale.<br>
+              💡 Avoid sugar & dairy: microscopic metals short-circuit memory.
+            </p>
+          </div>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-top:2rem; gap:1rem; flex-wrap:wrap;">
+          <button class="btn" id="printPDFBtn">🖨️ Save as PDF / Print Report</button>
+          <button class="btn btn-primary" id="retakeBtn">⟳ Retake Health Audit</button>
+        </div>
+        <footer>AccessWorld Seminars · Based on Dr. Warburg Alkaline Principle & Cellular Energy model. Healing is possible.</footer>
+      </div>
+    `;
+    
+    // TAB logic
+    const tabBtns = document.querySelectorAll(".tab-btn");
+    const paneTab1 = document.getElementById("tab1");
+    const paneTab2 = document.getElementById("tab2");
+    const paneTab3 = document.getElementById("tab3");
+    
+    const activateTab = (tabId) => {
+      if (paneTab1) paneTab1.classList.remove("active-pane");
+      if (paneTab2) paneTab2.classList.remove("active-pane");
+      if (paneTab3) paneTab3.classList.remove("active-pane");
+      if (tabId === "tab1" && paneTab1) paneTab1.classList.add("active-pane");
+      if (tabId === "tab2" && paneTab2) paneTab2.classList.add("active-pane");
+      if (tabId === "tab3" && paneTab3) paneTab3.classList.add("active-pane");
+      tabBtns.forEach(btn => btn.classList.remove("active"));
+      const activeBtn = Array.from(tabBtns).find(btn => btn.dataset.tab === tabId);
+      if (activeBtn) activeBtn.classList.add("active");
+    };
+    
+    tabBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const tabId = btn.dataset.tab;
+        if (tabId) activateTab(tabId);
       });
     });
-
-    document.getElementById('printBtn').addEventListener('click', () => window.print());
-    document.getElementById('retakeBtn').addEventListener('click', () => {
-      userAnswers = new Array(QUESTIONS.length).fill(null);
-      currentScreen = 'intro';
-      render();
-    });
+    
+    const printBtn = document.getElementById("printPDFBtn");
+    if (printBtn) printBtn.addEventListener("click", () => window.print());
+    
+    const retakeBtn = document.getElementById("retakeBtn");
+    if (retakeBtn) {
+      retakeBtn.addEventListener("click", () => {
+        screen = "intro";
+        answers = new Array(QUESTIONS.length).fill(null);
+        contact = { name: "", email: "", phone: "" };
+        finalScore = 0;
+        finalTier = null;
+        categoryAvgs = {};
+        render();
+      });
+    }
   }
-
-  function getLowInsight(dim) {
-    const map = {
-      "Learning Readiness":  "You rarely activate an early learning state. Before studying, generate childlike wonder — move your body, breathe deeply, and anchor a peak emotion to prime neuroplasticity.",
-      "Mnemonics":           "Visual pegs and graphical stories are underused. Practice linking facts to wild images (e.g., heart + 1000s sprinkles). Install one memory peg daily.",
-      "Neuroplasticity":     "You miss the power of combining emotion + movement. Dance, stretch, and laugh while reviewing — this activates all three brains for deeper encoding.",
-      "Spaced Repetition":   "Cramming leads to rapid forgetting. Use Anki or spaced notebooks: review after 1 day, 3 days, 1 week. Tiny consistent reviews = massive recall.",
-      "Mastery Cycle":       "Teaching locks in knowledge. Share one new insight each week with a friend or journal as if explaining. Become a mentor in your community.",
-      "Communication":       "Conversation Stack eases social fear. Practice asking about name meaning, home, family, work, travel — active listening rewires social confidence.",
-      "Morning Routine":     "Morning routine sets the tone. Adopt a 10-min ritual: movement, gratitude, mental rehearsal. Joshua Roy's 2-hour routine skyrocketed transformation.",
-      "Spatial Memory":      "Memory Palace is your superpower. Pick one room, place 5 objects, associate with grocery items. Repeat daily; extend to 10 loci.",
-      "Spaced Learning":     "Journaling and recall beats passive reading. Use the 'testing effect' — after each lesson, write 3 main points from memory without looking.",
-      "Imagination":         "Bizarre imagery sticks. Link abstract facts to cartoonish, multi-sensory scenes instead of rote repetition. Weird = memorable."
-    };
-    return map[dim] || "Commit to daily micro-practice — repetition is the mother of skill.";
-  }
-
-  function getDailyLow(dim) {
-    const map = {
-      "Learning Readiness":  "Before any learning session, do 10 jumping jacks and say 'I am excited to learn!' aloud.",
-      "Mnemonics":           "Each morning, link one new fact to a bizarre visual story. Build your peg library slowly.",
-      "Neuroplasticity":     "Review last week's notes while stretching or walking — movement and memory reinforce each other.",
-      "Spaced Repetition":   "Create 3 Anki flashcards each evening on what you learned that day.",
-      "Mastery Cycle":       "Explain one concept you learned this week to someone — even a pet counts!",
-      "Communication":       "In each new conversation, focus on remembering one unique detail about the person.",
-      "Morning Routine":     "Add one memory technique to your morning: visualise your day's goals as a vivid story.",
-      "Spatial Memory":      "Place 5 imaginary objects along your hallway and recall them in reverse order.",
-      "Spaced Learning":     "Before bed, write 3 things you want to remember tomorrow — no notes allowed.",
-      "Imagination":         "Turn one boring fact into a comedy sketch in your mind. Make it ridiculous."
-    };
-    return map[dim] || "Set a 5-min daily reminder to practise one new memory trick.";
-  }
-
-  function getHighInsight(dim) {
-    const map = {
-      "Learning Readiness":  "Excellent! Now deepen by adding emotional anchors to every study session — associate powerful meaning to facts.",
-      "Mnemonics":           "Your peg system is strong. Expand by creating story chains that link 20+ items in sequence.",
-      "Neuroplasticity":     "You activate all three brains. Push further by adding music and rhythm during review sessions.",
-      "Spaced Repetition":   "Keep expanding your intervals. Share your Anki decks or spaced schedule with peers to deepen mastery.",
-      "Mastery Cycle":       "You're mastering through teaching — consider creating a small workshop or blog about memory hacks.",
-      "Communication":       "Your social memory is sharp. Challenge yourself to remember 5 details per new person you meet.",
-      "Morning Routine":     "Your ritual is firing well. Add cold exposure or breathwork to turbocharge neural priming.",
-      "Spatial Memory":      "Expand to larger palaces — your whole street, childhood home. Challenge yourself with 50+ items.",
-      "Spaced Learning":     "Your review habits are elite. Try interleaving — mix different subjects in single sessions.",
-      "Imagination":         "Your creative encoding is powerful. Use it for speeches, presentations, and teaching others."
-    };
-    return map[dim] || "Continue pushing boundaries — explore advanced neural re-patterning with Joshua Roy's methodologies.";
-  }
-
+  
+  // initial render
   render();
 </script>
-
 </body>
 </html>
+```
