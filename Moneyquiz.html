@@ -1,5 +1,6 @@
+Here is the corrected HTML document for the Money Manifestor Compass quiz, with all functionality restored and working properly.
+```html
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,306 +14,272 @@
       box-sizing: border-box;
     }
 
-```
-body {
-  background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
-  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  min-height: 100vh;
-  padding: 1.5rem;
-  color: #f0f3fa;
-}
+    body {
+      background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      padding: 1.5rem;
+      color: #f0f3fa;
+    }
 
-.container {
-  max-width: 720px;
-  margin: 0 auto;
-  background: rgba(10, 20, 35, 0.6);
-  backdrop-filter: blur(2px);
-  border-radius: 2rem;
-  padding: 1.8rem;
-  box-shadow: 0 25px 45px -12px rgba(0,0,0,0.5);
-  border: 1px solid rgba(201, 168, 76, 0.2);
-}
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      background: rgba(10, 20, 35, 0.6);
+      backdrop-filter: blur(2px);
+      border-radius: 2rem;
+      padding: 1.8rem;
+      box-shadow: 0 25px 45px -12px rgba(0,0,0,0.5);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+    }
 
-h1, h2, h3, .results-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600;
-  letter-spacing: -0.3px;
-}
+    h1, h2, h3, .results-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+    }
 
-h1 {
-  font-size: 2.4rem;
-  background: linear-gradient(135deg, #fff, #C9A84C);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  margin-bottom: 0.5rem;
-}
+    h1 {
+      font-size: 2.4rem;
+      background: linear-gradient(135deg, #fff, #C9A84C);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
 
-.gold-accent { color: #C9A84C; }
+    .gold-accent { color: #C9A84C; }
 
-.btn {
-  background: transparent;
-  border: 2px solid #C9A84C;
-  color: #C9A84C;
-  padding: 0.8rem 1.8rem;
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: 'Montserrat', sans-serif;
-  border-radius: 60px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  margin-top: 1rem;
-  display: inline-block;
-  text-align: center;
-}
+    .btn {
+      background: transparent;
+      border: 2px solid #C9A84C;
+      color: #C9A84C;
+      padding: 0.8rem 1.8rem;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      margin-top: 1rem;
+      display: inline-block;
+      text-align: center;
+    }
 
-.btn-primary {
-  background: #C9A84C;
-  color: #0a1424;
-  border: none;
-  box-shadow: 0 4px 12px rgba(201,168,76,0.3);
-}
+    .btn-primary {
+      background: #C9A84C;
+      color: #0a1424;
+      border: none;
+      box-shadow: 0 4px 12px rgba(201,168,76,0.3);
+    }
 
-.btn-primary:hover {
-  background: #dbbc6e;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(201,168,76,0.4);
-}
+    .btn-primary:hover {
+      background: #dbbc6e;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(201,168,76,0.4);
+    }
 
-.btn-outline:hover {
-  background: rgba(201,168,76,0.15);
-  transform: scale(1.02);
-}
+    .btn-outline:hover {
+      background: rgba(201,168,76,0.15);
+      transform: scale(1.02);
+    }
 
-.question-card {
-  background: rgba(20, 35, 55, 0.7);
-  border-radius: 1.5rem;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid rgba(201,168,76,0.2);
-}
+    .question-card {
+      background: rgba(20, 35, 55, 0.7);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(201,168,76,0.2);
+    }
 
-.question-text {
-  font-size: 1.35rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  line-height: 1.3;
-}
+    .question-text {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
 
-.likert-scale {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  justify-content: space-between;
-}
+    .likert-scale {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: space-between;
+    }
 
-.likert-option {
-  flex: 1;
-  min-width: 55px;
-  text-align: center;
-}
+    .likert-option {
+      flex: 1;
+      min-width: 55px;
+      text-align: center;
+    }
 
-.likert-btn {
-  width: 100%;
-  background: #1e2a3e;
-  border: 1px solid #2f3e55;
-  border-radius: 2rem;
-  padding: 0.7rem 0;
-  font-weight: 600;
-  color: #cfdfed;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: 0.2s;
-  font-family: 'Montserrat', sans-serif;
-}
+    .likert-btn {
+      width: 100%;
+      background: #1e2a3e;
+      border: 1px solid #2f3e55;
+      border-radius: 2rem;
+      padding: 0.7rem 0;
+      font-weight: 600;
+      color: #cfdfed;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: 'Montserrat', sans-serif;
+    }
 
-.likert-btn.selected {
-  background: #C9A84C;
-  color: #0a1424;
-  border-color: #C9A84C;
-  box-shadow: 0 0 8px rgba(201,168,76,0.5);
-}
+    .likert-btn.selected {
+      background: #C9A84C;
+      color: #0a1424;
+      border-color: #C9A84C;
+      box-shadow: 0 0 8px rgba(201,168,76,0.5);
+    }
 
-.likert-label {
-  font-size: 0.7rem;
-  margin-top: 0.4rem;
-  display: block;
-  color: #a0b3cc;
-}
+    .likert-label {
+      font-size: 0.7rem;
+      margin-top: 0.4rem;
+      display: block;
+      color: #a0b3cc;
+    }
 
-.progress-wrapper { margin: 1rem 0 1.5rem; }
+    .progress-wrapper { margin: 1rem 0 1.5rem; }
 
-.progress-bar-bg {
-  background: #2a3a4e;
-  border-radius: 40px;
-  height: 8px;
-  overflow: hidden;
-}
+    .progress-bar-bg {
+      background: #2a3a4e;
+      border-radius: 40px;
+      height: 8px;
+      overflow: hidden;
+    }
 
-.progress-fill {
-  background: #C9A84C;
-  width: 0%;
-  height: 100%;
-  border-radius: 40px;
-  transition: width 0.3s ease;
-}
+    .progress-fill {
+      background: #C9A84C;
+      width: 0%;
+      height: 100%;
+      border-radius: 40px;
+      transition: width 0.3s ease;
+    }
 
-.progress-text {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-  font-size: 0.85rem;
-}
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+    }
 
-input {
-  width: 100%;
-  padding: 1rem;
-  background: #0f1a24;
-  border: 1px solid #2e4057;
-  border-radius: 1rem;
-  color: white;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  margin-top: 0.5rem;
-}
+    input {
+      width: 100%;
+      padding: 1rem;
+      background: #0f1a24;
+      border: 1px solid #2e4057;
+      border-radius: 1rem;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
 
-input:focus {
-  outline: none;
-  border-color: #C9A84C;
-}
+    input:focus {
+      outline: none;
+      border-color: #C9A84C;
+    }
 
-.error-msg {
-  color: #ffaa88;
-  font-size: 0.75rem;
-  margin-top: 0.3rem;
-}
+    .error-msg {
+      color: #ffaa88;
+      font-size: 0.75rem;
+      margin-top: 0.3rem;
+    }
 
-.result-tabs {
-  display: flex;
-  gap: 0.5rem;
-  margin: 1.5rem 0 1rem;
-  flex-wrap: wrap;
-}
+    .result-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin: 1.5rem 0 1rem;
+      flex-wrap: wrap;
+    }
 
-.tab-btn {
-  background: #1a293b;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 40px;
-  font-weight: 600;
-  color: #bfd6f0;
-  cursor: pointer;
-  transition: 0.2s;
-  font-family: 'Montserrat', sans-serif;
-}
+    .tab-btn {
+      background: #1a293b;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #bfd6f0;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: 'Montserrat', sans-serif;
+    }
 
-.tab-btn.active {
-  background: #C9A84C;
-  color: #0a1424;
-}
+    .tab-btn.active {
+      background: #C9A84C;
+      color: #0a1424;
+    }
 
-.result-pane { display: none; animation: fade 0.25s ease; }
-.result-pane.active-pane { display: block; }
+    .result-pane { display: none; animation: fade 0.25s ease; }
+    .result-pane.active-pane { display: block; }
 
-@keyframes fade {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-.score-circle {
-  background: #0f1f2c;
-  border-radius: 60px;
-  padding: 0.6rem 1.2rem;
-  display: inline-block;
-  margin: 1rem 0;
-}
+    .score-circle {
+      background: #0f1f2c;
+      border-radius: 60px;
+      padding: 0.6rem 1.2rem;
+      display: inline-block;
+      margin: 1rem 0;
+    }
 
-.answer-review-item {
-  background: rgba(0,0,0,0.25);
-  border-radius: 1rem;
-  padding: 0.8rem;
-  margin-bottom: 0.8rem;
-}
+    .answer-review-item {
+      background: rgba(0,0,0,0.25);
+      border-radius: 1rem;
+      padding: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
 
-.mini-bar {
-  height: 6px;
-  background: #2f4055;
-  border-radius: 4px;
-  margin-top: 6px;
-  width: 100%;
-}
+    .mini-bar {
+      height: 6px;
+      background: #2f4055;
+      border-radius: 4px;
+      margin-top: 6px;
+      width: 100%;
+    }
 
-.mini-fill {
-  background: #C9A84C;
-  height: 6px;
-  border-radius: 4px;
-}
+    .mini-fill {
+      background: #C9A84C;
+      height: 6px;
+      border-radius: 4px;
+    }
 
-.flex-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    .flex-between {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-@media (max-width: 550px) {
-  body { padding: 0.8rem; }
-  .container { padding: 1.2rem; }
-  .likert-btn { padding: 0.5rem 0; font-size: 0.8rem; }
-  .likert-label { font-size: 0.6rem; }
-  .question-text { font-size: 1.2rem; }
-}
+    @media (max-width: 550px) {
+      body { padding: 0.8rem; }
+      .container { padding: 1.2rem; }
+      .likert-btn { padding: 0.5rem 0; font-size: 0.8rem; }
+      .likert-label { font-size: 0.6rem; }
+      .question-text { font-size: 1.2rem; }
+    }
 
-footer {
-  text-align: center;
-  margin-top: 2rem;
-  font-size: 0.7rem;
-  opacity: 0.7;
-}
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.7rem;
+      opacity: 0.7;
+    }
 
-button:focus-visible, .tab-btn:focus-visible {
-  outline: 2px solid #C9A84C;
-  outline-offset: 2px;
-}
-```
-
+    button:focus-visible, .tab-btn:focus-visible {
+      outline: 2px solid #C9A84C;
+      outline-offset: 2px;
+    }
   </style>
 </head>
 <body>
-<div class="container" id="app">
-  <div id="introScreen">
-    <h1>💰 Money Manifestor<br>Compass</h1>
-    <p style="margin: 1rem 0; font-size: 1.1rem;">Discover your wealth mindset blueprint & unlock abundance.</p>
-    <p style="margin-bottom: 1rem;">Based on neuroscience & wealth psychology, this quiz reveals how your beliefs, emotions, and habits align with financial magnetism. Answer 12 questions honestly — your transformation starts now.</p>
-    <button class="btn btn-primary" id="startQuizBtn">✨ Start Quiz ✨</button>
-  </div>
-
-  <div id="questionsArea" style="display: none;"></div>
-
-  <div id="contactFormArea" style="display: none;">
-    <h2>Almost there, trailblazer</h2>
-    <p>Enter your details to receive your personalized money manifestation map + insights.</p>
-    <input type="text" id="userName" placeholder="Full name">
-    <div class="error-msg" id="nameError"></div>
-    <input type="tel" id="userPhone" placeholder="Phone number" style="margin-top: 1rem;">
-    <div class="error-msg" id="phoneError"></div>
-    <input type="email" id="userEmail" placeholder="Email address" style="margin-top: 1rem;">
-    <div class="error-msg" id="emailError"></div>
-    <button class="btn btn-primary" id="submitContactBtn" style="width:100%; margin-top: 1.5rem;">🔓 Reveal My Results</button>
-  </div>
-
-  <div id="resultsArea" style="display: none;">
-    <h2>✨ Your Wealth Manifestor Compass ✨</h2>
-    <div id="resultsDynamic"></div>
-    <div class="flex-between" style="margin-top: 2rem; gap: 1rem; flex-wrap: wrap;">
-      <button class="btn btn-outline" id="retakeQuizBtn">⟳ Retake Quiz</button>
-      <button class="btn btn-outline" id="printResultsBtn">🖨️ Save as PDF / Print</button>
-    </div>
-  </div>
-
-  <footer>© AccessWorld Seminars — activate your wealth DNA</footer>
-</div>
+<div class="container" id="app"></div>
 
 <script>
+  // ======================= DATA =======================
   const QUESTIONS = [
     { id: 0,  text: "I feel completely deserving of unlimited wealth and abundance.", category: "Wealth Worthiness" },
     { id: 1,  text: "I take consistent, inspired action toward my financial goals.", category: "Wealth Habits" },
@@ -329,28 +296,21 @@ button:focus-visible, .tab-btn:focus-visible {
   ];
 
   const likertLabels = ["Not at all", "Slightly", "Somewhat", "Mostly", "Very much", "Completely"];
-
-  let userAnswers = new Array(QUESTIONS.length).fill(null);
-  let currentStep = 'intro';
-  let scoreNum = 0, tierLabel = "";
-  let userName = "", userPhone = "", userEmail = "";
-
   const ZAPIER_WEBHOOK = "https://hooks.zapier.com/hooks/catch/3779260/unt9eik/";
 
-  async function sendToZapier(name, phone, email, score, tier, answers) {
-    let answersText = "";
-    QUESTIONS.forEach(q => { answersText += `${q.category}: ${answers[q.id] ?? 0}/5\n`; });
-    const fd = new FormData();
-    fd.append('name', name); fd.append('phone', phone); fd.append('email', email);
-    fd.append('score', score.toFixed(1)); fd.append('tier', tier);
-    fd.append('answers_text', answersText); fd.append('timestamp', new Date().toISOString());
-    await fetch(ZAPIER_WEBHOOK, { method: "POST", body: fd, mode: "no-cors" });
-  }
+  // State
+  let currentScreen = "intro"; // intro, quiz, contact, results
+  let userAnswers = new Array(QUESTIONS.length).fill(null);
+  let userName = "", userPhone = "", userEmail = "";
+  let cachedScore = 0, cachedTier = "";
 
+  const root = document.getElementById("app");
+
+  // Helper: compute average & tier
   function computeScoreAndTier() {
-    let answered = userAnswers.filter(a => a !== null);
-    if (!answered.length) return { avg: 0, tier: "Awakening" };
-    let avg = answered.reduce((a,b) => a+b, 0) / answered.length;
+    const answeredVals = userAnswers.filter(a => a !== null);
+    if (answeredVals.length === 0) return { avg: 0, tier: "Awakening" };
+    const avg = answeredVals.reduce((a, b) => a + b, 0) / answeredVals.length;
     let tier = avg < 1.5 ? "Scarcity Echo"
              : avg < 2.5 ? "Cautious Dreamer"
              : avg < 3.5 ? "Abundance Apprentice"
@@ -359,159 +319,296 @@ button:focus-visible, .tab-btn:focus-visible {
     return { avg, tier };
   }
 
+  // get category scores (sorted ascending)
   function getCategoryScores() {
-    let catMap = new Map();
+    const catMap = new Map();
     QUESTIONS.forEach((q, idx) => {
-      let val = userAnswers[idx] ?? 0;
+      const val = userAnswers[idx] ?? 0;
       if (!catMap.has(q.category)) catMap.set(q.category, []);
       catMap.get(q.category).push(val);
     });
-    let result = [];
+    const result = [];
     for (let [cat, scores] of catMap.entries()) {
-      result.push({ category: cat, avgScore: scores.reduce((a,b)=>a+b,0)/scores.length });
+      result.push({ category: cat, avgScore: scores.reduce((a,b)=>a+b,0) / scores.length });
     }
     return result.sort((a,b) => a.avgScore - b.avgScore);
   }
 
-  function renderQuestions() {
-    const container = document.getElementById('questionsArea');
-    let answeredCount = userAnswers.filter(a => a !== null).length;
-    let allSelected = userAnswers.every(a => a !== null);
+  // send to Zapier (non-blocking)
+  async function sendToZapier(name, phone, email, score, tier, answers) {
+    try {
+      let answersSummary = "";
+      QUESTIONS.forEach((q, idx) => {
+        answersSummary += `${q.category}: ${answers[idx] ?? 0}/5; `;
+      });
+      const payload = new URLSearchParams();
+      payload.append('name', name);
+      payload.append('phone', phone);
+      payload.append('email', email);
+      payload.append('score', score.toFixed(1));
+      payload.append('tier', tier);
+      payload.append('answers', answersSummary);
+      payload.append('timestamp', new Date().toISOString());
+      await fetch(ZAPIER_WEBHOOK, { method: "POST", body: payload, mode: "no-cors" });
+    } catch(e) { console.log("Zapier webhook non-critical error", e); }
+  }
 
-    let html = `
+  // Dynamic content rendering based on screen
+  function render() {
+    if (currentScreen === "intro") renderIntro();
+    else if (currentScreen === "quiz") renderQuiz();
+    else if (currentScreen === "contact") renderContact();
+    else if (currentScreen === "results") renderResults();
+  }
+
+  // ------------------- INTRO -------------------
+  function renderIntro() {
+    root.innerHTML = `
+      <div id="introScreen">
+        <h1>💰 Money Manifestor<br>Compass</h1>
+        <p style="margin: 1rem 0; font-size: 1.1rem;">Discover your wealth mindset blueprint & unlock abundance.</p>
+        <p style="margin-bottom: 1rem;">Based on neuroscience & wealth psychology, this quiz reveals how your beliefs, emotions, and habits align with financial magnetism. Answer 12 questions honestly — your transformation starts now.</p>
+        <button class="btn btn-primary" id="startQuizBtn">✨ Start Quiz ✨</button>
+        <footer style="margin-top: 2rem;">© AccessWorld Seminars — activate your wealth DNA</footer>
+      </div>
+    `;
+    const startBtn = document.getElementById("startQuizBtn");
+    if (startBtn) {
+      startBtn.addEventListener("click", () => {
+        currentScreen = "quiz";
+        render();
+      });
+    }
+  }
+
+  // ------------------- QUIZ -------------------
+  function renderQuiz() {
+    const answeredCount = userAnswers.filter(a => a !== null).length;
+    const allAnswered = userAnswers.every(a => a !== null);
+    let questionsHtml = `
       <div class="progress-wrapper">
         <div class="progress-text"><span>Mindset alignment</span><span>${answeredCount}/${QUESTIONS.length} answered</span></div>
         <div class="progress-bar-bg"><div class="progress-fill" style="width:${(answeredCount/QUESTIONS.length)*100}%"></div></div>
-      </div>`;
-
+      </div>
+    `;
     QUESTIONS.forEach((q, idx) => {
-      let selectedVal = userAnswers[idx];
-      let buttonsHtml = "";
+      const selectedVal = userAnswers[idx];
+      let scaleHtml = "";
       for (let i = 0; i <= 5; i++) {
-        buttonsHtml += `<div class="likert-option">
-          <button class="likert-btn ${selectedVal === i ? 'selected' : ''}" data-qid="${idx}" data-val="${i}">${i}</button>
-          <span class="likert-label">${likertLabels[i]}</span>
-        </div>`;
+        const isSelected = (selectedVal === i);
+        scaleHtml += `
+          <div class="likert-option">
+            <button class="likert-btn ${isSelected ? 'selected' : ''}" data-qidx="${idx}" data-val="${i}">${i}</button>
+            <span class="likert-label">${likertLabels[i]}</span>
+          </div>
+        `;
       }
-      html += `<div class="question-card">
-        <div class="question-text">${idx+1}. ${q.text}</div>
-        <div class="likert-scale">${buttonsHtml}</div>
-      </div>`;
+      questionsHtml += `
+        <div class="question-card">
+          <div class="question-text">${idx+1}. ${escapeHtml(q.text)}</div>
+          <div class="likert-scale">${scaleHtml}</div>
+        </div>
+      `;
     });
-
-    html += `<div style="margin-top:1.5rem;">
-      <button class="btn btn-primary" id="submitAnswersBtn" ${!allSelected ? 'disabled style="opacity:0.5;"' : ''}>
-        📌 Continue to Wealth Profile →
-      </button>
-    </div>`;
-
-    container.innerHTML = html;
-    container.style.display = "block";
-
+    questionsHtml += `
+      <div style="margin-top:1.5rem;">
+        <button class="btn btn-primary" id="quizSubmitBtn" ${!allAnswered ? 'disabled style="opacity:0.5;"' : ""}>
+          📌 Continue to Wealth Profile →
+        </button>
+      </div>
+      <footer style="margin-top: 2rem;">© AccessWorld Seminars — activate your wealth DNA</footer>
+    `;
+    root.innerHTML = `<div id="quizContainer">${questionsHtml}</div>`;
+    
+    // attach likert events
     document.querySelectorAll('.likert-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        userAnswers[parseInt(btn.dataset.qid)] = parseInt(btn.dataset.val);
-        renderQuestions();
+      btn.addEventListener('click', (e) => {
+        const qidx = parseInt(btn.dataset.qidx, 10);
+        const val = parseInt(btn.dataset.val, 10);
+        userAnswers[qidx] = val;
+        render(); // re-render to update UI and enable submit if all answered
       });
     });
-
-    document.getElementById('submitAnswersBtn')?.addEventListener('click', () => {
-      if (!userAnswers.every(a => a !== null)) {
-        alert("Please answer all 12 questions to unlock your personalized wealth blueprint.");
-        return;
-      }
-      currentStep = 'contact';
-      updateVisibility();
-    });
+    
+    const submitBtn = document.getElementById("quizSubmitBtn");
+    if (submitBtn) {
+      submitBtn.addEventListener("click", () => {
+        if (!userAnswers.every(a => a !== null)) {
+          alert("Please answer all 12 questions to unlock your personalized wealth blueprint.");
+          return;
+        }
+        currentScreen = "contact";
+        render();
+      });
+    }
   }
 
-  function setupContact() {
-    document.getElementById('submitContactBtn').onclick = async () => {
-      const name  = document.getElementById('userName').value.trim();
-      const phone = document.getElementById('userPhone').value.trim();
-      const email = document.getElementById('userEmail').value.trim();
-      let valid = true;
-      ['nameError','phoneError','emailError'].forEach(id => document.getElementById(id).innerText = "");
-      if (!name)  { document.getElementById('nameError').innerText  = "Name is required"; valid = false; }
-      if (!phone) { document.getElementById('phoneError').innerText = "Phone number required"; valid = false; }
-      if (!email || !email.includes('@')) { document.getElementById('emailError').innerText = "Valid email required"; valid = false; }
-      if (!valid) return;
-      userName = name; userPhone = phone; userEmail = email;
-      const { avg, tier } = computeScoreAndTier();
-      scoreNum = avg; tierLabel = tier;
-      try { await sendToZapier(userName, userPhone, userEmail, scoreNum, tierLabel, userAnswers); }
-      catch(e) { console.warn("Zapier non-critical", e); }
-      currentStep = 'results';
-      updateVisibility();
-      renderResults();
-    };
+  // ------------------- CONTACT -------------------
+  function renderContact() {
+    root.innerHTML = `
+      <div id="contactFormArea">
+        <h2>Almost there, trailblazer</h2>
+        <p>Enter your details to receive your personalized money manifestation map + insights.</p>
+        <input type="text" id="userName" placeholder="Full name" value="${escapeHtml(userName)}">
+        <div class="error-msg" id="nameError"></div>
+        <input type="tel" id="userPhone" placeholder="Phone number" style="margin-top: 1rem;" value="${escapeHtml(userPhone)}">
+        <div class="error-msg" id="phoneError"></div>
+        <input type="email" id="userEmail" placeholder="Email address" style="margin-top: 1rem;" value="${escapeHtml(userEmail)}">
+        <div class="error-msg" id="emailError"></div>
+        <button class="btn btn-primary" id="submitContactBtn" style="width:100%; margin-top: 1.5rem;">🔓 Reveal My Results</button>
+        <footer style="margin-top: 2rem;">© AccessWorld Seminars — activate your wealth DNA</footer>
+      </div>
+    `;
+    const submitContact = document.getElementById("submitContactBtn");
+    if (submitContact) {
+      submitContact.addEventListener("click", async () => {
+        const nameInput = document.getElementById("userName").value.trim();
+        const phoneInput = document.getElementById("userPhone").value.trim();
+        const emailInput = document.getElementById("userEmail").value.trim();
+        
+        let isValid = true;
+        document.getElementById("nameError").innerText = "";
+        document.getElementById("phoneError").innerText = "";
+        document.getElementById("emailError").innerText = "";
+        
+        if (!nameInput) {
+          document.getElementById("nameError").innerText = "Name is required";
+          isValid = false;
+        }
+        if (!phoneInput) {
+          document.getElementById("phoneError").innerText = "Phone number required";
+          isValid = false;
+        }
+        if (!emailInput || !emailInput.includes('@')) {
+          document.getElementById("emailError").innerText = "Valid email required";
+          isValid = false;
+        }
+        if (!isValid) return;
+        
+        userName = nameInput;
+        userPhone = phoneInput;
+        userEmail = emailInput;
+        
+        const { avg, tier } = computeScoreAndTier();
+        cachedScore = avg;
+        cachedTier = tier;
+        
+        // send to zapier in background
+        await sendToZapier(userName, userPhone, userEmail, cachedScore, cachedTier, userAnswers);
+        
+        currentScreen = "results";
+        render();
+      });
+    }
   }
 
+  // ------------------- RESULTS -------------------
   function renderResults() {
     const { avg, tier } = computeScoreAndTier();
     const categoryScores = getCategoryScores();
-    const lowest3  = categoryScores.slice(0, 3);
+    const lowest3 = categoryScores.slice(0, 3);
     const highest2 = categoryScores.slice(-2).reverse();
-
+    
+    // detailed answers list
     let answersDetailedHtml = "";
     QUESTIONS.forEach((q, idx) => {
-      let val = userAnswers[idx] ?? 0;
+      const val = userAnswers[idx] ?? 0;
       answersDetailedHtml += `
         <div class="answer-review-item">
-          <div class="flex-between"><span><strong>${idx+1}. ${q.text}</strong></span><span>${val}/5</span></div>
+          <div class="flex-between"><span><strong>${idx+1}. ${escapeHtml(q.text)}</strong></span><span>${val}/5</span></div>
           <div class="mini-bar"><div class="mini-fill" style="width:${(val/5)*100}%;"></div></div>
           <span style="font-size:0.75rem;">${likertLabels[val]}</span>
-        </div>`;
+        </div>
+      `;
     });
-
-    const page1 = `
+    
+    const page1Html = `
       <div class="score-circle"><span style="font-size:2rem; font-weight:bold;">${avg.toFixed(1)}</span> / 5.0</div>
       <h3>Your Tier: <span class="gold-accent">${tier}</span></h3>
       <div class="mini-bar" style="height:10px; margin:1rem 0;"><div class="mini-fill" style="width:${(avg/5)*100}%; height:10px;"></div></div>
       <p><strong>${getTierMessage(tier)}</strong></p>
       <h3 style="margin-top:1.5rem;">📋 Your Detailed Money Map</h3>
-      ${answersDetailedHtml}`;
-
+      ${answersDetailedHtml}
+    `;
+    
     let lowHtml = `<h3>🔍 Growth Opportunities</h3><p style="margin:0.5rem 0 1rem;">Your lowest-scoring dimensions reveal where your wealth psychology craves expansion.</p>`;
-    lowest3.forEach(cat => {
-      let a = getLowScoreAnalysis(cat.category);
-      lowHtml += `<div style="background:#0f1a28; border-radius:1rem; padding:1rem; margin-top:1rem;">
-        <h4 style="margin-bottom:0.5rem;">${cat.category} · ${cat.avgScore.toFixed(1)}/5</h4>
-        <p>${a.insight}</p>
-        <p style="margin-top:0.5rem;"><strong>✨ Process recommendation:</strong> ${a.process}</p>
-        <p style="margin-top:0.5rem;"><strong>🧘 Daily practice:</strong> ${a.daily}</p>
-      </div>`;
-    });
-
+    for (let cat of lowest3) {
+      const analysis = getLowScoreAnalysis(cat.category);
+      lowHtml += `
+        <div style="background:#0f1a28; border-radius:1rem; padding:1rem; margin-top:1rem;">
+          <h4 style="margin-bottom:0.5rem;">${cat.category} · ${cat.avgScore.toFixed(1)}/5</h4>
+          <p>${analysis.insight}</p>
+          <p style="margin-top:0.5rem;"><strong>✨ Process recommendation:</strong> ${analysis.process}</p>
+          <p style="margin-top:0.5rem;"><strong>🧘 Daily practice:</strong> ${analysis.daily}</p>
+        </div>
+      `;
+    }
+    
     let highHtml = `<h3>🏆 Your Wealth Superpowers</h3><p style="margin:0.5rem 0 1rem;">Leverage these strengths to magnetize more abundance.</p>`;
-    highest2.forEach(cat => {
-      highHtml += `<div style="background:#0f1a28; border-radius:1rem; padding:1rem; margin-top:1rem;">
-        <h4 style="margin-bottom:0.5rem;">${cat.category} · ${cat.avgScore.toFixed(1)}/5</h4>
-        <p>${getStrengthMessage(cat.category)}</p>
-        <p style="margin-top:0.5rem;"><strong>✨ Personalized daily practice:</strong> ${getDailySuggestion(cat.category)}</p>
-      </div>`;
-    });
-
-    document.getElementById('resultsDynamic').innerHTML = `
-      <div class="result-tabs">
-        <button class="tab-btn active" data-tab="tab1">📊 Score & Map</button>
-        <button class="tab-btn" data-tab="tab2">🌱 Growth Zones</button>
-        <button class="tab-btn" data-tab="tab3">⚡ Power Strengths</button>
+    for (let cat of highest2) {
+      highHtml += `
+        <div style="background:#0f1a28; border-radius:1rem; padding:1rem; margin-top:1rem;">
+          <h4 style="margin-bottom:0.5rem;">${cat.category} · ${cat.avgScore.toFixed(1)}/5</h4>
+          <p>${getStrengthMessage(cat.category)}</p>
+          <p style="margin-top:0.5rem;"><strong>✨ Personalized daily practice:</strong> ${getDailySuggestion(cat.category)}</p>
+        </div>
+      `;
+    }
+    
+    root.innerHTML = `
+      <div id="resultsArea">
+        <h2>✨ Your Wealth Manifestor Compass ✨</h2>
+        <div class="result-tabs" id="resultTabsContainer">
+          <button class="tab-btn active" data-tab="tab1">📊 Score & Map</button>
+          <button class="tab-btn" data-tab="tab2">🌱 Growth Zones</button>
+          <button class="tab-btn" data-tab="tab3">⚡ Power Strengths</button>
+        </div>
+        <div id="tab1" class="result-pane active-pane">${page1Html}</div>
+        <div id="tab2" class="result-pane">${lowHtml}</div>
+        <div id="tab3" class="result-pane">${highHtml}</div>
+        <div class="flex-between" style="margin-top: 2rem; gap: 1rem; flex-wrap: wrap;">
+          <button class="btn btn-outline" id="retakeQuizBtn">⟳ Retake Quiz</button>
+          <button class="btn btn-outline" id="printResultsBtn">🖨️ Save as PDF / Print</button>
+        </div>
+        <footer style="margin-top: 2rem;">© AccessWorld Seminars — activate your wealth DNA</footer>
       </div>
-      <div id="tab1" class="result-pane active-pane">${page1}</div>
-      <div id="tab2" class="result-pane">${lowHtml}</div>
-      <div id="tab3" class="result-pane">${highHtml}</div>`;
-
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        document.querySelectorAll('.result-pane').forEach(p => p.classList.remove('active-pane'));
-        document.getElementById(btn.dataset.tab).classList.add('active-pane');
+    `;
+    
+    // attach tab listeners
+    const tabs = document.querySelectorAll(".tab-btn");
+    tabs.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const tabId = btn.dataset.tab;
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        document.querySelectorAll(".result-pane").forEach(pane => pane.classList.remove("active-pane"));
+        const activePane = document.getElementById(tabId);
+        if (activePane) activePane.classList.add("active-pane");
       });
     });
+    
+    const retakeBtn = document.getElementById("retakeQuizBtn");
+    if (retakeBtn) {
+      retakeBtn.addEventListener("click", () => {
+        resetQuiz();
+      });
+    }
+    const printBtn = document.getElementById("printResultsBtn");
+    if (printBtn) {
+      printBtn.addEventListener("click", () => window.print());
+    }
   }
-
+  
+  function resetQuiz() {
+    userAnswers = new Array(QUESTIONS.length).fill(null);
+    userName = "";
+    userPhone = "";
+    userEmail = "";
+    currentScreen = "intro";
+    render();
+  }
+  
+  // Helper text functions
   function getTierMessage(tier) {
     const map = {
       "Scarcity Echo":         "You're aware of limiting patterns — this awareness is the first alchemy. Wealth begins with mindset shifts.",
@@ -522,7 +619,7 @@ button:focus-visible, .tab-btn:focus-visible {
     };
     return map[tier] || "Your journey to abundance is unfolding perfectly.";
   }
-
+  
   function getLowScoreAnalysis(category) {
     const map = {
       "Wealth Worthiness":   { insight: "Deep worthiness blocks may keep money at arm's length.", process: "Use mirror work & incantations: 'I am worthy of infinite abundance.'", daily: "3-minute morning affirmation with hand on heart, stating your deservingness." },
@@ -533,7 +630,7 @@ button:focus-visible, .tab-btn:focus-visible {
     };
     return map[category] || { insight: "Nurture this area with curiosity.", process: "Explore wealth mindset books & coaching.", daily: "Ask: 'What would abundance do today?'" };
   }
-
+  
   function getStrengthMessage(category) {
     const map = {
       "Wealth Worthiness":   "You deeply know you deserve riches — use this confidence to attract bigger opportunities.",
@@ -544,7 +641,7 @@ button:focus-visible, .tab-btn:focus-visible {
     };
     return map[category] || "Your natural strengths accelerate wealth creation.";
   }
-
+  
   function getDailySuggestion(category) {
     const map = {
       "Wealth Worthiness":   "Write 'I AM a money magnet' 10x while smiling into a mirror.",
@@ -555,45 +652,20 @@ button:focus-visible, .tab-btn:focus-visible {
     };
     return map[category] || "Celebrate your wealth strengths with gratitude.";
   }
-
-  function updateVisibility() {
-    ['introScreen','questionsArea','contactFormArea','resultsArea'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.style.display = 'none';
+  
+  function escapeHtml(str) {
+    if (!str) return "";
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
     });
-    if (currentStep === 'intro')     document.getElementById('introScreen').style.display = 'block';
-    if (currentStep === 'questions') renderQuestions();
-    if (currentStep === 'contact')   document.getElementById('contactFormArea').style.display = 'block';
-    if (currentStep === 'results')   document.getElementById('resultsArea').style.display = 'block';
   }
-
-  function resetQuiz() {
-    userAnswers = new Array(QUESTIONS.length).fill(null);
-    currentStep = 'intro';
-    userName = ""; userPhone = ""; userEmail = "";
-    updateVisibility();
-  }
-
-  // Init
-  document.getElementById('startQuizBtn').addEventListener('click', () => {
-    currentStep = 'questions';
-    updateVisibility();
-  });
-
-  document.addEventListener('DOMContentLoaded', () => {
-    setupContact();
-    document.getElementById('retakeQuizBtn')?.addEventListener('click', resetQuiz);
-    document.getElementById('printResultsBtn')?.addEventListener('click', () => window.print());
-  });
-
-  // Fallback delegation for dynamically rendered retake btn
-  document.addEventListener('click', e => {
-    if (e.target.id === 'retakeQuizBtn') resetQuiz();
-    if (e.target.id === 'printResultsBtn') window.print();
-  });
-
-  setupContact();
+  
+  // initial render
+  render();
 </script>
-
 </body>
 </html>
+```
