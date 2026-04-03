@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AccessWorld Seminars | Joshua Roy – Results Coach & NSR Specialist</title>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1352637509518419');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1352637509518419&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -1312,8 +1331,6 @@
     </div>
 </section>
 
-
-
 <!-- ── CTA BANNER ── -->
 <div class="cta-banner">
     <div class="inner">
@@ -1406,6 +1423,30 @@
         });
     }, { threshold: 0.12 });
     reveals.forEach(r => revealObs.observe(r));
+    
+    // Meta Pixel - Track CTA button clicks
+    document.querySelectorAll('a[href*="form.jotform.com/250184868189875"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    content_name: 'Free Session Booking',
+                    content_category: 'CTA Button'
+                });
+            }
+        });
+    });
+    
+    // Track WhatsApp clicks
+    document.querySelectorAll('a[href*="wa.me"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Contact', {
+                    content_name: 'WhatsApp Contact',
+                    method: 'WhatsApp'
+                });
+            }
+        });
+    });
 </script>
 </body>
 </html>
