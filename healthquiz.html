@@ -1,5 +1,6 @@
+Here is the corrected HTML document that resolves the display and functionality issues you were experiencing.
+```html
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -129,6 +130,7 @@
 <div class="quiz-wrapper" id="app"></div>
 
 <script>
+  // ------------------- DATA -------------------
   const QUESTIONS = [
     { id: 0, text: "I breathe using my belly (diaphragm) with shoulders relaxed, not shallow chest breathing.", category: "Breathwork", pillar: "Oxygen & Energy" },
     { id: 1, text: "I can hold my breath after exhale for at least 30 seconds comfortably.", category: "Lung Capacity", pillar: "Oxygen & Energy" },
@@ -143,6 +145,7 @@
     { id: 10, text: "I prioritise my health even when life gets busy or I have a lot on my plate.", category: "Mindset", pillar: "Decide · Commit · Resolve" }
   ];
 
+  // helper: get tier based on average (0-5)
   const getTierData = (avg) => {
     if (avg < 1.8) return { label: "Acidic Overload", color: "#C9A84C", message: "Your terrain is highly acidic. Disease thrives here. Immediate lifestyle shift needed." };
     if (avg < 2.6) return { label: "Compensation Mode", color: "#C9A84C", message: "You're surviving, not thriving. Cells lack oxygen & alkaline minerals." };
@@ -151,12 +154,15 @@
     return { label: "Cellular Mastery", color: "#C9A84C", message: "Exceptional! You embody the Warburg principle — alkaline & oxygen-rich environment." };
   };
 
+  // compute average per category (string -> float)
   function computeCategoryAverages(answers) {
     const sums = {}, counts = {};
     QUESTIONS.forEach(q => {
       const cat = q.category;
-      const val = answers[q.id] || 0;
-      sums[cat] = (sums[cat] || 0) + val;
+      const val = answers[q.id];
+      // if answer is null treat as 0 (should not happen when reaching report)
+      const numeric = (typeof val === 'number' && !isNaN(val)) ? val : 0;
+      sums[cat] = (sums[cat] || 0) + numeric;
       counts[cat] = (counts[cat] || 0) + 1;
     });
     const avgs = {};
@@ -164,11 +170,14 @@
     return avgs;
   }
 
-  let screen = "intro";
+  // ---------- STATE ----------
+  let screen = "intro";     // intro, quiz, contact, report
   let currentQ = 0;
   let answers = new Array(QUESTIONS.length).fill(null);
   let contact = { name: "", email: "", phone: "" };
-  let finalScore = 0, finalTier = null, categoryAvgs = {};
+  let finalScore = 0;
+  let finalTier = null;
+  let categoryAvgs = {};
 
   const root = document.getElementById("app");
 
@@ -179,6 +188,7 @@
     else if (screen === "report") renderReport();
   }
 
+  // ------------------- INTRO -------------------
   function renderIntro() {
     root.innerHTML = `
       <div style="text-align:center;">
@@ -192,23 +202,30 @@
         <button class="btn btn-primary" id="startBtn">🌿 Start My Health Audit →</button>
       </div>
     `;
-    document.getElementById("startBtn")?.addEventListener("click", () => {
-      screen = "quiz";
-      currentQ = 0;
-      answers = new Array(QUESTIONS.length).fill(null);
-      render();
-    });
+    const startBtn = document.getElementById("startBtn");
+    if (startBtn) {
+      startBtn.addEventListener("click", () => {
+        screen = "quiz";
+        currentQ = 0;
+        answers = new Array(QUESTIONS.length).fill(null);
+        render();
+      });
+    }
   }
 
+  // ------------------- QUIZ -------------------
   function renderQuiz() {
     const q = QUESTIONS[currentQ];
     const selected = answers[q.id];
     const progress = ((currentQ) / QUESTIONS.length) * 100;
-    let scaleHtml = "";
     const labels = ["0 - Never", "1 - Rarely", "2 - Sometimes", "3 - Often", "4 - Mostly", "5 - Always"];
+    
+    let scaleHtml = "";
     for (let i = 0; i <= 5; i++) {
-      scaleHtml += `<div class="scale-opt ${selected === i ? 'selected' : ''}" data-val="${i}"><div style="font-weight:800;">${i}</div><div style="font-size:0.7rem;">${labels[i]}</div></div>`;
+      const isSelected = (selected === i);
+      scaleHtml += `<div class="scale-opt ${isSelected ? 'selected' : ''}" data-val="${i}"><div style="font-weight:800;">${i}</div><div style="font-size:0.7rem;">${labels[i]}</div></div>`;
     }
+    
     root.innerHTML = `
       <div>
         <div class="progress-bar"><div class="progress-fill" style="width: ${progress}%;"></div></div>
@@ -223,104 +240,195 @@
         </div>
       </div>
     `;
-    document.querySelectorAll(".scale-opt").forEach(el => {
-      el.addEventListener("click", () => {
-        const val = parseInt(el.dataset.val, 10);
+    
+    // attach scale selection
+    const scaleOptions = document.querySelectorAll(".scale-opt");
+    scaleOptions.forEach(opt => {
+      opt.addEventListener("click", (e) => {
+        const val = parseInt(opt.dataset.val, 10);
         answers[q.id] = val;
-        renderQuiz();
+        renderQuiz();  // re-render to update selected state
       });
     });
-    document.getElementById("prevBtn")?.addEventListener("click", () => {
-      if (currentQ > 0) { currentQ--; renderQuiz(); }
-    });
-    document.getElementById("nextBtn")?.addEventListener("click", () => {
-      if (answers[q.id] === null) { alert("Please select a rating (0-5). This helps your personalised report."); return; }
-      if (currentQ === QUESTIONS.length-1) {
-        screen = "contact";
-        render();
-      } else {
-        currentQ++;
-        renderQuiz();
-      }
-    });
+    
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        if (currentQ > 0) {
+          currentQ--;
+          renderQuiz();
+        }
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        // check if current question answered
+        if (answers[q.id] === null || answers[q.id] === undefined) {
+          alert("Please select a rating (0-5). This helps your personalised report.");
+          return;
+        }
+        if (currentQ === QUESTIONS.length - 1) {
+          screen = "contact";
+          render();
+        } else {
+          currentQ++;
+          renderQuiz();
+        }
+      });
+    }
   }
 
+  // ------------------- CONTACT -------------------
   function renderContact() {
     root.innerHTML = `
       <div style="text-align:center;">
         <h2>✨ Your Health Report Awaits ✨</h2>
         <p>Enter your details to unlock the full <strong>Cellular Vitality PDF</strong> with personalised protocols.</p>
         <div style="max-width:450px; margin:1rem auto;">
-          <input type="text" id="name" placeholder="Full name" value="${contact.name}">
-          <input type="email" id="email" placeholder="Email address" value="${contact.email}">
-          <input type="tel" id="phone" placeholder="Phone (optional)" value="${contact.phone}">
+          <input type="text" id="contactName" placeholder="Full name" value="${escapeHtml(contact.name)}">
+          <input type="email" id="contactEmail" placeholder="Email address" value="${escapeHtml(contact.email)}">
+          <input type="tel" id="contactPhone" placeholder="Phone (optional)" value="${escapeHtml(contact.phone)}">
           <div style="display:flex; gap:1rem; justify-content:center;">
-            <button class="btn" id="backQuiz">← Back</button>
-            <button class="btn btn-primary" id="genReport">Generate My Report →</button>
+            <button class="btn" id="backQuizBtn">← Back</button>
+            <button class="btn btn-primary" id="genReportBtn">Generate My Report →</button>
           </div>
         </div>
       </div>
     `;
-    document.getElementById("backQuiz")?.addEventListener("click", () => { screen = "quiz"; render(); });
-    document.getElementById("genReport")?.addEventListener("click", () => {
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      if (!name || !email) { alert("Please provide name and email to receive your health blueprint."); return; }
-      contact = { name, email, phone: document.getElementById("phone").value.trim() };
-      let sum = 0;
-      for (let i = 0; i < QUESTIONS.length; i++) sum += answers[i] || 0;
-      const avg = sum / QUESTIONS.length;
-      finalScore = avg;
-      finalTier = getTierData(avg);
-      categoryAvgs = computeCategoryAverages(answers);
-      screen = "report";
-      render();
+    const backBtn = document.getElementById("backQuizBtn");
+    const genBtn = document.getElementById("genReportBtn");
+    if (backBtn) {
+      backBtn.addEventListener("click", () => {
+        screen = "quiz";
+        render();
+      });
+    }
+    if (genBtn) {
+      genBtn.addEventListener("click", () => {
+        const nameInput = document.getElementById("contactName");
+        const emailInput = document.getElementById("contactEmail");
+        const phoneInput = document.getElementById("contactPhone");
+        const name = nameInput ? nameInput.value.trim() : "";
+        const email = emailInput ? emailInput.value.trim() : "";
+        const phone = phoneInput ? phoneInput.value.trim() : "";
+        if (!name || !email) {
+          alert("Please provide name and email to receive your health blueprint.");
+          return;
+        }
+        contact = { name, email, phone };
+        
+        // compute final results
+        let sum = 0;
+        let allValid = true;
+        for (let i = 0; i < QUESTIONS.length; i++) {
+          const val = answers[i];
+          if (val === null || val === undefined) {
+            allValid = false;
+            break;
+          }
+          sum += val;
+        }
+        if (!allValid) {
+          alert("Something went wrong: some answers missing. Please retake the quiz.");
+          screen = "intro";
+          render();
+          return;
+        }
+        const avg = sum / QUESTIONS.length;
+        finalScore = avg;
+        finalTier = getTierData(avg);
+        categoryAvgs = computeCategoryAverages(answers);
+        screen = "report";
+        render();
+      });
+    }
+  }
+  
+  // simple escape to avoid injection
+  function escapeHtml(str) {
+    if (!str) return "";
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
     });
   }
 
+  // ------------------- REPORT with detailed dynamic tabs -------------------
   function renderReport() {
     const avgScore = finalScore;
     const tier = finalTier;
-    const sorted = Object.entries(categoryAvgs).sort((a, b) => a[1] - b[1]);
+    // compute sorted categories for low/high
+    const catEntries = Object.entries(categoryAvgs);
+    const sorted = [...catEntries].sort((a, b) => a[1] - b[1]);
     const lowest3 = sorted.slice(0, 3);
     const highest2 = sorted.slice(-2).reverse();
-
+    
+    // dynamic suggestions based on actual answers
     const healingFoodSuggestion = (answers[3] < 2)
-      ? "🥬 Start eating cilantro/coriander on salads & celery juice in the morning."
-      : "🌿 Keep using healing herbs — add zucchini for prefrontal cortex fuel.";
+      ? "🥬 Start eating cilantro/coriander on salads & celery juice in the morning. These bind to heavy metals and support the liver."
+      : "🌿 Keep using healing herbs — add zucchini for prefrontal cortex fuel. Consider increasing cilantro intake if metal toxicity symptoms persist.";
+    
     const breathProtocol = (answers[0] < 3)
-      ? "Practice belly breathing (5 min morning): inhale 4s, exhale 6s. Expand diaphragm."
-      : "Maintain with 30 power breaths + 60sec hold (Wim Hof style).";
-
+      ? "Practice belly breathing (5 min morning): inhale 4s, exhale 6s. Expand diaphragm. Also practice 'exhale hold' - after normal exhale, hold for 5-10 sec, build up gradually."
+      : "Maintain with 30 power breaths + 60sec hold (Wim Hof style). Try cold exposure after breathwork to amplify alkaline response.";
+    
+    // generate detailed answers list
     let detailsHtml = "";
     QUESTIONS.forEach((q, idx) => {
-      const val = answers[idx] || 0;
+      const val = (answers[idx] !== null && answers[idx] !== undefined) ? answers[idx] : 0;
       const percent = (val / 5) * 100;
-      detailsHtml += `<div style="margin-bottom:0.8rem;"><div style="display:flex; justify-content:space-between;"><span style="font-size:0.85rem;">${q.text.substring(0, 70)}${q.text.length > 70 ? '...' : ''}</span><span class="gold">${val}/5</span></div><div class="progress-bar" style="height:6px;"><div class="progress-fill" style="width:${percent}%; height:6px;"></div></div></div>`;
+      const shortText = q.text.length > 70 ? q.text.substring(0, 67) + '...' : q.text;
+      detailsHtml += `<div style="margin-bottom:0.8rem;">
+        <div style="display:flex; justify-content:space-between;">
+          <span style="font-size:0.85rem;">${escapeHtml(shortText)}</span>
+          <span class="gold">${val}/5</span>
+        </div>
+        <div class="progress-bar" style="height:6px;"><div class="progress-fill" style="width:${percent}%; height:6px;"></div></div>
+      </div>`;
     });
-
+    
+    // low areas with customized advice per category (better than generic)
     let lowHtml = "";
-    lowest3.forEach(([cat, scoreAvg]) => {
-      let advice = "";
-      if (cat.includes("Breathwork")) advice = "🔥 Your lung capacity is the #1 energy lever. Start 2-min daily breath holds after exhale — like the karate pre-oxygenation technique. You will feel tingling within 3 days.";
-      else if (cat.includes("Diet") || cat.includes("Alkaline")) advice = "🥑 Your terrain is acidic. Remember Dr. Warburg: cancer can't thrive in alkaline. Add green juice, lemon water, and reduce hybrid wheat (bread/pasta).";
-      else if (cat.includes("Energy")) advice = "⚡ You're stuck in the 2-unit energy pathway (glycolysis). Oxygen is missing! Implement belly breathing before meals to unlock 32 units of cellular energy.";
-      else if (cat.includes("Mobility")) advice = "🦵 Lymphatic system relies on calf pump. Start rebounding or heel bouncing while brushing teeth. Your body will flush toxins stored for years.";
-      else if (cat.includes("Posture")) advice = "🧍 Posture and flexibility are the scaffolding of your body. Tight hips, rounded shoulders, and a stiff spine compress organs and restrict breathing. Even 10 minutes of gentle stretching — neck rolls, chest openers, hip flexor stretches — once a week is a powerful start.";
-      else if (cat.includes("Mindset")) advice = "🧠 Mindset is the master switch. Every habit, every healing food, every breath protocol only works if you've decided — truly decided — that your health comes first. Not when it's convenient. Not when life slows down. Now. Decide. Commit. Resolve. Write it down: 'I prioritise my health because I am worth it.'";
-      else advice = "🌱 Small daily habits: 10min morning sunlight, one raw veggie per meal, and gratitude journaling reduce inflammation.";
-      lowHtml += `<div class="report-card"><h3>⚠️ ${cat} · Score: ${scoreAvg.toFixed(1)}/5</h3><p>${advice}</p><p style="margin-top:0.6rem;"><strong>Daily practice:</strong> ${cat === "Breathwork" ? "30 power breaths + 30s hold, twice daily" : cat === "Energy" ? "Hydrate + 3 min belly breathing at 2pm" : cat.includes("Posture") ? "10 min stretching routine: chest opener, hip flexor, neck rolls — YouTube 'morning posture stretch' to get started." : cat.includes("Mindset") ? "Each morning, say aloud: 'I decide, I commit, I resolve.' Then take one small health action — a glass of water, a breath, a stretch." : "Add one healing food: coriander, papaya, or zucchini."}</p></div>`;
-    });
-
+    if (lowest3.length) {
+      for (let [cat, scoreAvg] of lowest3) {
+        let advice = "";
+        if (cat.includes("Breathwork") || cat.includes("Lung Capacity")) {
+          advice = "🔥 Your lung capacity is the #1 energy lever. Start 2-min daily breath holds after exhale — like the karate pre-oxygenation technique. You will feel tingling within 3 days. The body's primary energy (ATP) requires oxygen.";
+        } else if (cat.includes("Diet") || cat.includes("Alkaline") || cat.includes("Food as Medicine")) {
+          advice = "🥑 Your terrain is acidic. Remember Dr. Warburg: cancer can't thrive in alkaline. Add green juice, lemon water, and reduce hybrid wheat (bread/pasta). Coriander and celery juice are powerful.";
+        } else if (cat.includes("Energy")) {
+          advice = "⚡ You're stuck in the 2-unit energy pathway (glycolysis). Oxygen is missing! Implement belly breathing before meals to unlock 32 units of cellular energy. Hydration and magnesium also help.";
+        } else if (cat.includes("Mobility") || cat.includes("Lymph")) {
+          advice = "🦵 Lymphatic system relies on calf pump and movement. Start rebounding or heel bouncing while brushing teeth. Your body will flush toxins stored for years. Even 5 minutes of bouncing reduces stagnation.";
+        } else if (cat.includes("Posture") || cat.includes("Flexibility")) {
+          advice = "🧍 Posture and flexibility are the scaffolding of your body. Tight hips, rounded shoulders, and a stiff spine compress organs and restrict breathing. Even 10 minutes of gentle stretching — neck rolls, chest openers, hip flexor stretches — once a week is a powerful start.";
+        } else if (cat.includes("Mindset") || cat.includes("Clarity")) {
+          advice = "🧠 Mindset is the master switch. Every habit, every healing food, every breath protocol only works if you've decided — truly decided — that your health comes first. Not when it's convenient. Not when life slows down. Now. Decide. Commit. Resolve. Write it down: 'I prioritise my health because I am worth it.'";
+        } else {
+          advice = "🌱 Small daily habits: 10min morning sunlight, one raw veggie per meal, and gratitude journaling reduce inflammation. Start with one habit and anchor it to an existing routine.";
+        }
+        lowHtml += `<div class="report-card"><h3>⚠️ ${cat} · Score: ${scoreAvg.toFixed(1)}/5</h3><p>${advice}</p><p style="margin-top:0.6rem;"><strong>Daily practice:</strong> ${cat.includes("Breathwork") ? "30 power breaths + 30s hold, twice daily" : cat.includes("Energy") ? "Hydrate + 3 min belly breathing at 2pm" : cat.includes("Posture") ? "10 min stretching routine: chest opener, hip flexor, neck rolls — YouTube 'morning posture stretch' to get started." : cat.includes("Mindset") ? "Each morning, say aloud: 'I decide, I commit, I resolve.' Then take one small health action — a glass of water, a breath, a stretch." : "Add one healing food: coriander, papaya, or zucchini. Also, set a phone reminder to move every 90 minutes."}</p></div>`;
+      }
+    } else {
+      lowHtml = '<div class="report-card">✨ Impressive balance! Focus on breath retention and seasonal detox to reach elite vitality.</div>';
+    }
+    
     let highHtml = "";
-    highest2.forEach(([cat, scoreAvg]) => {
-      highHtml += `<div class="report-card"><h3>🌟 ${cat} · Score: ${scoreAvg.toFixed(1)}/5</h3><p>You've built resilience here. Use this strength to inspire other areas: e.g., if your breathwork is high, add cold exposure. If diet is high, mentor a friend.</p><p style="margin-top:0.6rem;"><strong>Next level:</strong> Combine with a low-scoring pillar for exponential healing.</p></div>`;
-    });
-
+    if (highest2.length) {
+      for (let [cat, scoreAvg] of highest2) {
+        highHtml += `<div class="report-card"><h3>🌟 ${cat} · Score: ${scoreAvg.toFixed(1)}/5</h3><p>You've built resilience here. Use this strength to inspire other areas: e.g., if your breathwork is high, add cold exposure. If diet is high, mentor a friend.</p><p style="margin-top:0.6rem;"><strong>Next level:</strong> Combine with a low-scoring pillar for exponential healing.</p></div>`;
+      }
+    } else {
+      highHtml = '<div class="report-card">✨ Build on your awareness — start with breathwork to unlock energy.</div>';
+    }
+    
     root.innerHTML = `
       <div>
         <div style="text-align:center; margin-bottom:0.5rem;">
-          <h2 style="font-size:1.1rem; color:#b9c7dd;">Cellular Vitality Report · ${contact.name}</h2>
+          <h2 style="font-size:1.1rem; color:#b9c7dd;">Cellular Vitality Report · ${escapeHtml(contact.name)}</h2>
         </div>
         <div class="tab-bar" id="tabBar">
           <button class="tab-btn active" data-tab="tab1">📊 Score & Oxygen</button>
@@ -346,7 +454,7 @@
         </div>
         <div id="tab2" class="tab-pane">
           <h3 style="margin-bottom:1rem;">Priority healing zones (lowest scores)</h3>
-          ${lowHtml || '<div class="report-card">✨ Impressive balance! Focus on breath retention and seasonal detox to reach elite vitality.</div>'}
+          ${lowHtml}
           <div class="report-card" style="margin-top:1rem;">
             <h3>🥗 Specific Healing Foods (From AccessWorld Seminars)</h3>
             <p style="margin-top:0.5rem; line-height:1.8;">
@@ -361,7 +469,7 @@
         </div>
         <div id="tab3" class="tab-pane">
           <h3 style="margin-bottom:1rem;">Your strengths to leverage</h3>
-          ${highHtml || '<div class="report-card">✨ Build on your awareness — start with breathwork to unlock energy.</div>'}
+          ${highHtml}
           <div class="report-card">
             <h3>🧘 Breathwork Protocol (Wim Hof & Karate Pre-oxygenation)</h3>
             <p style="margin-top:0.5rem;">${breathProtocol}</p>
@@ -385,33 +493,52 @@
         <footer>AccessWorld Seminars · Based on Dr. Warburg Alkaline Principle & Cellular Energy model. Healing is possible.</footer>
       </div>
     `;
-
-    const tabs = document.querySelectorAll(".tab-btn");
-    const panes = {
-      tab1: document.getElementById("tab1"),
-      tab2: document.getElementById("tab2"),
-      tab3: document.getElementById("tab3")
+    
+    // TAB logic
+    const tabBtns = document.querySelectorAll(".tab-btn");
+    const paneTab1 = document.getElementById("tab1");
+    const paneTab2 = document.getElementById("tab2");
+    const paneTab3 = document.getElementById("tab3");
+    
+    const activateTab = (tabId) => {
+      if (paneTab1) paneTab1.classList.remove("active-pane");
+      if (paneTab2) paneTab2.classList.remove("active-pane");
+      if (paneTab3) paneTab3.classList.remove("active-pane");
+      if (tabId === "tab1" && paneTab1) paneTab1.classList.add("active-pane");
+      if (tabId === "tab2" && paneTab2) paneTab2.classList.add("active-pane");
+      if (tabId === "tab3" && paneTab3) paneTab3.classList.add("active-pane");
+      tabBtns.forEach(btn => btn.classList.remove("active"));
+      const activeBtn = Array.from(tabBtns).find(btn => btn.dataset.tab === tabId);
+      if (activeBtn) activeBtn.classList.add("active");
     };
-    tabs.forEach(btn => {
+    
+    tabBtns.forEach(btn => {
       btn.addEventListener("click", () => {
-        const id = btn.dataset.tab;
-        Object.values(panes).forEach(p => p?.classList.remove("active-pane"));
-        if (panes[id]) panes[id].classList.add("active-pane");
-        tabs.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
+        const tabId = btn.dataset.tab;
+        if (tabId) activateTab(tabId);
       });
     });
-    document.getElementById("printPDFBtn")?.addEventListener("click", () => window.print());
-    document.getElementById("retakeBtn")?.addEventListener("click", () => {
-      screen = "intro";
-      answers = new Array(QUESTIONS.length).fill(null);
-      contact = { name: "", email: "", phone: "" };
-      render();
-    });
+    
+    const printBtn = document.getElementById("printPDFBtn");
+    if (printBtn) printBtn.addEventListener("click", () => window.print());
+    
+    const retakeBtn = document.getElementById("retakeBtn");
+    if (retakeBtn) {
+      retakeBtn.addEventListener("click", () => {
+        screen = "intro";
+        answers = new Array(QUESTIONS.length).fill(null);
+        contact = { name: "", email: "", phone: "" };
+        finalScore = 0;
+        finalTier = null;
+        categoryAvgs = {};
+        render();
+      });
+    }
   }
-
+  
+  // initial render
   render();
 </script>
-
 </body>
 </html>
+```
