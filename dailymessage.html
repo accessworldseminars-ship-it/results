@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AccessWorld Daily Message Generator</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #162236;
+    --navy-light: #1e3350;
+    --gold: #C9A84C;
+    --gold-light: #e0c06a;
+    --gold-dim: #8a6e2f;
+    --white: #f5f0e8;
+    --white-dim: #b8b0a0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  h1 span { color: var(--gold); }
+  .divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 16px auto;
+  }
+  .subtitle {
+    font-size: 12px;
+    color: var(--white-dim);
+    letter-spacing: 1px;
+  }
+
+  .card {
+    background: var(--navy-mid);
+    border: 1px solid var(--navy-light);
+    border-radius: 12px;
+    padding: 28px 32px;
+    width: 100%;
+    max-width: 680px;
+    margin-bottom: 20px;
+  }
+  .card-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--navy-light);
+  }
+
+  /* Output box */
+  #output-box {
+    background: var(--navy);
+    border: 1px solid var(--navy-light);
+    border-radius: 8px;
+    padding: 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--white);
+    white-space: pre-wrap;
+    min-height: 200px;
+    position: relative;
+  }
+  #output-box.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white-dim);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  /* Buttons */
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 13px 28px;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    flex: 1;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+  }
+  .btn-secondary:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+  .btn:active { transform: scale(0.98); }
+
+  /* Copy feedback */
+  #copy-btn { min-width: 120px; }
+  #copy-btn.copied { background: #2a5c3f; color: #7dffb3; border-color: #2a5c3f; }
+
+  /* Quote selector */
+  .quote-mode {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .mode-btn {
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: 1px solid var(--navy-light);
+    background: transparent;
+    color: var(--white-dim);
+    transition: all 0.2s;
+  }
+  .mode-btn.active {
+    background: var(--gold);
+    color: var(--navy);
+    border-color: var(--gold);
+  }
+
+  /* Events preview */
+  .event-list { font-size: 13px; }
+  .event-row {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--navy-light);
+    gap: 12px;
+  }
+  .event-row:last-child { border-bottom: none; }
+  .event-date {
+    font-size: 11px;
+    color: var(--gold);
+    min-width: 80px;
+    font-weight: 600;
+  }
+  .event-time { color: var(--white-dim); font-size: 11px; min-width: 55px; }
+  .event-title { flex: 1; }
+
+  /* Schedule link */
+  .link-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  #schedule-link {
+    flex: 1;
+    background: var(--navy);
+    border: 1px solid var(--navy-light);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  #schedule-link:focus { border-color: var(--gold-dim); }
+
+  .info-tag {
+    font-size: 11px;
+    color: var(--white-dim);
+    background: var(--navy-light);
+    border-radius: 4px;
+    padding: 3px 8px;
+    margin-top: 8px;
+    display: inline-block;
+  }
+
+  footer {
+    margin-top: 30px;
+    font-size: 11px;
+    color: var(--gold-dim);
+    letter-spacing: 2px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">AccessWorld Seminars</div>
+  <h1>Daily <span>WhatsApp</span> Message</h1>
+  <div class="divider"></div>
+  <div class="subtitle">Generate · Copy · Paste · Done</div>
+</header>
+
+<!-- Schedule Link -->
+<div class="card">
+  <div class="card-label">Your Schedule Link</div>
+  <div class="link-row">
+    <input id="schedule-link" type="text" value="https://accessworldseminars-ship-it.github.io/results/s" placeholder="Paste your schedule URL here" />
+  </div>
+  <span class="info-tag">✎ Edit this link anytime — it will be included in each message</span>
+</div>
+
+<!-- Quote mode -->
+<div class="card">
+  <div class="card-label">Quote Style</div>
+  <div class="quote-mode">
+    <button class="mode-btn active" onclick="setMode('short')" id="mode-short">Short & Sharp</button>
+    <button class="mode-btn" onclick="setMode('long')" id="mode-long">Deep & Powerful</button>
+    <button class="mode-btn" onclick="setMode('any')" id="mode-any">Surprise Me</button>
+  </div>
+  <span class="info-tag">Short = 1–2 lines &nbsp;|&nbsp; Deep = paragraph-length wisdom</span>
+</div>
+
+<!-- Generate -->
+<div class="card">
+  <div class="card-label">Today's Message</div>
+  <div id="output-box" class="empty">Press Generate to create today's message</div>
+  <br>
+  <div class="btn-row">
+    <button class="btn btn-primary" onclick="generate()">✦ Generate Message</button>
+    <button class="btn btn-secondary" id="copy-btn" onclick="copyMessage()">Copy</button>
+  </div>
+</div>
+
+<!-- Upcoming events preview -->
+<div class="card">
+  <div class="card-label">Next 5 Upcoming Events</div>
+  <div class="event-list" id="event-preview"></div>
+</div>
+
+<footer>ACCESSWORLD SEMINARS · BRISBANE · NSR METHODOLOGY</footer>
+
+<script>
+const SHORT_QUOTES = [
+  "The quality of your life is relative to the quality of your emotions.",
+  "Invest in the mind, and every other investment gets better.",
+  "Your circumstances can be excellent and you can still feel miserable. Your circumstances can be modest and you can feel genuinely alive.",
+  "Patterns can be changed. Minds can be retrained. States can be consciously upgraded.",
+  "The hardware is the same. But you can always upgrade the software.",
+  "When neurons fire together, they wire together.",
+  "You don't get in life what you deserve. You get what you expect.",
+  "Whatever you project turns up.",
+  "Your unconscious mind doesn't know the difference between a vividly imagined experience and a real one.",
+  "The imagination is not a metaphor. It is neurologically real.",
+  "You don't have to accept whatever state you happen to be in. You can choose your state.",
+  "Your emotional state is a skill. Not a fixed trait.",
+  "Emotional flexibility is the ability to move between states fluidly.",
+  "Expectations don't just predict outcomes — they produce them.",
+  "You already have every state you need. NLP teaches you to access the ones you already own.",
+  "State management is one of the core skills of life.",
+  "Confidence doesn't mean arrogance. It means a quiet trust in your own capability.",
+  "Calm is the container that holds everything else together.",
+  "Motion creates emotion.",
+  "You cannot control your thoughts directly. Shift your body first.",
+  "Feelings are not fate. They are habits.",
+  "Your brain is a pharmaceutical factory. You are not a passive victim of fleeting chemistry.",
+  "The person who is more committed to their emotional state wins.",
+  "Emotional mastery is your ability to feel good for no good reason.",
+  "You don't wait to feel ready. You move first.",
+  "Time doesn't heal wounds. Healing heals wounds.",
+  "You can't change the past. But you can change your relationship to it.",
+  "Not forgiving someone is like drinking poison and hoping the other person dies.",
+  "Forgiveness isn't about excusing others. It's about freeing yourself.",
+  "Your past does not have to be a life sentence. It can become a library of lessons.",
+  "If you don't heal what hurt you, you'll bleed on people who didn't cut you.",
+  "Heal so you can connect without old wounds dictating your reactions.",
+  "Your pain can become your purpose.",
+  "Gratitude is the bridge from victim to survivor to thriver.",
+  "Don't find the right person. Become the right person.",
+  "You attract who you are, not what you want.",
+  "The game of life is relationships.",
+  "Intimacy stands for 'into me you see.'",
+  "The work you do on yourself is the most important work you'll ever do for your relationship.",
+  "When you stop looking to others to fill your inner voids, you become more attractive.",
+  "The healthiest place to live is with a high opinion of yourself and a high opinion of others.",
+  "You cannot attract what you are not.",
+  "Action is the courageous first step taken from exactly where you stand—flawed, uncertain, and possibly in pain.",
+  "Beginners are many, but finishers are few.",
+  "If you put in the reps, you get the growth.",
+  "Failure is not the opposite of success; it is the pathway to success.",
+  "If you're not growing, you are dying.",
+  "Rest if you must, but don't quit.",
+  "The most difficult addiction to break is the addiction of being yourself.",
+  "Do or do not. There is no try.",
+  "That which is measured, improves.",
+  "Progress builds muscle—emotional muscle, physical muscle, and mental muscle.",
+  "If you win the morning, you win the day.",
+  "We do not see the world as it is. We see the world as we are.",
+  "Where focus goes, energy flows.",
+  "It's not your fault, but it is your responsibility.",
+  "Doubt your doubts and have faith in your faith.",
+  "Who you become is infinitely more important than what you acquire.",
+  "The story you tell yourself about your life is either your prison or your wings.",
+  "You are the guru of your own life.",
+  "Unlock your incredible self, and unleash that on the world.",
+  "Your trauma becomes your mission.",
+  "You are not a victim of your history. You are the author of your redemption.",
+  "If you want to be great, be grateful.",
+  "Healing isn't a one-time event. It's a journey. But it can be a joyful one.",
+  "You are only limited by your own mind and your willingness to take action.",
+  "Your life is a project. The tools are in your hands.",
+  "When you feel stuck, wiggle. Never stop still.",
+  "Your nervous system is your most powerful asset.",
+  "The bell has rung. The fight is yours. The hinge awaits your touch. Swing your destiny wide open."
+];
+
+const LONG_QUOTES = [
+  "Investing in your mind isn't a luxury reserved for when you have extra time or money—it's the single highest-leverage investment you can make, because every other result in your life flows through the quality of your thinking and emotional state.",
+  "Your brain is not a fixed machine; it's a living, adaptable system that changes shape with every thought you think and every emotion you feel, which means you are never stuck with the mind you have.",
+  "The quality of your life is not determined by what happens to you, but by what happens in you—and once you truly grasp that, you stop waiting for circumstances to improve and start taking responsibility for your internal state.",
+  "The fastest way to change how you feel is not to analyze your feelings or argue with your thoughts—it's to change your body: stand up, breathe deeply, lift your chest, put a smile on your face, and notice how the mind obediently follows the body's lead.",
+  "Emotional mastery is not about never feeling anger, sadness, or fear; it's about not being owned by those feelings—it's the ability to notice them, acknowledge them, and then consciously choose a different state.",
+  "Calm is not passive; it is not weakness; it is the most powerful state you can occupy in a crisis because it allows you to see clearly, respond intelligently, and access your training when the pressure is highest.",
+  "Forgiveness is not about letting someone off the hook for what they did; it is about taking yourself off the hook of carrying their weight around in your chest every single day—it is an act of self-liberation, not an act of mercy toward them.",
+  "Healing does not mean you forget what happened or pretend it didn't matter; healing means you can think about the memory without the same emotional charge, without the same physical reaction, without the same spiral of rumination.",
+  "You cannot change what happened to you, but you can change what it means—and when you find a meaning that empowers you rather than diminishes you, the event itself loses its power to dictate your present.",
+  "Every painful experience carries within it the seed of a gift—a lesson, a strength, a new sensitivity, a capacity for compassion—and your job is not to curse the pain but to find the seed and plant it.",
+  "The most powerful reframe you can ever make is to look at your deepest wound and say, 'Thank you for making me who I am today'—not because the wound was good, but because your response to it became the source of your greatest strength.",
+  "A relationship does not fail because two people stopped loving each other; it fails because they stopped growing together, stopped communicating vulnerably, stopped making deposits in the emotional bank account before the withdrawal came due.",
+  "The most attractive quality in any partner is not physical appearance or financial success—it is emotional stability, the ability to regulate their own state, to not need you to manage their moods, to show up as a whole person.",
+  "Love is not a feeling that arrives fully formed and stays forever without effort; love is a verb, a daily practice of choosing the other person's wellbeing alongside your own, of making small deposits of kindness even when you do not feel like it.",
+  "Motivation is a fire that always burns out—it is not designed to last; it is designed to get you started, and once it fades, you need discipline, habit, and commitment to carry you through to the finish line.",
+  "You will never feel fully ready for the big leap—the new career, the difficult conversation, the public performance—and waiting for readiness is just a sophisticated form of procrastination.",
+  "If you only take action when you feel motivated, you will only make progress on a fraction of the days—but if you build systems, routines, and accountability that carry you through the unmotivated days, you become unstoppable.",
+  "You do not rise to the level of your goals; you fall to the level of your systems—so build systems that make your desired behavior the path of least resistance, and you will succeed without needing superhuman willpower.",
+  "The most important sentence you will ever speak is the one that begins with 'I am'—because whatever follows that phrase becomes the operating instruction your unconscious mind accepts as truth and works tirelessly to make real.",
+  "Your identity is not fixed; it is a collection of habits, beliefs, and responses that you have practiced into automaticity—which means you can practice a new identity into the same level of automaticity, starting today.",
+  "You cannot hate yourself into a version of yourself that you love; self-criticism is not the path to self-improvement—it is the path to self-protection, and protection never produces growth, only safety.",
+  "Your life mission is often hidden in your deepest wound—the thing that hurt you the most is often the thing you are most passionate about preventing in others, and that passion is not a coincidence; it is a calling.",
+  "The world does not need more people who fit in; the world needs more people who have unlocked their incredible self and unleashed it—because fitting in keeps the system running, but unleashing changes everything.",
+  "Your morning routine is not a productivity hack; it is a nervous system installation ceremony—you are programming your brain for the kind of day you want to have before the world has a chance to program it for you.",
+  "Consistency is not about perfection; it is about return—the willingness to come back to the practice the day after you missed it, to begin again without shame, to trust the process more than you trust your temporary feelings.",
+  "You cannot create a life you have never imagined—which means the first act of creation is always internal, always imaginative, always a secret rehearsal of the future you intend to build.",
+  "The only failure that matters is the failure to begin—because every other failure is just data, feedback, a lesson that moves you closer to your goal if you have the courage to keep going.",
+  "You have been living in a chicken coop, scratching for corn, believing you are a chicken—but you were born an eagle, and the only thing keeping you on the ground is your belief that you belong there.",
+  "The door to your incredible self has a hinge, and the hinge is your state—move the hinge just one millimeter by changing your posture, your breath, your focus, and the entire door of your destiny swings wide open.",
+  "Everything you need is already inside you—not in the next seminar, the next book, the next certification—but the tools to access what is already there can be taught, and once you have them, you never have to feel powerless again."
+];
+
+const EVENTS = [
+  { date: "2026-04-23", time: "7:00 PM", title: "Group Mentoring & Integration", type: "paid" },
+  { date: "2026-04-24", time: "9:00 AM", title: "Group Mentoring & Integration", type: "paid" },
+  { date: "2026-04-24", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
+  { date: "2026-04-30", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
+  { date: "2026-05-01", time: "9:00 AM", title: "Group Mentoring & Integration", type: "paid" },
+  { date: "2026-05-01", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
+  { date: "2026-05-07", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
+  { date: "2026-05-08", time: "7:00 AM", title: "Ultimate Health Webinar Day 1", type: "seminar" },
+  { date: "2026-05-09", time: "7:00 AM", title: "Ultimate Health Webinar Day 2", type: "seminar" },
+  { date: "2026-05-14", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
+  { date: "2026-05-16", time: "9:00 AM", title: "Group Mentoring & Integration", type: "paid" },
+  { date: "2026-05-16", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
+  { date: "2026-05-22", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
+  { date: "2026-05-23", time: "7:00 AM", title: "Unlock Your Incredible Self", type: "seminar" },
+  { date: "2026-05-29", time: "7:00 PM", title: "Group Mentoring & Integration", type: "paid" },
+  { date: "2026-05-30", time: "9:00 AM", title: "Group Mentoring & Integration", type: "paid" },
+  { date: "2026-05-30", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
+  { date: "2026-06-04", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
+  { date: "2026-06-05", time: "9:00 AM", title: "Group Mentoring & Integration", type: "paid" },
+  { date: "2026-06-11", time: "7:00 PM", title: "NLP Training for Coaches", type: "seminar" },
+  { date: "2026-06-12", time: "9:00 AM", title: "NLP Training for Coaches", type: "seminar" },
+  { date: "2026-06-19", time: "9:00 AM", title: "Become World-Class Coach", type: "seminar" },
+  { date: "2026-06-25", time: "7:00 PM", title: "Group Mentoring & Integration", type: "paid" },
+  { date: "2026-06-26", time: "9:00 AM", title: "Group Mentoring & Integration", type: "paid" },
+  { date: "2026-08-06", time: "7:00 AM", title: "Emotional Mastery Day 1", type: "seminar" },
+  { date: "2026-08-07", time: "7:00 AM", title: "Emotional Mastery Day 2", type: "seminar" },
+  { date: "2026-11-05", time: "7:00 AM", title: "Life Skills Day 1", type: "seminar" },
+  { date: "2026-11-06", time: "7:00 AM", title: "Life Skills Day 2", type: "seminar" },
+  { date: "2027-02-11", time: "7:00 AM", title: "Nervous System Re-Programming Day 1", type: "seminar" },
+  { date: "2027-02-12", time: "7:00 AM", title: "Nervous System Re-Programming Day 2", type: "seminar" }
+];
+
+let quoteMode = 'short';
+let lastQuoteIndex = -1;
+
+function setMode(mode) {
+  quoteMode = mode;
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('mode-' + mode).classList.add('active');
+}
+
+function getToday() {
+  return new Date().toISOString().split('T')[0];
+}
+
+function getUpcomingEvents(n = 4) {
+  const today = getToday();
+  return EVENTS.filter(e => e.date >= today).slice(0, n);
+}
+
+function formatEventDate(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' });
+}
+
+function pickQuote() {
+  let pool;
+  if (quoteMode === 'short') pool = SHORT_QUOTES;
+  else if (quoteMode === 'long') pool = LONG_QUOTES;
+  else pool = [...SHORT_QUOTES, ...LONG_QUOTES];
+
+  let idx;
+  do { idx = Math.floor(Math.random() * pool.length); }
+  while (idx === lastQuoteIndex && pool.length > 1);
+  lastQuoteIndex = idx;
+  return pool[idx];
+}
+
+function getDayGreeting() {
+  const h = new Date().getHours();
+  if (h < 12) return "Good morning";
+  if (h < 17) return "Good afternoon";
+  return "Good evening";
+}
+
+function getFormattedDate() {
+  return new Date().toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+function generate() {
+  const quote = pickQuote();
+  const events = getUpcomingEvents(4);
+  const link = document.getElementById('schedule-link').value.trim();
+  const greeting = getDayGreeting();
+  const dateStr = getFormattedDate();
+
+  let eventsText = '';
+  if (events.length > 0) {
+    eventsText = '\n📅 *COMING UP*\n';
+    events.forEach(e => {
+      const icon = e.type === 'free' ? '🆓' : e.type === 'seminar' ? '🌟' : '✅';
+      eventsText += `${icon} ${formatEventDate(e.date)} ${e.time} — ${e.title}\n`;
+    });
+  }
+
+  const linkLine = link ? `\n🔗 Full schedule: ${link}` : '';
+
+  const message =
+`✨ *${greeting}, AccessWorld Family!*
+${dateStr}
+━━━━━━━━━━━━━━━━━━━━
+
+💛 *Today's Thought:*
+"${quote}"
+
+${eventsText}${linkLine}
+
+Have an incredible day. You've got this! 🙌
+— *Joshua Roy | AccessWorld Seminars*`;
+
+  const box = document.getElementById('output-box');
+  box.classList.remove('empty');
+  box.textContent = message;
+
+  // Reset copy button
+  const copyBtn = document.getElementById('copy-btn');
+  copyBtn.textContent = 'Copy';
+  copyBtn.classList.remove('copied');
+}
+
+function copyMessage() {
+  const box = document.getElementById('output-box');
+  if (box.classList.contains('empty')) return;
+  navigator.clipboard.writeText(box.textContent).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2500);
+  });
+}
+
+// Render event preview
+function renderPreview() {
+  const events = getUpcomingEvents(5);
+  const el = document.getElementById('event-preview');
+  if (events.length === 0) { el.innerHTML = '<span style="color:var(--white-dim);font-size:13px">No upcoming events found</span>'; return; }
+  el.innerHTML = events.map(e => `
+    <div class="event-row">
+      <span class="event-date">${formatEventDate(e.date)}</span>
+      <span class="event-time">${e.time}</span>
+      <span class="event-title">${e.title}</span>
+    </div>
+  `).join('');
+}
+
+renderPreview();
+</script>
+</body>
+</html>
