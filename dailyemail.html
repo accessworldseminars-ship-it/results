@@ -1,414 +1,817 @@
-Here is an HTML document that implements a fully functional email generator for AccessWorld Seminars, with fixed streaming output and proper link preservation when copying.
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AccessWorld Email Generator | AI Coach Copy</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>AccessWorld Email Generator | Joshua Roy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy: #0a1628;
-    --navy-mid: #121f35;
-    --navy-card: #172440;
-    --navy-light: #1e3058;
-    --navy-border: #243a6a;
-    --gold: #C9A84C;
-    --gold-light: #e0c472;
-    --gold-dim: #7a6228;
-    --cream: #f5efe4;
-    --cream-dim: #b8ad99;
-    --white: #ffffff;
-    --success: #2d6a4f;
-    --success-text: #74c69d;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: var(--navy);
-    color: var(--cream);
-    font-family: 'Montserrat', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(ellipse 80% 50% at 20% 0%, rgba(201,168,76,0.06) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 40% at 80% 100%, rgba(201,168,76,0.04) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .wrap {
-    position: relative;
-    z-index: 1;
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 48px 24px 80px;
-  }
-  header { text-align: center; margin-bottom: 48px; }
-  .eyebrow { font-size: 10px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
-  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(34px, 6vw, 52px); font-weight: 600; line-height: 1.1; color: var(--white); margin-bottom: 10px; }
-  h1 em { color: var(--gold); font-style: italic; }
-  .tagline { font-size: 12px; color: var(--cream-dim); letter-spacing: 1.5px; }
-  .gold-rule { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 20px auto; }
-  .control-card { background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; position: relative; }
-  .control-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-dim), transparent); }
-  .section-label { font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
-  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--navy-border); }
-  .selectors { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-  @media (max-width: 600px) { .selectors { grid-template-columns: 1fr; } }
-  .sel-group label { display: block; font-size: 10px; letter-spacing: 2px; color: var(--cream-dim); text-transform: uppercase; margin-bottom: 8px; }
-  select { width: 100%; background: var(--navy); border: 1px solid var(--navy-border); border-radius: 6px; color: var(--cream); font-family: 'Montserrat', sans-serif; font-size: 12px; padding: 10px 14px; outline: none; appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23C9A84C'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
-  select:focus { border-color: var(--gold-dim); }
-  .btn-generate { width: 100%; padding: 16px 32px; background: var(--gold); color: var(--navy); border: none; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
-  .btn-generate:hover:not(:disabled) { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 8px 30px rgba(201,168,76,0.25); }
-  .btn-generate:disabled { opacity: 0.6; cursor: not-allowed; }
-  .output-card { background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 14px; overflow: hidden; display: none; animation: fadeUp 0.4s ease; }
-  .output-card.visible { display: block; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-  .output-header { padding: 16px 28px; background: var(--navy-light); border-bottom: 1px solid var(--navy-border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-  .output-meta { font-size: 10px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; }
-  .btn-row { display: flex; gap: 10px; }
-  .btn-sm { padding: 8px 18px; border-radius: 5px; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; border: none; transition: all 0.2s; }
-  .btn-copy { background: var(--gold); color: var(--navy); }
-  .btn-copy:hover { background: var(--gold-light); }
-  .btn-copy.done { background: var(--success); color: var(--success-text); }
-  .btn-clear { background: transparent; color: var(--cream-dim); border: 1px solid var(--navy-border) !important; }
-  .btn-clear:hover { border-color: var(--gold-dim) !important; color: var(--cream); }
-  .subject-strip { padding: 14px 28px; border-bottom: 1px solid var(--navy-border); background: rgba(201,168,76,0.06); }
-  .subject-label { font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; }
-  #subject-display { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--white); font-style: italic; word-break: break-word; }
-  #email-body { padding: 28px 32px; font-size: 13.5px; line-height: 1.9; color: var(--cream); white-space: pre-wrap; font-family: 'Montserrat', sans-serif; min-height: 200px; }
-  .cursor { display: inline-block; width: 2px; height: 14px; background: var(--gold); margin-left: 2px; vertical-align: middle; animation: blink 0.8s step-end infinite; }
-  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
-  .loading-bar { height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); background-size: 200% 100%; animation: shimmer 1.4s infinite; display: none; margin-top: -12px; margin-bottom: 12px; }
-  .loading-bar.active { display: block; }
-  @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-  .tags-row { padding: 12px 28px; border-top: 1px solid var(--navy-border); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-  .tag { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; border: 1px solid var(--navy-border); color: var(--cream-dim); }
-  .tag.gold { border-color: var(--gold-dim); color: var(--gold); }
-  .stats-bar { display: flex; gap: 24px; padding: 10px 28px; border-top: 1px solid var(--navy-border); flex-wrap: wrap; }
-  .stat { font-size: 10px; color: var(--cream-dim); letter-spacing: 1px; }
-  .stat span { color: var(--gold); font-weight: 600; }
-  .history-section { margin-top: 32px; }
-  .history-title { font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-  .history-title::after { content: ''; flex: 1; height: 1px; background: var(--navy-border); }
-  .history-list { display: flex; flex-direction: column; gap: 8px; }
-  .history-item { background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 8px; padding: 12px 16px; cursor: pointer; transition: border-color 0.2s; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .history-item:hover { border-color: var(--gold-dim); }
-  .hist-subject { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-style: italic; color: var(--cream); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .hist-meta { font-size: 9px; color: var(--cream-dim); letter-spacing: 1px; white-space: nowrap; }
-  footer { text-align: center; margin-top: 48px; font-size: 9px; letter-spacing: 3px; color: var(--gold-dim); text-transform: uppercase; }
-  a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+:root {
+  --navy: #0a1628;
+  --navy-card: #172440;
+  --navy-light: #1e3058;
+  --navy-border: #243a6a;
+  --gold: #C9A84C;
+  --gold-light: #e0c472;
+  --gold-dim: #7a6228;
+  --cream: #f5efe4;
+  --cream-dim: #b8ad99;
+  --success-bg: #2d6a4f;
+  --success-text: #74c69d;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--navy);
+  color: var(--cream);
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  padding: 0 0 80px;
+}
+
+/* ── HERO ── */
+.hero {
+  text-align: center;
+  padding: 52px 24px 40px;
+  border-bottom: 1px solid var(--navy-border);
+  margin-bottom: 36px;
+}
+.eyebrow {
+  font-size: 9px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 6vw, 54px);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.hero h1 em { color: var(--gold); font-style: italic; }
+.tagline { font-size: 11px; color: var(--cream-dim); letter-spacing: 2px; margin-top: 10px; }
+.gold-rule { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 18px auto; }
+
+/* ── LAYOUT ── */
+.wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+/* ── STEP INDICATOR ── */
+.steps {
+  display: flex;
+  gap: 0;
+  margin-bottom: 32px;
+  border: 1px solid var(--navy-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.step {
+  flex: 1;
+  padding: 14px 12px;
+  text-align: center;
+  background: var(--navy-card);
+  border-right: 1px solid var(--navy-border);
+  transition: background 0.2s;
+}
+.step:last-child { border-right: none; }
+.step.active { background: var(--navy-light); }
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--navy-border);
+  color: var(--cream-dim);
+  font-size: 10px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.step.active .step-num { background: var(--gold); color: var(--navy); }
+.step-label { font-size: 9px; letter-spacing: 1.5px; color: var(--cream-dim); text-transform: uppercase; display: block; }
+.step.active .step-label { color: var(--gold); }
+
+/* ── CARD ── */
+.card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: 14px;
+  padding: 26px 30px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+.section-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--navy-border); }
+
+/* ── SELECTORS ── */
+.selectors { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+@media (max-width: 560px) { .selectors { grid-template-columns: 1fr; } }
+.sel-group label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--cream-dim);
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+select {
+  width: 100%;
+  background: var(--navy);
+  border: 1px solid var(--navy-border);
+  border-radius: 7px;
+  color: var(--cream);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  padding: 10px 32px 10px 12px;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23C9A84C'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  transition: border-color 0.2s;
+}
+select:focus { border-color: var(--gold-dim); }
+
+/* ── BUTTONS ── */
+.btn-primary {
+  width: 100%;
+  padding: 15px;
+  background: var(--gold);
+  color: var(--navy);
+  border: none;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  padding: 11px 22px;
+  background: var(--navy-light);
+  color: var(--cream);
+  border: 1px solid var(--navy-border);
+  border-radius: 7px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { border-color: var(--gold-dim); color: var(--gold); }
+
+/* ── PROMPT BOX ── */
+.prompt-display {
+  background: var(--navy);
+  border: 1px solid var(--navy-border);
+  border-radius: 8px;
+  padding: 18px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--cream-dim);
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 16px;
+  min-height: 80px;
+}
+.prompt-display strong { color: var(--gold); font-weight: 600; }
+
+/* ── HOW-TO BOX ── */
+.howto {
+  background: rgba(201,168,76,0.06);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+.howto-title { font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+.howto ol { padding-left: 18px; }
+.howto li { font-size: 11.5px; color: var(--cream-dim); line-height: 1.8; }
+.howto li strong { color: var(--cream); }
+
+/* ── TEXTAREA ── */
+textarea {
+  width: 100%;
+  background: var(--navy);
+  border: 1px solid var(--navy-border);
+  border-radius: 8px;
+  color: var(--cream);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  line-height: 1.8;
+  padding: 14px 16px;
+  outline: none;
+  resize: vertical;
+  min-height: 200px;
+  transition: border-color 0.2s;
+  margin-bottom: 14px;
+}
+textarea:focus { border-color: var(--gold-dim); }
+textarea::placeholder { color: var(--navy-border); }
+
+/* ── OUTPUT CARD ── */
+.output-wrap { display: none; }
+.output-wrap.visible { display: block; animation: fadeUp 0.4s ease; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+
+.output-header {
+  background: var(--navy-light);
+  border-bottom: 1px solid var(--navy-border);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-radius: 14px 14px 0 0;
+}
+.output-meta { font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; }
+.copy-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.copy-btn {
+  padding: 7px 16px;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+.copy-btn-subject { background: var(--gold); color: var(--navy); }
+.copy-btn-subject:hover { background: var(--gold-light); }
+.copy-btn-full { background: var(--navy-border); color: var(--gold); border: 1px solid var(--gold-dim); }
+.copy-btn-full:hover { background: var(--navy-light); }
+.copy-btn-body { background: transparent; color: var(--cream-dim); border: 1px solid var(--navy-border); }
+.copy-btn-body:hover { border-color: var(--gold-dim); color: var(--cream); }
+.copy-btn.copied { background: var(--success-bg) !important; color: var(--success-text) !important; border-color: var(--success-bg) !important; }
+
+.subject-strip {
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--navy-border);
+  background: rgba(201,168,76,0.07);
+}
+.subject-label { font-size: 8px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; }
+.subject-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  color: #fff;
+  font-style: italic;
+  word-break: break-word;
+}
+
+.email-body {
+  padding: 26px 28px;
+  font-size: 13px;
+  line-height: 1.95;
+  color: var(--cream);
+  white-space: pre-wrap;
+  word-break: break-word;
+  border-radius: 0 0 14px 14px;
+}
+
+/* tags row */
+.tags-row {
+  padding: 12px 24px;
+  border-top: 1px solid var(--navy-border);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tag {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--navy-border);
+  color: var(--cream-dim);
+}
+.tag.gold { border-color: var(--gold-dim); color: var(--gold); }
+
+/* ── HISTORY ── */
+.history-section { margin-top: 32px; }
+.history-title {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.history-title::after { content: ''; flex: 1; height: 1px; background: var(--navy-border); }
+.history-item {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: 8px;
+  padding: 11px 16px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: border-color 0.2s;
+}
+.history-item:hover { border-color: var(--gold-dim); }
+.hist-subj {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--cream);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hist-meta { font-size: 8px; color: var(--cream-dim); letter-spacing: 1px; white-space: nowrap; }
+.hist-del {
+  background: transparent;
+  border: none;
+  color: var(--navy-border);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 4px;
+  transition: color 0.15s;
+}
+.hist-del:hover { color: #e07070; }
+
+footer {
+  text-align: center;
+  margin-top: 48px;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="eyebrow">AccessWorld Seminars · Brisbane</div>
-    <h1>AI Email <em>Generator</em></h1>
-    <div class="gold-rule"></div>
-    <div class="tagline">Story · Content · Invitation · Done</div>
-  </header>
 
-  <div class="control-card">
-    <div class="section-label">Choose Your Email Focus</div>
+<div class="hero">
+  <div class="eyebrow">AccessWorld Seminars · Brisbane</div>
+  <h1>Email <em>Generator</em></h1>
+  <div class="gold-rule"></div>
+  <div class="tagline">Story · Content · Invitation · Done</div>
+</div>
+
+<div class="wrap">
+
+  <!-- STEP INDICATOR -->
+  <div class="steps">
+    <div class="step active" id="step1-ind">
+      <div class="step-num">1</div>
+      <span class="step-label">Choose &amp; Generate Prompt</span>
+    </div>
+    <div class="step" id="step2-ind">
+      <div class="step-num">2</div>
+      <span class="step-label">Go to Claude.ai</span>
+    </div>
+    <div class="step" id="step3-ind">
+      <div class="step-num">3</div>
+      <span class="step-label">Paste Email Back</span>
+    </div>
+    <div class="step" id="step4-ind">
+      <div class="step-num">4</div>
+      <span class="step-label">Copy &amp; Send</span>
+    </div>
+  </div>
+
+  <!-- STEP 1 — CONTROLS -->
+  <div class="card" id="step1-card">
+    <div class="section-label">Step 1 — Choose your email focus</div>
     <div class="selectors">
       <div class="sel-group">
         <label>Topic / Theme</label>
         <select id="topic-select">
           <option value="random">✦ Surprise Me (Random)</option>
-          <optgroup label="Relationships"><option value="relationships">Relationships & Love</option><option value="sexuality">Sexuality & Intimacy</option></optgroup>
-          <optgroup label="Healing"><option value="healing">Healing & Inner Child</option><option value="adversity">Adversity & Resilience</option><option value="forgiveness">Forgiveness & Closure</option></optgroup>
-          <optgroup label="Mindset"><option value="mindset">Mindset & Manifestation</option><option value="nervous_system">Nervous System Reprogramming</option><option value="emotional_mastery">Emotional Mastery</option></optgroup>
-          <optgroup label="Growth"><option value="coaching">Coaching & Business</option><option value="communication">Communication & Boundaries</option><option value="productivity">Productivity & Success</option></optgroup>
-          <optgroup label="Life"><option value="parenting">Parenting & Family</option><option value="health">Health & Wellbeing</option></optgroup>
+          <optgroup label="Relationships">
+            <option value="relationships">Relationships &amp; Love</option>
+            <option value="sexuality">Sexuality &amp; Intimacy</option>
+          </optgroup>
+          <optgroup label="Healing">
+            <option value="healing">Healing &amp; Inner Child</option>
+            <option value="adversity">Adversity &amp; Resilience</option>
+            <option value="forgiveness">Forgiveness &amp; Closure</option>
+          </optgroup>
+          <optgroup label="Mindset">
+            <option value="mindset">Mindset &amp; Manifestation</option>
+            <option value="nervous_system">Nervous System Reprogramming</option>
+            <option value="emotional_mastery">Emotional Mastery</option>
+          </optgroup>
+          <optgroup label="Growth">
+            <option value="coaching">Coaching &amp; Business</option>
+            <option value="communication">Communication &amp; Boundaries</option>
+            <option value="productivity">Productivity &amp; Success</option>
+          </optgroup>
+          <optgroup label="Life">
+            <option value="parenting">Parenting &amp; Family</option>
+            <option value="health">Health &amp; Wellbeing</option>
+          </optgroup>
         </select>
       </div>
       <div class="sel-group">
         <label>Tone / Energy</label>
         <select id="tone-select">
-          <option value="warm">Warm & Encouraging</option><option value="story">Story-Led & Personal</option>
-          <option value="insight">Insight-First & Educational</option><option value="challenge">Direct & Challenging</option>
-          <option value="spiritual">Spiritual & Reflective</option>
+          <option value="warm">Warm &amp; Encouraging</option>
+          <option value="story">Story-Led &amp; Personal</option>
+          <option value="insight">Insight-First &amp; Educational</option>
+          <option value="challenge">Direct &amp; Challenging</option>
+          <option value="spiritual">Spiritual &amp; Reflective</option>
         </select>
       </div>
     </div>
-    <button class="btn-generate" id="gen-btn">✦ Generate Today's Email</button>
+    <button class="btn-primary" onclick="buildPrompt()">✦ Build My Email Prompt</button>
   </div>
-  <div class="loading-bar" id="loading-bar"></div>
 
-  <div class="output-card" id="output-card">
-    <div class="output-header">
-      <div class="output-meta" id="output-meta">Email Ready</div>
-      <div class="btn-row"><button class="btn-sm btn-copy" id="copy-btn">Copy Email</button><button class="btn-sm btn-clear" id="clear-btn">Clear</button></div>
+  <!-- STEP 2 — PROMPT OUTPUT -->
+  <div class="card" id="step2-card" style="display:none">
+    <div class="section-label">Step 2 — Copy this prompt &amp; paste into Claude.ai</div>
+
+    <div class="howto">
+      <div class="howto-title">How it works</div>
+      <ol>
+        <li>Click <strong>Copy Prompt</strong> below</li>
+        <li>Open <strong><a href="https://claude.ai" target="_blank" style="color:var(--gold)">claude.ai</a></strong> in a new tab</li>
+        <li>Paste and send — Claude writes your email</li>
+        <li>Copy Claude's full response and paste it back here in Step 3</li>
+      </ol>
     </div>
-    <div class="subject-strip"><div class="subject-label">Subject Line</div><div id="subject-display">—</div></div>
-    <div id="email-body"></div>
-    <div class="tags-row" id="tags-row"></div>
-    <div class="stats-bar" id="stats-bar"></div>
+
+    <div class="prompt-display" id="prompt-display"></div>
+
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <button class="btn-primary" style="flex:1; min-width:160px;" onclick="copyPrompt(this)">Copy Prompt</button>
+      <button class="btn-secondary" onclick="resetStep1()">← Change Options</button>
+    </div>
   </div>
 
-  <div class="history-section" id="history-section" style="display:none"><div class="history-title">Recent Emails</div><div class="history-list" id="history-list"></div></div>
-  <footer>AccessWorld Seminars · NSR Methodology · Joshua Roy</footer>
-</div>
+  <!-- STEP 3 — PASTE BACK -->
+  <div class="card" id="step3-card" style="display:none">
+    <div class="section-label">Step 3 — Paste Claude's email here</div>
+    <textarea id="paste-input" placeholder="Paste the full email Claude wrote here (including the Subject: line)..."></textarea>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <button class="btn-primary" style="flex:1; min-width:160px;" onclick="loadEmail()">✦ Load Email</button>
+      <button class="btn-secondary" onclick="clearPaste()">Clear</button>
+    </div>
+  </div>
+
+  <!-- STEP 4 — OUTPUT VIEWER -->
+  <div class="output-wrap" id="output-wrap">
+    <div style="border:1px solid var(--navy-border); border-radius:14px; overflow:hidden; margin-bottom:24px;">
+      <div class="output-header">
+        <div class="output-meta" id="output-meta">✓ Email Ready</div>
+        <div class="copy-buttons">
+          <button class="copy-btn copy-btn-subject" onclick="copyPart('subject', this)">Copy Subject</button>
+          <button class="copy-btn copy-btn-full" onclick="copyPart('full', this)">Copy Full Email</button>
+          <button class="copy-btn copy-btn-body" onclick="copyPart('body', this)">Copy Body Only</button>
+        </div>
+      </div>
+      <div class="subject-strip">
+        <div class="subject-label">Subject Line</div>
+        <div class="subject-value" id="subject-display">—</div>
+      </div>
+      <div class="email-body" id="email-body-display"></div>
+      <div class="tags-row" id="tags-row"></div>
+    </div>
+    <button class="btn-secondary" style="width:100%; margin-bottom:8px;" onclick="generateAnother()">✦ Generate Another Email</button>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="history-section" id="history-section" style="display:none">
+    <div class="history-title">Saved Emails</div>
+    <div id="history-list"></div>
+  </div>
+
+  <footer>AccessWorld Seminars · NSR Methodology · Joshua Roy · Brisbane</footer>
+
+</div><!-- /wrap -->
 
 <script>
-  // ---------- DATA ----------
-  const STORIES = [
-    { id: 1, title: "The Seminar Moment of Truth", summary: "Joshua stood proudly at a seminar when asked who had a relationship 'filled with love and passion' — only to discover his wife hesitated to stand. That dissonance launched a journey to understand passion." },
-    { id: 2, title: "The Bishop and the Love Languages", summary: "A bishop counselled a couple about mismatched love languages. The wife who 'didn't do physical touch' was shown how she'd feel if her husband said 'I don't do acts of service.'" },
-    { id: 3, title: "The Feather, The Brick, and The Truck", summary: "Small hurts are feathers. Ignored, they become bricks. Ignored further, they become trucks. The practice is to address the feathers before they gain weight." },
-    { id: 4, title: "The Year of the Massage", summary: "Joshua committed to giving his wife a 10-minute massage every day for one year — no pressure, no transaction. It transformed their intimacy completely." },
-    { id: 5, title: "The Rope on the Bed", summary: "A woman learned her husband was a 'Kinkster' archetype. She stopped asking directly for sex and instead left a rope on the bed as a silent invitation — it saved their relationship." },
-    { id: 6, title: "The Executive and the Lost Spark", summary: "A female executive in masculine energy all day came home to a masculine-energy partner. No polarity = no passion. Two positive poles can't create a spark." },
-    { id: 7, title: "The Bankrupt Man and the Role Reversal", summary: "When a man lost his business, he sank into feminine energy. His wife stepped up into masculine energy. Two receptive poles — no spark, no passion." },
-    { id: 8, title: "The Three Rebeccas", summary: "Joshua met three women named Rebecca while dating as a single dad. He scored each on Physicality, Personality and Spirituality — and chose Rebecca Two, who is now his wife." },
-    { id: 9, title: "The 'Perfect Wife' Who Missed the Mark", summary: "A woman said she was the 'perfect wife' — dinner always on the table, everything she thought he needed. But she gave according to her blueprint, not his. He had an affair and left." },
-    { id: 10, title: "The Respect Vessel", summary: "Men need respect to feel loved. Women need safety to feel loved. The fastest way to disconnect from a man is to disrespect him." },
-    { id: 11, title: "Jim Carrey's Million Dollar Check", summary: "Before fame, Jim Carrey carried a self-written million-dollar check in his wallet. He felt rich before he was. His first big acting paycheck was exactly one million dollars." },
-    { id: 12, title: "The Stuttering Boy and Dr. Dyer", summary: "A stuttering boy asked Dr. Wayne Dyer to fix his stutter. Dyer asked if he could imagine himself without it. The boy said no. Dyer said: 'Then I cannot help you. Everything starts in imagination.'" }
-  ];
-  const CONTENT_FILES = [
-    { id: 1, title: "The Consummate Love Triangle", topic: "relationships" }, { id: 2, title: "The Passion PATH (4 Archetypes)", topic: "sexuality" },
-    { id: 3, title: "Don't Find the Right Person, Become the Right Person", topic: "relationships" }, { id: 4, title: "The Chemistry of Connection", topic: "relationships" },
-    { id: 5, title: "The Anchor and the Jet Engine (Inner Child)", topic: "healing" }, { id: 6, title: "The Apprenticeship of a World-Class Coach", topic: "coaching" },
-    { id: 7, title: "The Three Pillars of Transformation", topic: "emotional_mastery" }, { id: 8, title: "Healing Your Nervous System", topic: "nervous_system" },
-    { id: 9, title: "The Unlimited Source (Manifestation)", topic: "mindset" }, { id: 10, title: "The Art of Being Heard", topic: "communication" }
-  ];
-  const TOPIC_MAP = {
-    relationships: { files: [1,3,4], stories: [1,2,3,4,6,7,8,9,10] }, sexuality: { files: [2], stories: [5] },
-    healing: { files: [5], stories: [12] }, adversity: { files: [5], stories: [7] }, forgiveness: { files: [5], stories: [9] },
-    mindset: { files: [9], stories: [11] }, nervous_system: { files: [8], stories: [3] }, emotional_mastery: { files: [7], stories: [3] },
-    coaching: { files: [6], stories: [6] }, communication: { files: [10], stories: [2] }, productivity: { files: [9], stories: [11] },
-    parenting: { files: [5], stories: [4] }, health: { files: [8], stories: [12] }
-  };
-  let emailHistory = [];
-  let currentEmail = { subject: '', body: '' };
-  let activeStreamController = null;
+// ── DATA ──────────────────────────────────────────────────────────
+const STORIES = [
+  { id:1, title:"The Seminar Moment of Truth", summary:"Joshua stood proudly at a seminar when asked who had a relationship filled with love and passion — only to discover his wife hesitated to stand. That dissonance launched a journey to understand passion." },
+  { id:2, title:"The Bishop and the Love Languages", summary:"A bishop counselled a couple about mismatched love languages. The wife who 'didn't do physical touch' was shown how she'd feel if her husband said 'I don't do acts of service.'" },
+  { id:3, title:"The Feather, The Brick, and The Truck", summary:"Small hurts are feathers. Ignored, they become bricks. Ignored further, they become trucks. The practice is to address the feathers before they gain weight." },
+  { id:4, title:"The Year of the Massage", summary:"Joshua committed to giving his wife a 10-minute massage every day for one year — no pressure, no transaction. It transformed their intimacy completely." },
+  { id:5, title:"The Rope on the Bed", summary:"A woman learned her husband was a 'Kinkster' archetype. She stopped asking directly for sex and instead left a rope on the bed as a silent invitation — it saved their relationship." },
+  { id:6, title:"The Executive and the Lost Spark", summary:"A female executive in masculine energy all day came home to a masculine-energy partner. No polarity = no passion. Two positive poles can't create a spark." },
+  { id:7, title:"The Bankrupt Man and the Role Reversal", summary:"When a man lost his business, he sank into feminine energy. His wife stepped up into masculine. Two receptive poles — no spark, no passion." },
+  { id:8, title:"The Three Rebeccas", summary:"Joshua met three women named Rebecca while dating as a single dad. He scored each on Physicality, Personality and Spirituality — and chose Rebecca Two, who is now his wife." },
+  { id:9, title:"The Perfect Wife Who Missed the Mark", summary:"A woman said she was the perfect wife — dinner always on the table, everything she thought he needed. But she gave according to her blueprint, not his. He had an affair and left." },
+  { id:10, title:"The Respect Vessel", summary:"Men need respect to feel loved. Women need safety to feel loved. The fastest way to disconnect from a man is to disrespect him." },
+  { id:11, title:"Jim Carrey's Million Dollar Check", summary:"Before fame, Jim Carrey carried a self-written million-dollar check in his wallet. He felt rich before he was. His first big acting paycheck was exactly one million dollars." },
+  { id:12, title:"The Stuttering Boy and Dr. Dyer", summary:"A stuttering boy asked Dr. Wayne Dyer to fix his stutter. Dyer asked if he could imagine himself without it. The boy said no. Dyer said: 'Everything starts in imagination.'" }
+];
 
-  // helpers
-  function getNextEvents(n) {
-    const EVENTS = [{ date: "2026-04-24", time: "9:00 AM", title: "Group Mentoring" },{ date: "2026-04-30", time: "7:00 PM", title: "Free Introduction Session" }];
-    const today = new Date().toISOString().split('T')[0];
-    return EVENTS.filter(e => e.date >= today).slice(0, n).map(e => `${e.date.slice(5)} ${e.time} — ${e.title}`);
-  }
+const FILES = [
+  { id:1, title:"The Consummate Love Triangle" },
+  { id:2, title:"The Passion PATH (4 Archetypes)" },
+  { id:3, title:"Don't Find the Right Person, Become the Right Person" },
+  { id:4, title:"The Chemistry of Connection" },
+  { id:5, title:"The Anchor and the Jet Engine (Inner Child)" },
+  { id:6, title:"The Apprenticeship of a World-Class Coach" },
+  { id:7, title:"The Three Pillars of Transformation" },
+  { id:8, title:"Healing Your Nervous System" },
+  { id:9, title:"The Unlimited Source (Manifestation)" },
+  { id:10, title:"The Art of Being Heard" }
+];
 
-  function escapeHtml(str) { return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>'); }
-  function unescapeHtmlForCopy(str) { return str.replace(/<br\s*\/?>/g, '\n').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&'); }
+const TMAP = {
+  relationships:    { files:[1,3,4], stories:[1,2,3,4,6,7,8,9,10] },
+  sexuality:        { files:[2],     stories:[5] },
+  healing:          { files:[5],     stories:[12] },
+  adversity:        { files:[5],     stories:[7] },
+  forgiveness:      { files:[5],     stories:[9] },
+  mindset:          { files:[9],     stories:[11] },
+  nervous_system:   { files:[8],     stories:[3] },
+  emotional_mastery:{ files:[7],     stories:[3] },
+  coaching:         { files:[6],     stories:[6] },
+  communication:    { files:[10],    stories:[2] },
+  productivity:     { files:[9],     stories:[11] },
+  parenting:        { files:[5],     stories:[4] },
+  health:           { files:[8],     stories:[12] }
+};
 
-  // core streaming generator
-  async function generateEmail() {
-    if (activeStreamController) { activeStreamController.abort(); }
-    const controller = new AbortController();
-    activeStreamController = controller;
+const TONES = {
+  warm:      "warm and encouraging — like a trusted friend writing personally",
+  story:     "story-led and personal — open with vivid, immersive storytelling",
+  insight:   "insight-first and educational — lead with a surprising truth or reframe",
+  challenge: "direct and challenging — call the reader firmly forward",
+  spiritual: "spiritual and reflective — draw on meaning, purpose and inner wisdom"
+};
 
-    const topicVal = document.getElementById('topic-select').value;
-    const toneVal = document.getElementById('tone-select').value;
-    const btn = document.getElementById('gen-btn');
-    const loadBar = document.getElementById('loading-bar');
-    btn.disabled = true;
-    btn.textContent = '⟳ Crafting email...';
-    loadBar.classList.add('active');
+const INVITATION = `---
+READY TO GO DEEPER?
 
-    const topic = topicVal === 'random' ? Object.keys(TOPIC_MAP)[Math.floor(Math.random() * Object.keys(TOPIC_MAP).length)] : topicVal;
-    const map = TOPIC_MAP[topic] || TOPIC_MAP.relationships;
-    const fileId = map.files[Math.floor(Math.random() * map.files.length)];
-    const file = CONTENT_FILES.find(f => f.id === fileId) || CONTENT_FILES[0];
-    const allStories = map.stories.map(id => STORIES.find(s => s.id === id)).filter(Boolean);
-    const story = allStories.length ? allStories[Math.floor(Math.random() * allStories.length)] : STORIES[0];
+1. Emotional Clearing Program — only $69
+   https://payhip.com/b/jO2o1
 
-    const toneGuide = {
-      warm: "Warm, encouraging, nurturing — like a trusted friend.",
-      story: "Story-led and personal — open with vivid storytelling.",
-      insight: "Insight-first and educational — lead with a surprising truth.",
-      challenge: "Direct and challenging — call the reader forward.",
-      spiritual: "Spiritual and reflective — draw on meaning and purpose."
-    };
-    const nextEvents = getNextEvents(2);
-    const eventsText = nextEvents.length ? `\n🗓️ COMING UP SOON\n${nextEvents.map(e => `• ${e}`).join('\n')}` : '';
+2. Free Introduction Webinar — join us live
+   https://joshbossesteamworkspace.myclickfunnels.com/joinnow
 
-    const systemPrompt = `You are Joshua Roy, founder of AccessWorld Seminars. Write a coaching email (300-420 words) with structure:
-1. Subject: [line]
-2. Warm opening
-3. STORY: "${story.title}" - ${story.summary}
-4. CONTENT insight: "${file.title}"
-5. Bridge to invitation
-6. EXACT invitation block:
+3. Follow on TikTok for daily insights
+   https://www.tiktok.com/@accessworldseminars
 
----
-✨ READY TO GO DEEPER?
+4. Unlock Your Incredible Self — next session
+   https://joshbossesteamworkspace.myclickfunnels.com/webinar-funnel
 
-1️⃣ Emotional Clearing Program — only $69
-   👉 https://payhip.com/b/jO2o1
-
-2️⃣ Free Introduction Webinar — join us live
-   👉 https://joshbossesteamworkspace.myclickfunnels.com/joinnow
-
-3️⃣ Follow on TikTok for daily insights
-   👉 https://www.tiktok.com/@accessworldseminars
-
-4️⃣ Unlock Your Incredible Self — next session
-   👉 https://joshbossesteamworkspace.myclickfunnels.com/webinar-funnel
-
-📅 NEXT FREE WEBINAR
-Join me live on Zoom — it's completely free.
+NEXT FREE WEBINAR — Join me live on Zoom, completely free.
 Meeting ID: 215 928 3790 | Password: 664511
-👉 https://us02web.zoom.us/j/2159283790?pwd=ZmhFQ0VveFp4N294ZXF2ZElrUzQyUT09
-${eventsText}
+https://us02web.zoom.us/j/2159283790?pwd=ZmhFQ0VveFp4N294ZXF2ZElrUzQyUT09
 
 With love and belief in your journey,
 Joshua Roy
 AccessWorld Seminars
-🔗 Full schedule: https://accessworldseminars-ship-it.github.io/results/s
----
+Full schedule: https://accessworldseminars-ship-it.github.io/results/s
+---`;
 
-Tone: ${toneGuide[toneVal]}. Write naturally, avoid markdown headers. Use plain paragraphs. Keep subject line intriguing.`;
+// ── STATE ─────────────────────────────────────────────────────────
+let currentMeta = {};
+let emailHistory = JSON.parse(localStorage.getItem('aw_history') || '[]');
+let currentEmail = { subject: '', body: '' };
 
-    const userPrompt = `Topic: ${topic.replace(/_/g,' ')}. Use story "${story.title}" and content "${file.title}". Write full email now. Start with Subject: `;
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
-    const card = document.getElementById('output-card');
-    card.classList.add('visible');
-    document.getElementById('subject-display').textContent = '...';
-    document.getElementById('email-body').innerHTML = '<span class="cursor"></span>';
-    document.getElementById('output-meta').textContent = `Generating · ${topic.replace(/_/g,' ')} · File ${file.id}`;
-    document.getElementById('tags-row').innerHTML = '';
-    document.getElementById('stats-bar').innerHTML = '';
+// ── STEP 1 → BUILD PROMPT ─────────────────────────────────────────
+function buildPrompt() {
+  const topicVal = document.getElementById('topic-select').value;
+  const toneVal  = document.getElementById('tone-select').value;
 
-    let fullText = '';
-    let subjectExtracted = false;
-    let subject = '';
+  const topicKey = topicVal === 'random'
+    ? pick(Object.keys(TMAP))
+    : topicVal;
 
-    try {
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-API-Key': 'YOUR_ANTHROPIC_API_KEY' },
-        body: JSON.stringify({
-          model: 'claude-3-5-sonnet-20241022',
-          max_tokens: 1800,
-          stream: true,
-          system: systemPrompt,
-          messages: [{ role: 'user', content: userPrompt }]
-        }),
-        signal: controller.signal
-      });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      const bodyEl = document.getElementById('email-body');
-      let buffer = '';
+  const map     = TMAP[topicKey] || TMAP.relationships;
+  const fileId  = pick(map.files);
+  const storyId = pick(map.stories);
+  const file    = FILES.find(f => f.id === fileId) || FILES[0];
+  const story   = STORIES.find(s => s.id === storyId) || STORIES[0];
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        const chunk = decoder.decode(value, { stream: true });
-        buffer += chunk;
-        const lines = buffer.split('\n');
-        buffer = lines.pop() || '';
-        for (const line of lines) {
-          if (!line.startsWith('data: ')) continue;
-          const data = line.slice(6).trim();
-          if (data === '[DONE]') continue;
-          try {
-            const parsed = JSON.parse(data);
-            if (parsed.type === 'content_block_delta' && parsed.delta?.text) {
-              fullText += parsed.delta.text;
-              if (!subjectExtracted && fullText.includes('\n')) {
-                const subjMatch = fullText.match(/Subject:\s*(.+?)(?:\n|$)/i);
-                if (subjMatch) {
-                  subject = subjMatch[1].trim();
-                  document.getElementById('subject-display').textContent = subject;
-                  subjectExtracted = true;
-                }
-              }
-              let displayBody = fullText;
-              if (subjectExtracted) displayBody = fullText.replace(/^Subject:.*?\n/i, '').trimStart();
-              bodyEl.innerHTML = escapeHtml(displayBody) + '<span class="cursor"></span>';
-              bodyEl.scrollTop = bodyEl.scrollHeight;
-            }
-          } catch(e) {}
-        }
-      }
-      const finalBody = fullText.replace(/^Subject:.*?\n/i, '').trimStart();
-      document.getElementById('email-body').innerHTML = escapeHtml(finalBody);
-      if (!subjectExtracted && fullText) {
-        const fallbackMatch = fullText.match(/Subject:\s*(.+?)(?:\n|$)/i);
-        if (fallbackMatch) subject = fallbackMatch[1].trim();
-        else subject = `Your ${topic.replace(/_/g,' ')} breakthrough`;
-        document.getElementById('subject-display').textContent = subject;
-      }
-      currentEmail = { subject, body: finalBody };
-      const wordCount = finalBody.split(/\s+/).filter(Boolean).length;
-      document.getElementById('tags-row').innerHTML = `<span class="tag gold">File ${file.id}: ${file.title}</span><span class="tag">Story ${story.id}: ${story.title}</span><span class="tag">${topic.replace(/_/g,' ')}</span><span class="tag">${toneVal}</span>`;
-      document.getElementById('stats-bar').innerHTML = `<span class="stat">Words: <span>${wordCount}</span></span><span class="stat">Topic: <span>${topic.replace(/_/g,' ')}</span></span><span class="stat">File: <span>${file.id}</span></span><span class="stat">Story: <span>${story.id}</span></span>`;
-      document.getElementById('output-meta').textContent = `✓ Email Ready — ${new Date().toLocaleTimeString('en-AU', {hour:'2-digit', minute:'2-digit'})}`;
-      addToHistory(subject, finalBody, topic, file.id, story.id);
-    } catch (err) {
-      if (err.name !== 'AbortError') {
-        document.getElementById('email-body').innerHTML = `⚠️ Error: ${err.message}. Please try again.<br>Note: Replace 'YOUR_ANTHROPIC_API_KEY' with a valid API key for production.`;
-        document.getElementById('output-meta').textContent = '✗ API Error';
-      }
-    } finally {
-      btn.disabled = false;
-      btn.textContent = '✦ Generate Today\'s Email';
-      loadBar.classList.remove('active');
-      activeStreamController = null;
-    }
+  currentMeta = { topicKey, toneVal, file, story };
+
+  const topicLabel = topicKey.replace(/_/g, ' ');
+
+  const prompt =
+`You are Joshua Roy, founder of AccessWorld Seminars in Brisbane. Write a coaching email on the topic of "${topicLabel}". Tone: ${TONES[toneVal]}.
+
+Use this story: "${story.title}" — ${story.summary}
+
+Reference this content theme: "${file.title}"
+
+Format exactly like this:
+Subject: [your compelling subject line here]
+
+[email body — 300-400 words, plain paragraphs, no markdown headers, no bold text]
+
+End with this invitation block copied exactly word for word:
+
+${INVITATION}`;
+
+  document.getElementById('prompt-display').textContent = prompt;
+  document.getElementById('step1-card').style.display = 'none';
+  document.getElementById('step2-card').style.display = 'block';
+  document.getElementById('step3-card').style.display = 'block';
+  setActiveStep(2);
+}
+
+// ── COPY PROMPT ───────────────────────────────────────────────────
+function copyPrompt(btn) {
+  const text = document.getElementById('prompt-display').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied! Now open Claude.ai →';
+    btn.style.background = '#2d6a4f';
+    btn.style.color = '#74c69d';
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 3000);
+  }).catch(() => {
+    alert('Copy failed — please select and copy the text manually.');
+  });
+}
+
+// ── LOAD EMAIL FROM PASTE ─────────────────────────────────────────
+function loadEmail() {
+  const raw = document.getElementById('paste-input').value.trim();
+  if (!raw) { alert('Please paste Claude\'s email first.'); return; }
+
+  const subjMatch = raw.match(/^Subject:\s*(.+?)(?:\n|$)/im);
+  const subject   = subjMatch ? subjMatch[1].trim() : '(no subject found)';
+  const body      = raw.replace(/^Subject:.*?(\n|$)/im, '').trimStart();
+
+  currentEmail = { subject, body };
+
+  document.getElementById('subject-display').textContent = subject;
+  document.getElementById('email-body-display').textContent = body;
+
+  // Tags
+  const m = currentMeta;
+  if (m.file && m.story) {
+    document.getElementById('tags-row').innerHTML =
+      `<span class="tag gold">File: ${m.file.title}</span>` +
+      `<span class="tag">Story: ${m.story.title}</span>` +
+      `<span class="tag">${(m.topicKey||'').replace(/_/g,' ')}</span>` +
+      `<span class="tag">${m.toneVal||''}</span>`;
   }
 
-  function copyEmail() {
-    if (!currentEmail.subject && !currentEmail.body) return;
-    let rawBody = currentEmail.body;
-    rawBody = rawBody.replace(/<br\s*\/?>/gi, '\n').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
-    const fullEmail = `Subject: ${currentEmail.subject}\n\n${rawBody}`;
-    navigator.clipboard.writeText(fullEmail).then(() => {
-      const btn = document.getElementById('copy-btn');
-      btn.textContent = '✓ Copied!';
-      btn.classList.add('done');
-      setTimeout(() => { btn.textContent = 'Copy Email'; btn.classList.remove('done'); }, 2000);
-    }).catch(() => alert('Could not copy. Manual selection works.'));
-  }
+  document.getElementById('output-meta').textContent =
+    `✓ Ready — ${new Date().toLocaleTimeString('en-AU', {hour:'2-digit', minute:'2-digit'})}`;
 
-  function clearOutput() {
-    document.getElementById('output-card').classList.remove('visible');
-    currentEmail = { subject: '', body: '' };
-    document.getElementById('subject-display').textContent = '—';
-    document.getElementById('email-body').innerHTML = '';
-  }
+  document.getElementById('output-wrap').classList.add('visible');
+  setActiveStep(4);
 
-  function addToHistory(subject, body, topic, fileId, storyId) {
-    emailHistory.unshift({ subject, body, topic, fileId, storyId, time: new Date() });
-    if (emailHistory.length > 5) emailHistory.pop();
-    renderHistory();
-  }
+  // Save to history
+  saveHistory(subject, body, m);
+  document.getElementById('output-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 
-  function renderHistory() {
-    const section = document.getElementById('history-section');
-    const list = document.getElementById('history-list');
-    if (emailHistory.length === 0) { section.style.display = 'none'; return; }
-    section.style.display = 'block';
-    list.innerHTML = emailHistory.map((e, i) => `<div class="history-item" onclick="loadHistory(${i})"><span class="hist-subject">${escapeHtml(e.subject || 'Untitled')}</span><span class="hist-meta">${e.topic.replace(/_/g,' ')} · ${e.time.toLocaleTimeString('en-AU',{hour:'2-digit',minute:'2-digit'})}</span></div>`).join('');
-  }
+// ── COPY PARTS ────────────────────────────────────────────────────
+function copyPart(part, btn) {
+  let text = '';
+  if (part === 'subject') text = currentEmail.subject;
+  if (part === 'body')    text = currentEmail.body;
+  if (part === 'full')    text = `Subject: ${currentEmail.subject}\n\n${currentEmail.body}`;
 
-  function loadHistory(idx) {
-    const e = emailHistory[idx];
-    if (!e) return;
-    currentEmail = { subject: e.subject, body: e.body };
-    document.getElementById('subject-display').textContent = e.subject;
-    document.getElementById('email-body').innerHTML = escapeHtml(e.body);
-    document.getElementById('output-card').classList.add('visible');
-    document.getElementById('output-meta').textContent = `Restored · ${e.time.toLocaleTimeString('en-AU',{hour:'2-digit',minute:'2-digit'})}`;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  if (!text) return;
 
-  // Event bindings
-  document.getElementById('gen-btn').addEventListener('click', generateEmail);
-  document.getElementById('copy-btn').addEventListener('click', copyEmail);
-  document.getElementById('clear-btn').addEventListener('click', clearOutput);
-  window.loadHistory = loadHistory;
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(() => alert('Copy failed — try selecting text manually.'));
+}
+
+// ── HISTORY ───────────────────────────────────────────────────────
+function saveHistory(subject, body, meta) {
+  emailHistory.unshift({
+    subject, body,
+    topicKey: meta.topicKey || '',
+    toneVal:  meta.toneVal  || '',
+    fileTitle:  meta.file  ? meta.file.title  : '',
+    storyTitle: meta.story ? meta.story.title : '',
+    time: new Date().toISOString()
+  });
+  if (emailHistory.length > 10) emailHistory.pop();
+  localStorage.setItem('aw_history', JSON.stringify(emailHistory));
+  renderHistory();
+}
+
+function renderHistory() {
+  const section = document.getElementById('history-section');
+  const list    = document.getElementById('history-list');
+  if (!emailHistory.length) { section.style.display = 'none'; return; }
+  section.style.display = 'block';
+  list.innerHTML = emailHistory.map((e, i) => {
+    const t = new Date(e.time).toLocaleString('en-AU', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' });
+    return `<div class="history-item">
+      <span class="hist-subj" onclick="loadFromHistory(${i})">${esc(e.subject || 'Untitled')}</span>
+      <span class="hist-meta">${esc(e.topicKey.replace(/_/g,' '))} · ${t}</span>
+      <button class="hist-del" onclick="deleteHistory(${i})" title="Delete">✕</button>
+    </div>`;
+  }).join('');
+}
+
+function loadFromHistory(i) {
+  const e = emailHistory[i];
+  if (!e) return;
+  currentEmail = { subject: e.subject, body: e.body };
+  currentMeta  = { topicKey: e.topicKey, toneVal: e.toneVal };
+
+  document.getElementById('subject-display').textContent = e.subject;
+  document.getElementById('email-body-display').textContent = e.body;
+  document.getElementById('tags-row').innerHTML =
+    `<span class="tag gold">${esc(e.fileTitle)}</span>` +
+    `<span class="tag">${esc(e.storyTitle)}</span>` +
+    `<span class="tag">${esc(e.topicKey.replace(/_/g,' '))}</span>`;
+  document.getElementById('output-meta').textContent =
+    `Restored — ${new Date(e.time).toLocaleString('en-AU', {day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}`;
+  document.getElementById('output-wrap').classList.add('visible');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function deleteHistory(i) {
+  emailHistory.splice(i, 1);
+  localStorage.setItem('aw_history', JSON.stringify(emailHistory));
+  renderHistory();
+}
+
+// ── MISC ──────────────────────────────────────────────────────────
+function resetStep1() {
+  document.getElementById('step2-card').style.display = 'none';
+  document.getElementById('step3-card').style.display = 'none';
+  document.getElementById('step1-card').style.display = 'block';
+  setActiveStep(1);
+}
+
+function clearPaste() {
+  document.getElementById('paste-input').value = '';
+}
+
+function generateAnother() {
+  document.getElementById('output-wrap').classList.remove('visible');
+  document.getElementById('step2-card').style.display = 'none';
+  document.getElementById('step3-card').style.display = 'none';
+  document.getElementById('step1-card').style.display = 'block';
+  document.getElementById('paste-input').value = '';
+  setActiveStep(1);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function setActiveStep(n) {
+  [1,2,3,4].forEach(i => {
+    const el = document.getElementById(`step${i}-ind`);
+    if (el) el.classList.toggle('active', i <= n);
+  });
+}
+
+function esc(s) {
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;');
+}
+
+// ── INIT ──────────────────────────────────────────────────────────
+renderHistory();
 </script>
 </body>
 </html>
-```
