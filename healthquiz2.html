@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Telegram</title>
+</head>
+<body>
+    <h1>Telegram Test</h1>
+    <button id="testBtn">Send Test Message to Telegram</button>
+    <p id="result"></p>
+
+    <script>
+        // ========== PUT YOUR VALUES HERE ==========
+        const TELEGRAM_BOT_TOKEN = "8155100717:AAHrhehNUzIY2ArY2FUtEvSbFzkzRDciWmk";
+        const TELEGRAM_CHAT_ID = "5970521104";
+        // ==========================================
+
+        async function sendTest() {
+            if (!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN === "8155100717:AAHrhehNUzIY2ArY2FUtEvSbFzkzRDciWmk") {
+                document.getElementById("result").innerHTML = "❌ Bot token not configured";
+                return;
+            }
+            if (!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID === "5970521104") {
+                document.getElementById("result").innerHTML = "❌ Chat ID not configured";
+                return;
+            }
+
+            const message = "✅ Test message from HTML file - " + new Date().toLocaleTimeString();
+            const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(message)}`;
+            
+            document.getElementById("result").innerHTML = "⏳ Sending...";
+            
+            try {
+                const response = await fetch(url);
+                const result = await response.json();
+                
+                if (result.ok) {
+                    document.getElementById("result").innerHTML = "✅ Message sent! Check Telegram.";
+                    console.log("Success:", result);
+                } else {
+                    document.getElementById("result").innerHTML = "❌ Error: " + result.description;
+                    console.error("Error:", result);
+                }
+            } catch (error) {
+                document.getElementById("result").innerHTML = "❌ Fetch failed: " + error.message;
+                console.error("Fetch error:", error);
+            }
+        }
+
+        document.getElementById("testBtn").onclick = sendTest;
+    </script>
+</body>
+</html>
