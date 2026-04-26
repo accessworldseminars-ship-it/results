@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test Telegram</title>
+    <title>Telegram Test - Simple</title>
 </head>
 <body>
     <h1>Telegram Test</h1>
@@ -9,44 +9,44 @@
     <p id="result"></p>
 
     <script>
-        // ========== PUT YOUR VALUES HERE ==========
-        const TELEGRAM_BOT_TOKEN = "8155100717:AAHrhehNUzIY2ArY2FUtEvSbFzkzRDciWmk";
-        const TELEGRAM_CHAT_ID = "5970521104";
-        // ==========================================
+        // ⚠️ ONLY CHANGE THESE 2 LINES ⚠️
+        const BOT_TOKEN = "8155100717:AAHrhehNUzIY2ArY2FUtEvSbFzkzRDciWmk";
+        const CHAT_ID = "5970521104";
+        // ⚠️ NOTHING ELSE BELOW THIS LINE ⚠️
 
-        async function sendTest() {
-            if (!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN === "8155100717:AAHrhehNUzIY2ArY2FUtEvSbFzkzRDciWmk") {
-                document.getElementById("result").innerHTML = "❌ Bot token not configured";
-                return;
-            }
-            if (!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID === "5970521104") {
-                document.getElementById("result").innerHTML = "❌ Chat ID not configured";
-                return;
-            }
-
-            const message = "✅ Test message from HTML file - " + new Date().toLocaleTimeString();
-            const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(message)}`;
+        async function sendMessage() {
+            const resultDiv = document.getElementById("result");
             
-            document.getElementById("result").innerHTML = "⏳ Sending...";
+            if (BOT_TOKEN === "YOUR_BOT_TOKEN_HERE") {
+                resultDiv.innerHTML = "❌ Please put your bot token in the BOT_TOKEN variable (line 10)";
+                return;
+            }
+            
+            if (CHAT_ID === "YOUR_CHAT_ID_HERE") {
+                resultDiv.innerHTML = "❌ Please put your chat ID in the CHAT_ID variable (line 11)";
+                return;
+            }
+            
+            resultDiv.innerHTML = "⏳ Sending...";
+            
+            const message = "✅ Test from HTML! Time: " + new Date().toLocaleTimeString();
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`;
             
             try {
                 const response = await fetch(url);
-                const result = await response.json();
+                const data = await response.json();
                 
-                if (result.ok) {
-                    document.getElementById("result").innerHTML = "✅ Message sent! Check Telegram.";
-                    console.log("Success:", result);
+                if (data.ok) {
+                    resultDiv.innerHTML = "✅ SUCCESS! Check your Telegram now.";
                 } else {
-                    document.getElementById("result").innerHTML = "❌ Error: " + result.description;
-                    console.error("Error:", result);
+                    resultDiv.innerHTML = "❌ Error: " + data.description;
                 }
-            } catch (error) {
-                document.getElementById("result").innerHTML = "❌ Fetch failed: " + error.message;
-                console.error("Fetch error:", error);
+            } catch (err) {
+                resultDiv.innerHTML = "❌ Fetch failed: " + err.message;
             }
         }
-
-        document.getElementById("testBtn").onclick = sendTest;
+        
+        document.getElementById("testBtn").onclick = sendMessage;
     </script>
 </body>
 </html>
