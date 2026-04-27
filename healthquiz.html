@@ -148,10 +148,10 @@
 <div class="quiz-container" id="app"></div>
 
 <script>
-  const TELEGRAM_BOT_TOKEN = "8155100717:AAHrhehNUzIY2ArY2FUtEvSbFzkzRDciWmk";
+  const TELEGRAM_BOT_TOKEN = "8155100717:AAGhB1RGsuZTX14PzvbUAQhVmzhB3C5UtCc";
   const TELEGRAM_CHAT_ID = "5970521104";
 
-  const QUESTIONS = [ /* your 11 questions remain unchanged */ 
+  const QUESTIONS = [
     { id: 0, text: "I breathe using my belly (diaphragm) with shoulders relaxed, not shallow chest breathing.", category: "Breathwork" },
     { id: 1, text: "I can hold my breath after exhale for at least 30 seconds comfortably.", category: "Lung Capacity" },
     { id: 2, text: "I eat fresh fruits/vegetables daily and avoid hybridized wheat (white bread/pasta).", category: "Diet" },
@@ -165,7 +165,7 @@
     { id: 10, text: "I prioritise my health even when life gets busy or I have a lot on my plate.", category: "Mindset" }
   ];
 
-  const TEACHING_SCREENS = { /* unchanged */ 
+  const TEACHING_SCREENS = {
     3: { headline: "AccessWorld Seminars is a results-driven coaching company.", quote: "We help people transform their health and energy — and support those who want to become certified coaches themselves.", image: "https://i.ibb.co/4Zd4RVbR/Gemini-Generated-Image-o877d1o877d1o877.png" },
     6: { headline: "AccessWorld Seminars helps individuals feel good for no good reason.", quote: "Feelings are not fate. They are habits.", image: "https://i.ibb.co/r2T9kL99/Gemini-Generated-Image-tea7prtea7prtea7.png" },
     9: { headline: "AccessWorld Seminars Mindset Coaching works", quote: "Calm is the container that holds everything else together.", image: "https://i.ibb.co/97mZvc6/Screenshot-2026-01-29-105636.png" }
@@ -189,10 +189,32 @@
     return { label: "Cellular Mastery", msg: "Exceptional! Alkaline & oxygen-rich environment." };
   }
 
-  // Telegram notification (unchanged)
-  async function sendTelegramNotification() { /* ... same as before ... */ }
+  async function sendTelegramNotification() {
+    if (!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN === "YOUR_BOT_TOKEN_HERE") return false;
+    const total = answers.reduce((a,b)=>a+b,0);
+    const avg = total / QUESTIONS.length;
+    const tier = getTierData(avg).label;
+    const message = `🔥 NEW COACHING LEAD (Quiz)\n\nName: ${userName}\nEmail: ${userEmail}\nPhone: ${userPhone}\nSegment: ${userSegment}\nGoal: ${userGoal}\nFocus: ${userHealthFocus}\nLearning: ${userLearnPref}\nScore: ${avg.toFixed(1)}/5 (${tier})`;
+    try {
+      const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message })
+      });
+      return res.ok;
+    } catch(e) { return false; }
+  }
 
-  function computeCategoryAverages() { /* ... same as before ... */ }
+  function computeCategoryAverages() {
+    const sums = {}, counts = {};
+    QUESTIONS.forEach(q => {
+      const val = answers[q.id] ?? 0;
+      sums[q.category] = (sums[q.category] || 0) + val;
+      counts[q.category] = (counts[q.category] || 0) + 1;
+    });
+    const avgs = {};
+    for (let c in sums) avgs[c] = sums[c] / counts[c];
+    return avgs;
+  }
 
   const root = document.getElementById("app");
 
@@ -216,33 +238,20 @@
     document.getElementById("startBtn").addEventListener("click", () => { step = "preSegments"; preStep = 0; render(); });
   }
 
-  // ONE QUESTION AT A TIME PRE-SEGMENTS
   function renderPreSegments() {
     const preQuestions = [
-      { 
-        title: "Which best describes you?", 
-        options: ["General Wellness Seeker", "Health Coach / Practitioner", "Struggling with Energy/Fatigue", "Looking for Coach Certification"], 
-        key: "segment" 
-      },
-      { 
-        title: "What is your main goal right now?", 
-        options: ["Boost daily energy", "Improve mental clarity", "Reduce stress / anxiety", "Simply feel better"], 
-        key: "goal" 
-      },
-      { 
-        title: "What is your current health focus?", 
-        options: ["Lymphatic health", "Breathwork & lungs", "Diet & alkaline foods", "Mindset & emotions"], 
-        key: "focus" 
-      },
-      { 
-        title: "How do you prefer to learn?", 
-        options: ["Short videos", "Live webinars", "1-on-1 coaching", "Written guides"], 
-        key: "learn" 
-      }
+      { title: "Which best describes you?", options: ["General Wellness Seeker", "Health Coach / Practitioner", "Struggling with Energy/Fatigue", "Looking for Coach Certification"], key: "segment" },
+      { title: "What is your main goal right now?", options: ["Boost daily energy", "Improve mental clarity", "Reduce stress / anxiety", "Simply feel better"], key: "goal" },
+      { title: "What is your current health focus?", options: ["Lymphatic health", "Breathwork & lungs", "Diet & alkaline foods", "Mindset & emotions"], key: "focus" },
+      { title: "How do you prefer to learn?", options: ["Short videos", "Live webinars", "1-on-1 coaching", "Written guides"], key: "learn" }
     ];
 
     const current = preQuestions[preStep];
-    let currentVal = current.key === "segment" ? userSegment : (current.key === "goal" ? userGoal : (current.key === "focus" ? userHealthFocus : userLearnPref));
+    let currentVal = "";
+    if (current.key === "segment") currentVal = userSegment;
+    else if (current.key === "goal") currentVal = userGoal;
+    else if (current.key === "focus") currentVal = userHealthFocus;
+    else if (current.key === "learn") currentVal = userLearnPref;
 
     let html = `
       <div class="card">
@@ -256,7 +265,6 @@
 
     html += `</div>`;
 
-    // Testimonial after second question (Goal)
     if (preStep === 1) {
       html += `
         <div class="report-section" style="background:rgba(0,0,0,0.4); font-style:italic; text-align:center;">
@@ -274,7 +282,6 @@
 
     root.innerHTML = html;
 
-    // Click handlers for options
     document.querySelectorAll('.option-card').forEach(el => {
       el.addEventListener('click', () => {
         document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
@@ -291,17 +298,133 @@
     });
 
     document.getElementById("preNext").addEventListener("click", () => {
-      let hasValue = (current.key === "segment" && userSegment) || 
-                     (current.key === "goal" && userGoal) || 
-                     (current.key === "focus" && userHealthFocus) || 
-                     (current.key === "learn" && userLearnPref);
+      let hasValue = false;
+      if (current.key === "segment") hasValue = userSegment !== "";
+      else if (current.key === "goal") hasValue = userGoal !== "";
+      else if (current.key === "focus") hasValue = userHealthFocus !== "";
+      else if (current.key === "learn") hasValue = userLearnPref !== "";
+      
       if (!hasValue) { alert("Please select an option"); return; }
       if (preStep < 3) { preStep++; render(); }
-      else { step = "quiz"; currentQuestionIdx = 0; render(); }
+      else { 
+        step = "quiz"; 
+        currentQuestionIdx = 0; 
+        render(); 
+      }
     });
   }
 
-  // renderQuiz, renderTeaching, renderContact remain mostly the same as your last version
+  function renderQuiz() {
+    const q = QUESTIONS[currentQuestionIdx];
+    const selected = answers[q.id];
+    const progress = (currentQuestionIdx / QUESTIONS.length) * 100;
+
+    root.innerHTML = `
+      <div class="card">
+        <div class="progress-steps">${QUESTIONS.map((_,i)=>`<div class="step-dot ${i===currentQuestionIdx?'active':''}"></div>`).join('')}</div>
+        <div style="background:#2a3650; height:4px; border-radius:10px; margin-top:8px;"><div style="width:${progress}%; background:#C9A84C; height:4px; border-radius:10px;"></div></div>
+        <h2 style="margin:1.5rem 0 1rem; font-size:1.4rem;">${q.text}</h2>
+        <div class="scale-group" id="scaleGroup"></div>
+        <div style="display:flex; justify-content:space-between; margin-top:2rem;">
+          <button class="btn" id="quizPrevBtn" ${currentQuestionIdx===0 ? 'disabled' : ""}>← Previous</button>
+          <button class="btn btn-primary" id="quizNextBtn">${currentQuestionIdx===QUESTIONS.length-1 ? "Complete →" : "Next"}</button>
+        </div>
+      </div>`;
+
+    const group = document.getElementById("scaleGroup");
+    const labels = ["Never","Rarely","Sometimes","Often","Mostly","Always"];
+    for(let i=0; i<=5; i++){
+      let div = document.createElement("div");
+      div.className = `scale-opt ${selected===i ? 'selected' : ''}`;
+      div.innerHTML = `<div class="number">${i}</div><div class="label">${labels[i]}</div>`;
+      div.addEventListener("click", () => { answers[q.id]=i; renderQuiz(); });
+      group.appendChild(div);
+    }
+
+    document.getElementById("quizPrevBtn")?.addEventListener("click", () => { 
+      if(currentQuestionIdx > 0){ 
+        currentQuestionIdx--; 
+        render(); 
+      } 
+    });
+    
+    document.getElementById("quizNextBtn")?.addEventListener("click", () => {
+      if(answers[q.id] === null){ 
+        alert("Please select a rating 0-5"); 
+        return; 
+      }
+      if(currentQuestionIdx === QUESTIONS.length-1){
+        finalScore = answers.reduce((a,b)=>a+b,0) / QUESTIONS.length;
+        categoryAvgs = computeCategoryAverages();
+        step = "contact";
+        render();
+      } else {
+        let nextIdx = currentQuestionIdx + 1;
+        if(TEACHING_SCREENS[nextIdx]){ 
+          nextAfterTeaching = nextIdx; 
+          step = "teaching"; 
+          render(); 
+        } else { 
+          currentQuestionIdx = nextIdx; 
+          render(); 
+        }
+      }
+    });
+  }
+
+  function renderTeaching() {
+    let next = nextAfterTeaching;
+    let teach = TEACHING_SCREENS[next];
+    if(!teach) { step="quiz"; render(); return; }
+    root.innerHTML = `
+      <div class="card" style="text-align:center;">
+        <h2 class="gold">✨ ${teach.headline}</h2>
+        <img src="${teach.image}" class="teaching-img" alt="wisdom" onerror="this.src='https://i.ibb.co/ynXdYpmL/worldjjpgsf.png'">
+        <div class="report-section" style="background:rgba(0,0,0,0.3);">
+          <p class="gold" style="font-size:1.3rem;">“${teach.quote}”</p>
+        </div>
+        <button class="btn btn-primary" id="contTeachBtn">Continue →</button>
+      </div>`;
+    document.getElementById("contTeachBtn")?.addEventListener("click", () => { 
+      currentQuestionIdx = next; 
+      step = "quiz"; 
+      render(); 
+    });
+  }
+
+  function renderContact() {
+    root.innerHTML = `
+      <div class="card">
+        <h2>Your Comprehensive Report Awaits</h2>
+        <p>Enter your details to unlock your detailed 3-page Cellular Vitality Report + invitation to our next free session.</p>
+        <input type="text" id="contactName" placeholder="Full name">
+        <input type="email" id="contactEmail" placeholder="Email address">
+        <input type="tel" id="contactPhone" placeholder="Phone with area code">
+        <div style="display:flex; gap:1rem; justify-content:center; margin-top:1rem;">
+          <button class="btn" id="backToQuizBtn">← Back</button>
+          <button class="btn btn-primary" id="genReportBtn">📊 Generate Full Report →</button>
+        </div>
+      </div>`;
+    
+    document.getElementById("backToQuizBtn")?.addEventListener("click", () => { 
+      step = "quiz"; 
+      render(); 
+    });
+    
+    document.getElementById("genReportBtn")?.addEventListener("click", async () => {
+      let name = document.getElementById("contactName").value.trim();
+      let email = document.getElementById("contactEmail").value.trim();
+      let phone = document.getElementById("contactPhone").value.trim();
+      if(!name || !email) { alert("Name and email are required."); return; }
+      userName = name; 
+      userEmail = email; 
+      userPhone = phone;
+      await sendTelegramNotification();
+      reportPage = 0;
+      step = "report";
+      render();
+    });
+  }
 
   function renderMultiPageReport() {
     const avg = finalScore.toFixed(1);
@@ -311,7 +434,6 @@
     const highest = categoryList.slice(-3).reverse();
 
     const pages = [
-      // Page 1 - Overview
       `<h1 style="text-align:center; margin-bottom:1rem;">Your Cellular Vitality Report</h1>
       <div style="text-align:center;">
         <div style="font-size:4.5rem; color:#C9A84C; font-weight:700;">${avg}<span style="font-size:1.4rem;">/5</span></div>
@@ -326,7 +448,6 @@
            <strong>Learning Preference:</strong> ${userLearnPref}</p>
       </div>`,
 
-      // Page 2 - Detailed Analysis + Lymph + Breath
       `<div class="report-section">
         <h3>Priority Areas for Improvement</h3>
         ${lowest.map(([cat,sc]) => `
@@ -345,7 +466,6 @@
         <p><strong>Daily Action:</strong> 5–10 minutes of rebounding, jumping, running in place, or heel drops. This stimulates lymph flow and helps clear acid and toxin build-up.</p>
       </div>`,
 
-      // Page 3 - Rich Action Plan (expanded to add substance)
       `<div class="report-section">
         <h3>Food as Medicine & Cellular Energy</h3>
         <p>Energy is created inside your cells. Glucose + water give 2 units of energy. Add oxygen and you get up to 32 units — an exponential boost. Most people lose significant lung capacity by age 50 simply because they don’t use it fully.</p>
@@ -361,7 +481,7 @@
         <h3>Next Steps with AccessWorld Seminars</h3>
         <p>AccessWorld Seminars is a results-driven coaching company. We help people dramatically improve their health, energy, and mindset through breathwork, nervous system reprogramming, and practical cellular health strategies. We also guide aspiring coaches who want real certifications in coaching, NLP, and Nervous System Reprogramming (NSR).</p>
         <p>Ready for deeper transformation? Join our next free live session or book a discovery call.</p>
-        <a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank" class="btn btn-primary" style="display:inline-block; margin-top:1rem;">Reserve My Free Session Seat →</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank" class="btn btn-primary" style="display:inline-block; margin-top:1rem; text-decoration:none;">Reserve My Free Session Seat →</a>
       </div>
       <footer style="margin-top:2rem;">Joshua Roy — Results & Happiness Coach<br>AccessWorld Seminars • Brisbane • Since 2015</footer>`
     ];
@@ -379,14 +499,23 @@
         </div>
       </div>`;
 
-    document.getElementById("prevPageBtn")?.addEventListener("click", () => { if(reportPage>0){ reportPage--; renderMultiPageReport(); } });
+    document.getElementById("prevPageBtn")?.addEventListener("click", () => { 
+      if(reportPage > 0){ 
+        reportPage--; 
+        renderMultiPageReport(); 
+      } 
+    });
+    
     document.getElementById("nextPageBtn")?.addEventListener("click", () => {
-      if(reportPage === 2) { step="intro"; render(); }
-      else { reportPage++; renderMultiPageReport(); }
+      if(reportPage === 2) { 
+        step = "intro"; 
+        render(); 
+      } else { 
+        reportPage++; 
+        renderMultiPageReport(); 
+      }
     });
   }
-
-  // renderQuiz, renderTeaching, renderContact functions (copy from your previous version or let me know if you need them expanded)
 
   render();
 </script>
