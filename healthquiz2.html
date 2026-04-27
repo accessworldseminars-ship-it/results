@@ -1,52 +1,983 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Telegram Test - Simple</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AccessWorld | Cellular Vitality Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1A2744;
+      --navy-light: #243356;
+      --navy-dark: #0f1a2e;
+      --gold: #C9A84C;
+      --gold-light: #e0c070;
+      --gold-dim: rgba(201,168,76,0.15);
+      --text: #eef2ff;
+      --text-muted: #8fa3c0;
+      --card-bg: rgba(18,28,46,0.85);
+      --border: rgba(201,168,76,0.25);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: linear-gradient(160deg, #0a0f1c 0%, #111d33 50%, #0d1625 100%);
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2rem 1.2rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* LOGO */
+    .logo-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo-bar img { height: 52px; }
+    .logo-bar .brand { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--gold); letter-spacing: 1px; }
+
+    /* CARDS */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1.6rem;
+      padding: 2rem;
+      margin-bottom: 1.2rem;
+      backdrop-filter: blur(8px);
+    }
+    .card-accent { border-left: 4px solid var(--gold); }
+
+    /* HEADINGS */
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: var(--gold);
+      line-height: 1.15;
+      margin-bottom: 0.8rem;
+    }
+    .section-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--gold-light); margin-bottom: 0.5rem; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border-radius: 60px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+    }
+    .btn:hover { background: var(--gold); color: var(--navy-dark); transform: translateY(-2px); }
+    .btn-primary { background: var(--gold); color: var(--navy-dark); border-color: var(--gold); }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+    .btn-full { width: 100%; text-align: center; }
+    .btn-row { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-top: 1.2rem; }
+
+    /* PROGRESS */
+    .progress-bar { background: #1e2d47; border-radius: 40px; height: 6px; width: 100%; margin: 0.8rem 0; }
+    .progress-fill { background: linear-gradient(90deg, var(--gold), var(--gold-light)); height: 6px; border-radius: 40px; transition: width 0.4s ease; }
+    .progress-label { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.3rem; }
+
+    /* PERSONA / CHOICE CARDS */
+    .choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1rem 0; }
+    .choice-grid.single-col { grid-template-columns: 1fr; }
+    @media (max-width: 500px) { .choice-grid { grid-template-columns: 1fr; } }
+
+    .choice-card {
+      background: rgba(255,255,255,0.04);
+      border: 1.5px solid rgba(201,168,76,0.2);
+      border-radius: 1.1rem;
+      padding: 1rem 1.2rem;
+      cursor: pointer;
+      transition: all 0.18s;
+      text-align: left;
+    }
+    .choice-card:hover { border-color: var(--gold); background: var(--gold-dim); }
+    .choice-card.selected { border-color: var(--gold); background: var(--gold-dim); box-shadow: 0 0 0 2px var(--gold); }
+    .choice-card .choice-emoji { font-size: 1.5rem; margin-bottom: 0.4rem; }
+    .choice-card .choice-label { font-weight: 700; font-size: 0.9rem; }
+    .choice-card .choice-sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+    /* SCALE */
+    .scale-group { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: space-between; margin: 1.2rem 0; }
+    .scale-opt {
+      flex: 1; min-width: 60px; text-align: center;
+      background: rgba(255,255,255,0.04);
+      border-radius: 60px;
+      padding: 0.6rem 0.2rem;
+      cursor: pointer;
+      border: 1.5px solid rgba(201,168,76,0.2);
+      transition: 0.12s;
+    }
+    .scale-opt:hover { border-color: var(--gold); background: var(--gold-dim); }
+    .scale-opt.selected { background: var(--gold); color: var(--navy-dark); border-color: var(--gold); font-weight: 800; }
+    .scale-opt .s-num { font-weight: 800; font-size: 1.1rem; }
+    .scale-opt .s-lbl { font-size: 0.65rem; color: inherit; opacity: 0.85; margin-top: 2px; }
+
+    /* INPUTS */
+    input, textarea {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      background: #0d1726;
+      border: 1px solid #2c3b55;
+      border-radius: 2rem;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus { border-color: var(--gold); }
+
+    /* TESTIMONIAL */
+    .testimonial {
+      background: linear-gradient(135deg, #111e32, #0e1828);
+      border: 1px solid var(--border);
+      border-radius: 1.4rem;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+    .testimonial img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+      flex-shrink: 0;
+    }
+    .testimonial .t-body { font-style: italic; font-size: 0.88rem; line-height: 1.65; color: var(--text); }
+    .testimonial .t-name { font-weight: 700; color: var(--gold); font-size: 0.85rem; margin-top: 0.5rem; font-style: normal; }
+    @media (max-width: 480px) { .testimonial { flex-direction: column; } }
+
+    /* IMPACT BANNER */
+    .impact-banner {
+      background: linear-gradient(120deg, #1a2744, #0f1a2e);
+      border: 2px solid var(--gold);
+      border-radius: 1.4rem;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+    .impact-banner .big-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--gold); font-weight: 700; }
+    .impact-banner p { font-size: 0.88rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+    /* SLIDER */
+    .slider-track { display: flex; gap: 1rem; overflow: hidden; margin: 1rem 0; }
+    .slider-img { width: 220px; height: 160px; object-fit: cover; border-radius: 1rem; flex-shrink: 0; border: 1.5px solid var(--border); }
+
+    /* FULL-WIDTH IMAGE */
+    .full-img {
+      width: 100%;
+      border-radius: 1.4rem;
+      object-fit: cover;
+      margin: 1.2rem 0;
+      border: 1px solid var(--border);
+      max-height: 320px;
+    }
+
+    /* REPORT */
+    .score-circle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 4px solid var(--gold);
+      background: radial-gradient(circle, #1a2e4a, #0f1a2e);
+      margin: 0 auto 1rem;
+    }
+    .score-circle .score-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: var(--gold); font-weight: 700; line-height: 1; }
+    .score-circle .score-of { font-size: 0.75rem; color: var(--text-muted); }
+
+    .detail-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.7rem; }
+    .detail-row span:first-child { font-size: 0.82rem; flex: 1; margin-right: 0.5rem; }
+    .detail-row .d-score { color: var(--gold); font-weight: 700; font-size: 0.85rem; min-width: 30px; text-align: right; }
+
+    /* NOTIFICATION */
+    .notif { border-radius: 1rem; padding: 0.9rem 1.2rem; margin: 0.8rem 0; font-size: 0.85rem; text-align: center; }
+    .notif-success { background: rgba(46,125,100,0.3); border: 1px solid #2e7d64; }
+    .notif-warn { background: rgba(139,94,60,0.3); border: 1px solid #8b5e3c; }
+
+    /* CTA SESSION */
+    .cta-session {
+      background: linear-gradient(135deg, #1e2a3a 0%, #0f1724 100%);
+      border: 2px solid var(--gold);
+      border-radius: 1.8rem;
+      padding: 2rem;
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+    .cta-session .cta-emoji { font-size: 2.5rem; }
+    .cta-session h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--gold); margin: 0.5rem 0; }
+    .cta-session p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.2rem; line-height: 1.6; }
+
+    /* INLINE LOADER */
+    .loading-spinner { text-align: center; padding: 2rem; color: var(--gold); font-size: 0.9rem; }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+
+    /* HIDDEN */
+    .hidden { display: none !important; }
+
+    footer { font-size: 0.72rem; text-align: center; margin-top: 3rem; color: var(--text-muted); line-height: 1.8; }
+
+    /* Animations */
+    .fade-in { animation: fadeUp 0.4s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
 </head>
 <body>
-    <h1>Telegram Test</h1>
-    <button id="testBtn">Send Test Message to Telegram</button>
-    <p id="result"></p>
+<div class="wrap" id="app"></div>
 
-    <script>
-        // ⚠️ ONLY CHANGE THESE 2 LINES ⚠️
-        const BOT_TOKEN = "8155100717:AAHrhehNUzIY2ArY2FUtEvSbFzkzRDciWmk";
-        const CHAT_ID = "5970521104";
-        // ⚠️ NOTHING ELSE BELOW THIS LINE ⚠️
+<script>
+// ===== CONFIG =====
+const TELEGRAM_BOT_TOKEN = "YOUR_BOT_TOKEN_HERE";
+const TELEGRAM_CHAT_ID = "YOUR_CHAT_ID_HERE";
+const EMAILJS_SERVICE_ID = "YOUR_EMAILJS_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID_CLIENT = "YOUR_TEMPLATE_ID_CLIENT";
+const EMAILJS_TEMPLATE_ID_SELF = "YOUR_TEMPLATE_ID_SELF";
+const EMAILJS_PUBLIC_KEY = "YOUR_EMAILJS_PUBLIC_KEY";
+const OWNER_EMAIL = "accessworldseminars@gmail.com"; // update as needed
+const FREE_SESSION_URL = "https://accessworldseminars-ship-it.github.io/results/s";
 
-        async function sendMessage() {
-            const resultDiv = document.getElementById("result");
-            
-            if (BOT_TOKEN === "YOUR_BOT_TOKEN_HERE") {
-                resultDiv.innerHTML = "❌ Please put your bot token in the BOT_TOKEN variable (line 10)";
-                return;
-            }
-            
-            if (CHAT_ID === "YOUR_CHAT_ID_HERE") {
-                resultDiv.innerHTML = "❌ Please put your chat ID in the CHAT_ID variable (line 11)";
-                return;
-            }
-            
-            resultDiv.innerHTML = "⏳ Sending...";
-            
-            const message = "✅ Test from HTML! Time: " + new Date().toLocaleTimeString();
-            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`;
-            
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-                
-                if (data.ok) {
-                    resultDiv.innerHTML = "✅ SUCCESS! Check your Telegram now.";
-                } else {
-                    resultDiv.innerHTML = "❌ Error: " + data.description;
-                }
-            } catch (err) {
-                resultDiv.innerHTML = "❌ Fetch failed: " + err.message;
-            }
-        }
-        
-        document.getElementById("testBtn").onclick = sendMessage;
-    </script>
+// ===== QUESTIONS =====
+const QUESTIONS = [
+  { id: 0, text: "I breathe using my belly (diaphragm) with shoulders relaxed, not shallow chest breathing.", category: "Breathwork", pillar: "Oxygen & Energy" },
+  { id: 1, text: "I can hold my breath after exhale for at least 30 seconds comfortably.", category: "Lung Capacity", pillar: "Oxygen & Energy" },
+  { id: 2, text: "I eat fresh fruits/vegetables daily and avoid hybridized wheat (white bread/pasta).", category: "Diet", pillar: "Alkaline Nutrition" },
+  { id: 3, text: "I consume healing foods: coriander/cilantro, celery juice, zucchini/squash weekly.", category: "Food as Medicine", pillar: "Cellular Detox" },
+  { id: 4, text: "My energy is stable throughout the day (no afternoon crash or sugar cravings).", category: "Energy", pillar: "Mitochondrial Health" },
+  { id: 5, text: "I move my body daily to stimulate lymphatic flow (bouncing, walking, rebounder).", category: "Mobility & Lymph", pillar: "Lymphatic System" },
+  { id: 6, text: "I avoid processed sugar & excess dairy to reduce brain fog and metal toxicity.", category: "Mindset & Clarity", pillar: "Neuro Health" },
+  { id: 7, text: "I feel I'm proactively alkalizing my body (reduce acid, increase alkaline foods).", category: "Alkaline Balance", pillar: "Disease Prevention" },
+  { id: 8, text: "I can get up from the floor without using my hands.", category: "Mobility", pillar: "Longevity" },
+  { id: 9, text: "I incorporate posture exercises or stretching at least once each week.", category: "Posture & Flexibility", pillar: "Stress Resilience" },
+  { id: 10, text: "I prioritise my health even when life gets busy or I have a lot on my plate.", category: "Mindset", pillar: "Decide · Commit · Resolve" }
+];
+
+const PERSONAS = [
+  { id: "burnout", emoji: "🔥", label: "The Burned Out & Bottomed Out", sub: "Exhausted, running on empty" },
+  { id: "yoyo", emoji: "🔄", label: "The Yo-Yo Warrior", sub: "Starts strong, loses momentum" },
+  { id: "peak", emoji: "🏆", label: "The Peak Performer", sub: "High achiever wanting an edge" },
+  { id: "mystery", emoji: "🔍", label: "The Health Mystery Solver", sub: "Something feels off — need answers" },
+  { id: "transition", emoji: "🌅", label: "The Life-Transition Seeker", sub: "Big change, fresh start" }
+];
+
+const HEALTH_GOALS = [
+  { id: "energy", emoji: "⚡", label: "Improve energy", sub: "Feel alive all day" },
+  { id: "sleep", emoji: "🌙", label: "Improve sleep", sub: "Rest deep, wake refreshed" },
+  { id: "clarity", emoji: "🧠", label: "Improve mental clarity", sub: "Sharp focus, clear mind" }
+];
+
+const HEALTH_FOCUS = [
+  { id: "eat", emoji: "🥗", label: "Eat better" },
+  { id: "muscle", emoji: "💪", label: "Muscle tone" },
+  { id: "breathing", emoji: "🌬️", label: "Breathing" },
+  { id: "posture", emoji: "🧍", label: "Posture" },
+  { id: "exercise", emoji: "🏃", label: "Exercise" }
+];
+
+const LEARN_STYLES = [
+  { id: "seminars", emoji: "🎤", label: "Watch or attend Seminars" },
+  { id: "coaching", emoji: "🤝", label: "1 on 1 coaching" },
+  { id: "group", emoji: "👥", label: "Group discussion" },
+  { id: "reading", emoji: "📖", label: "Reading" }
+];
+
+// Testimonials (AccessWorld style, Zealy-inspired)
+const TESTIMONIALS_SET = [
+  {
+    quote: "I spent 12 years trying to 'think' my way out of old patterns with zero luck. After just 2 days with Joshua Roy and his NSR tools, my subconscious 'stuckness' finally broke. I walked in heavy and walked out with total clarity and a functional roadmap for my future. If you want to stop talking about change and actually feel it happen, this is the only way.",
+    name: "Sarah M. — Brisbane",
+    img: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    quote: "I used to wake up every morning already exhausted before the day even started. After AccessWorld's cellular vitality tools, my energy completely transformed. I'm sleeping deeper, thinking clearer, and for the first time in years I actually look forward to mornings.",
+    name: "Karen T. — Gold Coast",
+    img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    quote: "Sharman here — single mum from Qld. Just want to say a BIG thanks to Joshua Roy for his amazing work. He teaches you how to feel better about yourself and be more positive. I spent 2 full days with Josh and now have the tools to better myself. Thank you Josh ❤️",
+    name: "Sharman — Single Mum, QLD",
+    img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
+  }
+];
+
+// ===== STATE =====
+let step = 0;
+// step 0: intro
+// step 1: persona select
+// step 2: goal select
+// step 3: testimonial + focus select + learn style
+// step 4: questions (with mid-question banners)
+// step 5: contact
+// step 6: report
+
+let persona = null;
+let goal = null;
+let focus = null;
+let learnStyle = null;
+let currentQ = 0;
+let answers = new Array(QUESTIONS.length).fill(null);
+let contact = { name: "", email: "", phone: "" };
+let finalScore = 0;
+let finalTier = null;
+let categoryAvgs = {};
+let emailSent = false;
+let telegramSent = false;
+
+const root = document.getElementById("app");
+
+// ===== HELPERS =====
+function esc(s) {
+  if (!s) return "";
+  return String(s).replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+}
+
+function getTierData(avg) {
+  if (avg < 1.8) return { label: "Acidic Overload", message: "Your terrain is highly acidic. Disease thrives here. An immediate lifestyle shift is needed — and possible." };
+  if (avg < 2.6) return { label: "Compensation Mode", message: "You're surviving, not thriving. Your cells lack oxygen and alkaline minerals. Let's change that." };
+  if (avg < 3.5) return { label: "Transitioning Vitality", message: "Good awareness! Your body is ready to heal if you commit to breath and whole foods." };
+  if (avg < 4.3) return { label: "Alkaline Momentum", message: "You're building a fortress. Keep expanding lung capacity and green juices." };
+  return { label: "Cellular Mastery", message: "Exceptional. You embody the Warburg principle — an alkaline, oxygen-rich environment." };
+}
+
+function computeCategoryAvgs(ans) {
+  const sums = {}, counts = {};
+  QUESTIONS.forEach(q => {
+    const cat = q.category;
+    const v = typeof ans[q.id] === 'number' ? ans[q.id] : 0;
+    sums[cat] = (sums[cat] || 0) + v;
+    counts[cat] = (counts[cat] || 0) + 1;
+  });
+  const avgs = {};
+  for (let c in sums) avgs[c] = sums[c] / counts[c];
+  return avgs;
+}
+
+function logoBar() {
+  return `<div class="logo-bar">
+    <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Logo" onerror="this.style.display='none'">
+    <span class="brand">AccessWorld Seminars</span>
+  </div>`;
+}
+
+function renderTestimonial(t) {
+  return `<div class="testimonial fade-in">
+    <img src="${t.img}" alt="Testimonial" loading="lazy" onerror="this.style.display='none'">
+    <div>
+      <p class="t-body">"${esc(t.quote)}"</p>
+      <p class="t-name">— ${esc(t.name)}</p>
+    </div>
+  </div>`;
+}
+
+// ===== RENDER ROUTER =====
+function render() {
+  root.innerHTML = "";
+  if (step === 0) renderIntro();
+  else if (step === 1) renderPersona();
+  else if (step === 2) renderGoal();
+  else if (step === 3) renderFocus();
+  else if (step === 4) renderQuizStep();
+  else if (step === 5) renderContact();
+  else if (step === 6) renderReport();
+}
+
+// ===== STEP 0: INTRO =====
+function renderIntro() {
+  root.innerHTML = `
+    ${logoBar()}
+    <div class="fade-in" style="text-align:center;">
+      <div class="section-heading" style="font-size:2.6rem;">Cellular Vitality Quiz</div>
+      <p class="section-sub" style="max-width:540px; margin:0.5rem auto 1.5rem;">Discover your Oxygen + Alkaline + Lymph + Mindset score. Get a personalised cellular health blueprint.</p>
+
+      <div class="impact-banner fade-in">
+        <div class="big-num">3,500+</div>
+        <p>One-on-one coaching sessions and counting</p>
+        <div style="display:flex; justify-content:center; gap:2rem; margin-top:1rem; flex-wrap:wrap;">
+          <div><div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--gold);">12+</div><div style="font-size:0.8rem; color:var(--text-muted);">Years experience</div></div>
+          <div><div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--gold);">100s</div><div style="font-size:0.8rem; color:var(--text-muted);">Lives transformed</div></div>
+          <div><div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--gold);">NSR</div><div style="font-size:0.8rem; color:var(--text-muted);">Certified method</div></div>
+        </div>
+      </div>
+
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">
+        <span style="color:var(--gold);">"No disease, including cancer, can live in an alkaline environment."</span><br>— Dr. Otto Warburg
+      </p>
+
+      <div class="card" style="text-align:left; margin:1.5rem 0;">
+        <p style="line-height:1.7; font-size:0.9rem;">AccessWorld Seminars creates <strong>deep, lasting change</strong>. We've helped hundreds of people gain confidence, health and happiness through Nervous System Reprogramming, breathwork and alkaline principles. This 11-question quiz takes 3 minutes and gives you a personalised healing roadmap.</p>
+      </div>
+
+      <!-- Sliding images -->
+      <div class="slider-track" id="slider">
+        <img class="slider-img" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=440&h=320&fit=crop" alt="Wellness" loading="lazy">
+        <img class="slider-img" src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=440&h=320&fit=crop" alt="Breathwork" loading="lazy">
+        <img class="slider-img" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=440&h=320&fit=crop" alt="Happy" loading="lazy">
+        <img class="slider-img" src="https://images.unsplash.com/photo-1552693673-1bf958298935?w=440&h=320&fit=crop" alt="Seminar" loading="lazy">
+        <img class="slider-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=440&h=320&fit=crop" alt="Coaching" loading="lazy">
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" id="startBtn" style="padding:1rem 3rem; font-size:1rem;">Start My Health Audit →</button>
+      </div>
+      <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.5rem;">3 minutes · Free · Instant results</p>
+    </div>
+  `;
+  document.getElementById("startBtn").onclick = () => { step = 1; render(); };
+  // Auto-scroll slider
+  startSlider();
+}
+
+function startSlider() {
+  const slider = document.getElementById("slider");
+  if (!slider) return;
+  let pos = 0;
+  setInterval(() => {
+    pos += 1;
+    if (pos > slider.scrollWidth - slider.clientWidth) pos = 0;
+    slider.scrollLeft = pos;
+  }, 20);
+}
+
+// ===== STEP 1: PERSONA =====
+function renderPersona() {
+  root.innerHTML = `
+    ${logoBar()}
+    <div class="fade-in">
+      <div class="section-heading">Which best describes you?</div>
+      <p class="section-sub">Choose the statement that feels most true right now.</p>
+      <div class="choice-grid single-col" id="personaGrid">
+        ${PERSONAS.map(p => `<div class="choice-card ${persona===p.id?'selected':''}" data-id="${p.id}">
+          <div class="choice-emoji">${p.emoji}</div>
+          <div class="choice-label">${esc(p.label)}</div>
+          <div class="choice-sub">${esc(p.sub)}</div>
+        </div>`).join('')}
+      </div>
+      <div class="btn-row">
+        <button class="btn" id="backBtn">← Back</button>
+        <button class="btn btn-primary" id="nextBtn">Continue →</button>
+      </div>
+    </div>
+  `;
+  document.querySelectorAll("#personaGrid .choice-card").forEach(card => {
+    card.onclick = () => {
+      persona = card.dataset.id;
+      document.querySelectorAll("#personaGrid .choice-card").forEach(c => c.classList.remove("selected"));
+      card.classList.add("selected");
+    };
+  });
+  document.getElementById("backBtn").onclick = () => { step = 0; render(); };
+  document.getElementById("nextBtn").onclick = () => {
+    if (!persona) { alert("Please select one option."); return; }
+    step = 2; render();
+  };
+}
+
+// ===== STEP 2: GOAL =====
+function renderGoal() {
+  const goalBonusMsg = goal === "energy"
+    ? `<div class="card card-accent fade-in" style="background:rgba(201,168,76,0.08); margin-top:1rem;">
+        <p style="font-weight:700; color:var(--gold);">⚡ Great choice.</p>
+        <p style="font-size:0.9rem; margin-top:0.3rem; line-height:1.6;">Energy is the most important benefit when you focus on health. Everything else — clarity, mood, motivation — follows when your cellular energy is optimised.</p>
+      </div>` : "";
+
+  root.innerHTML = `
+    ${logoBar()}
+    <div class="fade-in">
+      <div class="section-heading">What are you wanting to improve?</div>
+      <p class="section-sub">Select your primary goal.</p>
+      <div class="choice-grid" id="goalGrid">
+        ${HEALTH_GOALS.map(g => `<div class="choice-card ${goal===g.id?'selected':''}" data-id="${g.id}">
+          <div class="choice-emoji">${g.emoji}</div>
+          <div class="choice-label">${esc(g.label)}</div>
+          <div class="choice-sub">${esc(g.sub)}</div>
+        </div>`).join('')}
+      </div>
+      <div id="goalBonus">${goal==="energy" ? goalBonusMsg : ""}</div>
+
+      ${renderTestimonial(TESTIMONIALS_SET[0])}
+
+      <div class="btn-row">
+        <button class="btn" id="backBtn">← Back</button>
+        <button class="btn btn-primary" id="nextBtn">Continue →</button>
+      </div>
+    </div>
+  `;
+  document.querySelectorAll("#goalGrid .choice-card").forEach(card => {
+    card.onclick = () => {
+      goal = card.dataset.id;
+      document.querySelectorAll("#goalGrid .choice-card").forEach(c => c.classList.remove("selected"));
+      card.classList.add("selected");
+      document.getElementById("goalBonus").innerHTML = goal === "energy" ? `<div class="card card-accent fade-in" style="background:rgba(201,168,76,0.08);">
+        <p style="font-weight:700; color:var(--gold);">⚡ Great choice.</p>
+        <p style="font-size:0.9rem; margin-top:0.3rem; line-height:1.6;">Energy is the most important benefit when you focus on health. Everything else — clarity, mood, motivation — follows when your cellular energy is optimised.</p>
+      </div>` : "";
+    };
+  });
+  document.getElementById("backBtn").onclick = () => { step = 1; render(); };
+  document.getElementById("nextBtn").onclick = () => {
+    if (!goal) { alert("Please select a goal."); return; }
+    step = 3; render();
+  };
+}
+
+// ===== STEP 3: FOCUS + LEARN =====
+function renderFocus() {
+  root.innerHTML = `
+    ${logoBar()}
+    <div class="fade-in">
+      <div class="section-heading">Select your main health focus</div>
+      <div class="choice-grid" id="focusGrid">
+        ${HEALTH_FOCUS.map(f => `<div class="choice-card ${focus===f.id?'selected':''}" data-id="${f.id}">
+          <div class="choice-emoji">${f.emoji}</div>
+          <div class="choice-label">${esc(f.label)}</div>
+        </div>`).join('')}
+      </div>
+
+      <div class="section-heading" style="margin-top:1.5rem; font-size:1.6rem;">What is your preferred way to learn?</div>
+      <div class="choice-grid" id="learnGrid">
+        ${LEARN_STYLES.map(l => `<div class="choice-card ${learnStyle===l.id?'selected':''}" data-id="${l.id}">
+          <div class="choice-emoji">${l.emoji}</div>
+          <div class="choice-label">${esc(l.label)}</div>
+        </div>`).join('')}
+      </div>
+
+      <div class="impact-banner" style="margin-top:1.5rem;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--gold); font-weight:700;">AccessWorld seminars helps individuals to improve their health and wellbeing.</div>
+      </div>
+
+      <img src="https://i.ibb.co/r2T9kL99/Gemini-Generated-Image-tea7prtea7prtea7.png" alt="AccessWorld" class="full-img" onerror="this.style.display='none'" loading="lazy">
+
+      <div class="btn-row">
+        <button class="btn" id="backBtn">← Back</button>
+        <button class="btn btn-primary" id="nextBtn">Start the Quiz →</button>
+      </div>
+    </div>
+  `;
+  document.querySelectorAll("#focusGrid .choice-card").forEach(card => {
+    card.onclick = () => {
+      focus = card.dataset.id;
+      document.querySelectorAll("#focusGrid .choice-card").forEach(c => c.classList.remove("selected"));
+      card.classList.add("selected");
+    };
+  });
+  document.querySelectorAll("#learnGrid .choice-card").forEach(card => {
+    card.onclick = () => {
+      learnStyle = card.dataset.id;
+      document.querySelectorAll("#learnGrid .choice-card").forEach(c => c.classList.remove("selected"));
+      card.classList.add("selected");
+    };
+  });
+  document.getElementById("backBtn").onclick = () => { step = 2; render(); };
+  document.getElementById("nextBtn").onclick = () => {
+    if (!focus || !learnStyle) { alert("Please make a selection in each section."); return; }
+    step = 4; currentQ = 0; render();
+  };
+}
+
+// ===== STEP 4: QUIZ QUESTIONS =====
+function renderQuizStep() {
+  // Mid-question banners
+  let midBannerBefore = "";
+  let midBannerAfter = "";
+
+  if (currentQ === 3) {
+    midBannerBefore = `
+      <div class="impact-banner fade-in" style="margin-bottom:1.5rem;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.7rem; color:var(--gold); font-weight:700;">AccessWorld seminars has more impact thanks to AI integration.</div>
+      </div>
+      ${renderTestimonial(TESTIMONIALS_SET[1])}
+    `;
+  }
+
+  if (currentQ === 6) {
+    midBannerBefore = `
+      <div class="impact-banner fade-in" style="margin-bottom:1.5rem;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.7rem; color:var(--gold); font-weight:700;">AccessWorld seminars helps individuals feel good for no good reason.</div>
+      </div>
+      <img src="https://i.ibb.co/r2T9kL99/Gemini-Generated-Image-tea7prtea7prtea7.png" alt="AccessWorld" class="full-img" onerror="this.style.display='none'" loading="lazy">
+    `;
+  }
+
+  if (currentQ === 9) {
+    midBannerBefore = `
+      <div class="impact-banner fade-in" style="margin-bottom:1.5rem;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.7rem; color:var(--gold); font-weight:700;">AccessWorld seminars mindset coaching works — make more money and improve your life.</div>
+      </div>
+      <img src="https://i.ibb.co/pvJ488Tv/BCO-073e00ee-a81e-4f24-a8a3-ac75358df841.png" alt="AccessWorld Results" class="full-img" onerror="this.style.display='none'" loading="lazy">
+      ${renderTestimonial(TESTIMONIALS_SET[2])}
+    `;
+  }
+
+  const q = QUESTIONS[currentQ];
+  const selected = answers[currentQ];
+  const progress = (currentQ / QUESTIONS.length) * 100;
+  const labels = ["Never", "Rarely", "Sometimes", "Often", "Mostly", "Always"];
+
+  root.innerHTML = `
+    ${logoBar()}
+    ${midBannerBefore}
+    <div class="fade-in">
+      <div class="progress-label">Question ${currentQ + 1} of ${QUESTIONS.length}</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
+      <div class="card card-accent" style="margin-top:1rem;">
+        <p style="font-size:0.78rem; color:var(--gold); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.5rem;">${esc(q.pillar)}</p>
+        <h3 style="font-size:1.15rem; font-family:'Montserrat',sans-serif; font-weight:600; color:var(--text); line-height:1.5;">${esc(q.text)}</h3>
+        <div class="scale-group">
+          ${[0,1,2,3,4,5].map(i => `<div class="scale-opt ${selected===i?'selected':''}" data-val="${i}">
+            <div class="s-num">${i}</div>
+            <div class="s-lbl">${labels[i]}</div>
+          </div>`).join('')}
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn" id="prevBtn" ${currentQ===0?'style="opacity:0.4" disabled':''}>← Back</button>
+        <button class="btn btn-primary" id="nextBtn">${currentQ === QUESTIONS.length - 1 ? "See My Results →" : "Next →"}</button>
+      </div>
+    </div>
+  `;
+
+  document.querySelectorAll(".scale-opt").forEach(opt => {
+    opt.onclick = () => {
+      answers[currentQ] = parseInt(opt.dataset.val, 10);
+      renderQuizStep();
+    };
+  });
+
+  const prevBtn = document.getElementById("prevBtn");
+  if (prevBtn) prevBtn.onclick = () => { if (currentQ > 0) { currentQ--; renderQuizStep(); } };
+
+  document.getElementById("nextBtn").onclick = () => {
+    if (answers[currentQ] === null || answers[currentQ] === undefined) {
+      alert("Please select a rating (0–5) to continue.");
+      return;
+    }
+    if (currentQ === QUESTIONS.length - 1) {
+      step = 5; render();
+    } else {
+      currentQ++;
+      renderQuizStep();
+    }
+  };
+}
+
+// ===== STEP 5: CONTACT =====
+function renderContact() {
+  root.innerHTML = `
+    ${logoBar()}
+    <div class="fade-in" style="text-align:center;">
+      <div class="section-heading">Your Results Are Ready ✨</div>
+      <p class="section-sub">Enter your details to unlock your Cellular Vitality Report. We'll email it straight to you.</p>
+      <div style="max-width:480px; margin:0 auto;">
+        <input type="text" id="cName" placeholder="Full name *" value="${esc(contact.name)}">
+        <input type="email" id="cEmail" placeholder="Email address *" value="${esc(contact.email)}">
+        <input type="tel" id="cPhone" placeholder="Phone (optional)" value="${esc(contact.phone)}">
+        <div class="btn-row">
+          <button class="btn" id="backBtn">← Back</button>
+          <button class="btn btn-primary btn-full" id="genBtn" style="max-width:400px;">📋 Generate My Cellular Vitality Report →</button>
+        </div>
+        <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.8rem;">Your results will be emailed to you. No spam, ever.</p>
+      </div>
+    </div>
+  `;
+  document.getElementById("backBtn").onclick = () => { step = 4; currentQ = QUESTIONS.length - 1; render(); };
+  document.getElementById("genBtn").onclick = async () => {
+    const name = document.getElementById("cName").value.trim();
+    const email = document.getElementById("cEmail").value.trim();
+    const phone = document.getElementById("cPhone").value.trim();
+    if (!name || !email) { alert("Please enter your name and email to receive your report."); return; }
+    contact = { name, email, phone };
+
+    let sum = 0;
+    for (let i = 0; i < QUESTIONS.length; i++) {
+      if (answers[i] === null || answers[i] === undefined) {
+        alert("Some answers are missing. Please retake the quiz."); step = 4; currentQ = 0; render(); return;
+      }
+      sum += answers[i];
+    }
+    const avg = sum / QUESTIONS.length;
+    finalScore = avg;
+    finalTier = getTierData(avg);
+    categoryAvgs = computeCategoryAvgs(answers);
+
+    // Show loading
+    document.getElementById("genBtn").textContent = "Generating your report…";
+    document.getElementById("genBtn").disabled = true;
+
+    // Fire notifications in parallel (don't block render)
+    Promise.all([
+      sendTelegram(),
+      sendEmails()
+    ]).then(([tg, em]) => {
+      telegramSent = tg;
+      emailSent = em;
+    });
+
+    step = 6; render();
+  };
+}
+
+// ===== SEND TELEGRAM =====
+async function sendTelegram() {
+  if (!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN === "YOUR_BOT_TOKEN_HERE") return false;
+  if (!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID === "YOUR_CHAT_ID_HERE") return false;
+
+  const personaLabel = PERSONAS.find(p => p.id === persona)?.label || persona;
+  const goalLabel = HEALTH_GOALS.find(g => g.id === goal)?.label || goal;
+
+  const msg = `🔥 *NEW CELLULAR VITALITY QUIZ LEAD!* 🔥
+
+👤 *Name:* ${contact.name}
+📧 *Email:* ${contact.email}
+📞 *Phone:* ${contact.phone || "—"}
+🎭 *Persona:* ${personaLabel}
+🎯 *Goal:* ${goalLabel}
+📊 *Score:* ${finalScore.toFixed(1)}/5
+🏷️ *Tier:* ${finalTier.label}
+⏰ *Time:* ${new Date().toLocaleString()}`;
+
+  try {
+    const r = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: msg, parse_mode: "Markdown" })
+    });
+    const d = await r.json();
+    return d.ok;
+  } catch { return false; }
+}
+
+// ===== SEND EMAILS via EmailJS =====
+// NOTE: To enable email, include EmailJS SDK and configure templates.
+// Add this to <head>: <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+// Then call emailjs.init(EMAILJS_PUBLIC_KEY) on load.
+async function sendEmails() {
+  // EmailJS implementation — configure in EmailJS dashboard
+  // Client email (results)
+  // Self email (lead notification)
+  // For now returns false until configured
+  try {
+    if (typeof emailjs === "undefined") return false;
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+
+    const params = {
+      to_name: contact.name,
+      to_email: contact.email,
+      score: finalScore.toFixed(1),
+      tier: finalTier.label,
+      tier_message: finalTier.message,
+      persona: PERSONAS.find(p => p.id === persona)?.label || "",
+      goal: HEALTH_GOALS.find(g => g.id === goal)?.label || "",
+      owner_email: OWNER_EMAIL
+    };
+
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID_CLIENT, params);
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID_SELF, params);
+    return true;
+  } catch { return false; }
+}
+
+// ===== STEP 6: REPORT =====
+function renderReport() {
+  const avg = finalScore;
+  const tier = finalTier;
+  const sorted = Object.entries(categoryAvgs).sort((a, b) => a[1] - b[1]);
+  const lowest3 = sorted.slice(0, 3);
+  const highest2 = sorted.slice(-2).reverse();
+
+  const breathProtocol = (answers[0] < 3)
+    ? "Practice belly breathing (5 min morning): inhale 4s, exhale 6s. Then 'exhale hold' — after normal exhale, hold 5–10 sec and build gradually."
+    : "Maintain with 30 power breaths + 60-second hold (Wim Hof style). Add cold exposure after breathwork to amplify alkaline response.";
+
+  let detailsHtml = "";
+  QUESTIONS.forEach((q, i) => {
+    const v = answers[i] ?? 0;
+    detailsHtml += `<div class="detail-row">
+      <span>${esc(q.category)}</span>
+      <div style="flex:2; margin:0 0.5rem;"><div class="progress-bar" style="height:5px;"><div class="progress-fill" style="width:${(v/5)*100}%; height:5px;"></div></div></div>
+      <span class="d-score">${v}/5</span>
+    </div>`;
+  });
+
+  let priorityHtml = "";
+  for (let [cat, s] of lowest3) {
+    let advice = "";
+    if (cat.includes("Breathwork") || cat.includes("Lung")) advice = "Your lung capacity is the #1 energy lever. Start 2-min daily breath holds after exhale.";
+    else if (cat.includes("Diet") || cat.includes("Alkaline") || cat.includes("Food")) advice = "Your terrain is acidic. Add green juice, lemon water, and reduce hybrid wheat.";
+    else if (cat.includes("Energy")) advice = "Implement belly breathing before meals. Oxygen unlocks your 36-unit energy pathway.";
+    else if (cat.includes("Mobility") || cat.includes("Lymph")) advice = "Start rebounding or heel-bouncing 5 min daily. Your calf is your second heart.";
+    else if (cat.includes("Mindset")) advice = "Decide. Commit. Resolve. Write: 'I prioritise my health because I am worth it.'";
+    else advice = "Small daily habits compound. 10 min morning sunlight + one raw veggie per meal.";
+    priorityHtml += `<div class="card card-accent fade-in"><h3>⚠️ ${esc(cat)} · ${s.toFixed(1)}/5</h3><p style="font-size:0.88rem; margin-top:0.4rem; line-height:1.6;">${advice}</p></div>`;
+  }
+
+  let strengthHtml = "";
+  for (let [cat, s] of highest2) {
+    strengthHtml += `<div class="card card-accent fade-in" style="border-left-color:#2e7d64;"><h3>🌟 ${esc(cat)} · ${s.toFixed(1)}/5</h3><p style="font-size:0.88rem; margin-top:0.3rem;">You've built resilience here. Use this as your launchpad for the areas that need attention.</p></div>`;
+  }
+
+  root.innerHTML = `
+    ${logoBar()}
+    <div class="fade-in">
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--text-muted); text-align:center; margin-bottom:1rem;">Cellular Vitality Report · ${esc(contact.name)}</h2>
+
+      <!-- Score -->
+      <div class="card" style="text-align:center;">
+        <div class="score-circle">
+          <div class="score-num">${avg.toFixed(1)}</div>
+          <div class="score-of">out of 5</div>
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--gold); margin:0.5rem 0;">${tier.label}</div>
+        <p style="font-size:0.9rem; color:var(--text-muted); font-style:italic;">${tier.message}</p>
+        <div class="progress-bar" style="max-width:300px; margin:1rem auto;"><div class="progress-fill" style="width:${(avg/5)*100}%;"></div></div>
+      </div>
+
+      <!-- Cellular Blueprint -->
+      <div class="card card-accent">
+        <h3>🧬 Your Cellular Blueprint</h3>
+        <div style="margin-top:0.8rem; font-size:0.88rem; line-height:1.9;">
+          <p>🔹 <strong>Oxygen:</strong> ${answers[0] > 3 ? "Good diaphragmatic breathing detected." : "Shallow chest breathing is draining your energy."}</p>
+          <p>🔹 <strong>Alkaline terrain:</strong> ${answers[7] > 3 ? "You're building a cancer-resistant environment." : "Acidic overload — shift is needed now."}</p>
+          <p>🔹 <strong>Lymphatic flow:</strong> ${answers[5] > 3 ? "Daily movement is clearing toxins effectively." : "Sedentary lymph = toxin buildup. Move daily."}</p>
+        </div>
+      </div>
+
+      <!-- Category breakdown -->
+      <div class="card">
+        <h3>📊 Category Breakdown</h3>
+        <div style="margin-top:0.8rem;">${detailsHtml}</div>
+      </div>
+
+      <!-- Priority areas -->
+      <div style="margin:1rem 0;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; color:var(--gold); margin-bottom:0.8rem;">Priority Healing Zones</div>
+        ${priorityHtml}
+      </div>
+
+      <!-- Strengths -->
+      <div style="margin:1rem 0;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; color:var(--gold); margin-bottom:0.8rem;">Your Strengths</div>
+        ${strengthHtml}
+      </div>
+
+      <!-- Healing Foods -->
+      <div class="card card-accent">
+        <h3>🥗 Healing Foods (AccessWorld Seminars)</h3>
+        <div style="margin-top:0.8rem; font-size:0.88rem; line-height:2;">
+          ✔ <strong>Coriander/Cilantro:</strong> Chelates heavy metals from the brain.<br>
+          ✔ <strong>Celery juice:</strong> Restores gut lining and lymphatic flow.<br>
+          ✔ <strong>Zucchini/Squash:</strong> Feeds the prefrontal cortex, lifts brain fog.<br>
+          ✔ <strong>Papaya:</strong> Peristaltic food pusher — prevents toxic fecal compaction.
+        </div>
+      </div>
+
+      <!-- Breathwork -->
+      <div class="card">
+        <h3>🌬️ Your Breathwork Protocol</h3>
+        <p style="font-size:0.88rem; line-height:1.7; margin-top:0.5rem;">${breathProtocol}</p>
+      </div>
+
+      <!-- 7-Day Plan -->
+      <div class="card card-accent">
+        <h3>📅 7-Day Alkaline Jumpstart</h3>
+        <div style="font-size:0.88rem; line-height:2.1; margin-top:0.5rem;">
+          🌞 <strong>Day 1–2:</strong> Replace breakfast with fruit + 20 min belly breathing.<br>
+          🚰 <strong>Day 3–4:</strong> Celery juice upon waking + rebounding 5 min.<br>
+          🥦 <strong>Day 5–7:</strong> No hybrid wheat, add cilantro to dinner.
+        </div>
+      </div>
+
+      <!-- Testimonial -->
+      ${renderTestimonial(TESTIMONIALS_SET[0])}
+
+      <!-- CTA: Free Session -->
+      <div class="cta-session">
+        <div class="cta-emoji">🎯</div>
+        <h2>Join the Next Free Session</h2>
+        <p>AccessWorld Seminars' free Cellular Vitality session gives you hands-on experience with NSR tools, breathwork, and the alkaline method — live with Joshua Roy. No obligation. Deep, lasting change starts here.</p>
+        <a href="${FREE_SESSION_URL}" target="_blank" class="btn btn-primary" style="text-decoration:none; display:inline-block; padding:1rem 2.5rem; font-size:1rem;">🌿 Reserve My Spot — Free →</a>
+        <p style="font-size:0.78rem; margin-top:0.8rem; color:var(--text-muted);">Cellular Vitality Quiz · <a href="${FREE_SESSION_URL}" target="_blank" style="color:var(--gold);">accessworldseminars-ship-it.github.io/results/s</a></p>
+      </div>
+
+      <!-- Email status -->
+      <div id="emailStatus"></div>
+
+      <div class="btn-row" style="margin-top:1.5rem;">
+        <button class="btn" id="printBtn">🖨️ Print / Save as PDF</button>
+        <button class="btn btn-primary" id="retakeBtn">⟳ Retake Quiz</button>
+      </div>
+
+      <footer>
+        AccessWorld Seminars · ABN 72 546 137 885 · Brisbane, QLD<br>
+        Based on the Dr. Warburg Alkaline Principle. Healing is possible.
+      </footer>
+    </div>
+  `;
+
+  document.getElementById("printBtn").onclick = () => window.print();
+  document.getElementById("retakeBtn").onclick = () => {
+    step = 0; persona = null; goal = null; focus = null; learnStyle = null;
+    currentQ = 0; answers = new Array(QUESTIONS.length).fill(null);
+    contact = { name: "", email: "", phone: "" };
+    finalScore = 0; finalTier = null; categoryAvgs = {};
+    render();
+  };
+
+  // Show email status after a moment
+  setTimeout(() => {
+    const el = document.getElementById("emailStatus");
+    if (!el) return;
+    if (typeof emailjs !== "undefined" && EMAILJS_PUBLIC_KEY !== "YOUR_EMAILJS_PUBLIC_KEY") {
+      el.innerHTML = `<div class="notif notif-success">✅ Your results have been emailed to ${esc(contact.email)}</div>`;
+    } else {
+      el.innerHTML = `<div class="notif notif-warn">⚠️ Email not configured yet. Set up EmailJS to send results automatically.</div>`;
+    }
+  }, 1500);
+}
+
+render();
+</script>
 </body>
 </html>
