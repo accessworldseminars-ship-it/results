@@ -152,11 +152,11 @@
   
   // Function to send notification to Telegram
   async function sendTelegramNotification(contact, score, tierLabel, answersSummary) {
-    if (!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN === "8155100717:AAHrhehNUzIY2ArY2FUtEvSbFzkzRDciWmk") {
+    if (!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN === "YOUR_BOT_TOKEN_HERE") {
       console.warn("Telegram bot token not configured");
       return false;
     }
-    if (!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID === "5970521104") {
+    if (!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID === "YOUR_CHAT_ID_HERE") {
       console.warn("Telegram chat ID not configured");
       return false;
     }
