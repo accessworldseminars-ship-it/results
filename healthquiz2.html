@@ -3,590 +3,811 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>AccessWorld · Cellular Vitality Quiz</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>AccessWorld · Cellular Vitality Assessment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --navy: #14203A;
+      --navy-deep: #0A1322;
+      --navy-mid: #1B2D4F;
+      --gold: #C9A84C;
+      --gold-light: #E2C87A;
+      --gold-pale: #F5EDD5;
+      --cream: #FAF6EE;
+      --text: #2C1F0E;
+      --text-light: #7A6A52;
+      --white: #FFFFFF;
+      --card-bg: rgba(10,19,34,0.97);
+      --border: rgba(201,168,76,0.22);
     }
 
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
     body {
-      background: radial-gradient(circle at 10% 20%, #0a0f1c, #03060c);
-      font-family: 'Montserrat', sans-serif;
-      color: #eef2ff;
+      background: var(--navy-deep);
+      font-family: 'DM Sans', sans-serif;
+      color: #E8E0D0;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 2rem 1rem;
       position: relative;
+      overflow-x: hidden;
     }
 
-    /* GIANT WATERMARK LOGO IN BACKGROUND */
     body::before {
-      content: "";
+      content: '';
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://i.ibb.co/ynXdYpmL/worldjjpgsf.png');
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: 50%;
-      opacity: 0.07;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 100%, rgba(201,168,76,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 100% 100% at 50% 50%, rgba(27,45,79,0.6) 0%, transparent 100%);
       pointer-events: none;
       z-index: 0;
     }
 
-    .quiz-container {
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('https://i.ibb.co/ynXdYpmL/worldjjpgsf.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 50%;
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .app-wrap {
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 750px;
+      max-width: 780px;
       margin: 0 auto;
     }
 
-    /* CARD STYLES – each question / teaching page is a distinct card */
     .card {
-      background: rgba(10, 18, 28, 0.85);
-      backdrop-filter: blur(12px);
-      border-radius: 2.5rem;
-      padding: 2.2rem 2rem;
-      box-shadow: 0 30px 45px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(201, 168, 76, 0.2);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      animation: fadeSlideUp 0.4s ease-out;
+      background: linear-gradient(160deg, rgba(20,32,58,0.98) 0%, rgba(10,19,34,0.99) 100%);
+      border-radius: 2.4rem;
+      border: 1px solid var(--border);
+      box-shadow:
+        0 0 0 1px rgba(201,168,76,0.08),
+        0 40px 80px -20px rgba(0,0,0,0.7),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+      padding: 3rem 3.2rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* HOVER POP EFFECT */
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 40px 55px -20px black, 0 0 0 1px rgba(201, 168, 76, 0.5);
-    }
-
-    @keyframes fadeSlideUp {
-      from { opacity: 0; transform: translateY(20px);}
-      to { opacity: 1; transform: translateY(0);}
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
     }
 
     h1, h2, h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      letter-spacing: -0.2px;
+      letter-spacing: 0.02em;
     }
 
-    .gold {
-      color: #C9A84C;
+    h1 { font-size: 3.2rem; font-weight: 300; line-height: 1.1; }
+    h2 { font-size: 2rem; font-weight: 400; line-height: 1.2; }
+    h3 { font-size: 1.35rem; font-weight: 500; margin-bottom: 0.8rem; }
+
+    .gold { color: var(--gold-light); }
+    .italic { font-style: italic; }
+
+    p { line-height: 1.7; font-size: 0.97rem; color: #C8BCAA; }
+
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .brand-header img { height: 40px; opacity: 0.9; }
+
+    .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.8;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.6rem 0;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
+    }
+    .divider-dot {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: 0.5;
     }
 
     .btn {
-      background: transparent;
-      border: 1.5px solid #C9A84C;
-      color: #C9A84C;
-      padding: 0.8rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.2rem;
       border-radius: 60px;
-      font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      margin-top: 1rem;
+      border: none;
+      transition: all 0.25s ease;
+      outline: none;
     }
 
     .btn-primary {
-      background: #C9A84C;
-      color: #0a0f1c;
-      border: none;
-      font-weight: 700;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      color: var(--navy-deep);
+      box-shadow: 0 4px 20px rgba(201,168,76,0.3);
     }
 
     .btn-primary:hover {
-      background: #b6902e;
-      transform: translateY(-3px);
-    }
-
-    .btn:hover {
-      background: #C9A84C;
-      color: #0a0f1c;
       transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201,168,76,0.4);
     }
 
-    /* scale for answers */
-    .scale-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin: 2rem 0 1rem;
-      justify-content: center;
-    }
-    .scale-opt {
-      background: rgba(255,255,245,0.05);
-      border-radius: 80px;
-      padding: 0.6rem 1rem;
-      min-width: 65px;
-      text-align: center;
-      cursor: pointer;
-      border: 1px solid rgba(201, 168, 76, 0.3);
-      transition: 0.1s;
-      font-weight: 500;
-    }
-    .scale-opt.selected {
-      background: #C9A84C;
-      color: #0a0f1c;
-      border-color: #C9A84C;
-      font-weight: 700;
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.35);
     }
 
-    .progress-ring {
-      margin-bottom: 1.5rem;
-      text-align: center;
+    .btn-outline:hover {
+      background: rgba(201,168,76,0.08);
+      border-color: var(--gold);
     }
-    .progress-steps {
+
+    .btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .btn-row {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2.4rem;
+      gap: 1rem;
+    }
+
+    .progress-bar {
+      display: flex;
+      align-items: center;
       gap: 0.5rem;
-      flex-wrap: wrap;
+      margin-bottom: 2rem;
     }
-    .step-dot {
-      width: 10px;
-      height: 10px;
-      background: #2a3a55;
-      border-radius: 10px;
+
+    .prog-dot {
+      height: 3px;
+      background: rgba(201,168,76,0.18);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+      flex: 1;
+    }
+
+    .prog-dot.done { background: rgba(201,168,76,0.5); }
+    .prog-dot.active { background: var(--gold-light); }
+
+    .options-grid {
+      display: grid;
+      gap: 0.75rem;
+      margin: 1.6rem 0 0.5rem;
+    }
+
+    .opt-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 1.2rem;
+      padding: 1.1rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+      color: #C8BCAA;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .opt-card:hover {
+      background: rgba(201,168,76,0.06);
+      border-color: rgba(201,168,76,0.4);
+      color: #E8E0D0;
+    }
+
+    .opt-card.selected {
+      background: rgba(201,168,76,0.12);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .opt-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .scale-container {
+      margin: 2rem 0 1rem;
+    }
+
+    .scale-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.5);
+      margin-bottom: 1rem;
+    }
+
+    .scale-btns {
+      display: flex;
+      gap: 0.7rem;
+      justify-content: center;
+    }
+
+    .scale-btn {
+      flex: 1;
+      max-width: 100px;
+      aspect-ratio: 1;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      transition: all 0.2s ease;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .scale-btn:hover {
+      background: rgba(201,168,76,0.08);
+      border-color: rgba(201,168,76,0.5);
+    }
+
+    .scale-btn.selected {
+      background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.12));
+      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(201,168,76,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    .scale-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: #E8E0D0;
+      line-height: 1;
+    }
+
+    .scale-btn.selected .scale-num { color: var(--gold-light); }
+
+    .scale-word {
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.5);
+    }
+
+    .scale-btn.selected .scale-word { color: var(--gold); }
+
+    .q-category {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-bottom: 0.5rem;
+    }
+
+    .q-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.65rem;
+      font-weight: 400;
+      line-height: 1.35;
+      color: #EAE3D5;
+      margin-bottom: 0.2rem;
+    }
+
+    .q-counter {
+      font-size: 0.75rem;
+      color: rgba(201,168,76,0.45);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .teaching-moment {
+      background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(20,32,58,0.8) 100%);
+      border-radius: 1.5rem;
+      margin: 1.5rem 0 0.5rem;
+      padding: 1.2rem 1.5rem;
+      border: 1px solid rgba(201,168,76,0.2);
+    }
+    .teaching-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--gold-light);
+      margin-bottom: 0.6rem;
+    }
+    .teaching-text { font-size: 0.85rem; color: #B8AA96; line-height: 1.6; }
+    .teaching-text strong { color: var(--gold-light); }
+
+    .seminar-badge {
+      background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.05));
+      border: 1px dashed rgba(201,168,76,0.35);
+      border-radius: 1.5rem;
+      padding: 1.4rem 1.8rem;
+      text-align: center;
+      margin: 1.8rem 0;
+    }
+
+    .seminar-badge .badge-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--gold-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .seminar-badge p { font-size: 0.87rem; color: #B8AA96; margin-bottom: 0.7rem; }
+    .seminar-badge a {
+      display: inline-block;
+      color: var(--gold-light);
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201,168,76,0.35);
+      padding-bottom: 1px;
       transition: all 0.2s;
     }
-    .step-dot.active {
-      background: #C9A84C;
-      width: 24px;
-    }
+    .seminar-badge a:hover { color: var(--gold-pale); border-color: var(--gold); }
 
-    input {
-      width: 100%;
-      padding: 1rem;
-      background: #0e1624;
-      border: 1px solid #2c3b55;
-      border-radius: 2rem;
-      color: white;
-      margin-bottom: 1rem;
-      font-size: 1rem;
+    .report-wrap {
+      max-height: 70vh;
+      overflow-y: auto;
+      padding-right: 0.8rem;
+      scroll-behavior: smooth;
     }
-
-    .teaching-img {
-      max-width: 100%;
-      border-radius: 1.5rem;
-      margin: 1rem 0;
-      box-shadow: 0 10px 20px -5px black;
-    }
+    .report-wrap::-webkit-scrollbar { width: 4px; }
+    .report-wrap::-webkit-scrollbar-track { background: transparent; }
+    .report-wrap::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.25); border-radius: 4px; }
 
     .report-section {
-      background: rgba(8, 14, 22, 0.9);
-      border-radius: 2rem;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      border-left: 4px solid #C9A84C;
+      margin-bottom: 1.8rem;
+      padding: 1.6rem 1.8rem;
+      background: rgba(255,255,255,0.025);
+      border-radius: 1.5rem;
+      border-left: 3px solid var(--gold);
+    }
+    .report-section h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+    }
+    .report-section p { font-size: 0.92rem; line-height: 1.75; color: #C0B49E; margin-bottom: 0.8rem; }
+    .report-section strong { color: #E0D4C0; font-weight: 600; }
+    .report-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 1rem;
+    }
+    .report-section ul li {
+      font-size: 0.91rem;
+      color: #C0B49E;
+      padding: 0.35rem 0 0.35rem 1.4rem;
+      position: relative;
+      line-height: 1.6;
+    }
+    .report-section ul li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.9rem;
     }
 
-    footer {
+    .score-hero {
       text-align: center;
-      font-size: 0.75rem;
-      margin-top: 2rem;
-      opacity: 0.7;
+      padding: 1.5rem 0 1rem;
     }
+    .score-ring {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 2px solid rgba(201,168,76,0.3);
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      margin-bottom: 1rem;
+    }
+    .score-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.6rem;
+      font-weight: 300;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .score-denom { font-size: 1.1rem; color: rgba(201,168,76,0.5); align-self: flex-end; padding-bottom: 0.6rem; }
+    .tier-label { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; color: var(--gold-light); }
+    .tier-msg { font-size: 0.92rem; color: #B8AA96; max-width: 480px; margin: 0.5rem auto; }
+
+    .category-bar-wrap { margin: 0.8rem 0; }
+    .category-bar-label { display: flex; justify-content: space-between; font-size: 0.8rem; color: #A0947E; margin-bottom: 0.35rem; }
+    .category-bar-track { height: 6px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden; }
+    .category-bar-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, rgba(201,168,76,0.5), var(--gold-light)); }
+
+    .report-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+    }
+    .report-page-indicator {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.45);
+    }
+    .download-btn {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 60px;
+      padding: 0.4rem 1.2rem;
+      cursor: pointer;
+    }
+    .tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 60px;
+      padding: 0.25rem 0.9rem;
+      display: inline-block;
+    }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1rem 0 0; }
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02));
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 1.2rem;
+      padding: 1.2rem;
+      margin: 1rem 0;
+    }
+    footer.card-footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.3);
+    }
+    .intro-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.75;
+      margin-bottom: 1rem;
+    }
+    .intro-subtitle {
+      font-size: 1rem;
+      color: #A09282;
+      line-height: 1.7;
+      margin: 1rem 0 0;
+    }
+    .intro-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .stat-box {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(201,168,76,0.12);
+      border-radius: 1.2rem;
+    }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--gold-light); }
+    .stat-label { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: #7A6A52; margin-top: 0.3rem; }
 
     @media (max-width: 600px) {
-      .card { padding: 1.5rem; }
-      .scale-opt { min-width: 52px; font-size: 0.8rem; }
+      .card { padding: 2rem 1.5rem; }
+      h1 { font-size: 2.4rem; }
+      .scale-btns { gap: 0.4rem; }
+      .scale-num { font-size: 1.7rem; }
     }
   </style>
 </head>
 <body>
-<div class="quiz-container" id="app"></div>
+<div class="app-wrap" id="app"></div>
 
 <script>
-  // ------------------- TELEGRAM CONFIG (Only 2 lines to edit) -----------------
-  const TELEGRAM_BOT_TOKEN = "YOUR_BOT_TOKEN_HERE";   // <-- REPLACE WITH YOUR TOKEN
-  const TELEGRAM_CHAT_ID = "YOUR_CHAT_ID_HERE";       // <-- REPLACE WITH YOUR CHAT ID
-  // ---------------------------------------------------------------------------
+// ==================== TELEGRAM CONFIGURATION ====================
+// IMPORTANT: Replace with your actual Bot Token and Chat ID
+const BOT_TOKEN = "8155100717:AAE0ABDHsRuFWmbXa8coP8qdL3QK2ZWYkaY";
+const CHAT_ID = "5970521104";
 
-  // ---------- 11 HEALTH QUESTIONS ----------
-  const QUESTIONS = [
-    { id: 0, text: "I breathe using my belly (diaphragm) with shoulders relaxed, not shallow chest breathing.", category: "Breathwork" },
-    { id: 1, text: "I can hold my breath after exhale for at least 30 seconds comfortably.", category: "Lung Capacity" },
-    { id: 2, text: "I eat fresh fruits/vegetables daily and avoid hybridized wheat (white bread/pasta).", category: "Diet" },
-    { id: 3, text: "I consume healing foods: coriander/cilantro, celery juice, zucchini/squash weekly.", category: "Food as Medicine" },
-    { id: 4, text: "My energy is stable throughout the day (no afternoon crash or sugar cravings).", category: "Energy" },
-    { id: 5, text: "I move my body daily to stimulate lymphatic flow (bouncing, walking, rebounder).", category: "Mobility & Lymph" },
-    { id: 6, text: "I avoid processed sugar & excess dairy to reduce brain fog and metal toxicity.", category: "Mindset & Clarity" },
-    { id: 7, text: "I feel I'm proactively alkalizing my body (reduce acid, increase alkaline foods).", category: "Alkaline Balance" },
-    { id: 8, text: "I can get up from the floor without using my hands.", category: "Mobility" },
-    { id: 9, text: "I incorporate posture exercises or stretching at least once each week.", category: "Posture & Flexibility" },
-    { id: 10, text: "I prioritise my health even when life gets busy or I have a lot on my plate.", category: "Mindset" }
-  ];
+async function sendTelegramNotification(preData, score, tierLabel) {
+  const message = `🌿 *NEW CELLULAR VITALITY LEAD* 🌿\n\n` +
+    `👤 *Segment:* ${preData.segment}\n` +
+    `🎯 *Goal:* ${preData.goal}\n` +
+    `❤️ *Health Focus:* ${preData.healthFocus}\n` +
+    `📘 *Learning Style:* ${preData.learnPref}\n\n` +
+    `📊 *Final Score:* ${score}/5 — ${tierLabel}\n\n` +
+    `✅ *Generated by:* AccessWorld Seminars\n` +
+    `🔗 *Quiz Completed* — Follow up recommended.`;
+  
+  const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: message,
+        parse_mode: 'Markdown'
+      })
+    });
+    if (!response.ok) console.warn('Telegram send failed');
+  } catch(e) { console.warn('Telegram error:', e); }
+}
 
-  // -------- TEACHING PAGES (separate screens after Q3, Q6, Q9) ----------
-  const TEACHING_SCREENS = {
-    3: { title: "AI + Nervous System", 
-         quote: "Your brain is a pharmaceutical factory. You are not a passive victim of fleeting chemistry.",
-         image: "https://i.ibb.co/4Zd4RVbR/Gemini-Generated-Image-o877d1o877d1o877.png",
-         headline: "AccessWorld seminars has more impact thanks to AI integration." },
-    6: { title: "Feel good for no good reason",
-         quote: "Feelings are not fate. They are habits.",
-         image: "https://i.ibb.co/r2T9kL99/Gemini-Generated-Image-tea7prtea7prtea7.png",
-         headline: "AccessWorld seminars helps individuals feel good for no good reason." },
-    9: { title: "Mindset Coaching Works",
-         quote: "Calm is the container that holds everything else together.",
-         image: "https://i.ibb.co/97mZvc6/Screenshot-2026-01-29-105636.png",
-         headline: "AccessWorld seminars Mindset Coaching works – Make more money and improve your life" }
+// ==================== QUIZ DATA ====================
+const QUESTIONS = [
+  { text: "I feel mentally clear and focused throughout the day.", category: "Cellular Clarity", teachId: 1 },
+  { text: "My energy levels stay consistent without major crashes.", category: "Energy Stability", teachId: null },
+  { text: "I move my body daily in ways that activate lymph flow — walking, rebounding, or heel drops.", category: "Lymphatic Flow", teachId: 3 },
+  { text: "I practice deep belly breathing or specific breathwork several times per week.", category: "Oxygen Efficiency", teachId: null },
+  { text: "My diet includes living foods — fruits, greens, sprouts — and avoids processed sugars and hybridised wheat.", category: "Alkaline Nutrition", teachId: 5 },
+  { text: "I feel emotionally resilient and handle stress without long-term fatigue.", category: "Nervous System Balance", teachId: null },
+  { text: "I feel vitalised and full of energy even after heavier meals.", category: "Digestive Vitality", teachId: null },
+  { text: "My sleep is restorative and I wake feeling refreshed most days.", category: "Restoration & Repair", teachId: null },
+  { text: "I maintain a positive mindset and feel aligned with my deeper goals.", category: "Mindset & Purpose", teachId: 9 },
+  { text: "My body feels light, flexible, and energetic — not heavy or stagnant.", category: "Overall Vitality", teachId: null }
+];
+
+const TIERS = [
+  { min: 0, max: 2.4, label: "Cellular Overload", sub: "Urgent Renewal Needed", msg: "Your vitality signals show significant stagnation. The good news: with targeted daily upgrades, your body shifts within weeks." },
+  { min: 2.5, max: 3.4, label: "Awakening Potential", sub: "Transitioning to Vitality", msg: "You've started the journey — but inconsistency limits deeper energy. Focused habits unlock the next level." },
+  { min: 3.5, max: 4.4, label: "Thriving Foundation", sub: "Strong Momentum Building", msg: "You have a beautiful base. Advanced breathwork, lymph activation and nervous system reprogramming can take you to peak performance." },
+  { min: 4.5, max: 5.0, label: "Elite Cellular Vitality", sub: "Radiant Benchmark", msg: "Exceptional. You embody high-level wellness. Keep refining and share your light." }
+];
+
+function getTier(score) { return TIERS.find(t => score >= t.min && score <= t.max) || TIERS[1]; }
+
+// Teaching moments
+function getTeachingHtml(teachId) {
+  const teachings = {
+    1: { title: "📘 The Brain-Fog Cycle", text: "Mental clarity begins at the cellular level. When lymph fluid stagnates, metabolic waste accumulates around neurons → brain fog, poor recall, fatigue. Deep breathing + lymphatic movement flush these toxins naturally." },
+    3: { title: "📘 Your Second Circulation — The Lymph Map", text: "Unlike blood (pumped by heart), lymph relies on muscle contraction — especially your calves. Every step, bounce or heel drop squeezes lymph vessels, moving waste toward elimination. 5-10 min of heel drops daily increases lymph flow up to 15x." },
+    5: { title: "📘 Acid vs. Alkaline — Cellular Terrain", text: "Living foods move through the digestive tract in ~20-30 minutes. Processed foods linger for hours, ferment, and create acidic waste. Healing foods: cilantro (chelates heavy metals), celery juice (restores lymph), papaya (natural peristalsis)." },
+    9: { title: "📘 Nervous System Reprogramming (NSR)", text: "Most health blocks aren't physical — they're emotional. Trapped emotions from past trauma create chronic stress patterns that suppress immunity, digestion, and energy. Breathwork + NSR dissolve these blocks at the source." }
   };
+  const t = teachings[teachId];
+  if (!t) return '';
+  return `<div class="teaching-moment"><div class="teaching-title">${t.title}</div><div class="teaching-text">${t.text}</div></div>`;
+}
 
-  // ---------- GLOBAL STATE ----------
-  let step = "intro";          // intro, preSegments, quiz, teaching, contact, report
-  let currentQuestionIdx = 0;
-  let answers = new Array(QUESTIONS.length).fill(null);
-  
-  // pre-quiz data (first part)
-  let userSegment = "";
-  let userGoal = "";
-  let userHealthFocus = "";
-  let userLearnPref = "";
-  
-  // contact info
-  let userName = "", userEmail = "", userPhone = "";
-  
-  // computed report data
-  let finalScore = 0;
-  let categoryAvgs = {};
-  let tierLabel = "";
-  let notificationSent = false;
+let step = "intro";
+let preData = { segment: "", goal: "", healthFocus: "", learnPref: "" };
+let answers = new Array(QUESTIONS.length).fill(null);
+let finalScore = 0;
+let categoryAverages = {};
+let reportPage = 0;
+let currentQuestion = 0;
 
-  // Helper: fetch tier
-  function getTierData(avg) {
-    if (avg < 1.8) return { label: "Acidic Overload", msg: "Your terrain is highly acidic. Immediate lifestyle shift needed." };
-    if (avg < 2.6) return { label: "Compensation Mode", msg: "Cells lack oxygen & alkaline minerals." };
-    if (avg < 3.5) return { label: "Transitioning Vitality", msg: "Your body is ready to heal with breath & whole foods." };
-    if (avg < 4.3) return { label: "Alkaline Momentum", msg: "Keep expanding lung capacity & green juices." };
-    return { label: "Cellular Mastery", msg: "Exceptional! Alkaline & oxygen-rich environment." };
-  }
+const root = document.getElementById("app");
 
-  async function sendTelegramNotification() {
-    if (!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN === "YOUR_BOT_TOKEN_HERE") return false;
-    if (!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID === "YOUR_CHAT_ID_HERE") return false;
-    const total = answers.reduce((a,b)=>a+b,0);
-    const avg = total / QUESTIONS.length;
-    const tier = getTierData(avg).label;
-    const message = `🔥 NEW COACHING LEAD (Quiz)\n\nName: ${userName}\nEmail: ${userEmail}\nPhone: ${userPhone}\nSegment: ${userSegment}\nGoal: ${userGoal}\nHealth focus: ${userHealthFocus}\nLearning: ${userLearnPref}\nScore: ${avg.toFixed(1)}/5 (${tier})\n⏰ ${new Date().toLocaleString()}`;
-    try {
-      const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message, parse_mode: "Markdown" })
-      });
-      return res.ok;
-    } catch(e) { return false; }
-  }
+function calculateFinalScore() {
+  const valid = answers.filter(a => a !== null);
+  return valid.length === 0 ? 0 : valid.reduce((a,b) => a + b, 0) / valid.length;
+}
 
-  function computeCategoryAverages() {
-    const sums = {}, counts = {};
-    QUESTIONS.forEach(q => {
-      const val = answers[q.id] ?? 0;
-      sums[q.category] = (sums[q.category] || 0) + val;
-      counts[q.category] = (counts[q.category] || 0) + 1;
-    });
-    const avgs = {};
-    for (let c in sums) avgs[c] = sums[c] / counts[c];
-    return avgs;
-  }
-
-  // Helper to render progress dots (just visual)
-  function renderProgressDots(current, total) {
-    let html = `<div class="progress-steps">`;
-    for (let i = 0; i < total; i++) {
-      html += `<div class="step-dot ${i === current ? 'active' : ''}"></div>`;
+function calculateCategoryAverages() {
+  const cats = {};
+  QUESTIONS.forEach((q, i) => {
+    if (answers[i] !== null) {
+      if (!cats[q.category]) cats[q.category] = { sum: 0, count: 0 };
+      cats[q.category].sum += answers[i];
+      cats[q.category].count++;
     }
-    html += `</div>`;
-    return html;
+  });
+  Object.keys(cats).forEach(c => { cats[c] = cats[c].sum / cats[c].count; });
+  return cats;
+}
+
+function brandHeader(showLogo = true) {
+  return `<div class="brand-header">${showLogo ? '<img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld">' : ''}<span class="brand-name">AccessWorld Seminars</span></div>`;
+}
+
+function progressBar(current, total) {
+  return `<div class="progress-bar">${Array.from({ length: total }, (_, i) => {
+    let cls = i < current ? 'done' : i === current ? 'active' : '';
+    return `<div class="prog-dot ${cls}"></div>`;
+  }).join('')}</div>`;
+}
+
+function render() {
+  if (step === 'intro') renderIntro();
+  else if (step === 'pre1') renderPreSegment();
+  else if (step === 'pre2') renderPreGoal();
+  else if (step === 'pre3') renderPreHealthFocus();
+  else if (step === 'pre4') renderPreLearnPref();
+  else if (step === 'quiz') renderQuiz();
+  else if (step === 'report') renderComprehensiveReport();
+}
+
+function renderIntro() {
+  root.innerHTML = `<div class="card">${brandHeader()}<div class="divider"><div class="divider-dot"></div></div>
+    <div class="intro-eyebrow">Discover Your True Health Score</div>
+    <h1>Cellular Vitality<br><em class="gold italic">Assessment</em></h1>
+    <p class="intro-subtitle">A personalised deep-dive into your oxygen efficiency, lymphatic flow, alkaline balance and nervous system health.</p>
+    <div class="intro-stats"><div class="stat-box"><div class="stat-num">10</div><div class="stat-label">Dimensions</div></div>
+    <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Report Pages</div></div>
+    <div class="stat-box"><div class="stat-num">5m</div><div class="stat-label">To Complete</div></div></div>
+    <div class="seminar-badge"><div class="badge-title">✦ 2-Day Health Seminar with Joshua Roy</div>
+    <p>Live strategies, breathwork, NSR tools and community.</p>
+    <a href="https://www.accessworldseminars.org/2dayhealthseminar" target="_blank">→ Reserve your seat</a></div>
+    <div style="text-align:center; margin-top:1.5rem;"><button class="btn btn-primary" id="startBtn">Begin Assessment →</button></div>
+    <footer class="card-footer">AccessWorld Seminars · Joshua Roy · Since 2015</footer>
+  </div>`;
+  document.getElementById("startBtn").onclick = () => { step = "pre1"; render(); };
+}
+
+function renderPreSegment() { renderPreScreen({ stepNum: 1, total: 4, title: "Tell me about your journey ✦", subtitle: "Which best describes you?", field: "segment", back: "intro", next: "pre2", options: [{ val: "Health Seeker", icon: "🌱", label: "Health Seeker — beginning my wellness journey" }, { val: "Performance Athlete", icon: "⚡", label: "Performance Athlete — optimising energy" }, { val: "Busy Professional", icon: "💼", label: "Busy Professional — low energy or brain fog" }, { val: "Wellness Practitioner", icon: "🌿", label: "Wellness Practitioner — deepening knowledge" }] }); }
+function renderPreGoal() { renderPreScreen({ stepNum: 2, total: 4, title: "What's your main health goal? ✦", subtitle: "Choose the outcome that matters most.", field: "goal", back: "pre1", next: "pre3", options: [{ val: "Sustained Energy", icon: "⚡", label: "Sustained Energy — no more crashes" }, { val: "Mental Clarity", icon: "🧠", label: "Mental Clarity — focus & memory" }, { val: "Lymph & Detox", icon: "🌀", label: "Lymph Detox — reduce bloat" }, { val: "Holistic Longevity", icon: "🌸", label: "Holistic Longevity — lasting vitality" }] }); }
+function renderPreHealthFocus() { renderPreScreen({ stepNum: 3, total: 4, title: "Your primary health focus ✦", subtitle: "Where do you most need support?", field: "healthFocus", back: "pre2", next: "pre4", options: [{ val: "Digestion & Gut", icon: "🥑", label: "Digestion & Gut health" }, { val: "Breath & Oxygen", icon: "🌬️", label: "Breathwork & Oxygenation" }, { val: "Lymphatic Movement", icon: "🏃", label: "Lymphatic Movement & Rebounding" }, { val: "Mindset & Trauma Release", icon: "🧘", label: "Mindset, limiting beliefs & emotional blocks" }] }); }
+function renderPreLearnPref() { renderPreScreen({ stepNum: 4, total: 4, title: "How do you love to learn? ✦", subtitle: "Tailors your coaching recommendation.", field: "learnPref", back: "pre3", next: "quiz", options: [{ val: "Visual & Video", icon: "🎥", label: "Visual & Video courses" }, { val: "Live Coaching", icon: "🎤", label: "Live seminars" }, { val: "Practical Workbooks", icon: "📖", label: "Practical workbooks" }, { val: "1-on-1 Mentorship", icon: "🤝", label: "1-on-1 mentorship with Joshua" }] }); }
+
+function renderPreScreen({ stepNum, total, title, subtitle, options, back, next, field }) {
+  root.innerHTML = `<div class="card">${brandHeader()}${progressBar(stepNum - 1, total)}
+    <div class="q-category">Your Profile · Step ${stepNum} of ${total}</div>
+    <h2 class="gold">${title}</h2>${subtitle ? `<p style="margin:0.5rem 0 0;">${subtitle}</p>` : ''}
+    <div class="options-grid">${options.map(o => `<div class="opt-card" data-val="${o.val}"><span class="opt-icon">${o.icon}</span><span>${o.label}</span></div>`).join('')}</div>
+    <div class="btn-row"><button class="btn btn-outline" id="backBtn">← Back</button><button class="btn btn-primary" id="nextBtn" disabled>Continue →</button></div>
+  </div>`;
+  let sel = "";
+  document.querySelectorAll(".opt-card").forEach(el => { el.onclick = () => { document.querySelectorAll(".opt-card").forEach(c => c.classList.remove("selected")); el.classList.add("selected"); sel = el.dataset.val; document.getElementById("nextBtn").disabled = false; }; });
+  document.getElementById("nextBtn").onclick = () => { if (sel) { preData[field] = sel; step = next; render(); } };
+  document.getElementById("backBtn").onclick = () => { step = back; render(); };
+}
+
+function renderQuiz() {
+  if (currentQuestion >= QUESTIONS.length) {
+    finalScore = calculateFinalScore();
+    categoryAverages = calculateCategoryAverages();
+    sendTelegramNotification(preData, finalScore.toFixed(1), getTier(finalScore).label);
+    step = "report";
+    reportPage = 0;
+    render();
+    return;
   }
-
-  const root = document.getElementById("app");
-
-  // ---------- RENDER ENGINE ----------
-  function render() {
-    if (step === "intro") renderIntro();
-    else if (step === "preSegments") renderPreSegments();
-    else if (step === "quiz") renderQuizStep();
-    else if (step === "teaching") renderTeachingStep();
-    else if (step === "contact") renderContactStep();
-    else if (step === "report") renderComprehensiveReport();
+  const q = QUESTIONS[currentQuestion];
+  const words = ["Rarely", "", "Sometimes", "", "Always"];
+  const teachingHtml = q.teachId ? getTeachingHtml(q.teachId) : '';
+  root.innerHTML = `<div class="card">${brandHeader(false)}${progressBar(currentQuestion, QUESTIONS.length)}
+    <div class="q-counter">Question ${currentQuestion + 1} of ${QUESTIONS.length}</div>
+    <div class="q-category">${q.category}</div>
+    <div class="q-text">${q.text}</div>
+    <div class="scale-container"><div class="scale-labels"><span>Rarely</span><span>Sometimes</span><span>Always</span></div>
+    <div class="scale-btns" id="scaleBtns"></div></div>${teachingHtml}
+    <div class="btn-row"><button class="btn btn-outline" id="prevBtn" ${currentQuestion === 0 ? 'disabled' : ''}>← Back</button>
+    <button class="btn btn-primary" id="nextBtn" ${answers[currentQuestion] === null ? 'disabled' : ''}>${currentQuestion === QUESTIONS.length - 1 ? 'View My Report →' : 'Next →'}</button></div>
+  </div>`;
+  const sb = document.getElementById("scaleBtns");
+  for (let i = 1; i <= 5; i++) {
+    const btn = document.createElement("div");
+    btn.className = `scale-btn${answers[currentQuestion] === i ? ' selected' : ''}`;
+    btn.innerHTML = `<div class="scale-num">${i}</div><div class="scale-word">${words[i - 1]}</div>`;
+    btn.onclick = () => { answers[currentQuestion] = i; renderQuiz(); };
+    sb.appendChild(btn);
   }
-
-  // ------------- INTRO (simple, spacious) -------------
-  function renderIntro() {
-    root.innerHTML = `
-      <div class="card" style="text-align:center;">
-        <div class="tag-3min" style="font-family: monospace; letter-spacing:2px;">⚡ 3 MINUTE QUIZ</div>
-        <h1 style="font-size:2.8rem;">Cellular Vitality<br>Audit</h1>
-        <p style="margin:1rem 0 0.5rem;">Based on AccessWorld Seminars · Breathwork · Alkaline Principle</p>
-        <div style="margin:1.5rem 0;">
-          <p class="gold">“Your nervous system is your most powerful asset. It can be reprogrammed by experience.”</p>
-        </div>
-        <button class="btn btn-primary" id="startBtn">🌿 Start My Health Audit →</button>
-        <footer style="margin-top:2rem;">We have helped hundreds gain confidence, health & happiness</footer>
-      </div>
-    `;
-    document.getElementById("startBtn")?.addEventListener("click", () => {
-      step = "preSegments";
-      render();
-    });
-  }
-
-  // ---------- PRE-QUIZ: segment / goal / focus / learning style (one by one but compact) ----------
-  function renderPreSegments() {
-    root.innerHTML = `
-      <div class="card">
-        <h2 style="margin-bottom:1.5rem;">Before we dive deep<span class="gold">.</span></h2>
-        <div id="preStepContainer"></div>
-        <div style="text-align:center; margin-top:1rem;"><button class="btn" id="preResetBtn">Back</button></div>
-      </div>
-    `;
-    let preStep = 0;
-    const steps = [
-      { question: "Which best describes you?", options: ["The Burned Out & Bottomed Out","The Yo-Yo Warrior","The Peak Performer","The Health Mystery Solver","The Life-Transition Seeker"], key: "segment" },
-      { question: "What are you wanting to improve?", options: ["Improve energy","Improve sleep","Improve mental clarity"], key: "goal", extraMsg: "energy" },
-      { question: "Select your main health focus", options: ["Eat better","Muscle tone","Breathing","Posture","Exercise"], key: "focus" },
-      { question: "Preferred way to learn", options: ["Watch or attend Seminars","1 on 1 coaching","Group discussion","Reading"], key: "learn" }
-    ];
-    function renderPreStep() {
-      const s = steps[preStep];
-      let extraHtml = "";
-      if (s.key === "goal" && userGoal === "Improve energy") extraHtml = `<p class="gold" style="margin-top:0.5rem;">✨ Great choice! Energy is the most important benefit when you focus on health.</p>`;
-      const container = document.getElementById("preStepContainer");
-      if (!container) return;
-      container.innerHTML = `
-        <h3>${s.question}</h3>
-        <div style="display:flex; flex-direction:column; gap:0.8rem; margin: 1.5rem 0;">
-          ${s.options.map(opt => `<button class="btn option-btn" data-val="${opt}">${opt}</button>`).join('')}
-        </div>
-        ${extraHtml}
-        <div style="display:flex; justify-content:space-between; margin-top:0.5rem;">
-          <button class="btn" id="prePrevBtn" ${preStep===0 ? 'disabled style="opacity:0.4;"' : ""}>← Prev</button>
-          <button class="btn btn-primary" id="preNextBtn" ${(steps[preStep].key==="segment" && !userSegment) || (steps[preStep].key==="goal" && !userGoal) || (steps[preStep].key==="focus" && !userHealthFocus) || (steps[preStep].key==="learn" && !userLearnPref) ? 'disabled' : ""}>${preStep===steps.length-1 ? "Start Quiz →" : "Next"}</button>
-        </div>
-      `;
-      document.querySelectorAll(".option-btn").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-          const val = e.target.dataset.val;
-          if (s.key === "segment") userSegment = val;
-          if (s.key === "goal") userGoal = val;
-          if (s.key === "focus") userHealthFocus = val;
-          if (s.key === "learn") userLearnPref = val;
-          renderPreStep();
-        });
-      });
-      document.getElementById("prePrevBtn")?.addEventListener("click", () => { if(preStep>0) { preStep--; renderPreStep(); } });
-      document.getElementById("preNextBtn")?.addEventListener("click", () => {
-        if (s.key === "segment" && !userSegment) return;
-        if (s.key === "goal" && !userGoal) return;
-        if (s.key === "focus" && !userHealthFocus) return;
-        if (s.key === "learn" && !userLearnPref) return;
-        if (preStep === steps.length-1) {
-          step = "quiz";
-          currentQuestionIdx = 0;
-          render();
-        } else {
-          preStep++;
-          renderPreStep();
-        }
-      });
+  document.getElementById("prevBtn").onclick = () => { if (currentQuestion > 0) { currentQuestion--; renderQuiz(); } };
+  document.getElementById("nextBtn").onclick = () => {
+    if (answers[currentQuestion] !== null) {
+      if (currentQuestion < QUESTIONS.length - 1) { currentQuestion++; renderQuiz(); }
+      else { finalScore = calculateFinalScore(); categoryAverages = calculateCategoryAverages(); sendTelegramNotification(preData, finalScore.toFixed(1), getTier(finalScore).label); step = "report"; reportPage = 0; render(); }
     }
-    renderPreStep();
-    document.getElementById("preResetBtn")?.addEventListener("click", () => { step = "intro"; render(); });
-  }
+  };
+}
 
-  // ------------- QUIZ QUESTION (one at a time, hover pop) -------------
-  function renderQuizStep() {
-    const q = QUESTIONS[currentQuestionIdx];
-    const selected = answers[q.id];
-    const totalQ = QUESTIONS.length;
-    const progressPercent = (currentQuestionIdx / totalQ) * 100;
-    root.innerHTML = `
-      <div class="card">
-        <div class="progress-ring">${renderProgressDots(currentQuestionIdx, totalQ)}</div>
-        <div style="width:100%; background:#2a3650; height:4px; border-radius:10px; margin-bottom:1.8rem;"><div style="width:${progressPercent}%; background:#C9A84C; height:4px; border-radius:10px;"></div></div>
-        <h2 style="font-size:1.8rem; margin-bottom:1rem;">${q.text}</h2>
-        <div class="scale-group" id="scaleGroup"></div>
-        <div style="display:flex; justify-content:space-between; margin-top:2rem;">
-          <button class="btn" id="quizPrevBtn" ${currentQuestionIdx===0 ? 'disabled style="opacity:0.4;"' : ""}>← Previous</button>
-          <button class="btn btn-primary" id="quizNextBtn">${currentQuestionIdx === totalQ-1 ? "Complete →" : "Next"}</button>
-        </div>
+function renderComprehensiveReport() {
+  const avg = finalScore.toFixed(1);
+  const tier = getTier(finalScore);
+  const sorted = Object.entries(categoryAverages).sort((a, b) => a[1] - b[1]);
+  const lowest = sorted.slice(0, 3);
+  const highest = sorted.slice(-3).reverse();
+
+  // Page 1: Score + Profile + Category Breakdown
+  const page1 = `<div class="score-hero"><div class="score-ring"><span class="score-num">${avg}</span><span class="score-denom">/5</span></div>
+    <div class="tier-label">${tier.label}</div><div style="font-size:0.78rem;color:rgba(201,168,76,0.5);margin-bottom:0.5rem;">${tier.sub}</div>
+    <p class="tier-msg">${tier.msg}</p><div class="tag-row"><span class="tag">${preData.segment}</span><span class="tag">${preData.goal}</span><span class="tag">${preData.healthFocus}</span></div></div>
+    <div class="report-section"><h3>🧬 Your Cellular Vitality Breakdown</h3><p>Here's how each dimension scored. Your lowest areas are your highest leverage points.</p>
+    ${Object.entries(categoryAverages).map(([cat, sc]) => `<div class="category-bar-wrap"><div class="category-bar-label"><span>${cat}</span><span>${sc.toFixed(1)}/5</span></div><div class="category-bar-track"><div class="category-bar-fill" style="width:${(sc / 5) * 100}%"></div></div></div>`).join('')}</div>
+    <div class="report-section"><h3>⚡ Priority Areas — Start Here</h3><ul>${lowest.map(([cat, sc]) => `<li><strong>${cat}</strong> — ${sc.toFixed(1)}/5 · Small changes here create the fastest shift.</li>`).join('')}</ul></div>
+    <div class="report-section"><h3>✨ Your Strengths — Anchor & Leverage</h3><ul>${highest.map(([cat, sc]) => `<li><strong>${cat}</strong> — ${sc.toFixed(1)}/5</li>`).join('')}</ul></div>
+    <div class="report-section"><h3>📖 Understanding Your Score</h3><p>Scores below 3.0 typically indicate shallow breathing reducing oxygen to cells, sluggish lymph unable to clear waste, or an acid-forming diet. The body is extraordinarily adaptive. Given the right conditions, it begins rebalancing within 72 hours.</p></div>`;
+
+  // Page 2: Lymph, Breathwork, Nutrition
+  const page2 = `<div class="report-section"><h3>🌀 The Lymphatic System — Your Cellular Sewage Network</h3><p>Unlike your cardiovascular system, the lymphatic system has <strong>no central pump</strong>. It relies entirely on body movement to shift waste. When you're sedentary, lymph fluid stagnates. Toxins accumulate around cells. Brain fog follows.</p><p><strong>Activators:</strong> Heel drops (7–15 min daily), rebounding (increases lymph flow up to 15x), brisk walking (calf muscles are the secondary pump).</p><div class="highlight-box"><p>🌿 <strong>Try this today:</strong> Stand, raise your heels slowly, then let them drop 30 times. Your lymph just moved.</p></div></div>
+    <div class="report-section"><h3>🌬️ Oxygen — The Forgotten Nutrient</h3><p>Most people breathe at around 30% of lung capacity. Without adequate oxygen, glucose produces just <strong>2 ATP</strong>. With full oxygenation, it yields up to <strong>32 ATP</strong> — sixteen times more energy.</p><ul><li><strong>Morning protocol:</strong> 10–30 slow belly breaths on waking</li><li><strong>Retention breath:</strong> Inhale deeply, hold for 15 seconds</li><li><strong>Evening wind-down:</strong> 5 minutes of slow nasal breathing before sleep</li></ul></div>
+    <div class="report-section"><h3>⚗️ Alkaline Nutrition — What Your Blood pH Reveals</h3><p>Your blood is designed to sit at pH 7.36 — slightly alkaline. Two biggest drivers of acidity: processed sugar (spikes blood glucose, taxes pancreas) and hybridised wheat (spikes blood sugar faster than table sugar).</p><p><strong>Alkalising foods:</strong> leafy greens, cucumber, celery, avocado, sprouts. Celery is technically a herb — the calories needed to digest it exceed those it contains, making it a net alkalising food.</p></div>
+    <div class="report-section"><h3>🥑 The Healthy Oils Your Cells Are Starving For</h3><p>Omega 3, 6, 9 — avocado oil, cold-pressed olive oil, coconut oil — are not fattening. They are essential for joint lubrication, brain function, and cell membrane integrity. Add flaxseed or Udo's oil to salads daily.</p></div>`;
+
+  // Page 3: NSR + Mindset + 7-Day Plan + Coaching CTA
+  const page3 = `<div class="report-section"><h3>🧠 The Emotional Root of Physical Symptoms</h3><p>Your cells don't just respond to food and movement. They respond to your emotional state. Unprocessed stress, toxic thoughts, and suppressed grief create acid in the body. That acid creates inflammation. Sustained inflammation leads to illness.</p><p>This is why <strong>Nervous System Reprogramming (NSR)</strong> is not a soft add-on. It's the missing piece. Clearing trapped emotion at the level of the nervous system allows every other health protocol to work more effectively.</p></div>
+    <div class="report-section"><h3>🔁 Break the Vicious Cycle</h3><p>Poor nutrition → low energy → no motivation to exercise → guilt → worse nutrition. The cycle breaks from the inside out: alkalise the terrain, oxygenate with breathwork, activate lymph gently, then address emotional weight.</p></div>
+    <div class="report-section"><h3>🚀 Your 7-Day Cellular Reset Plan</h3><ul><li><strong>Daily:</strong> Heel drops or rebounding — 7 minutes minimum</li><li><strong>Morning:</strong> 5 minutes of belly breathing before checking your phone</li><li><strong>Each day:</strong> Add one living food (celery, cilantro, leafy greens)</li><li><strong>Remove:</strong> One processed sugar or wheat product per day</li><li><strong>Evening:</strong> 5 minutes of slow nasal breathing before sleep</li><li><strong>Weekly:</strong> Track your energy, clarity, and mood</li></ul></div>
+    <div class="report-section" style="background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(20,32,58,0.95) 100%); border-left-color: var(--gold-light);">
+      <h3>✦ The Missing Piece — Professional Coaching</h3>
+      <p>Information alone rarely creates lasting change. Limiting beliefs, value conflicts, and trapped emotional charge run silently in the background — sabotaging even the best intentions.</p>
+      <p>Joshua Roy's coaching brings NSR (Nervous System Reprogramming), breath mastery, lymph activation and NLP tools together in a framework that rewires the patterns stopping you.</p>
+      <div class="seminar-badge" style="margin-top:1rem; background:rgba(201,168,76,0.08);">
+        <div class="badge-title">✦ 2-Day Health Seminar with Joshua Roy</div>
+        <p>Live NSR tools, breathwork protocols, lymph activation, alkaline nutrition and community.</p>
+        <a href="https://www.accessworldseminars.org/2dayhealthseminar" target="_blank">→ Reserve your seat</a>
       </div>
-    `;
-    const scaleGroup = document.getElementById("scaleGroup");
-    for (let i=0;i<=5;i++) {
-      const optDiv = document.createElement("div");
-      optDiv.className = `scale-opt ${selected === i ? 'selected' : ''}`;
-      optDiv.innerHTML = `<div style="font-weight:800;">${i}</div><div style="font-size:0.7rem;">${i === 0 ? "Never" : i===1?"Rarely":i===2?"Sometimes":i===3?"Often":i===4?"Mostly":"Always"}</div>`;
-      optDiv.addEventListener("click", () => {
-        answers[q.id] = i;
-        renderQuizStep();
-      });
-      scaleGroup.appendChild(optDiv);
-    }
-    document.getElementById("quizPrevBtn")?.addEventListener("click", () => {
-      if(currentQuestionIdx > 0) {
-        currentQuestionIdx--;
-        render();
-      }
-    });
-    document.getElementById("quizNextBtn")?.addEventListener("click", () => {
-      if (answers[q.id] === null || answers[q.id] === undefined) { alert("Please select a rating (0-5)."); return; }
-      const isLast = (currentQuestionIdx === totalQ-1);
-      if (isLast) {
-        // compute final before report
-        const sum = answers.reduce((a,b)=>a+b,0);
-        finalScore = sum / totalQ;
-        categoryAvgs = computeCategoryAverages();
-        const tierObj = getTierData(finalScore);
-        tierLabel = tierObj.label;
-        step = "contact";
-        render();
-      } else {
-        // after answering, check if need to inject teaching screen
-        const nextIdx = currentQuestionIdx + 1;
-        if (TEACHING_SCREENS[nextIdx]) {
-          // store that we need to show teaching before next question
-          window.nextAfterTeaching = nextIdx;
-          step = "teaching";
-          render();
-        } else {
-          currentQuestionIdx++;
-          render();
-        }
-      }
-    });
-  }
+    </div>
+    <footer class="card-footer">AccessWorld Seminars · Joshua Roy · Since 2015</footer>`;
 
-  // ---------- TEACHING PAGE (separate screen, spacious, infographic) ----------
-  function renderTeachingStep() {
-    const nextQ = window.nextAfterTeaching;
-    const teach = TEACHING_SCREENS[nextQ];
-    if (!teach) {
-      step = "quiz";
-      render();
-      return;
-    }
-    root.innerHTML = `
-      <div class="card" style="text-align:center;">
-        <h2 class="gold">✨ ${teach.headline}</h2>
-        <img src="${teach.image}" class="teaching-img" alt="insight" style="max-width:280px; margin:1rem auto;">
-        <div class="report-section" style="background: rgba(0,0,0,0.4);">
-          <p class="gold" style="font-size:1.2rem;">“${teach.quote}”</p>
-          <p style="margin-top:1rem;">Coaching transforms knowledge into embodied experience.</p>
-        </div>
-        <button class="btn btn-primary" id="continueTeachingBtn">Continue to next question →</button>
-      </div>
-    `;
-    document.getElementById("continueTeachingBtn")?.addEventListener("click", () => {
-      currentQuestionIdx = nextQ;
-      step = "quiz";
-      render();
-    });
-  }
+  const pages = [page1, page2, page3];
+  const pageTitles = ["Your Score & Profile", "Body Systems Science", "Reset Plan & Coaching"];
 
-  // ---------- CONTACT (name, email, phone) ----------
-  function renderContactStep() {
-    root.innerHTML = `
-      <div class="card">
-        <h2>Your Comprehensive Report Awaits</h2>
-        <p style="margin:0.5rem 0 1.5rem;">Enter your details to unlock your personalised Cellular Vitality report and get invited to a free session.</p>
-        <input type="text" id="contactName" placeholder="Full name" value="${userName}">
-        <input type="email" id="contactEmail" placeholder="Email address (required)" value="${userEmail}">
-        <input type="tel" id="contactPhone" placeholder="Phone with area code" value="${userPhone}">
-        <div style="display:flex; gap:1rem; justify-content:center;">
-          <button class="btn" id="backToQuizBtn">← Back</button>
-          <button class="btn btn-primary" id="generateReportBtn">📊 Generate My Full Report →</button>
-        </div>
-      </div>
-    `;
-    document.getElementById("backToQuizBtn")?.addEventListener("click", () => { step = "quiz"; render(); });
-    document.getElementById("generateReportBtn")?.addEventListener("click", async () => {
-      const name = document.getElementById("contactName").value.trim();
-      const email = document.getElementById("contactEmail").value.trim();
-      const phone = document.getElementById("contactPhone").value.trim();
-      if (!name || !email) { alert("Please provide name and email to receive your report."); return; }
-      userName = name; userEmail = email; userPhone = phone;
-      notificationSent = await sendTelegramNotification();
-      step = "report";
-      render();
-    });
-  }
+  root.innerHTML = `<div class="card"><div class="report-header"><div><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:32px;"><div class="report-page-indicator">Comprehensive Report · Page ${reportPage + 1} of 3 · ${pageTitles[reportPage]}</div></div><button class="download-btn" id="downloadReportBtn">📄 Download Report</button></div>
+    <div class="report-wrap" id="reportWrap">${pages[reportPage]}</div>
+    <div class="btn-row"><button class="btn btn-outline" id="prevReportBtn" ${reportPage === 0 ? 'disabled' : ''}>← Previous</button>
+    <div style="display:flex; gap:0.4rem;">${[0, 1, 2].map(i => `<div style="width:8px;height:8px;border-radius:50%;background:${i === reportPage ? 'var(--gold)' : 'rgba(201,168,76,0.2)'};"></div>`).join('')}</div>
+    <button class="btn btn-primary" id="nextReportBtn">${reportPage === 2 ? 'Start Over' : 'Next Page →'}</button></div></div>`;
 
-  // ---------- COMPREHENSIVE REPORT (full detailed + CTA + footer) ----------
-  function renderComprehensiveReport() {
-    const avg = finalScore;
-    const tierObj = getTierData(avg);
-    const sortedCats = Object.entries(categoryAvgs).sort((a,b)=> a[1]-b[1]);
-    const lowest = sortedCats.slice(0,3);
-    const highest = sortedCats.slice(-2).reverse();
-    const answersDetailHtml = QUESTIONS.map((q, idx) => `<div style="margin-bottom:0.6rem;"><span>${q.text.substring(0,70)}...</span> <strong class="gold">${answers[idx]}/5</strong><div style="background:#2a3650; height:4px; border-radius:4px; margin-top:4px;"><div style="width:${(answers[idx]/5)*100}%; background:#C9A84C; height:4px; border-radius:4px;"></div></div></div>`).join('');
-    
-    root.innerHTML = `
-      <div class="card" style="max-width: 900px;">
-        <div style="text-align:center;">
-          <h1>Your Cellular Vitality Report</h1>
-          <div style="font-size:3rem; font-weight:bold; color:#C9A84C;">${avg.toFixed(1)}<span style="font-size:1.2rem;">/5</span></div>
-          <div class="progress-bar-bg" style="background:#2a3650; width:80%; margin:0.5rem auto; border-radius:20px;"><div style="width:${(avg/5)*100}%; background:#C9A84C; height:8px; border-radius:20px;"></div></div>
-          <h2 class="gold">${tierObj.label}</h2>
-          <p>${tierObj.msg}</p>
-        </div>
-        
-        <div class="report-section">
-          <h3>📊 Score & Oxygen Blueprint</h3>
-          <p><strong>Oxygen status:</strong> ${answers[0] > 3 ? "Diaphragmatic breathing active." : "Shallow chest breathing → switch to belly breaths."}</p>
-          <p><strong>Alkaline terrain:</strong> ${answers[7] > 3 ? "Cancer-resistant environment building." : "Acidic overload — add greens + lemon water."}</p>
-          <p><strong>Lymphatic flow:</strong> ${answers[5] > 3 ? "Movement clearing toxins." : "Sedentary lymph = stagnation. Start rebounding."}</p>
-        </div>
+  document.getElementById("prevReportBtn").onclick = () => { if (reportPage > 0) { reportPage--; renderComprehensiveReport(); } };
+  document.getElementById("nextReportBtn").onclick = () => { if (reportPage === 2) { step = "intro"; currentQuestion = 0; answers.fill(null); reportPage = 0; render(); } else { reportPage++; renderComprehensiveReport(); } };
+  document.getElementById("downloadReportBtn").onclick = () => {
+    const fullHtml = `<!DOCTYPE html><html><head><title>AccessWorld Cellular Vitality Report</title><style>body{font-family:'DM Sans',sans-serif;background:#fff;color:#1a1a1a;padding:2rem;max-width:780px;margin:0 auto;} h1,h2,h3{font-family:'Cormorant Garamond',serif;color:#14203A;} .gold{color:#C9A84C;} .section{margin:1.5rem 0;border-left:3px solid #C9A84C;padding:1rem 1.5rem;background:#f9f7f2;}</style></head><body><h1>Cellular Vitality Report — <span class="gold">${avg}/5</span></h1><h2>${tier.label} · ${tier.sub}</h2><p>${tier.msg}</p><p><strong>Profile:</strong> ${preData.segment} | ${preData.goal} | ${preData.healthFocus} | ${preData.learnPref}</p>${pages.join('<div style="page-break-before:always;margin-top:2rem;"></div>')}<p style="margin-top:2rem;">Generated by AccessWorld Seminars · accessworldseminars.org</p></body></html>`;
+    const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(new Blob([fullHtml], { type: "text/html" })), download: "AccessWorld_Vitality_Report.html" });
+    a.click(); URL.revokeObjectURL(a.href);
+  };
+}
 
-        <div class="report-section">
-          <h3>🌱 Priority Healing Areas (lowest scores)</h3>
-          ${lowest.map(([cat, sc]) => `<div><strong>${cat}</strong> · ${sc.toFixed(1)}/5<br>✨ Coaching insight: Small daily habit — ${cat.includes("Breath") ? "2 min breath holds" : cat.includes("Diet") ? "celery juice + cilantro" : cat.includes("Mobility") ? "5 min bouncing" : "posture stretches"}</div>`).join('<hr style="opacity:0.2;">')}
-        </div>
-
-        <div class="report-section">
-          <h3>🏆 Your Strengths</h3>
-          ${highest.map(([cat, sc]) => `<div><strong>${cat}</strong> · ${sc.toFixed(1)}/5 — use this as leverage.</div>`).join('')}
-        </div>
-
-        <div class="report-section">
-          <h3>🧘 Breathwork Protocol (Wim Hof / Pre-oxygenation)</h3>
-          <p>${answers[0] < 3 ? "Start belly breathing: 4s inhale, 6s exhale, 10 min daily." : "Advanced: 30 power breaths + 60s retention. Cold exposure amplifies."}</p>
-          <p class="gold">"Ten minutes a day of deliberate state management will change your life."</p>
-        </div>
-
-        <div class="report-section">
-          <h3>🥗 Healing Foods (AccessWorld Protocols)</h3>
-          <p>✔ Coriander/Cilantro – heavy metal chelation<br>✔ Celery juice – restores lymph flow<br>✔ Zucchini – prefrontal cortex fuel<br>✔ Papaya – peristaltic cleansing</p>
-        </div>
-
-        <div class="report-section">
-          <h3>📋 Your Detailed Answers</h3>
-          <div style="max-height: 250px; overflow-y: auto;">${answersDetailHtml}</div>
-        </div>
-
-        <div style="background: linear-gradient(135deg, #1e2a3a, #0a0f1c); border-radius: 2rem; padding: 1.5rem; text-align:center; margin:1rem 0;">
-          <h3 class="gold">🎁 Join the next Free Session</h3>
-          <p>We have helped hundreds gain confidence, health and happiness. AccessWorld creates deep lasting change.</p>
-          <a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank" class="btn btn-primary" style="display:inline-block; text-decoration:none;">→ Reserve my seat ←</a>
-        </div>
-
-        <footer style="margin-top:2rem; text-align:center;">
-          Joshua Roy - Life and Results Coach<br>
-          AccessWorld Seminars · Cellular Vitality Systems
-        </footer>
-      </div>
-    `;
-  }
-
-  render();
+render();
 </script>
 </body>
 </html>
