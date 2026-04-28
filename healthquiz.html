@@ -20,7 +20,9 @@
       --card-bg: rgba(10,19,34,0.97);
       --border: rgba(201,168,76,0.22);
     }
+
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
     body {
       background: var(--navy-deep);
       font-family: 'DM Sans', sans-serif;
@@ -33,6 +35,7 @@
       position: relative;
       overflow-x: hidden;
     }
+
     body::before {
       content: '';
       position: fixed;
@@ -44,6 +47,7 @@
       pointer-events: none;
       z-index: 0;
     }
+
     body::after {
       content: '';
       position: fixed;
@@ -56,6 +60,7 @@
       pointer-events: none;
       z-index: 0;
     }
+
     .app-wrap {
       position: relative;
       z-index: 2;
@@ -63,6 +68,7 @@
       max-width: 780px;
       margin: 0 auto;
     }
+
     .card {
       background: linear-gradient(160deg, rgba(20,32,58,0.98) 0%, rgba(10,19,34,0.99) 100%);
       border-radius: 2.4rem;
@@ -75,6 +81,7 @@
       position: relative;
       overflow: hidden;
     }
+
     .card::before {
       content: '';
       position: absolute;
@@ -82,23 +89,30 @@
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
     }
+
     h1, h2, h3 {
       font-family: 'Cormorant Garamond', serif;
       letter-spacing: 0.02em;
     }
+
     h1 { font-size: 3.2rem; font-weight: 300; line-height: 1.1; }
     h2 { font-size: 2rem; font-weight: 400; line-height: 1.2; }
     h3 { font-size: 1.35rem; font-weight: 500; margin-bottom: 0.8rem; }
+
     .gold { color: var(--gold-light); }
     .italic { font-style: italic; }
+
     p { line-height: 1.7; font-size: 0.97rem; color: #C8BCAA; }
+
     .brand-header {
       display: flex;
       align-items: center;
       gap: 1rem;
       margin-bottom: 2.2rem;
     }
+
     .brand-header img { height: 40px; opacity: 0.9; }
+
     .brand-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1rem;
@@ -108,6 +122,7 @@
       color: var(--gold);
       opacity: 0.8;
     }
+
     .divider {
       display: flex;
       align-items: center;
@@ -126,6 +141,7 @@
       border-radius: 50%;
       opacity: 0.5;
     }
+
     .btn {
       font-family: 'DM Sans', sans-serif;
       font-size: 0.88rem;
@@ -139,30 +155,36 @@
       transition: all 0.25s ease;
       outline: none;
     }
+
     .btn-primary {
       background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
       color: var(--navy-deep);
       box-shadow: 0 4px 20px rgba(201,168,76,0.3);
     }
+
     .btn-primary:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 30px rgba(201,168,76,0.4);
     }
+
     .btn-outline {
       background: transparent;
       color: var(--gold);
       border: 1px solid rgba(201,168,76,0.35);
     }
+
     .btn-outline:hover {
       background: rgba(201,168,76,0.08);
       border-color: var(--gold);
     }
+
     .btn:disabled {
       opacity: 0.3;
       cursor: not-allowed;
       transform: none;
       box-shadow: none;
     }
+
     .btn-row {
       display: flex;
       justify-content: space-between;
@@ -170,12 +192,14 @@
       margin-top: 2.4rem;
       gap: 1rem;
     }
+
     .progress-bar {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       margin-bottom: 2rem;
     }
+
     .prog-dot {
       height: 3px;
       background: rgba(201,168,76,0.18);
@@ -183,13 +207,16 @@
       transition: all 0.3s ease;
       flex: 1;
     }
+
     .prog-dot.done { background: rgba(201,168,76,0.5); }
     .prog-dot.active { background: var(--gold-light); }
+
     .options-grid {
       display: grid;
       gap: 0.75rem;
       margin: 1.6rem 0 0.5rem;
     }
+
     .opt-card {
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(201,168,76,0.18);
@@ -203,23 +230,28 @@
       align-items: center;
       gap: 0.9rem;
     }
+
     .opt-card:hover {
       background: rgba(201,168,76,0.06);
       border-color: rgba(201,168,76,0.4);
       color: #E8E0D0;
     }
+
     .opt-card.selected {
       background: rgba(201,168,76,0.12);
       border-color: var(--gold);
       color: var(--gold-light);
     }
+
     .opt-icon {
       font-size: 1.2rem;
       flex-shrink: 0;
     }
+
     .scale-container {
       margin: 2rem 0 1rem;
     }
+
     .scale-labels {
       display: flex;
       justify-content: space-between;
@@ -229,11 +261,13 @@
       color: rgba(201,168,76,0.5);
       margin-bottom: 1rem;
     }
+
     .scale-btns {
       display: flex;
       gap: 0.7rem;
       justify-content: center;
     }
+
     .scale-btn {
       flex: 1;
       max-width: 100px;
@@ -250,15 +284,18 @@
       transition: all 0.2s ease;
       font-family: 'DM Sans', sans-serif;
     }
+
     .scale-btn:hover {
       background: rgba(201,168,76,0.08);
       border-color: rgba(201,168,76,0.5);
     }
+
     .scale-btn.selected {
       background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.12));
       border-color: var(--gold);
       box-shadow: 0 0 20px rgba(201,168,76,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
     }
+
     .scale-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.2rem;
@@ -266,14 +303,18 @@
       color: #E8E0D0;
       line-height: 1;
     }
+
     .scale-btn.selected .scale-num { color: var(--gold-light); }
+
     .scale-word {
       font-size: 0.62rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: rgba(201,168,76,0.5);
     }
+
     .scale-btn.selected .scale-word { color: var(--gold); }
+
     .q-category {
       font-size: 0.7rem;
       letter-spacing: 0.18em;
@@ -282,6 +323,7 @@
       opacity: 0.7;
       margin-bottom: 0.5rem;
     }
+
     .q-text {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.65rem;
@@ -290,12 +332,31 @@
       color: #EAE3D5;
       margin-bottom: 0.2rem;
     }
+
     .q-counter {
       font-size: 0.75rem;
       color: rgba(201,168,76,0.45);
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
+
+    .teaching-moment {
+      background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(20,32,58,0.8) 100%);
+      border-radius: 1.5rem;
+      margin: 1.5rem 0 0.5rem;
+      padding: 1.2rem 1.5rem;
+      border: 1px solid rgba(201,168,76,0.2);
+    }
+    .teaching-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--gold-light);
+      margin-bottom: 0.6rem;
+    }
+    .teaching-text { font-size: 0.85rem; color: #B8AA96; line-height: 1.6; }
+    .teaching-text strong { color: var(--gold-light); }
+
     .seminar-badge {
       background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.05));
       border: 1px dashed rgba(201,168,76,0.35);
@@ -304,6 +365,7 @@
       text-align: center;
       margin: 1.8rem 0;
     }
+
     .seminar-badge .badge-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.2rem;
@@ -311,6 +373,7 @@
       color: var(--gold-light);
       margin-bottom: 0.4rem;
     }
+
     .seminar-badge p { font-size: 0.87rem; color: #B8AA96; margin-bottom: 0.7rem; }
     .seminar-badge a {
       display: inline-block;
@@ -324,38 +387,37 @@
       transition: all 0.2s;
     }
     .seminar-badge a:hover { color: var(--gold-pale); border-color: var(--gold); }
+
     .report-wrap {
-      max-height: 72vh;
+      max-height: 70vh;
       overflow-y: auto;
-      padding-right: 0.5rem;
+      padding-right: 0.8rem;
       scroll-behavior: smooth;
     }
     .report-wrap::-webkit-scrollbar { width: 4px; }
     .report-wrap::-webkit-scrollbar-track { background: transparent; }
     .report-wrap::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.25); border-radius: 4px; }
+
     .report-section {
-      margin-bottom: 1.6rem;
+      margin-bottom: 1.8rem;
       padding: 1.6rem 1.8rem;
       background: rgba(255,255,255,0.025);
       border-radius: 1.5rem;
       border-left: 3px solid var(--gold);
-      border-top: 1px solid rgba(201,168,76,0.1);
-      position: relative;
-      overflow: hidden;
     }
     .report-section h3 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.25rem;
       font-weight: 500;
       color: var(--gold-light);
-      margin-bottom: 0.9rem;
+      margin-bottom: 1rem;
     }
-    .report-section p { font-size: 0.92rem; line-height: 1.75; color: #C0B49E; margin-bottom: 0.7rem; }
+    .report-section p { font-size: 0.92rem; line-height: 1.75; color: #C0B49E; margin-bottom: 0.8rem; }
     .report-section strong { color: #E0D4C0; font-weight: 600; }
     .report-section ul {
       list-style: none;
       padding: 0;
-      margin: 0.5rem 0;
+      margin: 0.5rem 0 1rem;
     }
     .report-section ul li {
       font-size: 0.91rem;
@@ -365,17 +427,16 @@
       line-height: 1.6;
     }
     .report-section ul li::before {
-      content: '·';
+      content: '✦';
       position: absolute;
-      left: 0.4rem;
+      left: 0;
       color: var(--gold);
-      font-size: 1.2rem;
-      line-height: 1.4;
+      font-size: 0.9rem;
     }
+
     .score-hero {
       text-align: center;
-      padding: 2rem 0 1rem;
-      position: relative;
+      padding: 1.5rem 0 1rem;
     }
     .score-ring {
       display: inline-flex;
@@ -387,7 +448,6 @@
       border: 2px solid rgba(201,168,76,0.3);
       background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
       margin-bottom: 1rem;
-      box-shadow: 0 0 40px rgba(201,168,76,0.12);
     }
     .score-num {
       font-family: 'Cormorant Garamond', serif;
@@ -396,115 +456,65 @@
       color: var(--gold-light);
       line-height: 1;
     }
-    .score-denom {
-      font-size: 1.1rem;
-      color: rgba(201,168,76,0.5);
-      align-self: flex-end;
-      padding-bottom: 0.6rem;
-    }
-    .tier-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: var(--gold-light);
-      margin-bottom: 0.5rem;
-      font-style: italic;
-    }
-    .tier-msg {
-      font-size: 0.92rem;
-      color: #B8AA96;
-      max-width: 480px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-    .category-bar-wrap { margin: 0.5rem 0; }
-    .category-bar-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      color: #A0947E;
-      margin-bottom: 0.35rem;
-    }
-    .category-bar-track {
-      height: 6px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    .category-bar-fill {
-      height: 100%;
-      border-radius: 6px;
-      background: linear-gradient(90deg, rgba(201,168,76,0.5), var(--gold-light));
-      transition: width 1s ease;
-    }
-    .report-page-indicator {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(201,168,76,0.45);
-    }
+    .score-denom { font-size: 1.1rem; color: rgba(201,168,76,0.5); align-self: flex-end; padding-bottom: 0.6rem; }
+    .tier-label { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; color: var(--gold-light); }
+    .tier-msg { font-size: 0.92rem; color: #B8AA96; max-width: 480px; margin: 0.5rem auto; }
+
+    .category-bar-wrap { margin: 0.8rem 0; }
+    .category-bar-label { display: flex; justify-content: space-between; font-size: 0.8rem; color: #A0947E; margin-bottom: 0.35rem; }
+    .category-bar-track { height: 6px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden; }
+    .category-bar-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, rgba(201,168,76,0.5), var(--gold-light)); }
+
     .report-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 0.8rem;
-      margin-bottom: 2rem;
-      padding-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
       border-bottom: 1px solid rgba(201,168,76,0.12);
     }
+    .report-page-indicator {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.45);
+    }
     .download-btn {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--gold);
       background: transparent;
       border: 1px solid rgba(201,168,76,0.3);
       border-radius: 60px;
-      padding: 0.5rem 1.2rem;
+      padding: 0.4rem 1.2rem;
       cursor: pointer;
-      transition: all 0.2s;
     }
-    .download-btn:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); }
-    .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
     .tag {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--gold);
       background: rgba(201,168,76,0.08);
       border: 1px solid rgba(201,168,76,0.2);
       border-radius: 60px;
-      padding: 0.28rem 0.9rem;
+      padding: 0.25rem 0.9rem;
+      display: inline-block;
     }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1rem 0 0; }
     .highlight-box {
-      background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(201,168,76,0.04) 100%);
-      border: 1px solid rgba(201,168,76,0.25);
+      background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02));
+      border: 1px solid rgba(201,168,76,0.2);
       border-radius: 1.2rem;
-      padding: 1.4rem;
+      padding: 1.2rem;
       margin: 1rem 0;
-    }
-    .highlight-box p { font-size: 0.9rem; color: #C8BCAA; }
-    .testimonial {
-      background: rgba(201,168,76,0.06);
-      border-left: 4px solid var(--gold);
-      padding: 1.4rem;
-      border-radius: 1.2rem;
-      margin: 1.5rem 0;
-      font-style: italic;
-    }
-    .testimonial img {
-      width: 100%;
-      max-height: 280px;
-      object-fit: cover;
-      border-radius: 1rem;
-      margin-bottom: 1rem;
     }
     footer.card-footer {
       text-align: center;
       margin-top: 2rem;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: rgba(201,168,76,0.3);
@@ -518,7 +528,7 @@
       margin-bottom: 1rem;
     }
     .intro-subtitle {
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: #A09282;
       line-height: 1.7;
       margin: 1rem 0 0;
@@ -531,51 +541,19 @@
     }
     .stat-box {
       text-align: center;
-      padding: 1.2rem;
+      padding: 1rem;
       background: rgba(255,255,255,0.025);
       border: 1px solid rgba(201,168,76,0.12);
       border-radius: 1.2rem;
     }
-    .stat-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 300;
-      color: var(--gold-light);
-      line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #7A6A52;
-      margin-top: 0.4rem;
-    }
-    .lead-form {
-      margin: 2rem 0;
-    }
-    .lead-form input {
-      width: 100%;
-      padding: 1rem 1.4rem;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(201,168,76,0.3);
-      border-radius: 1rem;
-      color: #E8E0D0;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-    .lead-form input:focus {
-      outline: none;
-      border-color: var(--gold);
-    }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--gold-light); }
+    .stat-label { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: #7A6A52; margin-top: 0.3rem; }
+
     @media (max-width: 600px) {
-      .card { padding: 2rem 1.5rem; border-radius: 1.8rem; }
+      .card { padding: 2rem 1.5rem; }
       h1 { font-size: 2.4rem; }
       .scale-btns { gap: 0.4rem; }
-      .scale-btn { border-radius: 0.8rem; }
       .scale-num { font-size: 1.7rem; }
-      .intro-stats { grid-template-columns: repeat(3,1fr); gap: 0.6rem; }
-      .stat-num { font-size: 1.5rem; }
-      .testimonial img { max-height: 220px; }
     }
   </style>
 </head>
@@ -583,454 +561,246 @@
 <div class="app-wrap" id="app"></div>
 
 <script>
-const BOT_TOKEN = "8155100717:AAE0ABDHsRuFWmbXa8coP8qdL3QK2ZWYkaY"; // Replace with your token at the end
-const CHAT_ID = "5852478838";
+// ==================== TELEGRAM CONFIGURATION ====================
+// ✓ REPLACE WITH YOUR ACTUAL BOT TOKEN AND CHAT ID
+const BOT_TOKEN = "8155100717:AAE0ABDHsRuFWmbXa8coP8qdL3QK2ZWYkaY";
+const CHAT_ID = "5970521104";
 
-async function sendTelegram(pre, contact, avg, tier) {
+async function sendTelegramNotification(preData, score, tierLabel) {
+  const message = `🌿 *NEW CELLULAR VITALITY LEAD* 🌿\n\n` +
+    `👤 *Segment:* ${preData.segment}\n` +
+    `🎯 *Goal:* ${preData.goal}\n` +
+    `❤️ *Health Focus:* ${preData.healthFocus}\n` +
+    `📘 *Learning Style:* ${preData.learnPref}\n\n` +
+    `📊 *Final Score:* ${score}/5 — ${tierLabel}\n\n` +
+    `✅ *Generated by:* AccessWorld Seminars\n` +
+    `🔗 *Quiz Completed* — Follow up recommended.`;
+  
+  const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
   try {
-    const text = `🌿 *NEW CELLULAR VITALITY LEAD*\n\n` +
-                 `👤 *Segment:* ${pre.segment}\n` +
-                 `🎯 *Goal:* ${pre.goal}\n` +
-                 `❤️ *Health Focus:* ${pre.healthFocus}\n` +
-                 `📘 *Learning Style:* ${pre.learnPref}\n\n` +
-                 `📋 *Contact Details:*\n` +
-                 `Name: ${contact.name}\n` +
-                 `Phone: ${contact.phone}\n` +
-                 `Email: ${contact.email}\n\n` +
-                 `📊 *Score:* ${avg}/5 — ${tier}\n\n` +
-                 `✅ AccessWorld Seminars`;
-    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    const response = await fetch(url, {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ chat_id: CHAT_ID, parse_mode: 'Markdown', text })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: message,
+        parse_mode: 'Markdown'
+      })
     });
-  } catch(e) { console.warn('Telegram:', e); }
+    const result = await response.json();
+    if (!response.ok) {
+      console.warn('Telegram API error:', result);
+    } else {
+      console.log('Telegram message sent successfully');
+    }
+  } catch(e) { 
+    console.warn('Telegram send failed (network):', e);
+  }
 }
 
+// ==================== QUIZ DATA ====================
 const QUESTIONS = [
-  { text: "I feel mentally clear and focused throughout the day.", category: "Cellular Clarity" },
-  { text: "My energy levels stay consistent without major crashes.", category: "Energy Stability" },
-  { text: "I move my body daily in ways that activate lymph flow — walking, rebounding, or heel drops.", category: "Lymphatic Flow" },
-  { text: "I practice deep belly breathing or specific breathwork several times per week.", category: "Oxygen Efficiency" },
-  { text: "My diet includes living foods — fruits, greens, sprouts — and avoids processed sugars and hybridised wheat.", category: "Alkaline Nutrition" },
-  { text: "I feel emotionally resilient and handle stress without long-term fatigue.", category: "Nervous System Balance" },
-  { text: "I feel vitalised and full of energy even after heavier meals.", category: "Digestive Vitality" },
-  { text: "My sleep is restorative and I wake feeling refreshed most days.", category: "Restoration & Repair" },
-  { text: "I maintain a positive mindset and feel aligned with my deeper goals.", category: "Mindset & Purpose" },
-  { text: "My body feels light, flexible, and energetic — not heavy or stagnant.", category: "Overall Vitality" }
+  { text: "I feel mentally clear and focused throughout the day.", category: "Cellular Clarity", teachId: 1 },
+  { text: "My energy levels stay consistent without major crashes.", category: "Energy Stability", teachId: null },
+  { text: "I move my body daily in ways that activate lymph flow — walking, rebounding, or heel drops.", category: "Lymphatic Flow", teachId: 3 },
+  { text: "I practice deep belly breathing or specific breathwork several times per week.", category: "Oxygen Efficiency", teachId: null },
+  { text: "My diet includes living foods — fruits, greens, sprouts — and avoids processed sugars and hybridised wheat.", category: "Alkaline Nutrition", teachId: 5 },
+  { text: "I feel emotionally resilient and handle stress without long-term fatigue.", category: "Nervous System Balance", teachId: null },
+  { text: "I feel vitalised and full of energy even after heavier meals.", category: "Digestive Vitality", teachId: null },
+  { text: "My sleep is restorative and I wake feeling refreshed most days.", category: "Restoration & Repair", teachId: null },
+  { text: "I maintain a positive mindset and feel aligned with my deeper goals.", category: "Mindset & Purpose", teachId: 9 },
+  { text: "My body feels light, flexible, and energetic — not heavy or stagnant.", category: "Overall Vitality", teachId: null }
 ];
 
 const TIERS = [
-  { min:0, max:2.4, label:"Cellular Overload", sub:"Urgent Renewal Needed", msg:"Your vitality signals show significant stagnation. The good news: with targeted daily upgrades, your body begins shifting within weeks. This is your invitation to begin." },
-  { min:2.5, max:3.4, label:"Awakening Potential", sub:"Transitioning to Vitality", msg:"You've started the journey — but inconsistency is limiting your deeper energy. Focused habits will unlock the next level. You're closer than you think." },
-  { min:3.5, max:4.4, label:"Thriving Foundation", sub:"Strong Momentum Building", msg:"You have a beautiful base. Advanced breathwork, lymph activation and nervous system reprogramming can take you to genuine peak performance. You're ready for the next layer." },
-  { min:4.5, max:5.0, label:"Elite Cellular Vitality", sub:"Radiant Benchmark", msg:"Exceptional. You embody high-level wellness. Keep refining, stay curious, and share your light — others need what you've built." }
+  { min: 0, max: 2.4, label: "Cellular Overload", sub: "Urgent Renewal Needed", msg: "Your vitality signals show significant stagnation. The good news: with targeted daily upgrades, your body shifts within weeks." },
+  { min: 2.5, max: 3.4, label: "Awakening Potential", sub: "Transitioning to Vitality", msg: "You've started the journey — but inconsistency limits deeper energy. Focused habits unlock the next level." },
+  { min: 3.5, max: 4.4, label: "Thriving Foundation", sub: "Strong Momentum Building", msg: "You have a beautiful base. Advanced breathwork, lymph activation and nervous system reprogramming can take you to peak performance." },
+  { min: 4.5, max: 5.0, label: "Elite Cellular Vitality", sub: "Radiant Benchmark", msg: "Exceptional. You embody high-level wellness. Keep refining and share your light." }
 ];
 
+function getTier(score) { return TIERS.find(t => score >= t.min && score <= t.max) || TIERS[1]; }
+
+function getTeachingHtml(teachId) {
+  const teachings = {
+    1: { title: "📘 The Brain-Fog Cycle", text: "Mental clarity begins at the cellular level. When lymph fluid stagnates, metabolic waste accumulates around neurons → brain fog, poor recall, fatigue. Deep breathing + lymphatic movement flush these toxins naturally." },
+    3: { title: "📘 Your Second Circulation — The Lymph Map", text: "Unlike blood (pumped by heart), lymph relies on muscle contraction — especially your calves. Every step, bounce or heel drop squeezes lymph vessels, moving waste toward elimination. 5-10 min of heel drops daily increases lymph flow up to 15x." },
+    5: { title: "📘 Acid vs. Alkaline — Cellular Terrain", text: "Living foods move through the digestive tract in ~20-30 minutes. Processed foods linger for hours, ferment, and create acidic waste. Healing foods: cilantro (chelates heavy metals), celery juice (restores lymph), papaya (natural peristalsis)." },
+    9: { title: "📘 Nervous System Reprogramming (NSR)", text: "Most health blocks aren't physical — they're emotional. Trapped emotions from past trauma create chronic stress patterns that suppress immunity, digestion, and energy. Breathwork + NSR dissolve these blocks at the source." }
+  };
+  const t = teachings[teachId];
+  if (!t) return '';
+  return `<div class="teaching-moment"><div class="teaching-title">${t.title}</div><div class="teaching-text">${t.text}</div></div>`;
+}
+
 let step = "intro";
-let pre = { segment:"", goal:"", healthFocus:"", learnPref:"" };
+let preData = { segment: "", goal: "", healthFocus: "", learnPref: "" };
 let answers = new Array(QUESTIONS.length).fill(null);
-let contactInfo = { name: "", phone: "", email: "" };
 let finalScore = 0;
-let catAvgs = {};
+let categoryAverages = {};
 let reportPage = 0;
-let curQ = 0;
+let currentQuestion = 0;
 
 const root = document.getElementById("app");
 
-function getTier(s) { 
-  return TIERS.find(t => s >= t.min && s <= t.max) || TIERS[1]; 
-}
-
-function calcScore() {
+function calculateFinalScore() {
   const valid = answers.filter(a => a !== null);
-  return valid.length === 0 ? 0 : valid.reduce((a,b) => a+b, 0) / valid.length;
+  return valid.length === 0 ? 0 : valid.reduce((a,b) => a + b, 0) / valid.length;
 }
 
-function calcCatAvgs() {
+function calculateCategoryAverages() {
   const cats = {};
-  QUESTIONS.forEach((q,i) => {
-    if (!cats[q.category]) cats[q.category] = { sum:0, n:0 };
-    if (answers[i] !== null) { 
-      cats[q.category].sum += answers[i]; 
-      cats[q.category].n++; 
+  QUESTIONS.forEach((q, i) => {
+    if (answers[i] !== null) {
+      if (!cats[q.category]) cats[q.category] = { sum: 0, count: 0 };
+      cats[q.category].sum += answers[i];
+      cats[q.category].count++;
     }
   });
-  Object.keys(cats).forEach(c => { 
-    cats[c] = cats[c].n ? cats[c].sum / cats[c].n : 0; 
-  });
+  Object.keys(cats).forEach(c => { cats[c] = cats[c].sum / cats[c].count; });
   return cats;
 }
 
-function brandHeader(showLogo=true) {
-  return `<div class="brand-header">
-    ${showLogo ? `<img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld">` : ''}
-    <span class="brand-name">AccessWorld Seminars</span>
-  </div>`;
+function brandHeader(showLogo = true) {
+  return `<div class="brand-header">${showLogo ? '<img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld">' : ''}<span class="brand-name">AccessWorld Seminars</span></div>`;
 }
 
 function progressBar(current, total) {
-  return `<div class="progress-bar">${Array.from({length:total},(_,i) => {
+  return `<div class="progress-bar">${Array.from({ length: total }, (_, i) => {
     let cls = i < current ? 'done' : i === current ? 'active' : '';
     return `<div class="prog-dot ${cls}"></div>`;
   }).join('')}</div>`;
 }
 
 function render() {
-  if (step==='intro') renderIntro();
-  else if (step==='pre1') renderPre1();
-  else if (step==='pre2') renderPre2();
-  else if (step==='pre3') renderPre3();
-  else if (step==='pre4') renderPre4();
-  else if (step==='quiz') renderQuiz();
-  else if (step==='leadCapture') renderLeadCapture();
-  else if (step==='report') renderReport();
+  if (step === 'intro') renderIntro();
+  else if (step === 'pre1') renderPreSegment();
+  else if (step === 'pre2') renderPreGoal();
+  else if (step === 'pre3') renderPreHealthFocus();
+  else if (step === 'pre4') renderPreLearnPref();
+  else if (step === 'quiz') renderQuiz();
+  else if (step === 'report') renderComprehensiveReport();
 }
 
-/* ─── INTRO ─── */
 function renderIntro() {
-  root.innerHTML = `<div class="card">
-    ${brandHeader()}
-    <div class="divider"><div class="divider-dot"></div></div>
+  root.innerHTML = `<div class="card">${brandHeader()}<div class="divider"><div class="divider-dot"></div></div>
     <div class="intro-eyebrow">Discover Your True Health Score</div>
     <h1>Cellular Vitality<br><em class="gold italic">Assessment</em></h1>
     <p class="intro-subtitle">A personalised deep-dive into your oxygen efficiency, lymphatic flow, alkaline balance and nervous system health.</p>
-    <div class="intro-stats">
-      <div class="stat-box"><div class="stat-num">10</div><div class="stat-label">Dimensions</div></div>
-      <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Report Pages</div></div>
-      <div class="stat-box"><div class="stat-num">5m</div><div class="stat-label">To Complete</div></div>
-    </div>
-    <div class="seminar-badge">
-      <div class="badge-title">✦ 2-Day Health Seminar</div>
-      <p>Live strategies, breathwork, lymph activation and nervous system tools. Transform your cellular health in a weekend.</p>
-      <a href="https://www.accessworldseminars.org/2dayhealthseminar" target="_blank">→ Reserve your seat</a>
-    </div>
-    <div style="text-align:center; margin-top:1.5rem;">
-      <button class="btn btn-primary" id="startBtn">Begin Assessment →</button>
-    </div>
-    <footer class="card-footer">AccessWorld Seminars · Since 2015</footer>
+    <div class="intro-stats"><div class="stat-box"><div class="stat-num">10</div><div class="stat-label">Dimensions</div></div>
+    <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Report Pages</div></div>
+    <div class="stat-box"><div class="stat-num">5m</div><div class="stat-label">To Complete</div></div></div>
+    <div class="seminar-badge"><div class="badge-title">✦ 2-Day Health Seminar with Joshua Roy</div>
+    <p>Live strategies, breathwork, NSR tools and community.</p>
+    <a href="https://www.accessworldseminars.org/2dayhealthseminar" target="_blank">→ Reserve your seat</a></div>
+    <div style="text-align:center; margin-top:1.5rem;"><button class="btn btn-primary" id="startBtn">Begin Assessment →</button></div>
+    <footer class="card-footer">AccessWorld Seminars · Joshua Roy · Since 2015</footer>
   </div>`;
-  document.getElementById("startBtn").onclick = () => { step="pre1"; render(); };
+  document.getElementById("startBtn").onclick = () => { step = "pre1"; render(); };
 }
 
-/* ─── PRE-QUESTIONS ─── */
+function renderPreSegment() { renderPreScreen({ stepNum: 1, total: 4, title: "Tell me about your journey ✦", subtitle: "Which best describes you?", field: "segment", back: "intro", next: "pre2", options: [{ val: "Health Seeker", icon: "🌱", label: "Health Seeker — beginning my wellness journey" }, { val: "Performance Athlete", icon: "⚡", label: "Performance Athlete — optimising energy" }, { val: "Busy Professional", icon: "💼", label: "Busy Professional — low energy or brain fog" }, { val: "Wellness Practitioner", icon: "🌿", label: "Wellness Practitioner — deepening knowledge" }] }); }
+function renderPreGoal() { renderPreScreen({ stepNum: 2, total: 4, title: "What's your main health goal? ✦", subtitle: "Choose the outcome that matters most.", field: "goal", back: "pre1", next: "pre3", options: [{ val: "Sustained Energy", icon: "⚡", label: "Sustained Energy — no more crashes" }, { val: "Mental Clarity", icon: "🧠", label: "Mental Clarity — focus & memory" }, { val: "Lymph & Detox", icon: "🌀", label: "Lymph Detox — reduce bloat" }, { val: "Holistic Longevity", icon: "🌸", label: "Holistic Longevity — lasting vitality" }] }); }
+function renderPreHealthFocus() { renderPreScreen({ stepNum: 3, total: 4, title: "Your primary health focus ✦", subtitle: "Where do you most need support?", field: "healthFocus", back: "pre2", next: "pre4", options: [{ val: "Digestion & Gut", icon: "🥑", label: "Digestion & Gut health" }, { val: "Breath & Oxygen", icon: "🌬️", label: "Breathwork & Oxygenation" }, { val: "Lymphatic Movement", icon: "🏃", label: "Lymphatic Movement & Rebounding" }, { val: "Mindset & Trauma Release", icon: "🧘", label: "Mindset, limiting beliefs & emotional blocks" }] }); }
+function renderPreLearnPref() { renderPreScreen({ stepNum: 4, total: 4, title: "How do you love to learn? ✦", subtitle: "Tailors your coaching recommendation.", field: "learnPref", back: "pre3", next: "quiz", options: [{ val: "Visual & Video", icon: "🎥", label: "Visual & Video courses" }, { val: "Live Coaching", icon: "🎤", label: "Live seminars" }, { val: "Practical Workbooks", icon: "📖", label: "Practical workbooks" }, { val: "1-on-1 Mentorship", icon: "🤝", label: "1-on-1 mentorship with Joshua" }] }); }
+
 function renderPreScreen({ stepNum, total, title, subtitle, options, back, next, field }) {
-  root.innerHTML = `<div class="card">
-    ${brandHeader()}
-    ${progressBar(stepNum-1, total)}
+  root.innerHTML = `<div class="card">${brandHeader()}${progressBar(stepNum - 1, total)}
     <div class="q-category">Your Profile · Step ${stepNum} of ${total}</div>
-    <h2 class="gold">${title}</h2>
-    ${subtitle ? `<p style="margin:0.5rem 0 0;">${subtitle}</p>` : ''}
-    <div class="options-grid">${options.map(o => `
-      <div class="opt-card" data-val="${o.val}">
-        <span class="opt-icon">${o.icon}</span>
-        <span>${o.label}</span>
-      </div>`).join('')}
-    </div>
-    <div class="btn-row">
-      <button class="btn btn-outline" id="backBtn">← Back</button>
-      <button class="btn btn-primary" id="nextBtn" disabled>Continue →</button>
-    </div>
+    <h2 class="gold">${title}</h2>${subtitle ? `<p style="margin:0.5rem 0 0;">${subtitle}</p>` : ''}
+    <div class="options-grid">${options.map(o => `<div class="opt-card" data-val="${o.val}"><span class="opt-icon">${o.icon}</span><span>${o.label}</span></div>`).join('')}</div>
+    <div class="btn-row"><button class="btn btn-outline" id="backBtn">← Back</button><button class="btn btn-primary" id="nextBtn" disabled>Continue →</button></div>
   </div>`;
   let sel = "";
-  document.querySelectorAll(".opt-card").forEach(el => {
-    el.onclick = () => {
-      document.querySelectorAll(".opt-card").forEach(c => c.classList.remove("selected"));
-      el.classList.add("selected");
-      sel = el.dataset.val;
-      document.getElementById("nextBtn").disabled = false;
-    };
-  });
-  document.getElementById("nextBtn").onclick = () => { if(sel){ pre[field]=sel; step=next; render(); } };
-  document.getElementById("backBtn").onclick = () => { step=back; render(); };
+  document.querySelectorAll(".opt-card").forEach(el => { el.onclick = () => { document.querySelectorAll(".opt-card").forEach(c => c.classList.remove("selected")); el.classList.add("selected"); sel = el.dataset.val; document.getElementById("nextBtn").disabled = false; }; });
+  document.getElementById("nextBtn").onclick = () => { if (sel) { preData[field] = sel; step = next; render(); } };
+  document.getElementById("backBtn").onclick = () => { step = back; render(); };
 }
 
-function renderPre1() {
-  renderPreScreen({
-    stepNum:1, total:4,
-    title:"Tell me about your journey ✦",
-    subtitle:"Which best describes where you are right now?",
-    field:"segment", back:"intro", next:"pre2",
-    options:[
-      { val:"Health Seeker", icon:"🌱", label:"Health Seeker — beginning my wellness journey" },
-      { val:"Performance Athlete", icon:"⚡", label:"Performance Athlete — optimising energy and recovery" },
-      { val:"Busy Professional", icon:"💼", label:"Busy Professional — managing low energy or brain fog" },
-      { val:"Wellness Practitioner", icon:"🌿", label:"Wellness Practitioner — deepening protocol knowledge" }
-    ]
-  });
-}
-
-function renderPre2() {
-  renderPreScreen({
-    stepNum:2, total:4,
-    title:"What's your main health goal? ✦",
-    subtitle:"Choose the outcome that matters most to you right now.",
-    field:"goal", back:"pre1", next:"pre3",
-    options:[
-      { val:"Sustained Energy", icon:"⚡", label:"Sustained Energy — no more afternoon crashes" },
-      { val:"Mental Clarity", icon:"🧠", label:"Mental Clarity — focus, memory and sharpness" },
-      { val:"Lymph & Detox", icon:"🌀", label:"Lymph Detox — reduce bloat and clear the fog" },
-      { val:"Holistic Longevity", icon:"🌸", label:"Holistic Longevity — prevention and lasting vitality" }
-    ]
-  });
-}
-
-function renderPre3() {
-  renderPreScreen({
-    stepNum:3, total:4,
-    title:"Your primary health focus ✦",
-    subtitle:"Where do you most need support right now?",
-    field:"healthFocus", back:"pre2", next:"pre4",
-    options:[
-      { val:"Digestion & Gut", icon:"🥑", label:"Digestion & Gut health" },
-      { val:"Breath & Oxygen", icon:"🌬️", label:"Breathwork & Oxygenation" },
-      { val:"Lymphatic Movement", icon:"🏃", label:"Lymphatic Movement & Rebounding" },
-      { val:"Mindset & Trauma Release", icon:"🧘", label:"Mindset, limiting beliefs & emotional blocks" }
-    ]
-  });
-}
-
-function renderPre4() {
-  renderPreScreen({
-    stepNum:4, total:4,
-    title:"How do you love to learn? ✦",
-    subtitle:"This helps us tailor your coaching recommendation.",
-    field:"learnPref", back:"pre3", next:"quiz",
-    options:[
-      { val:"Visual & Video", icon:"🎥", label:"Visual & Video courses" },
-      { val:"Live Coaching", icon:"🎤", label:"Live seminars and coaching calls" },
-      { val:"Practical Workbooks", icon:"📖", label:"Practical workbooks and protocols" },
-      { val:"1-on-1 Coaching", icon:"🤝", label:"1-on-1 world class coaching" }
-    ]
-  });
-}
-
-/* ─── QUIZ ─── */
 function renderQuiz() {
-  if (curQ >= QUESTIONS.length) {
-    finalScore = calcScore();
-    catAvgs = calcCatAvgs();
-    step = "leadCapture";
-    render();
-    return;
-  }
-  const q = QUESTIONS[curQ];
-  const words = ["Rarely","","Sometimes","","Always"];
-  root.innerHTML = `<div class="card">
-    ${brandHeader(false)}
-    ${progressBar(curQ, QUESTIONS.length)}
-    <div class="q-counter">Question ${curQ+1} of ${QUESTIONS.length}</div>
-    <div class="q-category" style="margin-top:0.6rem;">${q.category}</div>
-    <div class="q-text">${q.text}</div>
-    <div class="scale-container">
-      <div class="scale-labels"><span>Rarely</span><span>Sometimes</span><span>Always</span></div>
-      <div class="scale-btns" id="scaleBtns"></div>
-    </div>
-    <div class="btn-row">
-      <button class="btn btn-outline" id="prevBtn" ${curQ===0?'disabled':''}>← Back</button>
-      <button class="btn btn-primary" id="nextBtn" ${answers[curQ]===null?'disabled':''}>${curQ===QUESTIONS.length-1?'Continue →':'Next →'}</button>
-    </div>
-  </div>`;
-  const sb = document.getElementById("scaleBtns");
-  for (let i=1; i<=5; i++) {
-    const btn = document.createElement("div");
-    btn.className = `scale-btn${answers[curQ]===i?' selected':''}`;
-    btn.innerHTML = `<div class="scale-num">${i}</div><div class="scale-word">${words[i-1]}</div>`;
-    btn.onclick = () => { answers[curQ]=i; renderQuiz(); };
-    sb.appendChild(btn);
-  }
-  document.getElementById("prevBtn").onclick = () => { if(curQ>0){curQ--;renderQuiz();} };
-  document.getElementById("nextBtn").onclick = () => {
-    if (answers[curQ]===null) return;
-    if (curQ < QUESTIONS.length-1) { curQ++; renderQuiz(); }
-    else { finalScore=calcScore(); catAvgs=calcCatAvgs(); step="leadCapture"; render(); }
-  };
-}
-
-/* ─── LEAD CAPTURE ─── */
-function renderLeadCapture() {
-  root.innerHTML = `<div class="card">
-    ${brandHeader()}
-    <h2 class="gold" style="text-align:center; margin-bottom:1rem;">Almost there...</h2>
-    <p style="text-align:center; margin-bottom:2rem;">Enter your details to receive your personalised Cellular Vitality Report and coaching insights.</p>
-    
-    <div class="lead-form">
-      <input type="text" id="name" placeholder="Full Name" required>
-      <input type="tel" id="phone" placeholder="Phone Number" required>
-      <input type="email" id="email" placeholder="Email Address" required>
-    </div>
-
-    <div class="testimonial">
-      <img src="https://i.ibb.co/wrxLZsx7/23d14dbe-7cad-4b1f-b7e7-435d49c1dda6.jpg" alt="Gordon's Transformation">
-      <p>"For 30 years, 9/10 chronic pain and instability ruled my life. By healing childhood trauma, my pain dropped to zero in one session. I’ve traded triggers for a conscious 'pause,' completely transforming my health and wellbeing. I finally feel safe, moving from a cycle of shame to lasting peace."</p>
-      <strong>— Gordon</strong>
-    </div>
-
-    <div class="btn-row">
-      <button class="btn btn-outline" id="backToQuiz">← Back</button>
-      <button class="btn btn-primary" id="submitLead">View My Report →</button>
-    </div>
-    <footer class="card-footer">Your information is safe and will only be used to deliver your report.</footer>
-  </div>`;
-
-  document.getElementById("backToQuiz").onclick = () => { step = "quiz"; curQ = QUESTIONS.length - 1; render(); };
-  
-  document.getElementById("submitLead").onclick = () => {
-    const name = document.getElementById("name").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const email = document.getElementById("email").value.trim();
-
-    if (!name || !phone || !email) {
-      alert("Please fill in all fields");
-      return;
-    }
-
-    contactInfo = { name, phone, email };
-    sendTelegram(pre, contactInfo, finalScore.toFixed(1), getTier(finalScore).label);
+  if (currentQuestion >= QUESTIONS.length) {
+    finalScore = calculateFinalScore();
+    categoryAverages = calculateCategoryAverages();
+    sendTelegramNotification(preData, finalScore.toFixed(1), getTier(finalScore).label);
     step = "report";
     reportPage = 0;
     render();
+    return;
+  }
+  const q = QUESTIONS[currentQuestion];
+  const words = ["Rarely", "", "Sometimes", "", "Always"];
+  const teachingHtml = q.teachId ? getTeachingHtml(q.teachId) : '';
+  root.innerHTML = `<div class="card">${brandHeader(false)}${progressBar(currentQuestion, QUESTIONS.length)}
+    <div class="q-counter">Question ${currentQuestion + 1} of ${QUESTIONS.length}</div>
+    <div class="q-category">${q.category}</div>
+    <div class="q-text">${q.text}</div>
+    <div class="scale-container"><div class="scale-labels"><span>Rarely</span><span>Sometimes</span><span>Always</span></div>
+    <div class="scale-btns" id="scaleBtns"></div></div>${teachingHtml}
+    <div class="btn-row"><button class="btn btn-outline" id="prevBtn" ${currentQuestion === 0 ? 'disabled' : ''}>← Back</button>
+    <button class="btn btn-primary" id="nextBtn" ${answers[currentQuestion] === null ? 'disabled' : ''}>${currentQuestion === QUESTIONS.length - 1 ? 'View My Report →' : 'Next →'}</button></div>
+  </div>`;
+  const sb = document.getElementById("scaleBtns");
+  for (let i = 1; i <= 5; i++) {
+    const btn = document.createElement("div");
+    btn.className = `scale-btn${answers[currentQuestion] === i ? ' selected' : ''}`;
+    btn.innerHTML = `<div class="scale-num">${i}</div><div class="scale-word">${words[i - 1]}</div>`;
+    btn.onclick = () => { answers[currentQuestion] = i; renderQuiz(); };
+    sb.appendChild(btn);
+  }
+  document.getElementById("prevBtn").onclick = () => { if (currentQuestion > 0) { currentQuestion--; renderQuiz(); } };
+  document.getElementById("nextBtn").onclick = () => {
+    if (answers[currentQuestion] !== null) {
+      if (currentQuestion < QUESTIONS.length - 1) { currentQuestion++; renderQuiz(); }
+      else { finalScore = calculateFinalScore(); categoryAverages = calculateCategoryAverages(); sendTelegramNotification(preData, finalScore.toFixed(1), getTier(finalScore).label); step = "report"; reportPage = 0; render(); }
+    }
   };
 }
 
-/* ─── REPORT ─── */
-function renderReport() {
+// ==================== FULL COMPREHENSIVE REPORT (CLAUDE'S VERSION - NOT SHORTENED) ====================
+function renderComprehensiveReport() {
   const avg = finalScore.toFixed(1);
   const tier = getTier(finalScore);
-  const sorted = Object.entries(catAvgs).sort((a,b)=>a[1]-b[1]);
-  const lowest = sorted.slice(0,3);
+  const sorted = Object.entries(categoryAverages).sort((a, b) => a[1] - b[1]);
+  const lowest = sorted.slice(0, 3);
   const highest = sorted.slice(-3).reverse();
 
-  const page1 = `
-    <div class="score-hero">
-      <div class="score-ring">
-        <span class="score-num">${avg}</span><span class="score-denom">/5</span>
-      </div>
-      <div class="tier-label">${tier.label}</div>
-      <div style="font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(201,168,76,0.5); margin-bottom:0.8rem;">${tier.sub}</div>
-      <p class="tier-msg">${tier.msg}</p>
-      <div class="tag-row" style="justify-content:center; margin-top:1rem;">
-        <span class="tag">${pre.segment}</span>
-        <span class="tag">${pre.goal}</span>
-        <span class="tag">${pre.healthFocus}</span>
-      </div>
-    </div>
-    <div class="divider" style="margin:1.5rem 0;"><div class="divider-dot"></div></div>
-    <div class="report-section">
-      <h3>🧬 Your Cellular Vitality Breakdown</h3>
-      <p>Here's how each dimension of your health scored. Your lowest areas are your highest leverage points.</p>
-      <div style="margin-top:1rem;">
-        ${Object.entries(catAvgs).map(([cat,sc]) => `
-          <div class="category-bar-wrap">
-            <div class="category-bar-label"><span>${cat}</span><span>${sc.toFixed(1)}/5</span></div>
-            <div class="category-bar-track"><div class="category-bar-fill" style="width:${(sc/5)*100}%"></div></div>
-          </div>`).join('')}
-      </div>
-    </div>
-    <div class="report-section">
-      <h3>⚡ Priority Areas</h3>
-      <ul>${lowest.map(([cat,sc])=>`<li><strong>${cat}</strong> — ${sc.toFixed(1)}/5</li>`).join('')}</ul>
-    </div>
-    <div class="report-section">
-      <h3>✨ Your Strengths</h3>
-      <ul>${highest.map(([cat,sc])=>`<li><strong>${cat}</strong> — ${sc.toFixed(1)}/5</li>`).join('')}</ul>
-    </div>`;
+  // PAGE 1: Score + Profile + Category Breakdown + Understanding
+  const page1 = `<div class="score-hero"><div class="score-ring"><span class="score-num">${avg}</span><span class="score-denom">/5</span></div>
+    <div class="tier-label">${tier.label}</div><div style="font-size:0.78rem;color:rgba(201,168,76,0.5);margin-bottom:0.5rem;">${tier.sub}</div>
+    <p class="tier-msg">${tier.msg}</p><div class="tag-row"><span class="tag">${preData.segment}</span><span class="tag">${preData.goal}</span><span class="tag">${preData.healthFocus}</span><span class="tag">${preData.learnPref}</span></div></div>
+    <div class="report-section"><h3>🧬 Your Cellular Vitality Breakdown</h3><p>Here's how each dimension of your health scored. Your lowest areas are your highest leverage points — small changes here create the biggest ripple.</p>
+    ${Object.entries(categoryAverages).map(([cat, sc]) => `<div class="category-bar-wrap"><div class="category-bar-label"><span>${cat}</span><span>${sc.toFixed(1)}/5</span></div><div class="category-bar-track"><div class="category-bar-fill" style="width:${(sc / 5) * 100}%"></div></div></div>`).join('')}</div>
+    <div class="report-section"><h3>⚡ Priority Areas — Start Here</h3><p>These three dimensions are your most accessible levers for rapid change:</p><ul>${lowest.map(([cat, sc]) => `<li><strong>${cat}</strong> — ${sc.toFixed(1)}/5 · This is where targeted micro-habits will create the fastest shift.</li>`).join('')}</ul></div>
+    <div class="report-section"><h3>✨ Your Strengths — Anchor & Leverage</h3><p>These are already working in your favour. Build your new habits around these foundations:</p><ul>${highest.map(([cat, sc]) => `<li><strong>${cat}</strong> — ${sc.toFixed(1)}/5</li>`).join('')}</ul></div>
+    <div class="report-section"><h3>📖 Understanding Your Score</h3><p>Every score tells a story — not of failure, but of where your cells are calling for attention. Scores below 3.0 in any category typically indicate one of three underlying patterns: <strong>shallow breathing reducing oxygen to cells, sluggish lymph unable to clear waste,</strong> or <strong>an acid-forming diet starving your cells of the alkaline environment they need to thrive.</strong></p><p>The body is extraordinarily adaptive. Given the right conditions, it will begin rebalancing within 72 hours of focused change. Your report continues on the next two pages with specific tools, science, and guidance for each pattern.</p></div>`;
 
-  const page2 = `
-    <div class="report-section">
-      <h3>🌀 Lymphatic System & Movement</h3>
-      <p>The lymphatic system has no central pump — it relies on movement. Daily heel drops, rebounding, or brisk walking can dramatically improve waste removal and reduce brain fog.</p>
-    </div>
-    <div class="report-section">
-      <h3>🌬️ Oxygen Efficiency</h3>
-      <p>Deep belly breathing increases cellular energy production from 2 ATP to up to 32 ATP per glucose molecule. Start with 10 slow belly breaths each morning.</p>
-    </div>
-    <div class="report-section">
-      <h3>⚗️ Alkaline Nutrition</h3>
-      <p>Focus on living foods: leafy greens, celery, cilantro, sprouts. Reduce processed sugars and modern hybridised wheat to support proper cellular pH.</p>
-    </div>
-    <div class="highlight-box">
-      <p>Small consistent actions create massive shifts in cellular vitality. Many clients notice improved energy and clarity within 72 hours.</p>
-    </div>`;
+  // PAGE 2: Lymph + Breathwork + Alkaline Nutrition + Healthy Oils (FULL VERSION)
+  const page2 = `<div class="report-section"><h3>🌀 The Lymphatic System — Your Cellular Sewage Network</h3><p>Unlike your cardiovascular system, the lymphatic system has <strong>no central pump</strong>. It relies entirely on body movement to shift waste. When you're sedentary — even in short bursts — lymph fluid stagnates. Toxins accumulate around cells. Brain fog sets in. Bloating follows.</p><p><strong>What activates lymph flow:</strong></p><ul><li><strong>Heel drops:</strong> Stand, raise heels, drop gently. 7–15 minutes daily. Simple, powerful.</li><li><strong>Rebounding:</strong> Even 5 minutes on a mini-trampoline increases lymph flow up to 15x.</li><li><strong>Walking:</strong> The calf muscle is the secondary pump. 20 minutes of brisk walking shifts lymph significantly.</li><li><strong>Cilantro & celery juice:</strong> These chelate heavy metals, hydrate lymph tissue and reduce brain fog at a cellular level.</li></ul><div class="highlight-box"><p>🌿 <strong>Try this today:</strong> Stand up, raise your heels slowly, then let them drop — feel the gentle vibration travel up your legs. Do this 30 times. That's one set. Your lymph just moved.</p></div></div>
+    <div class="report-section"><h3>🌬️ Oxygen — The Forgotten Nutrient</h3><p>Most people breathe at around 30% of their lung capacity. Decades of shallow chest breathing have literally shrunk the amount of oxygen reaching your cells.</p><p><strong>The science:</strong> Without adequate oxygen, glucose produces just <strong>2 ATP</strong> (units of cellular energy). With full oxygenation through your mitochondria, the same glucose yields up to <strong>32 ATP</strong> — sixteen times more energy from the same food.</p><p>Diaphragmatic breathing isn't just relaxing. It's a biological upgrade that can literally reverse age-related lung capacity decline.</p><ul><li><strong>Morning protocol:</strong> 10–30 slow belly breaths on waking. Let your belly rise, not your chest.</li><li><strong>Retention breath:</strong> Inhale deeply, hold for 15 seconds, feel warmth spread through your body. That warmth is cellular oxygenation.</li><li><strong>Evening wind-down:</strong> 5 minutes of slow nasal breathing through the nose before sleep improves recovery by up to 40%.</li></ul><div class="highlight-box"><p>💡 <strong>Remember:</strong> Shallow breathing isn't just a stress symptom — it's an energy leak. Every breath taken from the chest rather than the belly is a lost opportunity for cellular renewal.</p></div></div>
+    <div class="report-section"><h3>⚗️ Alkaline Nutrition — What Your Blood pH Reveals</h3><p>Your blood is designed to sit at <strong>pH 7.36</strong> — slightly alkaline. Nobel Prize winner Dr Otto Warburg demonstrated conclusively that <strong>cancer cells cannot survive in an alkaline environment.</strong> An acidic internal environment, by contrast, is where disease thrives.</p><p><strong>The two biggest drivers of acidity in the modern diet:</strong></p><ul><li><strong>Processed sugar</strong> — once separated from fibre, it enters the bloodstream as a crystallised acid, spiking blood glucose and triggering the insulin-glucagon emergency cycle. Over time, this taxes the pancreas toward insulin resistance and eventually diabetes.</li><li><strong>Hybridised wheat</strong> — the wheat we eat today bears little resemblance to ancient emmer or buckwheat. Modern dwarf wheat contains Amylopectin A, which spikes blood sugar faster than table sugar, and opioid-like compounds that create genuine cravings.</li></ul><p><strong>Alkalising foods to add first:</strong> leafy greens, cucumber, celery, avocado, raw almonds, broccoli, sprouts, wheatgrass, lemon water, fresh herbs. These don't just reduce acidity — they actively oxygenate tissue and support healthy cell turnover.</p><div class="highlight-box"><p>🥬 <strong>The Celery Fact:</strong> Celery is technically a herb, not a vegetable. The calories required to digest it exceed those it contains — it is one of the only foods that creates a net caloric deficit while simultaneously hydrating lymph tissue. Add it daily.</p></div></div>
+    <div class="report-section"><h3>🥑 The Healthy Oils Your Cells Are Starving For</h3><p>Think of oil in a car engine. Metal on metal destroys an engine in thousands of kilometres. With the right lubrication, the same engine runs for 400,000–500,000 km. Your joints, your brain, your cell membranes are the same.</p><p>Omega 3, 6, 9 — avocado oil, cold-pressed olive oil, coconut oil — these are not fattening. They are essential. Without them, exercise creates friction and injury. With them, the same movement produces mobility, recovery, and vitality.</p><ul><li>Add cold-pressed flaxseed or Udo's oil to salads daily</li><li>Replace processed seed oils with avocado or coconut oil in cooking</li><li>Include a handful of raw almonds or walnuts each day</li></ul></div>`;
 
-  const page3 = `
-    <div class="report-section">
-      <h3>🧠 Nervous System & Emotional Health</h3>
-      <p>Trapped emotions and limiting beliefs create internal acidity and inflammation. Nervous System Reprogramming helps clear these blocks so your other health practices work better.</p>
-    </div>
-    <div class="report-section">
-      <h3>🚀 Your 7-Day Cellular Reset</h3>
-      <ul>
-        <li>Heel drops or rebounding — 7 minutes daily</li>
-        <li>5 minutes belly breathing morning and night</li>
-        <li>Add one living food daily (celery, greens, sprouts)</li>
-        <li>Remove one processed item per day</li>
-      </ul>
-    </div>
-    <div class="report-section" style="background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(20,32,58,0.95) 100%); border-left-color: var(--gold-light);">
-      <h3>✦ Ready for Deeper Transformation?</h3>
-      <p>Information alone rarely creates lasting change. Professional coaching with accountability, NSR tools, breath mastery, and community support helps you break old patterns and embody true vitality.</p>
-      <div class="seminar-badge" style="margin-top:1.2rem;">
-        <div class="badge-title">✦ 2-Day Health Seminar</div>
-        <p>Live tools, breathwork, lymph activation, and nervous system reprogramming in one immersive weekend.</p>
-        <a href="https://www.accessworldseminars.org/2dayhealthseminar" target="_blank">→ Reserve your seat</a>
-      </div>
-    </div>
-    <footer class="card-footer">AccessWorld Seminars · Since 2015</footer>`;
+  // PAGE 3: Emotional Root + Vicious Cycle + 7-Day Reset + Coaching CTA (FULL VERSION)
+  const page3 = `<div class="report-section"><h3>🧠 The Emotional Root of Physical Symptoms</h3><p>Here's something the mainstream misses: your cells don't just respond to food and movement. They respond to your emotional state.</p><p>Unprocessed emotional stress — toxic thoughts, unresolved conflict, suppressed grief — create acid in the body. That acid creates inflammation. Inflammation, sustained over time, leads to illness. The acid-alkaline balance in your blood is influenced not only by what you eat, but by <strong>what you feel and fail to release.</strong></p><p>Conversely, states of genuine connection, laughter, love and creative flow release endorphins and oxytocin — hormones that actively support heart health, reduce cortisol and create an internal alkaline environment.</p><p>This is why Nervous System Reprogramming (NSR) is not a soft add-on to health. <strong>It's the missing piece.</strong> Clearing trapped emotion at the level of the nervous system allows every other health protocol to work more effectively.</p></div>
+    <div class="report-section"><h3>🔁 The Vicious Cycle — And How to Break It</h3><p>Most people are caught in a loop: poor nutrition → low energy → no motivation to exercise → guilt and poor choices → worse nutrition. Exercise alone cannot break this cycle. In fact, intense exercise on top of an acidic, inflamed body creates a <strong>double acid load</strong> — lactic acid from exercise layered onto dietary acid — which can push the body into genuine toxicity.</p><p>The cycle breaks from the inside out:</p><ul><li><strong>Step 1:</strong> Alkalise the terrain (one green food added, one processed food removed)</li><li><strong>Step 2:</strong> Oxygenate with breathwork before movement</li><li><strong>Step 3:</strong> Activate lymph gently (heel drops, walking) rather than forcing intense exercise</li><li><strong>Step 4:</strong> Address the emotional weight — limiting beliefs and trapped feelings don't stay in the mind. They live in the body.</li></ul></div>
+    <div class="report-section"><h3>🚀 Your 7-Day Cellular Reset Plan</h3><p>Most clients feel a genuine shift within 72 hours of beginning this protocol consistently:</p><ul><li><strong>Daily:</strong> Heel drops or rebounding — 7 minutes minimum</li><li><strong>Morning:</strong> 5 minutes of belly breathing before checking your phone</li><li><strong>Each day:</strong> Add one living food (cilantro, celery, leafy greens, sprouts)</li><li><strong>Remove:</strong> One processed sugar or wheat product per day — don't overhaul all at once</li><li><strong>Evening:</strong> 5 minutes of slow nasal breathing before sleep</li><li><strong>Weekly:</strong> One honest check-in — how is your energy? Your clarity? Your mood? Track it.</li><li><strong>Throughout:</strong> Notice your emotional responses. Where are you holding tension? That's information.</li></ul></div>
+    <div class="report-section" style="background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(20,32,58,0.95) 100%); border-left-color: var(--gold-light);"><h3>✦ The Missing Piece — Professional Coaching</h3><p>Information alone rarely creates lasting change. You already know you should breathe better, eat cleaner, move more. Yet something keeps pulling you back to old patterns.</p><p>That something has a name: <strong>nervous system programming.</strong> Limiting beliefs, value conflicts, and trapped emotional charge from past experiences run silently in the background — sabotaging even the best intentions.</p><p>Joshua Roy's coaching brings NSR (Nervous System Reprogramming), breath mastery, lymph activation and NLP tools together in a framework that doesn't just teach you what to do — it <strong>rewires the patterns that stop you doing it.</strong></p><p>Whether you're starting fresh, recovering ground, or ready to move into genuine peak performance, coaching accelerates every result in this report.</p><div class="seminar-badge" style="margin-top:1.2rem; background:rgba(201,168,76,0.08);"><div class="badge-title">✦ 2-Day Health Seminar with Joshua Roy</div><p>Live NSR tools, breathwork protocols, lymph activation, alkaline nutrition and community — all in one immersive weekend.</p><a href="https://www.accessworldseminars.org/2dayhealthseminar" target="_blank">→ Reserve your seat at the seminar</a></div></div>
+    <footer class="card-footer" style="margin-top:1.5rem;">AccessWorld Seminars · Joshua Roy · Nervous System Reprogramming · Breath Mastery · Lymph Activation · Since 2015</footer>`;
 
   const pages = [page1, page2, page3];
-  const pageLabels = ["Your Score & Profile", "Body Systems Science", "Reset Plan & Next Steps"];
+  const pageTitles = ["Your Score & Profile", "Body Systems Science", "Reset Plan & Coaching"];
 
-  root.innerHTML = `<div class="card">
-    <div class="report-header">
-      <div>
-        <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:32px; margin-bottom:0.3rem; display:block;">
-        <div class="report-page-indicator">Comprehensive Report · Page ${reportPage+1} of 3 · ${pageLabels[reportPage]}</div>
-      </div>
-      <button class="download-btn" id="dlBtn">📄 Download Report</button>
-    </div>
+  root.innerHTML = `<div class="card"><div class="report-header"><div><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:32px;"><div class="report-page-indicator">Comprehensive Report · Page ${reportPage + 1} of 3 · ${pageTitles[reportPage]}</div></div><button class="download-btn" id="downloadReportBtn">📄 Download Report</button></div>
     <div class="report-wrap" id="reportWrap">${pages[reportPage]}</div>
-    <div class="btn-row">
-      <button class="btn btn-outline" id="prevRpt" ${reportPage===0?'disabled':''}>← Previous</button>
-      <div style="display:flex; gap:0.4rem; align-items:center;">
-        ${[0,1,2].map(i=>`<div style="width:8px;height:8px;border-radius:50%;background:${i===reportPage?'var(--gold)':'rgba(201,168,76,0.2)'};"></div>`).join('')}
-      </div>
-      <button class="btn btn-primary" id="nextRpt">${reportPage===2?'Start Over':'Next Page →'}</button>
-    </div>
-  </div>`;
+    <div class="btn-row"><button class="btn btn-outline" id="prevReportBtn" ${reportPage === 0 ? 'disabled' : ''}>← Previous</button>
+    <div style="display:flex; gap:0.4rem;">${[0, 1, 2].map(i => `<div style="width:8px;height:8px;border-radius:50%;background:${i === reportPage ? 'var(--gold)' : 'rgba(201,168,76,0.2)'};"></div>`).join('')}</div>
+    <button class="btn btn-primary" id="nextReportBtn">${reportPage === 2 ? 'Start Over' : 'Next Page →'}</button></div></div>`;
 
-  document.getElementById("prevRpt").onclick = () => { 
-    if(reportPage>0){ reportPage--; renderReport(); } 
-    document.getElementById("reportWrap")?.scrollTo(0,0); 
-  };
-  
-  document.getElementById("nextRpt").onclick = () => {
-    if(reportPage===2){ 
-      step="intro"; 
-      curQ=0; 
-      answers.fill(null); 
-      reportPage=0; 
-      render(); 
-    } else { 
-      reportPage++; 
-      renderReport(); 
-      document.getElementById("reportWrap")?.scrollTo(0,0); 
-    }
-  };
-
-  document.getElementById("dlBtn").onclick = () => {
-    const fullHtml = `<!DOCTYPE html><html><head><title>AccessWorld Cellular Vitality Report</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=DM+Sans&display=swap" rel="stylesheet">
-    <style>body{font-family:'DM Sans',sans-serif;background:#fff;color:#1a1a1a;padding:2.5rem;max-width:780px;margin:0 auto;} h1,h2,h3{font-family:'Cormorant Garamond',serif;color:#14203A;} .gold{color:#C9A84C;}</style></head>
-    <body>
-    <h1>Cellular Vitality Report — <span class="gold">${avg}/5</span></h1>
-    <h2>${tier.label} · ${tier.sub}</h2>
-    <p>${tier.msg}</p>
-    <p><strong>Profile:</strong> ${pre.segment} | ${pre.goal} | ${pre.healthFocus} | ${pre.learnPref}</p>
-    ${pages.join('<div style="page-break-before:always;margin-top:2rem;"></div>')}
-    <p style="margin-top:2rem;font-size:0.8rem;color:#888;">Generated by AccessWorld Seminars</p>
-    </body></html>`;
-    const a = Object.assign(document.createElement("a"),{href:URL.createObjectURL(new Blob([fullHtml],{type:"text/html"})),download:"AccessWorld_Vitality_Report.html"});
+  document.getElementById("prevReportBtn").onclick = () => { if (reportPage > 0) { reportPage--; renderComprehensiveReport(); } };
+  document.getElementById("nextReportBtn").onclick = () => { if (reportPage === 2) { step = "intro"; currentQuestion = 0; answers.fill(null); reportPage = 0; render(); } else { reportPage++; renderComprehensiveReport(); } };
+  document.getElementById("downloadReportBtn").onclick = () => {
+    const fullHtml = `<!DOCTYPE html><html><head><title>AccessWorld Cellular Vitality Report</title><style>body{font-family:'DM Sans',sans-serif;background:#fff;color:#1a1a1a;padding:2rem;max-width:780px;margin:0 auto;} h1,h2,h3{font-family:'Cormorant Garamond',serif;color:#14203A;} .gold{color:#C9A84C;} .section{margin:1.5rem 0;border-left:3px solid #C9A84C;padding:1rem 1.5rem;background:#f9f7f2;}</style></head><body><h1>Cellular Vitality Report — <span class="gold">${avg}/5</span></h1><h2>${tier.label} · ${tier.sub}</h2><p>${tier.msg}</p><p><strong>Profile:</strong> ${preData.segment} | ${preData.goal} | ${preData.healthFocus} | ${preData.learnPref}</p>${pages.join('<div style="page-break-before:always;margin-top:2rem;"></div>')}<p style="margin-top:2rem;">Generated by AccessWorld Seminars · accessworldseminars.org</p></body></html>`;
+    const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(new Blob([fullHtml], { type: "text/html" })), download: "AccessWorld_Vitality_Report.html" });
     a.click(); URL.revokeObjectURL(a.href);
   };
 }
