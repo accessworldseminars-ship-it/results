@@ -1,7 +1,3 @@
-Absolutely! I have replaced the old WhatsApp group button with the new QR code image from your link. The page now lets users scan the code directly with their WhatsApp camera to join your "Empower Your Health Challenge" group.
-
-Here is the updated HTML page with your new QR code:
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -177,7 +173,6 @@ Here is the updated HTML page with your new QR code:
             transform: scale(0.98);
         }
 
-        /* WhatsApp QR Card - replaced old button with QR code image */
         .whatsapp-qr-card {
             background: #eef7f0;
             margin: 0 1.5rem 1.5rem 1.5rem;
@@ -214,6 +209,7 @@ Here is the updated HTML page with your new QR code:
             margin-top: 12px;
         }
 
+        /* TOKEN AREA - WHERE YOUR TELEGRAM BOT TOKEN GOES */
         .bot-token-area {
             background: #fff2df;
             border-radius: 60px;
@@ -224,9 +220,11 @@ Here is the updated HTML page with your new QR code:
             word-break: break-all;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify
+            -content: space-between;
             gap: 10px;
             flex-wrap: wrap;
+            border: 2px solid #ffd966;
         }
 
         .token-code {
@@ -236,6 +234,7 @@ Here is the updated HTML page with your new QR code:
             letter-spacing: 1px;
             font-weight: 600;
             color: #b45309;
+            font-size: 0.8rem;
         }
 
         .copy-token {
@@ -251,6 +250,17 @@ Here is the updated HTML page with your new QR code:
 
         .copy-token:active {
             background: #e6ccaa;
+        }
+
+        .telegram-hint {
+            background: #e8f0fe;
+            margin-top: 12px;
+            padding: 10px;
+            border-radius: 16px;
+            font-size: 0.7rem;
+            color: #1a5d8f;
+            text-align: left;
+            font-family: monospace;
         }
 
         .small-note {
@@ -310,12 +320,12 @@ Here is the updated HTML page with your new QR code:
 <div class="container">
     <!-- Logo Section -->
     <div class="logo-area">
-        <img class="logo-img" src="https://i.ibb.co/spJSMY16/worldjjpgsf.png" alt="Challenge Logo" onerror="this.src='https://via.placeholder.com/180x60?text=Wellness+Edge'">
+        <img class="logo-img" src="https://i.ibb.co/spJSMY16/worldjjpgsf.png" alt="Challenge Logo">
     </div>
 
     <!-- Hero with seminar leader pic -->
     <div class="hero">
-        <img class="leader-img" src="https://i.ibb.co/F4c0V58q/Screenshot-2025-12-12-162510.png" alt="Seminar Leader & Results Coach" onerror="this.src='https://via.placeholder.com/120'">
+        <img class="leader-img" src="https://i.ibb.co/F4c0V58q/Screenshot-2025-12-12-162510.png" alt="Seminar Leader & Results Coach">
         <div class="badge">🔥 Seminar Leader & Results Coach</div>
         <h1>✨ Free 7-Day Challenge ✨</h1>
         <div class="subhead"><strong>Starts now</strong> — unlock your highest health & life potential</div>
@@ -324,7 +334,7 @@ Here is the updated HTML page with your new QR code:
         </div>
     </div>
 
-    <!-- Registration Form: name, email, phone, optional message -->
+    <!-- Registration Form -->
     <div class="form-card">
         <form id="challengeForm">
             <div class="form-group">
@@ -341,7 +351,7 @@ Here is the updated HTML page with your new QR code:
             </div>
             <div class="form-group">
                 <label>💬 Optional: Send a message to notify you're IN</label>
-                <textarea id="userMessage" placeholder="Let me know you're ready for the 7-day transformation! (e.g., 'Ready to level up' or any question...)"></textarea>
+                <textarea id="userMessage" placeholder="Let me know you're ready for the 7-day transformation!"></textarea>
             </div>
             <div class="checkbox-group">
                 <input type="checkbox" id="consentCheck" required>
@@ -353,29 +363,41 @@ Here is the updated HTML page with your new QR code:
         </form>
     </div>
 
-    <!-- success / notification message -->
     <div id="alertMessage" class="alert"></div>
 
-    <!-- WhatsApp Group QR Code Section - REPLACED old button with the new QR code image -->
+    <!-- WhatsApp QR Code Section -->
     <div class="whatsapp-qr-card">
         <div class="whatsapp-icon">📱💚</div>
         <h3 style="margin-bottom: 6px;">Join the WhatsApp Group</h3>
         <p style="margin-bottom: 12px; font-size: 0.9rem;">This group is for those who want the most out of their health and life.<br> <strong>Receive daily health support over the next 7 days</strong> — pre‑seminar challenge edition.</p>
         
-        <!-- NEW QR CODE IMAGE from your link - replaces the old WhatsApp button -->
-        <img class="qr-code-img" src="https://i.ibb.co/v4zdPc7T/photo-6307394143059120337-y.jpg" alt="WhatsApp Group QR Code - Empower Your Health Challenge" onerror="this.src='https://via.placeholder.com/200?text=QR+Code+Here'">
+        <img class="qr-code-img" src="https://i.ibb.co/v4zdPc7T/photo-6307394143059120337-y.jpg" alt="WhatsApp Group QR Code">
         
         <div class="qr-note">
             📸 Scan with WhatsApp camera to join the group instantly
         </div>
         
-        <!-- Simple bot token area (kept as requested for barcode / token reference) -->
+        <!-- ============================================================ -->
+        <!-- 🔴🔴🔴 TELEGRAM BOT TOKEN - REPLACE THIS WITH YOUR TOKEN 🔴🔴🔴 -->
+        <!-- ============================================================ -->
         <div class="bot-token-area">
-            <span style="font-weight: 500;">🔐 GROUP ACCESS TOKEN (barcode backup):</span>
+            <span style="font-weight: 500;">🤖 TELEGRAM BOT TOKEN:</span>
             <span class="token-code" id="botTokenDisplay">8155100717:AAE0ABDHsRuFWmbXa8coP8qdL3QK2ZWYkaY</span>
             <button class="copy-token" id="copyTokenBtn">📋 Copy</button>
         </div>
-        <div class="small-note">Scan QR code above 👆 or use token for manual verification.</div>
+        
+        <!-- Telegram instructions -->
+        <div class="telegram-hint">
+            📍 <strong>How to get your Telegram Bot Token:</strong><br>
+            1. Open Telegram → search for <strong>@BotFather</strong><br>
+            2. Send: <strong>/newbot</strong> → choose name & username (must end in 'bot')<br>
+            3. Copy the token (looks like: <span style="background:white;padding:2px 6px;border-radius:8px;">1234567890:ABCdefGHIjklMNOpqrsTUVwxyz</span>)<br>
+            4. Replace <strong style="background:#ffecb3;padding:2px 6px;">YOUR_TELEGRAM_BOT_TOKEN_HERE</strong> above with your token
+        </div>
+        
+        <div class="small-note">
+            🔐 When users submit the form, you'll receive a Telegram notification with their details
+        </div>
     </div>
     <hr>
     <footer>
@@ -384,10 +406,17 @@ Here is the updated HTML page with your new QR code:
 </div>
 
 <script>
-    // --------------------------------------------------------------
-    // Handles form submission: sends notification that user is IN
-    // Stores submission info, shows success message + logs data.
-    // --------------------------------------------------------------
+    // ============================================================
+    // 🔴 TELEGRAM CONFIGURATION - PUT YOUR CHAT ID HERE 🔴
+    // ============================================================
+    // After getting your bot token, you also need your Chat ID
+    // To get it: Message your bot, then visit:
+    // https://api.telegram.org/botYOUR_BOT_TOKEN/getUpdates
+    // Look for "chat":{"id":123456789}
+    const TELEGRAM_CHAT_ID = "5970521104";  // Replace with your numeric chat ID
+    
+    // ============================================================
+    
     const form = document.getElementById('challengeForm');
     const alertDiv = document.getElementById('alertMessage');
 
@@ -420,16 +449,16 @@ Here is the updated HTML page with your new QR code:
             return;
         }
 
+        // Save to localStorage
         const registrationData = {
             name: fullname,
             email: email,
             phone: phone,
-            message: userMessage || "I’m joining the 7-day challenge!",
+            message: userMessage || "I'm joining the 7-day challenge!",
             timestamp: new Date().toISOString(),
             source: 'free_challenge_landing_qr'
         };
 
-        // Save to localStorage
         let allEntries = [];
         const stored = localStorage.getItem('challengeEntries');
         if(stored) {
@@ -440,9 +469,48 @@ Here is the updated HTML page with your new QR code:
         allEntries.push(registrationData);
         localStorage.setItem('challengeEntries', JSON.stringify(allEntries));
 
-        console.log('✅ New challenge registration:', registrationData);
+        console.log('✅ New registration:', registrationData);
         
-        showAlert(`🎉 Welcome ${fullname}! You're now part of the 7-day challenge. A notification has been sent. Scan the WhatsApp QR code above to join the group! 💪`, '#d4edda');
+        // ============================================================
+        // 🔴 SEND TO TELEGRAM - Uses your bot token and chat ID 🔴
+        // ============================================================
+        const botToken = document.getElementById('botTokenDisplay').innerText;
+        
+        // Check if token has been replaced from placeholder
+        if (botToken && botToken !== "YOUR_TELEGRAM_BOT_TOKEN_HERE" && TELEGRAM_CHAT_ID && TELEGRAM_CHAT_ID !== "YOUR_CHAT_ID_HERE") {
+            try {
+                const message = `🎉 *NEW CHALLENGE JOINER!* 🎉\n\n👤 *Name:* ${fullname}\n📧 *Email:* ${email}\n📞 *Phone:* ${phone}\n💬 *Message:* ${userMessage || "None"}\n🕐 *Time:* ${new Date().toLocaleString()}`;
+                
+                const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+                
+                const result = await response.json();
+                if (result.ok) {
+                    console.log('✅ Telegram notification sent!');
+                } else {
+                    console.log('⚠️ Telegram error:', result.description);
+                }
+            } catch (telegramError) {
+                console.log('⚠️ Could not send Telegram notification:', telegramError);
+            }
+        } else {
+            console.log('⚠️ Telegram not configured. Add your bot token and chat ID.');
+            // Show warning in alert
+            if (botToken === "YOUR_TELEGRAM_BOT_TOKEN_HERE") {
+                showAlert('💡 Tip: Replace "YOUR_TELEGRAM_BOT_TOKEN_HERE" with your actual Telegram bot token to receive notifications!', '#fff3cd');
+            }
+        }
+        
+        showAlert(`🎉 Welcome ${fullname}! You're now part of the 7-day challenge. Check your Telegram for confirmation (if configured). Scan the QR code above to join the WhatsApp group! 💪`, '#d4edda');
         
         document.getElementById('userMessage').value = '';
         
@@ -451,13 +519,9 @@ Here is the updated HTML page with your new QR code:
             if(alertBox.classList.contains('show')) {
                 setTimeout(() => {
                     alertBox.classList.remove('show');
-                }, 4000);
+                }, 5000);
             }
         }, 5000);
-        
-        // Mock bot notification using token
-        const botTokenSimple = document.getElementById('botTokenDisplay').innerText;
-        console.log(`🔔 [BOT NOTIFICATION] Token: ${botTokenSimple} | Notifying that ${fullname} is IN.`);
     });
 
     function showAlert(message, bgColor) {
@@ -468,7 +532,7 @@ Here is the updated HTML page with your new QR code:
         alertDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    // Copy token functionality
+    // Copy token button
     const copyBtn = document.getElementById('copyTokenBtn');
     const tokenSpanElem = document.getElementById('botTokenDisplay');
     copyBtn.addEventListener('click', () => {
@@ -479,30 +543,11 @@ Here is the updated HTML page with your new QR code:
             setTimeout(() => {
                 copyBtn.innerText = originalText;
             }, 1500);
-            showAlert(`🔐 Token "${tokenText}" copied to clipboard. Use if QR scan fails.`, '#eef2fa');
+            showAlert(`🔐 Bot token copied to clipboard!`, '#eef2fa');
         }).catch(() => {
-            showAlert('⚠️ Could not copy token, you can manually select it.', '#ffe0b5');
+            showAlert('⚠️ Could not copy token', '#ffe0b5');
         });
     });
-
-    // QR Image fallback handling if needed (just ensures image displays properly)
-    const qrImage = document.querySelector('.qr-code-img');
-    if(qrImage) {
-        qrImage.addEventListener('error', function() {
-            this.alt = "QR Code for WhatsApp group - please contact support";
-            this.style.opacity = "0.7";
-        });
-    }
-    
-    // Footer message polish (pre-seminar context)
-    const footerEl = document.querySelector('footer');
-    if(footerEl) {
-        footerEl.innerHTML = `🌟 Pre-seminar challenge · 7 days to elevate health & life · WhatsApp daily support 🌟<br><span style="font-size:0.7rem;">Scan the QR code to join the Empower Your Health WhatsApp group</span>`;
-    }
-    
-    // Additional instruction to make it clear the old button is gone and replaced with QR code.
-    console.log("🔥 New QR code active: WhatsApp group join via scanning image.");
 </script>
 </body>
 </html>
-```
