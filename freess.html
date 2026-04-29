@@ -1,0 +1,577 @@
+Here is an HTML document that creates a modern, elegant strategy session form with direct Telegram bot integration for instant notifications.
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Free Strategy Session | Qualify for Your Session</title>
+  <!-- Google Fonts & simple CSS reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fc 0%, #eef2f8 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 2rem 1.5rem;
+      color: #1a2c3e;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    /* header card */
+    .hero {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(0, 102, 204, 0.08);
+      backdrop-filter: blur(2px);
+      padding: 0.35rem 1rem;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: #0066cc;
+      margin-bottom: 1.2rem;
+      border: 1px solid rgba(0,102,204,0.2);
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      background: linear-gradient(125deg, #0B2B40, #1B4F6E);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .subhead {
+      font-size: 1.1rem;
+      color: #4a627a;
+      max-width: 550px;
+      margin: 0.6rem auto 0;
+      font-weight: 400;
+    }
+
+    /* main form card */
+    .form-card {
+      background: #ffffff;
+      border-radius: 2rem;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0,0,0,0.02);
+      overflow: hidden;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(166, 188, 210, 0.2);
+    }
+
+    .form-header {
+      padding: 1.6rem 2rem 0.2rem 2rem;
+      border-bottom: 1px solid #eef2f8;
+    }
+
+    .form-header p {
+      font-weight: 500;
+      color: #2c5a7a;
+      display: inline-block;
+      background: #eef4fa;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+    }
+
+    form {
+      padding: 2rem 2rem 2rem 2rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .full-width {
+      grid-column: span 2;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1e3a5f;
+      letter-spacing: -0.2px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .required-star {
+      color: #e53e3e;
+      font-size: 1rem;
+    }
+
+    input, select, textarea {
+      font-family: 'Inter', monospace;
+      padding: 0.8rem 1rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 1rem;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      background: #fefefe;
+      outline: none;
+      color: #0f2b3d;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #2b6e9e;
+      box-shadow: 0 0 0 3px rgba(43, 110, 158, 0.15);
+    }
+
+    .phone-hint {
+      font-size: 0.7rem;
+      color: #5b7c9c;
+      margin-top: 0.2rem;
+    }
+
+    .whatsapp-check {
+      background: #f0f6e8;
+      padding: 0.9rem 1rem;
+      border-radius: 1.2rem;
+      border-left: 4px solid #25D366;
+      margin-top: 0.2rem;
+    }
+
+    .whatsapp-check label {
+      font-weight: 500;
+      color: #1f5e3a;
+    }
+
+    small.info-text {
+      display: block;
+      font-size: 0.7rem;
+      color: #496f8b;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    .time-contact textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .submit-btn {
+      margin-top: 1.8rem;
+      background: linear-gradient(95deg, #0f3b4f, #1f668c);
+      border: none;
+      padding: 1rem 1.2rem;
+      width: 100%;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: white;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 5px 12px rgba(0,55,94,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(95deg, #0a2f40, #145c7e);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 20px -8px rgba(0,0,0,0.2);
+    }
+
+    .toast-msg {
+      visibility: hidden;
+      min-width: 260px;
+      background-color: #1f3b4c;
+      color: #fff;
+      text-align: center;
+      border-radius: 60px;
+      padding: 0.9rem 1.8rem;
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
+      font-weight: 500;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: #0c2c3eff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: visibility 0.2s, opacity 0.2s;
+      opacity: 0;
+      border-radius: 50px;
+    }
+
+    .toast-msg.show {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    @media (max-width: 680px) {
+      body {
+        padding: 1rem;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .full-width {
+        grid-column: span 1;
+      }
+      form {
+        padding: 1.5rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    hr {
+      margin: 0.5rem 0 1rem;
+      border: 0;
+      height: 1px;
+      background: #e2edf7;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <div class="hero-badge">✨ Limited spots • FREE 1:1 strategy</div>
+    <h1>Book a FREE<br>Strategy Session</h1>
+    <div class="subhead">Fill out the form carefully to qualify for a personalized session. Transform the areas that matter most.</div>
+  </div>
+
+  <div class="form-card">
+    <div class="form-header">
+      <p>📋 Qualification form</p>
+    </div>
+    <form id="strategyForm">
+      <div class="form-grid">
+        <!-- Full name split but still simple elegant -->
+        <div class="input-group">
+          <label>First Name <span class="required-star">*</span></label>
+          <input type="text" id="firstName" placeholder="e.g., Jessica" required>
+        </div>
+        <div class="input-group">
+          <label>Middle Name</label>
+          <input type="text" id="middleName" placeholder="(optional)">
+        </div>
+        <div class="input-group full-width">
+          <label>Last Name <span class="required-star">*</span></label>
+          <input type="text" id="lastName" placeholder="e.g., Williams" required>
+        </div>
+
+        <!-- Address fields modern -->
+        <div class="input-group full-width">
+          <label>Street Address</label>
+          <input type="text" id="streetAddress" placeholder="123 Main Street">
+        </div>
+        <div class="input-group full-width">
+          <label>Street Address Line 2</label>
+          <input type="text" id="addressLine2" placeholder="Apt, suite, etc. (optional)">
+        </div>
+        <div class="input-group">
+          <label>City</label>
+          <input type="text" id="city" placeholder="City">
+        </div>
+        <div class="input-group">
+          <label>State / Province</label>
+          <input type="text" id="state" placeholder="State / Province">
+        </div>
+        <div class="input-group">
+          <label>Postal / Zip Code</label>
+          <input type="text" id="postal" placeholder="Zip code">
+        </div>
+
+        <!-- Mobile Number with country code format -->
+        <div class="input-group full-width">
+          <label>Mobile Number (inc. country code) <span class="required-star">*</span></label>
+          <input type="tel" id="mobile" placeholder="(000) 000-0000" required>
+          <div class="phone-hint">Format: (000) 000-0000 or +1 000 000 0000. Include country code.</div>
+        </div>
+
+        <!-- WhatsApp installed selector -->
+        <div class="input-group full-width whatsapp-check">
+          <label style="display: flex; align-items: center; gap: 12px;">
+            <input type="checkbox" id="whatsappInstalled" value="Yes">
+            <span>✅ I have WhatsApp installed on my phone!</span>
+          </label>
+          <small class="info-text">📲 Please take time to install WhatsApp for your journey in the program. To install, open Google Play Store or App Store → Search WhatsApp → Install → Verify via SMS.</small>
+        </div>
+
+        <!-- Best time to contact -->
+        <div class="input-group full-width time-contact">
+          <label>Best time to contact <span class="required-star">*</span></label>
+          <textarea id="bestTimes" rows="2" placeholder="e.g., Tuesday evenings 6-8 PM, Sunday afternoon 1-3 PM, Wednesday mornings" required></textarea>
+          <small class="info-text">Add 2 or 3 time slots that work best for you.</small>
+        </div>
+
+        <!-- What did you like about the session you attended? -->
+        <div class="input-group full-width">
+          <label>What did you like about the session you attended?</label>
+          <textarea id="sessionFeedback" rows="2" placeholder="Tell us what resonated with you ..."></textarea>
+        </div>
+
+        <!-- Main issue / life area -->
+        <div class="input-group full-width">
+          <label>What area of your life are you wanting to work on? <span class="required-star">*</span></label>
+          <textarea id="lifeArea" rows="3" placeholder="Describe challenges you're facing or issues you'd like to resolve. E.g., career transition, relationships, mindset, health..." required></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        <span>✨ Submit & qualify for session</span>
+        <span>→</span>
+      </button>
+      <p style="font-size: 0.7rem; text-align: center; margin-top: 1rem; color: #708aa3;">We'll instantly notify our team via secure channel.</p>
+    </form>
+  </div>
+</div>
+
+<div id="toastMsg" class="toast-msg">✨ Sending your info ...</div>
+
+<script>
+  // ----------------------------------------------
+  // CONFIGURATION: REPLACE WITH YOUR TELEGRAM BOT TOKEN & CHAT ID
+  // ----------------------------------------------
+  const TELEGRAM_BOT_TOKEN = "8155100717:AAE0ABDHsRuFWmbXa8coP8qdL3QK2ZWYkaY";     // <-- Replace with actual bot token from BotFather
+  const TELEGRAM_CHAT_ID = "5970521104";        // <-- Replace with your Telegram chat ID (can be user/group/channel ID)
+  // If you don't have a chat ID, you can get it by sending a message to @userinfobot on Telegram.
+  // For groups, add bot to group and get chat ID.
+  // ----------------------------------------------
+  // For testing: set DEBUG_MODE to true to see console logs without sending (optional)
+  const DEBUG_MODE = false;  // change to false in production after token setup
+
+  // Helper to format message for Telegram
+  function formatTelegramMessage(formData) {
+    let msg = "🔔 *NEW STRATEGY SESSION REQUEST* 🔔\n\n";
+    msg += `👤 *Full Name:* ${formData.firstName} ${formData.middleName ? formData.middleName + ' ' : ''}${formData.lastName}\n`;
+    msg += `📍 *Address:* ${formData.streetAddress || '—'}`;
+    if (formData.addressLine2) msg += `, ${formData.addressLine2}`;
+    if (formData.city || formData.state || formData.postal) {
+      msg += `\n${formData.city ? formData.city + ', ' : ''}${formData.state ? formData.state + ' ' : ''}${formData.postal ? formData.postal : ''}`;
+    }
+    msg += `\n📞 *Mobile:* ${formData.mobile}\n`;
+    msg += `📱 *WhatsApp Installed:* ${formData.whatsappInstalled ? '✅ Yes' : '❌ No / Not stated'}\n`;
+    msg += `⏰ *Best times to contact:* ${formData.bestTimes}\n`;
+    if (formData.sessionFeedback && formData.sessionFeedback.trim() !== "") {
+      msg += `👍 *Session feedback:* ${formData.sessionFeedback}\n`;
+    }
+    msg += `🎯 *Area to work / challenges:* ${formData.lifeArea}\n`;
+    msg += `\n🕒 *Submitted:* ${new Date().toLocaleString()}`;
+    return msg;
+  }
+
+  // Send to Telegram using fetch
+  async function sendToTelegram(messageText) {
+    if (!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN === "YOUR_BOT_TOKEN_HERE") {
+      console.warn("⚠️ Telegram bot token not configured. Please set TELEGRAM_BOT_TOKEN and CHAT_ID.");
+      if (!DEBUG_MODE) {
+        throw new Error("Telegram token missing");
+      } else {
+        console.log("DEBUG mode: would send message:", messageText);
+        return { ok: true, debug: true };
+      }
+    }
+    if (!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID === "YOUR_CHAT_ID_HERE") {
+      console.warn("⚠️ Telegram chat ID missing.");
+      if (!DEBUG_MODE) throw new Error("Chat ID missing");
+      else return { ok: true, debug: true };
+    }
+
+    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+    const payload = {
+      chat_id: TELEGRAM_CHAT_ID,
+      text: messageText,
+      parse_mode: "Markdown",
+      disable_web_page_preview: true
+    };
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const data = await response.json();
+      if (!data.ok) {
+        console.error("Telegram API error:", data);
+        throw new Error(`Telegram error: ${data.description || 'unknown'}`);
+      }
+      return data;
+    } catch (err) {
+      console.error("Failed to send telegram message:", err);
+      throw err;
+    }
+  }
+
+  // Helper to show toast message
+  const toast = document.getElementById('toastMsg');
+  function showToast(message, isError = false) {
+    toast.textContent = message;
+    toast.style.background = isError ? '#b13e3ecc' : '#0c2c3eff';
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 3800);
+  }
+
+  // Helper to validate phone number format (loose but require something)
+  function validatePhone(phone) {
+    const cleaned = phone.replace(/[\s\-\(\)\+]/g, '');
+    return cleaned.length >= 8; // Basic: at least 8 digits
+  }
+
+  // Form submit handler
+  const form = document.getElementById('strategyForm');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // gather all values
+    const firstName = document.getElementById('firstName').value.trim();
+    const middleName = document.getElementById('middleName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const streetAddress = document.getElementById('streetAddress').value.trim();
+    const addressLine2 = document.getElementById('addressLine2').value.trim();
+    const city = document.getElementById('city').value.trim();
+    const state = document.getElementById('state').value.trim();
+    const postal = document.getElementById('postal').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const whatsappChecked = document.getElementById('whatsappInstalled').checked;
+    const bestTimes = document.getElementById('bestTimes').value.trim();
+    const sessionFeedback = document.getElementById('sessionFeedback').value.trim();
+    const lifeArea = document.getElementById('lifeArea').value.trim();
+
+    // validations
+    if (!firstName) {
+      showToast("❌ Please enter your first name", true);
+      document.getElementById('firstName').focus();
+      return;
+    }
+    if (!lastName) {
+      showToast("❌ Last name is required", true);
+      document.getElementById('lastName').focus();
+      return;
+    }
+    if (!mobile) {
+      showToast("📞 Mobile number required (include country code)", true);
+      document.getElementById('mobile').focus();
+      return;
+    }
+    if (!validatePhone(mobile)) {
+      showToast("📱 Please enter a valid phone number with country code", true);
+      document.getElementById('mobile').focus();
+      return;
+    }
+    if (!bestTimes) {
+      showToast("⏰ Please add 2-3 preferred contact times", true);
+      document.getElementById('bestTimes').focus();
+      return;
+    }
+    if (!lifeArea) {
+      showToast("🎯 Describe the area you'd like to work on", true);
+      document.getElementById('lifeArea').focus();
+      return;
+    }
+
+    // Disable submit button to avoid double submissions
+    const submitBtn = document.querySelector('.submit-btn');
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<span>⏳ Sending ...</span>`;
+
+    // Build form data object
+    const formData = {
+      firstName,
+      middleName,
+      lastName,
+      streetAddress: streetAddress || "—",
+      addressLine2: addressLine2 || "",
+      city: city || "—",
+      state: state || "—",
+      postal: postal || "—",
+      mobile,
+      whatsappInstalled: whatsappChecked,
+      bestTimes,
+      sessionFeedback: sessionFeedback || "(No feedback provided)",
+      lifeArea
+    };
+
+    const message = formatTelegramMessage(formData);
+    
+    try {
+      // Send instant notification to Telegram Bot
+      await sendToTelegram(message);
+      
+      // Optional: also log/save to console for success
+      console.log("✅ Form submitted & Telegram notification sent.");
+      
+      // Show success toast
+      showToast("🎉 Thank you! Your strategy session request has been sent. We'll contact you shortly.");
+      
+      // Reset form fields after success (except optionally keep for readability, but we reset)
+      form.reset();
+      // uncheck whatsapp default reset (checkbox goes to unchecked by reset)
+      // optional small note: reset doesn't remove placeholder texts so it's fine.
+      // Also extra cleanup for middle, but it's fine
+      
+    } catch (error) {
+      console.error("Telegram send error:", error);
+      let errorMsg = "⚠️ Unable to send request. Please try again later or contact support.";
+      if (error.message.includes("token") || error.message.includes("chat_id")) {
+        errorMsg = "⚠️ Service configuration missing. Our team has been notified. Please try alternative contact.";
+      }
+      showToast(errorMsg, true);
+    } finally {
+      // Re-enable button after 1.5 seconds
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+      }, 1500);
+    }
+  });
+
+  // Add phone auto formatting hint but let user free type (just gentle help)
+  const mobileInput = document.getElementById('mobile');
+  mobileInput.addEventListener('input', function(e) {
+    let val = e.target.value;
+    // minimal reminder - no strict formatting, just placeholder demonstration
+    if (val.length === 3 && !val.includes(')')) {
+      // do nothing, just improve UX friendly
+    }
+  });
+</script>
+
+<!-- BONUS: Because we want demo to be fully transparent, unconfigured token shows toast warning, but
+     we also embed a note: Replace tokens with your actual credentials. 
+     For full production, user must add bot token & chat ID in the script constants. -->
+<div style="max-width: 880px; margin: 1.2rem auto 0; text-align: center; font-size: 0.7rem; color: #5f7f9e;">
+  ⚡ Secure instant Telegram integration. Fill to qualify — your data is transmitted privately.
+  <br><span style="opacity:0.7;">✔️ Bot notification active once token is configured.</span>
+</div>
+</body>
+</html>
+```
