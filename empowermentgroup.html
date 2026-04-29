@@ -26,7 +26,6 @@
             border-radius: 2rem;
             box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            transition: all 0.2s ease;
         }
 
         .logo-area {
@@ -209,60 +208,6 @@
             margin-top: 12px;
         }
 
-        /* TOKEN AREA - WHERE YOUR TELEGRAM BOT TOKEN GOES */
-        .bot-token-area {
-            background: #fff2df;
-            border-radius: 60px;
-            padding: 0.7rem 1rem;
-            margin: 1.2rem 0 0.2rem;
-            font-family: monospace;
-            font-size: 0.85rem;
-            word-break: break-all;
-            display: flex;
-            align-items: center;
-            justify
-            -content: space-between;
-            gap: 10px;
-            flex-wrap: wrap;
-            border: 2px solid #ffd966;
-        }
-
-        .token-code {
-            background: #ffffffba;
-            padding: 4px 12px;
-            border-radius: 40px;
-            letter-spacing: 1px;
-            font-weight: 600;
-            color: #b45309;
-            font-size: 0.8rem;
-        }
-
-        .copy-token {
-            background: none;
-            border: 1px solid #cd9f5c;
-            border-radius: 40px;
-            padding: 6px 14px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.1s;
-        }
-
-        .copy-token:active {
-            background: #e6ccaa;
-        }
-
-        .telegram-hint {
-            background: #e8f0fe;
-            margin-top: 12px;
-            padding: 10px;
-            border-radius: 16px;
-            font-size: 0.7rem;
-            color: #1a5d8f;
-            text-align: left;
-            font-family: monospace;
-        }
-
         .small-note {
             font-size: 0.7rem;
             color: #7f8c8d;
@@ -365,38 +310,21 @@
 
     <div id="alertMessage" class="alert"></div>
 
-    <!-- WhatsApp QR Code Section -->
+    <!-- WhatsApp QR Code Section - Users scan this to join -->
     <div class="whatsapp-qr-card">
         <div class="whatsapp-icon">📱💚</div>
         <h3 style="margin-bottom: 6px;">Join the WhatsApp Group</h3>
         <p style="margin-bottom: 12px; font-size: 0.9rem;">This group is for those who want the most out of their health and life.<br> <strong>Receive daily health support over the next 7 days</strong> — pre‑seminar challenge edition.</p>
         
+        <!-- WhatsApp QR Code - users scan this with their WhatsApp camera -->
         <img class="qr-code-img" src="https://i.ibb.co/v4zdPc7T/photo-6307394143059120337-y.jpg" alt="WhatsApp Group QR Code">
         
         <div class="qr-note">
             📸 Scan with WhatsApp camera to join the group instantly
         </div>
         
-        <!-- ============================================================ -->
-        <!-- 🔴🔴🔴 TELEGRAM BOT TOKEN - REPLACE THIS WITH YOUR TOKEN 🔴🔴🔴 -->
-        <!-- ============================================================ -->
-        <div class="bot-token-area">
-            <span style="font-weight: 500;">🤖 TELEGRAM BOT TOKEN:</span>
-            <span class="token-code" id="botTokenDisplay">8155100717:AAE0ABDHsRuFWmbXa8coP8qdL3QK2ZWYkaY</span>
-            <button class="copy-token" id="copyTokenBtn">📋 Copy</button>
-        </div>
-        
-        <!-- Telegram instructions -->
-        <div class="telegram-hint">
-            📍 <strong>How to get your Telegram Bot Token:</strong><br>
-            1. Open Telegram → search for <strong>@BotFather</strong><br>
-            2. Send: <strong>/newbot</strong> → choose name & username (must end in 'bot')<br>
-            3. Copy the token (looks like: <span style="background:white;padding:2px 6px;border-radius:8px;">1234567890:ABCdefGHIjklMNOpqrsTUVwxyz</span>)<br>
-            4. Replace <strong style="background:#ffecb3;padding:2px 6px;">YOUR_TELEGRAM_BOT_TOKEN_HERE</strong> above with your token
-        </div>
-        
         <div class="small-note">
-            🔐 When users submit the form, you'll receive a Telegram notification with their details
+            After scanning, you'll be added to the Empower Your Health WhatsApp group
         </div>
     </div>
     <hr>
@@ -407,14 +335,20 @@
 
 <script>
     // ============================================================
-    // 🔴 TELEGRAM CONFIGURATION - PUT YOUR CHAT ID HERE 🔴
+    // 🔴 REPLACE "hippo" WITH YOUR REAL TELEGRAM BOT TOKEN AND CHAT ID 🔴
     // ============================================================
-    // After getting your bot token, you also need your Chat ID
-    // To get it: Message your bot, then visit:
-    // https://api.telegram.org/botYOUR_BOT_TOKEN/getUpdates
-    // Look for "chat":{"id":123456789}
-    const TELEGRAM_CHAT_ID = "5970521104";  // Replace with your numeric chat ID
     
+    // STEP 1: Get your bot token from Telegram @BotFather
+    // Replace "hippo" with your actual bot token (looks like: 1234567890:ABCdefGHIjklMNOpqrsTUVwxyz)
+    const BOT_TOKEN = "8155100717:AAE0ABDHsRuFWmbXa8coP8qdL3QK2ZWYkaY";
+    
+    // STEP 2: Get your chat ID (message your bot, then check https://api.telegram.org/botYOUR_TOKEN/getUpdates)
+    // Replace "hippo" with your actual numeric chat ID (looks like: 123456789)
+    const CHAT_ID = "5970521104";
+    
+    // ============================================================
+    // When someone fills out the form, their details are sent to your Telegram
+    // They scan the QR code above to join WhatsApp
     // ============================================================
     
     const form = document.getElementById('challengeForm');
@@ -456,7 +390,7 @@
             phone: phone,
             message: userMessage || "I'm joining the 7-day challenge!",
             timestamp: new Date().toISOString(),
-            source: 'free_challenge_landing_qr'
+            source: 'free_challenge_landing'
         };
 
         let allEntries = [];
@@ -472,22 +406,21 @@
         console.log('✅ New registration:', registrationData);
         
         // ============================================================
-        // 🔴 SEND TO TELEGRAM - Uses your bot token and chat ID 🔴
+        // SEND TO TELEGRAM (only if hippo is replaced with real values)
         // ============================================================
-        const botToken = document.getElementById('botTokenDisplay').innerText;
         
-        // Check if token has been replaced from placeholder
-        if (botToken && botToken !== "YOUR_TELEGRAM_BOT_TOKEN_HERE" && TELEGRAM_CHAT_ID && TELEGRAM_CHAT_ID !== "YOUR_CHAT_ID_HERE") {
+        // Check if tokens have been replaced from "hippo"
+        if (BOT_TOKEN !== "hippo" && CHAT_ID !== "hippo") {
             try {
-                const message = `🎉 *NEW CHALLENGE JOINER!* 🎉\n\n👤 *Name:* ${fullname}\n📧 *Email:* ${email}\n📞 *Phone:* ${phone}\n💬 *Message:* ${userMessage || "None"}\n🕐 *Time:* ${new Date().toLocaleString()}`;
+                const message = `🎉 *NEW CHALLENGE JOINER!* 🎉\n\n👤 *Name:* ${fullname}\n📧 *Email:* ${email}\n📞 *Phone:* ${phone}\n💬 *Message:* ${userMessage || "None"}\n🕐 *Time:* ${new Date().toLocaleString()}\n\n✅ They will now scan the WhatsApp QR code to join the group.`;
                 
-                const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        chat_id: TELEGRAM_CHAT_ID,
+                        chat_id: CHAT_ID,
                         text: message,
                         parse_mode: 'Markdown'
                     })
@@ -495,7 +428,7 @@
                 
                 const result = await response.json();
                 if (result.ok) {
-                    console.log('✅ Telegram notification sent!');
+                    console.log('✅ Telegram notification sent to you!');
                 } else {
                     console.log('⚠️ Telegram error:', result.description);
                 }
@@ -503,14 +436,12 @@
                 console.log('⚠️ Could not send Telegram notification:', telegramError);
             }
         } else {
-            console.log('⚠️ Telegram not configured. Add your bot token and chat ID.');
-            // Show warning in alert
-            if (botToken === "YOUR_TELEGRAM_BOT_TOKEN_HERE") {
-                showAlert('💡 Tip: Replace "YOUR_TELEGRAM_BOT_TOKEN_HERE" with your actual Telegram bot token to receive notifications!', '#fff3cd');
-            }
+            console.log('⚠️ Telegram not configured yet. Replace "hippo" with your actual bot token and chat ID.');
+            // Show a friendly reminder (only visible to you as the admin)
+            console.log('To get notifications: 1) Get bot token from @BotFather 2) Get chat ID from /getUpdates');
         }
         
-        showAlert(`🎉 Welcome ${fullname}! You're now part of the 7-day challenge. Check your Telegram for confirmation (if configured). Scan the QR code above to join the WhatsApp group! 💪`, '#d4edda');
+        showAlert(`🎉 Welcome ${fullname}! You're now part of the 7-day challenge. Scan the QR code above to join our WhatsApp group! 💪`, '#d4edda');
         
         document.getElementById('userMessage').value = '';
         
@@ -531,23 +462,6 @@
         alertDiv.classList.add('show');
         alertDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
-
-    // Copy token button
-    const copyBtn = document.getElementById('copyTokenBtn');
-    const tokenSpanElem = document.getElementById('botTokenDisplay');
-    copyBtn.addEventListener('click', () => {
-        const tokenText = tokenSpanElem.innerText;
-        navigator.clipboard.writeText(tokenText).then(() => {
-            const originalText = copyBtn.innerText;
-            copyBtn.innerText = '✅ Copied!';
-            setTimeout(() => {
-                copyBtn.innerText = originalText;
-            }, 1500);
-            showAlert(`🔐 Bot token copied to clipboard!`, '#eef2fa');
-        }).catch(() => {
-            showAlert('⚠️ Could not copy token', '#ffe0b5');
-        });
-    });
 </script>
 </body>
 </html>
