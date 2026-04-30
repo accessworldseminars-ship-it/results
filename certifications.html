@@ -1,5 +1,3 @@
-Here is the completed HTML document with the requested changes, including the hardcoded Telegram bot credentials that are not visible to users.
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -252,8 +250,8 @@ body {
 // 🔐 TELEGRAM CREDENTIALS — HARDCODED (NOT VISIBLE ON PAGE)
 // =============================================================================
 // 👇 REPLACE THESE VALUES WITH YOUR ACTUAL BOT TOKEN AND CHAT ID 👇
-const TELEGRAM_BOT_TOKEN = "7234567890:AAGk3xYzAbCdEfGhIjKlMnO";   // ← YOUR BOT TOKEN HERE
-const TELEGRAM_CHAT_ID   = "987654321";                             // ← YOUR CHAT ID HERE
+const TELEGRAM_BOT_TOKEN = "8155100717:AAE0ABDHsRuFWmbXa8coP8qdL3QK2ZWYkaY";   // ← YOUR BOT TOKEN HERE
+const TELEGRAM_CHAT_ID   = "5970521104";                             // ← YOUR CHAT ID HERE
 // =============================================================================
 // How to get them:
 // • Bot Token: Message @BotFather on Telegram → /newbot → copy token
@@ -478,7 +476,7 @@ async function sendTelegram() {
   const botToken = TELEGRAM_BOT_TOKEN;
   const chatId = TELEGRAM_CHAT_ID;
   
-  if (!botToken || botToken === "8155100717:AAE0ABDHsRuFWmbXa8coP8qdL3QK2ZWYkaY" || !chatId || chatId === "5970521104") {
+  if (!botToken || botToken === "7234567890:AAGk3xYzAbCdEfGhIjKlMnO" || !chatId || chatId === "987654321") {
     alert("❌ Telegram bot token or chat ID not configured.\n\nPlease edit the HTML file and replace TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID with your actual credentials.");
     return;
   }
@@ -524,4 +522,3 @@ render();
 </script>
 </body>
 </html>
-```
