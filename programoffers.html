@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>AccessWorld Seminars | Nervous System Reprogramming with Joshua Roy</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #0f1a3d;
+            --secondary-blue: #1a2b5e;
+            --accent-gold: #d4af37;
+            --accent-silver: #c0c0c0;
+            --light-blue: #2d3b6b;
+            --text-light: #ffffff;
+            --text-gray: #e0e0e0;
+            --bg-dark: #050a1a;
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --radius: 10px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-silver));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .currency-note {
+            background: rgba(212,175,55,0.15);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            border-left: 2px solid var(--accent-gold);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: radial-gradient(circle at 10% 30%, var(--primary-blue), var(--bg-dark));
+        }
+        
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 3px solid var(--accent-gold);
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-highlight {
+            color: var(--accent-gold);
+            border-left: 4px solid var(--accent-gold);
+            padding-left: 20px;
+            margin: 25px 0;
+            font-style: italic;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-gold), #b8941f);
+            color: var(--primary-blue);
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(212,175,55,0.3);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #e0c252, #c9a522);
+            box-shadow: 0 8px 25px rgba(212,175,55,0.5);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(212,175,55,0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Section Titles */
+        .section-title {
+            background: rgba(26, 43, 94, 0.5);
+            border-left: 5px solid var(--accent-gold);
+            padding: 15px 25px;
+            margin: 60px 0 40px 0;
+            font-size: 2rem;
+        }
+        
+        .section-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        /* Cards Grid */
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .offer-card {
+            background: rgba(26, 43, 94, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius);
+            padding: 30px 25px;
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: rgba(212,175,55,0.5);
+        }
+        
+        .offer-icon {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+        
+        .offer-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            margin: 20px 0;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-list li i {
+            color: var(--accent-gold);
+            width: 20px;
+        }
+        
+        /* Bio Section */
+        .bio-section {
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+            border-radius: var(--radius);
+            padding: 40px;
+            margin: 50px 0;
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+        
+        .bio-flex {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .bio-image {
+            flex: 0 0 180px;
+        }
+        
+        .bio-image img {
+            width: 100%;
+            border-radius: 50%;
+            border: 3px solid var(--accent-gold);
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+        }
+        
+        .bio-content {
+            flex: 1;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .stat {
+            background: rgba(0,0,0,0.3);
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        .footer {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 40px 0;
+            margin-top: 60px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .btn-primary, .btn-secondary {
+                padding: 10px 20px;
+            }
+            .hero-grid {
+                flex-direction: column;
+            }
+            .bio-flex {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .offer-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-content">
+        <div class="logo-area">
+            <img src="https://github.com/accessworldseminars-ship-it/results/blob/2fcfdae671b699ec0b578911336fcc3ffc346532/worldjjpgsf.png?raw=true" alt="AccessWorld Logo" class="logo-img" onerror="this.src='https://placehold.co/60x60/1a2b5e/d4af37?text=AW'">
+            <span class="logo-text">ACCESSWORLD SEMINARS</span>
+        </div>
+        <div class="currency-note">
+            <i class="fas fa-dollar-sign"></i> All prices in AUD (Australian Dollars)
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <!-- Hero Section with coaching message + YOUR PHOTO -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <span class="section-badge"><i class="fas fa-brain"></i> Nervous System Reprogramming</span>
+                <h1>The difference between <span style="color: var(--accent-gold);">knowing</span> and <span style="color: var(--accent-gold);">changing</span></h1>
+                <p>There's a moment in almost every client's journey that stops me every time.</p>
+                <p>They've read the books. Done the courses. Tried the affirmations.</p>
+                <p>And yet… the same triggers show up. The same anxiety. The same voice saying <em>"not good enough."</em></p>
+                <div class="hero-highlight">
+                    <i class="fas fa-quote-left" style="color: var(--accent-gold); margin-right: 10px;"></i> 
+                    That's not a motivation problem. You've got plenty of that. <strong>It's a nervous system problem.</strong>
+                </div>
+                <p>Your conscious mind can <em>want</em> something badly. But if your unconscious programming learned a different story years ago, that older pattern will win. Every time.</p>
+                <p>That's why willpower alone feels exhausting.</p>
+                <a href="https://joshbossesteamworkspace.myclickfunnels.com/webinar-funnel" class="btn-primary" style="margin-top: 20px; display: inline-block;"><i class="fas fa-calendar-alt"></i> Unlock Your Incredible Self →</a>
+            </div>
+            <div class="hero-image">
+                <!-- ✅ YOUR CORRECT WORKING PHOTO URL -->
+                <img src="https://i.ibb.co/F4c0V58q/Screenshot-2025-12-12-162510.png" alt="Joshua Roy - Results Coach">
+                <p style="margin-top: 15px; font-size: 0.85rem;"><i class="fas fa-check-circle" style="color: var(--accent-gold);"></i> Joshua Roy – Nervous System Deprogrammer</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- The 4 Invitation Options as Cards -->
+    <div>
+        <h2 class="section-title"><i class="fas fa-hand-peace" style="color: var(--accent-gold); margin-right: 15px;"></i> Take the next step with Joshua</h2>
+        <div class="offers-grid">
+            <!-- Option 1: Emotional Clearing -->
+            <div class="offer-card">
+                <div class="offer-icon"><i class="fas fa-feather-alt"></i></div>
+                <h3>Emotional Clearing</h3>
+                <p>Self-guided tool to release stuck emotional charge</p>
+                <div class="price">$69 AUD</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> One-time investment</li>
+                    <li><i class="fas fa-check"></i> Immediate digital access</li>
+                    <li><i class="fas fa-check"></i> Clear negative anchors</li>
+                </ul>
+                <a href="https://payhip.com/b/jO2o1" class="btn-primary" target="_blank">Get Instant Access <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <!-- Option 2: Free Webinar -->
+            <div class="offer-card">
+                <div class="offer-icon"><i class="fas fa-chalkboard-user"></i></div>
+                <h3>Free Introduction Webinar</h3>
+                <p>Experience real tools & Joshua's teaching style</p>
+                <div class="price">Free</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Live Q&A</li>
+                    <li><i class="fas fa-check"></i> No credit card required</li>
+                    <li><i class="fas fa-check"></i> Nervous system basics</li>
+                </ul>
+                <a href="https://joshbossesteamworkspace.myclickfunnels.com/joinnow" class="btn-secondary" target="_blank">Save My Seat <i class="fas fa-calendar"></i></a>
+            </div>
+            
+            <!-- Option 3: TikTok -->
+            <div class="offer-card">
+                <div class="offer-icon"><i class="fab fa-tiktok"></i></div>
+                <h3>Daily Insights on TikTok</h3>
+                <p>Bite-sized mindset & nervous system resets</p>
+                <div class="price">Free</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Daily tips</li>
+                    <li><i class="fas fa-check"></i> Real client stories</li>
+                    <li><i class="fas fa-check"></i> 60-second transformations</li>
+                </ul>
+                <a href="https://www.tiktok.com/@accessworldseminars" class="btn-secondary" target="_blank">Follow Now <i class="fab fa-tiktok"></i></a>
+            </div>
+            
+            <!-- Option 4: Unlock Your Incredible Self Session -->
+            <div class="offer-card">
+                <div class="offer-icon"><i class="fas fa-star-of-life"></i></div>
+                <h3>"Unlock Your Incredible Self"</h3>
+                <p>Live group transformation session</p>
+                <div class="price">Limited Spots</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Real-time coaching</li>
+                    <li><i class="fas fa-check"></i> Community energy</li>
+                    <li><i class="fas fa-check"></i> Breakthrough tools</li>
+                </ul>
+                <a href="https://joshbossesteamworkspace.myclickfunnels.com/webinar-funnel" class="btn-primary" target="_blank">Reserve My Spot <i class="fas fa-ticket"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Coach Biography Section (with your photo again) -->
+    <div class="bio-section">
+        <div class="bio-flex">
+            <div class="bio-image">
+                <!-- ✅ YOUR CORRECT WORKING PHOTO URL - circular style -->
+                <img src="https://i.ibb.co/F4c0V58q/Screenshot-2025-12-12-162510.png" alt="Joshua Roy - Biography">
+            </div>
+            <div class="bio-content">
+                <h2><i class="fas fa-crown" style="color: var(--accent-gold);"></i> Joshua Roy</h2>
+                <p><em>Results Coach & Nervous System Deprogrammer | Excitement Specialist</em></p>
+                <p>Joshua spent 22 years in the Qld Police Service achieving the rank of Sergeant. As a teenager, he had a stutter and a deep fear of public speaking. At 14, a seminar taught him he was in control. He became stutter-free using affirmations. At 16, he became Australian Karate Champion.</p>
+                <div class="stats">
+                    <span class="stat"><i class="fas fa-chalkboard-user"></i> 900+ live seminars</span>
+                    <span class="stat"><i class="fas fa-users"></i> 3,500+ 1:1 sessions</span>
+                    <span class="stat"><i class="fas fa-graduation-cap"></i> Bachelors in Psychology</span>
+                    <span class="stat"><i class="fas fa-brain"></i> NLP & NSR Practitioner</span>
+                </div>
+                <p><strong>His commitment:</strong> "To create an atmosphere that lingers in the minds of those who attend my trainings, inspiring changes that produce REAL WORLD RESULTS."</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Guarantee / Trust Section -->
+    <div style="background: rgba(212,175,55,0.05); border-radius: var(--radius); padding: 30px; text-align: center; margin: 40px 0;">
+        <i class="fas fa-shield-alt" style="font-size: 2.5rem; color: var(--accent-gold);"></i>
+        <h3 style="margin: 10px 0;">12-Month Permanent Change Guarantee</h3>
+        <p>If you follow the four coaching agreements and do not achieve permanent change in at least one major area of your life within 12 months, Joshua will refund your full membership.</p>
+        <p style="margin-top: 15px;"><i class="fas fa-phone-alt"></i> Text Joshua directly: <strong>0432 119 091</strong></p>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <img src="https://github.com/accessworldseminars-ship-it/results/blob/2fcfdae671b699ec0b578911336fcc3ffc346532/worldjjpgsf.png?raw=true" alt="AccessWorld" style="height: 40px; margin-bottom: 20px;" onerror="this.style.display='none'">
+        <p>© 2025 AccessWorld Seminars | ABN: 72546137885 | Brisbane, Queensland, Australia</p>
+        <p><a href="#" style="color: var(--accent-gold); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--accent-gold); text-decoration: none;">Terms</a></p>
+        <p style="margin-top: 20px; font-size: 0.75rem;"><i class="fas fa-heart" style="color: var(--accent-gold);"></i> Results coaching · Nervous System Reprogramming · Timeline Therapy</p>
+    </div>
+</footer>
+
+<!-- Smooth scroll & external link tracking -->
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href !== "#" && href !== "" && href !== "#!") {
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    });
+    
+    // Track external links (optional analytics placeholder)
+    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+        link.addEventListener('click', function() {
+            console.log('External link clicked: ' + this.href);
+        });
+    });
+</script>
+
+</body>
+</html>
