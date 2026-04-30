@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Emotional Mastery & Freedom Event | AccessWorld Seminars</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ---------- CSS VARIABLES (exact same as main) ---------- */
+        :root {
+            --primary-dark: #0A1A2F;
+            --primary-navy: #0F2A44;
+            --accent-gold: #C9A03D;
+            --accent-gold-light: #E2C17A;
+            --accent-gold-dark: #A67C2E;
+            --text-light: #F5F7FA;
+            --text-muted: #B0C4DE;
+            --bg-overlay: rgba(10, 26, 47, 0.92);
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --transition-smooth: all 0.3s ease;
+            --shadow-gold: 0 10px 30px rgba(201, 160, 61, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .nav-links a, .btn, .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        /* ---------- NAVIGATION (fixed, same as main) ---------- */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 26, 47, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(201, 160, 61, 0.3);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-logo h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF, var(--accent-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a i {
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-gold);
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 4px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Responsive nav */
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background: var(--primary-navy);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 2rem;
+                gap: 1.8rem;
+                transition: 0.3s;
+                border-right: 2px solid var(--accent-gold);
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .main-nav {
+                padding: 1rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero-header {
+            min-height: 85vh;
+            background: linear-gradient(135deg, rgba(10,26,47,0.95), rgba(15,42,68,0.9)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 0;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, var(--accent-gold-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--accent-gold-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            color: white;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 3px;
+        }
+
+        .accent-text {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        /* Cards Grid */
+        .schedule-grid, .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(4px);
+            border-radius: 20px;
+            padding: 1.8rem;
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(201, 160, 61, 0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-gold);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent-gold);
+        }
+
+        .card .time {
+            font-size: 0.9rem;
+            color: var(--accent-gold-light);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .feature-list li {
+            margin-bottom: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .feature-list li i {
+            color: var(--accent-gold);
+            font-size: 1rem;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        @media (max-width: 768px) {
+            .two-columns { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .section-title { font-size: 2rem; }
+        }
+
+        .win-method {
+            background: rgba(201, 160, 61, 0.08);
+            padding: 2rem;
+            border-radius: 24px;
+            margin-top: 2rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0 3rem;
+            flex-wrap: wrap;
+        }
+
+        /* Footer (exact same) */
+        footer {
+            background: #041120;
+            padding: 3rem 2rem 1.5rem;
+            border-top: 1px solid rgba(201, 160, 61, 0.2);
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .footer-section h4 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+        .footer-section a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: 0.2s;
+        }
+        .footer-section a:hover { color: var(--accent-gold);}
+        .social-links a {
+            display: inline-block;
+            margin-right: 1rem;
+            font-size: 1.4rem;
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation (identical structure, active page indication) -->
+<nav class="main-nav">
+    <div class="nav-logo">
+        <h2><i class="fas fa-brain" style="color: #C9A03D;"></i> AccessWorld<span style="color:#C9A03D;"> Seminars</span></h2>
+    </div>
+    <button class="mobile-menu-btn" id="mobileMenuToggle"><i class="fas fa-bars"></i></button>
+    <div class="nav-links" id="navLinks">
+        <a href="https://accessworldseminars-ship-it.github.io/results/"><i class="fas fa-home"></i> Home</a>
+        <a href="#" class="active"><i class="fas fa-calendar-alt"></i> Emotional Mastery Event</a>
+        <a href="#schedule"><i class="fas fa-clock"></i> Schedule</a>
+        <a href="#core"><i class="fas fa-gem"></i> Core Sessions</a>
+        <a href="#register" class="btn-outline" style="border:2px solid #C9A03D; padding: 6px 20px;"><i class="fas fa-ticket-alt"></i> Reserve Spot</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-header">
+    <div class="hero-content fade-in">
+        <h1>2-Day Online Event: Emotional Mastery & Ultimate Freedom</h1>
+        <p><i class="fas fa-calendar-week"></i> April 24-25, 2025 | 7:00 AM – 3:00 PM daily (PST)</p>
+        <p>Transform your identity, break through emotional blocks, and rewire your mind for lasting happiness.</p>
+        <a href="#schedule" class="btn"><i class="fas fa-eye"></i> Explore The Journey</a>
+    </div>
+</section>
+
+<!-- Schedule Overview - Day 1 & 2 -->
+<section class="section" id="schedule">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2 class="section-title">Event Blueprint</h2>
+            <p>Two transformative days — from identity upgrade to emotional healing & freedom.</p>
+        </div>
+        <div class="schedule-grid">
+            <!-- Day 1 Card -->
+            <div class="card fade-in">
+                <h3><i class="fas fa-sun"></i> Day 1 – Foundations & Identity</h3>
+                <span class="time">April 24, 7:00 AM – 3:00 PM</span>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Welcome & Setting Powerful Intentions</li>
+                    <li><i class="fas fa-check-circle"></i> NLP Foundations: Reprogram Your Mind</li>
+                    <li><i class="fas fa-check-circle"></i> State Management & Emotional Intelligence</li>
+                    <li><i class="fas fa-check-circle"></i> The Design Your Identity Webinar: Upgrade Self-Worth</li>
+                </ul>
+                <div style="margin-top: 1rem;"><span class="accent-text">🔑 Anchoring techniques · Incantations · Rewrite inner dialogue</span></div>
+            </div>
+            <!-- Day 2 Card -->
+            <div class="card fade-in">
+                <h3><i class="fas fa-dove"></i> Day 2 – Ultimate Freedom & Healing</h3>
+                <span class="time">April 25, 7:00 AM – 3:00 PM</span>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Morning Reflection & Guided Visualization</li>
+                    <li><i class="fas fa-check-circle"></i> Breaking Free: Forgiveness, Trauma & Addiction</li>
+                    <li><i class="fas fa-check-circle"></i> The 4-Step Healing Method: Emotional Reset</li>
+                    <li><i class="fas fa-check-circle"></i> Gratitude & WIN Formula: Automate Happiness</li>
+                </ul>
+                <div style="margin-top: 1rem;"><span class="accent-text">✨ Release trapped emotions · Stop self-sabotage · Kinesthetic bridge</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Sessions: Detailed breakdown  (Pillars of transformation) -->
+<section class="section" style="background: rgba(15,42,68,0.4);" id="core">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2 class="section-title">Session Deep Dive</h2>
+            <p>Powerful methodologies from NLP & emotional mastery to redesign your reality</p>
+        </div>
+        <div class="pillars-grid">
+            <div class="card fade-in">
+                <i class="fas fa-brain" style="font-size: 2rem; color: var(--accent-gold);"></i>
+                <h3>🧠 NLP Foundation Principles</h3>
+                <p>Reprogram limiting beliefs, understand how thoughts shape reality, and install empowering states using anchoring techniques.</p>
+                <small class="accent-text">📅 Day 1 · 7:30 AM – 10:30 AM</small>
+            </div>
+            <div class="card fade-in">
+                <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--accent-gold);"></i>
+                <h3>State Management & EQ</h3>
+                <p>State Elicitation Script, peak emotional access, and decision-making mastery. Learn to create a positive mindset on demand.</p>
+                <small class="accent-text">📅 Day 1 · 10:45 AM – 12:30 PM</small>
+            </div>
+            <div class="card fade-in">
+                <i class="fas fa-id-card" style="font-size: 2rem; color: var(--accent-gold);"></i>
+                <h3>Design Your Identity</h3>
+                <p>Upgrade self-worth, rewrite negative self-talk, incantations to anchor empowered identity, and unlock new opportunities.</p>
+                <small class="accent-text">📅 Day 1 · 1:00 PM – 3:00 PM</small>
+            </div>
+            <div class="card fade-in">
+                <i class="fas fa-feather-alt" style="font-size: 2rem; color: var(--accent-gold);"></i>
+                <h3>Ultimate Freedom Webinar</h3>
+                <p>Forgiveness made easy: release trapped emotions, overcome fear, trauma, addiction, and apply the WIN formula vs self-sabotage.</p>
+                <small class="accent-text">📅 Day 2 · 7:30 AM – 10:30 AM</small>
+            </div>
+            <div class="card fade-in">
+                <i class="fas fa-heartbeat" style="font-size: 2rem; color: var(--accent-gold);"></i>
+                <h3>Healing Process & Emotional Reset</h3>
+                <p>The 4-Step Healing Method: deep emotional release, stop reliving past pain, restore inner peace and confidence.</p>
+                <small class="accent-text">📅 Day 2 · 10:45 AM – 12:30 PM</small>
+            </div>
+            <div class="card fade-in">
+                <i class="fas fa-seedling" style="font-size: 2rem; color: var(--accent-gold);"></i>
+                <h3>Gratitude & Future Design</h3>
+                <p>How gratitude rewires brain, installing WIN Formula via kinesthetic bridge, automate happiness and long-term transformation.</p>
+                <small class="accent-text">📅 Day 2 · 1:00 PM – 3:00 PM</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WIN Formula & Bonus Integration Section -->
+<section class="section">
+    <div class="container">
+        <div class="two-columns fade-in">
+            <div>
+                <h2 class="section-title" style="text-align: left; display: inline-block;">The WIN Formula</h2>
+                <div style="height: 3px; width: 80px; background: var(--accent-gold); margin: 1rem 0 1.5rem;"></div>
+                <p><strong>What's Important Now</strong> – the ultimate strategy to stop self-sabotage, align actions, and create momentum. Through kinesthetic bridge installation, you will automate emotional freedom and sustainable success.</p>
+                <ul class="feature-list" style="margin-top: 1rem;">
+                    <li><i class="fas fa-check-circle"></i> Eliminate procrastination & fear</li>
+                    <li><i class="fas fa-check-circle"></i> Reset your emotional baseline</li>
+                    <li><i class="fas fa-check-circle"></i> Daily incantations & anchoring routine</li>
+                </ul>
+            </div>
+            <div class="win-method">
+                <h3 style="color: var(--accent-gold);"><i class="fas fa-hand-holding-heart"></i> Emotional Reset: 4-Step Method</h3>
+                <p>1️⃣ Acknowledge trapped emotion <br> 2️⃣ Forgive & release <br> 3️⃣ Rewrite narrative using NLP <br> 4️⃣ Install new empowering state</p>
+                <hr style="border-color: rgba(201,160,61,0.3); margin: 1rem 0;">
+                <p><i class="fas fa-star-of-life"></i> <strong>Bonus Integration:</strong> Gratitude rewires neural pathways, elevating dopamine & serotonin — culminates with daily “Freedom Ritual”.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA & Return Navigation Buttons (identical to home return) -->
+<div class="container">
+    <div class="nav-buttons">
+        <a href="https://accessworldseminars-ship-it.github.io/results/" class="btn btn-outline"><i class="fas fa-home"></i> Return Home</a>
+        <a href="#schedule" class="btn"><i class="fas fa-calendar-check"></i> View Full Schedule</a>
+        <a href="#" class="btn btn-outline"><i class="fas fa-video"></i> Register for Live Access</a>
+    </div>
+</div>
+
+<!-- FOOTER (exact same as main page) -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4><i class="fas fa-globe"></i> AccessWorld Seminars</h4>
+            <p>Breakthrough coaching & NLP mastery for emotional freedom and identity transformation.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <a href="https://accessworldseminars-ship-it.github.io/results/">Home</a>
+            <a href="#">Emotional Mastery Event</a>
+            <a href="#">Upcoming Events</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="footer-section">
+            <h4>Connect</h4>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h4>Event Info</h4>
+            <p>🗓️ April 24–25, 2025<br>⏰ 7AM–3PM (PST)<br>📍 Online via Zoom</p>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2025 AccessWorld Seminars — Empowering global transformation. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle functionality
+    const mobileBtn = document.getElementById('mobileMenuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+    // Close mobile menu when any link clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // Fade-in on scroll (same effect as main)
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+    fadeElements.forEach(el => observer.observe(el));
+    // manually also trigger for already visible ones
+    window.addEventListener('load', () => {
+        fadeElements.forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                el.classList.add('visible');
+            }
+        });
+    });
+</script>
+</body>
+</html>
