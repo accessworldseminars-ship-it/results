@@ -18,6 +18,8 @@
             --white: #ffffff;
             --gray: #9aa3b5;
             --text: #d8dde8;
+            --telegram: #26A5E4;
+            --telegram-dark: #1e8bc3;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -211,11 +213,11 @@
             color: var(--gold);
             margin-bottom: 18px;
         }
-        .wa-pill {
+        .telegram-pill {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: #25D366;
+            background: var(--telegram);
             color: white;
             padding: 9px 18px;
             border-radius: 30px;
@@ -224,7 +226,7 @@
             text-decoration: none;
             transition: all 0.25s;
         }
-        .wa-pill:hover { background: #1da851; transform: translateY(-2px); }
+        .telegram-pill:hover { background: var(--telegram-dark); transform: translateY(-2px); }
 
         /* QUICK CONTACTS */
         .quick-section {
@@ -332,9 +334,9 @@
             color: var(--text);
             margin-bottom: 40px;
         }
-        .wa-note {
-            background: rgba(37,211,102,0.08);
-            border: 1px solid rgba(37,211,102,0.25);
+        .telegram-note {
+            background: rgba(38,165,228,0.08);
+            border: 1px solid rgba(38,165,228,0.25);
             border-radius: 10px;
             padding: 18px 22px;
             display: flex;
@@ -342,8 +344,8 @@
             gap: 14px;
             margin-bottom: 32px;
         }
-        .wa-note i { color: #25D366; font-size: 1.3rem; margin-top: 2px; flex-shrink: 0; }
-        .wa-note p { font-size: 0.85rem; color: var(--text); margin-bottom: 0; line-height: 1.6; }
+        .telegram-note i { color: var(--telegram); font-size: 1.3rem; margin-top: 2px; flex-shrink: 0; }
+        .telegram-note p { font-size: 0.85rem; color: var(--text); margin-bottom: 0; line-height: 1.6; }
         .side-promises {
             display: flex;
             flex-direction: column;
@@ -445,7 +447,7 @@
         .submit-btn {
             width: 100%;
             padding: 16px;
-            background: #25D366;
+            background: var(--telegram);
             color: white;
             border: none;
             border-radius: 6px;
@@ -463,9 +465,14 @@
             margin-top: 10px;
         }
         .submit-btn:hover {
-            background: #1da851;
+            background: var(--telegram-dark);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(37,211,102,0.3);
+            box-shadow: 0 8px 24px rgba(38,165,228,0.3);
+        }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
         .form-footer-note {
             text-align: center;
@@ -474,7 +481,25 @@
             color: var(--gray);
             line-height: 1.5;
         }
-        .form-footer-note i { color: #25D366; }
+        .form-footer-note i { color: var(--telegram); }
+        .telegram-feedback {
+            margin-top: 12px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            text-align: center;
+            display: none;
+        }
+        .telegram-feedback.success {
+            background: rgba(76, 175, 80, 0.15);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: #4CAF50;
+        }
+        .telegram-feedback.error {
+            background: rgba(244, 67, 54, 0.15);
+            border: 1px solid rgba(244, 67, 54, 0.3);
+            color: #f44336;
+        }
 
         /* FOOTER */
         .footer {
@@ -567,8 +592,8 @@
             <img src="https://i.ibb.co/F4c0V58q/Screenshot-2025-12-12-162510.png" alt="Joshua Roy">
             <div class="name">Joshua Roy</div>
             <div class="role">Results Coach · NLP · NSR</div>
-            <a href="https://wa.me/61432119091" class="wa-pill" target="_blank">
-                <i class="fab fa-whatsapp"></i> +61 432 119 091
+            <a href="https://t.me/joshuaroycoach" class="telegram-pill" target="_blank">
+                <i class="fab fa-telegram-plane"></i> @joshuaroycoach
             </a>
         </div>
     </div>
@@ -578,11 +603,11 @@
 <div class="quick-section">
     <div class="quick-inner">
         <div class="quick-card reveal">
-            <div class="quick-icon"><i class="fab fa-whatsapp"></i></div>
-            <h3>WhatsApp</h3>
+            <div class="quick-icon"><i class="fab fa-telegram-plane"></i></div>
+            <h3>Telegram</h3>
             <p>Fastest response — usually within hours.</p>
-            <a href="https://wa.me/61432119091" target="_blank">+61 432 119 091</a>
-            <a href="https://wa.me/61432119091" target="_blank" style="color:var(--gold); font-size:0.82rem; margin-top:6px;">Click to chat now →</a>
+            <a href="https://t.me/joshuaroycoach" target="_blank">@joshuaroycoach</a>
+            <a href="https://t.me/joshuaroycoach" target="_blank" style="color:var(--gold); font-size:0.82rem; margin-top:6px;">Click to chat now →</a>
         </div>
         <div class="quick-card reveal" style="transition-delay:0.1s">
             <div class="quick-icon"><i class="fas fa-envelope"></i></div>
@@ -599,16 +624,16 @@
     </div>
 </div>
 
-<!-- FORM -->
+<!-- FORM SECTION -->
 <section class="form-section">
     <div class="form-inner">
         <div class="form-side reveal">
             <div class="form-side-label">Send a Message</div>
             <h2>Tell Me What<br>You're <em>Working Through</em></h2>
-            <p>Fill in the form and it will open WhatsApp with your message pre-filled. Just tap send — it goes straight to me and I'll get back to you personally.</p>
-            <div class="wa-note">
-                <i class="fab fa-whatsapp"></i>
-                <p><strong>Why WhatsApp?</strong> It's faster, more personal and you get a real reply from me — not an autoresponder. Your enquiry goes directly to my phone.</p>
+            <p>Fill in the form and I'll receive your message instantly via Telegram. I personally reply to every enquiry.</p>
+            <div class="telegram-note">
+                <i class="fab fa-telegram-plane"></i>
+                <p><strong>Why Telegram?</strong> It's fast, secure, and I get your message directly on my phone — no spam, no autoresponders. You'll hear back from me personally.</p>
             </div>
             <div class="side-promises">
                 <div class="promise"><i class="fas fa-check-circle"></i> Personal reply from Joshua (not a team)</div>
@@ -619,31 +644,31 @@
         </div>
 
         <div class="form-box reveal" style="transition-delay:0.15s">
-            <h3><i class="fab fa-whatsapp" style="color:#25D366"></i> Send Via WhatsApp</h3>
-            <form id="contactForm">
+            <h3><i class="fab fa-telegram-plane" style="color:#26A5E4"></i> Send via Telegram</h3>
+            <form id="contactForm" data-telegram="true">
                 <div class="form-row">
                     <div class="form-group">
                         <label><i class="fas fa-user"></i> Full Name *</label>
-                        <input type="text" id="name" required placeholder="Jane Smith">
+                        <input type="text" id="name" name="Full Name" required placeholder="Jane Smith">
                     </div>
                     <div class="form-group">
                         <label><i class="fas fa-map-marker-alt"></i> Location *</label>
-                        <input type="text" id="location" required placeholder="Brisbane, QLD">
+                        <input type="text" id="location" name="Location" required placeholder="Brisbane, QLD">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label><i class="fas fa-envelope"></i> Email *</label>
-                        <input type="email" id="email" required placeholder="you@example.com">
+                        <input type="email" id="email" name="Email" required placeholder="you@example.com">
                     </div>
                     <div class="form-group">
                         <label><i class="fas fa-phone"></i> Phone *</label>
-                        <input type="tel" id="phone" required placeholder="0412 345 678">
+                        <input type="tel" id="phone" name="Phone" required placeholder="0412 345 678">
                     </div>
                 </div>
                 <div class="form-group">
                     <label><i class="fas fa-compass"></i> What do you want to work on? *</label>
-                    <select id="preference" required>
+                    <select id="preference" name="Focus Area" required>
                         <option value="" disabled selected>— Select area —</option>
                         <option>Life & Results Coaching</option>
                         <option>Nervous System Reprogramming (NSR)</option>
@@ -658,11 +683,11 @@
                 </div>
                 <div class="form-group">
                     <label><i class="fas fa-comment-alt"></i> What's going on for you right now? *</label>
-                    <textarea id="challenges" required placeholder="Briefly describe what you'd like help with and what's most important to you right now..."></textarea>
+                    <textarea id="challenges" name="Current Situation" required placeholder="Briefly describe what you'd like help with and what's most important to you right now..."></textarea>
                 </div>
                 <div class="form-group">
                     <label><i class="fas fa-bullhorn"></i> How did you hear about us?</label>
-                    <select id="hearAbout">
+                    <select id="hearAbout" name="How Heard">
                         <option value="">— Select —</option>
                         <option>Google</option>
                         <option>Facebook</option>
@@ -677,15 +702,16 @@
                 <div class="form-group">
                     <label><i class="fas fa-clipboard-list"></i> Have you done coaching before?</label>
                     <div class="radio-row">
-                        <label><input type="radio" name="prev" value="Yes"> Yes</label>
-                        <label><input type="radio" name="prev" value="No" checked> No</label>
+                        <label><input type="radio" name="Previous Coaching" value="Yes"> Yes</label>
+                        <label><input type="radio" name="Previous Coaching" value="No" checked> No</label>
                     </div>
                 </div>
-                <button type="submit" class="submit-btn">
-                    <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fab fa-telegram-plane"></i> Send via Telegram
                 </button>
+                <div class="telegram-feedback" id="telegramFeedback"></div>
                 <p class="form-footer-note">
-                    <i class="fas fa-info-circle"></i> This opens WhatsApp with your message ready to send. Free and instant.
+                    <i class="fas fa-info-circle"></i> Your message will be sent directly to Joshua via Telegram. No spam, ever.
                 </p>
             </form>
         </div>
@@ -701,54 +727,172 @@
     </div>
 </footer>
 
+<!-- TELEGRAM INTEGRATION SCRIPT -->
 <script>
-    // Hamburger
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('open');
-        hamburger.innerHTML = mobileMenu.classList.contains('open')
-            ? '<i class="fas fa-times"></i>'
-            : '<i class="fas fa-bars"></i>';
-    });
-    document.querySelectorAll('.mobile-menu a').forEach(a => {
-        a.addEventListener('click', () => {
-            mobileMenu.classList.remove('open');
-            hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+    // ============================================
+    // TELEGRAM MESSAGE SENDER - CONFIGURE HERE
+    // ============================================
+    
+    // !!! IMPORTANT: Replace these with your actual Telegram bot token and chat ID !!!
+    const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';  // Get from @BotFather on Telegram
+    const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID_HERE';      // Get from @userinfobot on Telegram
+    // ============================================
+    
+    // Check if configured
+    const isTelegramConfigured = TELEGRAM_BOT_TOKEN !== 'YOUR_BOT_TOKEN_HERE' && TELEGRAM_CHAT_ID !== 'YOUR_CHAT_ID_HERE';
+    
+    // Function to send message to Telegram
+    async function sendToTelegram(message, parseMode = 'HTML') {
+        if (!isTelegramConfigured) {
+            console.warn('Telegram: Please configure BOT_TOKEN and CHAT_ID');
+            return false;
+        }
+        
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                    parse_mode: parseMode,
+                    disable_web_page_preview: true
+                })
+            });
+            
+            const result = await response.json();
+            if (result.ok) {
+                console.log('Telegram: Message sent successfully');
+                return true;
+            } else {
+                console.error('Telegram Error:', result.description);
+                return false;
+            }
+        } catch (error) {
+            console.error('Telegram: Network error', error);
+            return false;
+        }
+    }
+    
+    // Format form data into a nice message
+    function formatFormMessage(formData, pageTitle, pageUrl) {
+        const timestamp = new Date().toLocaleString('en-US', { 
+            dateStyle: 'full', 
+            timeStyle: 'medium' 
+        });
+        
+        let message = `📬 <b>NEW COACHING ENQUIRY</b>\n`;
+        message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        message += `📄 <b>Page:</b> <a href="${pageUrl}">${pageTitle}</a>\n`;
+        message += `🕐 <b>Time:</b> ${timestamp}\n`;
+        message += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+        
+        for (let [key, value] of formData.entries()) {
+            if (value && value.toString().trim()) {
+                message += `📌 <b>${key}:</b>\n   ${value}\n\n`;
+            }
+        }
+        
+        message += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        message += `✅ <b>Action Required:</b> Reply within 24 hours\n`;
+        
+        return message;
+    }
+    
+    // Handle form submission
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const feedback = document.getElementById('telegramFeedback');
+        
+        if (!form) return;
+        
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Validate required fields
+            const name = document.getElementById('name')?.value.trim();
+            const location = document.getElementById('location')?.value.trim();
+            const email = document.getElementById('email')?.value.trim();
+            const phone = document.getElementById('phone')?.value.trim();
+            const preference = document.getElementById('preference')?.value;
+            const challenges = document.getElementById('challenges')?.value.trim();
+            
+            if (!name || !location || !email || !phone || !preference || !challenges) {
+                feedback.style.display = 'block';
+                feedback.className = 'telegram-feedback error';
+                feedback.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please fill in all required fields.';
+                setTimeout(() => {
+                    feedback.style.display = 'none';
+                }, 3000);
+                return;
+            }
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending...';
+            
+            // Collect all form data
+            const formData = new FormData(form);
+            const pageTitle = document.title;
+            const pageUrl = window.location.href;
+            
+            // Format and send message
+            const message = formatFormMessage(formData, pageTitle, pageUrl);
+            const success = await sendToTelegram(message);
+            
+            if (success) {
+                // Show success message
+                feedback.style.display = 'block';
+                feedback.className = 'telegram-feedback success';
+                feedback.innerHTML = '<i class="fas fa-check-circle"></i> Message sent! Joshua will reply to you personally within 24 hours.';
+                
+                // Reset form
+                form.reset();
+                
+                // Optional: Send a confirmation to the user's Telegram if they provided username?
+                // (Advanced feature - requires user's Telegram ID)
+                
+                setTimeout(() => {
+                    feedback.style.display = 'none';
+                }, 5000);
+            } else {
+                // Show error message
+                feedback.style.display = 'block';
+                feedback.className = 'telegram-feedback error';
+                feedback.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Failed to send. Please try again or contact directly via Telegram: @joshuaroycoach';
+                
+                setTimeout(() => {
+                    feedback.style.display = 'none';
+                }, 5000);
+            }
+            
+            // Re-enable button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fab fa-telegram-plane"></i> Send via Telegram';
         });
     });
-
-    // Form → WhatsApp
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const name      = document.getElementById('name').value.trim();
-        const location  = document.getElementById('location').value.trim();
-        const email     = document.getElementById('email').value.trim();
-        const phone     = document.getElementById('phone').value.trim();
-        const pref      = document.getElementById('preference').value;
-        const challenges= document.getElementById('challenges').value.trim();
-        const hear      = document.getElementById('hearAbout').value || 'Not specified';
-        const prev      = document.querySelector('input[name="prev"]:checked')?.value || 'Not specified';
-
-        if (!name || !location || !email || !phone || !pref || !challenges) {
-            alert('Please fill in all required fields.');
-            return;
-        }
-
-        const msg =
-            `*NEW COACHING ENQUIRY — ACCESSWORLD*%0A%0A` +
-            `*Name:* ${encodeURIComponent(name)}%0A` +
-            `*Location:* ${encodeURIComponent(location)}%0A` +
-            `*Email:* ${encodeURIComponent(email)}%0A` +
-            `*Phone:* ${encodeURIComponent(phone)}%0A` +
-            `*Focus Area:* ${encodeURIComponent(pref)}%0A` +
-            `*Situation:* ${encodeURIComponent(challenges)}%0A` +
-            `*Heard via:* ${encodeURIComponent(hear)}%0A` +
-            `*Previous coaching:* ${encodeURIComponent(prev)}`;
-
-        window.open(`https://wa.me/61432119091?text=${msg}`, '_blank');
-    });
-
+    
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            hamburger.innerHTML = mobileMenu.classList.contains('open')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
+        });
+        document.querySelectorAll('.mobile-menu a').forEach(a => {
+            a.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                if (hamburger) hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+    }
+    
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const obs = new IntersectionObserver((entries) => {
@@ -757,6 +901,11 @@
         });
     }, { threshold: 0.1 });
     reveals.forEach(r => obs.observe(r));
+    
+    // Log if Telegram not configured (for development)
+    if (!isTelegramConfigured) {
+        console.warn('⚠️ Telegram not configured. To enable, edit TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in the script section.');
+    }
 </script>
 </body>
 </html>
