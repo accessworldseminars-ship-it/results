@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test Form for Telegram</title>
+    <title>Contact Form with Country</title>
     <meta charset="UTF-8">
 </head>
 <body>
@@ -14,12 +14,25 @@
         <label>Phone:</label><br>
         <input type="tel" id="phone" placeholder="555-123-4567" style="width: 100%; padding: 8px;" required><br><br>
         
+        <label>Country:</label><br>
+        <select id="country" style="width: 100%; padding: 8px;" required>
+            <option value="">Select Country</option>
+            <option value="Australia">🇦🇺 Australia</option>
+            <option value="Canada">🇨🇦 Canada</option>
+            <option value="Ireland">🇮🇪 Ireland</option>
+            <option value="New Zealand">🇳🇿 New Zealand</option>
+            <option value="United Kingdom">🇬🇧 United Kingdom</option>
+            <option value="United States">🇺🇸 United States</option>
+        </select><br><br>
+        
         <label>Email:</label><br>
         <input type="email" id="email" placeholder="john@example.com" style="width: 100%; padding: 8px;" required><br><br>
         
         <button type="submit" style="padding: 10px 20px; background: #0088cc; color: white; border: none; cursor: pointer;">Send to Telegram</button>
     </form>
+    
     <div id="status" style="margin-top: 20px; padding: 10px; display: none;"></div>
+
     <script>
         const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
         
@@ -29,6 +42,7 @@
             const formData = {
                 name: document.getElementById('name').value,
                 phone: document.getElementById('phone').value,
+                country: document.getElementById('country').value,
                 email: document.getElementById('email').value
             };
             
