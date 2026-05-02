@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Free Strategy Session | Qualify for Your Session</title>
-  <!-- Google Fonts & simple CSS reset -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -25,7 +24,6 @@
       margin: 0 auto;
     }
 
-    /* header card */
     .hero {
       text-align: center;
       margin-bottom: 2rem;
@@ -64,7 +62,6 @@
       font-weight: 400;
     }
 
-    /* main form card */
     .form-card {
       background: #ffffff;
       border-radius: 2rem;
@@ -198,6 +195,12 @@
       box-shadow: 0 12px 20px -8px rgba(0,0,0,0.2);
     }
 
+    .submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     .toast-msg {
       visibility: hidden;
       min-width: 260px;
@@ -218,7 +221,6 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       transition: visibility 0.2s, opacity 0.2s;
       opacity: 0;
-      border-radius: 50px;
     }
 
     .toast-msg.show {
@@ -267,29 +269,31 @@
     </div>
     <form id="strategyForm">
       <div class="form-grid">
-        <!-- Full name split but still simple elegant -->
+
         <div class="input-group">
           <label>First Name <span class="required-star">*</span></label>
-          <input type="text" id="firstName" placeholder="e.g., Jessica" required>
+          <input type="text" id="firstName" placeholder="e.g., Jessica">
         </div>
         <div class="input-group">
           <label>Middle Name</label>
           <input type="text" id="middleName" placeholder="(optional)">
         </div>
         <div class="input-group full-width">
-          <label>Last Name <span class="required-star">*</span></label>
-          <input type="text" id="lastName" placeholder="e.g., Williams" required>
+          <label>Last Name</label>
+          <input type="text" id="lastName" placeholder="e.g., Williams">
         </div>
 
-        <!-- Email Address fields modern -->
+        <!-- Email — now required -->
         <div class="input-group full-width">
-          <label>Email address</label>
-          <input type="text" id="streetAddress" placeholder="joebloggs@hotmail.com">
+          <label>Email Address <span class="required-star">*</span></label>
+          <input type="email" id="email" placeholder="joebloggs@hotmail.com">
         </div>
+
         <div class="input-group full-width">
           <label>How old are you?</label>
-          <input type="text" id="age?" placeholder="25, 35, 95">
+          <input type="text" id="age" placeholder="e.g., 35">
         </div>
+
         <div class="input-group">
           <label>City</label>
           <input type="text" id="city" placeholder="City">
@@ -303,14 +307,14 @@
           <input type="text" id="postal" placeholder="Zip code">
         </div>
 
-        <!-- Mobile Number with country code format -->
+        <!-- Mobile — required -->
         <div class="input-group full-width">
           <label>Mobile Number (inc. country code) <span class="required-star">*</span></label>
-          <input type="tel" id="mobile" placeholder="(000) 000-0000" required>
-          <div class="phone-hint">Format: (000) 000-0000 or +1 000 000 0000. Include country code.</div>
+          <input type="tel" id="mobile" placeholder="+61 400 000 000">
+          <div class="phone-hint">Include your country code. e.g. +61 for Australia, +1 for US/Canada.</div>
         </div>
 
-        <!-- WhatsApp installed selector -->
+        <!-- WhatsApp -->
         <div class="input-group full-width whatsapp-check">
           <label style="display: flex; align-items: center; gap: 12px;">
             <input type="checkbox" id="whatsappInstalled" value="Yes">
@@ -319,27 +323,28 @@
           <small class="info-text">📲 Please take time to install WhatsApp for your journey in the program. To install, open Google Play Store or App Store → Search WhatsApp → Install → Verify via SMS.</small>
         </div>
 
-        <!-- Best time to contact -->
+        <!-- Best time to contact — optional now -->
         <div class="input-group full-width time-contact">
-          <label>Best time to contact <span class="required-star">*</span></label>
-          <textarea id="bestTimes" rows="2" placeholder="e.g., Tuesday evenings 6-8 PM, Sunday afternoon 1-3 PM, Wednesday mornings" required></textarea>
+          <label>Best time to contact</label>
+          <textarea id="bestTimes" rows="2" placeholder="e.g., Tuesday evenings 6-8 PM, Sunday afternoon 1-3 PM"></textarea>
           <small class="info-text">Add 2 or 3 time slots that work best for you.</small>
         </div>
 
-        <!-- If you attended a live event, What did you like about the session you attended? -->
+        <!-- Live event feedback — optional -->
         <div class="input-group full-width">
-          <label>If you attended a live event - What did you like about the session you attended?</label>
+          <label>If you attended a live event — what did you like about it?</label>
           <textarea id="sessionFeedback" rows="2" placeholder="Tell us what resonated with you ..."></textarea>
         </div>
 
-        <!-- Main issue / life area -->
+        <!-- Main challenge — required -->
         <div class="input-group full-width">
           <label>What area of your life are you wanting to work on? <span class="required-star">*</span></label>
-          <textarea id="lifeArea" rows="3" placeholder="Describe challenges you're facing or issues you'd like to resolve. E.g., career transition, relationships, mindset, health..." required></textarea>
+          <textarea id="lifeArea" rows="3" placeholder="Describe challenges you're facing or issues you'd like to resolve. E.g., career transition, relationships, mindset, health..."></textarea>
         </div>
+
       </div>
 
-      <button type="submit" class="submit-btn">
+      <button type="button" class="submit-btn" id="submitBtn">
         <span>✨ Submit & qualify for session</span>
         <span>→</span>
       </button>
@@ -348,228 +353,140 @@
   </div>
 </div>
 
-<div id="toastMsg" class="toast-msg">✨ Sending your info ...</div>
+<div id="toastMsg" class="toast-msg"></div>
 
 <script>
-  // ----------------------------------------------
-  // CONFIGURATION: REPLACE WITH YOUR TELEGRAM BOT TOKEN & CHAT ID
-  // ----------------------------------------------
-  const TELEGRAM_BOT_TOKEN = "8155100717:AAE0ABDHsRuFWmbXa8coP8qdL3QK2ZWYkaY";     // <-- Replace with actual bot token from BotFather
-  const TELEGRAM_CHAT_ID = "5970521104";        // <-- Replace with your Telegram chat ID (can be user/group/channel ID)
-  // If you don't have a chat ID, you can get it by sending a message to @userinfobot on Telegram.
-  // For groups, add bot to group and get chat ID.
-  // ----------------------------------------------
-  // For testing: set DEBUG_MODE to true to see console logs without sending (optional)
-  const DEBUG_MODE = false;  // change to false in production after token setup
+  const TELEGRAM_BOT_TOKEN = "8155100717:AAE0ABDHsRuFWmbXa8coP8qdL3QK2ZWYkaY";
+  const TELEGRAM_CHAT_ID   = "5970521104";
 
-  // Helper to format message for Telegram
-  function formatTelegramMessage(formData) {
+  function formatTelegramMessage(d) {
     let msg = "🔔 *NEW STRATEGY SESSION REQUEST* 🔔\n\n";
-    msg += `👤 *Full Name:* ${formData.firstName} ${formData.middleName ? formData.middleName + ' ' : ''}${formData.lastName}\n`;
-    msg += `📍 *Address:* ${formData.streetAddress || '—'}`;
-    if (formData.addressLine2) msg += `, ${formData.addressLine2}`;
-    if (formData.city || formData.state || formData.postal) {
-      msg += `\n${formData.city ? formData.city + ', ' : ''}${formData.state ? formData.state + ' ' : ''}${formData.postal ? formData.postal : ''}`;
+    msg += `👤 *Name:* ${d.firstName}${d.middleName ? ' ' + d.middleName : ''}${d.lastName ? ' ' + d.lastName : ''}\n`;
+    msg += `📧 *Email:* ${d.email}\n`;
+    if (d.age)    msg += `🎂 *Age:* ${d.age}\n`;
+    if (d.city || d.state || d.postal) {
+      msg += `📍 *Location:* ${[d.city, d.state, d.postal].filter(Boolean).join(', ')}\n`;
     }
-    msg += `\n📞 *Mobile:* ${formData.mobile}\n`;
-    msg += `📱 *WhatsApp Installed:* ${formData.whatsappInstalled ? '✅ Yes' : '❌ No / Not stated'}\n`;
-    msg += `⏰ *Best times to contact:* ${formData.bestTimes}\n`;
-    if (formData.sessionFeedback && formData.sessionFeedback.trim() !== "") {
-      msg += `👍 *Session feedback:* ${formData.sessionFeedback}\n`;
-    }
-    msg += `🎯 *Area to work / challenges:* ${formData.lifeArea}\n`;
+    msg += `📞 *Mobile:* ${d.mobile}\n`;
+    msg += `📱 *WhatsApp:* ${d.whatsappInstalled ? '✅ Yes' : '❌ No'}\n`;
+    if (d.bestTimes) msg += `⏰ *Best times:* ${d.bestTimes}\n`;
+    if (d.sessionFeedback) msg += `👍 *Event feedback:* ${d.sessionFeedback}\n`;
+    msg += `🎯 *Area to work on:* ${d.lifeArea}\n`;
     msg += `\n🕒 *Submitted:* ${new Date().toLocaleString()}`;
     return msg;
   }
 
-  // Send to Telegram using fetch
-  async function sendToTelegram(messageText) {
-    if (!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN === "YOUR_BOT_TOKEN_HERE") {
-      console.warn("⚠️ Telegram bot token not configured. Please set TELEGRAM_BOT_TOKEN and CHAT_ID.");
-      if (!DEBUG_MODE) {
-        throw new Error("Telegram token missing");
-      } else {
-        console.log("DEBUG mode: would send message:", messageText);
-        return { ok: true, debug: true };
-      }
-    }
-    if (!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID === "YOUR_CHAT_ID_HERE") {
-      console.warn("⚠️ Telegram chat ID missing.");
-      if (!DEBUG_MODE) throw new Error("Chat ID missing");
-      else return { ok: true, debug: true };
-    }
-
+  async function sendToTelegram(text) {
     const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-    const payload = {
-      chat_id: TELEGRAM_CHAT_ID,
-      text: messageText,
-      parse_mode: "Markdown",
-      disable_web_page_preview: true
-    };
-
-    try {
-      const response = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-      const data = await response.json();
-      if (!data.ok) {
-        console.error("Telegram API error:", data);
-        throw new Error(`Telegram error: ${data.description || 'unknown'}`);
-      }
-      return data;
-    } catch (err) {
-      console.error("Failed to send telegram message:", err);
-      throw err;
-    }
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: TELEGRAM_CHAT_ID,
+        text: text,
+        parse_mode: "Markdown",
+        disable_web_page_preview: true
+      })
+    });
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.description || "Telegram error");
+    return data;
   }
 
-  // Helper to show toast message
   const toast = document.getElementById('toastMsg');
   function showToast(message, isError = false) {
     toast.textContent = message;
-    toast.style.background = isError ? '#b13e3ecc' : '#0c2c3eff';
+    toast.style.background = isError ? '#b13e3e' : '#0c2c3e';
     toast.classList.add('show');
-    setTimeout(() => {
-      toast.classList.remove('show');
-    }, 3800);
+    setTimeout(() => toast.classList.remove('show'), 4000);
   }
 
-  // Helper to validate phone number format (loose but require something)
-  function validatePhone(phone) {
-    const cleaned = phone.replace(/[\s\-\(\)\+]/g, '');
-    return cleaned.length >= 8; // Basic: at least 8 digits
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
-  // Form submit handler
-  const form = document.getElementById('strategyForm');
+  function isValidPhone(phone) {
+    return phone.replace(/[\s\-\(\)\+]/g, '').length >= 8;
+  }
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  document.getElementById('submitBtn').addEventListener('click', async () => {
+    // Collect values
+    const firstName      = document.getElementById('firstName').value.trim();
+    const middleName     = document.getElementById('middleName').value.trim();
+    const lastName       = document.getElementById('lastName').value.trim();
+    const email          = document.getElementById('email').value.trim();
+    const age            = document.getElementById('age').value.trim();
+    const city           = document.getElementById('city').value.trim();
+    const state          = document.getElementById('state').value.trim();
+    const postal         = document.getElementById('postal').value.trim();
+    const mobile         = document.getElementById('mobile').value.trim();
+    const whatsappInstalled = document.getElementById('whatsappInstalled').checked;
+    const bestTimes      = document.getElementById('bestTimes').value.trim();
+    const sessionFeedback= document.getElementById('sessionFeedback').value.trim();
+    const lifeArea       = document.getElementById('lifeArea').value.trim();
 
-    // gather all values
-    const firstName = document.getElementById('firstName').value.trim();
-    const middleName = document.getElementById('middleName').value.trim();
-    const lastName = document.getElementById('lastName').value.trim();
-    const streetAddress = document.getElementById('streetAddress').value.trim();
-    const addressLine2 = document.getElementById('addressLine2').value.trim();
-    const city = document.getElementById('city').value.trim();
-    const state = document.getElementById('state').value.trim();
-    const postal = document.getElementById('postal').value.trim();
-    const mobile = document.getElementById('mobile').value.trim();
-    const whatsappChecked = document.getElementById('whatsappInstalled').checked;
-    const bestTimes = document.getElementById('bestTimes').value.trim();
-    const sessionFeedback = document.getElementById('sessionFeedback').value.trim();
-    const lifeArea = document.getElementById('lifeArea').value.trim();
-
-    // validations
+    // Validate required fields only
     if (!firstName) {
       showToast("❌ Please enter your first name", true);
       document.getElementById('firstName').focus();
       return;
     }
-    if (!lastName) {
-      showToast("❌ Last name is required", true);
-      document.getElementById('lastName').focus();
+    if (!email) {
+      showToast("❌ Email address is required", true);
+      document.getElementById('email').focus();
+      return;
+    }
+    if (!isValidEmail(email)) {
+      showToast("❌ Please enter a valid email address", true);
+      document.getElementById('email').focus();
       return;
     }
     if (!mobile) {
-      showToast("📞 Mobile number required (include country code)", true);
+      showToast("📞 Mobile number is required", true);
       document.getElementById('mobile').focus();
       return;
     }
-    if (!validatePhone(mobile)) {
-      showToast("📱 Please enter a valid phone number with country code", true);
+    if (!isValidPhone(mobile)) {
+      showToast("📱 Please enter a valid phone number", true);
       document.getElementById('mobile').focus();
-      return;
-    }
-    if (!bestTimes) {
-      showToast("⏰ Please add 2-3 preferred contact times", true);
-      document.getElementById('bestTimes').focus();
       return;
     }
     if (!lifeArea) {
-      showToast("🎯 Describe the area you'd like to work on", true);
+      showToast("🎯 Please describe the area you'd like to work on", true);
       document.getElementById('lifeArea').focus();
       return;
     }
 
-    // Disable submit button to avoid double submissions
-    const submitBtn = document.querySelector('.submit-btn');
-    const originalBtnText = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span>⏳ Sending ...</span>`;
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<span>⏳ Sending ...</span>';
 
-    // Build form data object
     const formData = {
-      firstName,
-      middleName,
-      lastName,
-      streetAddress: streetAddress || "—",
-      addressLine2: addressLine2 || "",
-      city: city || "—",
-      state: state || "—",
-      postal: postal || "—",
-      mobile,
-      whatsappInstalled: whatsappChecked,
-      bestTimes,
-      sessionFeedback: sessionFeedback || "(No feedback provided)",
-      lifeArea
+      firstName, middleName, lastName,
+      email, age,
+      city, state, postal,
+      mobile, whatsappInstalled,
+      bestTimes, sessionFeedback, lifeArea
     };
 
-    const message = formatTelegramMessage(formData);
-    
     try {
-      // Send instant notification to Telegram Bot
-      await sendToTelegram(message);
-      
-      // Optional: also log/save to console for success
-      console.log("✅ Form submitted & Telegram notification sent.");
-      
-      // Show success toast
-      showToast("🎉 Thank you! Your strategy session request has been sent. We'll contact you shortly.");
-      
-      // Reset form fields after success (except optionally keep for readability, but we reset)
-      form.reset();
-      // uncheck whatsapp default reset (checkbox goes to unchecked by reset)
-      // optional small note: reset doesn't remove placeholder texts so it's fine.
-      // Also extra cleanup for middle, but it's fine
-      
-    } catch (error) {
-      console.error("Telegram send error:", error);
-      let errorMsg = "⚠️ Unable to send request. Please try again later or contact support.";
-      if (error.message.includes("token") || error.message.includes("chat_id")) {
-        errorMsg = "⚠️ Service configuration missing. Our team has been notified. Please try alternative contact.";
-      }
-      showToast(errorMsg, true);
+      await sendToTelegram(formatTelegramMessage(formData));
+      showToast("🎉 Done! We'll be in touch shortly.");
+      document.getElementById('strategyForm').reset();
+    } catch (err) {
+      console.error(err);
+      showToast("⚠️ Couldn't send. Please try again or contact us directly.", true);
     } finally {
-      // Re-enable button after 1.5 seconds
       setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnText;
-      }, 1500);
-    }
-  });
-
-  // Add phone auto formatting hint but let user free type (just gentle help)
-  const mobileInput = document.getElementById('mobile');
-  mobileInput.addEventListener('input', function(e) {
-    let val = e.target.value;
-    // minimal reminder - no strict formatting, just placeholder demonstration
-    if (val.length === 3 && !val.includes(')')) {
-      // do nothing, just improve UX friendly
+        btn.disabled = false;
+        btn.innerHTML = '<span>✨ Submit & qualify for session</span><span>→</span>';
+      }, 2000);
     }
   });
 </script>
 
-<!-- BONUS: Because we want demo to be fully transparent, unconfigured token shows toast warning, but
-     we also embed a note: Replace tokens with your actual credentials. 
-     For full production, user must add bot token & chat ID in the script constants. -->
 <div style="max-width: 880px; margin: 1.2rem auto 0; text-align: center; font-size: 0.7rem; color: #5f7f9e;">
   ⚡ Secure instant Telegram integration. Fill to qualify — your data is transmitted privately.
-  <br><span style="opacity:0.7;">✔️ Bot notification active once token is configured.</span>
 </div>
 </body>
 </html>
-```
