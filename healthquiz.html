@@ -1,5 +1,3 @@
-Here is the HTML document you requested, a wellness assessment form with a new "Country" field that sends all data including the country to Telegram.
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,16 +13,18 @@ Here is the HTML document you requested, a wellness assessment form with a new "
       --gold-light: #E2C87A;
       --border: rgba(201,168,76,0.22);
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
     body {
       background: var(--navy-deep);
       font-family: 'DM Sans', sans-serif;
       color: #E8E0D0;
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      padding: 2rem 1rem;
+      padding: env(safe-area-inset-top, 1rem) env(safe-area-inset-right, 1rem) env(safe-area-inset-bottom, 1rem) env(safe-area-inset-left, 1rem);
       position: relative;
     }
     body::before {
@@ -41,18 +41,31 @@ Here is the HTML document you requested, a wellness assessment form with a new "
       background-image: url('https://i.ibb.co/ynXdYpmL/worldjjpgsf.png');
       background-repeat: no-repeat;
       background-position: center center;
-      background-size: 50%;
+      background-size: 60%;
       opacity: 0.025;
       pointer-events: none;
     }
-    .app-wrap { position: relative; z-index: 2; width: 100%; max-width: 780px; margin: 0 auto; }
+
+    /* ── App wrapper ── */
+    .app-wrap {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 1rem 0.75rem;
+    }
+
+    /* ── Card ── */
     .card {
       background: linear-gradient(160deg, rgba(20,32,58,0.98) 0%, rgba(10,19,34,0.99) 100%);
-      border-radius: 2.4rem;
+      border-radius: 1.8rem;
       border: 1px solid var(--border);
-      box-shadow: 0 0 0 1px rgba(201,168,76,0.08), 0 40px 80px -20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.05);
-      padding: 3rem 3.2rem;
+      box-shadow: 0 0 0 1px rgba(201,168,76,0.08), 0 24px 60px -12px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.05);
+      padding: 1.75rem 1.4rem 1.5rem;
       position: relative;
+      /* Ensure card is scrollable if content overflows on very small screens */
+      overflow-x: hidden;
     }
     .card::before {
       content: '';
@@ -61,159 +74,327 @@ Here is the HTML document you requested, a wellness assessment form with a new "
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
     }
+
+    /* ── Typography ── */
     h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: 0.02em; }
-    h1 { font-size: 3.2rem; font-weight: 300; line-height: 1.1; }
-    h2 { font-size: 2rem; font-weight: 400; line-height: 1.2; }
-    h3 { font-size: 1.35rem; font-weight: 500; margin-bottom: 0.8rem; }
+    h1 { font-size: clamp(2rem, 8vw, 3.2rem); font-weight: 300; line-height: 1.1; }
+    h2 { font-size: clamp(1.5rem, 5.5vw, 2rem); font-weight: 400; line-height: 1.25; }
+    h3 { font-size: clamp(1.1rem, 4vw, 1.35rem); font-weight: 500; margin-bottom: 0.75rem; }
     .gold { color: var(--gold-light); }
-    p { line-height: 1.7; font-size: 0.97rem; color: #C8BCAA; }
-    .brand-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.2rem; }
-    .brand-header img { height: 40px; opacity: 0.9; }
-    .brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); opacity: 0.8; }
-    .divider { display: flex; align-items: center; gap: 1rem; margin: 1.6rem 0; }
+    p { line-height: 1.7; font-size: 0.93rem; color: #C8BCAA; }
+
+    /* ── Brand header ── */
+    .brand-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.6rem; }
+    .brand-header img { height: 32px; opacity: 0.9; }
+    .brand-name { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); opacity: 0.8; }
+
+    /* ── Divider ── */
+    .divider { display: flex; align-items: center; gap: 1rem; margin: 1.2rem 0; }
     .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent); }
-    .divider-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; opacity: 0.5; }
+    .divider-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; opacity: 0.5; flex-shrink: 0; }
+
+    /* ── Buttons ── */
     .btn {
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 500;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
-      padding: 0.9rem 2.2rem;
+      /* Minimum 48px tap target */
+      min-height: 48px;
+      padding: 0.75rem 1.6rem;
       border-radius: 60px;
       cursor: pointer;
       border: none;
-      transition: all 0.25s ease;
+      transition: all 0.22s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
     }
-    .btn-primary { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: var(--navy-deep); box-shadow: 0 4px 20px rgba(201,168,76,0.3); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.4); }
-    .btn-outline { background: transparent; color: var(--gold); border: 1px solid rgba(201,168,76,0.35); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      color: var(--navy-deep);
+      box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(201,168,76,0.4); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.35);
+    }
     .btn-outline:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); }
-    .btn:disabled { opacity: 0.3; cursor: not-allowed; }
-    .btn-row { display: flex; justify-content: space-between; align-items: center; margin-top: 2.4rem; gap: 1rem; }
-    .progress-bar { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; }
-    .prog-dot { height: 3px; background: rgba(201,168,76,0.18); border-radius: 3px; flex: 1; }
+    .btn:disabled { opacity: 0.3; cursor: not-allowed; pointer-events: none; }
+
+    /* ── Button row ── */
+    .btn-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.8rem;
+      gap: 0.75rem;
+    }
+    /* On very narrow screens, stack if needed */
+    @media (max-width: 360px) {
+      .btn-row { flex-wrap: wrap; }
+      .btn-row .btn { flex: 1; min-width: 120px; }
+    }
+
+    /* ── Progress bar ── */
+    .progress-bar { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 1.5rem; }
+    .prog-dot { height: 3px; background: rgba(201,168,76,0.18); border-radius: 3px; flex: 1; transition: background 0.3s ease; }
     .prog-dot.done { background: rgba(201,168,76,0.5); }
     .prog-dot.active { background: var(--gold-light); }
-    .options-grid { display: grid; gap: 0.75rem; margin: 1.6rem 0 0.5rem; }
+
+    /* ── Option cards ── */
+    .options-grid { display: grid; gap: 0.65rem; margin: 1.3rem 0 0.5rem; }
     .opt-card {
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(201,168,76,0.18);
-      border-radius: 1.2rem;
-      padding: 1.1rem 1.5rem;
+      border-radius: 1rem;
+      /* Generous tap target */
+      padding: 1rem 1.25rem;
+      min-height: 56px;
       cursor: pointer;
-      transition: all 0.2s ease;
-      font-size: 0.95rem;
+      transition: all 0.18s ease;
+      font-size: 0.92rem;
       color: #C8BCAA;
       display: flex;
       align-items: center;
-      gap: 0.9rem;
+      gap: 0.8rem;
+      text-align: left;
+      -webkit-user-select: none;
+      user-select: none;
     }
-    .opt-card:hover { background: rgba(201,168,76,0.06); border-color: rgba(201,168,76,0.4); color: #E8E0D0; }
+    .opt-card:active { transform: scale(0.98); }
     .opt-card.selected { background: rgba(201,168,76,0.12); border-color: var(--gold); color: var(--gold-light); }
-    .scale-container { margin: 2rem 0 1rem; }
-    .scale-labels { display: flex; justify-content: space-between; font-size: 0.72rem; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 1rem; }
-    .scale-btns { display: flex; gap: 0.7rem; justify-content: center; }
+    .opt-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+    /* ── Scale (1-5) ── */
+    .scale-container { margin: 1.5rem 0 0.75rem; }
+    .scale-labels { display: flex; justify-content: space-between; font-size: 0.68rem; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 0.75rem; letter-spacing: 0.06em; }
+
+    .scale-btns {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
     .scale-btn {
-      flex: 1; max-width: 100px; aspect-ratio: 1;
+      flex: 1;
+      /* Square tap target, minimum 56px */
+      min-height: 56px;
+      max-width: 80px;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(201,168,76,0.2);
-      border-radius: 1.2rem;
+      border-radius: 1rem;
       cursor: pointer;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 0.3rem;
+      gap: 0.2rem;
+      transition: all 0.18s ease;
+      -webkit-user-select: none;
+      user-select: none;
     }
+    .scale-btn:active { transform: scale(0.94); }
     .scale-btn:hover { background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.5); }
-    .scale-btn.selected { background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.12)); border-color: var(--gold); }
-    .scale-num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: #E8E0D0; line-height: 1; }
+    .scale-btn.selected {
+      background: linear-gradient(135deg, rgba(201,168,76,0.22), rgba(201,168,76,0.12));
+      border-color: var(--gold);
+    }
+    .scale-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 5vw, 2rem);
+      font-weight: 300;
+      color: #E8E0D0;
+      line-height: 1;
+    }
     .scale-btn.selected .scale-num { color: var(--gold-light); }
-    .scale-word { font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(201,168,76,0.5); }
-    .q-category { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-bottom: 0.5rem; }
-    .q-text { font-family: 'Cormorant Garamond', serif; font-size: 1.65rem; font-weight: 400; line-height: 1.35; color: #EAE3D5; margin-bottom: 0.2rem; }
-    .q-counter { font-size: 0.75rem; color: rgba(201,168,76,0.45); letter-spacing: 0.12em; text-transform: uppercase; }
+    .scale-word { font-size: 0.55rem; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(201,168,76,0.5); text-align: center; }
+
+    /* ── Question display ── */
+    .q-category { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-bottom: 0.4rem; }
+    .q-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 4.5vw, 1.65rem); font-weight: 400; line-height: 1.35; color: #EAE3D5; margin-bottom: 0.2rem; }
+    .q-counter { font-size: 0.72rem; color: rgba(201,168,76,0.45); letter-spacing: 0.12em; text-transform: uppercase; }
+
+    /* ── Teaching moments ── */
     .teaching-moment {
       background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(20,32,58,0.8) 100%);
-      border-radius: 1.5rem;
-      margin: 1.5rem 0 0.5rem;
-      padding: 1.2rem 1.5rem;
+      border-radius: 1.2rem;
+      margin: 1.2rem 0 0.5rem;
+      padding: 1rem 1.25rem;
       border: 1px solid rgba(201,168,76,0.2);
     }
-    .teaching-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 500; color: var(--gold-light); margin-bottom: 0.6rem; }
-    .teaching-text { font-size: 0.85rem; color: #B8AA96; line-height: 1.6; }
+    .teaching-title { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-weight: 500; color: var(--gold-light); margin-bottom: 0.5rem; }
+    .teaching-text { font-size: 0.82rem; color: #B8AA96; line-height: 1.6; }
+
+    /* ── Seminar badge ── */
     .seminar-badge {
       background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.05));
       border: 1px dashed rgba(201,168,76,0.35);
-      border-radius: 1.5rem;
-      padding: 1.4rem 1.8rem;
+      border-radius: 1.2rem;
+      padding: 1.2rem 1.4rem;
       text-align: center;
-      margin: 1.8rem 0;
+      margin: 1.4rem 0;
     }
-    .seminar-badge .badge-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; color: var(--gold-light); margin-bottom: 0.4rem; }
+    .seminar-badge .badge-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 500; color: var(--gold-light); margin-bottom: 0.4rem; }
+    .seminar-badge p { font-size: 0.85rem; margin-bottom: 0.6rem; }
     .seminar-badge a {
       display: inline-block;
       color: var(--gold-light);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       text-decoration: none;
       border-bottom: 1px solid rgba(201,168,76,0.35);
+      padding-bottom: 1px;
     }
+
+    /* ── Lead form ── */
     .lead-form input, .lead-form select {
       width: 100%;
-      padding: 1rem 1.4rem;
+      /* Min 48px height for tap targets */
+      padding: 0.9rem 1.2rem;
+      min-height: 52px;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(201,168,76,0.3);
-      border-radius: 1rem;
+      border-radius: 0.9rem;
       color: #E8E0D0;
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
       font-size: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      -webkit-appearance: none;
+      appearance: none;
+      transition: border-color 0.2s;
+    }
+    .lead-form select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23C9A84C' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1.2rem center;
+      padding-right: 2.5rem;
     }
     .lead-form select option { background: var(--navy-deep); color: #E8E0D0; }
-    .lead-form input:focus, .lead-form select:focus { outline: none; border-color: var(--gold); }
-    .lead-form input::placeholder { color: rgba(200,188,170,0.5); }
-    .report-wrap { max-height: 70vh; overflow-y: auto; padding-right: 0.8rem; }
-    .report-wrap::-webkit-scrollbar { width: 4px; }
-    .report-wrap::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.25); border-radius: 4px; }
+    .lead-form input:focus, .lead-form select:focus { outline: none; border-color: var(--gold); background: rgba(255,255,255,0.07); }
+    .lead-form input::placeholder { color: rgba(200,188,170,0.45); }
+
+    /* ── Report ── */
+    .report-wrap {
+      /* Removed max-height/overflow on mobile - let it scroll naturally */
+      padding-right: 0.25rem;
+    }
     .report-section {
-      margin-bottom: 1.8rem;
-      padding: 1.6rem 1.8rem;
+      margin-bottom: 1.4rem;
+      padding: 1.25rem 1.3rem;
       background: rgba(255,255,255,0.025);
-      border-radius: 1.5rem;
+      border-radius: 1.2rem;
       border-left: 3px solid var(--gold);
     }
-    .report-section h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 500; color: var(--gold-light); margin-bottom: 1rem; }
-    .report-section p { font-size: 0.92rem; line-height: 1.75; color: #C0B49E; margin-bottom: 0.8rem; }
+    .report-section h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 4vw, 1.25rem); font-weight: 500; color: var(--gold-light); margin-bottom: 0.8rem; }
+    .report-section p { font-size: 0.88rem; line-height: 1.75; color: #C0B49E; margin-bottom: 0.7rem; }
     .report-section strong { color: #E0D4C0; font-weight: 600; }
-    .report-section ul { list-style: none; padding: 0; margin: 0.5rem 0 1rem; }
-    .report-section ul li { font-size: 0.91rem; color: #C0B49E; padding: 0.35rem 0 0.35rem 1.4rem; position: relative; line-height: 1.6; }
-    .report-section ul li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); font-size: 0.9rem; }
-    .score-hero { text-align: center; padding: 1.5rem 0 1rem; }
-    .score-ring { display: inline-flex; align-items: center; justify-content: center; width: 130px; height: 130px; border-radius: 50%; border: 2px solid rgba(201,168,76,0.3); background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%); margin-bottom: 1rem; }
-    .score-num { font-family: 'Cormorant Garamond', serif; font-size: 3.6rem; font-weight: 300; color: var(--gold-light); line-height: 1; }
-    .score-denom { font-size: 1.1rem; color: rgba(201,168,76,0.5); align-self: flex-end; padding-bottom: 0.6rem; }
-    .tier-label { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; color: var(--gold-light); }
-    .tier-msg { font-size: 0.92rem; color: #B8AA96; max-width: 480px; margin: 0.5rem auto; }
-    .category-bar-wrap { margin: 0.8rem 0; }
-    .category-bar-label { display: flex; justify-content: space-between; font-size: 0.8rem; color: #A0947E; margin-bottom: 0.35rem; }
-    .category-bar-track { height: 6px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden; }
+    .report-section ul { list-style: none; padding: 0; margin: 0.4rem 0 0.8rem; }
+    .report-section ul li { font-size: 0.88rem; color: #C0B49E; padding: 0.3rem 0 0.3rem 1.4rem; position: relative; line-height: 1.6; }
+    .report-section ul li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); font-size: 0.8rem; top: 0.38rem; }
+
+    /* ── Score hero ── */
+    .score-hero { text-align: center; padding: 1rem 0 0.8rem; }
+    .score-ring {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 2px solid rgba(201,168,76,0.3);
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      margin-bottom: 0.8rem;
+    }
+    .score-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--gold-light); line-height: 1; }
+    .score-denom { font-size: 1rem; color: rgba(201,168,76,0.5); align-self: flex-end; padding-bottom: 0.5rem; }
+    .tier-label { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 5vw, 1.5rem); font-weight: 500; color: var(--gold-light); }
+    .tier-msg { font-size: 0.88rem; color: #B8AA96; max-width: 440px; margin: 0.5rem auto; }
+
+    /* ── Category bars ── */
+    .category-bar-wrap { margin: 0.7rem 0; }
+    .category-bar-label { display: flex; justify-content: space-between; font-size: 0.75rem; color: #A0947E; margin-bottom: 0.3rem; }
+    .category-bar-track { height: 5px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden; }
     .category-bar-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, rgba(201,168,76,0.5), var(--gold-light)); }
-    .report-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(201,168,76,0.12); }
-    .report-page-indicator { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,168,76,0.45); }
-    .download-btn { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); background: transparent; border: 1px solid rgba(201,168,76,0.3); border-radius: 60px; padding: 0.4rem 1.2rem; cursor: pointer; }
-    .tag { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); border-radius: 60px; padding: 0.25rem 0.9rem; display: inline-block; }
-    .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1rem 0 0; }
-    .highlight-box { background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02)); border: 1px solid rgba(201,168,76,0.2); border-radius: 1.2rem; padding: 1.2rem; margin: 1rem 0; }
-    footer.card-footer { text-align: center; margin-top: 2rem; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(201,168,76,0.3); }
-    .intro-eyebrow { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.75; margin-bottom: 1rem; }
-    .intro-subtitle { font-size: 1rem; color: #A09282; line-height: 1.7; margin: 1rem 0 0; }
-    .intro-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
-    .stat-box { text-align: center; padding: 1rem; background: rgba(255,255,255,0.025); border: 1px solid rgba(201,168,76,0.12); border-radius: 1.2rem; }
-    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--gold-light); }
-    .stat-label { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: #7A6A52; margin-top: 0.3rem; }
-    @media (max-width: 600px) { .card { padding: 2rem 1.5rem; } h1 { font-size: 2.4rem; } .scale-btns { gap: 0.4rem; } .scale-num { font-size: 1.7rem; } }
+
+    /* ── Report header ── */
+    .report-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+    }
+    .report-page-indicator { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(201,168,76,0.45); margin-top: 0.25rem; }
+    .download-btn {
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 60px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      min-height: 36px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ── Tags ── */
+    .tag { font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); border-radius: 60px; padding: 0.25rem 0.8rem; display: inline-block; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; margin: 0.8rem 0 0; }
+
+    /* ── Highlight box ── */
+    .highlight-box { background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02)); border: 1px solid rgba(201,168,76,0.2); border-radius: 1rem; padding: 1rem; margin: 0.8rem 0; }
+
+    /* ── Footer ── */
+    footer.card-footer { text-align: center; margin-top: 1.5rem; font-size: 0.67rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(201,168,76,0.3); }
+
+    /* ── Intro specific ── */
+    .intro-eyebrow { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.75; margin-bottom: 0.8rem; }
+    .intro-subtitle { font-size: 0.93rem; color: #A09282; line-height: 1.7; margin: 0.8rem 0 0; }
+    .intro-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+    .stat-box { text-align: center; padding: 0.85rem 0.5rem; background: rgba(255,255,255,0.025); border: 1px solid rgba(201,168,76,0.12); border-radius: 1rem; }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 300; color: var(--gold-light); }
+    .stat-label { font-size: 0.6rem; letter-spacing: 0.07em; text-transform: uppercase; color: #7A6A52; margin-top: 0.25rem; }
+
+    /* ── Report page dots ── */
+    .report-page-dots { display: flex; gap: 0.4rem; }
+    .report-page-dots div { width: 7px; height: 7px; border-radius: 50%; transition: background 0.25s; }
+
+    /* ── DESKTOP enhancements (restore larger styles above 640px) ── */
+    @media (min-width: 640px) {
+      body { padding: 2rem 1rem; align-items: center; }
+      .app-wrap { padding: 0; }
+      .card { padding: 3rem 3.2rem; border-radius: 2.4rem; }
+      .brand-header img { height: 40px; }
+      .brand-header .brand-name { font-size: 1rem; }
+      .opt-card { padding: 1.1rem 1.5rem; border-radius: 1.2rem; }
+      .scale-btn { min-height: 72px; max-width: 100px; border-radius: 1.2rem; }
+      .scale-num { font-size: 2.2rem; }
+      .scale-word { font-size: 0.62rem; }
+      .report-wrap { max-height: 70vh; overflow-y: auto; padding-right: 0.8rem; }
+      .report-wrap::-webkit-scrollbar { width: 4px; }
+      .report-wrap::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.25); border-radius: 4px; }
+      .score-ring { width: 130px; height: 130px; }
+      .score-num { font-size: 3.6rem; }
+      .intro-stats { gap: 1rem; }
+      .stat-num { font-size: 2rem; }
+    }
   </style>
 </head>
 <body>
@@ -224,7 +405,6 @@ Here is the HTML document you requested, a wellness assessment form with a new "
 const BOT_TOKEN = "8155100717:AAE0ABDHsRuFWmbXa8coP8qdL3QK2ZWYkaY";
 const CHAT_ID = "5970521104";
 
-// UPDATED: Telegram message includes country field
 async function sendTelegramNotification(preData, contactInfo, score, tierLabel) {
   const message = `🌿 *NEW CELLULAR VITALITY LEAD* 🌿\n\n` +
     `📋 *CONTACT DETAILS:*\n` +
@@ -239,7 +419,6 @@ async function sendTelegramNotification(preData, contactInfo, score, tierLabel) 
     `📘 Learning Style: ${preData.learnPref}\n\n` +
     `⭐ *FINAL SCORE:* ${score}/5 — ${tierLabel}\n\n` +
     `✅ *AccessWorld Seminars - Follow Up Required*`;
-  
   const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
   try {
     const response = await fetch(url, {
@@ -249,7 +428,7 @@ async function sendTelegramNotification(preData, contactInfo, score, tierLabel) 
     });
     const result = await response.json();
     if (!response.ok) console.warn('Telegram error:', result);
-    else console.log('✅ Telegram sent successfully with contact details + country');
+    else console.log('✅ Telegram sent successfully');
   } catch(e) { console.warn('Telegram send failed:', e); }
 }
 
@@ -299,6 +478,10 @@ let currentQuestion = 0;
 
 const root = document.getElementById("app");
 
+function scrollTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 function calculateFinalScore() {
   const valid = answers.filter(a => a !== null);
   return valid.length === 0 ? 0 : valid.reduce((a,b) => a + b, 0) / valid.length;
@@ -337,6 +520,7 @@ function render() {
   else if (step === 'quiz') renderQuiz();
   else if (step === 'leadCapture') renderLeadCapture();
   else if (step === 'report') renderComprehensiveReport();
+  scrollTop();
 }
 
 function renderIntro() {
@@ -344,22 +528,52 @@ function renderIntro() {
     <div class="intro-eyebrow">Discover Your True Health Score</div>
     <h1>Cellular Vitality<br><em class="gold italic">Assessment</em></h1>
     <p class="intro-subtitle">A personalised deep-dive into your oxygen efficiency, lymphatic flow, alkaline balance and nervous system health.</p>
-    <div class="intro-stats"><div class="stat-box"><div class="stat-num">10</div><div class="stat-label">Dimensions</div></div>
-    <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Report Pages</div></div>
-    <div class="stat-box"><div class="stat-num">5m</div><div class="stat-label">To Complete</div></div></div>
+    <div class="intro-stats">
+      <div class="stat-box"><div class="stat-num">10</div><div class="stat-label">Dimensions</div></div>
+      <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Report Pages</div></div>
+      <div class="stat-box"><div class="stat-num">5m</div><div class="stat-label">To Complete</div></div>
+    </div>
     <div class="seminar-badge"><div class="badge-title">✦ 2-Day Health Seminar with Joshua Roy</div>
     <p>Live strategies, breathwork, NSR tools and community.</p>
     <a href="https://www.accessworldseminars.org/2dayhealthseminar" target="_blank">→ Reserve your seat</a></div>
-    <div style="text-align:center; margin-top:1.5rem;"><button class="btn btn-primary" id="startBtn">Begin Assessment →</button></div>
+    <div style="text-align:center; margin-top:1.5rem;"><button class="btn btn-primary" id="startBtn" style="min-width:200px;">Begin Assessment →</button></div>
     <footer class="card-footer">AccessWorld Seminars · Joshua Roy · Since 2015</footer>
   </div>`;
   document.getElementById("startBtn").onclick = () => { step = "pre1"; render(); };
 }
 
-function renderPreSegment() { renderPreScreen({ stepNum: 1, total: 4, title: "Tell me about your journey ✦", subtitle: "Which best describes you?", field: "segment", back: "intro", next: "pre2", options: [{ val: "Health Seeker", icon: "🌱", label: "Health Seeker — beginning my wellness journey" }, { val: "Performance Athlete", icon: "⚡", label: "Performance Athlete — optimising energy" }, { val: "Busy Professional", icon: "💼", label: "Busy Professional — low energy or brain fog" }, { val: "Wellness Practitioner", icon: "🌿", label: "Wellness Practitioner — deepening knowledge" }] }); }
-function renderPreGoal() { renderPreScreen({ stepNum: 2, total: 4, title: "What's your main health goal? ✦", subtitle: "Choose the outcome that matters most.", field: "goal", back: "pre1", next: "pre3", options: [{ val: "Sustained Energy", icon: "⚡", label: "Sustained Energy — no more crashes" }, { val: "Mental Clarity", icon: "🧠", label: "Mental Clarity — focus & memory" }, { val: "Lymph & Detox", icon: "🌀", label: "Lymph Detox — reduce bloat" }, { val: "Holistic Longevity", icon: "🌸", label: "Holistic Longevity — lasting vitality" }] }); }
-function renderPreHealthFocus() { renderPreScreen({ stepNum: 3, total: 4, title: "Your primary health focus ✦", subtitle: "Where do you most need support?", field: "healthFocus", back: "pre2", next: "pre4", options: [{ val: "Digestion & Gut", icon: "🥑", label: "Digestion & Gut health" }, { val: "Breath & Oxygen", icon: "🌬️", label: "Breathwork & Oxygenation" }, { val: "Lymphatic Movement", icon: "🏃", label: "Lymphatic Movement & Rebounding" }, { val: "Mindset & Trauma Release", icon: "🧘", label: "Mindset, limiting beliefs & emotional blocks" }] }); }
-function renderPreLearnPref() { renderPreScreen({ stepNum: 4, total: 4, title: "How do you love to learn? ✦", subtitle: "Tailors your coaching recommendation.", field: "learnPref", back: "pre3", next: "quiz", options: [{ val: "Visual & Video", icon: "🎥", label: "Visual & Video courses" }, { val: "Live Coaching", icon: "🎤", label: "Live seminars" }, { val: "Practical Workbooks", icon: "📖", label: "Practical workbooks" }, { val: "1-on-1 Mentorship", icon: "🤝", label: "1-on-1 mentorship with Joshua" }] }); }
+function renderPreSegment() {
+  renderPreScreen({ stepNum: 1, total: 4, title: "Tell me about your journey ✦", subtitle: "Which best describes you?", field: "segment", back: "intro", next: "pre2", options: [
+    { val: "Health Seeker", icon: "🌱", label: "Health Seeker — beginning my wellness journey" },
+    { val: "Performance Athlete", icon: "⚡", label: "Performance Athlete — optimising energy" },
+    { val: "Busy Professional", icon: "💼", label: "Busy Professional — low energy or brain fog" },
+    { val: "Wellness Practitioner", icon: "🌿", label: "Wellness Practitioner — deepening knowledge" }
+  ]});
+}
+function renderPreGoal() {
+  renderPreScreen({ stepNum: 2, total: 4, title: "What's your main health goal? ✦", subtitle: "Choose the outcome that matters most.", field: "goal", back: "pre1", next: "pre3", options: [
+    { val: "Sustained Energy", icon: "⚡", label: "Sustained Energy — no more crashes" },
+    { val: "Mental Clarity", icon: "🧠", label: "Mental Clarity — focus & memory" },
+    { val: "Lymph & Detox", icon: "🌀", label: "Lymph Detox — reduce bloat" },
+    { val: "Holistic Longevity", icon: "🌸", label: "Holistic Longevity — lasting vitality" }
+  ]});
+}
+function renderPreHealthFocus() {
+  renderPreScreen({ stepNum: 3, total: 4, title: "Your primary health focus ✦", subtitle: "Where do you most need support?", field: "healthFocus", back: "pre2", next: "pre4", options: [
+    { val: "Digestion & Gut", icon: "🥑", label: "Digestion & Gut health" },
+    { val: "Breath & Oxygen", icon: "🌬️", label: "Breathwork & Oxygenation" },
+    { val: "Lymphatic Movement", icon: "🏃", label: "Lymphatic Movement & Rebounding" },
+    { val: "Mindset & Trauma Release", icon: "🧘", label: "Mindset, limiting beliefs & emotional blocks" }
+  ]});
+}
+function renderPreLearnPref() {
+  renderPreScreen({ stepNum: 4, total: 4, title: "How do you love to learn? ✦", subtitle: "Tailors your coaching recommendation.", field: "learnPref", back: "pre3", next: "quiz", options: [
+    { val: "Visual & Video", icon: "🎥", label: "Visual & Video courses" },
+    { val: "Live Coaching", icon: "🎤", label: "Live seminars" },
+    { val: "Practical Workbooks", icon: "📖", label: "Practical workbooks" },
+    { val: "1-on-1 Mentorship", icon: "🤝", label: "1-on-1 mentorship with Joshua" }
+  ]});
+}
 
 function renderPreScreen({ stepNum, total, title, subtitle, options, back, next, field }) {
   root.innerHTML = `<div class="card">${brandHeader()}${progressBar(stepNum - 1, total)}
@@ -368,8 +582,19 @@ function renderPreScreen({ stepNum, total, title, subtitle, options, back, next,
     <div class="options-grid">${options.map(o => `<div class="opt-card" data-val="${o.val}"><span class="opt-icon">${o.icon}</span><span>${o.label}</span></div>`).join('')}</div>
     <div class="btn-row"><button class="btn btn-outline" id="backBtn">← Back</button><button class="btn btn-primary" id="nextBtn" disabled>Continue →</button></div>
   </div>`;
-  let sel = "";
-  document.querySelectorAll(".opt-card").forEach(el => { el.onclick = () => { document.querySelectorAll(".opt-card").forEach(c => c.classList.remove("selected")); el.classList.add("selected"); sel = el.dataset.val; document.getElementById("nextBtn").disabled = false; }; });
+  let sel = preData[field] || "";
+  if (sel) {
+    document.querySelectorAll(".opt-card").forEach(el => { if (el.dataset.val === sel) el.classList.add("selected"); });
+    document.getElementById("nextBtn").disabled = false;
+  }
+  document.querySelectorAll(".opt-card").forEach(el => {
+    el.onclick = () => {
+      document.querySelectorAll(".opt-card").forEach(c => c.classList.remove("selected"));
+      el.classList.add("selected");
+      sel = el.dataset.val;
+      document.getElementById("nextBtn").disabled = false;
+    };
+  });
   document.getElementById("nextBtn").onclick = () => { if (sel) { preData[field] = sel; step = next; render(); } };
   document.getElementById("backBtn").onclick = () => { step = back; render(); };
 }
@@ -389,17 +614,29 @@ function renderQuiz() {
     <div class="q-counter">Question ${currentQuestion + 1} of ${QUESTIONS.length}</div>
     <div class="q-category">${q.category}</div>
     <div class="q-text">${q.text}</div>
-    <div class="scale-container"><div class="scale-labels"><span>Rarely</span><span>Sometimes</span><span>Always</span></div>
-    <div class="scale-btns" id="scaleBtns"></div></div>${teachingHtml}
-    <div class="btn-row"><button class="btn btn-outline" id="prevBtn" ${currentQuestion === 0 ? 'disabled' : ''}>← Back</button>
-    <button class="btn btn-primary" id="nextBtn" ${answers[currentQuestion] === null ? 'disabled' : ''}>${currentQuestion === QUESTIONS.length - 1 ? 'Continue →' : 'Next →'}</button></div>
+    <div class="scale-container">
+      <div class="scale-labels"><span>Rarely</span><span>Sometimes</span><span>Always</span></div>
+      <div class="scale-btns" id="scaleBtns"></div>
+    </div>
+    ${teachingHtml}
+    <div class="btn-row">
+      <button class="btn btn-outline" id="prevBtn" ${currentQuestion === 0 ? 'disabled' : ''}>← Back</button>
+      <button class="btn btn-primary" id="nextBtn" ${answers[currentQuestion] === null ? 'disabled' : ''}>${currentQuestion === QUESTIONS.length - 1 ? 'Continue →' : 'Next →'}</button>
+    </div>
   </div>`;
+
   const sb = document.getElementById("scaleBtns");
   for (let i = 1; i <= 5; i++) {
     const btn = document.createElement("div");
     btn.className = `scale-btn${answers[currentQuestion] === i ? ' selected' : ''}`;
     btn.innerHTML = `<div class="scale-num">${i}</div><div class="scale-word">${words[i - 1]}</div>`;
-    btn.onclick = () => { answers[currentQuestion] = i; renderQuiz(); };
+    btn.onclick = () => {
+      answers[currentQuestion] = i;
+      // Briefly show selection then auto-advance on mobile after short delay
+      document.querySelectorAll('.scale-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      document.getElementById("nextBtn").disabled = false;
+    };
     sb.appendChild(btn);
   }
   document.getElementById("prevBtn").onclick = () => { if (currentQuestion > 0) { currentQuestion--; renderQuiz(); } };
@@ -411,32 +648,31 @@ function renderQuiz() {
   };
 }
 
-// LEAD CAPTURE with COUNTRY field (dropdown)
 function renderLeadCapture() {
   root.innerHTML = `<div class="card">${brandHeader()}
     <div class="progress-bar"><div class="prog-dot done"></div><div class="prog-dot done"></div><div class="prog-dot done"></div><div class="prog-dot done"></div><div class="prog-dot active"></div></div>
     <div class="q-category">Almost There! · Step 5 of 5</div>
     <h2 class="gold" style="text-align:center; margin-bottom:0.5rem;">Your Report Is Ready</h2>
-    <p style="text-align:center; margin-bottom:1.5rem;">Enter your details below to receive your personalised Cellular Vitality Report.</p>
+    <p style="text-align:center; margin-bottom:1.3rem; font-size:0.9rem;">Enter your details to receive your personalised Cellular Vitality Report.</p>
     <div class="lead-form">
-      <input type="text" id="leadName" placeholder="Full Name" required>
-      <input type="tel" id="leadPhone" placeholder="Phone Number" required>
-      <input type="email" id="leadEmail" placeholder="Email Address" required>
+      <input type="text" id="leadName" placeholder="Full Name" autocomplete="name" required>
+      <input type="tel" id="leadPhone" placeholder="Phone Number" autocomplete="tel" required>
+      <input type="email" id="leadEmail" placeholder="Email Address" autocomplete="email" required inputmode="email">
       <select id="leadCountry" required>
-        <option value="" disabled selected>-- Select your country --</option>
-        <option>United States</option><option>Canada</option><option>United Kingdom</option><option>Australia</option><option>Germany</option><option>France</option><option>Netherlands</option><option>Sweden</option><option>Norway</option><option>Denmark</option><option>New Zealand</option><option>Spain</option><option>Italy</option><option>South Africa</option><option>India</option><option>Brazil</option><option>Mexico</option><option>Other</option>
+        <option value="" disabled selected>— Select your country —</option>
+        <option>Australia</option><option>New Zealand</option><option>United States</option><option>Canada</option><option>United Kingdom</option><option>Germany</option><option>France</option><option>Netherlands</option><option>Sweden</option><option>Norway</option><option>Denmark</option><option>Spain</option><option>Italy</option><option>South Africa</option><option>India</option><option>Brazil</option><option>Mexico</option><option>Other</option>
       </select>
     </div>
-    <div class="seminar-badge" style="margin:1rem 0;">
+    <div class="seminar-badge" style="margin:0.8rem 0 1rem;">
       <div class="badge-title">✦ Free 2-Day Health Seminar</div>
       <p>Join Joshua Roy live for breathwork, NSR tools and community support.</p>
       <a href="https://www.accessworldseminars.org/2dayhealthseminar" target="_blank">→ Reserve your seat</a>
     </div>
     <div class="btn-row">
-      <button class="btn btn-outline" id="backToQuizBtn">← Back to Quiz</button>
+      <button class="btn btn-outline" id="backToQuizBtn">← Back</button>
       <button class="btn btn-primary" id="submitLeadBtn">Send My Report →</button>
     </div>
-    <footer class="card-footer">Your information is secure. We'll send your report and occasional wellness insights.</footer>
+    <footer class="card-footer">Your information is secure. Wellness insights only — no spam.</footer>
   </div>`;
 
   document.getElementById("backToQuizBtn").onclick = () => { step = "quiz"; currentQuestion = QUESTIONS.length - 1; render(); };
@@ -445,26 +681,18 @@ function renderLeadCapture() {
     const phone = document.getElementById("leadPhone").value.trim();
     const email = document.getElementById("leadEmail").value.trim();
     const country = document.getElementById("leadCountry").value;
-    
     if (!name || !phone || !email || !country) {
-      alert("❌ Please fill in all fields: Name, Phone, Email, and Country to receive your report.");
+      alert("Please fill in all fields to receive your report.");
       return;
     }
-    
-    // Store contact info with country
     contactInfo = { name, phone, email, country };
-    
-    // Send to Telegram with ALL data including country
     sendTelegramNotification(preData, contactInfo, finalScore.toFixed(1), getTier(finalScore).label);
-    
-    // Move to report
     step = "report";
     reportPage = 0;
     render();
   };
 }
 
-// REPORT PAGES (same as before, full version)
 function renderComprehensiveReport() {
   const avg = finalScore.toFixed(1);
   const tier = getTier(finalScore);
@@ -472,35 +700,77 @@ function renderComprehensiveReport() {
   const lowest = sorted.slice(0, 3);
   const highest = sorted.slice(-3).reverse();
 
-  const page1 = `<div class="score-hero"><div class="score-ring"><span class="score-num">${avg}</span><span class="score-denom">/5</span></div>
-    <div class="tier-label">${tier.label}</div><div style="font-size:0.78rem;color:rgba(201,168,76,0.5);margin-bottom:0.5rem;">${tier.sub}</div>
-    <p class="tier-msg">${tier.msg}</p><div class="tag-row"><span class="tag">${preData.segment}</span><span class="tag">${preData.goal}</span><span class="tag">${preData.healthFocus}</span></div></div>
-    <div class="report-section"><h3>🧬 Your Cellular Vitality Breakdown</h3>${Object.entries(categoryAverages).map(([cat, sc]) => `<div class="category-bar-wrap"><div class="category-bar-label"><span>${cat}</span><span>${sc.toFixed(1)}/5</span></div><div class="category-bar-track"><div class="category-bar-fill" style="width:${(sc / 5) * 100}%"></div></div></div>`).join('')}</div>
+  const page1 = `
+    <div class="score-hero">
+      <div class="score-ring"><span class="score-num">${avg}</span><span class="score-denom">/5</span></div>
+      <div class="tier-label">${tier.label}</div>
+      <div style="font-size:0.75rem;color:rgba(201,168,76,0.5);margin-bottom:0.5rem;">${tier.sub}</div>
+      <p class="tier-msg">${tier.msg}</p>
+      <div class="tag-row"><span class="tag">${preData.segment}</span><span class="tag">${preData.goal}</span><span class="tag">${preData.healthFocus}</span></div>
+    </div>
+    <div class="report-section"><h3>🧬 Your Cellular Vitality Breakdown</h3>
+      ${Object.entries(categoryAverages).map(([cat, sc]) => `<div class="category-bar-wrap"><div class="category-bar-label"><span>${cat}</span><span>${sc.toFixed(1)}/5</span></div><div class="category-bar-track"><div class="category-bar-fill" style="width:${(sc/5)*100}%"></div></div></div>`).join('')}
+    </div>
     <div class="report-section"><h3>⚡ Priority Areas — Start Here</h3><ul>${lowest.map(([cat, sc]) => `<li><strong>${cat}</strong> — ${sc.toFixed(1)}/5</li>`).join('')}</ul></div>
     <div class="report-section"><h3>✨ Your Strengths</h3><ul>${highest.map(([cat, sc]) => `<li><strong>${cat}</strong> — ${sc.toFixed(1)}/5</li>`).join('')}</ul></div>
     <div class="report-section"><h3>📖 Understanding Your Score</h3><p>Scores below 3.0 indicate shallow breathing, sluggish lymph, or an acid-forming diet. The body begins rebalancing within 72 hours of focused change.</p></div>`;
 
-  const page2 = `<div class="report-section"><h3>🌀 The Lymphatic System — Your Cellular Sewage Network</h3><p>Unlike your cardiovascular system, the lymphatic system has <strong>no central pump</strong>. It relies entirely on body movement. When sedentary, lymph stagnates → toxins accumulate → brain fog and bloating follow.</p><p><strong>Activators:</strong> Heel drops (7–15 min daily), rebounding (increases flow up to 15x), brisk walking. Cilantro and celery juice chelate heavy metals and hydrate lymph tissue.</p><div class="highlight-box"><p>🌿 <strong>Try this today:</strong> Stand, raise your heels slowly, then let them drop 30 times. Your lymph just moved.</p></div></div>
-    <div class="report-section"><h3>🌬️ Oxygen — The Forgotten Nutrient</h3><p>Without adequate oxygen, glucose produces just <strong>2 ATP</strong>. With full oxygenation through your mitochondria, the same glucose yields up to <strong>32 ATP</strong> — sixteen times more energy.</p><ul><li><strong>Morning protocol:</strong> 10–30 slow belly breaths on waking</li><li><strong>Retention breath:</strong> Inhale deeply, hold for 15 seconds</li><li><strong>Evening:</strong> 5 minutes of slow nasal breathing before sleep</li></ul></div>
-    <div class="report-section"><h3>⚗️ Alkaline Nutrition — What Your Blood pH Reveals</h3><p>Your blood is designed to sit at pH 7.36 — slightly alkaline. The two biggest drivers of acidity: processed sugar and hybridised wheat (spikes blood sugar faster than table sugar). <strong>Alkalising foods:</strong> leafy greens, cucumber, celery, avocado, sprouts.</p></div>
-    <div class="report-section"><h3>🥑 The Healthy Oils Your Cells Need</h3><p>Omega 3, 6, 9 — avocado oil, cold-pressed olive oil, coconut oil — are essential for joint lubrication, brain function, and cell membrane integrity.</p></div>`;
+  const page2 = `
+    <div class="report-section"><h3>🌀 The Lymphatic System — Your Cellular Sewage Network</h3>
+      <p>Unlike your cardiovascular system, the lymphatic system has <strong>no central pump</strong>. It relies entirely on body movement. When sedentary, lymph stagnates → toxins accumulate → brain fog and bloating follow.</p>
+      <p><strong>Activators:</strong> Heel drops (7–15 min daily), rebounding (increases flow up to 15x), brisk walking. Cilantro and celery juice chelate heavy metals and hydrate lymph tissue.</p>
+      <div class="highlight-box"><p>🌿 <strong>Try this today:</strong> Stand, raise your heels slowly, then let them drop 30 times. Your lymph just moved.</p></div>
+    </div>
+    <div class="report-section"><h3>🌬️ Oxygen — The Forgotten Nutrient</h3>
+      <p>Without adequate oxygen, glucose produces just <strong>2 ATP</strong>. With full oxygenation through your mitochondria, the same glucose yields up to <strong>32 ATP</strong> — sixteen times more energy.</p>
+      <ul><li><strong>Morning protocol:</strong> 10–30 slow belly breaths on waking</li><li><strong>Retention breath:</strong> Inhale deeply, hold for 15 seconds</li><li><strong>Evening:</strong> 5 minutes of slow nasal breathing before sleep</li></ul>
+    </div>
+    <div class="report-section"><h3>⚗️ Alkaline Nutrition — What Your Blood pH Reveals</h3>
+      <p>Your blood is designed to sit at pH 7.36 — slightly alkaline. The two biggest drivers of acidity: processed sugar and hybridised wheat. <strong>Alkalising foods:</strong> leafy greens, cucumber, celery, avocado, sprouts.</p>
+    </div>
+    <div class="report-section"><h3>🥑 The Healthy Oils Your Cells Need</h3>
+      <p>Omega 3, 6, 9 — avocado oil, cold-pressed olive oil, coconut oil — are essential for joint lubrication, brain function, and cell membrane integrity.</p>
+    </div>`;
 
-  const page3 = `<div class="report-section"><h3>🧠 The Emotional Root of Physical Symptoms</h3><p>Your cells respond to your emotional state. Unprocessed stress, toxic thoughts, and suppressed grief create acid in the body → inflammation → illness. This is why <strong>Nervous System Reprogramming (NSR)</strong> is the missing piece.</p></div>
-    <div class="report-section"><h3>🔁 Break the Vicious Cycle</h3><p>Poor nutrition → low energy → no motivation → guilt → worse nutrition. Break it from the inside out: alkalise the terrain, oxygenate with breathwork, activate lymph gently, then address emotional weight.</p></div>
-    <div class="report-section"><h3>🚀 Your 7-Day Cellular Reset Plan</h3><ul><li><strong>Daily:</strong> Heel drops or rebounding — 7 minutes</li><li><strong>Morning:</strong> 5 minutes of belly breathing</li><li><strong>Each day:</strong> Add one living food (celery, cilantro, greens)</li><li><strong>Remove:</strong> One processed sugar or wheat product per day</li><li><strong>Evening:</strong> 5 minutes of slow nasal breathing</li></ul></div>
-    <div class="report-section" style="background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(20,32,58,0.95) 100%);"><h3>✦ The Missing Piece — Professional Coaching</h3><p>Information alone rarely creates lasting change. Joshua Roy's coaching brings NSR, breath mastery, and lymph activation together to rewire the patterns stopping you.</p><div class="seminar-badge" style="margin-top:1rem;"><div class="badge-title">✦ 2-Day Health Seminar</div><a href="https://www.accessworldseminars.org/2dayhealthseminar" target="_blank">→ Reserve your seat</a></div></div>`;
+  const page3 = `
+    <div class="report-section"><h3>🧠 The Emotional Root of Physical Symptoms</h3>
+      <p>Your cells respond to your emotional state. Unprocessed stress, toxic thoughts, and suppressed grief create acid in the body → inflammation → illness. This is why <strong>Nervous System Reprogramming (NSR)</strong> is the missing piece.</p>
+    </div>
+    <div class="report-section"><h3>🔁 Break the Vicious Cycle</h3>
+      <p>Poor nutrition → low energy → no motivation → guilt → worse nutrition. Break it from the inside out: alkalise the terrain, oxygenate with breathwork, activate lymph gently, then address emotional weight.</p>
+    </div>
+    <div class="report-section"><h3>🚀 Your 7-Day Cellular Reset Plan</h3>
+      <ul><li><strong>Daily:</strong> Heel drops or rebounding — 7 minutes</li><li><strong>Morning:</strong> 5 minutes of belly breathing</li><li><strong>Each day:</strong> Add one living food (celery, cilantro, greens)</li><li><strong>Remove:</strong> One processed sugar or wheat product per day</li><li><strong>Evening:</strong> 5 minutes of slow nasal breathing</li></ul>
+    </div>
+    <div class="report-section" style="background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(20,32,58,0.95) 100%);"><h3>✦ The Missing Piece — Professional Coaching</h3>
+      <p>Information alone rarely creates lasting change. Joshua Roy's coaching brings NSR, breath mastery, and lymph activation together to rewire the patterns stopping you.</p>
+      <div class="seminar-badge" style="margin-top:1rem;"><div class="badge-title">✦ 2-Day Health Seminar</div><a href="https://www.accessworldseminars.org/2dayhealthseminar" target="_blank">→ Reserve your seat</a></div>
+    </div>`;
 
   const pages = [page1, page2, page3];
   const pageTitles = ["Your Score & Profile", "Body Systems Science", "Reset Plan & Coaching"];
 
-  root.innerHTML = `<div class="card"><div class="report-header"><div><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:32px;"><div class="report-page-indicator">Comprehensive Report · Page ${reportPage + 1} of 3 · ${pageTitles[reportPage]}</div></div><button class="download-btn" id="downloadReportBtn">📄 Download Report</button></div>
+  root.innerHTML = `<div class="card">
+    <div class="report-header">
+      <div>
+        <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:28px; display:block;">
+        <div class="report-page-indicator" style="margin-top:0.3rem;">Page ${reportPage + 1} of 3 · ${pageTitles[reportPage]}</div>
+      </div>
+      <button class="download-btn" id="downloadReportBtn">📄 Download</button>
+    </div>
     <div class="report-wrap" id="reportWrap">${pages[reportPage]}</div>
-    <div class="btn-row"><button class="btn btn-outline" id="prevReportBtn" ${reportPage === 0 ? 'disabled' : ''}>← Previous</button>
-    <div style="display:flex; gap:0.4rem;">${[0, 1, 2].map(i => `<div style="width:8px;height:8px;border-radius:50%;background:${i === reportPage ? 'var(--gold)' : 'rgba(201,168,76,0.2)'};"></div>`).join('')}</div>
-    <button class="btn btn-primary" id="nextReportBtn">${reportPage === 2 ? 'Start Over' : 'Next Page →'}</button></div></div>`;
+    <div class="btn-row">
+      <button class="btn btn-outline" id="prevReportBtn" ${reportPage === 0 ? 'disabled' : ''}>← Prev</button>
+      <div class="report-page-dots">${[0,1,2].map(i => `<div style="background:${i === reportPage ? 'var(--gold)' : 'rgba(201,168,76,0.2)'};width:7px;height:7px;border-radius:50%;"></div>`).join('')}</div>
+      <button class="btn btn-primary" id="nextReportBtn">${reportPage === 2 ? 'Start Over' : 'Next →'}</button>
+    </div>
+  </div>`;
 
   document.getElementById("prevReportBtn").onclick = () => { if (reportPage > 0) { reportPage--; renderComprehensiveReport(); } };
-  document.getElementById("nextReportBtn").onclick = () => { if (reportPage === 2) { step = "intro"; currentQuestion = 0; answers = new Array(QUESTIONS.length).fill(null); reportPage = 0; render(); } else { reportPage++; renderComprehensiveReport(); } };
+  document.getElementById("nextReportBtn").onclick = () => {
+    if (reportPage === 2) { step = "intro"; currentQuestion = 0; answers = new Array(QUESTIONS.length).fill(null); reportPage = 0; render(); }
+    else { reportPage++; renderComprehensiveReport(); }
+  };
   document.getElementById("downloadReportBtn").onclick = () => {
     const fullHtml = `<!DOCTYPE html><html><head><title>AccessWorld Cellular Vitality Report</title><style>body{font-family:'DM Sans',sans-serif;background:#fff;color:#1a1a1a;padding:2rem;max-width:780px;margin:0 auto;}</style></head><body><h1>Cellular Vitality Report — <span style="color:#C9A84C;">${avg}/5</span></h1><h2>${tier.label} · ${tier.sub}</h2><p>${tier.msg}</p><p><strong>Profile:</strong> ${preData.segment} | ${preData.goal} | ${preData.healthFocus}</p>${pages.join('<div style="page-break-before:always;margin-top:2rem;"></div>')}<p>Generated by AccessWorld Seminars</p></body></html>`;
     const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(new Blob([fullHtml], { type: "text/html" })), download: "AccessWorld_Vitality_Report.html" });
@@ -512,4 +782,3 @@ render();
 </script>
 </body>
 </html>
-```
