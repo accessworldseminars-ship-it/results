@@ -28,11 +28,19 @@
         document.getElementById('contactForm').onsubmit = async function(e) {
             e.preventDefault();
             
+            // Get form values
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
             
-            const formData = { name, phone, email };
+            // Create exactly the same structure for all three fields
+            const formData = {
+                name: name,
+                phone: phone,
+                email: email
+            };
+            
+            console.log('Sending:', formData);
             
             const statusDiv = document.getElementById('status');
             statusDiv.style.display = 'block';
@@ -52,7 +60,6 @@
                     statusDiv.style.color = '#155724';
                     document.getElementById('contactForm').reset();
                     
-                    // Clear success message after 3 seconds
                     setTimeout(() => {
                         statusDiv.style.display = 'none';
                     }, 3000);
