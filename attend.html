@@ -14,22 +14,18 @@
             --navy-light: #1e2f55;
             --gold: #c9a84c;
             --gold-light: #e2c47a;
-            --gold-pale: #f5e8c8;
             --white: #ffffff;
             --gray: #9aa3b5;
             --text: #d8dde8;
             --telegram: #26A5E4;
             --telegram-dark: #1e8bc3;
             --green: #2ecc71;
-            --orange: #e67e22;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
         body {
             font-family: 'Barlow', sans-serif;
             background: var(--navy);
             color: var(--text);
-            overflow-x: hidden;
         }
 
         /* NAV */
@@ -48,7 +44,6 @@
         }
         .nav-logo img {
             height: 48px;
-            filter: drop-shadow(0 0 8px rgba(201,168,76,0.4));
         }
         .nav-links { display: flex; align-items: center; gap: 2px; }
         .nav-links a {
@@ -61,7 +56,6 @@
             padding: 6px 10px;
             border-radius: 4px;
             transition: all 0.25s;
-            white-space: nowrap;
         }
         .nav-links a:hover { background: rgba(201,168,76,0.15); color: var(--gold-light); }
         .nav-links a.active { color: var(--gold); }
@@ -99,38 +93,16 @@
             font-size: 0.9rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
             padding: 12px 16px;
             border-radius: 6px;
             border: 1px solid rgba(201,168,76,0.15);
-            transition: all 0.2s;
         }
         .mobile-menu a:hover { background: rgba(201,168,76,0.15); color: var(--gold); }
-        .mobile-menu a.cta-nav {
-            background: linear-gradient(135deg, var(--gold), #a87d28);
-            color: var(--navy);
-            border: none;
-            text-align: center;
-        }
 
-        /* HERO SECTION */
+        /* HERO */
         .hero {
             padding: 140px 5% 80px;
-            position: relative;
-            overflow: hidden;
             background: linear-gradient(135deg, #0a1428 0%, #0e1b35 50%, #0f2a3a 100%);
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(circle at 20% 40%, rgba(201,168,76,0.08) 0%, transparent 50%);
-        }
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
             text-align: center;
         }
         .hero-badge {
@@ -143,22 +115,18 @@
             padding: 6px 20px;
             font-size: 0.75rem;
             font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
             color: var(--green);
             margin-bottom: 24px;
         }
-        .hero-badge i { font-size: 0.85rem; }
         .hero h1 {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(2.5rem, 5vw, 4.2rem);
             font-weight: 700;
-            line-height: 1.1;
             color: var(--white);
             margin-bottom: 20px;
         }
         .hero h1 em { font-style: italic; color: var(--gold); }
-        .hero .value-badge {
+        .value-badge {
             display: inline-block;
             background: linear-gradient(135deg, var(--gold), #a87d28);
             color: var(--navy);
@@ -167,17 +135,15 @@
             padding: 8px 24px;
             border-radius: 40px;
             margin: 20px 0;
-            letter-spacing: 0.02em;
         }
         .hero p {
             font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto;
             color: var(--text);
-            line-height: 1.6;
         }
 
-        /* OFFER CARDS */
+        /* OFFERS */
         .offers-section {
             padding: 60px 5%;
             background: var(--navy-mid);
@@ -195,12 +161,11 @@
             border-radius: 20px;
             padding: 32px 24px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
         .offer-card:hover {
             transform: translateY(-8px);
             border-color: var(--gold);
-            background: rgba(201,168,76,0.05);
         }
         .offer-icon {
             width: 70px;
@@ -214,7 +179,6 @@
         }
         .offer-icon i { font-size: 2rem; color: var(--gold); }
         .offer-card h3 {
-            font-family: 'Barlow Condensed', sans-serif;
             font-size: 1.3rem;
             font-weight: 700;
             color: var(--white);
@@ -229,10 +193,9 @@
         .offer-card p {
             font-size: 0.9rem;
             color: var(--gray);
-            line-height: 1.5;
         }
 
-        /* UPCOMING EVENTS */
+        /* EVENTS */
         .events-section {
             padding: 80px 5%;
             background: var(--navy);
@@ -247,14 +210,13 @@
             letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--gold);
-            margin-bottom: 12px;
             display: inline-block;
+            margin-bottom: 12px;
         }
         .section-header h2 {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(2rem, 3.5vw, 3rem);
             color: var(--white);
-            font-weight: 700;
         }
         .section-header h2 em { font-style: italic; color: var(--gold); }
         .events-container {
@@ -274,11 +236,9 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
-            transition: all 0.3s;
         }
         .event-item:hover {
             border-color: var(--gold);
-            background: rgba(201,168,76,0.05);
         }
         .event-info { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
         .event-date {
@@ -321,7 +281,7 @@
             color: var(--green);
         }
 
-        /* FORM SECTION */
+        /* FORM */
         .form-section {
             padding: 80px 5% 100px;
             background: linear-gradient(160deg, #0a1428, #0e1b35);
@@ -333,7 +293,6 @@
             border: 1px solid rgba(201,168,76,0.2);
             border-radius: 24px;
             padding: 50px 45px;
-            backdrop-filter: blur(10px);
         }
         .form-container h2 {
             font-family: 'Cormorant Garamond', serif;
@@ -348,7 +307,6 @@
             text-align: center;
             color: var(--gray);
             margin-bottom: 32px;
-            font-size: 0.95rem;
         }
         .form-group {
             margin-bottom: 22px;
@@ -364,9 +322,7 @@
             color: var(--gold-light);
             margin-bottom: 8px;
         }
-        .form-group label i { width: 18px; }
-        .form-group input,
-        .form-group select {
+        .form-group input, .form-group select {
             width: 100%;
             padding: 14px 18px;
             background: rgba(14,27,53,0.6);
@@ -375,16 +331,10 @@
             font-family: 'Barlow', sans-serif;
             font-size: 1rem;
             color: var(--white);
-            transition: all 0.25s;
             outline: none;
         }
-        .form-group input:focus,
-        .form-group select:focus {
+        .form-group input:focus, .form-group select:focus {
             border-color: var(--gold);
-            background: rgba(201,168,76,0.08);
-        }
-        .form-group input::placeholder {
-            color: rgba(154,163,181,0.4);
         }
         .checkbox-group {
             margin: 25px 0;
@@ -405,11 +355,6 @@
         .checkbox-label span {
             font-size: 0.9rem;
             color: var(--text);
-            line-height: 1.4;
-        }
-        .checkbox-label i {
-            color: var(--gold);
-            font-size: 0.9rem;
         }
         .submit-btn {
             width: 100%;
@@ -418,10 +363,8 @@
             color: white;
             border: none;
             border-radius: 12px;
-            font-family: 'Barlow', sans-serif;
             font-size: 1.05rem;
             font-weight: 700;
-            letter-spacing: 0.06em;
             text-transform: uppercase;
             cursor: pointer;
             display: flex;
@@ -438,7 +381,6 @@
         .submit-btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
-            transform: none;
         }
         .form-feedback {
             margin-top: 16px;
@@ -482,8 +424,9 @@
             flex-wrap: wrap;
             gap: 16px;
         }
-        .footer-bottom img { height: 40px; filter: drop-shadow(0 0 6px rgba(201,168,76,0.3)); }
+        .footer-bottom img { height: 40px; }
         .footer-bottom p { font-size: 0.75rem; color: rgba(154,163,181,0.5); }
+        .footer-bottom a { color: var(--gold-light); text-decoration: none; }
 
         @media (max-width: 900px) {
             .offers-grid { grid-template-columns: 1fr; }
@@ -500,35 +443,34 @@
 </head>
 <body>
 
-<!-- NAVIGATION -->
 <nav class="nav">
     <div class="nav-logo">
-        <a href="https://accessworldseminars-ship-it.github.io/results/"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars"></a>
+        <a href="#"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars"></a>
     </div>
     <div class="nav-links">
-        <a href="https://accessworldseminars-ship-it.github.io/results/"><i class="fas fa-home"></i> Home</a>
-        <a href="https://accessworldseminars-ship-it.github.io/results/BecomeACoach"><i class="fas fa-graduation-cap"></i> Coach Academy</a>
-        <a href="https://accessworldseminars-ship-it.github.io/results/Bio"><i class="fas fa-user"></i> Biography</a>
-        <a href="https://accessworldseminars-ship-it.github.io/results/offers"><i class="fas fa-tags"></i> Programs</a>
-        <a href="https://accessworldseminars-ship-it.github.io/results/freeEvents" class="active"><i class="fas fa-gift"></i> Free Events</a>
-        <a href="https://accessworldseminars-ship-it.github.io/results/s"><i class="fas fa-calendar"></i> Events</a>
-        <a href="https://accessworldseminars-ship-it.github.io/results/contactform"><i class="fas fa-envelope"></i> Contact</a>
-        <a href="https://form.jotform.com/250184868189875" class="cta-nav" target="_blank"><i class="fas fa-calendar-check"></i> Free Session</a>
+        <a href="#"><i class="fas fa-home"></i> Home</a>
+        <a href="#"><i class="fas fa-graduation-cap"></i> Coach Academy</a>
+        <a href="#"><i class="fas fa-user"></i> Biography</a>
+        <a href="#"><i class="fas fa-tags"></i> Programs</a>
+        <a href="#" class="active"><i class="fas fa-gift"></i> Free Events</a>
+        <a href="#"><i class="fas fa-calendar"></i> Events</a>
+        <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="#" class="cta-nav" target="_blank"><i class="fas fa-calendar-check"></i> Free Session</a>
     </div>
     <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
-    <a href="https://accessworldseminars-ship-it.github.io/results/"><i class="fas fa-home"></i> Home</a>
-    <a href="https://accessworldseminars-ship-it.github.io/results/BecomeACoach"><i class="fas fa-graduation-cap"></i> Coach Academy</a>
-    <a href="https://accessworldseminars-ship-it.github.io/results/Bio"><i class="fas fa-user"></i> Biography</a>
-    <a href="https://accessworldseminars-ship-it.github.io/results/offers"><i class="fas fa-tags"></i> Programs</a>
-    <a href="https://accessworldseminars-ship-it.github.io/results/freeEvents"><i class="fas fa-gift"></i> Free Events</a>
-    <a href="https://accessworldseminars-ship-it.github.io/results/s"><i class="fas fa-calendar"></i> Events Schedule</a>
-    <a href="https://accessworldseminars-ship-it.github.io/results/contactform"><i class="fas fa-envelope"></i> Contact</a>
-    <a href="https://form.jotform.com/250184868189875" class="cta-nav" target="_blank"><i class="fas fa-calendar-check"></i> Book Free Session</a>
+    <a href="#"><i class="fas fa-home"></i> Home</a>
+    <a href="#"><i class="fas fa-graduation-cap"></i> Coach Academy</a>
+    <a href="#"><i class="fas fa-user"></i> Biography</a>
+    <a href="#"><i class="fas fa-tags"></i> Programs</a>
+    <a href="#"><i class="fas fa-gift"></i> Free Events</a>
+    <a href="#"><i class="fas fa-calendar"></i> Events</a>
+    <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="#" class="cta-nav"><i class="fas fa-calendar-check"></i> Book Free Session</a>
 </div>
 
-<!-- HERO SECTION -->
 <section class="hero">
     <div class="hero-content reveal">
         <div class="hero-badge">
@@ -542,7 +484,6 @@
     </div>
 </section>
 
-<!-- OFFER CARDS -->
 <section class="offers-section">
     <div class="offers-grid">
         <div class="offer-card reveal">
@@ -551,13 +492,13 @@
             <div class="value">💰 Value: $100</div>
             <p>Complete nervous system reprogramming workshop — normally reserved for paying coaching clients.</p>
         </div>
-        <div class="offer-card reveal" style="transition-delay: 0.1s">
+        <div class="offer-card reveal">
             <div class="offer-icon"><i class="fas fa-percent"></i></div>
             <h3>Free Offers & Discounts</h3>
             <div class="value">🎁 Exclusive Access</div>
             <p>Get priority access to discounted coaching packages, early-bird rates, and members-only offers.</p>
         </div>
-        <div class="offer-card reveal" style="transition-delay: 0.2s">
+        <div class="offer-card reveal">
             <div class="offer-icon"><i class="fas fa-calendar-alt"></i></div>
             <h3>Free Events Notification</h3>
             <div class="value">📍 Location Alerts</div>
@@ -566,7 +507,6 @@
     </div>
 </section>
 
-<!-- UPCOMING EVENTS -->
 <section class="events-section">
     <div class="section-header reveal">
         <span class="label"><i class="fas fa-map-marker-alt"></i> Upcoming In-Person Events</span>
@@ -582,12 +522,11 @@
                 <div class="event-details">
                     <h4>Brisbane Free Training Day</h4>
                     <p><i class="fas fa-map-pin"></i> South Brisbane Community Centre | 10am - 4pm</p>
-                    <p><i class="fas fa-clock"></i> Doors open at 9:30am | Limited seats</p>
                 </div>
             </div>
             <div class="event-status">📢 Register Below</div>
         </div>
-        <div class="event-item reveal" style="transition-delay: 0.1s">
+        <div class="event-item reveal">
             <div class="event-info">
                 <div class="event-date">
                     <div class="month">JUNE</div>
@@ -596,12 +535,11 @@
                 <div class="event-details">
                     <h4>Gold Coast Breakthrough Session</h4>
                     <p><i class="fas fa-map-pin"></i> Surfers Paradise Conference Hall | 9am - 3pm</p>
-                    <p><i class="fas fa-clock"></i> Registration required in advance</p>
                 </div>
             </div>
             <div class="event-status">📢 Register Below</div>
         </div>
-        <div class="event-item reveal" style="transition-delay: 0.2s">
+        <div class="event-item reveal">
             <div class="event-info">
                 <div class="event-date">
                     <div class="month">JULY</div>
@@ -610,7 +548,6 @@
                 <div class="event-details">
                     <h4>Sunshine Coast NLP Workshop</h4>
                     <p><i class="fas fa-map-pin"></i> Maroochydore Events Centre | 10am - 5pm</p>
-                    <p><i class="fas fa-clock"></i> Early registration recommended</p>
                 </div>
             </div>
             <div class="event-status">📢 Register Below</div>
@@ -618,7 +555,6 @@
     </div>
 </section>
 
-<!-- REGISTRATION FORM -->
 <section class="form-section">
     <div class="form-container reveal">
         <h2>Claim Your <em>Free Spot</em></h2>
@@ -650,22 +586,22 @@
                     <option>Sydney, NSW</option>
                     <option>Melbourne, VIC</option>
                     <option>Perth, WA</option>
-                    <option>Other (please specify in message)</option>
+                    <option>Other</option>
                 </select>
             </div>
             
             <div class="checkbox-group">
                 <label class="checkbox-label">
                     <input type="checkbox" id="optTraining" name="Interested In" value="Free Training Program">
-                    <span><i class="fas fa-chalkboard-user"></i> I want to attend the <strong>FREE Training Program</strong> (valued at $100)</span>
+                    <span><i class="fas fa-chalkboard-user"></i> I want to attend the FREE Training Program (valued at $100)</span>
                 </label>
                 <label class="checkbox-label">
                     <input type="checkbox" id="optOffers" name="Interested In" value="Free Offers & Discounts">
-                    <span><i class="fas fa-tags"></i> I want to receive <strong>FREE offers and discounts</strong> for coaching</span>
+                    <span><i class="fas fa-tags"></i> I want to receive FREE offers and discounts for coaching</span>
                 </label>
                 <label class="checkbox-label">
                     <input type="checkbox" id="optEvents" name="Interested In" value="Free Events Notifications">
-                    <span><i class="fas fa-bell"></i> I want to be <strong>notified where free events are being held</strong></span>
+                    <span><i class="fas fa-bell"></i> I want to be notified where free events are being held</span>
                 </label>
             </div>
             
@@ -680,28 +616,26 @@
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
     <div class="footer-bottom">
         <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars">
         <p>© 2026 AccessWorld Seminars · Joshua Roy · Free Events Program</p>
-        <a href="https://accessworldseminars-ship-it.github.io/results/">← Back to Home</a>
+        <a href="#">← Back to Home</a>
     </div>
 </footer>
 
-<!-- TELEGRAM INTEGRATION SCRIPT -->
 <script>
     // ============================================
     // TELEGRAM CONFIGURATION
     // REPLACE WITH YOUR ACTUAL BOT TOKEN AND CHAT ID
     // ============================================
-    const TELEGRAM_BOT_TOKEN = '8155100717:AAE0ABDHsRuFWmbXa8coP8qdL3QK2ZWYkaY';  // Get from @BotFather
-    const TELEGRAM_CHAT_ID = '5970521104';      // Get from @userinfobot
+    const TELEGRAM_BOT_TOKEN = '8155100717:AAE0ABDHsRuFWmbXa8coP8qdL3QK2ZWYkaY';
+    const TELEGRAM_CHAT_ID = '5970521104';
     // ============================================
     
     const isTelegramConfigured = TELEGRAM_BOT_TOKEN !== 'YOUR_BOT_TOKEN_HERE' && TELEGRAM_CHAT_ID !== 'YOUR_CHAT_ID_HERE';
     
-    async function sendToTelegram(message, parseMode = 'HTML') {
+    async function sendToTelegram(message) {
         if (!isTelegramConfigured) {
             console.warn('Telegram not configured');
             return false;
@@ -716,7 +650,7 @@
                 body: JSON.stringify({
                     chat_id: TELEGRAM_CHAT_ID,
                     text: message,
-                    parse_mode: parseMode,
+                    parse_mode: 'HTML',
                     disable_web_page_preview: true
                 })
             });
@@ -728,29 +662,37 @@
         }
     }
     
-    function formatRegistrationMessage(formData, pageTitle, pageUrl) {
+    function formatMessage(formData) {
         const timestamp = new Date().toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'long' });
+        
+        let interests = [];
+        if (document.getElementById('optTraining').checked) interests.push('🎓 Free Training Program ($100 value)');
+        if (document.getElementById('optOffers').checked) interests.push('🏷️ Free Offers & Discounts');
+        if (document.getElementById('optEvents').checked) interests.push('📍 Free Events Notifications');
         
         let message = `🎟️ <b>FREE EVENT REGISTRATION</b>\n`;
         message += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-        message += `📄 <b>Page:</b> <a href="${pageUrl}">${pageTitle}</a>\n`;
-        message += `🕐 <b>Registered:</b> ${timestamp}\n`;
+        message += `🕐 <b>Time:</b> ${timestamp}\n`;
         message += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
         
-        for (let [key, value] of formData.entries()) {
-            if (value && value.toString().trim()) {
-                message += `📌 <b>${key}:</b>\n   ${value}\n\n`;
-            }
+        message += `📌 <b>Name:</b> ${formData.get('Full Name') || 'N/A'}\n`;
+        message += `📌 <b>Email:</b> ${formData.get('Email') || 'N/A'}\n`;
+        message += `📌 <b>Phone:</b> ${formData.get('Phone Number') || 'N/A'}\n`;
+        message += `📌 <b>Location:</b> ${formData.get('Preferred Location') || 'Not specified'}\n\n`;
+        
+        message += `🎯 <b>Interested In:</b>\n`;
+        if (interests.length > 0) {
+            interests.forEach(i => { message += `   ${i}\n`; });
+        } else {
+            message += `   None selected\n`;
         }
         
-        message += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+        message += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
         message += `✅ <b>Action Required:</b> Send event details and follow up within 24 hours\n`;
-        message += `📍 <b>Notify about:</b> Next event date, time, and location\n`;
         
         return message;
     }
     
-    // Handle form submission
     document.getElementById('freeEventForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         
@@ -769,7 +711,6 @@
             return;
         }
         
-        // Check at least one checkbox
         const optTraining = document.getElementById('optTraining').checked;
         const optOffers = document.getElementById('optOffers').checked;
         const optEvents = document.getElementById('optEvents').checked;
@@ -777,7 +718,7 @@
         if (!optTraining && !optOffers && !optEvents) {
             const feedback = document.getElementById('formFeedback');
             feedback.className = 'form-feedback error';
-            feedback.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please select at least one option (Training Program, Offers, or Event Notifications).';
+            feedback.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please select at least one option.';
             setTimeout(() => {
                 feedback.className = 'form-feedback';
                 feedback.innerHTML = '';
@@ -790,21 +731,18 @@
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending to Telegram...';
         
         const formData = new FormData(this);
-        const pageTitle = document.title;
-        const pageUrl = window.location.href;
-        const message = formatRegistrationMessage(formData, pageTitle, pageUrl);
-        
+        const message = formatMessage(formData);
         const success = await sendToTelegram(message);
         
         const feedback = document.getElementById('formFeedback');
         
         if (success) {
             feedback.className = 'form-feedback success';
-            feedback.innerHTML = '<i class="fas fa-check-circle"></i> ✅ Registration sent! Joshua will contact you via Telegram/Phone within 24 hours with event details and free offers.';
+            feedback.innerHTML = '<i class="fas fa-check-circle"></i> ✅ Registration sent! You will receive event details and free offers via Telegram/Text within 24 hours.';
             this.reset();
         } else {
             feedback.className = 'form-feedback error';
-            feedback.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ⚠️ Failed to send. Please contact Joshua directly on Telegram: @joshuaroycoach';
+            feedback.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Failed to send. Please contact Joshua on Telegram: @joshuaroycoach';
         }
         
         setTimeout(() => {
@@ -816,9 +754,20 @@
         submitBtn.innerHTML = '<i class="fab fa-telegram-plane"></i> Register via Telegram';
     });
     
-    // Hamburger menu
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     if (hamburger && mobileMenu) {
         hamburger.addEventListener('click', () => {
-           
+            mobileMenu.classList.toggle('open');
+            hamburger.innerHTML = mobileMenu.classList.contains('open') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+    }
+    
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
