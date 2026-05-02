@@ -28,16 +28,10 @@
         document.getElementById('contactForm').onsubmit = async function(e) {
             e.preventDefault();
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            
-            // Create exactly the same structure for all three fields
             const formData = {
-                name: name,
-                phone: phone,
-                email: email
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value
             };
             
             console.log('Sending:', formData);
