@@ -1,504 +1,771 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>AccessWorld · Cellular Vitality Assessment</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --navy: #14203A;
-      --navy-deep: #0A1322;
-      --gold: #C9A84C;
-      --gold-light: #E2C87A;
-      --border: rgba(201,168,76,0.22);
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      background: var(--navy-deep);
-      font-family: 'DM Sans', sans-serif;
-      color: #E8E0D0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1rem;
-      position: relative;
-    }
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 20% 0%, rgba(201,168,76,0.08) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url('https://i.ibb.co/ynXdYpmL/worldjjpgsf.png');
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: 50%;
-      opacity: 0.025;
-      pointer-events: none;
-    }
-    .app-wrap { position: relative; z-index: 2; width: 100%; max-width: 780px; margin: 0 auto; }
-    .card {
-      background: linear-gradient(160deg, rgba(20,32,58,0.98) 0%, rgba(10,19,34,0.99) 100%);
-      border-radius: 2.4rem;
-      border: 1px solid var(--border);
-      box-shadow: 0 0 0 1px rgba(201,168,76,0.08), 0 40px 80px -20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.05);
-      padding: 3rem 3.2rem;
-      position: relative;
-    }
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
-    }
-    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; letter-spacing: 0.02em; }
-    h1 { font-size: 3.2rem; font-weight: 300; line-height: 1.1; }
-    h2 { font-size: 2rem; font-weight: 400; line-height: 1.2; }
-    h3 { font-size: 1.35rem; font-weight: 500; margin-bottom: 0.8rem; }
-    .gold { color: var(--gold-light); }
-    p { line-height: 1.7; font-size: 0.97rem; color: #C8BCAA; }
-    .brand-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.2rem; }
-    .brand-header img { height: 40px; opacity: 0.9; }
-    .brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); opacity: 0.8; }
-    .divider { display: flex; align-items: center; gap: 1rem; margin: 1.6rem 0; }
-    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent); }
-    .divider-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; opacity: 0.5; }
-    .btn {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.9rem 2.2rem;
-      border-radius: 60px;
-      cursor: pointer;
-      border: none;
-      transition: all 0.25s ease;
-    }
-    .btn-primary { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: var(--navy-deep); box-shadow: 0 4px 20px rgba(201,168,76,0.3); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.4); }
-    .btn-outline { background: transparent; color: var(--gold); border: 1px solid rgba(201,168,76,0.35); }
-    .btn-outline:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); }
-    .btn:disabled { opacity: 0.3; cursor: not-allowed; }
-    .btn-row { display: flex; justify-content: space-between; align-items: center; margin-top: 2.4rem; gap: 1rem; }
-    .progress-bar { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; }
-    .prog-dot { height: 3px; background: rgba(201,168,76,0.18); border-radius: 3px; flex: 1; }
-    .prog-dot.done { background: rgba(201,168,76,0.5); }
-    .prog-dot.active { background: var(--gold-light); }
-    .options-grid { display: grid; gap: 0.75rem; margin: 1.6rem 0 0.5rem; }
-    .opt-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(201,168,76,0.18);
-      border-radius: 1.2rem;
-      padding: 1.1rem 1.5rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-size: 0.95rem;
-      color: #C8BCAA;
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-    }
-    .opt-card:hover { background: rgba(201,168,76,0.06); border-color: rgba(201,168,76,0.4); color: #E8E0D0; }
-    .opt-card.selected { background: rgba(201,168,76,0.12); border-color: var(--gold); color: var(--gold-light); }
-    .scale-container { margin: 2rem 0 1rem; }
-    .scale-labels { display: flex; justify-content: space-between; font-size: 0.72rem; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 1rem; }
-    .scale-btns { display: flex; gap: 0.7rem; justify-content: center; }
-    .scale-btn {
-      flex: 1; max-width: 100px; aspect-ratio: 1;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(201,168,76,0.2);
-      border-radius: 1.2rem;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.3rem;
-    }
-    .scale-btn:hover { background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.5); }
-    .scale-btn.selected { background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.12)); border-color: var(--gold); }
-    .scale-num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: #E8E0D0; line-height: 1; }
-    .scale-btn.selected .scale-num { color: var(--gold-light); }
-    .scale-word { font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(201,168,76,0.5); }
-    .q-category { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-bottom: 0.5rem; }
-    .q-text { font-family: 'Cormorant Garamond', serif; font-size: 1.65rem; font-weight: 400; line-height: 1.35; color: #EAE3D5; margin-bottom: 0.2rem; }
-    .q-counter { font-size: 0.75rem; color: rgba(201,168,76,0.45); letter-spacing: 0.12em; text-transform: uppercase; }
-    .teaching-moment {
-      background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(20,32,58,0.8) 100%);
-      border-radius: 1.5rem;
-      margin: 1.5rem 0 0.5rem;
-      padding: 1.2rem 1.5rem;
-      border: 1px solid rgba(201,168,76,0.2);
-    }
-    .teaching-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 500; color: var(--gold-light); margin-bottom: 0.6rem; }
-    .teaching-text { font-size: 0.85rem; color: #B8AA96; line-height: 1.6; }
-    .seminar-badge {
-      background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.05));
-      border: 1px dashed rgba(201,168,76,0.35);
-      border-radius: 1.5rem;
-      padding: 1.4rem 1.8rem;
-      text-align: center;
-      margin: 1.8rem 0;
-    }
-    .seminar-badge .badge-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; color: var(--gold-light); margin-bottom: 0.4rem; }
-    .seminar-badge a {
-      display: inline-block;
-      color: var(--gold-light);
-      font-size: 0.82rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(201,168,76,0.35);
-    }
-    .lead-form input {
-      width: 100%;
-      padding: 1rem 1.4rem;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(201,168,76,0.3);
-      border-radius: 1rem;
-      color: #E8E0D0;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-    .lead-form input:focus { outline: none; border-color: var(--gold); }
-    .lead-form input::placeholder { color: rgba(200,188,170,0.5); }
-    .report-wrap { max-height: 70vh; overflow-y: auto; padding-right: 0.8rem; }
-    .report-wrap::-webkit-scrollbar { width: 4px; }
-    .report-wrap::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.25); border-radius: 4px; }
-    .report-section {
-      margin-bottom: 1.8rem;
-      padding: 1.6rem 1.8rem;
-      background: rgba(255,255,255,0.025);
-      border-radius: 1.5rem;
-      border-left: 3px solid var(--gold);
-    }
-    .report-section h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 500; color: var(--gold-light); margin-bottom: 1rem; }
-    .report-section p { font-size: 0.92rem; line-height: 1.75; color: #C0B49E; margin-bottom: 0.8rem; }
-    .report-section strong { color: #E0D4C0; font-weight: 600; }
-    .report-section ul { list-style: none; padding: 0; margin: 0.5rem 0 1rem; }
-    .report-section ul li { font-size: 0.91rem; color: #C0B49E; padding: 0.35rem 0 0.35rem 1.4rem; position: relative; line-height: 1.6; }
-    .report-section ul li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); font-size: 0.9rem; }
-    .score-hero { text-align: center; padding: 1.5rem 0 1rem; }
-    .score-ring { display: inline-flex; align-items: center; justify-content: center; width: 130px; height: 130px; border-radius: 50%; border: 2px solid rgba(201,168,76,0.3); background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%); margin-bottom: 1rem; }
-    .score-num { font-family: 'Cormorant Garamond', serif; font-size: 3.6rem; font-weight: 300; color: var(--gold-light); line-height: 1; }
-    .score-denom { font-size: 1.1rem; color: rgba(201,168,76,0.5); align-self: flex-end; padding-bottom: 0.6rem; }
-    .tier-label { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; color: var(--gold-light); }
-    .tier-msg { font-size: 0.92rem; color: #B8AA96; max-width: 480px; margin: 0.5rem auto; }
-    .category-bar-wrap { margin: 0.8rem 0; }
-    .category-bar-label { display: flex; justify-content: space-between; font-size: 0.8rem; color: #A0947E; margin-bottom: 0.35rem; }
-    .category-bar-track { height: 6px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden; }
-    .category-bar-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, rgba(201,168,76,0.5), var(--gold-light)); }
-    .report-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(201,168,76,0.12); }
-    .report-page-indicator { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,168,76,0.45); }
-    .download-btn { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); background: transparent; border: 1px solid rgba(201,168,76,0.3); border-radius: 60px; padding: 0.4rem 1.2rem; cursor: pointer; }
-    .tag { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); border-radius: 60px; padding: 0.25rem 0.9rem; display: inline-block; }
-    .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1rem 0 0; }
-    .highlight-box { background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02)); border: 1px solid rgba(201,168,76,0.2); border-radius: 1.2rem; padding: 1.2rem; margin: 1rem 0; }
-    footer.card-footer { text-align: center; margin-top: 2rem; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(201,168,76,0.3); }
-    .intro-eyebrow { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.75; margin-bottom: 1rem; }
-    .intro-subtitle { font-size: 1rem; color: #A09282; line-height: 1.7; margin: 1rem 0 0; }
-    .intro-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
-    .stat-box { text-align: center; padding: 1rem; background: rgba(255,255,255,0.025); border: 1px solid rgba(201,168,76,0.12); border-radius: 1.2rem; }
-    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--gold-light); }
-    .stat-label { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: #7A6A52; margin-top: 0.3rem; }
-    @media (max-width: 600px) { .card { padding: 2rem 1.5rem; } h1 { font-size: 2.4rem; } .scale-btns { gap: 0.4rem; } .scale-num { font-size: 1.7rem; } }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Events & Training | AccessWorld Seminars</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0e1b35;
+            --navy-mid: #162240;
+            --navy-light: #1e2f55;
+            --gold: #c9a84c;
+            --gold-light: #e2c47a;
+            --white: #ffffff;
+            --gray: #9aa3b5;
+            --text: #d8dde8;
+            --telegram: #26A5E4;
+            --telegram-dark: #1e8bc3;
+            --green: #2ecc71;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--navy);
+            color: var(--text);
+        }
+
+        /* NAV */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: rgba(14,27,53,0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(201,168,76,0.25);
+            z-index: 1000;
+            padding: 0 3%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+        .nav-logo img {
+            height: 48px;
+        }
+        .nav-links { display: flex; align-items: center; gap: 2px; }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 6px 10px;
+            border-radius: 4px;
+            transition: all 0.25s;
+        }
+        .nav-links a:hover { background: rgba(201,168,76,0.15); color: var(--gold-light); }
+        .nav-links a.active { color: var(--gold); }
+        .nav-links a.cta-nav {
+            background: linear-gradient(135deg, var(--gold), #a87d28);
+            color: var(--navy);
+            font-weight: 700;
+            padding: 7px 14px;
+            border-radius: 30px;
+            margin-left: 6px;
+        }
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 68px; left: 0; width: 100%;
+            background: rgba(14,27,53,0.99);
+            border-bottom: 1px solid rgba(201,168,76,0.2);
+            padding: 20px;
+            z-index: 999;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 12px 16px;
+            border-radius: 6px;
+            border: 1px solid rgba(201,168,76,0.15);
+        }
+        .mobile-menu a:hover { background: rgba(201,168,76,0.15); color: var(--gold); }
+
+        /* HERO */
+        .hero {
+            padding: 140px 5% 80px;
+            background: linear-gradient(135deg, #0a1428 0%, #0e1b35 50%, #0f2a3a 100%);
+            text-align: center;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(46,204,113,0.12);
+            border: 1px solid rgba(46,204,113,0.3);
+            border-radius: 30px;
+            padding: 6px 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--green);
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .hero h1 em { font-style: italic; color: var(--gold); }
+        .value-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #a87d28);
+            color: var(--navy);
+            font-size: 1.1rem;
+            font-weight: 800;
+            padding: 8px 24px;
+            border-radius: 40px;
+            margin: 20px 0;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text);
+        }
+
+        /* OFFERS */
+        .offers-section {
+            padding: 60px 5%;
+            background: var(--navy-mid);
+        }
+        .offers-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .offer-card {
+            background: rgba(14,27,53,0.6);
+            border: 1px solid rgba(201,168,76,0.15);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .offer-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+        }
+        .offer-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(201,168,76,0.12);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .offer-icon i { font-size: 2rem; color: var(--gold); }
+        .offer-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+        .offer-card .value {
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .offer-card p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* EVENTS */
+        .events-section {
+            padding: 80px 5%;
+            background: var(--navy);
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-header .label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            color: var(--white);
+        }
+        .section-header h2 em { font-style: italic; color: var(--gold); }
+        .events-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .event-item {
+            background: rgba(22,34,64,0.6);
+            border: 1px solid rgba(201,168,76,0.12);
+            border-radius: 16px;
+            padding: 24px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .event-item:hover {
+            border-color: var(--gold);
+        }
+        .event-info { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .event-date {
+            background: rgba(201,168,76,0.15);
+            border-radius: 12px;
+            padding: 12px 20px;
+            text-align: center;
+            min-width: 100px;
+        }
+        .event-date .month {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+        .event-date .day {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1;
+        }
+        .event-details h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 5px;
+        }
+        .event-details p {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        .event-details i { margin-right: 6px; color: var(--gold); }
+        .event-status {
+            background: rgba(46,204,113,0.12);
+            border: 1px solid rgba(46,204,113,0.3);
+            border-radius: 30px;
+            padding: 6px 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--green);
+        }
+
+        /* FORM */
+        .form-section {
+            padding: 80px 5% 100px;
+            background: linear-gradient(160deg, #0a1428, #0e1b35);
+        }
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(22,34,64,0.8);
+            border: 1px solid rgba(201,168,76,0.2);
+            border-radius: 24px;
+            padding: 50px 45px;
+        }
+        .form-container h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .form-container h2 em { font-style: italic; color: var(--gold); }
+        .form-subtitle {            color: var(--gray);
+            margin-bottom: 32px;
+        }
+        .form-group {
+            margin-bottom: 22px;
+        }
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 8px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(14,27,53,0.6);
+            border: 1px solid rgba(201,168,76,0.2);
+            border-radius: 10px;
+            font-family: 'Barlow', sans-serif;
+            font-size: 1rem;
+            color: var(--white);
+            outline: none;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--gold);
+        }
+        .checkbox-group {
+            margin: 25px 0;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            padding: 12px 0;
+        }
+        .checkbox-label input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--gold);
+            cursor: pointer;
+        }
+        .checkbox-label span {
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--telegram), var(--telegram-dark));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(38,165,228,0.3);
+        }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .form-feedback {
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            text-align: center;
+            display: none;
+        }
+        .form-feedback.success {
+            display: block;
+            background: rgba(46,204,113,0.15);
+            border: 1px solid rgba(46,204,113,0.3);
+            color: var(--green);
+        }
+        .form-feedback.error {
+            display: block;
+            background: rgba(231,76,60,0.15);
+            border: 1px solid rgba(231,76,60,0.3);
+            color: #e74c3c;
+        }
+        .fine-print {
+            text-align: center;
+            font-size: 0.7rem;
+            color: rgba(154,163,181,0.5);
+            margin-top: 20px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #080f1e;
+            padding: 40px 5% 25px;
+            border-top: 1px solid rgba(201,168,76,0.12);
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-bottom img { height: 40px; }
+        .footer-bottom p { font-size: 0.75rem; color: rgba(154,163,181,0.5); }
+        .footer-bottom a { color: var(--gold-light); text-decoration: none; }
+
+        @media (max-width: 900px) {
+            .offers-grid { grid-template-columns: 1fr; }
+            .form-container { padding: 35px 25px; }
+            .event-item { flex-direction: column; text-align: center; }
+            .event-info { justify-content: center; }
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+        }
+
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
 </head>
 <body>
-<div class="app-wrap" id="app"></div>
+
+<nav class="nav">
+    <div class="nav-logo">
+        <a href="#"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars"></a>
+    </div>
+    <div class="nav-links">
+        <a href="#"><i class="fas fa-home"></i> Home</a>
+        <a href="#"><i class="fas fa-graduation-cap"></i> Coach Academy</a>
+        <a href="#"><i class="fas fa-user"></i> Biography</a>
+        <a href="#"><i class="fas fa-tags"></i> Programs</a>
+        <a href="#" class="active"><i class="fas fa-gift"></i> Free Events</a>
+        <a href="#"><i class="fas fa-calendar"></i> Events</a>
+        <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="#" class="cta-nav" target="_blank"><i class="fas fa-calendar-check"></i> Free Session</a>
+    </div>
+    <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#"><i class="fas fa-home"></i> Home</a>
+    <a href="#"><i class="fas fa-graduation-cap"></i> Coach Academy</a>
+    <a href="#"><i class="fas fa-user"></i> Biography</a>
+    <a href="#"><i class="fas fa-tags"></i> Programs</a>
+    <a href="#"><i class="fas fa-gift"></i> Free Events</a>
+    <a href="#"><i class="fas fa-calendar"></i> Events</a>
+    <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="#" class="cta-nav"><i class="fas fa-calendar-check"></i> Book Free Session</a>
+</div>
+
+<section class="hero">
+    <div class="hero-content reveal">
+        <div class="hero-badge">
+            <i class="fas fa-gift"></i> Limited Time Opportunity
+        </div>
+        <h1>Attend a <em>Free Training Program</em><br>Valued at $100</h1>
+        <div class="value-badge">
+            <i class="fas fa-tag"></i> Yours FREE — Normally $100 for Coaching Clients
+        </div>
+        <p>Join Joshua Roy for transformative in-person events. Experience nervous system reprogramming, NLP techniques, and life-changing breakthroughs — at no cost to you.</p>
+    </div>
+</section>
+
+<section class="offers-section">
+    <div class="offers-grid">
+        <div class="offer-card reveal">
+            <div class="offer-icon"><i class="fas fa-chalkboard-user"></i></div>
+            <h3>Free Training Program</h3>
+            <div class="value">💰 Value: $100</div>
+            <p>Complete nervous system reprogramming workshop — normally reserved for paying coaching clients.</p>
+        </div>
+        <div class="offer-card reveal">
+            <div class="offer-icon"><i class="fas fa-percent"></i></div>
+            <h3>Free Offers & Discounts</h3>
+            <div class="value">🎁 Exclusive Access</div>
+            <p>Get priority access to discounted coaching packages, early-bird rates, and members-only offers.</p>
+        </div>
+        <div class="offer-card reveal">
+            <div class="offer-icon"><i class="fas fa-calendar-alt"></i></div>
+            <h3>Free Events Notification</h3>
+            <div class="value">📍 Location Alerts</div>
+            <p>Be the first to know when and where free events are being held near you.</p>
+        </div>
+    </div>
+</section>
+
+<section class="events-section">
+    <div class="section-header reveal">
+        <span class="label"><i class="fas fa-map-marker-alt"></i> Upcoming In-Person Events</span>
+        <h2>Join Us at a <em>Location Near You</em></h2>
+    </div>
+    <div class="events-container">
+        <div class="event-item reveal">
+            <div class="event-info">
+                <div class="event-date">
+                    <div class="month">JUNE</div>
+                    <div class="day">14</div>
+                </div>
+                <div class="event-details">
+                    <h4>Brisbane Free Training Day</h4>
+                    <p><i class="fas fa-map-pin"></i> South Brisbane Community Centre | 10am - 4pm</p>
+                </div>
+            </div>
+            <div class="event-status">📢 Register Below</div>
+        </div>
+        <div class="event-item reveal">
+            <div class="event-info">
+                <div class="event-date">
+                    <div class="month">JUNE</div>
+                    <div class="day">28</div>
+                </div>
+                <div class="event-details">
+                    <h4>Gold Coast Breakthrough Session</h4>
+                    <p><i class="fas fa-map-pin"></i> Surfers Paradise Conference Hall | 9am - 3pm</p>
+                </div>
+            </div>
+            <div class="event-status">📢 Register Below</div>
+        </div>
+        <div class="event-item reveal">
+            <div class="event-info">
+                <div class="event-date">
+                    <div class="month">JULY</div>
+                    <div class="day">12</div>
+                </div>
+                <div class="event-details">
+                    <h4>Sunshine Coast NLP Workshop</h4>
+                    <p><i class="fas fa-map-pin"></i> Maroochydore Events Centre | 10am - 5pm</p>
+                </div>
+            </div>
+            <div class="event-status">📢 Register Below</div>
+        </div>
+    </div>
+</section>
+
+<section class="form-section">
+    <div class="form-container reveal">
+        <h2>Claim Your <em>Free Spot</em></h2>
+        <div class="form-subtitle">Register now and get notified about all free events, training programs, and exclusive offers</div>
+        
+        <form id="freeEventForm">
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Full Name *</label>
+                <input type="text" id="name" name="Full Name" required placeholder="Enter your full name">
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Email Address *</label>
+                <input type="email" id="email" name="Email" required placeholder="you@example.com">
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-phone"></i> Phone Number *</label>
+                <input type="tel" id="phone" name="Phone Number" required placeholder="0412 345 678">
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-location-dot"></i> Preferred Location</label>
+                <select id="location" name="Preferred Location">
+                    <option value="">Select your city (optional)</option>
+                    <option>Brisbane, QLD</option>
+                    <option>Gold Coast, QLD</option>
+                    <option>Sunshine Coast, QLD</option>
+                    <option>Sydney, NSW</option>
+                    <option>Melbourne, VIC</option>
+                    <option>Perth, WA</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            
+            <div class="checkbox-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="optTraining" name="Interested In" value="Free Training Program">
+                    <span><i class="fas fa-chalkboard-user"></i> I want to attend the FREE Training Program (valued at $100)</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="optOffers" name="Interested In" value="Free Offers & Discounts">
+                    <span><i class="fas fa-tags"></i> I want to receive FREE offers and discounts for coaching</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="optEvents" name="Interested In" value="Free Events Notifications">
+                    <span><i class="fas fa-bell"></i> I want to be notified where free events are being held</span>
+                </label>
+            </div>
+            
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <i class="fab fa-telegram-plane"></i> Register via Telegram
+            </button>
+            <div class="form-feedback" id="formFeedback"></div>
+            <div class="fine-print">
+                <i class="fas fa-lock"></i> Your information is secure. We'll notify you via Telegram about upcoming events.
+            </div>
+        </form>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-bottom">
+        <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars">
+        <p>© 2026 AccessWorld Seminars · Joshua Roy · Free Events Program</p>
+        <a href="#">← Back to Home</a>
+    </div>
+</footer>
 
 <script>
-// ==================== TELEGRAM CONFIGURATION ====================
-const BOT_TOKEN = "8155100717:AAE0ABDHsRuFWmbXa8coP8qdL3QK2ZWYkaY";
-const CHAT_ID = "5970521104";
-
-async function sendTelegramNotification(preData, contactInfo, score, tierLabel) {
-  const message = `🌿 *NEW CELLULAR VITALITY LEAD* 🌿\n\n` +
-    `📋 *CONTACT DETAILS:*\n` +
-    `👤 *Name:* ${contactInfo.name}\n` +
-    `📞 *Phone:* ${contactInfo.phone}\n` +
-    `📧 *Email:* ${contactInfo.email}\n\n` +
-    `📊 *QUIZ RESPONSES:*\n` +
-    `👤 Segment: ${preData.segment}\n` +
-    `🎯 Goal: ${preData.goal}\n` +
-    `❤️ Health Focus: ${preData.healthFocus}\n` +
-    `📘 Learning Style: ${preData.learnPref}\n\n` +
-    `⭐ *FINAL SCORE:* ${score}/5 — ${tierLabel}\n\n` +
-    `✅ *AccessWorld Seminars - Follow Up Required*`;
-  
-  const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
+    // ============================================
+    // TELEGRAM CONFIGURATION
+    // REPLACE WITH YOUR ACTUAL BOT TOKEN AND CHAT ID
+    // ============================================
+    const TELEGRAM_BOT_TOKEN = '8155100717:AAE0ABDHsRuFWmbXa8coP8qdL3QK2ZWYkaY';
+    const TELEGRAM_CHAT_ID = '5970521104';
+    // ============================================
+    
+    const isTelegramConfigured = TELEGRAM_BOT_TOKEN !== 'YOUR_BOT_TOKEN_HERE' && TELEGRAM_CHAT_ID !== 'YOUR_CHAT_ID_HERE';
+    
+    async function sendToTelegram(message) {
+        if (!isTelegramConfigured) {
+            console.warn('Telegram not configured');
+            return false;
+        }
+        
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML',
+                    disable_web_page_preview: true
+                })
+            });
+            const result = await response.json();
+            return result.ok;
+        } catch (error) {
+            console.error('Telegram error:', error);
+            return false;
+        }
+    }
+    
+    function formatMessage(formData) {
+        const timestamp = new Date().toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'long' });
+        
+        let interests = [];
+        if (document.getElementById('optTraining').checked) interests.push('🎓 Free Training Program ($100 value)');
+        if (document.getElementById('optOffers').checked) interests.push('🏷️ Free Offers & Discounts');
+        if (document.getElementById('optEvents').checked) interests.push('📍 Free Events Notifications');
+        
+        let message = `🎟️ <b>FREE EVENT REGISTRATION</b>\n`;
+        message += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+        message += `🕐 <b>Time:</b> ${timestamp}\n`;
+        message += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+        
+        message += `📌 <b>Name:</b> ${formData.get('Full Name') || 'N/A'}\n`;
+        message += `📌 <b>Email:</b> ${formData.get('Email') || 'N/A'}\n`;
+        message += `📌 <b>Phone:</b> ${formData.get('Phone Number') || 'N/A'}\n`;
+        message += `📌 <b>Location:</b> ${formData.get('Preferred Location') || 'Not specified'}\n\n`;
+        
+        message += `🎯 <b>Interested In:</b>\n`;
+        if (interests.length > 0) {
+            interests.forEach(i => { message += `   ${i}\n`; });
+        } else {
+            message += `   None selected\n`;
+        }
+        
+        message += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+        message += `✅ <b>Action Required:</b> Send event details and follow up within 24 hours\n`;
+        
+        return message;
+    }
+    
+    document.getElementById('freeEventForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        
+        if (!name || !email || !phone) {
+            const feedback = document.getElementById('formFeedback');
+            feedback.className = 'form-feedback error';
+            feedback.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please fill in all required fields (Name, Email, Phone).';
+            setTimeout(() => {
+                feedback.className = 'form-feedback';
+                feedback.innerHTML = '';
+            }, 4000);
+            return;
+        }
+        
+        const optTraining = document.getElementById('optTraining').checked;
+        const optOffers = document.getElementById('optOffers').checked;
+        const optEvents = document.getElementById('optEvents').checked;
+        
+        if (!optTraining && !optOffers && !optEvents) {
+            const feedback = document.getElementById('formFeedback');
+            feedback.className = 'form-feedback error';
+            feedback.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please select at least one option.';
+            setTimeout(() => {
+                feedback.className = 'form-feedback';
+                feedback.innerHTML = '';
+            }, 4000);
+            return;
+        }
+        
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending to Telegram...';
+        
+        const formData = new FormData(this);
+        const message = formatMessage(formData);
+        const success = await sendToTelegram(message);
+        
+        const feedback = document.getElementById('formFeedback');
+        
+        if (success) {
+            feedback.className = 'form-feedback success';
+            feedback.innerHTML = '<i class="fas fa-check-circle"></i> ✅ Registration sent! You will receive event details and free offers via Telegram/Text within 24 hours.';
+            this.reset();
+        } else {
+            feedback.className = 'form-feedback error';
+            feedback.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Failed to send. Please contact Joshua on Telegram: @joshuaroycoach';
+        }
+        
+        setTimeout(() => {
+            feedback.className = 'form-feedback';
+            feedback.innerHTML = '';
+        }, 6000);
+        
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fab fa-telegram-plane"></i> Register via Telegram';
     });
-    const result = await response.json();
-    if (!response.ok) console.warn('Telegram error:', result);
-    else console.log('✅ Telegram sent successfully with contact details');
-  } catch(e) { console.warn('Telegram send failed:', e); }
-}
-
-// ==================== QUIZ DATA ====================
-const QUESTIONS = [
-  { text: "I feel mentally clear and focused throughout the day.", category: "Cellular Clarity", teachId: 1 },
-  { text: "My energy levels stay consistent without major crashes.", category: "Energy Stability", teachId: null },
-  { text: "I move my body daily in ways that activate lymph flow — walking, rebounding, or heel drops.", category: "Lymphatic Flow", teachId: 3 },
-  { text: "I practice deep belly breathing or specific breathwork several times per week.", category: "Oxygen Efficiency", teachId: null },
-  { text: "My diet includes living foods — fruits, greens, sprouts — and avoids processed sugars and hybridised wheat.", category: "Alkaline Nutrition", teachId: 5 },
-  { text: "I feel emotionally resilient and handle stress without long-term fatigue.", category: "Nervous System Balance", teachId: null },
-  { text: "I feel vitalised and full of energy even after heavier meals.", category: "Digestive Vitality", teachId: null },
-  { text: "My sleep is restorative and I wake feeling refreshed most days.", category: "Restoration & Repair", teachId: null },
-  { text: "I maintain a positive mindset and feel aligned with my deeper goals.", category: "Mindset & Purpose", teachId: 9 },
-  { text: "My body feels light, flexible, and energetic — not heavy or stagnant.", category: "Overall Vitality", teachId: null }
-];
-
-const TIERS = [
-  { min: 0, max: 2.4, label: "Cellular Overload", sub: "Urgent Renewal Needed", msg: "Your vitality signals show significant stagnation. With targeted daily upgrades, your body shifts within weeks." },
-  { min: 2.5, max: 3.4, label: "Awakening Potential", sub: "Transitioning to Vitality", msg: "You've started the journey — but inconsistency limits deeper energy. Focused habits unlock the next level." },
-  { min: 3.5, max: 4.4, label: "Thriving Foundation", sub: "Strong Momentum Building", msg: "You have a beautiful base. Advanced breathwork and lymph activation can take you to peak performance." },
-  { min: 4.5, max: 5.0, label: "Elite Cellular Vitality", sub: "Radiant Benchmark", msg: "Exceptional. You embody high-level wellness. Keep refining and share your light." }
-];
-
-function getTier(score) { return TIERS.find(t => score >= t.min && score <= t.max) || TIERS[1]; }
-
-function getTeachingHtml(teachId) {
-  const teachings = {
-    1: { title: "📘 The Brain-Fog Cycle", text: "Mental clarity begins at the cellular level. When lymph fluid stagnates, metabolic waste accumulates around neurons → brain fog, poor recall, fatigue. Deep breathing + lymphatic movement flush these toxins naturally." },
-    3: { title: "📘 Your Second Circulation — The Lymph Map", text: "Unlike blood (pumped by heart), lymph relies on muscle contraction — especially your calves. Every step, bounce or heel drop squeezes lymph vessels, moving waste toward elimination. 5-10 min of heel drops daily increases lymph flow up to 15x." },
-    5: { title: "📘 Acid vs. Alkaline — Cellular Terrain", text: "Living foods move through the digestive tract in ~20-30 minutes. Processed foods linger for hours, ferment, and create acidic waste. Healing foods: cilantro (chelates heavy metals), celery juice (restores lymph), papaya (natural peristalsis)." },
-    9: { title: "📘 Nervous System Reprogramming (NSR)", text: "Most health blocks aren't physical — they're emotional. Trapped emotions from past trauma create chronic stress patterns that suppress immunity, digestion, and energy. Breathwork + NSR dissolve these blocks at the source." }
-  };
-  const t = teachings[teachId];
-  if (!t) return '';
-  return `<div class="teaching-moment"><div class="teaching-title">${t.title}</div><div class="teaching-text">${t.text}</div></div>`;
-}
-
-let step = "intro";
-let preData = { segment: "", goal: "", healthFocus: "", learnPref: "" };
-let contactInfo = { name: "", phone: "", email: "" };
-let answers = new Array(QUESTIONS.length).fill(null);
-let finalScore = 0;
-let categoryAverages = {};
-let reportPage = 0;
-let currentQuestion = 0;
-
-const root = document.getElementById("app");
-
-function calculateFinalScore() {
-  const valid = answers.filter(a => a !== null);
-  return valid.length === 0 ? 0 : valid.reduce((a,b) => a + b, 0) / valid.length;
-}
-
-function calculateCategoryAverages() {
-  const cats = {};
-  QUESTIONS.forEach((q, i) => {
-    if (answers[i] !== null) {
-      if (!cats[q.category]) cats[q.category] = { sum: 0, count: 0 };
-      cats[q.category].sum += answers[i];
-      cats[q.category].count++;
-    }
-  });
-  Object.keys(cats).forEach(c => { cats[c] = cats[c].sum / cats[c].count; });
-  return cats;
-}
-
-function brandHeader(showLogo = true) {
-  return `<div class="brand-header">${showLogo ? '<img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld">' : ''}<span class="brand-name">AccessWorld Seminars</span></div>`;
-}
-
-function progressBar(current, total) {
-  return `<div class="progress-bar">${Array.from({ length: total }, (_, i) => {
-    let cls = i < current ? 'done' : i === current ? 'active' : '';
-    return `<div class="prog-dot ${cls}"></div>`;
-  }).join('')}</div>`;
-}
-
-function render() {
-  if (step === 'intro') renderIntro();
-  else if (step === 'pre1') renderPreSegment();
-  else if (step === 'pre2') renderPreGoal();
-  else if (step === 'pre3') renderPreHealthFocus();
-  else if (step === 'pre4') renderPreLearnPref();
-  else if (step === 'quiz') renderQuiz();
-  else if (step === 'leadCapture') renderLeadCapture();
-  else if (step === 'report') renderComprehensiveReport();
-}
-
-function renderIntro() {
-  root.innerHTML = `<div class="card">${brandHeader()}<div class="divider"><div class="divider-dot"></div></div>
-    <div class="intro-eyebrow">Discover Your True Health Score</div>
-    <h1>Cellular Vitality<br><em class="gold italic">Assessment</em></h1>
-    <p class="intro-subtitle">A personalised deep-dive into your oxygen efficiency, lymphatic flow, alkaline balance and nervous system health.</p>
-    <div class="intro-stats"><div class="stat-box"><div class="stat-num">10</div><div class="stat-label">Dimensions</div></div>
-    <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Report Pages</div></div>
-    <div class="stat-box"><div class="stat-num">5m</div><div class="stat-label">To Complete</div></div></div>
-    <div class="seminar-badge"><div class="badge-title">✦ 2-Day Health Seminar with Joshua Roy</div>
-    <p>Live strategies, breathwork, NSR tools and community.</p>
-    <a href="https://www.accessworldseminars.org/2dayhealthseminar" target="_blank">→ Reserve your seat</a></div>
-    <div style="text-align:center; margin-top:1.5rem;"><button class="btn btn-primary" id="startBtn">Begin Assessment →</button></div>
-    <footer class="card-footer">AccessWorld Seminars · Joshua Roy · Since 2015</footer>
-  </div>`;
-  document.getElementById("startBtn").onclick = () => { step = "pre1"; render(); };
-}
-
-function renderPreSegment() { renderPreScreen({ stepNum: 1, total: 4, title: "Tell me about your journey ✦", subtitle: "Which best describes you?", field: "segment", back: "intro", next: "pre2", options: [{ val: "Health Seeker", icon: "🌱", label: "Health Seeker — beginning my wellness journey" }, { val: "Performance Athlete", icon: "⚡", label: "Performance Athlete — optimising energy" }, { val: "Busy Professional", icon: "💼", label: "Busy Professional — low energy or brain fog" }, { val: "Wellness Practitioner", icon: "🌿", label: "Wellness Practitioner — deepening knowledge" }] }); }
-function renderPreGoal() { renderPreScreen({ stepNum: 2, total: 4, title: "What's your main health goal? ✦", subtitle: "Choose the outcome that matters most.", field: "goal", back: "pre1", next: "pre3", options: [{ val: "Sustained Energy", icon: "⚡", label: "Sustained Energy — no more crashes" }, { val: "Mental Clarity", icon: "🧠", label: "Mental Clarity — focus & memory" }, { val: "Lymph & Detox", icon: "🌀", label: "Lymph Detox — reduce bloat" }, { val: "Holistic Longevity", icon: "🌸", label: "Holistic Longevity — lasting vitality" }] }); }
-function renderPreHealthFocus() { renderPreScreen({ stepNum: 3, total: 4, title: "Your primary health focus ✦", subtitle: "Where do you most need support?", field: "healthFocus", back: "pre2", next: "pre4", options: [{ val: "Digestion & Gut", icon: "🥑", label: "Digestion & Gut health" }, { val: "Breath & Oxygen", icon: "🌬️", label: "Breathwork & Oxygenation" }, { val: "Lymphatic Movement", icon: "🏃", label: "Lymphatic Movement & Rebounding" }, { val: "Mindset & Trauma Release", icon: "🧘", label: "Mindset, limiting beliefs & emotional blocks" }] }); }
-function renderPreLearnPref() { renderPreScreen({ stepNum: 4, total: 4, title: "How do you love to learn? ✦", subtitle: "Tailors your coaching recommendation.", field: "learnPref", back: "pre3", next: "quiz", options: [{ val: "Visual & Video", icon: "🎥", label: "Visual & Video courses" }, { val: "Live Coaching", icon: "🎤", label: "Live seminars" }, { val: "Practical Workbooks", icon: "📖", label: "Practical workbooks" }, { val: "1-on-1 Mentorship", icon: "🤝", label: "1-on-1 mentorship with Joshua" }] }); }
-
-function renderPreScreen({ stepNum, total, title, subtitle, options, back, next, field }) {
-  root.innerHTML = `<div class="card">${brandHeader()}${progressBar(stepNum - 1, total)}
-    <div class="q-category">Your Profile · Step ${stepNum} of ${total}</div>
-    <h2 class="gold">${title}</h2>${subtitle ? `<p style="margin:0.5rem 0 0;">${subtitle}</p>` : ''}
-    <div class="options-grid">${options.map(o => `<div class="opt-card" data-val="${o.val}"><span class="opt-icon">${o.icon}</span><span>${o.label}</span></div>`).join('')}</div>
-    <div class="btn-row"><button class="btn btn-outline" id="backBtn">← Back</button><button class="btn btn-primary" id="nextBtn" disabled>Continue →</button></div>
-  </div>`;
-  let sel = "";
-  document.querySelectorAll(".opt-card").forEach(el => { el.onclick = () => { document.querySelectorAll(".opt-card").forEach(c => c.classList.remove("selected")); el.classList.add("selected"); sel = el.dataset.val; document.getElementById("nextBtn").disabled = false; }; });
-  document.getElementById("nextBtn").onclick = () => { if (sel) { preData[field] = sel; step = next; render(); } };
-  document.getElementById("backBtn").onclick = () => { step = back; render(); };
-}
-
-function renderQuiz() {
-  if (currentQuestion >= QUESTIONS.length) {
-    finalScore = calculateFinalScore();
-    categoryAverages = calculateCategoryAverages();
-    step = "leadCapture";
-    render();
-    return;
-  }
-  const q = QUESTIONS[currentQuestion];
-  const words = ["Rarely", "", "Sometimes", "", "Always"];
-  const teachingHtml = q.teachId ? getTeachingHtml(q.teachId) : '';
-  root.innerHTML = `<div class="card">${brandHeader(false)}${progressBar(currentQuestion, QUESTIONS.length)}
-    <div class="q-counter">Question ${currentQuestion + 1} of ${QUESTIONS.length}</div>
-    <div class="q-category">${q.category}</div>
-    <div class="q-text">${q.text}</div>
-    <div class="scale-container"><div class="scale-labels"><span>Rarely</span><span>Sometimes</span><span>Always</span></div>
-    <div class="scale-btns" id="scaleBtns"></div></div>${teachingHtml}
-    <div class="btn-row"><button class="btn btn-outline" id="prevBtn" ${currentQuestion === 0 ? 'disabled' : ''}>← Back</button>
-    <button class="btn btn-primary" id="nextBtn" ${answers[currentQuestion] === null ? 'disabled' : ''}>${currentQuestion === QUESTIONS.length - 1 ? 'Continue →' : 'Next →'}</button></div>
-  </div>`;
-  const sb = document.getElementById("scaleBtns");
-  for (let i = 1; i <= 5; i++) {
-    const btn = document.createElement("div");
-    btn.className = `scale-btn${answers[currentQuestion] === i ? ' selected' : ''}`;
-    btn.innerHTML = `<div class="scale-num">${i}</div><div class="scale-word">${words[i - 1]}</div>`;
-    btn.onclick = () => { answers[currentQuestion] = i; renderQuiz(); };
-    sb.appendChild(btn);
-  }
-  document.getElementById("prevBtn").onclick = () => { if (currentQuestion > 0) { currentQuestion--; renderQuiz(); } };
-  document.getElementById("nextBtn").onclick = () => {
-    if (answers[currentQuestion] !== null) {
-      if (currentQuestion < QUESTIONS.length - 1) { currentQuestion++; renderQuiz(); }
-      else { finalScore = calculateFinalScore(); categoryAverages = calculateCategoryAverages(); step = "leadCapture"; render(); }
-    }
-  };
-}
-
-// ==================== LEAD CAPTURE PAGE (WITH VALIDATION) ====================
-function renderLeadCapture() {
-  root.innerHTML = `<div class="card">${brandHeader()}
-    <div class="progress-bar"><div class="prog-dot done"></div><div class="prog-dot done"></div><div class="prog-dot done"></div><div class="prog-dot done"></div><div class="prog-dot active"></div></div>
-    <div class="q-category">Almost There! · Step 5 of 5</div>
-    <h2 class="gold" style="text-align:center; margin-bottom:0.5rem;">Your Report Is Ready</h2>
-    <p style="text-align:center; margin-bottom:1.5rem;">Enter your details below to receive your personalised Cellular Vitality Report.</p>
-    <div class="lead-form">
-      <input type="text" id="leadName" placeholder="Full Name" required>
-      <input type="tel" id="leadPhone" placeholder="Phone Number" required>
-      <input type="email" id="leadEmail" placeholder="Email Address" required>
-    </div>
-    <div class="seminar-badge" style="margin:1rem 0;">
-      <div class="badge-title">✦ Free 2-Day Health Seminar</div>
-      <p>Join Joshua Roy live for breathwork, NSR tools and community support.</p>
-      <a href="https://www.accessworldseminars.org/2dayhealthseminar" target="_blank">→ Reserve your seat</a>
-    </div>
-    <div class="btn-row">
-      <button class="btn btn-outline" id="backToQuizBtn">← Back to Quiz</button>
-      <button class="btn btn-primary" id="submitLeadBtn">Send My Report →</button>
-    </div>
-    <footer class="card-footer">Your information is secure. We'll send your report and occasional wellness insights.</footer>
-  </div>`;
-
-  document.getElementById("backToQuizBtn").onclick = () => { step = "quiz"; currentQuestion = QUESTIONS.length - 1; render(); };
-  document.getElementById("submitLeadBtn").onclick = () => {
-    const name = document.getElementById("leadName").value.trim();
-    const phone = document.getElementById("leadPhone").value.trim();
-    const email = document.getElementById("leadEmail").value.trim();
     
-    if (!name || !phone || !email) {
-      alert("❌ Please fill in all fields (Name, Phone, Email) to receive your report.");
-      return;
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            hamburger.innerHTML = mobileMenu.classList.contains('open') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
     }
     
-    // Store contact info
-    contactInfo = { name, phone, email };
-    
-    // Send to Telegram with ALL data
-    sendTelegramNotification(preData, contactInfo, finalScore.toFixed(1), getTier(finalScore).label);
-    
-    // Move to report
-    step = "report";
-    reportPage = 0;
-    render();
-  };
-}
-
-// ==================== COMPREHENSIVE REPORT (FULL VERSION) ====================
-function renderComprehensiveReport() {
-  const avg = finalScore.toFixed(1);
-  const tier = getTier(finalScore);
-  const sorted = Object.entries(categoryAverages).sort((a, b) => a[1] - b[1]);
-  const lowest = sorted.slice(0, 3);
-  const highest = sorted.slice(-3).reverse();
-
-  const page1 = `<div class="score-hero"><div class="score-ring"><span class="score-num">${avg}</span><span class="score-denom">/5</span></div>
-    <div class="tier-label">${tier.label}</div><div style="font-size:0.78rem;color:rgba(201,168,76,0.5);margin-bottom:0.5rem;">${tier.sub}</div>
-    <p class="tier-msg">${tier.msg}</p><div class="tag-row"><span class="tag">${preData.segment}</span><span class="tag">${preData.goal}</span><span class="tag">${preData.healthFocus}</span></div></div>
-    <div class="report-section"><h3>🧬 Your Cellular Vitality Breakdown</h3>${Object.entries(categoryAverages).map(([cat, sc]) => `<div class="category-bar-wrap"><div class="category-bar-label"><span>${cat}</span><span>${sc.toFixed(1)}/5</span></div><div class="category-bar-track"><div class="category-bar-fill" style="width:${(sc / 5) * 100}%"></div></div></div>`).join('')}</div>
-    <div class="report-section"><h3>⚡ Priority Areas — Start Here</h3><ul>${lowest.map(([cat, sc]) => `<li><strong>${cat}</strong> — ${sc.toFixed(1)}/5</li>`).join('')}</ul></div>
-    <div class="report-section"><h3>✨ Your Strengths</h3><ul>${highest.map(([cat, sc]) => `<li><strong>${cat}</strong> — ${sc.toFixed(1)}/5</li>`).join('')}</ul></div>
-    <div class="report-section"><h3>📖 Understanding Your Score</h3><p>Scores below 3.0 indicate shallow breathing, sluggish lymph, or an acid-forming diet. The body begins rebalancing within 72 hours of focused change.</p></div>`;
-
-  const page2 = `<div class="report-section"><h3>🌀 The Lymphatic System — Your Cellular Sewage Network</h3><p>Unlike your cardiovascular system, the lymphatic system has <strong>no central pump</strong>. It relies entirely on body movement. When sedentary, lymph stagnates → toxins accumulate → brain fog and bloating follow.</p><p><strong>Activators:</strong> Heel drops (7–15 min daily), rebounding (increases flow up to 15x), brisk walking. Cilantro and celery juice chelate heavy metals and hydrate lymph tissue.</p><div class="highlight-box"><p>🌿 <strong>Try this today:</strong> Stand, raise your heels slowly, then let them drop 30 times. Your lymph just moved.</p></div></div>
-    <div class="report-section"><h3>🌬️ Oxygen — The Forgotten Nutrient</h3><p>Without adequate oxygen, glucose produces just <strong>2 ATP</strong>. With full oxygenation through your mitochondria, the same glucose yields up to <strong>32 ATP</strong> — sixteen times more energy.</p><ul><li><strong>Morning protocol:</strong> 10–30 slow belly breaths on waking</li><li><strong>Retention breath:</strong> Inhale deeply, hold for 15 seconds</li><li><strong>Evening:</strong> 5 minutes of slow nasal breathing before sleep</li></ul></div>
-    <div class="report-section"><h3>⚗️ Alkaline Nutrition — What Your Blood pH Reveals</h3><p>Your blood is designed to sit at pH 7.36 — slightly alkaline. The two biggest drivers of acidity: processed sugar and hybridised wheat (spikes blood sugar faster than table sugar). <strong>Alkalising foods:</strong> leafy greens, cucumber, celery, avocado, sprouts.</p></div>
-    <div class="report-section"><h3>🥑 The Healthy Oils Your Cells Need</h3><p>Omega 3, 6, 9 — avocado oil, cold-pressed olive oil, coconut oil — are essential for joint lubrication, brain function, and cell membrane integrity.</p></div>`;
-
-  const page3 = `<div class="report-section"><h3>🧠 The Emotional Root of Physical Symptoms</h3><p>Your cells respond to your emotional state. Unprocessed stress, toxic thoughts, and suppressed grief create acid in the body → inflammation → illness. This is why <strong>Nervous System Reprogramming (NSR)</strong> is the missing piece.</p></div>
-    <div class="report-section"><h3>🔁 Break the Vicious Cycle</h3><p>Poor nutrition → low energy → no motivation → guilt → worse nutrition. Break it from the inside out: alkalise the terrain, oxygenate with breathwork, activate lymph gently, then address emotional weight.</p></div>
-    <div class="report-section"><h3>🚀 Your 7-Day Cellular Reset Plan</h3><ul><li><strong>Daily:</strong> Heel drops or rebounding — 7 minutes</li><li><strong>Morning:</strong> 5 minutes of belly breathing</li><li><strong>Each day:</strong> Add one living food (celery, cilantro, greens)</li><li><strong>Remove:</strong> One processed sugar or wheat product per day</li><li><strong>Evening:</strong> 5 minutes of slow nasal breathing</li></ul></div>
-    <div class="report-section" style="background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(20,32,58,0.95) 100%);"><h3>✦ The Missing Piece — Professional Coaching</h3><p>Information alone rarely creates lasting change. Joshua Roy's coaching brings NSR, breath mastery, and lymph activation together to rewire the patterns stopping you.</p><div class="seminar-badge" style="margin-top:1rem;"><div class="badge-title">✦ 2-Day Health Seminar</div><a href="https://www.accessworldseminars.org/2dayhealthseminar" target="_blank">→ Reserve your seat</a></div></div>`;
-
-  const pages = [page1, page2, page3];
-  const pageTitles = ["Your Score & Profile", "Body Systems Science", "Reset Plan & Coaching"];
-
-  root.innerHTML = `<div class="card"><div class="report-header"><div><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:32px;"><div class="report-page-indicator">Comprehensive Report · Page ${reportPage + 1} of 3 · ${pageTitles[reportPage]}</div></div><button class="download-btn" id="downloadReportBtn">📄 Download Report</button></div>
-    <div class="report-wrap" id="reportWrap">${pages[reportPage]}</div>
-    <div class="btn-row"><button class="btn btn-outline" id="prevReportBtn" ${reportPage === 0 ? 'disabled' : ''}>← Previous</button>
-    <div style="display:flex; gap:0.4rem;">${[0, 1, 2].map(i => `<div style="width:8px;height:8px;border-radius:50%;background:${i === reportPage ? 'var(--gold)' : 'rgba(201,168,76,0.2)'};"></div>`).join('')}</div>
-    <button class="btn btn-primary" id="nextReportBtn">${reportPage === 2 ? 'Start Over' : 'Next Page →'}</button></div></div>`;
-
-  document.getElementById("prevReportBtn").onclick = () => { if (reportPage > 0) { reportPage--; renderComprehensiveReport(); } };
-  document.getElementById("nextReportBtn").onclick = () => { if (reportPage === 2) { step = "intro"; currentQuestion = 0; answers = new Array(QUESTIONS.length).fill(null); reportPage = 0; render(); } else { reportPage++; renderComprehensiveReport(); } };
-  document.getElementById("downloadReportBtn").onclick = () => {
-    const fullHtml = `<!DOCTYPE html><html><head><title>AccessWorld Cellular Vitality Report</title><style>body{font-family:'DM Sans',sans-serif;background:#fff;color:#1a1a1a;padding:2rem;max-width:780px;margin:0 auto;}</style></head><body><h1>Cellular Vitality Report — <span style="color:#C9A84C;">${avg}/5</span></h1><h2>${tier.label} · ${tier.sub}</h2><p>${tier.msg}</p><p><strong>Profile:</strong> ${preData.segment} | ${preData.goal} | ${preData.healthFocus}</p>${pages.join('<div style="page-break-before:always;margin-top:2rem;"></div>')}<p>Generated by AccessWorld Seminars</p></body></html>`;
-    const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(new Blob([fullHtml], { type: "text/html" })), download: "AccessWorld_Vitality_Report.html" });
-    a.click(); URL.revokeObjectURL(a.href);
-  };
-}
-
-render();
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
 </script>
 </body>
 </html>
