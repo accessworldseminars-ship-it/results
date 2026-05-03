@@ -1,3 +1,5 @@
+Here is the HTML document with the updated Zoom meeting information, created as a complete, single-file webpage.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -181,7 +183,7 @@
       </div>
     </div>
 
-    <!-- COUNTDOWN + ZOOM -->
+    <!-- COUNTDOWN + ZOOM UPDATED SECTION -->
     <div class="hero-card fade-in" id="zoom">
       <div class="countdown-title"><i class="fas fa-clock"></i>&nbsp;Seminar Begins In</div>
       <div class="countdown-grid">
@@ -191,13 +193,18 @@
         <div class="cd-unit"><div class="cd-num" id="cd-secs">--</div><div class="cd-label">Secs</div></div>
       </div>
 
+      <!-- UPDATED ZOOM DETAILS: new meeting number, updated link & passcode -->
       <div class="zoom-box">
-        <div class="zoom-head"><i class="fas fa-video"></i> Zoom Meeting Details</div>
-        <div class="zoom-row"><span>Meeting Number</span><span>215 928 3790</span></div>
-        <div class="zoom-row"><span>Password</span><span>664511</span></div>
-        <a class="zoom-join" href="https://us02web.zoom.us/j/2159283790?pwd=ZmhFQ0VveFp4N294ZXF2ZElrUzQyUT09" target="_blank">
+        <div class="zoom-head"><i class="fas fa-video"></i> Zoom Meeting Details — Updated</div>
+        <div class="zoom-row"><span>Meeting ID</span><span>889 7513 8950</span></div>
+        <div class="zoom-row"><span>Passcode</span><span>No passcode required (direct link)</span></div>
+        <a class="zoom-join" href="https://us02web.zoom.us/j/88975138950" target="_blank">
           <i class="fas fa-external-link-alt"></i> Click Here to Join Zoom
         </a>
+        <!-- Additional verified join instructions: inviting host Joshua Roy -->
+        <div style="margin-top:12px; font-size:.73rem; background:rgba(255,255,240,0.05); border-radius:6px; padding:8px; text-align:center;">
+          <i class="fas fa-user-check"></i> Host: Joshua Roy | Join directly via meeting link
+        </div>
       </div>
 
       <div style="font-size:.82rem;color:var(--text-gray);margin-bottom:1.4rem;">
@@ -342,7 +349,8 @@
       <a href="https://form.jotform.com/251968752973071" target="_blank" class="btn" style="font-size:1.05rem;padding:15px 36px;">
         <i class="fas fa-calendar-check"></i> Register Now
       </a>
-      <a href="https://us02web.zoom.us/j/2159283790?pwd=ZmhFQ0VveFp4N294ZXF2ZElrUzQyUT09" target="_blank" class="btn btn-ghost" style="font-size:1rem;padding:15px 28px;">
+      <!-- UPDATED ZOOM LINK IN CTA BUTTON also matches new meeting URL -->
+      <a href="https://us02web.zoom.us/j/88975138950" target="_blank" class="btn btn-ghost" style="font-size:1rem;padding:15px 28px;">
         <i class="fas fa-video"></i> Join Zoom Meeting
       </a>
     </div>
@@ -354,8 +362,8 @@
   <p>Transformative Coaching &amp; Training Programs</p>
   <p style="margin-top:6px;">© 2026 AccessWorld Seminars · ABN 72 546 137 885 · Brisbane, Queensland, Australia</p>
   <p style="margin-top:6px;font-size:.78rem;">
-    Zoom: 215 928 3790 · Password: 664511 ·
-    <a href="https://us02web.zoom.us/j/2159283790?pwd=ZmhFQ0VveFp4N294ZXF2ZElrUzQyUT09" target="_blank" style="color:var(--gold);text-decoration:none;">Join Link</a>
+    Zoom Meeting ID: 889 7513 8950 · No passcode required ·
+    <a href="https://us02web.zoom.us/j/88975138950" target="_blank" style="color:var(--gold);text-decoration:none;">Join Link (Updated)</a>
   </p>
 </footer>
 
@@ -434,7 +442,7 @@
   resetTimer();
 })();
 
-// FADE IN
+// FADE IN OBSERVER
 const faders=document.querySelectorAll('.fade-in');
 const obs=new IntersectionObserver((entries,o)=>{
   entries.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('visible');o.unobserve(e.target);});
@@ -444,3 +452,4 @@ setTimeout(()=>{faders.forEach(f=>{if(f.getBoundingClientRect().top<window.inner
 </script>
 </body>
 </html>
+```
