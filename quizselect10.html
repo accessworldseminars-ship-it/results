@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Addiction Recovery & Outgrowth Assessment — AccessWorld Seminars</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #080d18;
+            --bg-mid: #1A2744;
+            --accent: #C9A84C;
+            --accent-light: #E8D5A3;
+            --text-light: #F0F4F8;
+            --text-muted: #8A9BB8;
+            --card-bg: rgba(26, 39, 68, 0.6);
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --danger: #F44336;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-mid) 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .intro-screen { text-align: center; padding: 40px 20px; animation: fadeInUp 0.8s ease; }
+        .logo { width: 120px; margin-bottom: 20px; filter: brightness(1.2); }
+        .quiz-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; color: var(--accent); margin-bottom: 15px; }
+        .quiz-subtitle { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; }
+        .hero-image { width: 100%; max-width: 500px; border-radius: 12px; margin: 20px auto; box-shadow: 0 20px 60px rgba(0,0,0,0.5); border: 2px solid rgba(201,168,76,0.3); }
+
+        .bio-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid rgba(201,168,76,0.2);
+            text-align: left;
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: var(--bg-dark);
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .progress-container {
+            position: sticky; top: 0; background: rgba(8,13,24,0.95); padding: 15px 0; z-index: 100; backdrop-filter: blur(10px);
+        }
+        .progress-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%); transition: width 0.5s ease; }
+
+        .question-card, .contact-card, .result-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(201,168,76,0.15);
+        }
+
+        .question-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 600; margin-bottom: 25px; }
+
+        .scale-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+        .scale-btn {
+            flex: 1; min-width: 80px; padding: 15px 10px; background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(201,168,76,0.3); border-radius: 12px; color: var(--text-light);
+            cursor: pointer; transition: all 0.3s ease; text-align: center;
+        }
+        .scale-btn.selected {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: var(--bg-dark); border-color: var(--accent); transform: scale(1.05);
+        }
+
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 30px; gap: 15px; }
+        .nav-btn {
+            padding: 12px 30px; border-radius: 30px; border: 2px solid var(--accent);
+            background: transparent; color: var(--accent); cursor: pointer; font-weight: 600;
+        }
+        .nav-btn.primary { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); color: var(--bg-dark); border: none; }
+
+        .status-div {
+            margin-top: 15px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-align: center;
+            display: none;
+            border: 1px solid;
+        }
+
+        .tier-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: var(--bg-dark);
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 15px 0;
+        }
+
+        .action-buttons { display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap; justify-content: center; }
+        .programs-link {
+            display: block; text-align: center; margin: 30px 0; padding: 25px;
+            background: linear-gradient(135deg, rgba(201,168,76,0.15) 0%, rgba(26,39,68,0.8) 100%);
+            border-radius: 16px; border: 2px solid var(--accent); text-decoration: none; color: var(--text-light);
+        }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 480px) {
+            .container { padding: 15px; }
+            .scale-buttons { gap: 5px; }
+            .nav-buttons { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- INTRO -->
+        <div class="intro-screen" id="introScreen">
+            <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" class="logo">
+            <h1 class="quiz-title">The Addiction Recovery & Outgrowth Assessment</h1>
+            <p class="quiz-subtitle">Where are you on the journey of outgrowing addiction? Assess your readiness, commitment, support systems, and the four fundamentals needed for lasting transformation.</p>
+            <img src="https://i.ibb.co/Cs9QFSnF/23905360-10155857231059785-7730782653856996330-n.jpg" alt="Hero" class="hero-image">
+
+            <div class="bio-section">
+                <h3>🎯 About Your Guide</h3>
+                <div class="bio-text">
+                    <strong>Joshua Roy</strong> is a Results Coach & Seminar Leader with AccessWorld Seminars. With 24+ years in law enforcement, 900+ seminars delivered, and 3,500+ coaching sessions, Joshua specializes in NLP, Nervous System Reprogramming (NSR), and addiction recovery and outgrowth.
+                </div>
+            </div>
+
+            <button class="start-btn" onclick="startQuiz()">Begin Assessment</button>
+        </div>
+
+        <!-- PROGRESS -->
+        <div class="progress-container hidden" id="progressContainer">
+            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 0%"></div></div>
+            <div class="progress-text" id="progressText">Question 1 of 12</div>
+        </div>
+
+        <!-- QUESTIONS -->
+        <div class="question-screen" id="questionScreen" style="display:none;">
+            <div class="question-card">
+                <div class="question-number" id="questionNumber">Question 1 of 12</div>
+                <div class="question-text" id="questionText"></div>
+
+                <div class="scale-labels">
+                    <span>Not at all</span><span>Slightly</span><span>Somewhat</span><span>Mostly</span><span>Very much</span><span>Completely</span>
+                </div>
+
+                <div class="scale-buttons" id="scaleButtons">
+                    <button class="scale-btn" onclick="selectAnswer(0)"><span class="scale-value">0</span><span class="scale-label">Not at all</span></button>
+                    <button class="scale-btn" onclick="selectAnswer(1)"><span class="scale-value">1</span><span class="scale-label">Slightly</span></button>
+                    <button class="scale-btn" onclick="selectAnswer(2)"><span class="scale-value">2</span><span class="scale-label">Somewhat</span></button>
+                    <button class="scale-btn" onclick="selectAnswer(3)"><span class="scale-value">3</span><span class="scale-label">Mostly</span></button>
+                    <button class="scale-btn" onclick="selectAnswer(4)"><span class="scale-value">4</span><span class="scale-label">Very much</span></button>
+                    <button class="scale-btn" onclick="selectAnswer(5)"><span class="scale-value">5</span><span class="scale-label">Completely</span></button>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="nav-btn" id="prevBtn" onclick="prevQuestion()" disabled>Previous</button>
+                <button class="nav-btn primary" id="nextBtn" onclick="nextQuestion()" disabled>Next</button>
+            </div>
+        </div>
+
+        <!-- CONTACT SCREEN -->
+        <div class="contact-screen" id="contactScreen" style="display:none;">
+            <div class="contact-card">
+                <h2>Almost There!</h2>
+                <p>Enter your details to receive your personalized report and exclusive access to Joshua Roy's programs.</p>
+
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" placeholder="John Doe" required>
+                    <div class="error-msg" id="nameError">Please enter your name</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" placeholder="+61 432 119 091" required>
+                    <div class="error-msg" id="phoneError">Please enter a valid phone number</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country *</label>
+                    <select id="country" required>
+                        <option value="">Select Country</option>
+                        <option value="Australia">🇦🇺 Australia</option>
+                        <option value="Canada">🇨🇦 Canada</option>
+                        <option value="Ireland">🇮🇪 Ireland</option>
+                        <option value="New Zealand">🇳🇿 New Zealand</option>
+                        <option value="United Kingdom">🇬🇧 United Kingdom</option>
+                        <option value="United States">🇺🇸 United States</option>
+                        <option value="Other">🌍 Other</option>
+                    </select>
+                    <div class="error-msg" id="countryError">Please select your country</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" placeholder="john@example.com" required>
+                    <div class="error-msg" id="emailError">Please enter a valid email</div>
+                </div>
+
+                <div id="status" class="status-div"></div>
+
+                <button class="start-btn" style="width: 100%; margin-top: 20px;" onclick="submitQuiz()">Get My Results</button>
+            </div>
+        </div>
+
+        <!-- RESULTS SCREEN -->
+        <div class="results-screen" id="resultsScreen" style="display:none;">
+            <div class="results-header">
+                <h2>Your Addiction Recovery & Outgrowth Profile</h2>
+                <div class="score-circle" id="scoreCircle" style="margin: 20px auto;">
+                    <div class="score-text" id="scoreText">0.0</div>
+                </div>
+                <div class="tier-badge" id="tierBadge">Tier</div>
+                <p id="tierDescription" style="color: var(--text-muted); margin-top: 10px;"></p>
+            </div>
+
+            <div class="tab-nav">
+                <button class="tab-btn active" onclick="showTab(0)">Overview</button>
+                <button class="tab-btn" onclick="showTab(1)">Growth Areas</button>
+                <button class="tab-btn" onclick="showTab(2)">Strengths</button>
+            </div>
+
+            <div class="tab-content active" id="tab0">
+                <div class="result-card"><h3>📊 Complete Breakdown</h3><div id="overviewContent"></div></div>
+                <div class="result-card"><h3>🎯 What This Means</h3><p id="overviewMeaning"></p></div>
+                <div class="result-card"><h3>📈 Your Personalized Roadmap</h3><p id="overviewRoadmap"></p></div>
+            </div>
+
+            <div class="tab-content" id="tab1"><div id="growthContent"></div></div>
+            <div class="tab-content" id="tab2"><div id="strengthsContent"></div></div>
+
+            <div class="action-buttons">
+                <button class="action-btn primary" onclick="bookCall()">📞 Book Free Strategy Call</button>
+                <button class="action-btn" onclick="window.print()">🖨️ Print / Save PDF</button>
+                <button class="action-btn" onclick="retakeQuiz()">🔄 Retake Quiz</button>
+            </div>
+
+            <a href="https://accessworldseminars-ship-it.github.io/results/programoffers.html" class="programs-link" target="_blank">
+                <h3>🎓 Explore Your Personalized Program Offers</h3>
+                <p>Based on your results, discover the specific programs, coaching packages, and workshops designed to accelerate your transformation.</p>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const QUIZ_TITLE = "The Addiction Recovery & Outgrowth Assessment";
+        const WEBHOOK_URL = "https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1";
+
+        const TIERS = [
+            { min: 0, max: 1.5, label: "Foundation Builder", desc: "You're at the beginning of an exciting journey. Your foundation is fertile soil waiting for the right seeds and consistent nurturing." },
+            { min: 1.6, max: 2.5, label: "Emerging Explorer", desc: "You have some natural strengths, but there's vast untapped potential waiting to be unlocked through targeted practice." },
+            { min: 2.6, max: 3.5, label: "Active Developer", desc: "You're actively engaged, but inconsistent techniques may be holding you back from mastery. Focused refinement is your next step." },
+            { min: 3.6, max: 4.5, label: "Skilled Practitioner", desc: "You have solid foundations. With targeted advanced techniques, you could achieve extraordinary results." },
+            { min: 4.6, max: 5.0, label: "Mastery Candidate", desc: "Exceptional! You demonstrate advanced capabilities. You're ready for elite-level techniques and potentially teaching others." }
+        ];
+
+        const QUESTIONS = [
+            {"id":1,"category":"Admitting","text":"I have fully admitted to myself that I have an addiction or compulsive behavior pattern.","dimension":"Honest Admission"},
+            {"id":2,"category":"Decision","text":"I have made a firm, unwavering decision to recover — not just \"try\" or \"hope\".","dimension":"Firm Decision"},
+            {"id":3,"category":"Action","text":"I take consistent daily action toward recovery — not just when I feel motivated.","dimension":"Daily Action"},
+            {"id":4,"category":"Character","text":"I am building unrelenting commitment and unparalleled determination to stay the course.","dimension":"Character Building"},
+            {"id":5,"category":"Education","text":"I understand what needs my addiction meets and am learning healthier ways to meet them.","dimension":"Need Awareness"},
+            {"id":6,"category":"Support","text":"I have a supportive peer group, mentor, or community that holds me accountable.","dimension":"Support Network"},
+            {"id":7,"category":"Proximity","text":"I have changed my environment, people, and situations that trigger addictive behavior.","dimension":"Environmental Change"},
+            {"id":8,"category":"Peer Group","text":"My closest relationships support my recovery and model healthy, empowered living.","dimension":"Healthy Peer Group"},
+            {"id":9,"category":"Mentor","text":"I have a mentor or coach who has walked this path and guides me through challenges.","dimension":"Guided Mentorship"},
+            {"id":10,"category":"Morning Routine","text":"I have a structured morning routine that sets me up for success every single day.","dimension":"Recovery Routine"},
+            {"id":11,"category":"Self-Worth","text":"I am rebuilding my identity as someone who is worthy of health, love, and success.","dimension":"Identity Rebuild"},
+            {"id":12,"category":"Contribution","text":"I am beginning to help others with their recovery — turning my pain into purpose.","dimension":"Purpose Contribution"}
+        ];
+
+        let currentQuestion = 0;
+        let answers = {};
+
+        function startQuiz() {
+            document.getElementById('introScreen').classList.add('hidden');
+            document.getElementById('progressContainer').classList.remove('hidden');
+            document.getElementById('questionScreen').style.display = 'block';
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = QUESTIONS[currentQuestion];
+            document.getElementById('questionNumber').textContent = `Question ${currentQuestion + 1} of ${QUESTIONS.length}`;
+            document.getElementById('questionText').textContent = q.text;
+            document.getElementById('progressText').textContent = `Question ${currentQuestion + 1} of ${QUESTIONS.length}`;
+            document.getElementById('progressFill').style.width = `${((currentQuestion + 1) / QUESTIONS.length) * 100}%`;
+
+            document.querySelectorAll('.scale-btn').forEach(btn => btn.classList.remove('selected'));
+            if (answers[q.id] !== undefined) {
+                document.querySelectorAll('.scale-btn')[answers[q.id]].classList.add('selected');
+            }
+
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            document.getElementById('nextBtn').disabled = answers[q.id] === undefined;
+            document.getElementById('nextBtn').textContent = currentQuestion === QUESTIONS.length - 1 ? 'Continue' : 'Next';
+        }
+
+        function selectAnswer(value) {
+            answers[QUESTIONS[currentQuestion].id] = value;
+            document.querySelectorAll('.scale-btn').forEach((btn, i) => btn.classList.toggle('selected', i === value));
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < QUESTIONS.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                document.getElementById('questionScreen').style.display = 'none';
+                document.getElementById('progressContainer').classList.add('hidden');
+                document.getElementById('contactScreen').style.display = 'block';
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        }
+
+        function validateForm() {
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const country = document.getElementById('country').value;
+            const email = document.getElementById('email').value.trim();
+
+            document.getElementById('nameError').style.display = name ? 'none' : 'block';
+            document.getElementById('phoneError').style.display = /^[+]?[\d\s-]{8,}$/.test(phone) ? 'none' : 'block';
+            document.getElementById('countryError').style.display = country ? 'none' : 'block';
+            document.getElementById('emailError').style.display = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? 'none' : 'block';
+
+            return name && /^[+]?[\d\s-]{8,}$/.test(phone) && country && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        async function sendToTelegram(name, phone, country, email) {
+            const status = document.getElementById('status');
+            status.style.display = 'block';
+            status.style.background = '#fff3cd';
+            status.style.color = '#856404';
+            status.textContent = 'Sending to Telegram...';
+
+            const payload = {
+                name, phone, country, email,
+                score: calculateAverage().toFixed(1),
+                tier: getTier(calculateAverage()).label,
+                quiz_title: QUIZ_TITLE,
+                timestamp: new Date().toISOString()
+            };
+
+            try {
+                await fetch(WEBHOOK_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+                status.style.background = '#d4edda';
+                status.style.color = '#155724';
+                status.textContent = '✓ Message sent to Telegram!';
+            } catch (e) {
+                console.error(e);
+                status.style.background = '#f8d7da';
+                status.style.color = '#721c24';
+                status.textContent = 'Error sending to Telegram. Continuing...';
+            }
+        }
+
+        function sendToZapier(name, phone, country, email) {
+            const scoreNum = calculateAverage();
+            const tier = getTier(scoreNum);
+            let answersText = "";
+            QUESTIONS.forEach(q => {
+                const val = answers[q.id] || 0;
+                answersText += `${q.category}: ${val}/5\n`;
+            });
+
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('phone', phone);
+            formData.append('country', country);
+            formData.append('email', email);
+            formData.append('score', scoreNum.toFixed(1));
+            formData.append('tier', tier.label);
+            formData.append('answers_text', answersText);
+            formData.append('timestamp', new Date().toISOString());
+            formData.append('quiz_title', QUIZ_TITLE);
+
+            fetch("https://hooks.zapier.com/hooks/catch/3779260/unt9eik/", {
+                method: "POST", body: formData, mode: "no-cors"
+            });
+        }
+
+        async function submitQuiz() {
+            if (!validateForm()) return;
+
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const country = document.getElementById('country').value;
+            const email = document.getElementById('email').value.trim();
+
+            await sendToTelegram(name, phone, country, email);
+            sendToZapier(name, phone, country, email);
+
+            setTimeout(showResults, 1800);
+        }
+
+        function calculateAverage() {
+            const sum = Object.values(answers).reduce((a, b) => a + b, 0);
+            return sum / QUESTIONS.length;
+        }
+
+        function getTier(score) {
+            return TIERS.find(t => score >= t.min && score <= t.max) || TIERS[0];
+        }
+
+        function showResults() {
+            document.getElementById('contactScreen').style.display = 'none';
+            document.getElementById('resultsScreen').style.display = 'block';
+
+            const score = calculateAverage();
+            const tier = getTier(score);
+            const percent = (score / 5) * 100;
+
+            document.getElementById('scoreText').textContent = score.toFixed(1);
+            document.getElementById('scoreCircle').style.setProperty('--score-percent', `${percent}%`);
+            document.getElementById('tierBadge').textContent = tier.label;
+            document.getElementById('tierDescription').textContent = tier.desc;
+
+            // Overview
+            let html = '';
+            QUESTIONS.forEach(q => {
+                const val = answers[q.id] || 0;
+                const fillClass = val >= 4 ? 'high' : val >= 2 ? 'mid' : 'low';
+                html += `<div class="question-review"><div class="review-q">${q.text}</div><div class="review-bar"><div class="review-fill ${fillClass}" style="width:${(val/5)*100}%"></div></div><div class="review-score">${q.category}: ${val}/5</div></div>`;
+            });
+            document.getElementById('overviewContent').innerHTML = html;
+
+            // You can expand Growth Areas & Strengths as needed
+        }
+
+        function showTab(n) {
+            document.querySelectorAll('.tab-content').forEach((el,i) => el.classList.toggle('active', i===n));
+            document.querySelectorAll('.tab-btn').forEach((el,i) => el.classList.toggle('active', i===n));
+        }
+
+        function bookCall() {
+            window.open('https://wa.me/61432119091?text=Hi%20Joshua,%20I%20just%20completed%20the%20Addiction%20Recovery%20Assessment.', '_blank');
+        }
+
+        function retakeQuiz() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>
