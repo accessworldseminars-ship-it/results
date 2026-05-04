@@ -1,5 +1,3 @@
-Here is an HTML document that implements a fully functional emotional mastery assessment quiz with a fixed start button.
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +26,6 @@ Here is an HTML document that implements a fully functional emotional mastery as
             padding: 20px;
         }
 
-        /* Intro Screen */
         .intro-screen {
             text-align: center;
             padding: 20px 20px 40px;
@@ -115,7 +112,6 @@ Here is an HTML document that implements a fully functional emotional mastery as
             background: linear-gradient(135deg, #dbb954 0%, #f5e9bc 100%);
         }
 
-        /* Progress Bar */
         .progress-container {
             position: sticky;
             top: 0;
@@ -290,6 +286,10 @@ Here is an HTML document that implements a fully functional emotional mastery as
             font-size: 1rem;
         }
 
+        .form-group select option {
+            background: #1A2744;
+        }
+
         .error-msg {
             color: #F44336;
             font-size: 0.75rem;
@@ -418,8 +418,25 @@ Here is an HTML document that implements a fully functional emotional mastery as
             background: rgba(201,168,76,0.3);
         }
 
+        .programs-link h3 {
+            color: #C9A84C;
+        }
+
+        .programs-link p {
+            color: #8A9BB8;
+        }
+
         .hidden {
             display: none !important;
+        }
+
+        .status-message {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 10px;
+            display: none;
+            text-align: center;
+            font-weight: 500;
         }
 
         @keyframes fadeInUp {
@@ -472,12 +489,13 @@ Here is an HTML document that implements a fully functional emotional mastery as
     <div id="contactScreen" class="contact-screen">
         <div class="contact-card">
             <h2 style="color:#C9A84C;">Almost There!</h2>
-            <p>Enter your details to receive your personalized Emotional Mastery & Clearing Assessment Report and exclusive access to Joshua Roy's programs.</p>
+            <p>Enter your details to receive your personalized Emotional Mastery & Clearing Assessment Report.</p>
             <div class="form-group"><label>Full Name *</label><input type="text" id="name" placeholder="John Doe"><div class="error-msg" id="nameError">Please enter your name</div></div>
             <div class="form-group"><label>Phone Number *</label><input type="tel" id="phone" placeholder="+61 432 119 091"><div class="error-msg" id="phoneError">Valid phone required (min 8 digits)</div></div>
-            <div class="form-group"><label>Country *</label><select id="country"><option value="">Select Country</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option><option>Other</option></select><div class="error-msg" id="countryError">Select country</div></div>
+            <div class="form-group"><label>Country *</label><select id="country"><option value="">Select Country</option><option value="Australia">🇦🇺 Australia</option><option value="Canada">🇨🇦 Canada</option><option value="Ireland">🇮🇪 Ireland</option><option value="New Zealand">🇳🇿 New Zealand</option><option value="United Kingdom">🇬🇧 United Kingdom</option><option value="United States">🇺🇸 United States</option><option value="Other">🌍 Other</option></select><div class="error-msg" id="countryError">Select country</div></div>
             <div class="form-group"><label>Email Address *</label><input type="email" id="email" placeholder="john@example.com"><div class="error-msg" id="emailError">Valid email required</div></div>
-            <button class="start-btn" id="submitContactBtn" style="width:100%;">Get My Results</button>
+            <button class="start-btn" id="submitContactBtn" style="width:100%;">Get My Results →</button>
+            <div id="statusMessage" class="status-message"></div>
         </div>
     </div>
 
@@ -499,6 +517,10 @@ Here is an HTML document that implements a fully functional emotional mastery as
 </div>
 
 <script>
+    // ==================== ACTIVEPIECES WEBHOOK ====================
+    // EXACT same webhook URL as your working test form
+    const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+    
     // ------------------- QUIZ DATA -------------------
     const QUESTIONS = [
         { id: 1, category: "Blame", text: "I can release blame toward others and take full ownership of my emotional responses.", dimension: "Blame Release" },
@@ -515,11 +537,8 @@ Here is an HTML document that implements a fully functional emotional mastery as
         { id: 12, category: "Contribution", text: "I use my emotional growth to help others — my healing becomes a gift to those around me.", dimension: "Healing Contribution" }
     ];
 
-    const DIMENSIONS_MAP = {};
-    QUESTIONS.forEach(q => { DIMENSIONS_MAP[q.dimension] = { low: `Your ${q.dimension} needs structured practice — this is a leverage point for rapid growth.`, practice: [`Daily 10min reflection on ${q.dimension}`, `Journal specific triggers`, `Apply Joshua's NSR technique`] }; });
-
     let currentIndex = 0;
-    let answers = {};      // key = question id, value = 0-5
+    let answers = {};
     let userData = { name: "", phone: "", country: "", email: "" };
 
     // DOM elements
@@ -534,7 +553,6 @@ Here is an HTML document that implements a fully functional emotional mastery as
     const submitContact = document.getElementById('submitContactBtn');
     const scaleDiv = document.getElementById('scaleButtons');
 
-    // helper functions
     function renderScaleButtons() {
         const currentQ = QUESTIONS[currentIndex];
         const selectedVal = answers[currentQ.id] !== undefined ? answers[currentQ.id] : null;
@@ -581,7 +599,6 @@ Here is an HTML document that implements a fully functional emotional mastery as
             currentIndex++;
             renderQuestion();
         } else {
-            // last question -> move to contact
             showContactForm();
         }
     }
@@ -599,9 +616,7 @@ Here is an HTML document that implements a fully functional emotional mastery as
         contactScreen.style.display = 'block';
     }
 
-    // Start quiz - FIXED!
     function startQuiz() {
-        // reset everything
         currentIndex = 0;
         answers = {};
         intro.classList.add('hidden');
@@ -612,7 +627,6 @@ Here is an HTML document that implements a fully functional emotional mastery as
         renderQuestion();
     }
 
-    // validation
     function validateContact() {
         let valid = true;
         const name = document.getElementById('name').value.trim();
@@ -631,12 +645,12 @@ Here is an HTML document that implements a fully functional emotional mastery as
         return valid;
     }
 
-    // calculate average & tier
     function calculateAverage() {
         let sum = 0;
         for(let q of QUESTIONS) { sum += (answers[q.id] !== undefined ? answers[q.id] : 0); }
         return sum / QUESTIONS.length;
     }
+
     function getTier(score) {
         if(score <= 1.5) return { label:"Foundation Builder", desc:"You're beginning your journey. With focused practice, rapid growth awaits." };
         if(score <= 2.5) return { label:"Emerging Explorer", desc:"Natural strengths exist, but untapped potential is ready to be unlocked." };
@@ -645,21 +659,58 @@ Here is an HTML document that implements a fully functional emotional mastery as
         return { label:"Mastery Candidate", desc:"Exceptional! You're ready for elite-level techniques and mentorship." };
     }
 
-    function sendToZapier() {
-        const score = calculateAverage();
-        const tier = getTier(score);
-        let answersText = "";
-        QUESTIONS.forEach(q => { answersText += `${q.category}: ${answers[q.id]||0}/5\n`; });
-        const formData = new FormData();
-        formData.append('name', userData.name);
-        formData.append('phone', userData.phone);
-        formData.append('country', userData.country);
-        formData.append('email', userData.email);
-        formData.append('score', score.toFixed(1));
-        formData.append('tier', tier.label);
-        formData.append('answers_text', answersText);
-        formData.append('quiz_title', "Emotional Mastery & Clearing Assessment");
-        fetch("https://hooks.zapier.com/hooks/catch/3779260/unt9eik/", { method: "POST", body: formData, mode: "no-cors" }).catch(e=>console.log);
+    // ========== SEND EXACTLY THE SAME FIELDS AS YOUR TEST FORM ==========
+    async function sendToActivepieces() {
+        // ONLY send the 4 fields your webhook expects (same as your test form)
+        const formData = {
+            name: userData.name,
+            phone: userData.phone,
+            country: userData.country,
+            email: userData.email
+        };
+        
+        console.log('Sending to Activepieces (same as test form):', formData);
+        
+        const statusDiv = document.getElementById('statusMessage');
+        statusDiv.style.display = 'block';
+        statusDiv.innerHTML = '📤 Sending your information...';
+        statusDiv.style.background = '#fff3cd';
+        statusDiv.style.color = '#856404';
+        
+        try {
+            const response = await fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            
+            if (response.ok) {
+                statusDiv.innerHTML = '✓ Information sent successfully! Loading your results...';
+                statusDiv.style.background = '#d4edda';
+                statusDiv.style.color = '#155724';
+                
+                setTimeout(() => {
+                    showResults();
+                }, 1000);
+            } else {
+                const errorText = await response.text();
+                console.error('Response error:', errorText);
+                statusDiv.innerHTML = `⚠️ Server responded with ${response.status}. Showing results anyway.`;
+                statusDiv.style.background = '#f8d7da';
+                statusDiv.style.color = '#721c24';
+                setTimeout(() => {
+                    showResults();
+                }, 1000);
+            }
+        } catch (error) {
+            console.error('Webhook error:', error);
+            statusDiv.innerHTML = '⚠️ Could not connect. Showing results anyway.';
+            statusDiv.style.background = '#f8d7da';
+            statusDiv.style.color = '#721c24';
+            setTimeout(() => {
+                showResults();
+            }, 1000);
+        }
     }
 
     function showResults() {
@@ -677,39 +728,39 @@ Here is an HTML document that implements a fully functional emotional mastery as
         let overviewHtml = '';
         QUESTIONS.forEach(q => {
             const val = answers[q.id] || 0;
-            let fillClass = val>=4 ? 'high' : (val>=2 ? 'mid' : 'low');
             let colorStyle = val>=4 ? '#4CAF50' : (val>=2 ? '#FF9800' : '#F44336');
-            overviewHtml += `<div class="question-review" style="margin-bottom:16px;"><div class="review-q">${q.text}</div>
-            <div class="review-bar" style="height:8px; background:#2a3650; border-radius:6px;"><div style="width:${(val/5)*100}%; height:8px; background:${colorStyle}; border-radius:6px;"></div></div>
-            <div class="review-score" style="font-size:0.75rem; margin-top:4px;">${q.category}: ${val}/5 — ${q.dimension}</div></div>`;
+            overviewHtml += `<div style="margin-bottom:16px;"><div>${q.text}</div>
+            <div style="height:8px; background:#2a3650; border-radius:6px; margin-top:5px;"><div style="width:${(val/5)*100}%; height:8px; background:${colorStyle}; border-radius:6px;"></div></div>
+            <div style="font-size:0.75rem; margin-top:4px;">${q.category}: ${val}/5 — ${q.dimension}</div></div>`;
         });
         document.getElementById('overviewContent').innerHTML = overviewHtml;
+        
         let meaning = score<2.5 ? "Your untapped potential is huge. With Joshua's NSR & NLP methods you can transform dramatically." : (score<3.5 ? "You're actively engaged but can refine your techniques for exponential gains." : (score<4.5 ? "Strong foundations! Ready for advanced coaching." : "Elite-level capability — you could become a certified mentor."));
         document.getElementById('overviewMeaning').innerHTML = meaning;
+        
         let roadmap = score<2.5 ? "Start with the NLP for Beginners Challenge & book a free strategy call." : (score<3.5 ? "12-Month Personal Development Immersion will systemize your growth." : "Communicate with Influence & mentor training awaits.");
         document.getElementById('overviewRoadmap').innerHTML = roadmap;
 
-        // growth (lowest 3)
         let sorted = QUESTIONS.map(q => ({ ...q, score: answers[q.id] || 0 })).sort((a,b)=>a.score - b.score);
         let lowest = sorted.slice(0,3);
         let growthHtml = '';
         lowest.forEach(item => {
-            let dim = DIMENSIONS_MAP[item.dimension] || { low: `Focused practice on ${item.dimension} will unlock mastery.`, practice: ["Daily visualization", "Track triggers", "Apply state shifting"] };
-            growthHtml += `<div class="result-card"><h3>⚡ ${item.dimension} (${item.score}/5)</h3><p>${dim.low}</p><div class="practice-box" style="background:rgba(201,168,76,0.1); border-radius:16px; padding:12px;"><h4>🎯 Daily Practice</h4><ul>${dim.practice.map(p=>`<li>✦ ${p}</li>`).join('')}</ul></div></div>`;
+            growthHtml += `<div class="result-card"><h3>⚡ ${item.dimension} (${item.score}/5)</h3><p>Focused practice on ${item.dimension} will unlock rapid mastery. Daily reflection and breathwork can shift this quickly.</p><div style="background:rgba(201,168,76,0.1); border-radius:16px; padding:12px; margin-top:10px;"><h4>🎯 Suggested Practice</h4><ul><li>✦ 5-minute daily journal on ${item.category.toLowerCase()}</li><li>✦ Apply NSR technique when triggered</li><li>✦ Track progress weekly</li></ul></div></div>`;
         });
         document.getElementById('growthContent').innerHTML = growthHtml;
+        
         let highest = sorted.slice(-2).reverse();
         let strengthHtml = '';
         highest.forEach(item => {
-            strengthHtml += `<div class="result-card"><h3>💪 ${item.dimension} (${item.score}/5)</h3><p>Your natural superpower! Use this strength to anchor other dimensions.</p><div class="practice-box"><ul><li>Teach this technique to someone else</li><li>Combine strength with weaker area</li><li>Document your natural process</li></ul></div></div>`;
+            strengthHtml += `<div class="result-card"><h3>💪 ${item.dimension} (${item.score}/5)</h3><p>Your natural strength! Leverage this to uplift other emotional dimensions.</p></div>`;
         });
         document.getElementById('strengthsContent').innerHTML = strengthHtml;
     }
 
-    function submitQuizHandler() {
+    // Submit handler - sends EXACT same 4 fields as your test form
+    async function submitQuizHandler() {
         if(validateContact()) {
-            sendToZapier();
-            showResults();
+            await sendToActivepieces();
         }
     }
 
@@ -730,7 +781,7 @@ Here is an HTML document that implements a fully functional emotional mastery as
 
     function bookCallFunc() { window.open('https://wa.me/61432119091?text=Hi%20Joshua,%20I%20completed%20Emotional%20Mastery%20quiz%20and%20want%20a%20free%20strategy%20session!', '_blank'); }
 
-    // event listeners
+    // Event listeners
     startBtn.addEventListener('click', startQuiz);
     nextBtn.addEventListener('click', nextQuestionHandler);
     prevBtn.addEventListener('click', prevQuestionHandler);
@@ -739,7 +790,7 @@ Here is an HTML document that implements a fully functional emotional mastery as
     document.getElementById('bookCallBtn')?.addEventListener('click', bookCallFunc);
     document.getElementById('printBtn')?.addEventListener('click', () => window.print());
 
-    // tabs
+    // Tabs
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const tabId = this.getAttribute('data-tab');
@@ -750,9 +801,8 @@ Here is an HTML document that implements a fully functional emotional mastery as
             });
         });
     });
-    // initial setup for fallback
+    
     if(startBtn) startBtn.disabled = false;
 </script>
 </body>
 </html>
-```
