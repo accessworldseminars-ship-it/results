@@ -1,217 +1,352 @@
+This is a complete HTML document that transforms your quiz landing page into a prospect-friendly selection hub with working links, removing lead generation language and focusing on topic-based discovery.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AccessWorld Seminars — Quiz Lead Generation Suite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>AccessWorld Quizzes | Find Your Path to Growth</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-dark: #080d18;
-            --bg-mid: #1A2744;
-            --accent: #C9A84C;
-            --accent-light: #E8D5A3;
-            --text-light: #F0F4F8;
-            --text-muted: #8A9BB8;
-            --card-bg: rgba(26, 39, 68, 0.6);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
+            background: linear-gradient(135deg, #080d18 0%, #0f1a2f 100%);
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-mid) 100%);
-            color: var(--text-light);
+            color: #F0F4F8;
+            line-height: 1.5;
             min-height: 100vh;
-            line-height: 1.6;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 2rem 1.5rem 3rem;
         }
 
-        .header {
+        /* header & hero */
+        .hero {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 3rem;
         }
 
         .logo {
-            width: 150px;
-            margin-bottom: 20px;
+            max-width: 170px;
+            width: 100%;
+            margin-bottom: 1.2rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
         }
 
         h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: var(--accent);
-            margin-bottom: 15px;
+            font-size: clamp(2.2rem, 6vw, 3.6rem);
+            font-weight: 700;
+            background: linear-gradient(130deg, #E8D5A3, #C9A84C);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.75rem;
         }
 
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
+        .brand-tag {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #C9A84C;
+            font-weight: 500;
+            margin-bottom: 1rem;
         }
 
+        .intro-text {
+            max-width: 780px;
+            margin: 1rem auto 0;
+            font-size: 1.08rem;
+            color: #CBD5E6;
+            background: rgba(26, 39, 68, 0.5);
+            backdrop-filter: blur(2px);
+            padding: 1.2rem 1.8rem;
+            border-radius: 48px;
+            border: 1px solid rgba(201,168,76,0.2);
+        }
+
+        .intro-text strong {
+            color: #E8D5A3;
+            font-weight: 600;
+        }
+
+        .guide-message {
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            color: #A7B6D0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .guide-message span {
+            background: rgba(201,168,76,0.12);
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+        }
+
+        /* quiz grid */
         .quiz-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+            margin: 2.5rem 0 1.5rem;
         }
 
         .quiz-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 25px;
-            border: 1px solid rgba(201,168,76,0.15);
-            transition: all 0.3s ease;
+            background: rgba(18, 28, 48, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 28px;
+            padding: 1.6rem;
+            border: 1px solid rgba(201,168,76,0.2);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             text-decoration: none;
-            color: var(--text-light);
-            display: block;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-shadow: 0 10px 20px -8px rgba(0,0,0,0.3);
         }
 
         .quiz-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 40px rgba(201,168,76,0.2);
+            transform: translateY(-6px);
+            border-color: #C9A84C;
+            background: rgba(26, 39, 68, 0.85);
+            box-shadow: 0 20px 32px -12px rgba(201,168,76,0.25);
+        }
+
+        .emoji-badge {
+            font-size: 2.4rem;
+            margin-bottom: 0.75rem;
         }
 
         .quiz-number {
-            color: var(--accent);
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
+            font-size: 0.7rem;
+            font-weight: 600;
             letter-spacing: 2px;
-            margin-bottom: 10px;
+            color: #C9A84C;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
         }
 
         .quiz-card h3 {
             font-family: 'Cormorant Garamond', serif;
-            color: var(--accent);
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #F5E7C8;
+            margin-bottom: 0.65rem;
+            line-height: 1.2;
         }
 
         .quiz-card p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            line-height: 1.6;
+            color: #BCCAEE;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            flex-grow: 1;
         }
 
-        .quiz-card .emoji {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            display: block;
+        .quiz-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            background: rgba(201,168,76,0.18);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            color: #E5CF92;
+            align-self: flex-start;
+            margin-top: 0.5rem;
         }
 
+        /* footer */
         .footer {
+            margin-top: 4rem;
             text-align: center;
-            margin-top: 60px;
-            padding: 30px;
-            color: var(--text-muted);
+            border-top: 1px solid rgba(201,168,76,0.2);
+            padding: 2rem 0.5rem 1rem;
+            color: #96A6C2;
             font-size: 0.85rem;
-            border-top: 1px solid rgba(201,168,76,0.1);
         }
 
         .footer a {
-            color: var(--accent);
+            color: #C9A84C;
             text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
         }
 
-        @media (max-width: 480px) {
-            .quiz-grid { grid-template-columns: 1fr; }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .contact-info {
+            margin: 0.75rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+        }
+
+        .badge-note {
+            background: rgba(201,168,76,0.08);
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 680px) {
+            .container {
+                padding: 1.5rem 1rem 2rem;
+            }
+            .intro-text {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+            .quiz-card h3 {
+                font-size: 1.4rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" class="logo">
-            <h1>Quiz Lead Generation Suite</h1>
-            <p class="subtitle">10 comprehensive assessments designed to attract, engage, and convert your ideal clients. Each quiz captures name, phone, country, and email before delivering personalized results.</p>
+<div class="container">
+    <div class="hero">
+        <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" class="logo">
+        <div class="brand-tag">AccessWorld Seminars — Joshua Roy</div>
+        <h1>choose your compass · choose your growth</h1>
+        <div class="intro-text">
+            <strong>World‑class education, tailored to your life.</strong> Memory, emotional mastery, relationships, intelligence, health, and beyond — each self‑assessment provides a clear mirror and actionable insight.  
+            <span style="display:block; margin-top: 8px;">✨ Pick the topic that speaks to your current circumstance, challenge or curiosity.</span>
         </div>
-
-        <div class="quiz-grid">
-            <a href="quiz_01_memory_mastery.html" class="quiz-card">
-                <span class="emoji">🧠</span>
-                <div class="quiz-number">Quiz 01</div>
-                <h3>Unlock Your Memory Mastery</h3>
-                <p>Discover how effectively you learn, retain, and recall information — and unlock neuroscience-backed techniques to supercharge your memory.</p>
-            </a>
-
-            <a href="quiz_02_truth_intelligence.html" class="quiz-card">
-                <span class="emoji">🔍</span>
-                <div class="quiz-number">Quiz 02</div>
-                <h3>Discover Your Truth Intelligence</h3>
-                <p>How deeply do you comprehend, envision, and align with truth? Measure your clarity across the three elements of truth.</p>
-            </a>
-
-            <a href="quiz_03_intelligence_spectrum.html" class="quiz-card">
-                <span class="emoji">🌈</span>
-                <div class="quiz-number">Quiz 03</div>
-                <h3>The Intelligence Spectrum Assessment</h3>
-                <p>Discover your unique intelligence profile across multiple dimensions — from logical to emotional, spatial to interpersonal.</p>
-            </a>
-
-            <a href="quiz_04_light_clarity.html" class="quiz-card">
-                <span class="emoji">💡</span>
-                <div class="quiz-number">Quiz 04</div>
-                <h3>Light, Clarity & Vision Assessment</h3>
-                <p>Measure your capacity for inner light — comprehension, envisioning, clarity, and the ability to see truth through confusion.</p>
-            </a>
-
-            <a href="quiz_05_learning_state.html" class="quiz-card">
-                <span class="emoji">⚡</span>
-                <div class="quiz-number">Quiz 05</div>
-                <h3>The Learning State & Excitement Audit</h3>
-                <p>How effectively do you prepare your mind and body for learning? Discover if you're leveraging excitement and optimal brain states.</p>
-            </a>
-
-            <a href="quiz_06_communication_influence.html" class="quiz-card">
-                <span class="emoji">🗣️</span>
-                <div class="quiz-number">Quiz 06</div>
-                <h3>The Communication & Influence Scorecard</h3>
-                <p>How effectively do you communicate, connect, and influence others? Measure your skills across rapport, listening, and persuasion.</p>
-            </a>
-
-            <a href="quiz_07_emotional_mastery.html" class="quiz-card">
-                <span class="emoji">🧘</span>
-                <div class="quiz-number">Quiz 07</div>
-                <h3>Emotional Mastery & Clearing Assessment</h3>
-                <p>How free are you from the Five Most Debilitating Emotions? Measure your emotional mastery and clearing capacity.</p>
-            </a>
-
-            <a href="quiz_08_relationship_vision.html" class="quiz-card">
-                <span class="emoji">❤️</span>
-                <div class="quiz-number">Quiz 08</div>
-                <h3>The Relationship Vision & Intimacy Blueprint</h3>
-                <p>How aligned is your relationship with the architecture of Consummate Love? Assess your Shared Vision, Intimacy, and Passion.</p>
-            </a>
-
-            <a href="quiz_09_health_vitality.html" class="quiz-card">
-                <span class="emoji">🌿</span>
-                <div class="quiz-number">Quiz 09</div>
-                <h3>Your Health, Vitality & Healing Profile</h3>
-                <p>How effectively are you harnessing your body's natural healing power? Assess your nutrition, energy, and morning routine mastery.</p>
-            </a>
-
-            <a href="quiz_10_addiction_recovery.html" class="quiz-card">
-                <span class="emoji">🦅</span>
-                <div class="quiz-number">Quiz 10</div>
-                <h3>The Addiction Recovery & Outgrowth Assessment</h3>
-                <p>Where are you on the journey of outgrowing addiction? Assess your readiness, commitment, and the four fundamentals for transformation.</p>
-            </a>
-        </div>
-
-        <div class="footer">
-            <p><strong>AccessWorld Seminars</strong> | Joshua Roy</p>
-            <p>📱 +61 432 119 091 | 🌐 <a href="https://accessworldseminars.com">accessworldseminars.com</a></p>
-            <p style="margin-top: 10px;">All quizzes include: 4-field capture (Name, Phone, Country, Email) | Zapier webhook integration | Comprehensive PDF results | Program offers link</p>
+        <div class="guide-message">
+            <span>🧭 based on your interests & needs</span>
+            <span>📋 free personalized results</span>
+            <span>🎯 5–7 minutes each</span>
         </div>
     </div>
+
+    <div class="quiz-grid">
+        <!-- QUIZ 1 - MEMORY MASTERY -->
+        <a href="https://accessworldseminars-ship-it.github.io/results/quizselect1" class="quiz-card" target="_blank" rel="noopener noreferrer">
+            <div class="emoji-badge">🧠</div>
+            <div class="quiz-number">assessment 01</div>
+            <h3>Unlock Your Memory Mastery</h3>
+            <p>Discover how effectively you learn, retain, and recall information — and uncover neuroscience‑backed techniques to amplify your cognitive potential.</p>
+            <div class="quiz-tag">🔁 learning & recall</div>
+        </a>
+
+        <!-- QUIZ 2 - TRUTH INTELLIGENCE -->
+        <a href="https://accessworldseminars-ship-it.github.io/results/quizselect2" class="quiz-card" target="_blank" rel="noopener noreferrer">
+            <div class="emoji-badge">🔍</div>
+            <div class="quiz-number">assessment 02</div>
+            <h3>Discover Your Truth Intelligence</h3>
+            <p>How deeply do you comprehend, envision, and align with truth? Measure clarity across three core elements of authentic knowing.</p>
+            <div class="quiz-tag">🎯 perception & clarity</div>
+        </a>
+
+        <!-- QUIZ 3 - INTELLIGENCE SPECTRUM -->
+        <a href="https://accessworldseminars-ship-it.github.io/results/quizselect3" class="quiz-card" target="_blank" rel="noopener noreferrer">
+            <div class="emoji-badge">🌈</div>
+            <div class="quiz-number">assessment 03</div>
+            <h3>The Intelligence Spectrum</h3>
+            <p>Explore your unique intelligence profile across multiple dimensions — from logical and spatial to emotional and interpersonal brilliance.</p>
+            <div class="quiz-tag">⚙️ multidimensional mind</div>
+        </a>
+
+        <!-- QUIZ 4 - LIGHT, CLARITY & VISION -->
+        <a href="https://accessworldseminars-ship-it.github.io/results/quizselect4" class="quiz-card" target="_blank" rel="noopener noreferrer">
+            <div class="emoji-badge">💡</div>
+            <div class="quiz-number">assessment 04</div>
+            <h3>Light, Clarity & Vision</h3>
+            <p>Measure your capacity for inner clarity — envisioning, comprehension, and seeing truth through confusion. A powerful lens for decision making.</p>
+            <div class="quiz-tag">✨ visionary insight</div>
+        </a>
+
+        <!-- QUIZ 5 - LEARNING STATE & EXCITEMENT -->
+        <a href="https://accessworldseminars-ship-it.github.io/results/quizselect5" class="quiz-card" target="_blank" rel="noopener noreferrer">
+            <div class="emoji-badge">⚡</div>
+            <div class="quiz-number">assessment 05</div>
+            <h3>The Learning State & Excitement Audit</h3>
+            <p>How prepared is your mind and body to absorb new material? Discover if you’re leveraging the ideal brain state for accelerated growth.</p>
+            <div class="quiz-tag">🔥 peak performance</div>
+        </a>
+
+        <!-- QUIZ 6 - COMMUNICATION & INFLUENCE -->
+        <a href="https://accessworldseminars-ship-it.github.io/results/quizselect6" class="quiz-card" target="_blank" rel="noopener noreferrer">
+            <div class="emoji-badge">🗣️</div>
+            <div class="quiz-number">assessment 06</div>
+            <h3>Communication & Influence Scorecard</h3>
+            <p>Assess your ability to connect, listen, and persuade. Gain clarity on how to amplify impact in relationships, teams, and leadership.</p>
+            <div class="quiz-tag">📢 magnetic presence</div>
+        </a>
+
+        <!-- QUIZ 7 - EMOTIONAL MASTERY & CLEARING -->
+        <a href="https://accessworldseminars-ship-it.github.io/results/quizselect7" class="quiz-card" target="_blank" rel="noopener noreferrer">
+            <div class="emoji-badge">🧘</div>
+            <div class="quiz-number">assessment 07</div>
+            <h3>Emotional Mastery & Clearing</h3>
+            <p>How free are you from the five most debilitating emotions? Evaluate your emotional agility and capacity to clear mental & emotional blocks.</p>
+            <div class="quiz-tag">🌊 inner resilience</div>
+        </a>
+
+        <!-- QUIZ 8 - RELATIONSHIP VISION & INTIMACY -->
+        <a href="https://accessworldseminars-ship-it.github.io/results/quizselect8" class="quiz-card" target="_blank" rel="noopener noreferrer">
+            <div class="emoji-badge">❤️</div>
+            <div class="quiz-number">assessment 08</div>
+            <h3>Relationship Vision & Intimacy Blueprint</h3>
+            <p>How aligned is your relationship with the architecture of consummate love? Explore shared vision, passion, and emotional intimacy.</p>
+            <div class="quiz-tag">💞 deep connection</div>
+        </a>
+
+        <!-- QUIZ 9 - HEALTH, VITALITY & HEALING -->
+        <a href="https://accessworldseminars-ship-it.github.io/results/quizselect9" class="quiz-card" target="_blank" rel="noopener noreferrer">
+            <div class="emoji-badge">🌿</div>
+            <div class="quiz-number">assessment 09</div>
+            <h3>Health, Vitality & Healing Profile</h3>
+            <p>Uncover how effectively you harness your body’s natural healing power — nutrition, morning routines, and energy optimisation for vibrant living.</p>
+            <div class="quiz-tag">⚡ vitality code</div>
+        </a>
+
+        <!-- QUIZ 10 - ADDICTION RECOVERY & OUTGROWTH -->
+        <a href="https://accessworldseminars-ship-it.github.io/results/quizselect10" class="quiz-card" target="_blank" rel="noopener noreferrer">
+            <div class="emoji-badge">🦅</div>
+            <div class="quiz-number">assessment 10</div>
+            <h3>Addiction Recovery & Outgrowth</h3>
+            <p>Where do you stand on the journey of outgrowing addiction? Assess readiness, commitment, and transformation fundamentals for lasting freedom.</p>
+            <div class="quiz-tag">🌱 renewal path</div>
+        </a>
+    </div>
+
+    <div class="footer">
+        <div><strong>AccessWorld Seminars</strong> | Joshua Roy — global transformational education</div>
+        <div class="contact-info">
+            <span>📱 +61 432 119 091</span>
+            <span>🌐 <a href="https://accessworldseminars.com" target="_blank" rel="noopener noreferrer">accessworldseminars.com</a></span>
+            <span>✉️ <a href="mailto:hello@accessworldseminars.com">hello@accessworldseminars.com</a></span>
+        </div>
+        <div class="badge-note">
+            ✨ Each assessment delivers a personalised PDF with actionable insights — no spam, just clarity. Choose the topic that resonates with <strong>your</strong> life, right now.
+        </div>
+        <div style="margin-top: 1rem; font-size: 0.7rem; opacity: 0.7;">
+            self‑discovery tools · reflect · grow · transform
+        </div>
+    </div>
+</div>
 </body>
 </html>
+```
