@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Story Library | AccessWorld Seminars</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Montserrat + Open Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-black: #0A0A0A;
+            --charcoal: #1A1A1A;
+            --gold: #D4AF37;
+            --gold-dark: #B4942E;
+            --light-gold: #F5E7B2;
+            --text-light: #F5F5F5;
+            --text-muted: #CCCCCC;
+            --card-bg: #141414;
+            --border-dim: #2A2A2A;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--deep-black);
+            color: var(--text-light);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .nav-links a, .btn, .section-title, .card-title {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* ---------- NAVIGATION (exact from main) ---------- */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-dim);
+        }
+
+        .nav-logo a {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero-header {
+            min-height: 55vh;
+            background: linear-gradient(125deg, #0A0A0A 0%, #1A1A1A 100%), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80');
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 7rem 2rem 4rem;
+            border-bottom: 1px solid var(--gold);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--gold) 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: var(--gold);
+            color: var(--deep-black);
+            padding: 0.9rem 2rem;
+            border-radius: 40px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--deep-black);
+        }
+
+        /* Sections & containers */
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-dim);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .gold-underline {
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 1rem auto 0;
+        }
+
+        .accent-text {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Story cards grid */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .story-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 1.75rem;
+            transition: var(--transition);
+            border: 1px solid var(--border-dim);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .story-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
+        }
+
+        .story-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            padding: 0.25rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .story-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+
+        .story-excerpt {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+            flex: 1;
+        }
+
+        .story-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-dim);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            font-size: 0.75rem;
+            color: var(--gold);
+        }
+
+        .story-temp {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 2rem 0 3rem;
+        }
+
+        .nav-button {
+            background: var(--card-bg);
+            border: 1px solid var(--border-dim);
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .nav-button:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        /* Footer (exact copy from main) */
+        footer {
+            background: #050505;
+            padding: 3rem 0 2rem;
+            border-top: 1px solid var(--border-dim);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo a {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 1.4rem;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--gold);
+        }
+
+        .copyright {
+            text-align: center;
+            color: #6c6c6c;
+            font-size: 0.85rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-dim);
+        }
+
+        /* Fade-in animations & responsiveness */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.7s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .stories-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                padding: 0.8rem 1.2rem;
+            }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 70%;
+                height: calc(100vh - 70px);
+                background: #0a0a0ae6;
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2rem;
+                transition: 0.3s;
+                gap: 1.5rem;
+                border-right: 1px solid var(--gold);
+            }
+            .nav-links.open {
+                left: 0;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .hero-header {
+                min-height: 45vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.9rem;
+            }
+            .btn {
+                padding: 0.7rem 1.5rem;
+            }
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION (identical style and links from main, with active Story Library) -->
+<nav class="main-nav">
+    <div class="nav-logo">
+        <a href="https://accessworldseminars-ship-it.github.io/results/">ACCESSWORLD</a>
+    </div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="nav-links" id="navLinks">
+        <a href="https://accessworldseminars-ship-it.github.io/results/">
+            <i class="fas fa-home"></i> Home
+        </a>
+        <a href="#hero" class="active">
+            <i class="fas fa-book-open"></i> Story Library
+        </a>
+        <a href="#workshops">
+            <i class="fas fa-chalkboard-user"></i> Workshops
+        </a>
+        <a href="#contact">
+            <i class="fas fa-envelope"></i> Contact
+        </a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-header" id="hero">
+    <div class="hero-content fade-in">
+        <h1>Wordprint Stories <span style="color: var(--gold);">⚡</span> Transformation Archive</h1>
+        <p>Real narratives from the seminar room — each story a nervous system rewrite. Discover metaphors, client breakthroughs, and the wisdom of embodied change.</p>
+        <a href="#browse-stories" class="btn"><i class="fas fa-feather-alt"></i> Explore Stories</a>
+    </div>
+</section>
+
+<!-- MAIN STORY LIBRARY SECTION (using exact cards layout + wordprint preserving) -->
+<section class="section" id="browse-stories">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2 class="section-title">The Story Vault</h2>
+            <div class="gold-underline"></div>
+            <p class="accent-text" style="margin-top: 1rem;">Preserved voice, emotional arc, and coaching gold</p>
+        </div>
+        <div class="stories-grid">
+            <!-- STORY 1: Sharon's Pizza - Swish pattern -->
+            <div class="story-card fade-in">
+                <span class="story-badge"><i class="fas fa-pizza-slice"></i> Client transformation</span>
+                <h3>The Pizza That Turned to Mold</h3>
+                <div class="story-excerpt">Sharon's perfect pepperoni & pineapple pizza, scaled down to minus ten: mold, rot, and disgust. Swished with green apple & celery juice → craving evaporated. No willpower, only neuro-association.</div>
+                <div class="story-meta">
+                    <span><i class="far fa-clock"></i> Emotional temp: Playful → Transformative</span>
+                    <span class="story-temp"><i class="fas fa-fire"></i> Swish pattern</span>
+                </div>
+            </div>
+            <!-- STORY 2: Rubbish Room -->
+            <div class="story-card fade-in">
+                <span class="story-badge"><i class="fas fa-dumpster"></i> Conceptual metaphor</span>
+                <h3>The Rubbish Room</h3>
+                <div class="story-excerpt">A beautiful house, one room stuffed with garbage for years — until it spills into the living area. Disease isn't an attack, but a containment strategy. Cleanses may feel worse first: the door is finally opening.</div>
+                <div class="story-meta">
+                    <span><i class="far fa-clock"></i> Uneasy → Hopeful</span>
+                    <span>Detox education</span>
+                </div>
+            </div>
+            <!-- STORY 3: 80,000 Meals -->
+            <div class="story-card fade-in">
+                <span class="story-badge"><i class="fas fa-apple-alt"></i> Coach vulnerability</span>
+                <h3>80,000 Chances</h3>
+                <div class="story-excerpt">Average lifetime meals: 80,000. Some already used, but each remaining meal is a healing opportunity. No shame — just tilt the average. One good meal votes for the body you want to live in.</div>
+                <div class="story-meta">
+                    <span><i class="far fa-clock"></i> Tender → Hopeful</span>
+                    <span>Permission & hope</span>
+                </div>
+            </div>
+            <!-- STORY 4: Dog Poo Cake -->
+            <div class="story-card fade-in">
+                <span class="story-badge"><i class="fas fa-poop"></i> Disgust circuit</span>
+                <h3>Nobody Ate the Cake</h3>
+                <div class="story-excerpt">Beautiful chocolate cake, baker says “tiny bit of dog poo inside”. No one touches it. Sugar is sweet poison — create disgust on purpose and bypass willpower entirely.</div>
+                <div class="story-meta">
+                    <span><i class="far fa-clock"></i> Playful → Empowering</span>
+                    <span>Craving destroyer</span>
+                </div>
+            </div>
+            <!-- STORY 5: Shae's Chocolate - body not trash can -->
+            <div class="story-card fade-in">
+                <span class="story-badge"><i class="fas fa-trash-alt"></i> Liberating mindset</span>
+                <h3>Your Body Is Not a Trash Can</h3>
+                <div class="story-excerpt">Shae ate chocolate she didn't enjoy because “don't waste food”. The reframe: bin or body? Choose the bin. Your cells aren't a landfill.</div>
+                <div class="story-meta">
+                    <span><i class="far fa-clock"></i> Tender → Liberating</span>
+                    <span>Food guilt release</span>
+                </div>
+            </div>
+            <!-- STORY 6: Alex's Coke - one-trial learning -->
+            <div class="story-card fade-in">
+                <span class="story-badge"><i class="fas fa-wine-bottle"></i> One-trial learning</span>
+                <h3>The Coke That Changed Everything</h3>
+                <div class="story-excerpt">Alex drank coke with undetected gastro, vomited — and never craved it again for 30 years. You can create artificial one-trial learning: mold, maggots, vomit association.</div>
+                <div class="story-meta">
+                    <span><i class="far fa-clock"></i> Reflective → Empowering</span>
+                    <span>Nervous system hack</span>
+                </div>
+            </div>
+            <!-- STORY 7: Tusa's Pine Box Dream -->
+            <div class="story-card fade-in">
+                <span class="story-badge"><i class="fas fa-bed"></i> Life-changing vision</span>
+                <h3>The Pine Box</h3>
+                <div class="story-excerpt">Tusa, Samoan man, knew he should change but didn’t until a dream: his wife husbandless, his children fatherless. He felt the loss → dropped 40kg within months.</div>
+                <div class="story-meta">
+                    <span><i class="far fa-clock"></i> Urgent → Hopeful</span>
+                    <span>'Should' vs 'Must'</span>
+                </div>
+            </div>
+            <!-- STORY 8: The 4-Minute Mile (Roger Bannister) -->
+            <div class="story-card fade-in">
+                <span class="story-badge"><i class="fas fa-running"></i> Historical breakthrough</span>
+                <h3>Roger Bannister: Impossible Mile</h3>
+                <div class="story-excerpt">Doctors said the 4-minute mile was physically impossible. Bannister broke it, then thousands followed. Belief reshapes biology — your health limits aren't real.</div>
+                <div class="story-meta">
+                    <span><i class="far fa-clock"></i> Hopeful → Triumphant</span>
+                    <span>Keynote closer</span>
+                </div>
+            </div>
+            <!-- STORY 9: The Couch potato vs Personal trainer acid -->
+            <div class="story-card fade-in">
+                <span class="story-badge"><i class="fas fa-heartbeat"></i> Cautionary acid tale</span>
+                <h3>The Heart Attack That Shouldn't Have Happened</h3>
+                <div class="story-excerpt">A fit personal trainer dies on the golf course. Not because of exercise, but because his body was saturated with acid (meat, wine, energy drinks). Alkalize before you move.</div>
+                <div class="story-meta">
+                    <span><i class="far fa-clock"></i> Concerned → Empowering</span>
+                    <span>Acid-alkaline lesson</span>
+                </div>
+            </div>
+            <!-- STORY 10: John Wayne's 14kg meat -->
+            <div class="story-card fade-in">
+                <span class="story-badge"><i class="fas fa-drumstick-bite"></i> Visceral warning</span>
+                <h3>14kg of Undigested Meat</h3>
+                <div class="story-excerpt">John Wayne's autopsy revealed 31 pounds of undigested, fermented meat in his intestines. Meat can sit for 24+ hours, creating toxins. Your intestines deserve better.</div>
+                <div class="story-meta">
+                    <span><i class="far fa-clock"></i> Devastating → Urgent</span>
+                    <span>Protein awareness</span>
+                </div>
+            </div>
+            <!-- STORY 11: The Celtic Salt & Water hack -->
+            <div class="story-card fade-in">
+                <span class="story-badge"><i class="fas fa-water"></i> Energy ritual</span>
+                <h3>One Unit of Energy</h3>
+                <div class="story-excerpt">Celtic salt (82 minerals) on tongue + water = clean energy boost for 100 trillion cells. No caffeine crash, no pancreas panic. Hydration minerals replace stimulants.</div>
+                <div class="story-meta">
+                    <span><i class="far fa-clock"></i> Practical → Excited</span>
+                    <span>Daily morning hack</span>
+                </div>
+            </div>
+            <!-- STORY 12: Bastardized Honey -->
+            <div class="story-card fade-in">
+                <span class="story-badge"><i class="fas fa-jar"></i> Industry truth</span>
+                <h3>The Honey That Wasn't Honey</h3>
+                <div class="story-excerpt">Supermarket honey stretched with cheap sugar syrup. Real honey is thick, raw, from local beekeepers. Runny honey = adulterated. Become your own detective.</div>
+                <div class="story-meta">
+                    <span><i class="far fa-clock"></i> Uneasy (good kind)</span>
+                    <span>Ingredient sleuthing</span>
+                </div>
+            </div>
+            <!-- Additional from prompt: Holes in the Wall (aesthetics) - personal vulnerability -->
+            <div class="story-card fade-in">
+                <span class="story-badge"><i class="fas fa-paint-roller"></i> Aesthetics matter</span>
+                <h3>The Holes in the Wall</h3>
+                <div class="story-excerpt">First seminar: great content, but behind the coach were holes in the wall and an unkempt lawn. Your body is your aesthetic — people notice. Show up with integrity.</div>
+                <div class="story-meta">
+                    <span><i class="far fa-clock"></i> Vulnerable → Practical</span>
+                    <span>Presence & credibility</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick lesson section: emotional temperature + wordprint essence -->
+<section class="section" id="workshops" style="background: #0e0e0e;">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2 class="section-title">The Swish & Slingshot Method</h2>
+            <div class="gold-underline"></div>
+            <p>These stories are not mere anecdotes — they are nervous system interventions. Each tale preserves the <span class="accent-text">wordprint</span>, vocal pace, and transformational triggers from live seminars.</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 2rem;">
+            <div style="background: var(--card-bg); border-radius: 24px; padding: 2rem; max-width: 320px; text-align: center;">
+                <i class="fas fa-brain" style="font-size: 2.5rem; color: var(--gold);"></i>
+                <h3 style="margin: 1rem 0 0.5rem;">Repetition = Myelin</h3>
+                <p style="color: #bbb;">18 months to wire a new habit. Patty's nails took 2 years — each slip was part of myelination, not failure.</p>
+            </div>
+            <div style="background: var(--card-bg); border-radius: 24px; padding: 2rem; max-width: 320px; text-align: center;">
+                <i class="fas fa-skull-crossbones" style="font-size: 2.5rem; color: var(--gold);"></i>
+                <h3 style="margin: 1rem 0 0.5rem;">Disgust > Desire</h3>
+                <p style="color: #bbb;">Minus 10 images (mold, ants, vomit) rewire cravings faster than logic. The nervous system doesn't speak English — it speaks imagery.</p>
+            </div>
+            <div style="background: var(--card-bg); border-radius: 24px; padding: 2rem; max-width: 320px; text-align: center;">
+                <i class="fas fa-chart-line" style="font-size: 2.5rem; color: var(--gold);"></i>
+                <h3 style="margin: 1rem 0 0.5rem;">Two Futures Framework</h3>
+                <p style="color: #bbb;">Pain future (wheelchair, loss) vs pleasure future (energy, vitality). Tusa's dream illustrates: only embodied contrast creates permanent change.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation buttons (Return Home + other tools) -->
+<div class="container">
+    <div class="nav-buttons">
+        <a href="https://accessworldseminars-ship-it.github.io/results/" class="nav-button"><i class="fas fa-home"></i> Return Home</a>
+        <a href="#browse-stories" class="nav-button"><i class="fas fa-bookmark"></i> Browse Story Vault</a>
+        <a href="#" class="nav-button" id="contactScroll"><i class="fas fa-envelope"></i> Contact Coach</a>
+    </div>
+</div>
+
+<!-- Footer (exact same from main) -->
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="https://accessworldseminars-ship-it.github.io/results/">ACCESSWORLD</a>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #aaa;">Seminars · Transformation · Nervous System Mastery</p>
+            </div>
+            <div class="footer-links">
+                <a href="#hero">Story Library</a>
+                <a href="#">Upcoming Seminars</a>
+                <a href="#">Coaching</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2026 AccessWorld Seminars — Ultimate Health & Mindset. All stories preserved with wordprint integrity. <span class="accent-text">Change your images, change your life.</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle (identical to main)
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    if (mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+    }
+    // smooth scroll for contact footer
+    const contactScrollBtn = document.getElementById('contactScroll');
+    if (contactScrollBtn) {
+        contactScrollBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+    // fade-in on scroll simple observer
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    fadeElements.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
