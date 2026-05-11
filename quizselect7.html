@@ -1,23 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Emotional Mastery & Clearing – AccessWorld Seminars</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+            color: #F0F4F8;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+        .card, .question-card, .contact-card, .result-card { background: rgba(26, 39, 68, 0.75); backdrop-filter: blur(8px); border-radius: 28px; padding: 28px; margin-bottom: 20px; border: 1px solid rgba(201,168,76,0.25); }
+        .logo { width: 110px; margin-bottom: 15px; border-radius: 60px; }
+        .quiz-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 6vw, 3rem); font-weight: 700; color: #C9A84C; margin-bottom: 15px; }
+        .gold { color: #C9A84C; }
+        .btn-primary, .start-btn { background: linear-gradient(135deg, #C9A84C 0%, #E8D5A3 100%); color: #080d18; border: none; padding: 14px 32px; font-weight: 700; border-radius: 60px; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .btn-outline { background: transparent; border: 2px solid #C9A84C; color: #C9A84C; padding: 12px 28px; border-radius: 60px; font-weight: 600; cursor: pointer; }
+        .scale-buttons { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+        .scale-btn { flex: 1; min-width: 65px; background: rgba(255,255,255,0.05); border: 2px solid rgba(201,168,76,0.3); border-radius: 18px; padding: 10px 5px; text-align: center; cursor: pointer; transition: 0.2s; }
+        .scale-btn.selected { background: #C9A84C; color: #080d18; border-color: #C9A84C; transform: scale(1.02); }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; margin: 10px 0; }
+        .progress-fill { height: 100%; background: #C9A84C; width: 0%; transition: width 0.3s; }
+        .tab-nav { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+        .tab-btn { background: rgba(255,255,255,0.05); border: 2px solid rgba(201,168,76,0.3); padding: 10px 20px; border-radius: 40px; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: #C9A84C; color: #080d18; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(#C9A84C 0deg, rgba(255,255,255,0.1) 0deg); margin: 15px auto; display: flex; align-items: center; justify-content: center; position: relative; }
+        .score-circle::before { content: ''; position: absolute; width: 120px; height: 120px; background: #080d18; border-radius: 50%; }
+        .score-text { position: relative; font-size: 2.6rem; font-weight: 800; color: #C9A84C; z-index: 2; }
+        .category-bar { margin: 14px 0; }
+        .bar-bg { background: #2a3650; border-radius: 8px; height: 10px; overflow: hidden; }
+        .bar-fill { background: #C9A84C; height: 100%; border-radius: 8px; width: 0%; }
+        .action-btn { padding: 10px 20px; border-radius: 40px; border: 2px solid #C9A84C; background: transparent; color: #C9A84C; cursor: pointer; margin: 5px; font-weight: 600; }
+        .action-btn.primary { background: #C9A84C; color: #080d18; border: none; }
+        .hidden { display: none; }
+        .status-message { margin-top: 15px; padding: 12px; border-radius: 16px; display: none; text-align: center; }
+        .quote-block { background: rgba(201,168,76,0.12); border-left: 4px solid #C9A84C; padding: 16px; margin: 18px 0; border-radius: 12px; font-style: italic; }
+        @media print {
+            body { background: white; color: black; }
+            .action-btn, .tab-nav, .btn-primary, .btn-outline, .status-message, .programs-link, #printBtn, #retakeAllBtn { display: none; }
+            .container { padding: 0; max-width: 100%; }
+            .card, .result-card { background: white; color: black; border: 1px solid #ccc; box-shadow: none; page-break-inside: avoid; }
+            .tab-content { display: block !important; page-break-after: always; }
+            .tab-nav { display: none; }
+            .score-circle { border: 2px solid #C9A84C; }
+        }
+        footer { font-size: 0.7rem; text-align: center; margin-top: 30px; opacity: 0.7; }
+        h3 { margin-bottom: 12px; }
+        h4 { color: #C9A84C; margin: 15px 0 8px; }
+    </style>
+</head>
+<body>
+<div class="container" id="app">
+    <!-- INTRO SCREEN -->
+    <div id="introScreen" class="card" style="text-align:center;">
+        <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" class="logo" alt="AccessWorld">
+        <h1 class="quiz-title">Emotional Mastery & Inner Child Clearing</h1>
+        <p style="margin-bottom:15px;">Based on Joshua Roy's signature seminar — measure your freedom from blame, shame, guilt, regret, anger, and discover your emotional anchors.</p>
+        <div style="background:rgba(201,168,76,0.12); border-radius:24px; padding:22px; margin:20px 0; text-align:left;">
+            <h3 class="gold">🎯 Joshua Roy | Results Coach</h3>
+            <p style="font-size:0.9rem;">24+ years law enforcement, 900+ seminars, 3,500+ coaching sessions. Creator of NSR (Nervous System Reprogramming). <em>"Feeling good for no good reason."</em></p>
+            <p style="font-size:0.85rem; margin-top:10px;">📞 +61 432 119 091 | payhip.com/b/jO2o1</p>
+        </div>
+        <button class="start-btn" id="startQuizBtn">Begin Your Assessment →</button>
+        <footer>AccessWorld Seminars · Since 2015</footer>
+    </div>
 
-Cellular Vitality Assessment with 3-Page PDF Report
-Here is your updated Master Quiz Build Prompt — a polished, production-ready template that incorporates all your design requirements, scoring logic, webhook integration, coach bios, and PDF output. Just copy and paste this into any AI, then add your quiz-specific content at the bottom.
+    <!-- PROGRESS -->
+    <div id="progressArea" class="hidden" style="margin-bottom:15px;">
+        <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+        <div id="progressText" style="text-align:center; font-size:0.8rem; margin-top:5px;">Question 1 of 12</div>
+    </div>
 
-MASTER QUIZ BUILD PROMPT — AccessWorld Seminars
-Copy & paste this into any AI, then add your quiz-specific content below it.
+    <!-- QUESTION SCREEN -->
+    <div id="questionScreen" class="hidden">
+        <div class="question-card">
+            <div id="qCat" class="gold" style="font-size:0.75rem; letter-spacing:1px;">EMOTIONAL DIMENSION</div>
+            <div id="qText" style="font-size:1.5rem; font-weight:600; margin:15px 0;"></div>
+            <div class="scale-buttons" id="scaleBtns"></div>
+            <div style="display:flex; justify-content:space-between; margin-top:20px;">
+                <button id="prevQBtn" class="btn-outline">← Previous</button>
+                <button id="nextQBtn" class="btn-primary">Next →</button>
+            </div>
+        </div>
+    </div>
 
-You are an expert full-stack frontend developer specialising in creating beautiful, performant, self-contained interactive quizzes in a single HTML file. Your code must be clean, well-commented, production-ready, bug-free, and fully functional without any external dependencies.
+    <!-- CONTACT SCREEN -->
+    <div id="contactScreen" class="hidden">
+        <div class="contact-card">
+            <h2 class="gold">Your Comprehensive PDF Report Awaits</h2>
+            <p>Enter your details to receive a 3‑page Emotional Mastery Report (~1500 words) with personalised insights from Joshua Roy's seminar.</p>
+            <div style="margin:15px 0;"><input type="text" id="leadName" placeholder="Full Name" style="width:100%; padding:12px; border-radius:20px; background:rgba(255,255,255,0.1); border:1px solid #C9A84C; color:white;"></div>
+            <div style="margin:15px 0;"><input type="tel" id="leadPhone" placeholder="Phone Number" style="width:100%; padding:12px; border-radius:20px; background:rgba(255,255,255,0.1); border:1px solid #C9A84C; color:white;"></div>
+            <div style="margin:15px 0;"><input type="email" id="leadEmail" placeholder="Email Address" style="width:100%; padding:12px; border-radius:20px; background:rgba(255,255,255,0.1); border:1px solid #C9A84C; color:white;"></div>
+            <div style="margin:15px 0;"><select id="leadCountry" style="width:100%; padding:12px; border-radius:20px; background:rgba(255,255,255,0.1); border:1px solid #C9A84C; color:white;"><option value="">Select Country</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option></select></div>
+            <button id="submitLeadBtn" class="btn-primary" style="width:100%;">Generate My 3‑Page Report →</button>
+            <div id="webhookStatus" class="status-message"></div>
+        </div>
+    </div>
 
-DESIGN REQUIREMENTS (strict — do not deviate)
-Element	Specification
-Background	linear-gradient(135deg, #080d18 0%, #1A2744 100%)
-Accent Color	#C9A84C (gold) — buttons, progress, highlights, key elements
-Headings Font	'Cormorant Garamond', serif
-Body Font	'Montserrat', sans-serif
-Logo URL (intro screen)	https://i.ibb.co/ynXdYpmL/worldjjpgsf.png
-Responsiveness	Mobile-first (320px+), fully responsive
-Animations	Smooth subtle transitions, fade-ins, hover effects
-Accessibility	ARIA labels, keyboard navigation, focus states, high contrast
-Color Mode	Dark mode optimised throughout
+    <!-- RESULTS SCREEN – 3 TABS = 3 PAGES OF COMPREHENSIVE REPORT -->
+    <div id="resultsScreen" class="hidden">
+        <div class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:40px;"><span style="font-size:0.75rem;">Confidential Emotional Mastery Report</span></div>
+            <div style="text-align:center;">
+                <div class="score-circle" id="scoreRing"><div class="score-text" id="finalScoreVal">0.0</div></div>
+                <div id="tierBadge" style="background:#C9A84C; display:inline-block; padding:6px 24px; border-radius:60px; color:#080d18; font-weight:800;">Tier</div>
+                <p id="tierDesc" style="margin-top:12px; max-width:500px; margin-left:auto; margin-right:auto;"></p>
+            </div>
+            <div class="tab-nav">
+                <button class="tab-btn active" data-tab="0">📄 Page 1 · Score & Overview</button>
+                <button class="tab-btn" data-tab="1">📄 Page 2 · Leverage & Practices</button>
+                <button class="tab-btn" data-tab="2">📄 Page 3 · Action Plan & Next Steps</button>
+            </div>
+            <div class="tab-content active" id="tab0"></div>
+            <div class="tab-content" id="tab1"></div>
+            <div class="tab-content" id="tab2"></div>
+            <div style="display:flex; gap:15px; justify-content:center; margin-top:25px; flex-wrap:wrap;">
+                <button id="printPdfBtn" class="action-btn primary">📄 Save as PDF / Print</button>
+                <button id="retakeAllBtn" class="action-btn">🔄 Retake Quiz</button>
+            </div>
+            <footer>AccessWorld Seminars · Joshua Roy · NSR & Emotional Clearing</footer>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ==================== QUIZ DATA (from Emotional Mastery transcript) ====================
+    const QUESTIONS = [
+        { id:0, text:"I can release blame and take full ownership of my emotional responses.", category:"Blame Release", teaching:"'Thank you for your opinion' — Joshua Roy. Blame keeps you anchored. The inner child healing cuts the rope." },
+        { id:1, text:"I separate my behaviors from my identity — no toxic shame.", category:"Shame Dissolution", teaching:"'80% of your personality is formed by age 7.' Shame is learned. Reparenting dissolves it." },
+        { id:2, text:"I process guilt quickly, make amends, and move forward without self-punishment.", category:"Guilt Processing", teaching:"Guilt says 'I did something bad.' Toxic shame says 'I am bad.' Use the Grey Room to burn guilt." },
+        { id:3, text:"I reframe past regrets into wisdom rather than self-criticism.", category:"Regret Transformation", teaching:"'Burn the boats — decide to change now.' Regret is a story; rewrite it with mental rehearsal." },
+        { id:4, text:"I can feel anger cleanly and release it without resentment or explosion.", category:"Anger Mastery", teaching:"Anger = energy. 'Thank you for your opinion' neutralizes. Anchor calm using your circle of power." },
+        { id:5, text:"I consciously choose my emotional state — I am not a victim of circumstances.", category:"State Selection", teaching:"Your unconscious mind doesn't know the difference between real and imagined. Step into your circle of power daily." },
+        { id:6, text:"I can amplify positive emotions and quickly shrink negative ones.", category:"Emotional Amplification", teaching:"Spinning technique: change color, spin opposite direction. Works for pain, fear, and negative thoughts." },
+        { id:7, text:"I can genuinely forgive others and myself — not just intellectually but emotionally.", category:"True Forgiveness", teaching:"Forgiveness severs energetic ties. The guillotine technique cuts cords to the past." },
+        { id:8, text:"I bounce back quickly from setbacks and emotional wounds.", category:"Resilience", teaching:"Resilience = cutting the anchor. 'You've got a jet engine. More fuel won't help — cut the rope.'" },
+        { id:9, text:"I can access inner peace even when external circumstances are chaotic.", category:"Inner Peace", teaching:"Breathing + circle of power. The cold plunge teaches you to control your reaction." },
+        { id:10, text:"I regularly shift from negative to grateful states at will.", category:"Gratitude Practice", teaching:"Gratitude = mental rehearsal. The Swish Pattern rewires automatic negativity." },
+        { id:11, text:"I use my emotional growth to help others — my healing becomes a gift.", category:"Healing Contribution", teaching:"'When you let your light shine, you unconsciously give others permission to do the same.' — Marianne Williamson." }
+    ];
+
+    let answers = Array(12).fill(null);
+    let currentQ = 0;
+    let userName = "";
+    let step = "intro";
+
+    // DOM elements
+    const introDiv = document.getElementById('introScreen');
+    const progressArea = document.getElementById('progressArea');
+    const questionDiv = document.getElementById('questionScreen');
+    const contactDiv = document.getElementById('contactScreen');
+    const resultsDiv = document.getElementById('resultsScreen');
+
+    function getAverage() { let sum=0,count=0; for(let i=0;i<answers.length;i++) if(answers[i]!==null) { sum+=answers[i]; count++; } return count===0?0:sum/count; }
+    function getTier(score) {
+        if(score<=1.5) return { label:"Anchor Heavy", description:"You're carrying significant emotional weight. The good news: 'Cutting the rope' creates immediate shifts. Inner child work will transform your daily experience." };
+        if(score<=2.5) return { label:"Emerging Awareness", description:"You feel the burden but haven't released it. The Swish Pattern and Grey Room will accelerate your freedom." };
+        if(score<=3.5) return { label:"Active Developer", description:"Solid instincts but inconsistency. Spinning technique and anchoring will double your emotional range." };
+        if(score<=4.3) return { label:"Skilled Practitioner", description:"Strong foundation. Advanced NSR and cutting energetic ties will take you to mastery." };
+        return { label:"Mastery Candidate", description:"Exceptional! You embody 'feeling good for no good reason.' Now mentor others and deepen contribution." };
+    }
+
+    function renderQuestion() {
+        const q = QUESTIONS[currentQ];
+        document.getElementById('qCat').innerHTML = `⚡ ${q.category} · Question ${currentQ+1} of 12`;
+        document.getElementById('qText').innerHTML = q.text;
+        const scaleDiv = document.getElementById('scaleBtns');
+        scaleDiv.innerHTML = '';
+        const labels = ['Not at all','Slightly','Somewhat','Mostly','Very much','Completely'];
+        for(let i=0;i<=5;i++) {
+            const btn = document.createElement('div');
+            btn.className = `scale-btn ${answers[currentQ]===i ? 'selected' : ''}`;
+            btn.innerHTML = `<span style="font-size:1.3rem; font-weight:800;">${i}</span><span style="font-size:0.65rem;">${labels[i]}</span>`;
+            btn.onclick = () => { answers[currentQ]=i; renderQuestion(); };
+            scaleDiv.appendChild(btn);
+        }
+        document.getElementById('progressFill').style.width = `${((currentQ+1)/12)*100}%`;
+        document.getElementById('progressText').innerHTML = `Question ${currentQ+1} of 12`;
+        document.getElementById('prevQBtn').disabled = (currentQ===0);
+        const hasAns = answers[currentQ]!==null;
+        document.getElementById('nextQBtn').style.opacity = hasAns ? "1" : "0.5";
+    }
+    function nextQuestion() { if(answers[currentQ]===null) return; if(currentQ<11) { currentQ++; renderQuestion(); } else { showContact(); } }
+    function prevQuestion() { if(currentQ>0) { currentQ--; renderQuestion(); } }
+    function startQuiz() { answers.fill(null); currentQ=0; introDiv.classList.add('hidden'); progressArea.classList.remove('hidden'); questionDiv.classList.remove('hidden'); contactDiv.classList.add('hidden'); resultsDiv.classList.add('hidden'); renderQuestion(); }
+    function showContact() { questionDiv.classList.add('hidden'); progressArea.classList.add('hidden'); contactDiv.classList.remove('hidden'); }
+
+    // Webhook (Activepieces)
+    const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+    async function sendToTelegram(name, phone, country, email, score, tier) {
+        const formData = { name, phone, country, email, score:score.toFixed(1), tier:tier.label, timestamp:new Date().toISOString() };
+        const statusDiv = document.getElementById('webhookStatus');
+        statusDiv.style.display = 'block';
+        statusDiv.innerHTML = '⏳ Generating your comprehensive report...';
+        statusDiv.style.background = '#fff3cd';
+        try {
+            await fetch(WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(formData) });
+            statusDiv.innerHTML = '✓ Report ready!';
+            statusDiv.style.background='#d4edda';
+        } catch(e) { statusDiv.innerHTML = '⚠️ Showing results below.'; statusDiv.style.background='#f8d7da'; }
+        setTimeout(()=>{ showResults(); }, 600);
+    }
+
+    // ==================== COMPREHENSIVE 3-PAGE REPORT (~1800 words) ====================
+    function showResults() {
+        const score = getAverage();
+        const tier = getTier(score);
+        const percent = (score/5)*100;
+        document.getElementById('scoreRing').style.background = `conic-gradient(#C9A84C 0deg ${percent*3.6}deg, rgba(255,255,255,0.1) ${percent*3.6}deg 360deg)`;
+        document.getElementById('finalScoreVal').innerHTML = score.toFixed(1);
+        document.getElementById('tierBadge').innerHTML = tier.label;
+        document.getElementById('tierDesc').innerHTML = tier.description;
+
+        // Calculate category averages
+        let catSums = {}, catCounts = {};
+        QUESTIONS.forEach((q,i)=>{ if(answers[i]!==null) { catSums[q.category] = (catSums[q.category]||0)+answers[i]; catCounts[q.category] = (catCounts[q.category]||0)+1; } });
+        let catAvgs = {};
+        Object.keys(catSums).forEach(c=>{ catAvgs[c] = catSums[c]/catCounts[c]; });
+        let sorted = Object.entries(catAvgs).sort((a,b)=>a[1]-b[1]);
+        let lowest3 = sorted.slice(0,3);
+        let highest2 = sorted.slice(-2).reverse();
+
+        // --- PAGE 1: SCORE OVERVIEW + TRANSCRIPT QUOTES + BREAKDOWN ---
+        let page1 = `
+            <div class="result-card">
+                <h3 class="gold">🧠 Your Emotional Blueprint — Based on Joshua Roy's Seminar</h3>
+                <p>Your score of <strong>${score.toFixed(1)}/5</strong> places you in the <strong>${tier.label}</strong> category. ${tier.description}</p>
+                <div class="quote-block">“You’ve got a jet engine on your back, but an anchor tied to your leg. More fuel won’t help — you need to cut the rope.” — Joshua Roy, Emotional Clearing Seminar</div>
+                <p>This assessment measures freedom from the five most debilitating emotions: <strong>blame, shame, guilt, regret, and anger</strong>. Based on your answers, here’s where you stand:</p>
+                <h4>📊 Category Breakdown</h4>`;
+        Object.entries(catAvgs).forEach(([cat,val])=> {
+            page1 += `<div class="category-bar"><div style="display:flex; justify-content:space-between;"><span>${cat}</span><span>${val.toFixed(1)}/5</span></div><div class="bar-bg"><div class="bar-fill" style="width:${(val/5)*100}%;"></div></div></div>`;
+        });
+        page1 += `<div class="quote-block" style="margin-top:20px;">“Your unconscious mind doesn't know the difference between reality and fantasy. Mental rehearsal is real practice.” — Joshua Roy<br><br>What this means: You can rewire any emotional pattern by using your imagination. The same brain that created the anchor can dissolve it.</div>
+                <h4>🎯 What Your Score Reveals About Your Inner Child</h4>
+                <p>Between ages 0–7, 80% of your personality was imprinted. Every emotional reaction you have today is a replay of those early neural pathways. Healing isn't about trying harder — it's about going back to the source code. Your lower scores represent the anchors still holding you back. Your higher scores show where you've already cut free.</p>
+            </div>`;
+
+        // --- PAGE 2: TOP 3 LEVERAGE POINTS + SPINNING TECHNIQUE + GREY ROOM ---
+        let page2 = `<div class="result-card"><h3 class="gold">⚡ Your Top 3 Leverage Points (Lowest Scoring Areas)</h3><p>These are your emotional anchors. Working on these three will create the fastest transformation.</p>`;
+        lowest3.forEach(([cat,val],idx)=>{
+            const qData = QUESTIONS.find(q=>q.category===cat) || { teaching:"Apply the Swish Pattern or Grey Room to release this anchor." };
+            page2 += `<div style="margin-bottom:28px;"><h4>${idx+1}. ${cat} — ${val.toFixed(1)}/5</h4><p>${qData.teaching}</p>
+            <div style="background:#1e2a3a; border-radius:18px; padding:14px;"><strong>✨ Joshua's Daily Micro-Practice:</strong><br/>
+            ${cat==="Blame Release"?"When triggered, silently say: 'Thank you for your opinion. That belongs to you, not me.' Repeat 5x.":cat==="Shame Dissolution"?"Mirror work: Look into your eyes and say 'I release the shame that was never mine. I am worthy.'":cat==="Guilt Processing"?"Write the guilt on paper, then burn it safely. Watch it turn to ash.":cat==="Regret Transformation"?"Close eyes, replay the memory, then insert a new empowering ending. Rehearse 3x.":cat==="Anger Mastery"?"Step into your circle of power, imagine the anger as a color, spin it opposite direction until it dissipates.":"Apply 5 minutes of diaphragmatic breathing then anchor a calm state by touching your chest."}</div></div>`;
+        });
+        page2 += `<div class="quote-block"><h4>🌀 The Grey Room Technique (from the seminar)</h4><p>Imagine a dome-shaped room. On the walls are grey tiles — each represents a painful memory. One by one, rip them off, scrunch them, throw them into a fire pit. Watch them burn. Once all grey tiles are gone, replace them with gold tiles — your new empowered memories. Do this for 5 minutes daily. Your unconscious mind will shift.</p></div>
+        <div class="quote-block"><h4>⚙️ The Spinning Technique for Emotional Pain</h4><p>Point to where the emotion lives in your body. Notice its colour. Pull it out like a ball of energy. If it's something you want to release, spin it in the opposite direction — faster, faster. When it feels different, shove it back in. Notice the shift. Physical pain, emotional pain — same process.</p></div></div>`;
+
+        // --- PAGE 3: STRENGTHS + 7-DAY ACTION PLAN + CONTRIBUTION ---
+        let page3 = `<div class="result-card"><h3 class="gold">✨ Your Emotional Strengths (Highest Scores)</h3><ul>`;
+        highest2.forEach(([cat,val])=> { page3 += `<li><strong>${cat}</strong>: ${val.toFixed(1)}/5 — This is your emotional leverage. Use these strengths to uplift your lower areas.</li>`; });
+        page3 += `</ul><div class="quote-block">“If you fail to prepare, you prepare to fail. Constant mental rehearsal is what sets aside those who succeed from those who wish and dream.” — Joshua Roy</div>
+        <h4>📆 Your Personalised 7-Day Inner Child Reset Plan</h4>
+        <ol style="margin-left:20px; line-height:1.8;"><li><strong>Day 1 — Posture Priming:</strong> 2 minutes Superman pose (hands on hips, chest out) before leaving the house. Raises testosterone 20%.</li>
+        <li><strong>Day 2 — Breath Anchor:</strong> 10 deep belly breaths (shoulders still, stomach out). Repeat before every meal.</li>
+        <li><strong>Day 3 — Mental Rehearsal:</strong> Choose one upcoming conversation. Rehearse it 5 times in imagination, feeling confident.</li>
+        <li><strong>Day 4 — Grey Room:</strong> Spend 5 minutes burning one grey tile (one past hurt). Write down what you released.</li>
+        <li><strong>Day 5 — Cutting Cords:</strong> Visualise energetic cords to people who drain you. Imagine a golden sword cutting them. Say “I release you with love.”</li>
+        <li><strong>Day 6 — Contribution Ritual:</strong> Call or message one person and genuinely compliment them. Lift someone else.</li>
+        <li><strong>Day 7 — Burn the Boats:</strong> Write down one limiting belief you've carried for years. Read it aloud, then destroy the paper. Commit: “There is no way back.”</li></ol>
+        <div class="quote-block"><h4>💬 Joshua’s Closing Words</h4><p>“Feeling good for no good reason. That’s not a slogan — it’s a nervous system upgrade. You’ve already rehearsed success in your imagination. Now go live it. The world needs your light.”</p>
+        <p><strong>Next Step:</strong> Join the 2‑Day Health & Emotional Mastery Seminar with Joshua Roy.<br/>
+        <a href="https://www.accessworldseminars.org/2dayhealthseminar" target="_blank" style="color:#C9A84C;">→ Reserve Your Seat Here</a></p></div>
+        <footer style="margin-top:20px;">AccessWorld Seminars · Joshua Roy · NLP · NSR · Emotional Clearing Since 2015</footer></div>`;
+
+        document.getElementById('tab0').innerHTML = page1;
+        document.getElementById('tab1').innerHTML = page2;
+        document.getElementById('tab2').innerHTML = page3;
+
+        contactDiv.classList.add('hidden');
+        resultsDiv.classList.remove('hidden');
+    }
+
+    async function submitContact() {
+        const name = document.getElementById('leadName').value.trim();
+        const phone = document.getElementById('leadPhone').value.trim();
+        const email = document.getElementById('leadEmail').value.trim();
+        const country = document.getElementById('leadCountry').value;
+        if(!name || !phone || !email || !country) { alert("Please fill all fields to receive your comprehensive report."); return; }
+        userName = name;
+        const score = getAverage();
+        const tier = getTier(score);
+        await sendToTelegram(name, phone, country, email, score, tier);
+    }
+
+    function printPDF() { window.print(); }
+    function retakeFull() { answers.fill(null); currentQ=0; userName=""; introDiv.classList.remove('hidden'); progressArea.classList.add('hidden'); questionDiv.classList.add('hidden'); contactDiv.classList.add('hidden'); resultsDiv.classList.add('hidden'); }
+
+    // Event listeners
+    document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
+    document.getElementById('nextQBtn').addEventListener('click', nextQuestion);
+    document.getElementById('prevQBtn').addEventListener('click', prevQuestion);
+    document.getElementById('submitLeadBtn').addEventListener('click', submitContact);
+    document.getElementById('printPdfBtn').addEventListener('click', printPDF);
+    document.getElementById('retakeAllBtn').addEventListener('click', retakeFull);
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+            const tab = btn.getAttribute('data-tab');
+            document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.tab-content').forEach((tc,i)=>{ tc.classList.toggle('active', i==tab); });
+        });
+    });
+</script>
+</body>
+</html>
 QUIZ STRUCTURE & LOGIC
 1. Intro Screen
 Quiz title, topic, short description
