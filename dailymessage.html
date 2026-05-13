@@ -382,31 +382,42 @@ const LONG_QUOTES = [
   "Everything you need is already inside you—not in the next seminar, the next book, the next certification—but the tools to access what is already there can be taught, and once you have them, you never have to feel powerless again."
 ];
 
+// ============================================
+// UPDATED EVENTS - NO SATURDAY SESSIONS
+// All events moved to Fridays
+// ============================================
 const EVENTS = [
+  // April 2026 - remaining
   { date: "2026-04-23", time: "7:00 PM", title: "Group Mentoring & Integration", type: "paid" },
   { date: "2026-04-24", time: "9:00 AM", title: "Group Mentoring & Integration", type: "paid" },
   { date: "2026-04-24", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
   { date: "2026-04-30", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
+  
+  // May 2026 - ALL ON FRIDAYS
   { date: "2026-05-01", time: "9:00 AM", title: "Group Mentoring & Integration", type: "paid" },
   { date: "2026-05-01", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
   { date: "2026-05-07", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-05-08", time: "7:00 AM", title: "Ultimate Health Webinar Day 1", type: "seminar" },
-  { date: "2026-05-09", time: "7:00 AM", title: "Ultimate Health Webinar Day 2", type: "seminar" },
+  { date: "2026-05-08", time: "7:00 AM", title: "Ultimate Health Day 1", type: "seminar" },
+  { date: "2026-05-08", time: "3:00 PM", title: "Ultimate Health Day 2 (moved from Sat)", type: "seminar" },
   { date: "2026-05-14", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-05-16", time: "9:00 AM", title: "Group Mentoring & Integration", type: "paid" },
-  { date: "2026-05-16", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
+  { date: "2026-05-15", time: "9:00 AM", title: "Group Mentoring (moved from Sat)", type: "paid" },
+  { date: "2026-05-15", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
+  { date: "2026-05-22", time: "7:00 AM", title: "Unlock Your Incredible Self", type: "seminar" },
   { date: "2026-05-22", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-05-23", time: "7:00 AM", title: "Unlock Your Incredible Self", type: "seminar" },
   { date: "2026-05-29", time: "7:00 PM", title: "Group Mentoring & Integration", type: "paid" },
-  { date: "2026-05-30", time: "9:00 AM", title: "Group Mentoring & Integration", type: "paid" },
-  { date: "2026-05-30", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
+  
+  // June 2026 - ALL ON FRIDAYS
   { date: "2026-06-04", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-06-05", time: "9:00 AM", title: "Group Mentoring & Integration", type: "paid" },
-  { date: "2026-06-11", time: "7:00 PM", title: "NLP Training for Coaches", type: "seminar" },
-  { date: "2026-06-12", time: "9:00 AM", title: "NLP Training for Coaches", type: "seminar" },
+  { date: "2026-06-05", time: "9:00 AM", title: "Group Mentoring", type: "paid" },
+  { date: "2026-06-05", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
+  { date: "2026-06-11", time: "7:00 PM", title: "NLP Training for Coaches (Thu eve)", type: "seminar" },
+  { date: "2026-06-12", time: "9:00 AM", title: "NLP Training for Coaches (Fri)", type: "seminar" },
+  { date: "2026-06-12", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
   { date: "2026-06-19", time: "9:00 AM", title: "Become World-Class Coach", type: "seminar" },
-  { date: "2026-06-25", time: "7:00 PM", title: "Group Mentoring & Integration", type: "paid" },
-  { date: "2026-06-26", time: "9:00 AM", title: "Group Mentoring & Integration", type: "paid" },
+  { date: "2026-06-26", time: "9:00 AM", title: "Group Mentoring", type: "paid" },
+  { date: "2026-06-26", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
+  
+  // Future 2-day seminars
   { date: "2026-08-06", time: "7:00 AM", title: "Emotional Mastery Day 1", type: "seminar" },
   { date: "2026-08-07", time: "7:00 AM", title: "Emotional Mastery Day 2", type: "seminar" },
   { date: "2026-11-05", time: "7:00 AM", title: "Life Skills Day 1", type: "seminar" },
@@ -428,7 +439,7 @@ function getToday() {
   return new Date().toISOString().split('T')[0];
 }
 
-function getUpcomingEvents(n = 4) {
+function getUpcomingEvents(n = 5) {
   const today = getToday();
   return EVENTS.filter(e => e.date >= today).slice(0, n);
 }
@@ -464,7 +475,7 @@ function getFormattedDate() {
 
 function generate() {
   const quote = pickQuote();
-  const events = getUpcomingEvents(4);
+  const events = getUpcomingEvents(5);
   const link = document.getElementById('schedule-link').value.trim();
   const greeting = getDayGreeting();
   const dateStr = getFormattedDate();
