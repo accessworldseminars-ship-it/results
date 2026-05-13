@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AccessWorld Seminars | Join Free Zoom Session</title>
+  <!-- Google Fonts: No external dependencies except fonts (allowed for design) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+      font-family: 'DM Sans', sans-serif;
+      color: #F0F3FA;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Main card container */
+    .gate-card {
+      max-width: 580px;
+      width: 100%;
+      background: rgba(12, 21, 38, 0.75);
+      backdrop-filter: blur(2px);
+      border-radius: 2rem;
+      padding: 2rem 1.8rem 2.5rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(201, 168, 76, 0.2);
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Logo */
+    .logo-container {
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+    .logo {
+      max-width: 180px;
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+      transition: transform 0.2s ease;
+    }
+    .logo:hover {
+      transform: scale(1.01);
+    }
+
+    /* Typography */
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-align: center;
+      background: linear-gradient(135deg, #FFFFFF 30%, #C9A84C 80%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .subheading {
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #B9C7D9;
+      margin-bottom: 2rem;
+      border-left: 3px solid #C9A84C;
+      padding-left: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 90%;
+    }
+
+    /* Form styling */
+    .form-group {
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+      color: #C9A84C;
+    }
+
+    input, select {
+      background: #0F172F;
+      border: 1px solid #2D3A5E;
+      border-radius: 1rem;
+      padding: 0.9rem 1.2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      color: #F0F3FA;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: #C9A84C;
+      box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.3);
+      background-color: #111A33;
+    }
+
+    input::placeholder {
+      color: #5B6E8C;
+      font-weight: 400;
+    }
+
+    /* Button gold style */
+    .btn-gold {
+      width: 100%;
+      background: #C9A84C;
+      border: none;
+      border-radius: 3rem;
+      padding: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 0.5px;
+      color: #080d18;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 8px 20px -8px rgba(0,0,0,0.4);
+    }
+
+    .btn-gold:hover {
+      background: #dbb954;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 26px -10px rgba(201,168,76,0.4);
+    }
+
+    .btn-gold:active {
+      transform: translateY(1px);
+    }
+
+    /* message status */
+    .status-message {
+      margin-top: 1.5rem;
+      padding: 0.8rem 1rem;
+      border-radius: 1.2rem;
+      background: rgba(0,0,0,0.5);
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      backdrop-filter: blur(4px);
+      display: none;
+    }
+
+    .status-success {
+      background: rgba(46, 125, 50, 0.85);
+      color: #FFFFFF;
+      border-left: 4px solid #C9A84C;
+    }
+
+    .status-error {
+      background: rgba(198, 40, 40, 0.85);
+      color: #FFD9D9;
+      border-left: 4px solid #ffb74d;
+    }
+
+    /* footer note */
+    .fine-print {
+      text-align: center;
+      font-size: 0.7rem;
+      color: #6C7F9E;
+      margin-top: 2rem;
+      border-top: 1px solid #253352;
+      padding-top: 1.2rem;
+    }
+
+    /* aria / focus states */
+    button:focus-visible, input:focus-visible, select:focus-visible {
+      outline: 2px solid #C9A84C;
+      outline-offset: 3px;
+    }
+
+    /* mobile adjustments */
+    @media (max-width: 480px) {
+      .gate-card {
+        padding: 1.5rem 1.2rem 2rem;
+      }
+      h1 {
+        font-size: 1.9rem;
+      }
+      .subheading {
+        font-size: 0.85rem;
+      }
+      input, select {
+        padding: 0.75rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="gate-card" role="main" aria-labelledby="registration-heading">
+  <div class="logo-container">
+    <!-- official AccessWorld Seminars logo -->
+    <img class="logo" src="https://i.ibb.co/LzmHyDq/accessworld-logo.png" alt="AccessWorld Seminars Logo" loading="eager">
+  </div>
+  <h1 id="registration-heading">Join the Free Session</h1>
+  <div class="subheading">
+    Enter your details below to access the Zoom meeting
+  </div>
+
+  <form id="zoomForm" action="#" method="post" novalidate>
+    <div class="form-group">
+      <label for="firstName">First Name <span aria-hidden="true">*</span></label>
+      <input type="text" id="firstName" name="firstName" placeholder="e.g., Michael" required aria-required="true" aria-label="Your first name">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email <span aria-hidden="true">*</span></label>
+      <input type="email" id="email" name="email" placeholder="hello@example.com" required aria-required="true" aria-label="Email address">
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone Number <span aria-hidden="true">*</span></label>
+      <input type="tel" id="phone" name="phone" placeholder="+61 4XX XXX XXX" required aria-required="true" aria-label="Phone number">
+    </div>
+
+    <div class="form-group">
+      <label for="country">Country <span aria-hidden="true">*</span></label>
+      <select id="country" name="country" required aria-required="true" aria-label="Select your country">
+        <option value="" disabled selected>— Select your country —</option>
+        <!-- Australia on top, then alphabetical -->
+        <option value="Australia">🇦🇺 Australia</option>
+        <option value="Austria">🇦🇹 Austria</option>
+        <option value="Belgium">🇧🇪 Belgium</option>
+        <option value="Canada">🇨🇦 Canada</option>
+        <option value="Denmark">🇩🇰 Denmark</option>
+        <option value="Finland">🇫🇮 Finland</option>
+        <option value="France">🇫🇷 France</option>
+        <option value="Germany">🇩🇪 Germany</option>
+        <option value="Ireland">🇮🇪 Ireland</option>
+        <option value="Italy">🇮🇹 Italy</option>
+        <option value="Netherlands">🇳🇱 Netherlands</option>
+        <option value="New Zealand">🇳🇿 New Zealand</option>
+        <option value="Norway">🇳🇴 Norway</option>
+        <option value="Portugal">🇵🇹 Portugal</option>
+        <option value="Spain">🇪🇸 Spain</option>
+        <option value="Sweden">🇸🇪 Sweden</option>
+        <option value="Switzerland">🇨🇭 Switzerland</option>
+        <option value="United Kingdom">🇬🇧 United Kingdom</option>
+        <option value="United States">🇺🇸 United States</option>
+        <!-- additional common countries for thoroughness -->
+        <option value="South Africa">🇿🇦 South Africa</option>
+        <option value="India">🇮🇳 India</option>
+        <option value="Singapore">🇸🇬 Singapore</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn-gold" id="submitBtn" aria-label="Join Zoom meeting now">
+      ✨ Join the Zoom Meeting ✨
+    </button>
+    <div id="statusMessage" class="status-message" role="status" aria-live="polite"></div>
+    <div class="fine-print">
+      By joining you agree to receive session details. We respect your privacy.
+    </div>
+  </form>
+</div>
+
+<script>
+  // ============================================================
+  // ZOOM REGISTRATION GATE — TELEGRAM BOT WEBHOOK (ACTIVEPIECES)
+  // Uses provided ActivePieces endpoint: sends name, email, phone, country.
+  // After successful POST => redirect to Zoom meeting.
+  // ============================================================
+  
+  // --- CONFIGURATION ---
+  const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+  const ZOOM_MEETING_URL = 'https://us02web.zoom.us/j/2159283790?pwd=ZmhFQ0VveFp4N294ZXF2ZElrUzQyUT09';
+  
+  // DOM elements
+  const form = document.getElementById('zoomForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const statusDiv = document.getElementById('statusMessage');
+  
+  // Helper: Display temporary status message
+  function showMessage(text, isError = false, autoClear = true) {
+    if (!statusDiv) return;
+    statusDiv.style.display = 'block';
+    statusDiv.textContent = text;
+    statusDiv.className = 'status-message';
+    if (isError) {
+      statusDiv.classList.add('status-error');
+    } else {
+      statusDiv.classList.add('status-success');
+    }
+    // auto-hide after 3.5 seconds unless it's a critical error
+    if (autoClear) {
+      setTimeout(() => {
+        if (statusDiv && statusDiv.style.display === 'block') {
+          statusDiv.style.display = 'none';
+        }
+      }, 3800);
+    }
+  }
+  
+  // Reset error style / hide status without override
+  function clearStatus() {
+    if (statusDiv) {
+      statusDiv.style.display = 'none';
+      statusDiv.textContent = '';
+    }
+  }
+  
+  // Validate email format (basic but robust)
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+  
+  // Validate phone: at least 5 chars (simple and international friendly)
+  function isValidPhone(phone) {
+    const cleaned = phone.trim();
+    if (cleaned.length < 5) return false;
+    // allow digits, spaces, +, -, parentheses — at least 5 chars
+    return /^[\+\d\s\-\(\)]{5,}$/.test(cleaned);
+  }
+  
+  // prevent duplicate submissions flag
+  let isSubmitting = false;
+  
+  // ============================================================
+  // Send data to ActivePieces in EXACT format required (4 captures + extra)
+  // But according to instruction: we send name, email, phone, country, plus timestamp.
+  // Matches the activepieces webhook shape.
+  // ============================================================
+  async function sendToTelegramGateway(name, email, phone, country) {
+    const payload = {
+      name: name,
+      email: email,
+      phone: phone,
+      country: country,
+      timestamp: new Date().toISOString(),
+      source: "zoom_registration_gate"
+    };
+    
+    console.log('[ActivePieces] Sending payload:', payload);
+    
+    const response = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+    
+    // Even if response is not ok, we still want to log but proceed with redirect if possible?
+    // But requirement: only redirect after successful submission? The brief: On submit send data & redirect
+    // Even if webhook fails, we still want to let user join but show warning? To be robust, we treat failure as error
+    // but still let them proceed if we decide? For UX: if webhook fails we show error and do NOT redirect (prevents missing lead)
+    if (!response.ok) {
+      let errorText = `HTTP ${response.status}`;
+      try {
+        const errData = await response.text();
+        errorText = errData.substring(0, 100);
+      } catch(e) {}
+      throw new Error(`Webhook error: ${errorText}`);
+    }
+    return true;
+  }
+  
+  // Redirect with "Joining now..." message
+  function redirectToZoom() {
+    // Show brief message plus redirect
+    if (statusDiv) {
+      statusDiv.style.display = 'block';
+      statusDiv.textContent = '✓ Registration complete! Joining Zoom now...';
+      statusDiv.classList.add('status-success');
+      statusDiv.classList.remove('status-error');
+    }
+    // Short delay to show success, then redirect
+    setTimeout(() => {
+      window.location.href = ZOOM_MEETING_URL;
+    }, 800);
+  }
+  
+  // Main handler
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (isSubmitting) {
+      showMessage("Please wait, already submitting...", false, true);
+      return;
+    }
+    
+    // Reset status and get values
+    clearStatus();
+    
+    // Gather fields
+    const firstNameInput = document.getElementById('firstName');
+    const emailInput = document.getElementById('email');
+    const phoneInput = document.getElementById('phone');
+    const countrySelect = document.getElementById('country');
+    
+    const firstName = firstNameInput ? firstNameInput.value.trim() : '';
+    const email = emailInput ? emailInput.value.trim() : '';
+    const phone = phoneInput ? phoneInput.value.trim() : '';
+    const country = countrySelect ? countrySelect.value : '';
+    
+    // Validation batch
+    if (!firstName) {
+      showMessage("❌ Please enter your first name.", true, true);
+      firstNameInput?.focus();
+      return;
+    }
+    if (!email) {
+      showMessage("❌ Email address is required.", true, true);
+      emailInput?.focus();
+      return;
+    }
+    if (!isValidEmail(email)) {
+      showMessage("⚠️ Please provide a valid email (e.g., name@domain.com).", true, true);
+      emailInput?.focus();
+      return;
+    }
+    if (!phone) {
+      showMessage("❌ Phone number is required for session access.", true, true);
+      phoneInput?.focus();
+      return;
+    }
+    if (!isValidPhone(phone)) {
+      showMessage("📞 Please enter a valid phone number (minimum 5 digits, international format allowed).", true, true);
+      phoneInput?.focus();
+      return;
+    }
+    if (!country) {
+      showMessage("🌍 Please select your country from the dropdown.", true, true);
+      countrySelect?.focus();
+      return;
+    }
+    
+    // Disable button during async
+    isSubmitting = true;
+    const originalButtonText = submitBtn.innerHTML;
+    submitBtn.innerHTML = "⏳ Joining session...";
+    submitBtn.disabled = true;
+    
+    // Show "Joining now..." preparing message
+    showMessage("⚡ Sending registration & preparing Zoom room...", false, false);
+    
+    try {
+      // 1) Send to ActivePieces (Telegram / webhook)
+      await sendToTelegramGateway(firstName, email, phone, country);
+      
+      // 2) success -> brief status update, then redirect
+      showMessage("✅ Registration successful! Redirecting to Zoom...", false, true);
+      // redirect after short delay for smooth UX
+      setTimeout(() => {
+        redirectToZoom();
+      }, 500);
+      
+    } catch (error) {
+      console.error("Webhook delivery error:", error);
+      let errorMsg = error.message || "Network or server error. Please check your connection.";
+      // detailed user-friendly message
+      showMessage(`⚠️ Could not complete registration: ${errorMsg}. Please try again or contact support.`, true, false);
+      // restore button
+      submitBtn.innerHTML = originalButtonText;
+      submitBtn.disabled = false;
+      isSubmitting = false;
+      // keep error visible longer without auto-clear
+      setTimeout(() => {
+        if (statusDiv && statusDiv.classList.contains('status-error')) {
+          // after 6 seconds auto clear if user might retry
+          statusDiv.style.display = 'none';
+        }
+      }, 6000);
+    } finally {
+      // only re-enable if not redirected (in case of error flag)
+      if (!window.location.href.includes('zoom.us') && !isSubmitting === false) {
+        // if not redirected and still error, ensure button is re-enabled (already done in catch)
+      } else if (isSubmitting && !window.location.href.includes('zoom')) {
+        // redundant guard
+      }
+    }
+  });
+  
+  // optional: keyboard acc — pressing Enter on form works naturally
+  // additional accessible ARIA improvements
+  const formInputs = document.querySelectorAll('input, select, button');
+  formInputs.forEach(el => {
+    if (!el.hasAttribute('aria-label') && el.id) {
+      // minor fallback
+    }
+  });
+  // ensure status message is announced
+  if (statusDiv) {
+    statusDiv.setAttribute('role', 'alert');
+  }
+</script>
+</body>
+</html>
