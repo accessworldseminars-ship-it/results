@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>AccessWorld Seminars | Join Free Zoom Session</title>
-  <!-- Google Fonts: No external dependencies except fonts (allowed for design) -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -24,7 +24,6 @@
       padding: 2rem 1.5rem;
     }
 
-    /* Main card container */
     .gate-card {
       max-width: 580px;
       width: 100%;
@@ -48,7 +47,6 @@
       }
     }
 
-    /* Logo */
     .logo-container {
       text-align: center;
       margin-bottom: 1.8rem;
@@ -64,7 +62,6 @@
       transform: scale(1.01);
     }
 
-    /* Typography */
     h1 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.4rem;
@@ -91,7 +88,6 @@
       max-width: 90%;
     }
 
-    /* Form styling */
     .form-group {
       margin-bottom: 1.5rem;
       display: flex;
@@ -130,7 +126,6 @@
       font-weight: 400;
     }
 
-    /* Button gold style */
     .btn-gold {
       width: 100%;
       background: #C9A84C;
@@ -162,7 +157,6 @@
       transform: translateY(1px);
     }
 
-    /* message status */
     .status-message {
       margin-top: 1.5rem;
       padding: 0.8rem 1rem;
@@ -188,7 +182,6 @@
       border-left: 4px solid #ffb74d;
     }
 
-    /* footer note */
     .fine-print {
       text-align: center;
       font-size: 0.7rem;
@@ -198,13 +191,11 @@
       padding-top: 1.2rem;
     }
 
-    /* aria / focus states */
     button:focus-visible, input:focus-visible, select:focus-visible {
       outline: 2px solid #C9A84C;
       outline-offset: 3px;
     }
 
-    /* mobile adjustments */
     @media (max-width: 480px) {
       .gate-card {
         padding: 1.5rem 1.2rem 2rem;
@@ -224,7 +215,7 @@
 <body>
 <div class="gate-card" role="main" aria-labelledby="registration-heading">
   <div class="logo-container">
-    <!-- official AccessWorld Seminars logo -->
+    <!-- WORKING LOGO - IMG BB (verified) -->
     <img class="logo" src="https://i.ibb.co/LzmHyDq/accessworld-logo.png" alt="AccessWorld Seminars Logo" loading="eager">
   </div>
   <h1 id="registration-heading">Join the Free Session</h1>
@@ -252,7 +243,6 @@
       <label for="country">Country <span aria-hidden="true">*</span></label>
       <select id="country" name="country" required aria-required="true" aria-label="Select your country">
         <option value="" disabled selected>— Select your country —</option>
-        <!-- Australia on top, then alphabetical -->
         <option value="Australia">🇦🇺 Australia</option>
         <option value="Austria">🇦🇹 Austria</option>
         <option value="Belgium">🇧🇪 Belgium</option>
@@ -272,7 +262,6 @@
         <option value="Switzerland">🇨🇭 Switzerland</option>
         <option value="United Kingdom">🇬🇧 United Kingdom</option>
         <option value="United States">🇺🇸 United States</option>
-        <!-- additional common countries for thoroughness -->
         <option value="South Africa">🇿🇦 South Africa</option>
         <option value="India">🇮🇳 India</option>
         <option value="Singapore">🇸🇬 Singapore</option>
@@ -290,22 +279,13 @@
 </div>
 
 <script>
-  // ============================================================
-  // ZOOM REGISTRATION GATE — TELEGRAM BOT WEBHOOK (ACTIVEPIECES)
-  // Uses provided ActivePieces endpoint: sends name, email, phone, country.
-  // After successful POST => redirect to Zoom meeting.
-  // ============================================================
-  
-  // --- CONFIGURATION ---
   const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
   const ZOOM_MEETING_URL = 'https://us02web.zoom.us/j/2159283790?pwd=ZmhFQ0VveFp4N294ZXF2ZElrUzQyUT09';
   
-  // DOM elements
   const form = document.getElementById('zoomForm');
   const submitBtn = document.getElementById('submitBtn');
   const statusDiv = document.getElementById('statusMessage');
   
-  // Helper: Display temporary status message
   function showMessage(text, isError = false, autoClear = true) {
     if (!statusDiv) return;
     statusDiv.style.display = 'block';
@@ -316,7 +296,6 @@
     } else {
       statusDiv.classList.add('status-success');
     }
-    // auto-hide after 3.5 seconds unless it's a critical error
     if (autoClear) {
       setTimeout(() => {
         if (statusDiv && statusDiv.style.display === 'block') {
@@ -326,7 +305,6 @@
     }
   }
   
-  // Reset error style / hide status without override
   function clearStatus() {
     if (statusDiv) {
       statusDiv.style.display = 'none';
@@ -334,29 +312,20 @@
     }
   }
   
-  // Validate email format (basic but robust)
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
     return emailRegex.test(email);
   }
   
-  // Validate phone: at least 5 chars (simple and international friendly)
   function isValidPhone(phone) {
     const cleaned = phone.trim();
     if (cleaned.length < 5) return false;
-    // allow digits, spaces, +, -, parentheses — at least 5 chars
     return /^[\+\d\s\-\(\)]{5,}$/.test(cleaned);
   }
   
-  // prevent duplicate submissions flag
   let isSubmitting = false;
   
-  // ============================================================
-  // Send data to ActivePieces in EXACT format required (4 captures + extra)
-  // But according to instruction: we send name, email, phone, country, plus timestamp.
-  // Matches the activepieces webhook shape.
-  // ============================================================
-  async function sendToTelegramGateway(name, email, phone, country) {
+  async function sendToActivePieces(name, email, phone, country) {
     const payload = {
       name: name,
       email: email,
@@ -377,10 +346,6 @@
       body: JSON.stringify(payload)
     });
     
-    // Even if response is not ok, we still want to log but proceed with redirect if possible?
-    // But requirement: only redirect after successful submission? The brief: On submit send data & redirect
-    // Even if webhook fails, we still want to let user join but show warning? To be robust, we treat failure as error
-    // but still let them proceed if we decide? For UX: if webhook fails we show error and do NOT redirect (prevents missing lead)
     if (!response.ok) {
       let errorText = `HTTP ${response.status}`;
       try {
@@ -392,22 +357,18 @@
     return true;
   }
   
-  // Redirect with "Joining now..." message
   function redirectToZoom() {
-    // Show brief message plus redirect
     if (statusDiv) {
       statusDiv.style.display = 'block';
       statusDiv.textContent = '✓ Registration complete! Joining Zoom now...';
       statusDiv.classList.add('status-success');
       statusDiv.classList.remove('status-error');
     }
-    // Short delay to show success, then redirect
     setTimeout(() => {
       window.location.href = ZOOM_MEETING_URL;
     }, 800);
   }
   
-  // Main handler
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (isSubmitting) {
@@ -415,10 +376,8 @@
       return;
     }
     
-    // Reset status and get values
     clearStatus();
     
-    // Gather fields
     const firstNameInput = document.getElementById('firstName');
     const emailInput = document.getElementById('email');
     const phoneInput = document.getElementById('phone');
@@ -429,7 +388,6 @@
     const phone = phoneInput ? phoneInput.value.trim() : '';
     const country = countrySelect ? countrySelect.value : '';
     
-    // Validation batch
     if (!firstName) {
       showMessage("❌ Please enter your first name.", true, true);
       firstNameInput?.focus();
@@ -461,61 +419,34 @@
       return;
     }
     
-    // Disable button during async
     isSubmitting = true;
     const originalButtonText = submitBtn.innerHTML;
     submitBtn.innerHTML = "⏳ Joining session...";
     submitBtn.disabled = true;
     
-    // Show "Joining now..." preparing message
     showMessage("⚡ Sending registration & preparing Zoom room...", false, false);
     
     try {
-      // 1) Send to ActivePieces (Telegram / webhook)
-      await sendToTelegramGateway(firstName, email, phone, country);
-      
-      // 2) success -> brief status update, then redirect
+      await sendToActivePieces(firstName, email, phone, country);
       showMessage("✅ Registration successful! Redirecting to Zoom...", false, true);
-      // redirect after short delay for smooth UX
       setTimeout(() => {
         redirectToZoom();
       }, 500);
-      
     } catch (error) {
       console.error("Webhook delivery error:", error);
       let errorMsg = error.message || "Network or server error. Please check your connection.";
-      // detailed user-friendly message
       showMessage(`⚠️ Could not complete registration: ${errorMsg}. Please try again or contact support.`, true, false);
-      // restore button
       submitBtn.innerHTML = originalButtonText;
       submitBtn.disabled = false;
       isSubmitting = false;
-      // keep error visible longer without auto-clear
       setTimeout(() => {
         if (statusDiv && statusDiv.classList.contains('status-error')) {
-          // after 6 seconds auto clear if user might retry
           statusDiv.style.display = 'none';
         }
       }, 6000);
-    } finally {
-      // only re-enable if not redirected (in case of error flag)
-      if (!window.location.href.includes('zoom.us') && !isSubmitting === false) {
-        // if not redirected and still error, ensure button is re-enabled (already done in catch)
-      } else if (isSubmitting && !window.location.href.includes('zoom')) {
-        // redundant guard
-      }
     }
   });
   
-  // optional: keyboard acc — pressing Enter on form works naturally
-  // additional accessible ARIA improvements
-  const formInputs = document.querySelectorAll('input, select, button');
-  formInputs.forEach(el => {
-    if (!el.hasAttribute('aria-label') && el.id) {
-      // minor fallback
-    }
-  });
-  // ensure status message is announced
   if (statusDiv) {
     statusDiv.setAttribute('role', 'alert');
   }
