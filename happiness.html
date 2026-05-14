@@ -1,123 +1,665 @@
-Accessworld notifier, [01.05.2026 07:54]
-🎓 ACCESSWORLD SEMINARS — CERTIFICATION REQUEST
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Happy Are You Really? | AccessWorld Seminars</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-deep:#080d18;
+  --bg-mid:#1A2744;
+  --gold:#C9A84C;
+  --gold-light:#e0be7a;
+  --gold-dim:#8a6e30;
+  --white:#f5f0e8;
+  --muted:#8899aa;
+  --success:#4caf82;
+  --warn:#e8a84c;
+  --danger:#e06060;
+  --card:#111b2e;
+  --card2:#162036;
+}
+html{scroll-behavior:smooth}
+body{
+  background:linear-gradient(135deg,var(--bg-deep) 0%,var(--bg-mid) 100%);
+  min-height:100vh;
+  font-family:'Montserrat',sans-serif;
+  color:var(--white);
+  font-size:15px;
+  line-height:1.7;
+}
+.screen{display:none;animation:fadeIn .5s ease}
+.screen.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.wrap{max-width:680px;margin:0 auto;padding:2rem 1.25rem 4rem}
 
-Name: Dr. Sanjay D. Paul
-Email: sdpaul2014@gmail.com
-Phone: 0017712417516
-Certificate: Mindset Coaching Certificate
-Date: 30/04/2026
+/* INTRO */
+.intro-hero{text-align:center;padding:3rem 0 2rem}
+.logo{width:80px;height:80px;margin:0 auto 1.5rem;display:block;border-radius:50%;border:2px solid var(--gold)}
+.quiz-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,6vw,3.2rem);font-weight:300;line-height:1.15;color:var(--gold);letter-spacing:.02em;margin-bottom:.5rem}
+.quiz-sub{font-size:.95rem;color:var(--muted);font-weight:300;max-width:460px;margin:0 auto 2.5rem;letter-spacing:.04em;text-transform:uppercase}
+.bio-card{background:var(--card);border:1px solid rgba(201,168,76,.18);border-radius:16px;padding:1.5rem;margin-bottom:2rem;text-align:left;display:flex;gap:1rem;align-items:flex-start}
+.bio-av{width:56px;height:56px;min-width:56px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;background:var(--gold-dim)}
+.bio-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold);font-weight:600;margin-bottom:.25rem}
+.bio-facts{font-size:.8rem;color:var(--muted);line-height:1.8}
+.bio-facts span{color:var(--white)}
+.btn-primary{
+  display:block;width:100%;padding:1rem 2rem;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dim) 100%);
+  color:var(--bg-deep);font-family:'Montserrat',sans-serif;font-weight:600;
+  font-size:1rem;letter-spacing:.08em;text-transform:uppercase;
+  border:none;border-radius:50px;cursor:pointer;
+  transition:all .25s;text-align:center
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,.35)}
+.btn-outline{
+  display:inline-block;padding:.7rem 1.8rem;
+  border:1px solid var(--gold);color:var(--gold);
+  font-family:'Montserrat',sans-serif;font-weight:500;font-size:.85rem;
+  letter-spacing:.06em;text-transform:uppercase;border-radius:50px;
+  cursor:pointer;background:transparent;transition:all .25s
+}
+.btn-outline:hover{background:rgba(201,168,76,.1)}
 
-─── REQUIREMENTS ───
-Emotional Mastery Seminar: Yes
-Life Skills Seminar: Yes
-Seminar 2 completed: Yes
-Seminar 3 completed: Yes
-NSR Modules completed: 10+
-Group sessions attended: 15+
-Visioning sessions completed: 15
-Visioning sessions for others: 3
-World Class Coach session: Yes
-NLP process recordings submitted: 3
-Coaching path: Group Mentoring: 24 sessions completed
+/* PROGRESS */
+.progress-wrap{margin-bottom:2rem}
+.progress-label{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.06em}
+.progress-bar{height:3px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));border-radius:2px;transition:width .4s ease}
 
-─── DECLARATION ───
-I, Dr. Sanjay D. Paul, confirm that all information provided is true and accurate. I am formally requesting certification for the Mindset Coaching Certificate from AccessWorld Seminars.
+/* QUESTION */
+.q-category{font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.5rem;font-weight:600}
+.q-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,4vw,1.8rem);font-weight:300;line-height:1.4;margin-bottom:2rem;color:var(--white)}
+.likert{display:flex;flex-direction:column;gap:.6rem;margin-bottom:2.5rem}
+.likert-opt{
+  display:flex;align-items:center;gap:1rem;
+  padding:.85rem 1.1rem;border-radius:10px;
+  border:1px solid rgba(255,255,255,.08);
+  cursor:pointer;transition:all .2s;background:var(--card)
+}
+.likert-opt:hover{border-color:var(--gold-dim);background:var(--card2)}
+.likert-opt.selected{border-color:var(--gold);background:rgba(201,168,76,.12)}
+.likert-num{width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:600;min-width:28px;color:var(--muted)}
+.likert-opt.selected .likert-num{background:var(--gold);border-color:var(--gold);color:var(--bg-deep)}
+.likert-label{font-size:.9rem;color:var(--muted)}
+.likert-opt.selected .likert-label{color:var(--white)}
+.q-nav{display:flex;gap:1rem;justify-content:space-between}
+.btn-nav{
+  padding:.7rem 1.5rem;border-radius:50px;border:1px solid rgba(255,255,255,.15);
+  background:transparent;color:var(--white);font-family:'Montserrat',sans-serif;
+  font-size:.85rem;cursor:pointer;transition:all .2s;font-weight:500
+}
+.btn-nav:hover{border-color:var(--gold);color:var(--gold)}
+.btn-nav.next{background:var(--gold);color:var(--bg-deep);border-color:var(--gold);font-weight:600}
+.btn-nav.next:hover{background:var(--gold-light)}
 
-Accessworld notifier, [01.05.2026 07:54]
-🎓 ACCESSWORLD SEMINARS — CERTIFICATION REQUEST
+/* FORM */
+.form-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--gold);margin-bottom:.5rem}
+.form-sub{color:var(--muted);font-size:.9rem;margin-bottom:2rem}
+.field{margin-bottom:1.25rem}
+.field label{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.4rem;font-weight:600}
+.field input,.field select{
+  width:100%;padding:.85rem 1rem;
+  background:var(--card);border:1px solid rgba(255,255,255,.1);
+  border-radius:10px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:.95rem;
+  transition:border-color .2s;-webkit-appearance:none
+}
+.field input:focus,.field select:focus{outline:none;border-color:var(--gold)}
+.field select option{background:var(--bg-mid)}
+.field input::placeholder{color:var(--muted)}
 
-Name: Dr. Sanjay D. Paul
-Email: sdpaul2014@gmail.com
-Phone: 0017712417516
-Certificate: Relationship Coaching Certificate
-Date: 30/04/2026
+/* RESULTS */
+.results-header{text-align:center;padding:2rem 0}
+.score-circle{
+  width:140px;height:140px;border-radius:50%;
+  border:4px solid var(--gold);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  margin:0 auto 1.5rem;position:relative
+}
+.score-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1}
+.score-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.tier-badge{
+  display:inline-block;padding:.4rem 1.2rem;border-radius:50px;
+  background:rgba(201,168,76,.15);border:1px solid var(--gold);
+  color:var(--gold);font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:1rem
+}
+.results-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:.5rem}
+.results-desc{color:var(--muted);font-size:.9rem;max-width:500px;margin:0 auto 2rem}
 
-─── REQUIREMENTS ───
-Emotional Mastery Seminar: Yes
-Relationship Webinar: Yes
-Seminar 2 completed: Yes
-Seminar 3 completed: Yes
-NSR Modules completed: 10+
-Group sessions attended: 15+
-Relationship demo completed: Yes
-World Class Coach session: Yes
-NLP process recordings submitted: 3
-Coaching path: 1-on-1: 12 sessions completed
+/* TABS */
+.tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:0}
+.tab{
+  padding:.6rem 1rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;font-weight:600;
+  cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;color:var(--muted);
+  background:none;border-top:none;border-left:none;border-right:none;font-family:'Montserrat',sans-serif;
+  transition:all .2s
+}
+.tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-content{display:none}
+.tab-content.active{display:block;animation:fadeIn .3s ease}
 
-─── DECLARATION ───
-I, Dr. Sanjay D. Paul, confirm that all information provided is true and accurate. I am formally requesting certification for the Relationship Coaching Certificate from AccessWorld Seminars.
+/* DIM BARS */
+.dim-item{margin-bottom:1.25rem}
+.dim-header{display:flex;justify-content:space-between;margin-bottom:.4rem;font-size:.85rem}
+.dim-name{color:var(--white);font-weight:500}
+.dim-score{color:var(--muted)}
+.dim-bar{height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
+.dim-fill{height:100%;border-radius:3px;transition:width 1s ease .2s}
+.dim-fill.high{background:var(--success)}
+.dim-fill.mid{background:var(--warn)}
+.dim-fill.low{background:var(--danger)}
 
-Accessworld notifier, [01.05.2026 07:55]
-🎓 ACCESSWORLD SEMINARS — CERTIFICATION REQUEST
+/* GROWTH / STRENGTH CARDS */
+.insight-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:1.5rem;margin-bottom:1.25rem}
+.insight-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;font-weight:600;margin-bottom:.5rem}
+.insight-label.growth{color:var(--danger)}
+.insight-label.strength{color:var(--success)}
+.insight-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;margin-bottom:.75rem;color:var(--white)}
+.insight-body{font-size:.88rem;color:var(--muted);line-height:1.75;margin-bottom:1rem}
+.practice-box{background:rgba(255,255,255,.03);border-left:3px solid var(--gold);padding:.75rem 1rem;border-radius:0 8px 8px 0}
+.practice-title{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);font-weight:600;margin-bottom:.5rem}
+.practice-list{list-style:none;font-size:.85rem;color:var(--muted)}
+.practice-list li{padding:.2rem 0;padding-left:1rem;position:relative}
+.practice-list li::before{content:'→';position:absolute;left:0;color:var(--gold)}
 
-Name: Dr. Sanjay D. Paul
-Email: sdpaul2014@gmail.com
-Phone: 0017712417516
-Certificate: Trauma Coaching Certificate
-Date: 30/04/2026
+/* ACTION BUTTONS */
+.action-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:2rem 0}
+.action-btn{
+  padding:.85rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.1);
+  background:var(--card);color:var(--white);font-family:'Montserrat',sans-serif;
+  font-size:.8rem;font-weight:600;letter-spacing:.04em;cursor:pointer;
+  transition:all .2s;text-align:center;text-decoration:none;display:block
+}
+.action-btn:hover{border-color:var(--gold);color:var(--gold)}
+.action-btn.primary-action{background:linear-gradient(135deg,var(--gold),var(--gold-dim));color:var(--bg-deep);border:none;grid-column:span 2}
 
-─── REQUIREMENTS ───
-Emotional Mastery Seminar: Yes
-Ultimate Health Seminar: Yes
-Life Skills Seminar: Yes
-NSR Seminar: Yes
-Relationships Seminar: Yes
-Emotional Clearing Webinars: 3+
-NSR Modules completed: 10+
-Group sessions attended: 15+
-Guided meditation sessions: 15
-Healing process demonstration: Yes
-Personal healing experience shared: Yes
-World Class Coach session: Yes
-NLP process recordings submitted: 3
-Coaching path: Group Mentoring: 48 sessions completed
+/* OFFER CARD */
+.offer-card{
+  background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.02));
+  border:1px solid rgba(201,168,76,.3);border-radius:16px;
+  padding:1.5rem;text-align:center;margin:2rem 0
+}
+.offer-card h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold);margin-bottom:.5rem}
+.offer-card p{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
 
-─── DECLARATION ───
-I, Dr. Sanjay D. Paul, confirm that all information provided is true and accurate. I am formally requesting certification for the Trauma Coaching Certificate from AccessWorld Seminars.
+/* FOOTER */
+footer{text-align:center;padding:3rem 1rem 1.5rem;border-top:1px solid rgba(255,255,255,.05);margin-top:3rem}
+footer p{font-size:.8rem;color:var(--muted);line-height:2}
+footer a{color:var(--gold);text-decoration:none}
 
-Accessworld notifier, [01.05.2026 07:53]
-🎓 ACCESSWORLD SEMINARS — CERTIFICATION REQUEST
+/* ROADMAP */
+.roadmap{margin:1.5rem 0}
+.roadmap h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:.75rem;font-weight:600}
+.roadmap-step{display:flex;gap:.75rem;margin-bottom:.75rem;align-items:flex-start}
+.step-num{width:24px;height:24px;border-radius:50%;background:rgba(201,168,76,.15);border:1px solid var(--gold-dim);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--gold);font-weight:600;min-width:24px}
+.step-text{font-size:.85rem;color:var(--muted);line-height:1.6}
 
-Name: Dr. Sanjay D. Paul
-Email: sdpaul2014@gmail.com
-Phone: 0017712417516
-Certificate: Wellness Coaching Certificate
-Date: 30/04/2026
+@media(max-width:480px){
+  .action-grid{grid-template-columns:1fr}
+  .action-btn.primary-action{grid-column:span 1}
+  .bio-card{flex-direction:column}
+  .tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tab{white-space:nowrap}
+}
+@media print{
+  body{background:#fff;color:#000}
+  .btn-primary,.btn-nav,.btn-outline,.action-grid,.tabs,.progress-wrap{display:none!important}
+  .tab-content{display:block!important}
+  .dim-fill{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .insight-card{border:1px solid #ccc;break-inside:avoid}
+}
+</style>
+</head>
+<body>
 
-─── REQUIREMENTS ───
-Emotional Mastery Seminar: Yes
-Ultimate Health Webinar: Yes
-NSR Webinar: Yes
-Seminar 2 completed: Yes
-Seminar 3 completed: Yes
-NSR Modules completed: 10+
-Group sessions attended: 15+
-World Class Coach session: Yes
-NLP process recordings submitted: 3
-Coaching path: 1-on-1: 12 sessions completed
+<!-- INTRO -->
+<div id="screen-intro" class="screen active">
+<div class="wrap">
+  <div class="intro-hero">
+    <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld" class="logo">
+    <h1 class="quiz-title">How Happy Are You<em style="font-style:italic"> Really?</em></h1>
+    <p class="quiz-sub">The Happiness & Nervous System Assessment</p>
+  </div>
 
-─── DECLARATION ───
-I, Dr. Sanjay D. Paul, confirm that all information provided is true and accurate. I am formally requesting certification for the Wellness Coaching Certificate from AccessWorld Seminars.
+  <div class="bio-card">
+    <div class="bio-av" style="background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--bg-deep);font-weight:600">JR</div>
+    <div>
+      <div class="bio-name">Joshua Roy</div>
+      <div class="bio-facts">
+        <span>Results Coach · NLP & NSR Specialist</span><br>
+        24+ years law enforcement · 900+ seminars · 3,500+ coaching sessions<br>
+        Former Australian Karate Champion<br>
+        <em style="color:var(--gold);font-style:italic">"Feeling good for no good reason."</em>
+      </div>
+    </div>
+  </div>
 
-Accessworld notifier, [01.05.2026 07:52]
-🎓 ACCESSWORLD SEMINARS — CERTIFICATION REQUEST
+  <p style="color:var(--muted);font-size:.9rem;text-align:center;margin-bottom:1.5rem;line-height:1.8">This 12-question assessment measures your real happiness across the dimensions that matter most — energy, emotional mastery, nervous system health, inner child healing, and more. Takes 4 minutes.</p>
 
-Name: Dr. Sanjay D. Paul
-Email: sdpaul2014@gmail.com
-Phone: +0017712417516
-Certificate: NLP Coach Practitioner Certificate
-Date: 30/04/2026
+  <button class="btn-primary" onclick="startQuiz()">Begin Assessment</button>
+</div>
+</div>
 
-─── REQUIREMENTS ───
-Emotional Mastery Seminar: Yes
-NLP Modules completed: 10+
-NLP Foundation Sessions: Yes
-Seminar 2 completed: Yes
-Seminar 3 completed: Yes
-Group sessions attended: 15+
-World Class Coach session: Yes
-NLP process recordings submitted: 3
-Coaching path: Group Mentoring: 24 sessions completed
+<!-- QUESTIONS -->
+<div id="screen-questions" class="screen">
+<div class="wrap">
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span id="q-progress-label">Question 1 of 12</span>
+      <span id="q-progress-pct">0%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  </div>
 
-─── DECLARATION ───
-I, Dr. Sanjay D. Paul, confirm that all information provided is true and accurate. I am formally requesting certification for the NLP Coach Practitioner Certificate from AccessWorld Seminars.
+  <div id="q-category" class="q-category"></div>
+  <div id="q-text" class="q-text"></div>
+
+  <div class="likert" id="likert-options"></div>
+
+  <div class="q-nav">
+    <button class="btn-nav" id="btn-prev" onclick="prevQ()">← Back</button>
+    <button class="btn-nav next" id="btn-next" onclick="nextQ()">Next →</button>
+  </div>
+</div>
+</div>
+
+<!-- FORM -->
+<div id="screen-form" class="screen">
+<div class="wrap">
+  <h2 class="form-title">Almost there.</h2>
+  <p class="form-sub">Enter your details to unlock your personalised happiness report.</p>
+
+  <div class="field">
+    <label>Full Name</label>
+    <input type="text" id="f-name" placeholder="Your full name" required>
+  </div>
+  <div class="field">
+    <label>Phone Number</label>
+    <input type="tel" id="f-phone" placeholder="+61 400 000 000" required>
+  </div>
+  <div class="field">
+    <label>Country</label>
+    <select id="f-country" required>
+      <option value="">Select your country</option>
+      <option>🇦🇺 Australia</option>
+      <option>🇨🇦 Canada</option>
+      <option>🇮🇪 Ireland</option>
+      <option>🇳🇿 New Zealand</option>
+      <option>🇬🇧 United Kingdom</option>
+      <option>🇺🇸 United States</option>
+      <option>🌍 Other</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Email Address</label>
+    <input type="email" id="f-email" placeholder="your@email.com" required>
+  </div>
+
+  <button class="btn-primary" onclick="submitForm()">Get My Results →</button>
+  <p style="font-size:.75rem;color:var(--muted);text-align:center;margin-top:.75rem">Your information is private and will never be shared.</p>
+</div>
+</div>
+
+<!-- RESULTS -->
+<div id="screen-results" class="screen">
+<div class="wrap">
+  <div class="results-header">
+    <div class="score-circle">
+      <span class="score-num" id="res-score">0.0</span>
+      <span class="score-label">out of 5</span>
+    </div>
+    <div class="tier-badge" id="res-tier">Loading...</div>
+    <h2 class="results-title" id="res-name">Your Happiness Report</h2>
+    <p class="results-desc" id="res-desc"></p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('overview')">Overview</button>
+    <button class="tab" onclick="showTab('growth')">Growth Areas</button>
+    <button class="tab" onclick="showTab('strengths')">Strengths</button>
+  </div>
+
+  <div id="tab-overview" class="tab-content active">
+    <div id="overview-dims"></div>
+    <div id="roadmap-section" class="roadmap"></div>
+  </div>
+
+  <div id="tab-growth" class="tab-content">
+    <div id="growth-cards"></div>
+  </div>
+
+  <div id="tab-strengths" class="tab-content">
+    <div id="strength-cards"></div>
+  </div>
+
+  <div class="action-grid">
+    <a class="action-btn primary-action" id="whatsapp-btn" href="#" target="_blank">📞 Book Free Strategy Call</a>
+    <button class="action-btn" onclick="window.print()">🖨️ Save / Print</button>
+    <button class="action-btn" onclick="retake()">🔄 Retake Quiz</button>
+  </div>
+
+  <div class="offer-card">
+    <h3>Ready to Go Deeper?</h3>
+    <p>Based on your results, explore the programs designed to move you from where you are to where you want to be.</p>
+    <a href="https://accessworldseminars-ship-it.github.io/results/programoffers.html" class="btn-primary" style="display:inline-block;width:auto;padding:.85rem 2rem;text-decoration:none">Explore Personalised Programs →</a>
+  </div>
+
+  <footer>
+    <p>
+      <strong style="color:var(--gold)">AccessWorld Seminars</strong> · Joshua Roy<br>
+      📞 <a href="tel:+61432119091">+61 432 119 091</a> · 
+      🌐 <a href="https://accessworldseminars-ship-it.github.io/results" target="_blank">accessworldseminars.com.au</a><br>
+      ✉️ <a href="mailto:josh@accessworldseminars.com.au">josh@accessworldseminars.com.au</a>
+    </p>
+  </footer>
+</div>
+</div>
+
+<script>
+const WEBHOOK = "https://hooks.zapier.com/hooks/catch/3779260/unt9eik/";
+const QUIZ_TITLE = "How Happy Are You Really? — Happiness & Nervous System Assessment";
+
+const QUESTIONS = [
+  {
+    id:"energy",
+    category:"Energy & Vitality",
+    dimension:"Energy Generation",
+    text:"I consistently have the energy to show up fully in my daily life, work, and relationships.",
+    analysis:"Low energy isn't a character flaw — it's often a sign the nervous system is running on old survival patterns rather than thriving. Energy is a muscle, and it can be retrained.",
+    practice:["Block 4.5 hours this week for movement, meal prep, and rest — treat these as non-negotiable","Try one HIIT cycle: 30 seconds all-out effort followed by 3–4 minutes slow walking","Notice your bread and wheat intake this week — experiment with one ancient grain alternative","At the end of each day, list three things that gave you energy and one that drained it"]
+  },
+  {
+    id:"goals",
+    category:"Direction & Goals",
+    dimension:"Solution-Centred Thinking",
+    text:"I define my goals by what I want to feel and experience, not by what I want to stop or avoid.",
+    analysis:"Goals framed around what you want to stop — 'stop being tired', 'stop being anxious' — keep your unconscious focused on the problem. Your brain moves toward what it pictures most vividly.",
+    practice:["Rewrite your top goal: replace 'stop X' with 'I have/feel/experience Y'","Spend 5 minutes vividly imagining your goal as already achieved — feel it fully","Write your goal as if it is already true: 'I have abundant energy and joy every day'","Share this goal with one trusted person this week for accountability"]
+  },
+  {
+    id:"emotions",
+    category:"Emotional Mastery",
+    dimension:"Active Emotional Clearing",
+    text:"When difficult emotions arise, I have a reliable process to move through them rather than suppress or avoid them.",
+    analysis:"Most people either suppress emotions (push them down) or are swept away by them. NSR teaches a third way: active clearing — naming, validating, releasing, forgiving, and ending in gratitude.",
+    practice:["Next time a low emotion hits, name it out loud: 'I notice I feel frustrated'","Set a timer for 90 seconds and radically shift your physiology — jump, shake, stretch","Practice the clearing sequence: name → validate → release → forgive → gratitude","Journal for 5 minutes on one recurring emotion and when you first remember feeling it"]
+  },
+  {
+    id:"nervous",
+    category:"Nervous System",
+    dimension:"Reprogramming Capacity",
+    text:"I understand that lasting emotional change happens through the body and nervous system, not just through thinking differently.",
+    analysis:"The reptilian brain doesn't respond to logic. Trying to think your way out of deep emotional patterns is like trying to fix a computer virus with willpower. The nervous system needs direct input.",
+    practice:["Try one somatic practice this week: cold water, breathwork, or shaking for 2 minutes","Notice when you're in 'survival mode' — racing thoughts, tight chest, shallow breathing","Practice slow diaphragmatic breathing: 4 counts in, 7 hold, 8 out — do 3 cycles","Write down one belief that keeps you stuck and ask: 'When did I first decide this was true?'"]
+  },
+  {
+    id:"inner",
+    category:"Inner Child & Imprinting",
+    dimension:"Childhood Pattern Awareness",
+    text:"I recognise how my early childhood experiences (ages 0–7) still influence my emotional reactions and decisions today.",
+    analysis:"80% of your fundamental emotional wiring was set before age seven. The survival patterns formed then run on autopilot in adulthood — often prioritising safety over fulfilment and connection.",
+    practice:["Identify one reactive pattern in your life and ask: 'How old does this feeling feel?'","Journal on the first time you felt the emotion most connected to being stuck (rejection, shame, fear)","Visualise your younger self (before the hard times) — what does that child need to hear from you?","Consider: what would change in your adult life if that childhood wound no longer ran the show?"]
+  },
+  {
+    id:"anchor",
+    category:"State Management",
+    dimension:"Resource Anchoring",
+    text:"I can intentionally shift my emotional state when I need to, rather than waiting for my mood to change on its own.",
+    analysis:"Emotions are not things that happen to you — they are resources you can access. The resource anchoring technique conditions your nervous system to generate high-energy states on command.",
+    practice:["Recall a memory when you felt genuinely confident — re-experience it fully for 30 seconds","Create a physical anchor: a unique hand gesture or touch — fire it at the peak of that memory","Repeat with 4–5 different positive emotions to 'stack' them onto the same anchor","Fire your anchor 5–10 times this week to strengthen the neural pathway"]
+  },
+  {
+    id:"mindset",
+    category:"Mindset & Perception",
+    dimension:"Grace Over Perfection",
+    text:"I approach life's challenges with grace and self-compassion rather than needing everything to be perfect before I feel good.",
+    analysis:"The toxic standard of perfection — 'I'll be happy when everything is right' — is one of the most reliable paths to chronic unhappiness. Resilience is the ability to handle the imperfect with grace.",
+    practice:["Identify one area where perfectionism is keeping you from starting — take one imperfect action today","Replace 'I should have' with 'Next time I will' in your self-talk","Practice the reframe: 'I don't need to be perfect, I need to be present'","Find one small joy in today exactly as it is — not as it could be"]
+  },
+  {
+    id:"mental",
+    category:"Mental Rehearsal",
+    dimension:"Imagination as Practice",
+    text:"I regularly use mental rehearsal — vividly imagining desired outcomes — to prepare for important situations.",
+    analysis:"The unconscious mind treats vivid imagination as real experience. Practicing a skill, conversation, or emotional state repeatedly in imagination builds neural pathways just like physical repetition.",
+    practice:["Before an important event, rehearse it in your mind 5–10 times — see, hear, and feel it going well","Practice 'future belonging': spend 3 minutes imagining your desired goal as already achieved","Do the task twice: once in imagination, once in reality","Use mental rehearsal before one conversation or presentation this week"]
+  },
+  {
+    id:"community",
+    category:"Environment & Community",
+    dimension:"Empowered Relationships",
+    text:"I intentionally surround myself with people who are living at the emotional and life level I aspire to reach.",
+    analysis:"Your environment is programming you constantly. The people you spend the most time with set the emotional thermostat for what feels normal — and what feels possible.",
+    practice:["List the five people you spend the most time with — do they lift or drain you?","Seek out one new connection this week with someone living at a level you aspire to","Reduce exposure to one consistently negative influence in your life","Join a community (class, group, seminar) where growth is the shared expectation"]
+  },
+  {
+    id:"gratitude",
+    category:"Daily Happiness Practice",
+    dimension:"Gratitude & Present Focus",
+    text:"I regularly focus on what I already have rather than what is missing, and find joy in ordinary moments.",
+    analysis:"Happiness is not a destination — it's a daily practice of attention. Where your focus goes, your emotional energy flows. Training attention toward assets rather than gaps rewires the negativity bias.",
+    practice:["Write 3 specific things you're grateful for each morning — be precise, not generic","Practice 'micro-joys': notice one small beautiful or good thing every hour","When the mind goes to what's missing, gently redirect: 'What do I already have that I value?'","End each day by asking: 'What went well today and why?'"]
+  },
+  {
+    id:"morning",
+    category:"Daily Rituals",
+    dimension:"Morning Routine Consistency",
+    text:"I start each day with intentional practices that set a positive emotional and physiological tone.",
+    analysis:"How you start your day programs your nervous system for the next 16 hours. A consistent morning routine is one of the highest-leverage investments in sustained happiness and performance.",
+    practice:["Design a 20-minute morning routine: movement, mindfulness, and a clear intention for the day","No phone for the first 30 minutes of your morning — protect your first mental state of the day","Write one sentence each morning about who you are choosing to be today","Track your morning routine for 7 days straight — notice the compound effect"]
+  },
+  {
+    id:"scorecard",
+    category:"Progress & Accountability",
+    dimension:"Self-Assessment & Growth Tracking",
+    text:"I regularly and honestly measure my attitude, effort, and skill in the areas of life that matter most to me.",
+    analysis:"What gets measured gets managed. Most people have vague feelings about their progress but no clear baseline. A simple scorecard creates the clarity needed to direct your energy effectively.",
+    practice:["Score yourself right now: Attitude, Effort, Skill in Health, Relationships, and Work (0–100 each)","Set one measurable goal in your lowest-scoring life area this week","Review your scorecard weekly — celebrate progress, adjust what isn't working","Share your scorecard with your coach or an accountability partner"]
+  }
+];
+
+const TIERS = [
+  {min:0,max:1.5,label:"Foundation Builder",desc:"You're at the starting point of your happiness journey. The patterns running your life right now were set long before you had a say in them — and the great news is, they can be changed. You have more capacity for joy than you currently experience. The work begins here."},
+  {min:1.6,max:2.5,label:"Emerging Explorer",desc:"You're becoming aware of what's been running below the surface. You have moments of genuine happiness but they feel inconsistent or fragile. You're ready to move from insight to consistent practice — and that shift changes everything."},
+  {min:2.6,max:3.5,label:"Active Developer",desc:"You're doing the work and it shows. You have real tools, real awareness, and real wins. The next level is about integration — moving from 'I know this' to 'I live this' naturally, without effort. You're closer than you think."},
+  {min:3.6,max:4.5,label:"Skilled Practitioner",desc:"Happiness is becoming your default, not just your aspiration. You understand the principles at a deep level and apply them consistently. Your focus now is on mastery — and on helping others access what you've found."},
+  {min:4.6,max:5,label:"Mastery Candidate",desc:"You are living proof that happiness is a skill, not a circumstance. Your nervous system is calibrated for joy. The invitation now is to go deeper into leadership, service, and helping others find what you've built."}
+];
+
+const ROADMAPS = {
+  "Foundation Builder":["Start with one daily practice: 5 minutes of morning gratitude and one state-shift technique","Book a free strategy call to map your personalised path forward","Consider the Emotional Clearing Program ($69) — it's the fastest entry point into real change","Attend one free webinar to experience NSR live before committing to deeper work"],
+  "Emerging Explorer":["Commit to a 30-day morning routine — same time, same practices, every day","Begin a weekly self-assessment scorecard across your key life areas","Explore the Emotional Clearing Program to release what's been keeping you inconsistent","Identify your one biggest emotional pattern and trace it back to its origin"],
+  "Active Developer":["Your next level is a 12-month integrated coaching program for permanent, embodied change","Start using mental rehearsal daily — practice your best self before you live it","Deepen your resource anchor: add more emotional states, fire it more frequently","Find or form an accountability group — you grow faster in community"],
+  "Skilled Practitioner":["Consider how you can share what you know — teaching accelerates mastery","Explore advanced NSR and NLP certifications through AccessWorld","Mentor someone earlier in their journey — this is where your skills compound","Set a new audacious goal in your highest-scoring area — what does mastery actually look like?"],
+  "Mastery Candidate":["You are ready for the AccessWorld Certification pathway","Your next evolution is in leadership and community building","Explore speaking, writing, or coaching as a way to share your hard-won wisdom","Continue deepening — mastery is a direction, not a destination"]
+};
+
+let currentQ = 0;
+let answers = {};
+
+function startQuiz(){
+  showScreen('screen-questions');
+  renderQ();
+}
+
+function renderQ(){
+  const q = QUESTIONS[currentQ];
+  document.getElementById('q-category').textContent = q.category;
+  document.getElementById('q-text').textContent = q.text;
+  const pct = Math.round((currentQ/QUESTIONS.length)*100);
+  document.getElementById('progress-fill').style.width = pct+'%';
+  document.getElementById('q-progress-label').textContent = `Question ${currentQ+1} of ${QUESTIONS.length}`;
+  document.getElementById('q-progress-pct').textContent = pct+'%';
+  document.getElementById('btn-prev').style.visibility = currentQ===0?'hidden':'visible';
+
+  const labels = ['Not at all','Slightly','Somewhat','Mostly','Very much','Completely'];
+  const opts = document.getElementById('likert-options');
+  opts.innerHTML = '';
+  labels.forEach((lbl,i)=>{
+    const div = document.createElement('div');
+    div.className = 'likert-opt'+(answers[q.id]===i?' selected':'');
+    div.innerHTML = `<div class="likert-num">${i}</div><div class="likert-label">${lbl}</div>`;
+    div.onclick = ()=>selectAnswer(i);
+    opts.appendChild(div);
+  });
+  document.getElementById('btn-next').textContent = currentQ===QUESTIONS.length-1?'Get Results →':'Next →';
+}
+
+function selectAnswer(val){
+  answers[QUESTIONS[currentQ].id] = val;
+  document.querySelectorAll('.likert-opt').forEach((el,i)=>{
+    el.classList.toggle('selected',i===val);
+  });
+}
+
+function nextQ(){
+  if(answers[QUESTIONS[currentQ].id]===undefined){
+    const opts=document.querySelectorAll('.likert-opt');
+    opts.forEach(o=>{o.style.borderColor='rgba(201,168,76,.5)'});
+    setTimeout(()=>opts.forEach(o=>{o.style.borderColor=''}),600);
+    return;
+  }
+  if(currentQ<QUESTIONS.length-1){currentQ++;renderQ();}
+  else{showScreen('screen-form');}
+}
+
+function prevQ(){if(currentQ>0){currentQ--;renderQ();}}
+
+async function submitForm(){
+  const name=document.getElementById('f-name').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  const country=document.getElementById('f-country').value;
+  const email=document.getElementById('f-email').value.trim();
+  if(!name||!phone||!country||!email){alert('Please fill in all fields.');return;}
+  if(!/\S+@\S+\.\S+/.test(email)){alert('Please enter a valid email.');return;}
+
+  showScreen('screen-results');
+  buildResults(name);
+
+  let answersText='';
+  QUESTIONS.forEach(q=>{
+    answersText+=`${q.category}: ${answers[q.id]||0}/5\n`;
+  });
+  const avg = calcAvg();
+  const tier = getTier(avg);
+  const formData = new FormData();
+  formData.append('name',name);formData.append('phone',phone);
+  formData.append('country',country);formData.append('email',email);
+  formData.append('score',avg.toFixed(1));formData.append('tier',tier.label);
+  formData.append('answers_text',answersText);
+  formData.append('timestamp',new Date().toISOString());
+  formData.append('quiz_title',QUIZ_TITLE);
+  try{await fetch(WEBHOOK,{method:'POST',body:formData,mode:'no-cors'});}catch(e){}
+
+  const waMsg = encodeURIComponent(`Hi Joshua! I just completed the "${QUIZ_TITLE}" quiz. My score was ${avg.toFixed(1)}/5 — ${tier.label}. I'd love to book a free strategy call.`);
+  document.getElementById('whatsapp-btn').href=`https://wa.me/61432119091?text=${waMsg}`;
+}
+
+function calcAvg(){
+  const vals = QUESTIONS.map(q=>answers[q.id]||0);
+  return vals.reduce((a,b)=>a+b,0)/vals.length;
+}
+
+function getTier(avg){
+  return TIERS.find(t=>avg>=t.min&&avg<=t.max)||TIERS[0];
+}
+
+function buildResults(name){
+  const avg = calcAvg();
+  const tier = getTier(avg);
+
+  // Animate score
+  let n=0;
+  const el=document.getElementById('res-score');
+  const interval=setInterval(()=>{
+    n+=0.1;
+    el.textContent=Math.min(n,avg).toFixed(1);
+    if(n>=avg)clearInterval(interval);
+  },30);
+
+  document.getElementById('res-tier').textContent=tier.label;
+  document.getElementById('res-name').textContent=`${name.split(' ')[0]}'s Happiness Report`;
+  document.getElementById('res-desc').textContent=tier.desc;
+
+  // Overview dims
+  const dims = document.getElementById('overview-dims');
+  dims.innerHTML = '<h4 style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:1rem;font-weight:600">Your 12 Dimensions</h4>';
+  QUESTIONS.forEach(q=>{
+    const score=answers[q.id]||0;
+    const pct=(score/5)*100;
+    const cls=score>=4?'high':score>=2?'mid':'low';
+    dims.innerHTML+=`<div class="dim-item">
+      <div class="dim-header"><span class="dim-name">${q.dimension}</span><span class="dim-score">${score}/5</span></div>
+      <div class="dim-bar"><div class="dim-fill ${cls}" style="width:${pct}%"></div></div>
+    </div>`;
+  });
+
+  // Roadmap
+  const steps = ROADMAPS[tier.label]||[];
+  const rm = document.getElementById('roadmap-section');
+  rm.innerHTML='<h4>Your Personalised Roadmap</h4>';
+  steps.forEach((s,i)=>{
+    rm.innerHTML+=`<div class="roadmap-step"><div class="step-num">${i+1}</div><div class="step-text">${s}</div></div>`;
+  });
+
+  // Sort by score
+  const sorted=[...QUESTIONS].sort((a,b)=>(answers[a.id]||0)-(answers[b.id]||0));
+  const lowest=sorted.slice(0,3);
+  const highest=sorted.slice(-2).reverse();
+
+  // Growth
+  const gc=document.getElementById('growth-cards');
+  gc.innerHTML='';
+  lowest.forEach(q=>{
+    const score=answers[q.id]||0;
+    gc.innerHTML+=`<div class="insight-card">
+      <div class="insight-label growth">Growth Area · ${score}/5</div>
+      <div class="insight-title">${q.dimension}</div>
+      <p class="insight-body">${q.analysis}</p>
+      <div class="practice-box">
+        <div class="practice-title">Daily Practice — Start Today</div>
+        <ul class="practice-list">${q.practice.map(p=>`<li>${p}</li>`).join('')}</ul>
+      </div>
+    </div>`;
+  });
+
+  // Strengths
+  const sc=document.getElementById('strength-cards');
+  sc.innerHTML='';
+  highest.forEach(q=>{
+    const score=answers[q.id]||0;
+    sc.innerHTML+=`<div class="insight-card">
+      <div class="insight-label strength">Strength · ${score}/5</div>
+      <div class="insight-title">${q.dimension}</div>
+      <p class="insight-body">This is a genuine asset. You have a real foundation in ${q.dimension.toLowerCase()} — the work now is to apply it more deliberately and use it as a launchpad into your weaker areas.</p>
+      <div class="practice-box">
+        <div class="practice-title">Advanced Application</div>
+        <ul class="practice-list">${q.practice.slice(2).map(p=>`<li>${p}</li>`).join('')}</ul>
+      </div>
+    </div>`;
+  });
+}
+
+function showTab(name){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function retake(){
+  answers={};currentQ=0;
+  showScreen('screen-intro');
+}
+</script>
+</body>
+</html>
