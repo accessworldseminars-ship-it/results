@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Duplicate Yourself With AI™ – Build Your Personal AI Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --card: #0b1020;
+      --accent: #6c5ce7;
+      --accent-soft: #a29bfe;
+      --text: #f5f6fa;
+      --muted: #dcdde1;
+      --danger: #ff7675;
+      --success: #00b894;
+      --border: #2f3640;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1b1f3b 0, #050816 55%, #02030a 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(108, 92, 231, 0.12);
+      color: var(--accent-soft);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(162, 155, 254, 0.35);
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      box-shadow: 0 0 12px rgba(162, 155, 254, 0.9);
+    }
+
+    .hero {
+      text-align: left;
+      margin-bottom: 48px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 750;
+      letter-spacing: -0.03em;
+      margin: 16px 0 10px;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(120deg, #a29bfe, #74b9ff, #55efc4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 12px 26px;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      text-align: center;
+      box-shadow: 0 14px 30px rgba(108, 92, 231, 0.55);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(108, 92, 231, 0.7);
+      opacity: 0.96;
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      padding: 11px 22px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(162, 155, 254, 0.4);
+      background: rgba(10, 14, 35, 0.7);
+      color: var(--muted);
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.12s ease, border-color 0.12s ease, transform 0.12s ease;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(162, 155, 254, 0.08);
+      border-color: rgba(162, 155, 254, 0.7);
+      transform: translateY(-1px);
+    }
+
+    /* All buttons same style for final CTA */
+    .final-cta-buttons .btn-primary,
+    .final-cta-buttons .btn-ghost {
+      min-width: 210px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 19, 40, 0.9);
+      border: 1px solid rgba(47, 54, 64, 0.9);
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top, #1f2547 0, #050816 55%);
+      border-radius: 26px;
+      padding: 22px 22px 20px;
+      border: 1px solid rgba(162, 155, 254, 0.25);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-soft);
+      margin-bottom: 6px;
+      opacity: 0.9;
+    }
+
+    .hero-card-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .hero-card-body {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .hero-card-list {
+      list-style: none;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-card-list li {
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-card-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(10, 14, 35, 0.9);
+      border: 1px solid rgba(162, 155, 254, 0.4);
+      font-size: 11px;
+      color: var(--accent-soft);
+      margin-top: 4px;
+    }
+
+    .section {
+      margin: 52px 0 32px;
+    }
+
+    .section-header {
+      margin-bottom: 18px;
+    }
+
+    .section-kicker {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-soft);
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 800px) {
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 18px 18px 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .card-body {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .list {
+      list-style: none;
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .list li {
+      margin-bottom: 6px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .list-bullet {
+      color: var(--accent-soft);
+      margin-top: 3px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(10, 14, 35, 0.9);
+      border: 1px solid rgba(47, 54, 64, 0.9);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .tiers {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 980px) {
+      .tiers {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .tier {
+      background: radial-gradient(circle at top, #1f2547 0, #050816 55%);
+      border-radius: 22px;
+      border: 1px solid rgba(162, 155, 254, 0.35);
+      padding: 20px 18px 18px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tier-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-soft);
+      margin-bottom: 4px;
+    }
+
+    .tier-name {
+      font-size: 18px;
+      font-weight: 650;
+      margin-bottom: 4px;
+    }
+
+    .tier-price {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .tier-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .tier-list {
+      list-style: none;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tier-list li {
+      margin-bottom: 6px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .tier-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      background: rgba(0, 184, 148, 0.12);
+      color: var(--success);
+      border: 1px solid rgba(0, 184, 148, 0.6);
+    }
+
+    .tier-cta {
+      margin-top: 4px;
+    }
+
+    .tier-cta .btn-primary,
+    .tier-cta .btn-ghost {
+      width: 100%;
+      display: block;
+      text-align: center;
+    }
+
+    .guarantee {
+      background: rgba(10, 14, 35, 0.95);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(162, 155, 254, 0.35);
+      padding: 18px 18px 16px;
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 640px) {
+      .guarantee {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .guarantee-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(162, 155, 254, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--accent-soft);
+    }
+
+    .guarantee-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .guarantee-body {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .final-cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .final-cta h2 {
+      font-size: 22px;
+      font-weight: 650;
+      margin-bottom: 8px;
+    }
+
+    .final-cta p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .final-cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .final-cta-buttons .btn-primary,
+    .final-cta-buttons .btn-ghost {
+      min-width: 210px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Duplicate Yourself With AI™
+        </div>
+        <h1 class="hero-title">
+          Build a <span class="hero-highlight">Personal AI Assistant</span> That Works While You Work
+        </h1>
+        <p class="hero-subtitle">
+          Turn your knowledge, experience, and processes into a cloud‑based AI duplicate of yourself—without learning to code.
+        </p>
+
+        <div class="hero-cta-row">
+          <a href="https://payhip.com/b/2exPl" class="btn-primary">
+            Start Your AI Duplicate Today
+          </a>
+          <a href="#tiers" class="btn-ghost">
+            <span>See the 3 Tiers ↓</span>
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <span>⚡ No coding required</span>
+          <span>🧠 Uses your own knowledge</span>
+          <span>☁️ Runs in the cloud 24/7</span>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-tag">Your New Leverage</div>
+        <div class="hero-card-title">Imagine Waking Up With Six Tasks</div>
+        <p class="hero-card-body">
+          You handle three. Your AI handles the other three. You meet in the middle. Everything gets done.
+        </p>
+        <ul class="hero-card-list">
+          <li><span>✅</span><span>Answers questions using your knowledge</span></li>
+          <li><span>✅</span><span>Helps you plan, think, and execute</span></li>
+          <li><span>✅</span><span>Supports your business and life decisions</span></li>
+        </ul>
+        <div class="hero-card-pill">
+          <span>AI as your second brain • Your digital twin • Always on</span>
+        </div>
+      </aside>
+    </header>
+
+    <!-- SECTION: WHY NOW -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-kicker">The Shift</div>
+        <h2 class="section-title">The First Time in History You Can Create a Digital Version of Yourself</h2>
+        <p class="section-subtitle">
+          For centuries, the only way to get more done was to work harder, hire more people, or sacrifice your time.
+          AI changes that. It lets you multiply yourself—without multiplying your hours.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">The Old Way</h3>
+          <p class="card-body">
+            You do everything yourself. You juggle tasks, fight fires, and constantly feel like you're behind.
+          </p>
+          <ul class="list">
+            <li><span class="list-bullet">•</span><span>Limited by your own time and energy</span></li>
+            <li><span class="list-bullet">•</span><span>Hard to delegate what's in your head</span></li>
+            <li><span class="list-bullet">•</span><span>Hiring is expensive and slow</span></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">The New Way</h3>
+          <p class="card-body">
+            You build a digital version of yourself that knows your business, your goals, and your processes—and it works alongside you.
+          </p>
+          <ul class="list">
+            <li><span class="list-bullet">•</span><span>AI assistant that thinks with your knowledge</span></li>
+            <li><span class="list-bullet">•</span><span>Runs in the cloud, available 24/7</span></li>
+            <li><span class="list-bullet">•</span><span>Scales with you as you grow</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: WHO IT'S FOR -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-kicker">Who It's For</div>
+        <h2 class="section-title">If You've Ever Said "I Wish I Had Another Me"…</h2>
+        <p class="section-subtitle">
+          This system is designed for people who are already good at what they do—but are limited by time, capacity, and bandwidth.
+        </p>
+      </div>
+
+      <div class="card">
+        <p class="card-body">
+          Perfect for:
+        </p>
+        <div class="pill-row">
+          <div class="pill">Entrepreneurs</div>
+          <div class="pill">Coaches & Consultants</div>
+          <div class="pill">Creators</div>
+          <div class="pill">Small Business Owners</div>
+          <div class="pill">Solo Operators</div>
+          <div class="pill">Anyone who wants more leverage</div>
+        </div>
+        <ul class="list" style="margin-top: 12px;">
+          <li><span class="list-bullet">•</span><span>"I'm doing too much myself."</span></li>
+          <li><span class="list-bullet">•</span><span>"I need help but don't want to build a big team."</span></li>
+          <li><span class="list-bullet">•</span><span>"I want my knowledge to work for me, not just sit in my head."</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION: WHAT THE AI DOES -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-kicker">Your AI Duplicate</div>
+        <h2 class="section-title">What Your Personal AI Assistant Can Actually Do</h2>
+        <p class="section-subtitle">
+          This isn't a toy or a gimmick. It's a working, cloud‑based assistant that uses your knowledge to help you operate at a higher level.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">Day‑to‑Day Support</h3>
+          <ul class="list">
+            <li><span class="list-bullet">•</span><span>Answers questions using your own material and thinking</span></li>
+            <li><span class="list-bullet">•</span><span>Helps you run scenarios and explore options</span></li>
+            <li><span class="list-bullet">•</span><span>Supports planning, strategy, and decision‑making</span></li>
+            <li><span class="list-bullet">•</span><span>Assists with content, ideas, and problem‑solving</span></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Business & Life Leverage</h3>
+          <ul class="list">
+            <li><span class="list-bullet">•</span><span>Acts as a second brain you can query anytime</span></li>
+            <li><span class="list-bullet">•</span><span>Helps onboard team members with your knowledge</span></li>
+            <li><span class="list-bullet">•</span><span>Gives you a thinking partner that never gets tired</span></li>
+            <li><span class="list-bullet">•</span><span>Works while you work—or while you sleep</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: BLUEPRINT -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-kicker">The System</div>
+        <h2 class="section-title">The Duplicate Yourself Blueprint</h2>
+        <p class="section-subtitle">
+          A practical, step‑by‑step framework that takes you from "I don't know how to build anything" to
+          "I have a fully functional AI version of myself running in the cloud."
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">What You'll Learn</h3>
+          <ul class="list">
+            <li><span class="list-bullet">•</span><span>How AI duplication works in simple, human language</span></li>
+            <li><span class="list-bullet">•</span><span>How to structure and prepare your knowledge</span></li>
+            <li><span class="list-bullet">•</span><span>How to build your assistant step by step</span></li>
+            <li><span class="list-bullet">•</span><span>How to train it to think with your material</span></li>
+            <li><span class="list-bullet">•</span><span>How to deploy it to the cloud so it's always available</span></li>
+            <li><span class="list-bullet">•</span><span>How to use it daily and expand it over time</span></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">What You Don't Need</h3>
+          <ul class="list">
+            <li><span class="list-bullet">•</span><span>No coding skills</span></li>
+            <li><span class="list-bullet">•</span><span>No engineering background</span></li>
+            <li><span class="list-bullet">•</span><span>No complex software setup</span></li>
+            <li><span class="list-bullet">•</span><span>No big team or large budget</span></li>
+          </ul>
+          <p class="card-body" style="margin-top: 8px;">
+            Just a willingness to learn, experiment, and build a new kind of leverage for yourself.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: TIERS (ID added for anchor link) -->
+    <section id="tiers" class="section">
+      <div class="section-header">
+        <div class="section-kicker">Choose Your Level</div>
+        <h2 class="section-title">Three Ways to Build Your AI Duplicate</h2>
+        <p class="section-subtitle">
+          Whether you're a self‑starter, want support, or just want it done for you—there's a path that fits.
+        </p>
+      </div>
+
+      <div class="tiers">
+        <!-- Tier 1 -->
+        <div class="tier">
+          <div class="tier-label">Tier 1</div>
+          <div class="tier-name">The Blueprint</div>
+          <div class="tier-price">$97</div>
+          <p class="tier-note">
+            Perfect for self‑starters who want the full system and are ready to implement.
+          </p>
+          <ul class="tier-list">
+            <li><span class="list-bullet">•</span><span>Full Duplicate Yourself Blueprint</span></li>
+            <li><span class="list-bullet">•</span><span>Step‑by‑step walkthrough</span></li>
+            <li><span class="list-bullet">•</span><span>Prompts, templates, and workflows</span></li>
+            <li><span class="list-bullet">•</span><span>Lifetime access to updates</span></li>
+          </ul>
+          <div class="tier-cta">
+            <a href="https://payhip.com/b/2exPl" class="btn-primary">Get the Blueprint →</a>
+          </div>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="tier">
+          <div class="tier-tag">Most Popular</div>
+          <div class="tier-label">Tier 2</div>
+          <div class="tier-name">Blueprint + Coaching</div>
+          <div class="tier-price">$497</div>
+          <p class="tier-note">
+            For people who want support, clarity, and certainty that their AI assistant will work.
+          </p>
+          <ul class="tier-list">
+            <li><span class="list-bullet">•</span><span>Everything in Tier 1</span></li>
+            <li><span class="list-bullet">•</span><span>Three private coaching calls (30 minutes each)</span></li>
+            <li><span class="list-bullet">•</span><span>Personal troubleshooting and guidance</span></li>
+            <li><span class="list-bullet">•</span><span>Review of your bot's structure and logic</span></li>
+          </ul>
+          <div class="tier-cta">
+            <a href="#" class="btn-primary" onclick="alert('Contact us at hello@accessworld.com or DM @joshuaroy on Telegram to book your coaching package.'); return false;">Get Blueprint + Coaching →</a>
+          </div>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="tier">
+          <div class="tier-label">Tier 3</div>
+          <div class="tier-name">Done‑For‑You AI Duplicate</div>
+          <div class="tier-price">$997</div>
+          <p class="tier-note">
+            For people who want the transformation without doing the build themselves.
+          </p>
+          <ul class="tier-list">
+            <li><span class="list-bullet">•</span><span>Fully built AI assistant</span></li>
+            <li><span class="list-bullet">•</span><span>Hosted in the cloud and ready to use</span></li>
+            <li><span class="list-bullet">•</span><span>Connected to your knowledge and business</span></li>
+            <li><span class="list-bullet">•</span><span>Customised to your goals and workflows</span></li>
+            <li><span class="list-bullet">•</span><span>Optional $39/month updates—send new material, your bot gets smarter</span></li>
+          </ul>
+          <div class="tier-cta">
+            <a href="#" class="btn-primary" onclick="alert('Contact us at hello@accessworld.com or DM @joshuaroy on Telegram to start your Done‑For‑You AI Duplicate.'); return false;">Get Done‑For‑You AI →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: GUARANTEE -->
+    <section class="section">
+      <div class="guarantee">
+        <div class="guarantee-icon">✓</div>
+        <div>
+          <div class="guarantee-title">Simple, Clear Guarantee</div>
+          <p class="guarantee-body">
+            If you follow the steps in the blueprint, you will have a working AI assistant.
+            If you choose the coaching tier, I'll personally work with you through your challenges until it's functioning.
+            If you choose the done‑for‑you tier, you'll receive a fully operational AI duplicate delivered to you.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+      <h2>You Can Keep Doing Everything Yourself… or You Can Duplicate Yourself</h2>
+      <p>
+        AI is the first technology that lets you multiply your output without multiplying your hours.
+        This is your chance to build a second version of you—one that works in the cloud, never gets tired, and is powered by your own knowledge.
+      </p>
+      <div class="final-cta-buttons">
+        <a href="https://payhip.com/b/2exPl" class="btn-primary">Blueprint – $97</a>
+        <a href="#" class="btn-primary" onclick="alert('Contact us at hello@accessworld.com or DM @joshuaroy on Telegram to book your coaching package.'); return false;">Blueprint + Coaching – $497</a>
+        <a href="#" class="btn-primary" onclick="alert('Contact us at hello@accessworld.com or DM @joshuaroy on Telegram to start your Done‑For‑You AI Duplicate.'); return false;">Done‑For‑You – $997</a>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
