@@ -113,7 +113,7 @@
 </head>
 <body>
 <div class="container">
-  <!-- PAGE 0: INTRO (no contact form yet) -->
+  <!-- INTRO PAGE -->
   <div id="introPage" class="card active-page">
     <h1>Success Score <span class="gold">Assessment</span></h1>
     <p style="margin: 0.5rem 0 1rem;">For Inner Circle Program Members — a precise self-appraisal of attitude, effort & skill across 5 key areas of life.</p>
@@ -131,61 +131,112 @@
     <footer>Your data is confidential and shared only with your coaching team.</footer>
   </div>
 
-  <!-- ASSESSMENT PAGES will be injected here dynamically -->
-  <div id="assessmentContainer"></div>
+  <!-- ASSESSMENT PAGES (pre-built, one per area) -->
+  <div id="assessmentContainer" style="display: none;">
+    <!-- Lifestyle -->
+    <div class="card page" data-area="lifestyle" data-idx="0">
+      <div class="progress-bar"><div class="progress-fill" style="width: 20%;"></div></div>
+      <h2>Lifestyle <span class="gold">Assessment</span></h2>
+      <p>Daily freedom, travel, joy, environment.</p>
+      <div class="metric-group">
+        <div class="metric-item"><label>Attitude</label><input type="number" class="attitude" placeholder="-100 to +100" min="-100" max="100" value="0"><small>Range: -100 to +100</small><small style="color:#C9A84C;">✔ Negative allowed</small></div>
+        <div class="metric-item"><label>Effort</label><input type="number" class="effort" placeholder="0 to 100" min="0" max="100" value="0"><small>Range: 0 to 100</small></div>
+        <div class="metric-item"><label>Skill</label><input type="number" class="skill" placeholder="0 to 100" min="0" max="100" value="0"><small>Range: 0 to 100</small></div>
+      </div>
+      <div class="nav-buttons"><button class="prevBtn btn-outline btn" disabled>← Previous Area</button><button class="nextBtn btn">Next Area →</button></div>
+      <div class="coach-note">💡 <strong>Coaching truth:</strong> "Attitude amplifies effort and skill. Be honest — growth starts with accurate self-awareness."</div>
+    </div>
+    <!-- Health -->
+    <div class="card page" data-area="health" data-idx="1" style="display:none;">
+      <div class="progress-bar"><div class="progress-fill" style="width: 40%;"></div></div>
+      <h2>Health <span class="gold">Assessment</span></h2>
+      <p>Physical vitality, energy, nutrition, exercise, recovery.</p>
+      <div class="metric-group">
+        <div class="metric-item"><label>Attitude</label><input type="number" class="attitude" placeholder="-100 to +100" min="-100" max="100" value="0"><small>Range: -100 to +100</small><small style="color:#C9A84C;">✔ Negative allowed</small></div>
+        <div class="metric-item"><label>Effort</label><input type="number" class="effort" placeholder="0 to 100" min="0" max="100" value="0"><small>Range: 0 to 100</small></div>
+        <div class="metric-item"><label>Skill</label><input type="number" class="skill" placeholder="0 to 100" min="0" max="100" value="0"><small>Range: 0 to 100</small></div>
+      </div>
+      <div class="nav-buttons"><button class="prevBtn btn-outline btn">← Previous Area</button><button class="nextBtn btn">Next Area →</button></div>
+      <div class="coach-note">💡 <strong>Coaching truth:</strong> "Attitude amplifies effort and skill. Be honest — growth starts with accurate self-awareness."</div>
+    </div>
+    <!-- Wealth -->
+    <div class="card page" data-area="wealth" data-idx="2" style="display:none;">
+      <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
+      <h2>Wealth <span class="gold">Assessment</span></h2>
+      <p>Financial abundance, income streams, money mindset.</p>
+      <div class="metric-group">
+        <div class="metric-item"><label>Attitude</label><input type="number" class="attitude" placeholder="-100 to +100" min="-100" max="100" value="0"><small>Range: -100 to +100</small><small style="color:#C9A84C;">✔ Negative allowed</small></div>
+        <div class="metric-item"><label>Effort</label><input type="number" class="effort" placeholder="0 to 100" min="0" max="100" value="0"><small>Range: 0 to 100</small></div>
+        <div class="metric-item"><label>Skill</label><input type="number" class="skill" placeholder="0 to 100" min="0" max="100" value="0"><small>Range: 0 to 100</small></div>
+      </div>
+      <div class="nav-buttons"><button class="prevBtn btn-outline btn">← Previous Area</button><button class="nextBtn btn">Next Area →</button></div>
+      <div class="coach-note">💡 <strong>Coaching truth:</strong> "Attitude amplifies effort and skill. Be honest — growth starts with accurate self-awareness."</div>
+    </div>
+    <!-- Relationships -->
+    <div class="card page" data-area="relationships" data-idx="3" style="display:none;">
+      <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
+      <h2>Relationships <span class="gold">Assessment</span></h2>
+      <p>Family, partnership, friendships, boundaries.</p>
+      <div class="metric-group">
+        <div class="metric-item"><label>Attitude</label><input type="number" class="attitude" placeholder="-100 to +100" min="-100" max="100" value="0"><small>Range: -100 to +100</small><small style="color:#C9A84C;">✔ Negative allowed</small></div>
+        <div class="metric-item"><label>Effort</label><input type="number" class="effort" placeholder="0 to 100" min="0" max="100" value="0"><small>Range: 0 to 100</small></div>
+        <div class="metric-item"><label>Skill</label><input type="number" class="skill" placeholder="0 to 100" min="0" max="100" value="0"><small>Range: 0 to 100</small></div>
+      </div>
+      <div class="nav-buttons"><button class="prevBtn btn-outline btn">← Previous Area</button><button class="nextBtn btn">Next Area →</button></div>
+      <div class="coach-note">💡 <strong>Coaching truth:</strong> "Attitude amplifies effort and skill. Be honest — growth starts with accurate self-awareness."</div>
+    </div>
+    <!-- Personal Growth & Spirituality -->
+    <div class="card page" data-area="spirituality" data-idx="4" style="display:none;">
+      <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+      <h2>Personal Growth & Spirituality <span class="gold">Assessment</span></h2>
+      <p>Purpose, self-awareness, daily reflection.</p>
+      <div class="metric-group">
+        <div class="metric-item"><label>Attitude</label><input type="number" class="attitude" placeholder="-100 to +100" min="-100" max="100" value="0"><small>Range: -100 to +100</small><small style="color:#C9A84C;">✔ Negative allowed</small></div>
+        <div class="metric-item"><label>Effort</label><input type="number" class="effort" placeholder="0 to 100" min="0" max="100" value="0"><small>Range: 0 to 100</small></div>
+        <div class="metric-item"><label>Skill</label><input type="number" class="skill" placeholder="0 to 100" min="0" max="100" value="0"><small>Range: 0 to 100</small></div>
+      </div>
+      <div class="nav-buttons"><button class="prevBtn btn-outline btn">← Previous Area</button><button class="nextBtn btn">See My Report →</button></div>
+      <div class="coach-note">💡 <strong>Coaching truth:</strong> "Attitude amplifies effort and skill. Be honest — growth starts with accurate self-awareness."</div>
+    </div>
+  </div>
 
-  <!-- CONTACT FORM (appears after all 5 areas) -->
+  <!-- CONTACT PAGE (after all areas) -->
   <div id="contactPage" class="card" style="display: none;">
     <h2>Almost done, <span class="gold">champion</span></h2>
     <p>Enter your details to unlock your full Success Score report. Your coach will receive your results to support your growth.</p>
-    <div class="form-group"><input type="text" id="fullName" placeholder="Full Name *"></div>
-    <div class="form-group"><input type="tel" id="phoneNumber" placeholder="Phone Number (with country code) *"></div>
-    <div class="form-group"><select id="countrySelect"><option value="">Select Country *</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option><option>Other</option></select></div>
-    <div class="form-group"><input type="email" id="emailAddress" placeholder="Email Address *"></div>
-    <div class="form-group"><input type="text" id="coachName" placeholder="Coach's Name (optional)"></div>
+    <div><input type="text" id="fullName" placeholder="Full Name *"></div>
+    <div><input type="tel" id="phoneNumber" placeholder="Phone Number (with country code) *"></div>
+    <div><select id="countrySelect"><option value="">Select Country *</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option><option>Other</option></select></div>
+    <div><input type="email" id="emailAddress" placeholder="Email Address *"></div>
+    <div><input type="text" id="coachName" placeholder="Coach's Name (optional)"></div>
     <div id="contactError" class="error-msg"></div>
-    <div class="nav-buttons">
-      <button id="backToAssessmentBtn" class="btn-outline btn">← Back to Assessment</button>
-      <button id="submitResultsBtn" class="btn">📊 Get My Success Report →</button>
-    </div>
+    <div class="nav-buttons"><button id="backToAssessmentBtn" class="btn-outline btn">← Back to Assessment</button><button id="submitResultsBtn" class="btn">📊 Get My Success Report →</button></div>
   </div>
 
   <!-- RESULTS PAGE -->
   <div id="resultsPage" class="card" style="display: none;">
     <h2>Your Success Score <span class="gold">Report</span></h2>
     <div id="reportContent"></div>
-    <div class="video-links" style="margin-top: 1.5rem;">
-      📺 <strong>Deepen your mastery:</strong> <a href="https://drive.google.com/file/d/1E5MlyptHTU32afZcNJNm2ipxxiDOCCkF/view?usp=drivesdk" target="_blank">Watch NLP Training Part 1</a> | 
-      <a href="https://drive.google.com/file/d/1rEYVKg44vGeuy4w-OnHNLS87HLcj3Nck/view?usp=drivesdk" target="_blank">Part 2</a>
-    </div>
-    <div class="nav-buttons action-buttons" style="margin-top: 28px;">
-      <button id="retakeFullBtn" class="btn-outline btn">⟳ Start Over</button>
-      <button id="printReportBtn" class="btn-outline btn">🖨️ Print / PDF</button>
-    </div>
+    <div class="video-links" style="margin-top: 1.5rem;">📺 <strong>Deepen your mastery:</strong> <a href="https://drive.google.com/file/d/1E5MlyptHTU32afZcNJNm2ipxxiDOCCkF/view?usp=drivesdk" target="_blank">Watch NLP Training Part 1</a> | <a href="https://drive.google.com/file/d/1rEYVKg44vGeuy4w-OnHNLS87HLcj3Nck/view?usp=drivesdk" target="_blank">Part 2</a></div>
+    <div class="nav-buttons action-buttons" style="margin-top: 28px;"><button id="retakeFullBtn" class="btn-outline btn">⟳ Start Over</button><button id="printReportBtn" class="btn-outline btn">🖨️ Print / PDF</button></div>
     <footer>Inner Circle Program — your growth is our priority.</footer>
   </div>
 </div>
 
 <script>
-  // ----- 5 AREAS -----
+  // ----- DATA & STATE -----
   const AREAS = [
-    { name: "Lifestyle", key: "lifestyle", description: "Daily freedom, travel, joy, environment." },
-    { name: "Health", key: "health", description: "Physical vitality, energy, nutrition, exercise, recovery." },
-    { name: "Wealth", key: "wealth", description: "Financial abundance, income streams, money mindset." },
-    { name: "Relationships", key: "relationships", description: "Family, partnership, friendships, boundaries." },
-    { name: "Personal Growth & Spirituality", key: "spirituality", description: "Purpose, self-awareness, daily reflection." }
+    { name: "Lifestyle", key: "lifestyle" },
+    { name: "Health", key: "health" },
+    { name: "Wealth", key: "wealth" },
+    { name: "Relationships", key: "relationships" },
+    { name: "Personal Growth & Spirituality", key: "spirituality" }
   ];
-  const METRICS = [
-    { name: "attitude", label: "Attitude", min: -100, max: 100, step: 1, placeholder: "-100 to +100" },
-    { name: "effort", label: "Effort", min: 0, max: 100, step: 1, placeholder: "0 to 100" },
-    { name: "skill", label: "Skill", min: 0, max: 100, step: 1, placeholder: "0 to 100" }
-  ];
-
-  // Store scores: { lifestyle: { attitude, effort, skill }, ... }
-  let userScores = {};
-  let currentAreaIndex = 0; // 0..4
-  let clientData = {};
-
+  const ZAPIER_WEBHOOK = "https://hooks.zapier.com/hooks/catch/3779260/unt9eik/";
+  
+  let currentPageIndex = 0;      // 0-4
+  let userScores = {};            // { lifestyle: { attitude, effort, skill }, ... }
+  
   // DOM elements
   const introPage = document.getElementById('introPage');
   const assessmentContainer = document.getElementById('assessmentContainer');
@@ -196,130 +247,116 @@
   const submitResultsBtn = document.getElementById('submitResultsBtn');
   const retakeFullBtn = document.getElementById('retakeFullBtn');
   const printReportBtn = document.getElementById('printReportBtn');
-
-  // Webhook URL (same as provided)
-  const ZAPIER_WEBHOOK = "https://hooks.zapier.com/hooks/catch/3779260/unt9eik/";
-
-  // ---- Helper: generate HTML for a single area page ----
-  function generateAreaPage(area, idx) {
-    const areaKey = area.key;
-    return `
-      <div class="card page" data-area="${areaKey}" data-idx="${idx}">
-        <div class="progress-bar"><div class="progress-fill" style="width: ${((idx+1)/AREAS.length)*100}%;"></div></div>
-        <h2>${area.name} <span class="gold">Assessment</span></h2>
-        <p style="margin-bottom: 0.5rem;">${area.description}</p>
-        <div class="metric-group">
-          ${METRICS.map(metric => `
-            <div class="metric-item">
-              <label>${metric.label}</label>
-              <input type="number" id="${areaKey}_${metric.name}" 
-                     placeholder="${metric.placeholder}" 
-                     min="${metric.min}" max="${metric.max}" step="${metric.step}" 
-                     value="0">
-              <small>Range: ${metric.min} to ${metric.max}</small>
-              ${metric.name === 'attitude' ? `<small style="color:#C9A84C;">✔ Negative allowed (e.g., -35 means poor attitude)</small>` : ''}
-            </div>
-          `).join('')}
-        </div>
-        <div class="nav-buttons">
-          <button class="prevAreaBtn btn-outline btn" ${idx === 0 ? 'disabled' : ''}>← Previous Area</button>
-          <button class="nextAreaBtn btn">${idx === AREAS.length-1 ? 'Review My Report →' : 'Next Area →'}</button>
-        </div>
-        <div class="coach-note">💡 <strong>Coaching truth:</strong> "Attitude amplifies effort and skill. Be honest — growth starts with accurate self-awareness."</div>
-      </div>
-    `;
+  
+  // Helper: get all assessment page elements
+  function getPages() {
+    return Array.from(document.querySelectorAll('#assessmentContainer .page'));
   }
-
-  // Render all 5 area pages into container, show first one
-  function renderAssessmentPages() {
-    assessmentContainer.innerHTML = '';
-    AREAS.forEach((area, idx) => {
-      const div = document.createElement('div');
-      div.innerHTML = generateAreaPage(area, idx);
-      const pageElement = div.firstElementChild;
-      assessmentContainer.appendChild(pageElement);
-      if (idx !== 0) pageElement.style.display = 'none';
+  
+  // Show specific page by index
+  function showPage(index) {
+    const pages = getPages();
+    pages.forEach((page, i) => {
+      page.style.display = i === index ? 'block' : 'none';
     });
-    attachAssessmentEvents();
+    currentPageIndex = index;
   }
-
+  
+  // Store current page values into userScores
+  function storeCurrentPageValues() {
+    const pages = getPages();
+    const currentPage = pages[currentPageIndex];
+    if (!currentPage) return;
+    const areaKey = currentPage.getAttribute('data-area');
+    const attitudeInput = currentPage.querySelector('.attitude');
+    const effortInput = currentPage.querySelector('.effort');
+    const skillInput = currentPage.querySelector('.skill');
+    
+    let attitude = parseInt(attitudeInput.value, 10);
+    let effort = parseInt(effortInput.value, 10);
+    let skill = parseInt(skillInput.value, 10);
+    if (isNaN(attitude)) attitude = 0;
+    if (isNaN(effort)) effort = 0;
+    if (isNaN(skill)) skill = 0;
+    attitude = Math.min(100, Math.max(-100, attitude));
+    effort = Math.min(100, Math.max(0, effort));
+    skill = Math.min(100, Math.max(0, skill));
+    attitudeInput.value = attitude;
+    effortInput.value = effort;
+    skillInput.value = skill;
+    
+    if (!userScores[areaKey]) userScores[areaKey] = {};
+    userScores[areaKey].attitude = attitude;
+    userScores[areaKey].effort = effort;
+    userScores[areaKey].skill = skill;
+  }
+  
+  // Load previously stored values into current page (if any)
+  function loadCurrentPageValues() {
+    const pages = getPages();
+    const currentPage = pages[currentPageIndex];
+    if (!currentPage) return;
+    const areaKey = currentPage.getAttribute('data-area');
+    if (userScores[areaKey]) {
+      const attitudeInput = currentPage.querySelector('.attitude');
+      const effortInput = currentPage.querySelector('.effort');
+      const skillInput = currentPage.querySelector('.skill');
+      if (attitudeInput) attitudeInput.value = userScores[areaKey].attitude || 0;
+      if (effortInput) effortInput.value = userScores[areaKey].effort || 0;
+      if (skillInput) skillInput.value = userScores[areaKey].skill || 0;
+    }
+  }
+  
+  // Navigation: next button handler
+  function onNext() {
+    storeCurrentPageValues();
+    if (currentPageIndex === AREAS.length - 1) {
+      // Last area → show contact page
+      showContactPage();
+    } else {
+      showPage(currentPageIndex + 1);
+      loadCurrentPageValues();
+      updatePrevNextButtons();
+    }
+  }
+  
+  function onPrev() {
+    storeCurrentPageValues();
+    if (currentPageIndex > 0) {
+      showPage(currentPageIndex - 1);
+      loadCurrentPageValues();
+      updatePrevNextButtons();
+    }
+  }
+  
+  function updatePrevNextButtons() {
+    const pages = getPages();
+    const currentPage = pages[currentPageIndex];
+    if (!currentPage) return;
+    const prevBtn = currentPage.querySelector('.prevBtn');
+    const nextBtn = currentPage.querySelector('.nextBtn');
+    if (prevBtn) prevBtn.disabled = (currentPageIndex === 0);
+    if (nextBtn) {
+      if (currentPageIndex === AREAS.length - 1) {
+        nextBtn.textContent = 'See My Report →';
+      } else {
+        nextBtn.textContent = 'Next Area →';
+      }
+    }
+  }
+  
+  // Attach event listeners to all assessment pages
   function attachAssessmentEvents() {
-    const pages = document.querySelectorAll('#assessmentContainer .page');
-    if (!pages.length) return;
-
-    function showPage(index) {
-      pages.forEach((pg, i) => { pg.style.display = i === index ? 'block' : 'none'; });
-      currentAreaIndex = index;
-    }
-
-    // Store current page values into userScores
-    function storeCurrentPageValues() {
-      const currentPage = pages[currentAreaIndex];
-      if (!currentPage) return;
-      const areaKey = currentPage.getAttribute('data-area');
-      if (!userScores[areaKey]) userScores[areaKey] = {};
-      METRICS.forEach(metric => {
-        const input = currentPage.querySelector(`#${areaKey}_${metric.name}`);
-        if (input) {
-          let raw = parseInt(input.value, 10);
-          if (isNaN(raw)) raw = metric.name === 'attitude' ? 0 : 0;
-          const min = metric.min, max = metric.max;
-          let clamped = Math.min(max, Math.max(min, raw));
-          if (clamped !== raw) input.value = clamped;
-          userScores[areaKey][metric.name] = clamped;
-        }
-      });
-    }
-
-    // Load values from userScores into a page
-    function loadValuesToPage(page, areaKey) {
-      if (userScores[areaKey]) {
-        METRICS.forEach(metric => {
-          const input = page.querySelector(`#${areaKey}_${metric.name}`);
-          if (input && userScores[areaKey][metric.name] !== undefined) {
-            input.value = userScores[areaKey][metric.name];
-          }
-        });
-      }
-    }
-
-    // bind prev/next for each page
-    pages.forEach((page, idx) => {
-      const prevBtn = page.querySelector('.prevAreaBtn');
-      const nextBtn = page.querySelector('.nextAreaBtn');
-      const areaKey = page.getAttribute('data-area');
-      loadValuesToPage(page, areaKey);
-
-      if (prevBtn) {
-        prevBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          storeCurrentPageValues();
-          if (currentAreaIndex > 0) showPage(currentAreaIndex - 1);
-          const newPage = pages[currentAreaIndex];
-          loadValuesToPage(newPage, newPage.getAttribute('data-area'));
-        });
-      }
-      if (nextBtn) {
-        nextBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          storeCurrentPageValues();
-          if (idx === AREAS.length - 1) {
-            // After last area, show contact form (not results yet)
-            showContactPage();
-          } else {
-            showPage(currentAreaIndex + 1);
-            const nextPg = pages[currentAreaIndex];
-            loadValuesToPage(nextPg, nextPg.getAttribute('data-area'));
-          }
-        });
-      }
+    const pages = getPages();
+    pages.forEach(page => {
+      const prevBtn = page.querySelector('.prevBtn');
+      const nextBtn = page.querySelector('.nextBtn');
+      if (prevBtn) prevBtn.addEventListener('click', onPrev);
+      if (nextBtn) nextBtn.addEventListener('click', onNext);
     });
-
-    // load initial page values
-    const firstPage = pages[0];
-    if (firstPage) loadValuesToPage(firstPage, firstPage.getAttribute('data-area'));
+    updatePrevNextButtons();
   }
-
+  
   // ---- Scoring & Tier ----
   function computeTotalScore() {
     let total = 0;
@@ -331,15 +368,14 @@
     });
     return total;
   }
-
+  
   function getTier(total) {
     if (total <= 500) return { label: "Foundation Builder", phase: "Struggle Phase", desc: "Inconsistent focus. Shift attitude first — small daily wins rebuild momentum.", color: "#B85C38" };
     if (total <= 900) return { label: "Emerging Explorer", phase: "Developing Phase", desc: "Progress but lacks consistency. Strengthen emotional alignment and daily habits.", color: "#E68A2E" };
     if (total <= 1200) return { label: "Active Developer", phase: "Performing Phase", desc: "Good commitment. Refine balance and deepen skills in lower areas.", color: "#E5C55C" };
     return { label: "Mastery Candidate", phase: "Mastery Phase", desc: "Excellence across domains. You live intentionally — mentor others and expand.", color: "#C9A84C" };
   }
-
-  // Build report HTML
+  
   function buildReportHTML() {
     const total = computeTotalScore();
     const tier = getTier(total);
@@ -356,16 +392,12 @@
         </div>
       `;
     });
-
     const wisdom = `
       <div class="gold-border" style="margin: 1rem 0;">
         <p>✨ <strong>Coaching insight from Joshua:</strong> “Success isn't one dimensional — it's the integration of effort, skill and attitude across every area that matters. Your score is not judgment; it's a mirror. Even if scores go down over time, that can mean you've moved from delusion to reality — which IS growth.”</p>
       </div>
-      <div class="coach-note">
-        <strong>📈 The progress principle:</strong> Like building muscle, you tear down and rebuild. If you measure your Success Score again in 6–8 weeks, you’ll see real expansion. Muscle memory applies to mindset, too.
-      </div>
+      <div class="coach-note"><strong>📈 The progress principle:</strong> Like building muscle, you tear down and rebuild. If you measure your Success Score again in 6–8 weeks, you’ll see real expansion.</div>
     `;
-
     return `
       <div style="text-align:center; margin-bottom:1rem;">
         <div style="background:conic-gradient(#C9A84C ${(total/maxPossible)*360}deg, #2a3850 0deg); width:140px; height:140px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto;">
@@ -382,8 +414,8 @@
       <p>Based on your lowest scores, focus on <strong>Attitude shifts</strong> first if any attitude is negative or low. Then build consistent effort (10 minutes daily). Skill follows action. Book a coaching session to design your roadmap.</p>
     `;
   }
-
-  // ---- Webhook sending (includes coach name) ----
+  
+  // ---- Webhook ----
   async function sendResultsToZapier() {
     const name = document.getElementById('fullName').value.trim();
     const phone = document.getElementById('phoneNumber').value.trim();
@@ -393,7 +425,6 @@
     const totalScore = computeTotalScore();
     const tier = getTier(totalScore);
     
-    // Build detailed answers text
     let answersLines = [];
     AREAS.forEach(area => {
       const s = userScores[area.key] || {};
@@ -421,47 +452,45 @@
       return false;
     }
   }
-
-  // ---- Flow control ----
+  
+  // ---- Screen flow ----
   function showIntro() {
-    introPage.classList.add('active-page');
     introPage.style.display = 'block';
     assessmentContainer.style.display = 'none';
     contactPage.style.display = 'none';
     resultsPage.style.display = 'none';
-    introPage.style.display = 'block';
   }
-
+  
   function showAssessment() {
     introPage.style.display = 'none';
     assessmentContainer.style.display = 'block';
     contactPage.style.display = 'none';
     resultsPage.style.display = 'none';
-    // re-render pages to ensure fresh state (preserve scores)
-    renderAssessmentPages();
-    currentAreaIndex = 0;
+    // reset to first page
+    currentPageIndex = 0;
+    showPage(0);
+    loadCurrentPageValues();
+    updatePrevNextButtons();
   }
-
+  
   function showContactPage() {
     introPage.style.display = 'none';
     assessmentContainer.style.display = 'none';
     contactPage.style.display = 'block';
     resultsPage.style.display = 'none';
   }
-
+  
   function showResults() {
     introPage.style.display = 'none';
     assessmentContainer.style.display = 'none';
     contactPage.style.display = 'none';
     resultsPage.style.display = 'block';
-    const reportDiv = document.getElementById('reportContent');
-    reportDiv.innerHTML = buildReportHTML();
+    document.getElementById('reportContent').innerHTML = buildReportHTML();
   }
-
+  
   function resetEverything() {
     userScores = {};
-    currentAreaIndex = 0;
-    clientData = {};
+    currentPageIndex = 0;
     // Clear contact fields
     document.getElementById('fullName').value = '';
     document.getElementById('phoneNumber').value = '';
@@ -469,21 +498,23 @@
     document.getElementById('emailAddress').value = '';
     document.getElementById('coachName').value = '';
     document.getElementById('contactError').innerText = '';
+    // Reset all inputs in assessment pages to 0
+    const pages = getPages();
+    pages.forEach(page => {
+      page.querySelectorAll('input').forEach(inp => inp.value = 0);
+    });
     showIntro();
   }
-
-  // ---- Event Listeners ----
+  
+  // ---- Event listeners ----
   startBtn.addEventListener('click', () => {
-    // reset scores in case of retake
-    userScores = {};
-    currentAreaIndex = 0;
     showAssessment();
   });
-
+  
   backToAssessmentBtn.addEventListener('click', () => {
     showAssessment();
   });
-
+  
   submitResultsBtn.addEventListener('click', async () => {
     const name = document.getElementById('fullName').value.trim();
     const phone = document.getElementById('phoneNumber').value.trim();
@@ -497,14 +528,14 @@
     await sendResultsToZapier();
     showResults();
   });
-
+  
   retakeFullBtn.addEventListener('click', resetEverything);
   printReportBtn.addEventListener('click', () => window.print());
-
-  // Initial: show intro, hide others
-  assessmentContainer.style.display = 'none';
-  contactPage.style.display = 'none';
-  resultsPage.style.display = 'none';
+  
+  // Initial attachment of assessment events (pages exist already)
+  attachAssessmentEvents();
+  // Ensure intro is visible
+  showIntro();
 </script>
 </body>
 </html>
