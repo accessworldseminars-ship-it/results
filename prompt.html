@@ -1,0 +1,584 @@
+Here is an HTML document that organizes all the prompts from your collection into a clean, copy-ready interface. It groups the longer, high-use prompts at the top and the original 26 prompts below in a responsive grid, with a "Copy" button for each one.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AccessWorld Prompts · 36 Copy-Ready Prompts for Coaches & Creators</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+      font-family: 'Montserrat', sans-serif;
+      color: #f0f0f0;
+      padding: 2rem 1.5rem;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    /* header */
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      padding-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #FFFFFF 0%, #D4AF37 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      color: #cccccc;
+      max-width: 700px;
+      margin: 0.75rem auto 0;
+      font-size: 1rem;
+    }
+
+    .badge {
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 100px;
+      padding: 0.3rem 1rem;
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #D4AF37;
+      margin-top: 0.75rem;
+    }
+
+    /* section titles */
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      border-left: 4px solid #D4AF37;
+      padding-left: 1rem;
+      margin: 2.5rem 0 1.5rem 0;
+      color: #fff;
+    }
+
+    .section-title:first-of-type {
+      margin-top: 0;
+    }
+
+    /* grid layout */
+    .prompt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* cards */
+    .prompt-card {
+      background: rgba(20, 30, 50, 0.7);
+      backdrop-filter: blur(2px);
+      border-radius: 1.25rem;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      transition: all 0.2s ease;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .prompt-card:hover {
+      border-color: rgba(212, 175, 55, 0.6);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 28px rgba(0,0,0,0.3);
+    }
+
+    .card-header {
+      background: rgba(0, 0, 0, 0.35);
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .card-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.35rem;
+      color: #D4AF37;
+      letter-spacing: -0.2px;
+      margin: 0;
+    }
+
+    .card-body {
+      padding: 1.2rem;
+      flex: 1;
+    }
+
+    .prompt-text {
+      background: #0e1424;
+      padding: 0.9rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      font-family: 'Montserrat', monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 320px;
+      overflow-y: auto;
+      border: 1px solid #2a3448;
+      color: #e2e8f0;
+      margin-bottom: 1rem;
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: 1.5px solid #D4AF37;
+      color: #D4AF37;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: center;
+      width: 100%;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .copy-btn:hover {
+      background: #D4AF37;
+      color: #0a0f1a;
+      border-color: #D4AF37;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1f2a3e;
+      border-left: 5px solid #D4AF37;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: 0.2s;
+      backdrop-filter: blur(8px);
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #8f9bb3;
+      border-top: 1px solid rgba(212,175,55,0.2);
+      padding-top: 2rem;
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 1rem;
+      }
+      .prompt-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+    }
+
+    /* scrollbar */
+    .prompt-text::-webkit-scrollbar {
+      width: 5px;
+    }
+    .prompt-text::-webkit-scrollbar-track {
+      background: #1e2538;
+      border-radius: 10px;
+    }
+    .prompt-text::-webkit-scrollbar-thumb {
+      background: #D4AF37;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1>⚡ The Prompt Vault</h1>
+    <p>36 copy-ready prompts for coaching, content creation, quizzes, sales pages & deep work.<br>One click — paste into ChatGPT, Claude, or your favorite AI.</p>
+    <div class="badge">🔥 26 core prompts + 10 advanced power prompts</div>
+  </div>
+
+  <!-- LONGER POWER PROMPTS (10 advanced) -->
+  <div class="section-title">📘 Advanced master prompts · webinars · quizzes · editing · email · slides</div>
+  <div class="prompt-grid" id="longPromptsGrid"></div>
+
+  <!-- THE ORIGINAL 26 "COPY · FILL IN · POST" PROMPTS -->
+  <div class="section-title">📋 Core 26 prompts · fill in brackets & publish</div>
+  <div class="prompt-grid" id="corePromptsGrid"></div>
+
+  <footer>
+    <p>© AccessWorld Seminars | Joshua Roy — copy any prompt, paste into AI, fill brackets, get results. Keep your voice, save hours.</p>
+  </footer>
+</div>
+
+<script>
+  // --------------------------------------------------------------
+  // 1. LONG / ADVANCED PROMPTS (10 items – from latest conversation)
+  //    Preserved exactly as written.
+  // --------------------------------------------------------------
+  const advancedPrompts = [
+    {
+      title: "📖 PROMPT 1 · BOOK CONTENT CREATOR (Krisp → Chapter)",
+      content: `ROLE: You are my senior editor and co-author. You specialise in turning live coaching and seminar transcripts into clear, grounded, transformational book chapters.
+
+CONTEXT: The following text is a raw Krisp transcript from a live coaching session or seminar. It is spoken, informal, and may contain repetition, filler words, and side tangents.
+
+TASK: Rewrite this transcript into book-ready content while preserving my authentic voice, warmth, and mentor tone.
+
+INSTRUCTIONS:
+• Keep the spoken wisdom while removing rambling, filler words, and repetition
+• Preserve stories, metaphors, and emotional moments
+• Organise the content into clear sections with headings
+• Do not over-academise or make it sound clinical
+• Write as if I am speaking directly to the reader
+• Keep it experiential, practical, and human
+
+OUTPUT FORMAT:
+• Chapter title (suggest 1–2 options)
+• Short opening hook
+• Structured sections with headings
+• Practical insights and explanations
+• Optional reflection or integration questions at the end
+
+IMPORTANT: Do not add ideas that were not present in the transcript. Clarify and elevate what is already there.`
+    },
+    {
+      title: "🎓 PROMPT 2 · WEBINAR REVIEW + HIGHLIGHTS (Quotes & Gems)",
+      content: `ROLE: You are my teaching assistant and content curator. Your role is to extract clarity, insight, and gold from live webinar and lesson transcripts.
+
+CONTEXT: The following text is a raw Krisp transcript from a live webinar or teaching session.
+
+TASK: Create a clear lesson review that summarises what was taught and highlights the most valuable insights.
+
+INSTRUCTIONS:
+• Identify the core theme of the session
+• Summarise the main teaching points in simple, grounded language
+• Extract powerful quotes as spoken where possible
+• Identify “gems” — short, punchy insights worth remembering
+• Highlight any mindset shifts, reframes, or breakthroughs
+• Keep the tone mentor-like, practical, and relatable
+
+OUTPUT FORMAT:
+1. Session Overview (what this lesson was really about)
+2. Key Teaching Points (bullet points)
+3. Quotes & Gems
+4. Mindset Shifts / Reframes
+5. Suggested Application (how students can apply this)
+
+IMPORTANT: Do not embellish or invent content. Stay faithful to the transcript.`
+    },
+    {
+      title: "🗣️ PROMPT 3 · CLIENT TESTIMONIAL EXTRACTOR (3‑Part)",
+      content: `ROLE: You are my testimonial editor. You specialise in extracting authentic, ethical, transformation-based testimonials from live coaching transcripts.
+
+CONTEXT: The following text is a raw Krisp transcript from a coaching session where the client is sharing reflections, learnings, or changes.
+
+DEFINITION: A testimony has three parts:
+1. Before – how things were previously
+2. What I Learned / Applied – the principle, insight, or tool used
+3. Results – what changed as a result
+
+TASK: Extract and rewrite the client’s words into a clear, concise testimonial using this three-part structure.
+
+INSTRUCTIONS:
+• Use the client’s own language wherever possible
+• Keep it authentic, grounded, and ethical
+• Remove rambling, repetition, and off-topic content
+• Do not exaggerate, infer, or add claims not present
+• Replace identifying details with placeholders if needed (e.g. Client, Participant)
+
+OUTPUT FORMAT:
+Client Testimonial
+Before: (What life, mindset, or situation was like before)
+What I Learned / Applied: (Key insight, principle, or process used)
+Results: (Internal and/or external changes experienced)
+Optional Short Pull Quote: (1–2 sentences suitable for marketing)
+
+IMPORTANT: Stay strictly within what the client actually shared.`
+    },
+    {
+      title: "📖 PROMPT 4 · STORY EXTRACTION (WORDPRINT PRESERVING)",
+      content: `You are helping me extract personal stories from my manuscript. Important rules:
+• Maintain my exact writing voice and wordprint (tone, rhythm, sentence length, casual phrasing).
+• Do not rewrite in a generic self-help style.
+• Keep each story similar in length to how it appears in the manuscript.
+• Do not add new events or exaggerations.
+• Lightly clean grammar only if needed, without changing how I sound.
+
+Task:
+1. Identify each personal story or lived experience in the text.
+2. Extract each story as a stand-alone story.
+3. Clearly highlight the point of the story and the lesson learned, without over-explaining.
+
+Format each story exactly like this:
+Story Title (short, grounded, not dramatic)
+The Story: (Story written in my voice, same length, same energy)
+The Point: (What this story shows or reveals)
+Lesson Learned: (The insight, distinction, or mindset shift the reader should take)
+Optional Use: (Where this story could fit: book chapter, workbook exercise, seminar teaching moment, testimonial bridge)
+
+If unsure whether something is a story, include it anyway and label it "Potential Story."`
+    },
+    {
+      title: "✉️ EMAIL CREATION · Warm & High‑Converting (Invitation + 4 offers)",
+      content: `You are an expert email copywriter who specializes in warm, persuasive, and high-converting emails for coaching and personal development businesses.
+
+Write ONE powerful, professional email based on the following instructions:
+- email name: "empowerment community" 
+- From: Joshua Roy | AccessWorld Seminars | Happiness & Fulfillment Coach
+- Nervous System Reprogramming (NSR)
+
+### Email Goal:
+Create a valuable, engaging email that builds trust and authority using insights from NLP, coaching, psychology, and personal transformation. Feel helpful and insightful first, then naturally lead to an invitation at the end.
+
+### Required Elements at the END:
+Add a clear, friendly invitation section with these 4 options:
+1. Check out Emotional Clearing – only $69 → https://payhip.com/b/jO2o1
+2. Sign up for a free introduction webinar → https://joshbossesteamworkspace.myclickfunnels.com/joinnow
+3. Follow us on TikTok for more insights → https://www.tiktok.com/@accessworldseminars
+4. Attend the next "Unlock Your Incredible Self" session → https://joshbossesteamworkspace.myclickfunnels.com/webinar-funnel
+
+### Style & Tone:
+Warm, conversational, professional. Use storytelling or relatable insight. Focus on transformation, emotional freedom, self-awareness. Keep paragraphs short.
+
+### Output:
+Complete email ready to copy-paste, including:
+Subject Line: [Strong curiosity-driven line]
+---
+[Full email body 250-400 words]
+---
+Invitation section with the 4 options listed clearly.`
+    },
+    {
+      title: "🧠 FULL‑STACK QUIZ GENERATOR (Likert · Webhook · Print · 3 Tabs)",
+      content: `You are an expert full-stack frontend developer specialising in creating beautiful, performant, self-contained interactive quizzes in a single HTML file. Your code must be clean, production-ready, no external dependencies.
+
+DESIGN REQUIREMENTS:
+- Background: linear-gradient(135deg, #080d18 0%, #1A2744 100%)
+- Accent: #C9A84C (gold)
+- Headings: 'Cormorant Garamond', serif | Body: 'Montserrat', sans-serif
+- Logo URL (intro): https://i.ibb.co/ynXdYpmL/worldjjpgsf.png
+- Fully responsive, dark mode optimised, accessibility & keyboard navigation.
+
+QUIZ STRUCTURE:
+1. Intro screen with title, description, coach bio (Joshua Roy)
+2. Questions screen: 10-12 questions, 6-point Likert (0 "Not at all" to 5 "Completely"), progress bar, back/next.
+3. Contact form: Name, Phone, Country (dropdown specific list), Email. Validation required.
+4. Results: 3 tabs/pages → overall score/tier + question breakdown + top 3 growth areas + top 2 strengths.
+5. Utility: PDF/Print button, Retake button.
+6. Webhook: POST to Activepieces URL: https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1
+7. Print CSS hides buttons, shows all sections.
+
+Fully implement JavaScript scoring, tiers (0-1.5 Foundation Needed ... 4.1-5 Mastery), and proper form submission.`
+    },
+    {
+      title: "⚡ MASTER PROMPT: Content‑to‑Quiz Lead Generator (Zapier)",
+      content: `MASTER PROMPT: Content-to-Quiz Lead Generator
+You are an expert full-stack frontend developer and conversion copywriter.
+
+INPUT CONTENT: [PASTE YOUR TRANSCRIPT, COURSE OUTLINE, OR CONTENT HERE]
+QUIZ THEME / TOPIC: [specify]
+HERO IMAGE URL: [URL]
+WEBHOOK ENDPOINT: [Zapier/Activepieces URL]
+PROGRAM OFFERS LINK: [URL]
+
+STRICT DESIGN REQUIREMENTS (dark gold theme, #080d18 to #1A2744, accent #C9A84C)
+
+QUIZ STRUCTURE (MUST INCLUDE):
+1. INTRO SCREEN (quiz title, bio, Joshua Roy credentials)
+2. 12 QUESTIONS derived from content (0-5 Likert)
+3. CONTACT FORM (Name, Phone, Country dropdown, Email)
+4. RESULTS SCREEN (3 tabs: Overview + Growth Areas + Strengths)
+5. ACTION BUTTONS: Book Free Call, Print/Save PDF, Retake Quiz
+6. Program offers link card + footer.
+
+SCORING: average 0-5, 5 tiers (Foundation Builder → Mastery Candidate)
+WEBHOOK: send name, phone, country, email, score, tier, answers_text, timestamp.
+
+Generate ONE complete HTML file – no build steps, copy-paste deploy.`
+    },
+    {
+      title: "🎙️ RUSSELL BRUNSON · High‑Converting Meetup Offer Prompt",
+      content: `You are now Russell Brunson, legendary marketing genius behind ClickFunnels. Write an EPIC meetup/workshop offer for my upcoming live event. Make it so exciting people move mountains to attend.
+
+My Backstory: [Insert officer & coach story – law enforcement 24+ years, NSR creator, 3500+ sessions]
+Event Details: [Date/Time, Location, Topic: Life coaching + NSR + goal clarity] Regular price: $XXX, Offer price: FREE (must register).
+Audience: People stuck, anxious, overwhelmed, carrying invisible weight.
+
+Your Expertise: Police officer, Results Coach, NSR creator, NLP master practitioner.
+
+Goal: Fill seats. Use storytelling, value stacking, scarcity, social proof. Write in signature style: hook, story they see themselves in, dream outcome, smash objections, stack ridiculous value, bulletproof logic, CTA obvious. Long-form, conversational, bold text and CAPS for emphasis.
+
+BONUS: Also write 5 email swipes promoting event: 1) "I know you", 2) "what if", 3) "value stack", 4) objection crusher, 5) last chance urgency.`
+    },
+    {
+      title: "✍️ PROFESSIONAL EDITOR · Surgical Copy Edit (95% Rule)",
+      content: `You are an expert book editor hired for a single, specific task: a minimal, "surgical" copy edit. Preserve the author's unique voice and narrative at all costs.
+
+PRIMARY DIRECTIVES:
+1. PRESERVE VOICE: Do not alter sentence rhythm, phrasing, colloquialisms, unique word choices ("wordprint").
+2. 95% RULE: Stories are 95% final. No additions, new ideas, or changes to plot/structure.
+3. MINIMAL INTERVENTION: Edit only if objectively necessary for grammar, clarity, or consistency.
+
+EDITING SCOPE (ONLY FIX):
+- Objective errors (spelling, grammar, punctuation)
+- Unclear syntax (genuinely confusing on first read)
+- Contradictions / plot holes
+- Word repetition in same/adjacent sentences (if oversight)
+- Formatting (dashes, ellipses, quotes)
+
+STRICT PROHIBITIONS: No rewriting for "flow" or eloquence. No changing dialogue phrasing. No adding metaphors. No suggestions.
+
+OUTPUT FORMAT:
+A. Edited Text (changes minimally highlighted in bold)
+B. Editor's Log (concise bullet list with objective reason)
+
+Acknowledge: "Acknowledged. I am in 'Surgical Edit' mode."`
+    },
+    {
+      title: "🎨 AI Advantage Slides Creator · Carousel (Joshua Roy Brand)",
+      content: `You are now “AI Advantage Slides Creator” for Joshua Roy – Life & Results Coach, AccessWorld.
+
+MY BRAND COLORS: Primary dark #1A1A1A, Gold #D4AF37, Light background #F8F9FA, White text, Shadow.
+
+PROGRAMS: Ultimate Health Webinar, Eliminate Physical & Emotional Pain, NLP Foundation, Design Your Identity, Ultimate Freedom, Stepping Into Wealth, Ultimate Memory, Relationships programs, Emotional Clearing, NSR, Group Coaching.
+
+CAROUSEL CREATION PROCESS:
+1. Brand setup (default colors)
+2. Content input (rough idea / transcript / program)
+3. Carousel definition (goal, audience, core message)
+4. Structure proposal (5-10 slides with headlines/body/visual direction)
+5. Image generation (one slide at a time, using brand colors, overlay copy)
+6. Wait for "Next" after each slide
+7. Editing & download reminders
+Start by asking if I want default settings.`
+    }
+  ];
+
+  // --------------------------------------------------------------
+  // 2. THE ORIGINAL 26 PROMPTS (exact from the "copy fill in post" section)
+  //    Extracted from the assistant's answer – each prompt as plain text.
+  // --------------------------------------------------------------
+  const core26 = [
+    { title: "01 · YOUR IDEAL CLIENT", content: `You're a research expert who has worked with coaches and personal development businesses.\n\nMy coaching niche is [describe what you help people with — mindset, confidence, burnout, empowerment, etc.].\nMy ideal client is [describe them: who they are, what they're going through, what they want, and how long they've been stuck].\n\nGive me:\n— The 8 biggest problems they face\n— The exact words they use to describe those problems (not polished marketing language — the raw, real stuff)\n— What they've already tried that hasn't worked\n— What it honestly feels like to be stuck in this situation` },
+    { title: "02 · YOUR POSITIONING", content: `Write a clear, one-to-two sentence statement that explains what I do and who I help.\n\nI help [describe your ideal client specifically] go from [where they are now — stuck, burned out, lost, overwhelmed] to [where they want to be — confident, clear, free, building something, etc.].\nMy approach is [describe how you work — 1:1, group, mindset tools, somatic, nervous system work, etc.].\n\nWrite three versions:\n— One for my Instagram bio (under 150 characters)\n— One as an opener for a caption\n— One I can say out loud when someone asks what I do` },
+    { title: "03 · YOUR CONTENT PILLARS", content: `Act as a content strategist helping a coach build a personal brand on Instagram.\n\nMy background: [share your story — what you've been through, what you've overcome, what you know deeply from real experience]\nMy ideal client: [describe them]\nTopics I naturally talk about: [just list them, don't overthink it]\n\nGive me 3 content pillars. Each one should:\n— Be built around a specific belief I hold, not just a broad topic area\n— Speak directly to something my ideal client is struggling with or wants\n— Connect to the transformation I help create\n\nFor each pillar, write a short description I can use as a gut-check when I sit down to make content.` },
+    { title: "04 · YOUR BRAND VOICE", content: `Look at the following pieces of content I've written and create a voice guide.\n\n[Paste 5-10 captions, messages, or anything you've written that felt real to you]\n\nFrom those, pull out:\n— How I tend to open content (any patterns?)\n— My sentence style (short and punchy? story-driven? a mix?)\n— Words and phrases I use a lot\n— The overall tone (direct? warm? challenging? conversational?)\n— What makes my writing feel different from generic coaching content\n\nThen write me a 'sound like me' brief in second person — like you're telling a new writer exactly how to write in my voice, what to do, and what to avoid.` },
+    { title: "05 · REEL HOOKS", content: `Write 8 opening lines (hooks) for a reel about [your topic — e.g., self-sabotage, fear of showing up online, making your first $5k as a coach].\n\nMy audience is [describe them].\n\nMix up the angles:\n— A bold statement they weren't expecting\n— A mistake they're probably making right now\n— A result that sounds almost too good but is completely real\n— A feeling they have but haven't said out loud yet\n— A one-liner that nails their exact situation\n\nNo questions. No 'have you ever felt…' openers. Every hook should land on its own.` },
+    { title: "06 · REEL SCRIPT", content: `Write a 30-60 second reel script on [specific topic] for [your ideal client].\n\nMy experience with this topic: [what have you personally been through, or what have you helped clients with?]\n\nStructure:\n— Hook (first 2 seconds): one punchy line that makes them stop\n— Problem: name the exact struggle (about 10 seconds)\n— Shift: the one insight that changes how they see it (about 15 seconds)\n— Takeaway: one thing they can do or think differently starting today\n— Close: a strong final line that sticks — not a question, not 'drop a comment'\n\nWrite it as natural spoken words. Like I'm talking to one person, not performing.` },
+    { title: "07 · CAROUSEL POST", content: `Write a carousel script on [topic] for [your ideal client]. Make it [6-10] slides.\n\nSlide 1 (Cover): A title that makes them want to swipe — name the exact transformation or insight\nSlides 2 through second-to-last: One clear point per slide. Each slide = one heading (6 words max) + 2-3 sentences that explain it simply. Write like you're texting a friend.\nFinal Slide: One strong takeaway + a CTA: 'Save this for when you need it' or 'Share this with someone who needs to hear it'\n\nKeep each slide under 40 words of body copy. Simple. Easy to read on a phone.` },
+    { title: "08 · STORY-BASED CAPTION", content: `Write a caption that tells the story of [a specific moment, struggle, or turning point from your own life or coaching work].\n\nTell the story in the first 2-3 sentences. Get specific — what was actually happening, what you felt, what shifted.\nThen pull out [1-2] real lessons from that story — not a numbered list, just flowing sentences.\nEnd with one line that connects the final lesson to where my reader is right now.\n\nFirst person. Around 200 words. Sound like you're talking to a friend, not writing for an audience.` },
+    { title: "09 · CONTRARIAN POST", content: `Write a post that challenges the common belief that [describe what most coaches say or believe — e.g., 'you have to fully love yourself before you can build a business'].\n\nMy actual position: [what do you really think, and why?]\nWhat backs this up: [a pattern you've seen with clients, something from your own life, real evidence]\n\nOpen with the contrarian position. Build the case for it. Acknowledge where the common belief comes from — but show clearly why it falls short. End by stating what actually works instead.\n\nNo exclamation marks. No 'well, it depends.' Take a real stand.` },
+    { title: "10 · CLIENT RESULT POST", content: `Write a post about this result I helped a client achieve: [describe what they came in with, what we worked on, and what changed — as specific as you can without sharing anything private].\n\nOpen with the result or the transformation. Then go back and tell the story of where they started. Include one thing that genuinely surprised me about the process.\nEnd with one practical takeaway the reader can use.\n\nDon't make it a brag. Write it like a case study someone can actually learn from. Around 220 words.` },
+    { title: "11 · CONTENT CALENDAR", content: `Create a 4-week Instagram content calendar for a [type of coach — mindset, empowerment, holistic, sales, life, etc.] coach.\n\nMy 3 content pillars: [list them]\nMy ideal client: [describe them]\nMy main goal this month: [more followers / more DM conversations / get people to ask for my free resource]\n\nFor each post include:\n— Week and day\n— Format (reel, carousel, quote graphic, talking head video)\n— The hook concept\n— What the viewer actually walks away with\n\nAim for 5 posts a week. Mix teaching content, personal stories, and posts designed to spark conversations.\nGive it to me as a simple table.` },
+    { title: "12 · OBSERVATION POST", content: `Write a post based on something I've noticed about [coaching, mindset, personal growth, building a business — whatever fits your world].\n\nHere's what I've observed: [describe the pattern, contradiction, or thing that keeps showing up — be as specific as you can]\n\nOpen with the observation. Say it directly. Unpack what it means in the next few sentences. Use one real example — even if it's anonymous — to make it concrete.\nEnd with a clear statement or takeaway. Not a question to the room. Just a strong thought.\nUnder 220 words.` },
+    { title: "13 · REPURPOSE EXISTING CONTENT", content: `I have this piece of content: [describe it — e.g., a coaching call where I talked about self-worth for 20 minutes, a podcast episode, a caption that got a lot of response].\n\nTurn this into 8 separate content assets:\n— 2 reel hooks (just the first 2 seconds — the opening line only)\n— 2 carousel slide concepts (the angle and main points per slide)\n— 1 short caption (under 100 words)\n— 1 longer story-driven caption\n— 1 quote graphic text\n— 1 engagement post inviting people to comment if they resonate\n\nFor each asset, tell me the format, where it works best, and the main point it's making.` },
+    { title: "14 · ENGAGEMENT POST", content: `Write a post on [topic that speaks directly to something your ideal client is going through right now] that ends with an invitation to comment if it resonated.\n\nMy ideal client: [describe them]\n\nThe post should:\n— Open with a hook that names their exact situation or feeling\n— Teach or share one real insight, story, or truth that hits close to home\n— End with something like: 'Comment below if this resonated' or 'Drop a comment if you needed to hear this today'\n\nUnder 150 words. The goal isn't likes — it's getting the right people to identify themselves so you can reach out.` },
+    { title: "15 · DM OPENER", content: `Write 5 DMs to send to someone who just [liked my post / commented on my reel / started following me / replied to my story] about [topic].\n\nThe whole goal is just to start a real conversation. Don't pitch anything. Don't be weird. Just be a person.\n\nEach DM should:\n— Reference specifically what they did (liked the post about X, commented Y, etc.)\n— Ask one genuinely interesting question related to where they're at\n— Sound like something you'd actually say to someone in real life\n\nUnder 60 words each. Keep it human.` },
+    { title: "16 · DM FOLLOW-UP", content: `Write 5 follow-up DMs for when a conversation has gone quiet.\n\nWhat happened last: [describe it — they asked about coaching, downloaded the free resource, said they were interested but needed to think, etc.]\n\nEach follow-up should:\n— Feel casual and low-pressure\n— Bring something new to the conversation — a question, a relevant thought, a simple check-in\n— Not just repeat what I already said the first time\n\nUnder 60 words each. No passive aggression. No 'just circling back.'` },
+    { title: "17 · MOVING TO THE CALL", content: `Write 5 DMs that naturally move a warm conversation toward booking a discovery call.\n\nWhat I know about this person so far: [describe what they've shared in the conversation]\nMy offer: [short description of what you do]\n\nEach DM should:\n— Feel like a logical next step, not a pivot into sales mode\n— Make the call sound like something they'd genuinely want — not something I need from them\n— Be clear about what the call is and what happens on it\n— Leave the decision completely in their hands\n\nUnder 80 words each.` },
+    { title: "18 · HANDLING OBJECTIONS IN DMs", content: `Write 5 DM responses to this objection I keep hearing: [paste it exactly as people say it — e.g., 'I can't afford it right now,' 'I've tried coaching before and it didn't work,' 'I'm not sure I'm ready yet']\n\nEach response should:\n— Acknowledge the concern directly — don't gloss over it\n— Address it with something real: a reframe, a specific example, an honest truth\n— Keep the door open without any pressure at all\n\nUnder 90 words each. Don't get defensive. Don't over-explain. Stay honest. Stay human.` },
+    { title: "19 · FREE RESOURCE DELIVERY DM", content: `Write 5 DMs to send to someone who just commented to claim my free resource: [name of what you're sending].\n\nEach DM should:\n— Confirm the resource is on its way\n— Mention one specific thing about it they'll actually find useful\n— Open the door to a real conversation without pitching anything\n\nUnder 55 words each. Write like one real person texting another. Not like a bot delivering a download link.` },
+    { title: "20 · DESCRIBING YOUR OFFER", content: `Help me write a clear, honest description of my coaching that focuses on what the client actually gets — not what's inside the program.\n\nWhat's included: [structure, number of sessions, how you support them, etc.]\nWho it's for: [describe your ideal client and where they are right now]\nWhat changes for them: [how do they feel after? what are they able to do? what does their day-to-day actually look like?]\nClient results I can share: [describe 1-2 outcomes with as much specificity as you're comfortable with]\n\nWrite 2 versions:\n— Short (under 100 words) for DM conversations\n— Longer (150-200 words) for captions or conversations with warm leads` },
+    { title: "21 · YOUR STORY AS YOUR SALES TOOL", content: `Help me write a structured version of my personal story that connects directly to the coaching I do.\n\nMy raw story: [what did you go through? what was the moment something shifted? what did you do differently? where are you now?]\n\nShape this into a narrative covering:\n— What my situation actually looked like (not 'I was struggling' — what was specifically happening?)\n— The exact thing that changed my direction\n— What I did and why it worked\n— Where I am now and how it directly informs the work I do with clients today\n\nFirst person. Under 300 words. Every sentence earns its place — no filler.` },
+    { title: "22 · DISCOVERY CALL FRAMEWORK", content: `Write a simple discovery call framework for my coaching offer: [describe what you do].\n\nCover it in this order:\n1. Opening — how to set the tone and the agenda in the first 2 minutes\n2. Discovery questions — 5 questions to understand where they are and what they actually want (write the questions out fully)\n3. Transition — how to move naturally from the conversation into presenting what I do\n4. Presenting the offer — how to describe my coaching as a natural recommendation, not a pitch\n5. Handling hesitation — how to respond when they say [your most common objection]\n6. Close — how to end the call and agree on a clear next step\n\nGive me a practical guide I can actually use, not a word-for-word script.` },
+    { title: "23 · TESTIMONIAL REQUEST", content: `Write 5 messages I can send to happy clients asking for a testimonial.\n\nMake the ask specific — tell them exactly what format would be most useful:\n[e.g., 'a short paragraph describing where you were before we worked together and where you are now' or 'a 60-second voice note answering 3 questions I'll send you']\n\nEach message should:\n— Be warm but direct\n— Make it genuinely easy for them — give them the format, take the thinking out of it\n— Feel personal, not like a copy-paste template\n\nUnder 80 words each.` },
+    { title: "24 · INSTAGRAM AUTHORITY POST", content: `Write an Instagram post that shows my expertise on [specific coaching topic or niche area].\n\nMy direct experience with this: [describe the specific experience, client result, or observation that shapes what you know — not just your job title]\n\nThe post should demonstrate expertise through the quality of the insight itself — not by announcing that I'm an expert. Ground it in one concrete example, real scenario, or pattern you've noticed.\nEnd with one insight the reader will still be thinking about tomorrow.\n\nUnder 250 words. First person. Conversational. Nothing that sounds like a textbook.` },
+    { title: "25 · OBJECTION POST", content: `Write a post that speaks directly to this objection my ideal client has about coaching or working with me: [e.g., 'I don't have the money right now,' 'I've tried this before and it didn't work,' 'I'm not sure I'm ready']\n\nDon't dismiss it. Acknowledge it first. Then:\n— Share a reframe or a real truth that shifts how they're seeing it\n— Back it up with something real — a client story, something from your own journey, a pattern you keep noticing\n— End with a soft, open invitation for anyone feeling this to reach out or drop a comment\n\nAround 200 words. Honest and direct — never preachy.` },
+    { title: "26 · PURPOSE CHECK", content: `Help me reconnect with why I started coaching in the first place.\n\nMy story: [what have you been through, and what made you decide to start coaching?]\nThe person I most want to help: [describe them in as much detail as you can — who they are, what they're going through, what they need most]\n\nWrite me a purpose statement — one paragraph — that I can read every morning before I open my phone. Something that reminds me who I'm showing up for and why it matters. Not motivational fluff. Something real that actually hits.` }
+  ];
+
+  function renderPrompts(containerId, promptsArray) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = '';
+    promptsArray.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'prompt-card';
+      card.innerHTML = `
+        <div class="card-header"><h3>${escapeHtml(p.title)}</h3></div>
+        <div class="card-body">
+          <div class="prompt-text">${escapeHtml(p.content)}</div>
+          <button class="copy-btn" data-prompt="${escapeHtml(p.content).replace(/"/g, '&quot;')}">📋 Copy prompt</button>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+    // attach copy events after render
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const raw = btn.getAttribute('data-prompt');
+        if (raw) {
+          copyToClipboard(raw);
+        }
+      });
+    });
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+      return c;
+    });
+  }
+
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast('✅ Prompt copied to clipboard!');
+    }).catch(() => {
+      showToast('⚠️ Manual copy needed');
+    });
+  }
+
+  function showToast(msg) {
+    const existing = document.querySelector('.toast');
+    if (existing) existing.remove();
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerText = msg;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2200);
+  }
+
+  renderPrompts('longPromptsGrid', advancedPrompts);
+  renderPrompts('corePromptsGrid', core26);
+</script>
+</body>
+</html>
+```
