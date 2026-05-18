@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Unlock Your Incredible Self | Emotional Mastery Assessment</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+            color: #F0F3FA;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.5;
+            min-height: 100vh;
+            padding: 24px 20px;
+        }
+
+        /* container */
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* cards / glassmorph */
+        .card {
+            background: rgba(18, 28, 46, 0.75);
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            padding: 28px 24px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        h1, h2, h3, .serif-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .gold-accent {
+            color: #C9A84C;
+        }
+
+        .btn {
+            background: #C9A84C;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #0A0F1A;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(201, 168, 76, 0.15);
+            color: #C9A84C;
+            border: 1px solid rgba(201, 168, 76, 0.5);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(201, 168, 76, 0.3);
+            transform: scale(0.98);
+        }
+
+        .btn:hover {
+            background: #b8943c;
+            transform: translateY(-2px);
+        }
+        .btn:active {
+            transform: translateY(1px);
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* intro bio */
+        .bio-card {
+            background: rgba(0,0,0,0.35);
+            border-radius: 28px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #C9A84C;
+        }
+        .stat-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 16px 0;
+        }
+        .stat {
+            background: #0E1625;
+            border-radius: 48px;
+            padding: 8px 18px;
+            font-weight: 600;
+        }
+        .hero-img {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 24px;
+            margin: 0 auto;
+            display: block;
+            box-shadow: 0 12px 24px -8px black;
+        }
+
+        /* quiz */
+        .progress-bar {
+            background: #2A3757;
+            border-radius: 40px;
+            height: 8px;
+            margin-bottom: 24px;
+        }
+        .progress-fill {
+            background: #C9A84C;
+            width: 0%;
+            height: 100%;
+            border-radius: 40px;
+            transition: width 0.3s ease;
+        }
+        .rating-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 8px;
+            margin: 28px 0 20px;
+        }
+        .rating-option {
+            flex: 1;
+            min-width: 70px;
+            text-align: center;
+        }
+        .rating-option input {
+            display: none;
+        }
+        .rating-option label {
+            display: block;
+            background: rgba(30, 40, 60, 0.8);
+            border-radius: 60px;
+            padding: 10px 5px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: all 0.1s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        .rating-option input:checked + label {
+            background: #C9A84C;
+            color: #0A0F1A;
+            border-color: #ffdf8c;
+            font-weight: 700;
+            transform: scale(1.02);
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        /* contact form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input, select {
+            width: 100%;
+            padding: 14px 18px;
+            background: #101624;
+            border: 1px solid #2C3B5C;
+            border-radius: 48px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            outline: none;
+        }
+        input:focus, select:focus {
+            border-color: #C9A84C;
+        }
+        .error-msg {
+            color: #ff9b7c;
+            font-size: 0.8rem;
+            margin-top: 6px;
+            padding-left: 12px;
+        }
+
+        /* tabs */
+        .tab-buttons {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 28px;
+            border-bottom: 1px solid #2C3B5C;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: #C3CDED;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab-btn.active {
+            background: #C9A84C;
+            color: #080d18;
+        }
+        .tab-content {
+            display: none;
+            animation: fade 0.2s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+        .score-circle {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 20px;
+        }
+        canvas {
+            width: 100%;
+            height: auto;
+        }
+        .question-breakdown-item {
+            margin-bottom: 16px;
+        }
+        .break-bar {
+            background: #2a3452;
+            border-radius: 20px;
+            height: 10px;
+            width: 100%;
+            overflow: hidden;
+        }
+        .break-fill {
+            height: 100%;
+            border-radius: 20px;
+        }
+        .tier-badge {
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-weight: bold;
+        }
+
+        .cta-card {
+            background: linear-gradient(145deg, #1F2B44, #0F172A);
+            border-radius: 28px;
+            padding: 24px;
+            margin: 28px 0;
+            border: 1px solid #C9A84C;
+        }
+
+        footer {
+            margin-top: 48px;
+            text-align: center;
+            font-size: 0.8rem;
+            padding-top: 20px;
+            border-top: 1px solid #2C3B5C;
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 16px; }
+            .rating-option label { font-size: 0.65rem; padding: 8px 3px; }
+            .btn { padding: 12px 20px; }
+        }
+
+        /* print styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+                padding: 0;
+            }
+            .btn, .tab-buttons, .nav-buttons, footer a, .btn-secondary, .cta-card .btn, .action-group, #retakeQuizBtn, #printPdfBtn, #bookCallBtn {
+                display: none !important;
+            }
+            .tab-content {
+                display: block !important;
+                page-break-inside: avoid;
+                background: white;
+                color: black;
+            }
+            .card {
+                background: white;
+                border: 1px solid #ccc;
+                box-shadow: none;
+                color: black;
+            }
+            .gold-accent { color: #b8860b; }
+            .progress-fill, .break-fill { background: #aaa; }
+        }
+    </style>
+</head>
+<body>
+<div class="app-container" id="appRoot">
+    <!-- INTRO SCREEN -->
+    <section id="introScreen" class="card">
+        <h1 style="font-size: 3.2rem; font-weight: 700;">Unlock Your Incredible Self</h1>
+        <p style="font-size: 1.2rem; margin: 16px 0;">Emotional Mastery Assessment — Discover where your nervous system is running old code, and get your personalized 6-hour reset plan.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; margin: 24px 0;">
+            <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="Joshua Roy Hero" class="hero-img">
+            <div class="bio-card" style="flex:1">
+                <div class="stat-grid">
+                    <span class="stat">🏛 24+ years law enforcement</span>
+                    <span class="stat">🎤 900+ seminars</span>
+                    <span class="stat">🎯 3,500+ coaching sessions</span>
+                    <span class="stat">🥋 Former Australian Karate Champion</span>
+                </div>
+                <p style="font-style: italic; margin-top: 12px;">“Feeling good for no good reason — that's not luck. That's a skill set. And like every skill worth having, it can be learned, practised, and owned.” — Joshua Roy</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="beginQuizBtn" class="btn">✨ Begin Assessment ✨</button>
+        </div>
+    </section>
+
+    <!-- QUIZ SECTION (hidden initially) -->
+    <section id="quizScreen" style="display: none;" class="card">
+        <div class="progress-bar"><div class="progress-fill" id="quizProgressFill"></div></div>
+        <div id="quizCategory" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #C9A84C;"></div>
+        <div id="quizDimension" style="font-size: 1rem; margin-bottom: 8px; font-weight: 500;"></div>
+        <h2 id="questionText" style="font-size: 1.8rem; margin: 16px 0;"></h2>
+        <div class="rating-group" id="ratingGroup"></div>
+        <div class="nav-buttons">
+            <button id="prevBtn" class="btn-secondary">← Previous</button>
+            <button id="nextBtn" class="btn">Next →</button>
+        </div>
+        <div style="margin-top: 16px; text-align: center;"><span id="questionCounter"></span></div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contactScreen" style="display: none;" class="card">
+        <h2 style="font-size: 2rem;">Almost there, warrior</h2>
+        <p>Enter your details to unlock your personalized Emotional Mastery roadmap & results.</p>
+        <form id="contactForm">
+            <div class="form-group"><input type="text" id="fullName" placeholder="Full Name *" required></div>
+            <div class="form-group"><input type="tel" id="phoneNumber" placeholder="Phone Number *" required></div>
+            <div class="form-group">
+                <select id="countrySelect" required>
+                    <option value="">Select Country *</option>
+                    <option>Australia</option><option>Canada</option><option>Ireland</option>
+                    <option>New Zealand</option><option>United Kingdom</option><option>United States</option><option>Other</option>
+                </select>
+            </div>
+            <div class="form-group"><input type="email" id="emailAddress" placeholder="Email Address *" required></div>
+            <div id="contactError" style="color: #ffaa88; margin-bottom: 12px;"></div>
+            <button type="submit" class="btn" id="getResultsBtn">📊 Get My Results 📊</button>
+            <button type="button" id="backToQuizFromContact" class="btn-secondary" style="margin-top: 12px;">← Back to Quiz</button>
+        </form>
+    </section>
+
+    <!-- RESULTS SECTION -->
+    <section id="resultsScreen" style="display: none;">
+        <div class="card">
+            <div class="tab-buttons" id="tabButtons">
+                <button data-tab="overview" class="tab-btn active">📘 Overview</button>
+                <button data-tab="growth" class="tab-btn">🌱 Growth Areas</button>
+                <button data-tab="strengths" class="tab-btn">⭐ Strengths</button>
+            </div>
+            <div id="overviewTab" class="tab-content active"></div>
+            <div id="growthTab" class="tab-content"></div>
+            <div id="strengthsTab" class="tab-content"></div>
+            
+            <!-- CHALLENGE CTA CARD -->
+            <div class="cta-card" id="challengeCta">
+                <h3>⚡ Your Next Step: The 6-Hour Challenge</h3>
+                <p>Based on your assessment, your nervous system is ready for an upgrade. Join the 'Unlock Your Incredible Self' challenge — the exact framework Joshua Roy has refined across 3,500+ coaching sessions.</p>
+                <ul style="margin: 16px 0 16px 20px;">
+                    <li>Session 1: Commitment & Subconscious Success Programming</li><li>Session 2: State Elicitation Script & Emotional Anchoring</li>
+                    <li>Session 3: Emotional Mastery — Feeling Good for No Good Reason</li><li>Session 4: The Emotion Pathway & Nervous System Regulation</li>
+                    <li>Session 5: The Thought Pathway & Cognitive Reframe</li><li>Session 6: The Destiny Pathway & Identity Integration</li>
+                </ul>
+                <p><strong>$39</strong> <s style="opacity:0.7">$900</s> — 100% Satisfaction Guarantee — Full refund if not transformed</p>
+                <a href="https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808" target="_blank" class="btn" style="display: inline-block; margin-top: 12px;">🔒 Secure My Spot Now</a>
+            </div>
+            
+            <div class="action-group" style="display: flex; flex-wrap: wrap; gap: 16px; margin: 28px 0 10px;">
+                <button id="bookCallBtn" class="btn-secondary">📞 Book Free Strategy Call</button>
+                <button id="printPdfBtn" class="btn-secondary">🖨️ Print / Save PDF</button>
+                <button id="retakeQuizBtn" class="btn-secondary">⟳ Retake Quiz</button>
+            </div>
+        </div>
+    </section>
+    <footer>
+        AccessWorld Seminars | Joshua Roy | Phone: 0432 119 091 | accessworldseminars.org | accessworldseminars@gmail.com | ABN: 72 546 137 885
+    </footer>
+</div>
+
+<script>
+    // ---------- DATA ----------
+    const QUESTIONS = [
+        { id:0, category:"Commitment", dimension:"Subconscious Alignment", text:"I follow through on commitments to myself without relying on willpower or external pressure." },
+        { id:1, category:"Commitment", dimension:"Success Programming", text:"I naturally operate from a mindset that success is inevitable for me, not just possible." },
+        { id:2, category:"State Elicitation", dimension:"Emotional Anchoring", text:"I can intentionally shift my emotional state from negative to resourceful within minutes." },
+        { id:3, category:"State Elicitation", dimension:"Resource Access", text:"I have specific techniques to access peak emotional states (confidence, calm, motivation) on demand." },
+        { id:4, category:"Emotional Mastery", dimension:"Baseline Happiness", text:"I regularly feel good 'for no good reason' — not dependent on external circumstances." },
+        { id:5, category:"Emotional Mastery", dimension:"Trigger Response", text:"When emotionally triggered, I can pause, recognize the pattern, and choose my response." },
+        { id:6, category:"Emotion Pathway", dimension:"Nervous System Awareness", text:"I understand how my nervous system (fight/flight/freeze) drives my emotional reactions." },
+        { id:7, category:"Emotion Pathway", dimension:"Somatic Release", text:"I have effective practices to release stored emotional tension from my body." },
+        { id:8, category:"Thought Pathway", dimension:"Pattern Recognition", text:"I can clearly identify the limiting beliefs and thought loops that repeat in my life." },
+        { id:9, category:"Thought Pathway", dimension:"Cognitive Reframe", text:"I consistently catch and reframe negative self-talk before it affects my behavior." },
+        { id:10, category:"Destiny Pathway", dimension:"Vision Clarity", text:"I have a compelling, emotionally-charged vision for my future that pulls me forward." },
+        { id:11, category:"Destiny Pathway", dimension:"Identity Integration", text:"My daily actions align with the identity of the person I am becoming, not who I used to be." }
+    ];
+    const DIMENSION_META = [
+        { lowAnalysis:"You rely on willpower, not subconscious alignment. Creates exhausting start-stop cycles.", dailyPractice:["Write 'I am committed to my goal' 10x morning aloud","2-min micro-commitment before phone","Future-self visualization 3min","Track completion 7 days"], session:"Sessions 1-2", highStrategy:"Leverage subconscious momentum: teach a friend this method & set a bold 90-day target." },
+        { lowAnalysis:"Beliefs still frame success as 'possible but not certain', limiting risk-taking.", dailyPractice:["Repeat 'Success is my default' 20x","Review past wins","Visualize obstacles dissolving","Take one bold action weekly"], session:"Sessions 1-2", highStrategy:"Mentor others & stretch identity into exponential goals." },
+        { lowAnalysis:"Emotions feel uncontrollable; you react rather than choose state.", dailyPractice:["Identify a 'anchor' (touch chest) while recalling peak moment","Practice 2min daily","Use trigger as cue to anchor","Rate before/after"], session:"Session 2-3", highStrategy:"Build advanced anchors for high-stakes situations & teach anchoring." },
+        { lowAnalysis:"Lacking reliable techniques for accessing resourceful states on demand.", dailyPractice:["Create 'state playlist' of memories","Circle breathing 4-4-6","Cold exposure 15sec","Use state before meetings"], session:"Session 2", highStrategy:"Combine states into flow triggers & daily peak performance ritual." },
+        { lowAnalysis:"Happiness depends on external validation, causing fragility.", dailyPractice:["Gratitude 3 things each morning","Random acts of kindness","Smile deliberately 30sec","Journal 'good for no reason'"], session:"Session 3", highStrategy:"Cultivate unconditional joy & share by modelling." },
+        { lowAnalysis:"Impulsive reactions after triggers, pause often missing.", dailyPractice:["STOP technique: Stop, Take breath, Observe, Proceed","Count 5 things you see","Delay response 10sec","Post-it note 'Pause'"], session:"Session 3-4", highStrategy:"Refine pause into superpower: respond from wisdom." },
+        { lowAnalysis:"Unaware of nervous system signals, stuck in survival mode.", dailyPractice:["Body scan 3 min","Label state: fight/flight/freeze","Vagus nerve humming","Sigh exhalations"], session:"Session 4", highStrategy:"Regulate nervous system & become regulation coach." },
+        { lowAnalysis:"Tension trapped in body, no somatic release practices.", dailyPractice:["Tremor/shaking 1min","Butterfly hug","Deep belly laughs","Therapeutic journaling"], session:"Session 4", highStrategy:"Lead somatic circles or daily release flow." },
+        { lowAnalysis:"Limiting beliefs run on autopilot without recognition.", dailyPractice:["Thought record: trigger→belief","Ask 'Is this 100% true?'","Replace with empowering story","Daily 5-min reflection"], session:"Session 5", highStrategy:"Pattern interrupt master & belief reframing scripts." },
+        { lowAnalysis:"Negative self-talk often escalates before awareness.", dailyPractice:["Catch & rename inner critic","Use 'Thank you, next'","Mirror affirmations","Record reframes"], session:"Session 5", highStrategy:"Automate cognitive reframe through daily journaling & coaching others." },
+        { lowAnalysis:"Future vision is vague or uninspiring, lacking emotional pull.", dailyPractice:["Create vision board digital","Write 500 words about ideal day","Emotional soundtrack","Recite each morning"], session:"Session 6", highStrategy:"Turn vision into mission & inspire collective." },
+        { lowAnalysis:"Daily actions mismatch desired identity, causing dissonance.", dailyPractice:["Act 'as if' for 15min","Identity statement daily","Tiny habit stacking","Weekly identity audit"], session:"Session 6", highStrategy:"Full identity integration & lifestyle architecture." }
+    ];
+    // state
+    let answers = new Array(12).fill(null);
+    let currentQ = 0;
+    let currentScreen = "intro"; // intro, quiz, contact, results
+    let userContact = null;
+
+    // DOM elements
+    const introDiv = document.getElementById('introScreen');
+    const quizDiv = document.getElementById('quizScreen');
+    const contactDiv = document.getElementById('contactScreen');
+    const resultsDiv = document.getElementById('resultsScreen');
+    const beginBtn = document.getElementById('beginQuizBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const ratingGroup = document.getElementById('ratingGroup');
+    const questionTextSpan = document.getElementById('questionText');
+    const quizCategorySpan = document.getElementById('quizCategory');
+    const quizDimensionSpan = document.getElementById('quizDimension');
+    const progressFill = document.getElementById('quizProgressFill');
+    const questionCounterSpan = document.getElementById('questionCounter');
+
+    function renderQuestion() {
+        const q = QUESTIONS[currentQ];
+        quizCategorySpan.innerText = q.category;
+        quizDimensionSpan.innerText = q.dimension;
+        questionTextSpan.innerText = q.text;
+        // build rating
+        const labels = ["Not at all","Slightly","Somewhat","Mostly","Very much","Completely"];
+        ratingGroup.innerHTML = '';
+        for (let i=0;i<=5;i++) {
+            const val = i;
+            const checkedAttr = (answers[q.id] === val) ? 'checked' : '';
+            ratingGroup.innerHTML += `
+                <div class="rating-option">
+                    <input type="radio" name="rating" id="q_${q.id}_${val}" value="${val}" ${checkedAttr}>
+                    <label for="q_${q.id}_${val}">${labels[val]}<br><span style="font-size:0.8rem;">(${val})</span></label>
+                </div>
+            `;
+        }
+        const radios = document.querySelectorAll('input[name="rating"]');
+        radios.forEach(r => r.addEventListener('change', (e) => {
+            answers[q.id] = parseInt(e.target.value);
+            nextBtn.disabled = false;
+        }));
+        if(answers[q.id] !== null) nextBtn.disabled = false;
+        else nextBtn.disabled = true;
+        updateProgress();
+        document.getElementById('questionCounter').innerHTML = `Question ${currentQ+1} of 12`;
+    }
+    function updateProgress() { progressFill.style.width = `${((currentQ+1)/12)*100}%`; }
+    function goPrev() { if(currentQ>0){ currentQ--; renderQuestion(); } }
+    function goNext() {
+        if(answers[QUESTIONS[currentQ].id] === null) return;
+        if(currentQ+1 < 12){
+            currentQ++;
+            renderQuestion();
+        } else {
+            // finished quiz -> go contact
+            showContactScreen();
+        }
+    }
+    function showIntro() { introDiv.style.display='block'; quizDiv.style.display='none'; contactDiv.style.display='none'; resultsDiv.style.display='none'; currentScreen="intro"; }
+    function showQuiz() { introDiv.style.display='none'; quizDiv.style.display='block'; contactDiv.style.display='none'; resultsDiv.style.display='none'; currentScreen="quiz"; renderQuestion(); }
+    function showContactScreen() { introDiv.style.display='none'; quizDiv.style.display='none'; contactDiv.style.display='block'; resultsDiv.style.display='none'; currentScreen="contact"; }
+    function showResults() { introDiv.style.display='none'; quizDiv.style.display='none'; contactDiv.style.display='none'; resultsDiv.style.display='block'; currentScreen="results"; buildFullResults(); }
+
+    function calculateAverage() { let sum=0; for(let i=0;i<12;i++) if(answers[i]!==null) sum+=answers[i]; return sum/12; }
+    function getTier(score) {
+        if(score<=1.5) return {label:"Foundation Builder", color:"#B85C38", style:"red"};
+        if(score<=2.5) return {label:"Emerging Explorer", color:"#E68A2E", style:"orange"};
+        if(score<=3.5) return {label:"Active Developer", color:"#E5C55C", style:"yellow"};
+        if(score<=4.5) return {label:"Skilled Practitioner", color:"#2E7D64", style:"green"};
+        return {label:"Mastery Candidate", color:"#C9A84C", style:"gold"};
+    }
+    async function sendToZapier(name, phone, country, email) {
+        const scoreNum = calculateAverage();
+        const tier = getTier(scoreNum);
+        let answersText = "";
+        QUESTIONS.forEach((q,idx)=>{ answersText += `${q.category} - ${q.dimension}: ${answers[idx]}/5\n`; });
+        const formData = new FormData();
+        formData.append('name', name); formData.append('phone', phone); formData.append('country', country);
+        formData.append('email', email); formData.append('score', scoreNum.toFixed(1));
+        formData.append('tier', tier.label); formData.append('answers_text', answersText);
+        formData.append('timestamp', new Date().toISOString()); formData.append('quiz_title', "Unlock Your Incredible Self — Emotional Mastery Assessment");
+        try { await fetch("https://hooks.zapier.com/hooks/catch/3779260/unt9eik/", { method:"POST", body:formData, mode:"no-cors" }); } catch(e){ console.warn(e); }
+    }
+
+    function buildFullResults() {
+        const score = calculateAverage();
+        const tier = getTier(score);
+        // Overview HTML dynamic
+        let overviewHtml = `<div style="text-align:center;"><div class="score-circle" id="scoreCanvasContainer"><canvas id="scoreCanvas" width="160" height="160"></canvas><div id="scoreNumber" style="text-align:center; font-weight:bold;"></div></div><div><span class="tier-badge" style="background:${tier.color}; color:#0a0f1a;">${tier.label}</span><p style="margin-top:16px;">Overall Mastery Score: ${score.toFixed(1)}/5</p></div><div style="margin-top:24px;"><h3>What This Means</h3><p>${tier.label==="Foundation Builder"?"You're at the beginning — ready to build foundational emotional skills. Small consistent steps will rewire old patterns.":tier.label==="Emerging Explorer"?"Awareness is growing, some tools work inconsistently. With dedicated practice you can shift gear.":tier.label==="Active Developer"?"Solid foundation! Your nervous system is ready for accelerated breakthroughs.":tier.label==="Skilled Practitioner"?"Exceptional emotional range, fine-tuning will unlock mastery.":"Elite level — embodying the skill set, now expand to teach others."}</p><h3>Your Personalized Roadmap</h3><p>Focus on subconscious alignment & somatic release practices. Integrate daily micro-practices for 21 days.</p></div><hr><h3>Question-by-Question Breakdown</h3>`;
+        for(let i=0;i<12;i++) {
+            let val = answers[i];
+            let colorBar = val>=4?"#4caf50":(val>=2?"#ffb74d":"#e57373");
+            overviewHtml += `<div class="question-breakdown-item"><b>${QUESTIONS[i].dimension}</b> (${val}/5)<div class="break-bar"><div class="break-fill" style="width:${val*20}%; background:${colorBar};"></div></div></div>`;
+        }
+        overviewHtml += `<div style="margin-top:20px;"><i>Every point is data — not judgment. You can upgrade each dimension.</i></div>`;
+        document.getElementById('overviewTab').innerHTML = overviewHtml;
+
+        // Growth areas: top 3 lowest scores
+        let indexed = answers.map((val,idx)=>({idx,val}));
+        let sortedLow = indexed.filter(a=>a.val!==null).sort((a,b)=>a.val-b.val).slice(0,3);
+        let growthHtml = `<h3>Your Top 3 Growth Dimensions</h3>`;
+        sortedLow.forEach(item=>{
+            const meta = DIMENSION_META[item.idx];
+            const q = QUESTIONS[item.idx];
+            growthHtml += `<div style="background:#111a29; border-radius:24px; padding:18px; margin-bottom:20px;"><h4>${q.dimension} (Score: ${item.val}/5)</h4><p>${meta.lowAnalysis}</p><h5>Daily Practice Box 🧰</h5><ul>${meta.dailyPractice.map(p=>`<li>${p}</li>`).join('')}</ul><p><strong>Challenge Session:</strong> ${meta.session}</p></div>`;
+        });
+        document.getElementById('growthTab').innerHTML = growthHtml || "<p>Incredible! You are well balanced.</p>";
+
+        // Strengths: top 2 highest
+        let sortedHigh = indexed.filter(a=>a.val!==null).sort((a,b)=>b.val-a.val).slice(0,2);
+        let strengthsHtml = `<h3>Your Power Zones 💪</h3>`;
+        sortedHigh.forEach(item=>{
+            const meta = DIMENSION_META[item.idx];
+            const q = QUESTIONS[item.idx];
+            strengthsHtml += `<div style="background:#0a1020; border-radius:24px; padding:18px; margin-bottom:20px;"><h4>✨ ${q.dimension} (Score: ${item.val}/5)</h4><p><strong>Celebration:</strong> You already embody this emotional skill. Use it as leverage.</p><p><strong>Advanced Strategy:</strong> ${meta.highStrategy}</p></div>`;
+        });
+        document.getElementById('strengthsTab').innerHTML = strengthsHtml;
+        drawScoreCircle(score);
+    }
+    function drawScoreCircle(score) {
+        const canvas = document.getElementById('scoreCanvas');
+        if(!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const percent = score/5;
+        const angle = percent * 2 * Math.PI;
+        canvas.width = 160; canvas.height = 160;
+        ctx.clearRect(0,0,160,160);
+        ctx.beginPath(); ctx.arc(80,80,70,0,2*Math.PI); ctx.strokeStyle = "#2C3B5C"; ctx.lineWidth=8; ctx.stroke();
+        ctx.beginPath(); ctx.arc(80,80,70, -Math.PI/2, -Math.PI/2+angle); ctx.strokeStyle = "#C9A84C"; ctx.lineWidth=8; ctx.stroke();
+        ctx.fillStyle = "#F0F3FA"; ctx.font = "bold 26px 'Montserrat'"; ctx.fillText(score.toFixed(1), 62, 92);
+    }
+    function resetFullQuiz() { answers.fill(null); currentQ=0; userContact=null; showIntro(); }
+
+    // Event binding
+    beginBtn.onclick = ()=>{ if(answers.every(a=>a!==null)) answers.fill(null); currentQ=0; showQuiz(); };
+    prevBtn.onclick = goPrev;
+    nextBtn.onclick = goNext;
+    document.getElementById('backToQuizFromContact').onclick = ()=>{ showQuiz(); };
+    document.getElementById('retakeQuizBtn').onclick = ()=>{ resetFullQuiz(); };
+    document.getElementById('printPdfBtn').onclick = ()=>{ window.print(); };
+    document.getElementById('bookCallBtn').onclick = ()=>{ window.open("https://wa.me/61432119091?text=Hi%20Joshua,%20I%20just%20completed%20the%20Emotional%20Mastery%20Assessment%20and%20I'm%20interested%20in%20the%20Unlock%20Your%20Incredible%20Self%20challenge.", "_blank"); };
+    const contactForm = document.getElementById('contactForm');
+    contactForm.onsubmit = async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('fullName').value.trim();
+        const phone = document.getElementById('phoneNumber').value.trim();
+        const country = document.getElementById('countrySelect').value;
+        const email = document.getElementById('emailAddress').value.trim();
+        if(!name || !phone || !country || !email || !email.includes('@')) {
+            document.getElementById('contactError').innerText = "All fields required, valid email.";
+            return;
+        }
+        document.getElementById('contactError').innerText = "";
+        await sendToZapier(name, phone, country, email);
+        showResults();
+    };
+    // tabs handler
+    document.querySelectorAll('.tab-btn').forEach(btn=>{
+        btn.addEventListener('click',(e)=>{
+            const tab = e.target.getAttribute('data-tab');
+            document.querySelectorAll('.tab-content').forEach(tc=>tc.classList.remove('active'));
+            document.getElementById(`${tab}Tab`).classList.add('active');
+            document.querySelectorAll('.tab-btn').forEach(tb=>tb.classList.remove('active'));
+            e.target.classList.add('active');
+        });
+    });
+    // preload compatibility: ensure rating group listener attached later.
+    window.onload = ()=>{ showIntro(); };
+</script>
+</body>
+</html>
