@@ -1,4 +1,4 @@
-Here is an HTML document that organizes all the prompts from your collection into a clean, copy-ready interface. It groups the longer, high-use prompts at the top and the original 26 prompts below in a responsive grid, with a "Copy" button for each one.
+Here is the redesigned HTML document. It now shows only the prompt titles with a dropdown arrow (▶) that reveals the full prompt text when clicked. Each expanded section includes a "Copy prompt" button. All 36 prompts are included, organized into the two sections you requested.
 
 ```html
 <!DOCTYPE html>
@@ -6,7 +6,7 @@ Here is an HTML document that organizes all the prompts from your collection int
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>AccessWorld Prompts · 36 Copy-Ready Prompts for Coaches & Creators</title>
+  <title>AccessWorld Prompts · 36 Toggle & Copy Vault</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@ Here is an HTML document that organizes all the prompts from your collection int
     }
 
     .container {
-      max-width: 1600px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
@@ -42,7 +42,6 @@ Here is an HTML document that organizes all the prompts from your collection int
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.6rem;
       font-weight: 600;
-      letter-spacing: -0.5px;
       background: linear-gradient(135deg, #FFFFFF 0%, #D4AF37 80%);
       -webkit-background-clip: text;
       background-clip: text;
@@ -69,81 +68,112 @@ Here is an HTML document that organizes all the prompts from your collection int
       margin-top: 0.75rem;
     }
 
-    /* section titles */
+    /* section headers */
     .section-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2rem;
       font-weight: 600;
       border-left: 4px solid #D4AF37;
       padding-left: 1rem;
-      margin: 2.5rem 0 1.5rem 0;
+      margin: 2.5rem 0 1rem 0;
       color: #fff;
     }
 
-    .section-title:first-of-type {
-      margin-top: 0;
-    }
-
-    /* grid layout */
-    .prompt-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 1.5rem;
-    }
-
-    /* cards */
-    .prompt-card {
-      background: rgba(20, 30, 50, 0.7);
-      backdrop-filter: blur(2px);
-      border-radius: 1.25rem;
-      border: 1px solid rgba(212, 175, 55, 0.25);
-      transition: all 0.2s ease;
-      overflow: hidden;
+    /* accordion wrapper */
+    .accordion-list {
       display: flex;
       flex-direction: column;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
     }
 
-    .prompt-card:hover {
+    /* each prompt item */
+    .prompt-item {
+      background: rgba(20, 30, 50, 0.6);
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 1rem;
+      transition: all 0.2s;
+      overflow: hidden;
+    }
+
+    .prompt-item:hover {
       border-color: rgba(212, 175, 55, 0.6);
-      transform: translateY(-3px);
-      box-shadow: 0 16px 28px rgba(0,0,0,0.3);
     }
 
-    .card-header {
-      background: rgba(0, 0, 0, 0.35);
+    /* heading row (clickable) */
+    .prompt-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 1rem 1.2rem;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      cursor: pointer;
+      user-select: none;
+      background: rgba(0, 0, 0, 0.2);
+      gap: 1rem;
     }
 
-    .card-header h3 {
+    .title-area {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex: 1;
+    }
+
+    .arrow {
+      font-size: 1.2rem;
+      transition: transform 0.2s ease;
+      color: #D4AF37;
+      font-weight: 600;
+      width: 24px;
+      text-align: center;
+    }
+
+    .prompt-title {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
-      font-size: 1.35rem;
-      color: #D4AF37;
+      font-size: 1.2rem;
       letter-spacing: -0.2px;
-      margin: 0;
+      color: #F5E7C8;
     }
 
-    .card-body {
+    /* expanded content */
+    .prompt-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease-out;
+      background: #0a0f1c;
+      border-top: 1px solid transparent;
+    }
+
+    .prompt-item.open .prompt-content {
+      max-height: 800px;   /* enough for long prompts */
+      transition: max-height 0.45s ease-in-out;
+      border-top-color: rgba(212, 175, 55, 0.3);
+    }
+
+    .prompt-item.open .arrow {
+      transform: rotate(90deg);
+    }
+
+    .prompt-text-box {
       padding: 1.2rem;
-      flex: 1;
     }
 
     .prompt-text {
       background: #0e1424;
-      padding: 0.9rem;
+      padding: 1rem;
       border-radius: 12px;
       font-size: 0.8rem;
-      line-height: 1.5;
+      line-height: 1.55;
       font-family: 'Montserrat', monospace;
       white-space: pre-wrap;
       word-break: break-word;
-      max-height: 320px;
-      overflow-y: auto;
       border: 1px solid #2a3448;
       color: #e2e8f0;
       margin-bottom: 1rem;
+      max-height: 400px;
+      overflow-y: auto;
     }
 
     .copy-btn {
@@ -159,8 +189,6 @@ Here is an HTML document that organizes all the prompts from your collection int
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      justify-content: center;
-      width: 100%;
       font-family: 'Montserrat', sans-serif;
     }
 
@@ -183,12 +211,11 @@ Here is an HTML document that organizes all the prompts from your collection int
       color: #fff;
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
       z-index: 1000;
-      transition: 0.2s;
       backdrop-filter: blur(8px);
     }
 
     footer {
-      margin-top: 4rem;
+      margin-top: 3rem;
       text-align: center;
       font-size: 0.75rem;
       color: #8f9bb3;
@@ -196,19 +223,19 @@ Here is an HTML document that organizes all the prompts from your collection int
       padding-top: 2rem;
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 640px) {
       body {
         padding: 1rem;
       }
-      .prompt-grid {
-        grid-template-columns: 1fr;
+      .prompt-title {
+        font-size: 1rem;
       }
       .hero h1 {
-        font-size: 1.9rem;
+        font-size: 1.8rem;
       }
     }
 
-    /* scrollbar */
+    /* custom scroll */
     .prompt-text::-webkit-scrollbar {
       width: 5px;
     }
@@ -225,33 +252,30 @@ Here is an HTML document that organizes all the prompts from your collection int
 <body>
 <div class="container">
   <div class="hero">
-    <h1>⚡ The Prompt Vault</h1>
-    <p>36 copy-ready prompts for coaching, content creation, quizzes, sales pages & deep work.<br>One click — paste into ChatGPT, Claude, or your favorite AI.</p>
-    <div class="badge">🔥 26 core prompts + 10 advanced power prompts</div>
+    <h1>📋 Prompt Vault · Toggle & Copy</h1>
+    <p>All 36 prompts — click the arrow to reveal, copy with one button. No clutter, just headings until you need them.</p>
+    <div class="badge">⚡ 10 advanced + 26 signature prompts | dark mode | ready to paste</div>
   </div>
 
-  <!-- LONGER POWER PROMPTS (10 advanced) -->
+  <!-- ADVANCED PROMPTS SECTION -->
   <div class="section-title">📘 Advanced master prompts · webinars · quizzes · editing · email · slides</div>
-  <div class="prompt-grid" id="longPromptsGrid"></div>
+  <div id="advancedAccordion" class="accordion-list"></div>
 
-  <!-- THE ORIGINAL 26 "COPY · FILL IN · POST" PROMPTS -->
+  <!-- CORE 26 PROMPTS SECTION -->
   <div class="section-title">📋 Core 26 prompts · fill in brackets & publish</div>
-  <div class="prompt-grid" id="corePromptsGrid"></div>
+  <div id="coreAccordion" class="accordion-list"></div>
 
   <footer>
-    <p>© AccessWorld Seminars | Joshua Roy — copy any prompt, paste into AI, fill brackets, get results. Keep your voice, save hours.</p>
+    <p>© AccessWorld Seminars | Joshua Roy — click any heading arrow → copy prompt → paste into ChatGPT / Claude. Keep your voice, save hours.</p>
   </footer>
 </div>
 
 <script>
   // --------------------------------------------------------------
-  // 1. LONG / ADVANCED PROMPTS (10 items – from latest conversation)
-  //    Preserved exactly as written.
+  // 1. ADVANCED PROMPTS (10 items, full original text)
   // --------------------------------------------------------------
   const advancedPrompts = [
-    {
-      title: "📖 PROMPT 1 · BOOK CONTENT CREATOR (Krisp → Chapter)",
-      content: `ROLE: You are my senior editor and co-author. You specialise in turning live coaching and seminar transcripts into clear, grounded, transformational book chapters.
+    { title: "📖 PROMPT 1 · BOOK CONTENT CREATOR (Krisp → Chapter)", content: `ROLE: You are my senior editor and co-author. You specialise in turning live coaching and seminar transcripts into clear, grounded, transformational book chapters.
 
 CONTEXT: The following text is a raw Krisp transcript from a live coaching session or seminar. It is spoken, informal, and may contain repetition, filler words, and side tangents.
 
@@ -272,11 +296,8 @@ OUTPUT FORMAT:
 • Practical insights and explanations
 • Optional reflection or integration questions at the end
 
-IMPORTANT: Do not add ideas that were not present in the transcript. Clarify and elevate what is already there.`
-    },
-    {
-      title: "🎓 PROMPT 2 · WEBINAR REVIEW + HIGHLIGHTS (Quotes & Gems)",
-      content: `ROLE: You are my teaching assistant and content curator. Your role is to extract clarity, insight, and gold from live webinar and lesson transcripts.
+IMPORTANT: Do not add ideas that were not present in the transcript. Clarify and elevate what is already there.` },
+    { title: "🎓 PROMPT 2 · WEBINAR REVIEW + HIGHLIGHTS (Quotes & Gems)", content: `ROLE: You are my teaching assistant and content curator. Your role is to extract clarity, insight, and gold from live webinar and lesson transcripts.
 
 CONTEXT: The following text is a raw Krisp transcript from a live webinar or teaching session.
 
@@ -297,11 +318,8 @@ OUTPUT FORMAT:
 4. Mindset Shifts / Reframes
 5. Suggested Application (how students can apply this)
 
-IMPORTANT: Do not embellish or invent content. Stay faithful to the transcript.`
-    },
-    {
-      title: "🗣️ PROMPT 3 · CLIENT TESTIMONIAL EXTRACTOR (3‑Part)",
-      content: `ROLE: You are my testimonial editor. You specialise in extracting authentic, ethical, transformation-based testimonials from live coaching transcripts.
+IMPORTANT: Do not embellish or invent content. Stay faithful to the transcript.` },
+    { title: "🗣️ PROMPT 3 · CLIENT TESTIMONIAL EXTRACTOR (3‑Part)", content: `ROLE: You are my testimonial editor. You specialise in extracting authentic, ethical, transformation-based testimonials from live coaching transcripts.
 
 CONTEXT: The following text is a raw Krisp transcript from a coaching session where the client is sharing reflections, learnings, or changes.
 
@@ -326,11 +344,8 @@ What I Learned / Applied: (Key insight, principle, or process used)
 Results: (Internal and/or external changes experienced)
 Optional Short Pull Quote: (1–2 sentences suitable for marketing)
 
-IMPORTANT: Stay strictly within what the client actually shared.`
-    },
-    {
-      title: "📖 PROMPT 4 · STORY EXTRACTION (WORDPRINT PRESERVING)",
-      content: `You are helping me extract personal stories from my manuscript. Important rules:
+IMPORTANT: Stay strictly within what the client actually shared.` },
+    { title: "📖 PROMPT 4 · STORY EXTRACTION (WORDPRINT PRESERVING)", content: `You are helping me extract personal stories from my manuscript. Important rules:
 • Maintain my exact writing voice and wordprint (tone, rhythm, sentence length, casual phrasing).
 • Do not rewrite in a generic self-help style.
 • Keep each story similar in length to how it appears in the manuscript.
@@ -349,11 +364,8 @@ The Point: (What this story shows or reveals)
 Lesson Learned: (The insight, distinction, or mindset shift the reader should take)
 Optional Use: (Where this story could fit: book chapter, workbook exercise, seminar teaching moment, testimonial bridge)
 
-If unsure whether something is a story, include it anyway and label it "Potential Story."`
-    },
-    {
-      title: "✉️ EMAIL CREATION · Warm & High‑Converting (Invitation + 4 offers)",
-      content: `You are an expert email copywriter who specializes in warm, persuasive, and high-converting emails for coaching and personal development businesses.
+If unsure whether something is a story, include it anyway and label it "Potential Story."` },
+    { title: "✉️ EMAIL CREATION · Warm & High‑Converting (Invitation + 4 offers)", content: `You are an expert email copywriter who specializes in warm, persuasive, and high-converting emails for coaching and personal development businesses.
 
 Write ONE powerful, professional email based on the following instructions:
 - email name: "empowerment community" 
@@ -379,11 +391,8 @@ Subject Line: [Strong curiosity-driven line]
 ---
 [Full email body 250-400 words]
 ---
-Invitation section with the 4 options listed clearly.`
-    },
-    {
-      title: "🧠 FULL‑STACK QUIZ GENERATOR (Likert · Webhook · Print · 3 Tabs)",
-      content: `You are an expert full-stack frontend developer specialising in creating beautiful, performant, self-contained interactive quizzes in a single HTML file. Your code must be clean, production-ready, no external dependencies.
+Invitation section with the 4 options listed clearly.` },
+    { title: "🧠 FULL‑STACK QUIZ GENERATOR (Likert · Webhook · Print · 3 Tabs)", content: `You are an expert full-stack frontend developer specialising in creating beautiful, performant, self-contained interactive quizzes in a single HTML file. Your code must be clean, production-ready, no external dependencies.
 
 DESIGN REQUIREMENTS:
 - Background: linear-gradient(135deg, #080d18 0%, #1A2744 100%)
@@ -401,11 +410,8 @@ QUIZ STRUCTURE:
 6. Webhook: POST to Activepieces URL: https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1
 7. Print CSS hides buttons, shows all sections.
 
-Fully implement JavaScript scoring, tiers (0-1.5 Foundation Needed ... 4.1-5 Mastery), and proper form submission.`
-    },
-    {
-      title: "⚡ MASTER PROMPT: Content‑to‑Quiz Lead Generator (Zapier)",
-      content: `MASTER PROMPT: Content-to-Quiz Lead Generator
+Fully implement JavaScript scoring, tiers (0-1.5 Foundation Needed ... 4.1-5 Mastery), and proper form submission.` },
+    { title: "⚡ MASTER PROMPT: Content‑to‑Quiz Lead Generator (Zapier)", content: `MASTER PROMPT: Content-to-Quiz Lead Generator
 You are an expert full-stack frontend developer and conversion copywriter.
 
 INPUT CONTENT: [PASTE YOUR TRANSCRIPT, COURSE OUTLINE, OR CONTENT HERE]
@@ -427,11 +433,8 @@ QUIZ STRUCTURE (MUST INCLUDE):
 SCORING: average 0-5, 5 tiers (Foundation Builder → Mastery Candidate)
 WEBHOOK: send name, phone, country, email, score, tier, answers_text, timestamp.
 
-Generate ONE complete HTML file – no build steps, copy-paste deploy.`
-    },
-    {
-      title: "🎙️ RUSSELL BRUNSON · High‑Converting Meetup Offer Prompt",
-      content: `You are now Russell Brunson, legendary marketing genius behind ClickFunnels. Write an EPIC meetup/workshop offer for my upcoming live event. Make it so exciting people move mountains to attend.
+Generate ONE complete HTML file – no build steps, copy-paste deploy.` },
+    { title: "🎙️ RUSSELL BRUNSON · High‑Converting Meetup Offer Prompt", content: `You are now Russell Brunson, legendary marketing genius behind ClickFunnels. Write an EPIC meetup/workshop offer for my upcoming live event. Make it so exciting people move mountains to attend.
 
 My Backstory: [Insert officer & coach story – law enforcement 24+ years, NSR creator, 3500+ sessions]
 Event Details: [Date/Time, Location, Topic: Life coaching + NSR + goal clarity] Regular price: $XXX, Offer price: FREE (must register).
@@ -441,11 +444,8 @@ Your Expertise: Police officer, Results Coach, NSR creator, NLP master practitio
 
 Goal: Fill seats. Use storytelling, value stacking, scarcity, social proof. Write in signature style: hook, story they see themselves in, dream outcome, smash objections, stack ridiculous value, bulletproof logic, CTA obvious. Long-form, conversational, bold text and CAPS for emphasis.
 
-BONUS: Also write 5 email swipes promoting event: 1) "I know you", 2) "what if", 3) "value stack", 4) objection crusher, 5) last chance urgency.`
-    },
-    {
-      title: "✍️ PROFESSIONAL EDITOR · Surgical Copy Edit (95% Rule)",
-      content: `You are an expert book editor hired for a single, specific task: a minimal, "surgical" copy edit. Preserve the author's unique voice and narrative at all costs.
+BONUS: Also write 5 email swipes promoting event: 1) "I know you", 2) "what if", 3) "value stack", 4) objection crusher, 5) last chance urgency.` },
+    { title: "✍️ PROFESSIONAL EDITOR · Surgical Copy Edit (95% Rule)", content: `You are an expert book editor hired for a single, specific task: a minimal, "surgical" copy edit. Preserve the author's unique voice and narrative at all costs.
 
 PRIMARY DIRECTIVES:
 1. PRESERVE VOICE: Do not alter sentence rhythm, phrasing, colloquialisms, unique word choices ("wordprint").
@@ -465,11 +465,8 @@ OUTPUT FORMAT:
 A. Edited Text (changes minimally highlighted in bold)
 B. Editor's Log (concise bullet list with objective reason)
 
-Acknowledge: "Acknowledged. I am in 'Surgical Edit' mode."`
-    },
-    {
-      title: "🎨 AI Advantage Slides Creator · Carousel (Joshua Roy Brand)",
-      content: `You are now “AI Advantage Slides Creator” for Joshua Roy – Life & Results Coach, AccessWorld.
+Acknowledge: "Acknowledged. I am in 'Surgical Edit' mode."` },
+    { title: "🎨 AI Advantage Slides Creator · Carousel (Joshua Roy Brand)", content: `You are now “AI Advantage Slides Creator” for Joshua Roy – Life & Results Coach, AccessWorld.
 
 MY BRAND COLORS: Primary dark #1A1A1A, Gold #D4AF37, Light background #F8F9FA, White text, Shadow.
 
@@ -483,13 +480,11 @@ CAROUSEL CREATION PROCESS:
 5. Image generation (one slide at a time, using brand colors, overlay copy)
 6. Wait for "Next" after each slide
 7. Editing & download reminders
-Start by asking if I want default settings.`
-    }
+Start by asking if I want default settings.` }
   ];
 
   // --------------------------------------------------------------
-  // 2. THE ORIGINAL 26 PROMPTS (exact from the "copy fill in post" section)
-  //    Extracted from the assistant's answer – each prompt as plain text.
+  // 2. CORE 26 PROMPTS (exact as original)
   // --------------------------------------------------------------
   const core26 = [
     { title: "01 · YOUR IDEAL CLIENT", content: `You're a research expert who has worked with coaches and personal development businesses.\n\nMy coaching niche is [describe what you help people with — mindset, confidence, burnout, empowerment, etc.].\nMy ideal client is [describe them: who they are, what they're going through, what they want, and how long they've been stuck].\n\nGive me:\n— The 8 biggest problems they face\n— The exact words they use to describe those problems (not polished marketing language — the raw, real stuff)\n— What they've already tried that hasn't worked\n— What it honestly feels like to be stuck in this situation` },
@@ -520,47 +515,79 @@ Start by asking if I want default settings.`
     { title: "26 · PURPOSE CHECK", content: `Help me reconnect with why I started coaching in the first place.\n\nMy story: [what have you been through, and what made you decide to start coaching?]\nThe person I most want to help: [describe them in as much detail as you can — who they are, what they're going through, what they need most]\n\nWrite me a purpose statement — one paragraph — that I can read every morning before I open my phone. Something that reminds me who I'm showing up for and why it matters. Not motivational fluff. Something real that actually hits.` }
   ];
 
-  function renderPrompts(containerId, promptsArray) {
+  // helper to build accordion
+  function buildAccordion(containerId, itemsArray) {
     const container = document.getElementById(containerId);
     if (!container) return;
     container.innerHTML = '';
-    promptsArray.forEach(p => {
-      const card = document.createElement('div');
-      card.className = 'prompt-card';
-      card.innerHTML = `
-        <div class="card-header"><h3>${escapeHtml(p.title)}</h3></div>
-        <div class="card-body">
-          <div class="prompt-text">${escapeHtml(p.content)}</div>
-          <button class="copy-btn" data-prompt="${escapeHtml(p.content).replace(/"/g, '&quot;')}">📋 Copy prompt</button>
-        </div>
-      `;
-      container.appendChild(card);
-    });
-    // attach copy events after render
-    document.querySelectorAll('.copy-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const raw = btn.getAttribute('data-prompt');
-        if (raw) {
-          copyToClipboard(raw);
+    itemsArray.forEach((item, idx) => {
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'prompt-item';
+      // header
+      const header = document.createElement('div');
+      header.className = 'prompt-header';
+      header.setAttribute('aria-expanded', 'false');
+      header.setAttribute('role', 'button');
+      header.setAttribute('tabindex', '0');
+      const titleArea = document.createElement('div');
+      titleArea.className = 'title-area';
+      const arrowSpan = document.createElement('span');
+      arrowSpan.className = 'arrow';
+      arrowSpan.textContent = '▶';
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'prompt-title';
+      titleSpan.textContent = item.title;
+      titleArea.appendChild(arrowSpan);
+      titleArea.appendChild(titleSpan);
+      header.appendChild(titleArea);
+      // content wrapper
+      const contentDiv = document.createElement('div');
+      contentDiv.className = 'prompt-content';
+      const textBox = document.createElement('div');
+      textBox.className = 'prompt-text-box';
+      const pre = document.createElement('div');
+      pre.className = 'prompt-text';
+      pre.textContent = item.content;
+      const copyBtn = document.createElement('button');
+      copyBtn.className = 'copy-btn';
+      copyBtn.textContent = '📋 Copy prompt';
+      copyBtn.setAttribute('data-prompt', item.content);
+      textBox.appendChild(pre);
+      textBox.appendChild(copyBtn);
+      contentDiv.appendChild(textBox);
+      itemDiv.appendChild(header);
+      itemDiv.appendChild(contentDiv);
+      container.appendChild(itemDiv);
+
+      // toggle event
+      const toggle = () => {
+        const isOpen = itemDiv.classList.contains('open');
+        if (isOpen) {
+          itemDiv.classList.remove('open');
+          header.setAttribute('aria-expanded', 'false');
+        } else {
+          itemDiv.classList.add('open');
+          header.setAttribute('aria-expanded', 'true');
+        }
+      };
+      header.addEventListener('click', toggle);
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle();
         }
       });
-    });
-  }
-
-  function escapeHtml(str) {
-    return str.replace(/[&<>]/g, function(m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
-      return m;
-    }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-      return c;
+      // copy button functionality
+      copyBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        copyToClipboard(item.content);
+      });
     });
   }
 
   function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
-      showToast('✅ Prompt copied to clipboard!');
+      showToast('✅ Prompt copied!');
     }).catch(() => {
       showToast('⚠️ Manual copy needed');
     });
@@ -576,8 +603,9 @@ Start by asking if I want default settings.`
     setTimeout(() => toast.remove(), 2200);
   }
 
-  renderPrompts('longPromptsGrid', advancedPrompts);
-  renderPrompts('corePromptsGrid', core26);
+  // render both sections
+  buildAccordion('advancedAccordion', advancedPrompts);
+  buildAccordion('coreAccordion', core26);
 </script>
 </body>
 </html>
