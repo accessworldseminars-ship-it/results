@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AccessWorld | NLP For Life: The Tools Really Do Work</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg, #080d18 0%, #1A2744 100%); color: #F0F4F8; min-height: 100vh; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .card, .question-card, .contact-card, .result-card { background: rgba(26, 39, 68, 0.75); backdrop-filter: blur(8px); border-radius: 28px; padding: 28px; margin-bottom: 20px; border: 1px solid rgba(201,168,76,0.25); }
+        .logo { width: 110px; margin-bottom: 15px; border-radius: 60px; }
+        .hero-image { width: 100%; max-width: 500px; border-radius: 24px; margin: 20px auto; display: block; border: 2px solid rgba(201,168,76,0.4); }
+        .quiz-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 700; color: #C9A84C; margin-bottom: 15px; line-height: 1.3; }
+        .gold { color: #C9A84C; }
+        .btn-primary, .start-btn { background: linear-gradient(135deg, #C9A84C 0%, #E8D5A3 100%); color: #080d18; border: none; padding: 14px 32px; font-weight: 700; border-radius: 60px; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .btn-outline { background: transparent; border: 2px solid #C9A84C; color: #C9A84C; padding: 12px 28px; border-radius: 60px; font-weight: 600; cursor: pointer; }
+        .scale-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin: 25px 0; justify-content: center; }
+        .scale-btn { flex: 1; min-width: 70px; background: rgba(255,255,255,0.07); border: 2px solid rgba(201,168,76,0.4); border-radius: 20px; padding: 14px 6px; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; gap: 8px; backdrop-filter: blur(4px); }
+        .scale-btn span:first-child { font-size: 1.7rem; font-weight: 800; line-height: 1; }
+        .scale-btn span:last-child { font-size: 0.65rem; opacity: 0.8; font-weight: 500; text-transform: uppercase; }
+        .scale-btn.selected { background: #C9A84C; color: #080d18; border-color: #C9A84C; transform: scale(1.02); box-shadow: 0 6px 14px rgba(201,168,76,0.3); }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; margin: 10px 0; }
+        .progress-fill { height: 100%; background: #C9A84C; width: 0%; transition: width 0.3s; }
+        .tab-nav { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+        .tab-btn { background: rgba(255,255,255,0.05); border: 2px solid rgba(201,168,76,0.3); padding: 10px 20px; border-radius: 40px; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: #C9A84C; color: #080d18; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(#C9A84C 0deg, rgba(255,255,255,0.1) 0deg); margin: 15px auto; display: flex; align-items: center; justify-content: center; position: relative; }
+        .score-circle::before { content: ''; position: absolute; width: 120px; height: 120px; background: #080d18; border-radius: 50%; }
+        .score-text { position: relative; font-size: 2.6rem; font-weight: 800; color: #C9A84C; z-index: 2; }
+        .action-btn { padding: 10px 20px; border-radius: 40px; border: 2px solid #C9A84C; background: transparent; color: #C9A84C; cursor: pointer; margin: 5px; font-weight: 600; }
+        .action-btn.primary { background: #C9A84C; color: #080d18; border: none; }
+        .hidden { display: none; }
+        .status-message { margin-top: 15px; padding: 12px; border-radius: 16px; display: none; text-align: center; }
+        .quote-block { background: rgba(201,168,76,0.12); border-left: 4px solid #C9A84C; padding: 16px; margin: 18px 0; border-radius: 12px; font-style: italic; }
+        .teaching-section { background: rgba(201,168,76,0.08); border-radius: 20px; padding: 20px; margin: 20px 0; }
+        .teaching-section h4 { color: #C9A84C; margin-bottom: 12px; }
+        .webinar-card { background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(26,39,68,0.9)); border-radius: 24px; padding: 20px; margin-top: 25px; text-align: center; border: 2px solid #C9A84C; }
+        .webinar-card a { color: #C9A84C; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+        @media print { body { background: white; color: black; } .action-btn, .tab-nav, .btn-primary, .hero-image { display: none; } .card, .result-card { background: white; color: black; } .tab-content { display: block !important; page-break-after: always; } .tab-nav { display: none; } }
+        footer { font-size: 0.7rem; text-align: center; margin-top: 30px; opacity: 0.7; }
+        input, select { background: rgba(255,255,255,0.1); border: 1px solid #C9A84C; padding: 12px; border-radius: 20px; width: 100%; color: white; margin-top: 5px; font-family: 'Montserrat', sans-serif; }
+        .form-group { margin-bottom: 15px; }
+        #qText { font-size: 1.55rem; font-weight: 600; margin: 18px 0; line-height: 1.4; }
+        .coach-bio { background: rgba(201,168,76,0.08); border-radius: 20px; padding: 18px; margin-top: 20px; text-align: left; border: 1px solid rgba(201,168,76,0.2); }
+    </style>
+</head>
+<body>
+<div class="container" id="app"></div>
+<script>
+    const CHAPTER_TITLE = "The Tools Really Do Work";
+    const CHAPTER_NUM = 3;
+    const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+    const QUESTIONS = [
+        { text: "I understand that NLP tools are mechanisms for transformation, not magic.", category: "Tool Mindset", teaching: "NLP tools aren't magic—they're repeatable patterns that rewire how your brain processes experience." },
+        { text: "I am aware of 'Smart Person Syndrome'—the tendency to dismiss things before experiencing them.", category: "Smart Person Syndrome", teaching: "Bruce Lee said, 'I can teach you, but only if you empty your cup.' Learning requires humility and willingness to experience." },
+        { text: "I recognize 'Hypnotist Disease'—listening for someone else instead of for myself.", category: "Hypnotist Disease", teaching: "Are you here thinking 'my sister should hear this'? Get the change for yourself first, then you can share it." },
+        { text: "I believe that imagination rules my life more than I realize.", category: "Power of Imagination", teaching: "Every invention, achievement, and relationship began as a thought—an imagined possibility." },
+        { text: "I am willing to practice NLP tools on myself before trying to change others.", category: "Self-Application", teaching: "Practice with your children, your friends—the more you use the tools, the more natural they become." },
+        { text: "I understand the State Elicitation Script and have practiced it.", category: "State Elicitation", teaching: "Think of a time you felt enthusiasm. See what you saw, hear what you heard, feel it again. Then double it." },
+        { text: "I know that changing my internal state changes my external results.", category: "State to Results", teaching: "When you change your state, your behavior changes, your results change, and your beliefs reinforce a new reality." },
+        { text: "I am open to experiencing NLP techniques before judging them intellectually.", category: "Openness", teaching: "Some folks get so caught up in being 'rational' they lose touch with belief, imagination, and possibility." },
+        { text: "I understand that consistency in practicing NLP tools creates lasting change.", category: "Consistency", teaching: "Each month, focus on one tool. Learn it, practice it, integrate it. Then move to the next." },
+        { text: "I have experienced an emotional shift using nothing but my imagination and a guided memory.", category: "Experiential Learning", teaching: "You just changed your state using nothing but your imagination. That's the power of NLP in action." }
+    ];
+
+    let answers = Array(QUESTIONS.length).fill(null), currentQ = 0;
+    let intro, progressArea, questionScreen, contactScreen, resultsScreen;
+    
+    function getAverage() { let s=0,c=0; for(let i=0;i<answers.length;i++) if(answers[i]!==null) { s+=answers[i]; c++; } return c===0?0:s/c; }
+    
+    function getTier(score) {
+        if(score<=1.2) return { label:"Tool Explorer", desc:"You're beginning to discover NLP tools. The good news: every master was once a beginner. Start with the State Elicitation Script today." };
+        if(score<=2.3) return { label:"Emerging Practitioner", desc:"You understand the concepts but haven't fully experienced them. Empty your cup and try one tool this week." };
+        if(score<=3.4) return { label:"Active Learner", desc:"You're practicing NLP tools. Consistency is key—drill the skill until it becomes automatic." };
+        if(score<=4.2) return { label:"Skilled Practitioner", desc:"Strong tool usage. Now focus on mastering one technique at a time for deeper integration." };
+        return { label:"NLP Master", desc:"Exceptional! You embody the principle that tools work when applied. Now mentor others." };
+    }
+
+    function renderApp() {
+        document.getElementById('app').innerHTML = `
+            <div id="introScreen" class="card" style="text-align:center;">
+                <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" class="logo"><h1 class="quiz-title">NLP For Life: ${CHAPTER_TITLE}</h1>
+                <img src="https://i.ibb.co/7NYVM9Zc/Pictureaz1.png" class="hero-image" onerror="this.src='https://placehold.co/500x300'">
+                <p>Discover why NLP tools create real transformation—and how to overcome the internal blocks that stop most people from changing.</p>
+                <div class="coach-bio"><h3 class="gold">🎯 Joshua Roy | NLP Coach & Seminar Leader</h3><p>Creator of NSR (Nervous System Reprogramming). 3,500+ coaching sessions. <em>"Feeling good for no good reason."</em> 📞 +61 432 119 091</p></div>
+                <button class="start-btn" id="startQuizBtn">Begin Assessment →</button><footer>AccessWorld Seminars · NLP For Life</footer>
+            </div>
+            <div id="progressArea" class="hidden"><div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div><div id="progressText" style="text-align:center; font-size:0.85rem;"></div></div>
+            <div id="questionScreen" class="hidden"><div class="question-card"><div id="qCat" class="gold"></div><div id="qText"></div><div class="scale-buttons" id="scaleBtns"></div><div style="display:flex; justify-content:space-between;"><button id="prevQBtn" class="btn-outline">← Previous</button><button id="nextQBtn" class="btn-primary">Next →</button></div></div></div>
+            <div id="contactScreen" class="hidden"><div class="contact-card"><h2 class="gold">Your NLP Tools Assessment Report</h2><p>Get a personalized 1000+ word analysis with teaching insights from Joshua Roy's NLP training.</p><div class="form-group"><input type="text" id="leadName" placeholder="Full Name"></div><div class="form-group"><input type="tel" id="leadPhone" placeholder="Phone"></div><div class="form-group"><input type="email" id="leadEmail" placeholder="Email"></div><div class="form-group"><select id="leadCountry"><option value="">Select Country</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option></select></div><button id="submitLeadBtn" class="btn-primary">Generate Comprehensive Report →</button><div id="webhookStatus" class="status-message"></div></div></div>
+            <div id="resultsScreen" class="hidden"><div class="card"><div style="display:flex; justify-content:space-between;"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:40px;"><span>NLP Tools Report</span></div><div style="text-align:center;"><div class="score-circle" id="scoreRing"><div class="score-text" id="finalScoreVal">0.0</div></div><div id="tierBadge" style="background:#C9A84C; display:inline-block; padding:6px 24px; border-radius:60px; color:#080d18; font-weight:800;"></div><p id="tierDesc"></p></div><div class="tab-nav"><button class="tab-btn active" data-tab="0">📄 Score & Overview</button><button class="tab-btn" data-tab="1">📄 Growth Areas</button><button class="tab-btn" data-tab="2">📄 Deep Teaching & Action Plan</button></div><div class="tab-content active" id="tab0"></div><div class="tab-content" id="tab1"></div><div class="tab-content" id="tab2"></div><div style="display:flex; gap:15px; justify-content:center;"><button id="printPdfBtn" class="action-btn primary">📄 Save PDF</button><button id="retakeAllBtn" class="action-btn">🔄 Retake Quiz</button></div></div></div>`;
+        
+        intro = document.getElementById('introScreen'); progressArea = document.getElementById('progressArea'); questionScreen = document.getElementById('questionScreen'); contactScreen = document.getElementById('contactScreen'); resultsScreen = document.getElementById('resultsScreen');
+        document.getElementById('startQuizBtn')?.addEventListener('click', startQuiz);
+        document.getElementById('nextQBtn')?.addEventListener('click', nextQuestion);
+        document.getElementById('prevQBtn')?.addEventListener('click', prevQuestion);
+        document.getElementById('submitLeadBtn')?.addEventListener('click', submitContact);
+        document.getElementById('printPdfBtn')?.addEventListener('click', ()=>window.print());
+        document.getElementById('retakeAllBtn')?.addEventListener('click', retakeFull);
+        document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',()=>{ let tab=btn.dataset.tab; document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.tab-content').forEach((tc,i)=>tc.classList.toggle('active', i==tab)); }));
+    }
+    
+    function renderQuestion() {
+        let q = QUESTIONS[currentQ];
+        document.getElementById('qCat').innerHTML = `⚡ ${q.category} · Question ${currentQ+1} of ${QUESTIONS.length}`;
+        document.getElementById('qText').innerHTML = q.text;
+        let container = document.getElementById('scaleBtns'); container.innerHTML = '';
+        let labels = ['Not at all','Slightly','Somewhat','Mostly','Very much','Completely'];
+        for(let i=0;i<=5;i++) { let btn = document.createElement('div'); btn.className = `scale-btn ${answers[currentQ]===i ? 'selected' : ''}`; btn.innerHTML = `<span>${i}</span><span>${labels[i]}</span>`; btn.onclick = ()=>{ answers[currentQ]=i; renderQuestion(); }; container.appendChild(btn); }
+        document.getElementById('progressFill').style.width = `${((currentQ+1)/QUESTIONS.length)*100}%`;
+        document.getElementById('progressText').innerHTML = `Question ${currentQ+1} of ${QUESTIONS.length}`;
+        document.getElementById('prevQBtn').disabled = (currentQ===0);
+        let hasAns = answers[currentQ]!==null;
+        let nextBtn = document.getElementById('nextQBtn');
+        nextBtn.style.opacity = hasAns ? "1" : "0.6";
+        nextBtn.style.cursor = hasAns ? "pointer" : "not-allowed";
+    }
+    
+    function nextQuestion() { if(answers[currentQ]===null) { alert("Please select an answer."); return; } if(currentQ < QUESTIONS.length-1) { currentQ++; renderQuestion(); } else { showContact(); } }
+    function prevQuestion() { if(currentQ>0) { currentQ--; renderQuestion(); } }
+    function startQuiz() { answers.fill(null); currentQ=0; intro.classList.add('hidden'); progressArea.classList.remove('hidden'); questionScreen.classList.remove('hidden'); contactScreen.classList.add('hidden'); resultsScreen.classList.add('hidden'); renderQuestion(); }
+    function showContact() { questionScreen.classList.add('hidden'); progressArea.classList.add('hidden'); contactScreen.classList.remove('hidden'); }
+    
+    async function sendToTelegram(name,phone,country,email,score,tier) {
+        let payload={name,phone,country,email,score:score.toFixed(1),tier:tier.label,quiz:`NLP Ch${CHAPTER_NUM}: ${CHAPTER_TITLE}`,timestamp:new Date().toISOString()};
+        let status=document.getElementById('webhookStatus'); status.style.display='block'; status.innerHTML='⏳ Generating your comprehensive report...';
+        try{ await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}); status.innerHTML='✓ Report ready!'; } catch(e){ status.innerHTML='⚠️ Showing results below.'; }
+        setTimeout(()=>showResults(),500);
+    }
+    
+    function generateDeepTeaching(score, tier, lowIndices, highIndices) {
+        return `
+            <div class="teaching-section">
+                <h4>🧠 The Science of Why NLP Tools Work</h4>
+                <p>NLP stands for Neuro-Linguistic Programming—and each word matters. <strong>Neuro</strong> refers to your nervous system and brain. <strong>Linguistic</strong> refers to the language patterns that shape your thoughts. <strong>Programming</strong> refers to the fact that your mind runs on patterns that can be changed, upgraded, and optimized—just like software.</p>
+                <p>When Richard Bandler and John Grinder studied master therapists Virginia Satir, Fritz Perls, and Milton Erickson, they discovered something revolutionary: these therapists weren't just "naturally gifted." They were following repeatable patterns. Patterns that could be taught, learned, and applied by anyone willing to practice.</p>
+                <p>That's the promise of NLP: <strong>excellence can be modeled and replicated.</strong> You don't have to be born confident, charismatic, or calm. You can learn the internal strategies that confident people use—and install them in your own nervous system.</p>
+            </div>
+            
+            <div class="teaching-section">
+                <h4>🔑 The Two Biggest Blocks to Transformation</h4>
+                <p><strong>Block #1: Smart Person Syndrome</strong><br>This is when your intellect becomes a prison. You've read all the books, done all the degrees, and you're "too smart" to be taught. Bruce Lee said, "I can teach you, but only if you empty your cup." A full cup cannot receive. The most intelligent people are often the hardest to help—not because they lack capacity, but because they lack humility. They want to understand before they experience. But NLP is experiential. You cannot think your way into a new way of feeling. You must feel your way into a new way of thinking.</p>
+                <p><strong>Block #2: Hypnotist Disease</strong><br>This is when you're in the room—but your mind is on someone else. "My partner should hear this." "I wish my son were here." You're listening, but you're not listening for yourself. The cure? Get the change for yourself first. Transform your own nervous system. Then, and only then, can you genuinely help others. You cannot give what you don't have.</p>
+            </div>
+            
+            <div class="teaching-section">
+                <h4>⚙️ The State Elicitation Script (Your First Tool)</h4>
+                <p>This is one of the most powerful NLP techniques—and it takes less than 2 minutes. Here's exactly how to do it:</p>
+                <ol style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Recall:</strong> Think of a specific time when you felt a powerful positive emotion (confidence, excitement, peace).</li>
+                    <li><strong>Re-enter:</strong> Close your eyes. Go back to that moment. See what you saw. Hear what you heard. Feel what you felt in your body.</li>
+                    <li><strong>Amplify:</strong> Now double that feeling. Make the colors brighter, the sounds clearer, the sensation stronger. Double it again. And again.</li>
+                    <li><strong>Anchor:</strong> As the emotion peaks, squeeze your thumb and middle finger together. Say "YES!" out loud.</li>
+                    <li><strong>Repeat:</strong> Practice this daily for 7 days. By day 7, your anchor will trigger the state instantly.</li>
+                </ol>
+                <p>Why does this work? <strong>Neurons that fire together, wire together.</strong> Every time you rehearse this sequence, you strengthen the neural pathway between your anchor and the desired emotional state. Eventually, the anchor becomes a trigger—your personal "on switch" for confidence, calm, or joy.</p>
+            </div>
+            
+            <div class="teaching-section">
+                <h4>🔄 The State Loop: How Change Ripples Through Your Life</h4>
+                <p>Every emotional state is part of a loop: <strong>Thought → Emotion → Physiology → Behavior → Result → Belief Reinforced</strong></p>
+                <p>When you change any part of the loop, the whole system begins to shift. Most people try to change their thoughts directly—but thoughts are the hardest part to control. The secret is to start with <strong>physiology</strong>. Change your posture, your breath, your movement. When you move differently, you feel differently. When you feel differently, you think differently. When you think differently, you act differently. And when you act differently, your results change—which reinforces a new, empowering belief.</p>
+                <p>This is why the Excitement Activation Drill works. You're not waiting to feel motivated. You're creating motivation through movement.</p>
+            </div>
+            
+            <div class="teaching-section">
+                <h4>📊 Your Personalized Insights</h4>
+                <p><strong>Your Score:</strong> ${score.toFixed(1)}/5 — ${tier.label}</p>
+                <p>${tier.desc}</p>
+                ${lowIndices.length > 0 ? `<p><strong>Key growth areas identified:</strong> ${lowIndices.slice(0,3).map(i=>QUESTIONS[i].category).join(', ')}. Focus on practicing the State Elicitation Script daily for these specific patterns.</p>` : '<p>You're already demonstrating strong understanding of NLP tools. Your next level is mastering advanced techniques like anchoring and reframing.</p>'}
+            </div>
+            
+            <div class="teaching-section">
+                <h4>📅 Your 7-Day NLP Integration Plan</h4>
+                <ol style="margin-left: 20px;">
+                    <li><strong>Day 1:</strong> Practice the State Elicitation Script (2 minutes). Rate your state before and after.</li>
+                    <li><strong>Day 2:</strong> Identify one "Smart Person Syndrome" thought. Replace it with "I'm willing to experience this first."</li>
+                    <li><strong>Day 3:</strong> Practice the Excitement Activation Drill with full body movement. Say "YES!" out loud.</li>
+                    <li><strong>Day 4:</strong> Create an anchor for calm. Recall a peaceful memory, amplify it, anchor to your breath.</li>
+                    <li><strong>Day 5:</strong> Use your anchor before a challenging situation. Notice what changes.</li>
+                    <li><strong>Day 6:</strong> Practice on someone else—guide a friend through the State Elicitation Script.</li>
+                    <li><strong>Day 7:</strong> Journal: What shifted? What emotion can you now generate at will?</li>
+                </ol>
+            </div>
+            
+            <div class="webinar-card">
+                <p><strong>📚 The tools work—but only if you use them.</strong> Join Joshua Roy's live NLP training to deepen your practice, get real-time coaching, and accelerate your transformation.</p>
+                <a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank">🎓 Click here for upcoming NLP Certification & Coaching Sessions →</a>
+            </div>
+            
+            <footer style="margin-top: 20px;">“If you fail to prepare, you prepare to fail. Constant mental rehearsal is what sets aside those who succeed.” — Joshua Roy</footer>
+        `;
+    }
+    
+    function showResults() {
+        let score = getAverage(), tier = getTier(score), percent = (score/5)*100;
+        document.getElementById('scoreRing').style.background = `conic-gradient(#C9A84C 0deg ${percent*3.6}deg, rgba(255,255,255,0.1) ${percent*3.6}deg 360deg)`;
+        document.getElementById('finalScoreVal').innerHTML = score.toFixed(1);
+        document.getElementById('tierBadge').innerHTML = tier.label;
+        document.getElementById('tierDesc').innerHTML = tier.desc;
+        
+        let lowIndices = []; answers.forEach((a,i)=>{ if(a!==null && a<=2) lowIndices.push(i); });
+        let highIndices = []; answers.forEach((a,i)=>{ if(a!==null && a>=4) highIndices.push(i); });
+        
+        document.getElementById('tab0').innerHTML = `
+            <div>
+                <h3 class="gold">🧠 Your NLP Tools Assessment</h3>
+                <p>Your score of <strong>${score.toFixed(1)}/5</strong> places you in the <strong>${tier.label}</strong> category.</p>
+                <div class="quote-block">“What we're ultimately doing with NLP is changing people's maps—shifting the way they interpret the past, the present, and what's possible.” — Joshua Roy</div>
+                <p>This assessment measured your openness to NLP tools, your awareness of internal blocks (Smart Person Syndrome, Hypnotist Disease), and your willingness to practice experiential techniques.</p>
+                <div class="teaching-section"><h4>Quick Insight</h4><p>People who get the fastest results with NLP share one quality: they're willing to try before they fully understand. They empty their cup. They experience first, analyze second.</p></div>
+            </div>`;
+        
+        let page2 = `<div><h3 class="gold">🔻 Your Growth Opportunities</h3>`;
+        if(lowIndices.length === 0) page2 += `<p>✨ Excellent awareness of NLP principles! Your next step is mastering advanced techniques like anchoring, reframing, and the Swish Pattern.</p>`;
+        else {
+            lowIndices.slice(0,4).forEach(idx => {
+                let q = QUESTIONS[idx];
+                page2 += `<div style="margin-bottom:20px;"><h4>${q.category}</h4><p>${q.teaching}</p><div style="background:#1e2a3a; border-radius:16px; padding:12px;"><strong>✨ This Week's Practice:</strong><br/>${q.category==="Smart Person Syndrome"?"Identify one area where you've been 'too smart' to try. Commit to experiencing it once before judging.":q.category==="State Elicitation"?"Set a timer for 2 minutes daily. Practice the full script—recall, re-enter, amplify, anchor.":"Pick one NLP tool and use it 5 times this week. Track what changes."}</div></div>`;
+            });
+        }
+        page2 += `<div class="quote-block"><h4>💡 The Bruce Lee Principle</h4><p>“Empty your cup. Learning requires humility. The cup that is full cannot receive.”</p></div></div>`;
+        document.getElementById('tab1').innerHTML = page2;
+        
+        const deepTeaching = generateDeepTeaching(score, tier, lowIndices, highIndices);
+        document.getElementById('tab2').innerHTML = deepTeaching;
+        
+        contactScreen.classList.add('hidden');
+        resultsScreen.classList.remove('hidden');
+    }
+    
+    async function submitContact() {
+        let n = document.getElementById('leadName')?.value.trim(), p = document.getElementById('leadPhone')?.value.trim(), e = document.getElementById('leadEmail')?.value.trim(), c = document.getElementById('leadCountry')?.value;
+        if(!n || !p || !e || !c) { alert("All fields required."); return; }
+        let score = getAverage(), tier = getTier(score);
+        await sendToTelegram(n, p, c, e, score, tier);
+    }
+    
+    function retakeFull() { answers.fill(null); currentQ=0; intro.classList.remove('hidden'); progressArea.classList.add('hidden'); questionScreen.classList.add('hidden'); contactScreen.classList.add('hidden'); resultsScreen.classList.add('hidden'); }
+    
+    renderApp();
+</script>
+</body>
+</html>
