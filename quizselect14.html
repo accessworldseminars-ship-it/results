@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AccessWorld | Pathways to Change & Physiology Mastery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+            color: #F0F4F8;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+        .card, .question-card, .contact-card, .result-card { background: rgba(26, 39, 68, 0.75); backdrop-filter: blur(8px); border-radius: 28px; padding: 28px; margin-bottom: 20px; border: 1px solid rgba(201,168,76,0.25); }
+        .logo { width: 110px; margin-bottom: 15px; border-radius: 60px; }
+        .hero-image { width: 100%; max-width: 500px; border-radius: 24px; margin: 20px auto; display: block; border: 2px solid rgba(201,168,76,0.4); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+        .quiz-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 700; color: #C9A84C; margin-bottom: 15px; line-height: 1.3; }
+        .gold { color: #C9A84C; }
+        .btn-primary, .start-btn { background: linear-gradient(135deg, #C9A84C 0%, #E8D5A3 100%); color: #080d18; border: none; padding: 14px 32px; font-weight: 700; border-radius: 60px; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .btn-outline { background: transparent; border: 2px solid #C9A84C; color: #C9A84C; padding: 12px 28px; border-radius: 60px; font-weight: 600; cursor: pointer; }
+        .scale-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin: 25px 0; justify-content: center; }
+        .scale-btn { flex: 1; min-width: 70px; background: rgba(255,255,255,0.07); border: 2px solid rgba(201,168,76,0.4); border-radius: 20px; padding: 14px 6px; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; backdrop-filter: blur(4px); }
+        .scale-btn span:first-child { font-size: 1.7rem; font-weight: 800; line-height: 1; }
+        .scale-btn span:last-child { font-size: 0.65rem; opacity: 0.8; line-height: 1.2; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; }
+        .scale-btn.selected { background: #C9A84C; color: #080d18; border-color: #C9A84C; transform: scale(1.02); box-shadow: 0 6px 14px rgba(201,168,76,0.3); }
+        .scale-btn:hover { background: rgba(201,168,76,0.2); border-color: #C9A84C; transform: translateY(-2px); }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; margin: 10px 0; }
+        .progress-fill { height: 100%; background: #C9A84C; width: 0%; transition: width 0.3s; }
+        .tab-nav { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+        .tab-btn { background: rgba(255,255,255,0.05); border: 2px solid rgba(201,168,76,0.3); padding: 10px 20px; border-radius: 40px; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: #C9A84C; color: #080d18; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(#C9A84C 0deg, rgba(255,255,255,0.1) 0deg); margin: 15px auto; display: flex; align-items: center; justify-content: center; position: relative; }
+        .score-circle::before { content: ''; position: absolute; width: 120px; height: 120px; background: #080d18; border-radius: 50%; }
+        .score-text { position: relative; font-size: 2.6rem; font-weight: 800; color: #C9A84C; z-index: 2; }
+        .category-bar { margin: 14px 0; }
+        .bar-bg { background: #2a3650; border-radius: 8px; height: 10px; overflow: hidden; }
+        .bar-fill { background: #C9A84C; height: 100%; border-radius: 8px; width: 0%; }
+        .action-btn { padding: 10px 20px; border-radius: 40px; border: 2px solid #C9A84C; background: transparent; color: #C9A84C; cursor: pointer; margin: 5px; font-weight: 600; }
+        .action-btn.primary { background: #C9A84C; color: #080d18; border: none; }
+        .hidden { display: none; }
+        .status-message { margin-top: 15px; padding: 12px; border-radius: 16px; display: none; text-align: center; }
+        .quote-block { background: rgba(201,168,76,0.12); border-left: 4px solid #C9A84C; padding: 16px; margin: 18px 0; border-radius: 12px; font-style: italic; }
+        .webinar-card { background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(26,39,68,0.9)); border-radius: 24px; padding: 20px; margin-top: 25px; text-align: center; border: 2px solid #C9A84C; transition: 0.2s; }
+        .webinar-card:hover { transform: scale(1.01); background: rgba(201,168,76,0.25); }
+        .webinar-card a { color: #C9A84C; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+        @media print { body { background: white; color: black; } .action-btn, .tab-nav, .btn-primary, .status-message, .hero-image { display: none; } .card, .result-card { background: white; color: black; border: 1px solid #ccc; } .tab-content { display: block !important; page-break-after: always; } .tab-nav { display: none; } }
+        footer { font-size: 0.7rem; text-align: center; margin-top: 30px; opacity: 0.7; }
+        input, select { font-family: 'Montserrat', sans-serif; background: rgba(255,255,255,0.1); border: 1px solid #C9A84C; padding: 12px; border-radius: 20px; width: 100%; color: white; margin-top: 5px; }
+        .form-group { margin-bottom: 15px; }
+        #qText { font-size: 1.55rem; font-weight: 600; margin: 18px 0; line-height: 1.4; }
+    </style>
+</head>
+<body>
+<div class="container" id="app">
+    <!-- INTRO SCREEN -->
+    <div id="introScreen" class="card" style="text-align:center;">
+        <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" class="logo" alt="AccessWorld">
+        <h1 class="quiz-title">Pathways to Change & The Power of Physiology</h1>
+        <img src="https://i.ibb.co/TD40fb0M/Picture2.png" class="hero-image" alt="Physiology Power" onerror="this.src='https://placehold.co/500x300?text=Physiology+Mastery'">
+        <p style="margin:15px 0;">Discover how your body holds the key to emotional transformation. Based on Joshua Roy's NSR (Nervous System Reprogramming) methodology.</p>
+        <div style="background:rgba(201,168,76,0.12); border-radius:24px; padding:22px; margin:20px 0; text-align:left;">
+            <h3 class="gold">🎯 Joshua Roy | Results Coach & Seminar Leader</h3>
+            <p style="font-size:0.9rem;">24+ years law enforcement, 900+ seminars, 3,500+ coaching sessions. Creator of NSR (Nervous System Reprogramming). <em>"Feeling good for no good reason."</em></p>
+            <p style="font-size:0.85rem; margin-top:10px;">📞 +61 432 119 091 | payhip.com/b/jO2o1</p>
+        </div>
+        <button class="start-btn" id="startQuizBtn">Begin Your Assessment →</button>
+        <footer>AccessWorld Seminars · Nervous System Reprogramming</footer>
+    </div>
+
+    <div id="progressArea" class="hidden" style="margin-bottom:15px;"><div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div><div id="progressText" style="text-align:center; font-size:0.85rem; margin-top:8px;"></div></div>
+    <div id="questionScreen" class="hidden"><div class="question-card"><div id="qCat" class="gold" style="font-size:0.8rem; letter-spacing:1.5px;">PHYSIOLOGY & STATE</div><div id="qText"></div><div class="scale-buttons" id="scaleBtns"></div><div style="display:flex; justify-content:space-between; margin-top:25px;"><button id="prevQBtn" class="btn-outline">← Previous</button><button id="nextQBtn" class="btn-primary">Next →</button></div></div></div>
+    <div id="contactScreen" class="hidden"><div class="contact-card"><h2 class="gold">Your Physiology & Change Report</h2><p>Enter your details to receive a personalized analysis with Joshua Roy's state pathway framework and daily movement practices.</p><div class="form-group"><input type="text" id="leadName" placeholder="Full Name"></div><div class="form-group"><input type="tel" id="leadPhone" placeholder="Phone Number"></div><div class="form-group"><input type="email" id="leadEmail" placeholder="Email Address"></div><div class="form-group"><select id="leadCountry"><option value="">Select Country</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option></select></div><button id="submitLeadBtn" class="btn-primary" style="width:100%;">Generate My Report →</button><div id="webhookStatus" class="status-message"></div></div></div>
+    <div id="resultsScreen" class="hidden"><div class="card"><div style="display:flex; justify-content:space-between;"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:40px;"><span style="font-size:0.75rem;">Pathways Report</span></div><div style="text-align:center;"><div class="score-circle" id="scoreRing"><div class="score-text" id="finalScoreVal">0.0</div></div><div id="tierBadge" style="background:#C9A84C; display:inline-block; padding:6px 24px; border-radius:60px; color:#080d18; font-weight:800;"></div><p id="tierDesc" style="margin-top:12px;"></p></div><div class="tab-nav"><button class="tab-btn active" data-tab="0">📄 Page 1 · Score & Framework</button><button class="tab-btn" data-tab="1">📄 Page 2 · Growth Areas & Incantations</button><button class="tab-btn" data-tab="2">📄 Page 3 · Action Plan & Events</button></div><div class="tab-content active" id="tab0"></div><div class="tab-content" id="tab1"></div><div class="tab-content" id="tab2"></div><div style="display:flex; gap:15px; justify-content:center; margin-top:25px;"><button id="printPdfBtn" class="action-btn primary">📄 Save as PDF</button><button id="retakeAllBtn" class="action-btn">🔄 Retake Quiz</button></div></div></div>
+</div>
+
+<script>
+    const QUESTIONS = [
+        { id:0, text:"I understand that my posture, breathing, and movement directly influence how I feel and think.", category:"Physiology Awareness", teaching:"'Motion creates emotion.' Your body is the steering wheel for your mind. Change your posture, change your state." },
+        { id:1, text:"I can change how I feel in under 60 seconds by altering my body position or breath.", category:"State Shifting", teaching:"The 60-second energy shift: stand up, raise your arms, and shout 'YES!' Your pharmaceutical factory responds immediately." },
+        { id:2, text:"I have a consistent morning routine (even 5-15 minutes) that sets a positive tone before I check my phone.", category:"Morning Routine", teaching:"'The best time to plant a tree was ten years ago. The second best time is now.' Your morning sets your trajectory." },
+        { id:3, text:"I use physical movement (jumping, power poses, dancing) to interrupt low moods or anxiety.", category:"Pattern Interrupt", teaching:"Depression is energy without motion. Excitement is energy IN motion. Move first, feel second." },
+        { id:4, text:"I can separate my thoughts from my feelings and know that changing my body changes both.", category:"State Pathway", teaching:"State Pathway: Physiology → Feelings → Emotions → Thoughts. Start with the body. Always." },
+        { id:5, text:"I understand the difference between being 'involved' (the chicken) and 'committed' (the pig) to my growth.", category:"Commitment Level", teaching:"The chicken contributes to breakfast; the pig is committed. Are you all in, or just involved?" },
+        { id:6, text:"I have set a meaningful 12-month commitment to a personal growth practice or goal.", category:"Long-term Commitment", teaching:"Commit for 12-18 months minimum. Not a 30-day challenge. Your nervous system needs repetition." },
+        { id:7, text:"I use incantations (affirmations with movement) rather than just repeating words silently.", category:"Incantations", teaching:"An incantation is an affirmation with movement. It's 10x more powerful because it engages your unconscious mind." },
+        { id:8, text:"I take action even when I don't 'feel like it' — I don't wait for motivation to strike.", category:"Action First", teaching:"'If you fail to prepare, you prepare to fail.' Don't wait to feel ready. Act, and the feeling follows." },
+        { id:9, text:"I understand the Destiny Pathway: Thought → Action → Habit → Character → Destiny.", category:"Destiny Pathway", teaching:"Your destiny isn't fixed. It's built one thought, one action, one habit at a time. Move the hinge (physiology), swing the door." }
+    ];
+
+    let answers = Array(QUESTIONS.length).fill(null);
+    let currentQ = 0;
+    let step = "intro";
+    const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+
+    function getAverage() { let sum=0,count=0; for(let i=0;i<answers.length;i++) if(answers[i]!==null) { sum+=answers[i]; count++; } return count===0?0:sum/count; }
+    function getTier(score) {
+        if(score<=1.2) return { label:"Foundation Needed", description:"You're waiting to feel ready before acting. The secret: movement creates motivation, not the other way around." };
+        if(score<=2.3) return { label:"Emerging Awareness", description:"You understand the concepts but haven't built daily physiology habits. Start with 60 seconds of excitement each morning." };
+        if(score<=3.4) return { label:"Building Momentum", description:"You're taking action inconsistently. The 10-day excitement challenge will lock in your new pattern." };
+        if(score<=4.2) return { label:"Thriving", description:"Strong physiology habits. Your nervous system is upgrading. Keep rehearsing daily." };
+        return { label:"Mastery", description:"Exceptional! You embody 'motion creates emotion.' Now share this with others and deepen contribution." };
+    }
+
+    function renderQuestion() {
+        const q = QUESTIONS[currentQ];
+        document.getElementById('qCat').innerHTML = `⚡ ${q.category} · Question ${currentQ+1} of ${QUESTIONS.length}`;
+        document.getElementById('qText').innerHTML = q.text;
+        const scaleDiv = document.getElementById('scaleBtns');
+        scaleDiv.innerHTML = '';
+        const labels = ['Not at all','Slightly','Somewhat','Mostly','Very much','Completely'];
+        for(let i=0;i<=5;i++) {
+            const btn = document.createElement('div');
+            btn.className = `scale-btn ${answers[currentQ]===i ? 'selected' : ''}`;
+            btn.innerHTML = `<span>${i}</span><span>${labels[i]}</span>`;
+            btn.onclick = () => { answers[currentQ]=i; renderQuestion(); };
+            scaleDiv.appendChild(btn);
+        }
+        document.getElementById('progressFill').style.width = `${((currentQ+1)/QUESTIONS.length)*100}%`;
+        document.getElementById('progressText').innerHTML = `Question ${currentQ+1} of ${QUESTIONS.length} · Select your answer`;
+        document.getElementById('prevQBtn').disabled = (currentQ===0);
+        const hasAns = answers[currentQ]!==null;
+        const nextBtn = document.getElementById('nextQBtn');
+        nextBtn.style.opacity = hasAns ? "1" : "0.6";
+        nextBtn.style.cursor = hasAns ? "pointer" : "not-allowed";
+    }
+
+    function nextQuestion() { if(answers[currentQ]===null) return; if(currentQ<QUESTIONS.length-1) { currentQ++; renderQuestion(); } else { showContact(); } }
+    function prevQuestion() { if(currentQ>0) { currentQ--; renderQuestion(); } }
+    function startQuiz() { answers.fill(null); currentQ=0; document.getElementById('introScreen').classList.add('hidden'); document.getElementById('progressArea').classList.remove('hidden'); document.getElementById('questionScreen').classList.remove('hidden'); renderQuestion(); }
+    function showContact() { document.getElementById('questionScreen').classList.add('hidden'); document.getElementById('progressArea').classList.add('hidden'); document.getElementById('contactScreen').classList.remove('hidden'); }
+
+    async function sendToTelegram(name, phone, country, email, score, tier) {
+        const payload = { name, phone, country, email, score:score.toFixed(1), tier:tier.label, quiz:"Pathways to Change & Physiology", timestamp:new Date().toISOString() };
+        const statusDiv = document.getElementById('webhookStatus');
+        statusDiv.style.display = 'block';
+        statusDiv.innerHTML = '⏳ Generating your physiology report...';
+        statusDiv.style.background = '#fff3cd';
+        try { await fetch(WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) }); statusDiv.innerHTML = '✓ Report ready!'; statusDiv.style.background='#d4edda'; } catch(e) { statusDiv.innerHTML = '⚠️ Showing results below.'; statusDiv.style.background='#f8d7da'; }
+        setTimeout(()=>{ showResults(); }, 600);
+    }
+
+    function showResults() {
+        const score = getAverage();
+        const tier = getTier(score);
+        const percent = (score/5)*100;
+        const deg = percent * 3.6;
+        document.getElementById('scoreRing').style.background = `conic-gradient(#C9A84C 0deg ${deg}deg, rgba(255,255,255,0.1) ${deg}deg 360deg)`;
+        document.getElementById('finalScoreVal').innerHTML = score.toFixed(1);
+        document.getElementById('tierBadge').innerHTML = tier.label;
+        document.getElementById('tierDesc').innerHTML = tier.description;
+
+        let lowIndices = []; answers.forEach((a,i)=>{ if(a!==null && a<=2) lowIndices.push(i); });
+        let highIndices = []; answers.forEach((a,i)=>{ if(a!==null && a>=4) highIndices.push(i); });
+
+        let page1 = `<div><h3 class="gold">🧠 Your Physiology & State Blueprint</h3><p>Your score of <strong>${score.toFixed(1)}/5</strong> places you in the <strong>${tier.label}</strong> category. ${tier.description}</p><div class="quote-block">“You cannot think your way out of a nervous system problem. You must move your body first. Your brain is a pharmaceutical factory — and you are the one placing the order.” — Joshua Roy</div><h4>📖 The Three Pathways to Transformation</h4><ul style="margin-left:20px;"><li><strong>State Pathway:</strong> Physiology → Feelings → Emotions → Thoughts. Start with the body.</li><li><strong>Emotion Pathway:</strong> Emotion → Mood → Temperament → Disposition → Personality. You practiced your way in; you can practice your way out.</li><li><strong>Thought Pathway:</strong> State → Story → Strategy. From your empowered state, rewrite your narrative.</li></ul><div class="quote-block"><h4>🔑 The Hinge Principle</h4><p>A massive door moves at the outer edge, but the point of leverage is the tiny hinge. Your physiology is the hinge. Move it one millimeter, and your entire destiny swings open. Stop pushing on the heavy door. Focus on the hinge.</p></div></div>`;
+        
+        let page2 = `<div><h3 class="gold">⚡ Your Physiology Leverage Points</h3>`;
+        if(lowIndices.length===0) page2 += `<p>✨ You're already using movement to change your state! Maintain momentum with daily incantations and the 60-second excitement exercise.</p>`;
+        else {
+            lowIndices.slice(0,3).forEach(idx => {
+                const q = QUESTIONS[idx];
+                page2 += `<div style="margin-bottom:20px;"><h4>${q.category}</h4><p>${q.teaching}</p><div style="background:#1e2a3a; border-radius:16px; padding:12px;"><strong>✨ Daily Practice:</strong><br/>${q.category==="Morning Routine"?"Tomorrow morning, before your phone, stand up, raise your arms, and say 'YES!' three times. That's your new starting point.":q.category==="Incantations"?"Choose one affirmation ('I am powerful, I am focused'). Say it while jumping, fist pumping, and power posing for 60 seconds.":q.category==="Action First"?"Set a timer for tomorrow. When it goes off, do ONE small action toward your goal — even if you don't feel like it.":"Practice the 60-second energy shift every hour today. Move first, feel second."}</div></div>`;
+            });
+        }
+        page2 += `<div class="quote-block"><h4>⚙️ The Incantation: Affirmations with Movement</h4><p>Joshua's personal incantation: “Stand up tall, head held high, walk with confidence. Raise your chest, shoulders back — it's no coincidence. When you move, when you walk, when you act this way, you will find that you'll have a bright and happy day.”</p><p><strong>Try it now:</strong> Stand up. Shout “YES!” with arms raised. Repeat 3 times. Feel the chemical shift in your body. That's your pharmaceutical factory getting a new order.</p></div></div>`;
+
+        let page3 = `<div><h3 class="gold">✨ Your Action Strengths</h3>`;
+        if(highIndices.length>0) { highIndices.slice(0,2).forEach(idx => { page3 += `<p><strong>✓ ${QUESTIONS[idx].category}</strong>: You're already using body-based change. Now amplify with the 12-month commitment.</p>`; }); }
+        page3 += `<div class="quote-block"><h4>📅 Your 10-Day Physiology Challenge</h4><ol><li><strong>Days 1-3:</strong> 60-second excitement exercise every morning (jump, fist pump, 'YES!')</li><li><strong>Days 4-6:</strong> Add an incantation: choose a statement, move while saying it, 2x daily</li><li><strong>Days 7-9:</strong> Power pose for 2 minutes before any important meeting or conversation</li><li><strong>Day 10:</strong> Write down what changed in your mood, energy, and confidence</li></ol><p><strong>The Navy SEALs aren't physically exceptional — they just don't quit. Average people who persist become extraordinary.</strong></p></div><div class="webinar-card"><p><strong>📚 Education can improve income, help you deal with relationship challenges, and master your emotions.</strong></p><a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank">🎓 Click here for upcoming webinars & coaching sessions →</a></div><footer style="margin-top:20px;">“Feeling good for no good reason.” — Joshua Roy</footer></div>`;
+
+        document.getElementById('tab0').innerHTML = page1;
+        document.getElementById('tab1').innerHTML = page2;
+        document.getElementById('tab2').innerHTML = page3;
+        document.getElementById('contactScreen').classList.add('hidden');
+        document.getElementById('resultsScreen').classList.remove('hidden');
+    }
+
+    async function submitContact() {
+        const name = document.getElementById('leadName').value.trim();
+        const phone = document.getElementById('leadPhone').value.trim();
+        const email = document.getElementById('leadEmail').value.trim();
+        const country = document.getElementById('leadCountry').value;
+        if(!name || !phone || !email || !country) { alert("All fields required."); return; }
+        const score = getAverage();
+        const tier = getTier(score);
+        await sendToTelegram(name, phone, country, email, score, tier);
+    }
+    function printPDF() { window.print(); }
+    function retakeFull() { answers.fill(null); currentQ=0; document.getElementById('introScreen').classList.remove('hidden'); document.getElementById('progressArea').classList.add('hidden'); document.getElementById('questionScreen').classList.add('hidden'); document.getElementById('contactScreen').classList.add('hidden'); document.getElementById('resultsScreen').classList.add('hidden'); }
+
+    document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
+    document.getElementById('nextQBtn').addEventListener('click', nextQuestion);
+    document.getElementById('prevQBtn').addEventListener('click', prevQuestion);
+    document.getElementById('submitLeadBtn').addEventListener('click', submitContact);
+    document.getElementById('printPdfBtn').addEventListener('click', printPDF);
+    document.getElementById('retakeAllBtn').addEventListener('click', retakeFull);
+    document.querySelectorAll('.tab-btn').forEach(btn=>{ btn.addEventListener('click',()=>{ const tab=btn.getAttribute('data-tab'); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.tab-content').forEach((tc,i)=>{ tc.classList.toggle('active', i==tab); }); }); });
+</script>
+</body>
+</html>
