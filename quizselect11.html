@@ -110,6 +110,7 @@
     const resultsScreen = document.getElementById('resultsScreen');
 
     function getAverage() { let sum=0,count=0; for(let i=0;i<answers.length;i++) if(answers[i]!==null) { sum+=answers[i]; count++; } return count===0?0:sum/count; }
+    
     function getTier(score) {
         if(score<=1.2) return { label:"Foundation Needed", description:"You're experiencing significant incongruence between your values and actions. The good news: awareness is the first step. Small, consistent actions create massive shifts." };
         if(score<=2.3) return { label:"Emerging Awareness", description:"You sense the gap but haven't closed it. The 'mood addiction' may be running in the background. Start with one small congruent action tomorrow morning." };
@@ -120,24 +121,31 @@
 
     function renderQuestion() {
         const q = QUESTIONS[currentQ];
-        document.getElementById('qCat').innerHTML = `⚡ ${q.category} · Question ${currentQ+1} of ${QUESTIONS.length}`;
-        document.getElementById('qText').innerHTML = q.text;
+        const qCat = document.getElementById('qCat');
+        const qText = document.getElementById('qText');
         const scaleDiv = document.getElementById('scaleBtns');
-        scaleDiv.innerHTML = '';
-        const labels = ['Not at all','Slightly','Somewhat','Mostly','Very much','Completely'];
-        for(let i=0;i<=5;i++) {
-            const btn = document.createElement('div');
-            btn.className = `scale-btn ${answers[currentQ]===i ? 'selected' : ''}`;
-            btn.innerHTML = `<span>${i}</span><span>${labels[i]}</span>`;
-            btn.onclick = () => { answers[currentQ]=i; renderQuestion(); };
-            scaleDiv.appendChild(btn);
-        }
-        document.getElementById('progressFill').style.width = `${((currentQ+1)/QUESTIONS.length)*100}%`;
-        document.getElementById('progressText').innerHTML = `Question ${currentQ+1} of ${QUESTIONS.length} · Select your answer`;
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
         const prevBtn = document.getElementById('prevQBtn');
+        const nextBtn = document.getElementById('nextQBtn');
+        
+        if(qCat) qCat.innerHTML = `⚡ ${q.category} · Question ${currentQ+1} of ${QUESTIONS.length}`;
+        if(qText) qText.innerHTML = q.text;
+        if(scaleDiv) {
+            scaleDiv.innerHTML = '';
+            const labels = ['Not at all','Slightly','Somewhat','Mostly','Very much','Completely'];
+            for(let i=0;i<=5;i++) {
+                const btn = document.createElement('div');
+                btn.className = `scale-btn ${answers[currentQ]===i ? 'selected' : ''}`;
+                btn.innerHTML = `<span>${i}</span><span>${labels[i]}</span>`;
+                btn.onclick = () => { answers[currentQ]=i; renderQuestion(); };
+                scaleDiv.appendChild(btn);
+            }
+        }
+        if(progressFill) progressFill.style.width = `${((currentQ+1)/QUESTIONS.length)*100}%`;
+        if(progressText) progressText.innerHTML = `Question ${currentQ+1} of ${QUESTIONS.length} · Select your answer`;
         if(prevBtn) prevBtn.disabled = (currentQ===0);
         const hasAns = answers[currentQ]!==null;
-        const nextBtn = document.getElementById('nextQBtn');
         if(nextBtn) {
             nextBtn.style.opacity = hasAns ? "1" : "0.6";
             nextBtn.style.cursor = hasAns ? "pointer" : "not-allowed";
@@ -167,33 +175,39 @@
     function startQuiz() { 
         answers.fill(null); 
         currentQ = 0; 
-        introScreen.classList.add('hidden'); 
-        progressArea.classList.remove('hidden'); 
-        questionScreen.classList.remove('hidden'); 
-        contactScreen.classList.add('hidden'); 
-        resultsScreen.classList.add('hidden'); 
+        if(introScreen) introScreen.classList.add('hidden'); 
+        if(progressArea) progressArea.classList.remove('hidden'); 
+        if(questionScreen) questionScreen.classList.remove('hidden'); 
+        if(contactScreen) contactScreen.classList.add('hidden'); 
+        if(resultsScreen) resultsScreen.classList.add('hidden'); 
         renderQuestion(); 
     }
     
     function showContact() { 
-        questionScreen.classList.add('hidden'); 
-        progressArea.classList.add('hidden'); 
-        contactScreen.classList.remove('hidden'); 
+        if(questionScreen) questionScreen.classList.add('hidden'); 
+        if(progressArea) progressArea.classList.add('hidden'); 
+        if(contactScreen) contactScreen.classList.remove('hidden'); 
     }
 
     async function sendToTelegram(name, phone, country, email, score, tier) {
         const payload = { name, phone, country, email, score:score.toFixed(1), tier:tier.label, quiz:"Congruence & Mood Awareness", timestamp:new Date().toISOString() };
         const statusDiv = document.getElementById('webhookStatus');
-        statusDiv.style.display = 'block';
-        statusDiv.innerHTML = '⏳ Generating your congruence report...';
-        statusDiv.style.background = '#fff3cd';
+        if(statusDiv) {
+            statusDiv.style.display = 'block';
+            statusDiv.innerHTML = '⏳ Generating your congruence report...';
+            statusDiv.style.background = '#fff3cd';
+        }
         try { 
             await fetch(WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) }); 
-            statusDiv.innerHTML = '✓ Report ready!'; 
-            statusDiv.style.background='#d4edda'; 
+            if(statusDiv) {
+                statusDiv.innerHTML = '✓ Report ready!'; 
+                statusDiv.style.background='#d4edda'; 
+            }
         } catch(e) { 
-            statusDiv.innerHTML = '⚠️ Showing results below.'; 
-            statusDiv.style.background='#f8d7da'; 
+            if(statusDiv) {
+                statusDiv.innerHTML = '⚠️ Showing results below.'; 
+                statusDiv.style.background='#f8d7da'; 
+            }
         }
         setTimeout(()=>{ showResults(); }, 600);
     }
@@ -205,9 +219,12 @@
         const deg = percent * 3.6;
         const scoreRing = document.getElementById('scoreRing');
         if(scoreRing) scoreRing.style.background = `conic-gradient(#C9A84C 0deg ${deg}deg, rgba(255,255,255,0.1) ${deg}deg 360deg)`;
-        document.getElementById('finalScoreVal').innerHTML = score.toFixed(1);
-        document.getElementById('tierBadge').innerHTML = tier.label;
-        document.getElementById('tierDesc').innerHTML = tier.description;
+        const finalScoreVal = document.getElementById('finalScoreVal');
+        if(finalScoreVal) finalScoreVal.innerHTML = score.toFixed(1);
+        const tierBadge = document.getElementById('tierBadge');
+        if(tierBadge) tierBadge.innerHTML = tier.label;
+        const tierDesc = document.getElementById('tierDesc');
+        if(tierDesc) tierDesc.innerHTML = tier.description;
 
         let lowIndices = []; answers.forEach((a,i)=>{ if(a!==null && a<=2) lowIndices.push(i); });
         let highIndices = []; answers.forEach((a,i)=>{ if(a!==null && a>=4) highIndices.push(i); });
@@ -228,18 +245,21 @@
         if(highIndices.length>0) { highIndices.slice(0,2).forEach(idx => { page3 += `<p><strong>✓ ${QUESTIONS[idx].category}</strong>: This area is already aligned. Use this strength to uplift your lower-scoring areas.</p>`; }); }
         page3 += `<div class="quote-block"><h4>📅 Your 10-Day Congruence Challenge</h4><ol><li><strong>Days 1-2:</strong> Identify one area of incongruence. Write the gap between what you say and what you do.</li><li><strong>Days 3-4:</strong> Each morning, do one congruent action before your phone.</li><li><strong>Days 5-6:</strong> Add the 60-second excitement exercise, 3x daily.</li><li><strong>Days 7-8:</strong> Check your calendar. Does it reflect your values? Adjust one thing.</li><li><strong>Days 9-10:</strong> Ask each night: 'What mood did I practice today? Is that who I want to become?'</li></ol><p><strong>'The truth of what you value isn't what you say you value. It's what you invest time, effort, and energy in.' — Joshua Roy</strong></p></div><div class="webinar-card"><p><strong>📚 Education can improve income, help you deal with relationship challenges, and master your emotions.</strong></p><a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank">🎓 Click here for upcoming webinars & coaching sessions →</a></div><footer style="margin-top:20px;">“Feeling good for no good reason.” — Joshua Roy</footer></div>`;
 
-        document.getElementById('tab0').innerHTML = page1;
-        document.getElementById('tab1').innerHTML = page2;
-        document.getElementById('tab2').innerHTML = page3;
-        contactScreen.classList.add('hidden');
-        resultsScreen.classList.remove('hidden');
+        const tab0 = document.getElementById('tab0');
+        const tab1 = document.getElementById('tab1');
+        const tab2 = document.getElementById('tab2');
+        if(tab0) tab0.innerHTML = page1;
+        if(tab1) tab1.innerHTML = page2;
+        if(tab2) tab2.innerHTML = page3;
+        if(contactScreen) contactScreen.classList.add('hidden');
+        if(resultsScreen) resultsScreen.classList.remove('hidden');
     }
 
     async function submitContact() {
-        const name = document.getElementById('leadName').value.trim();
-        const phone = document.getElementById('leadPhone').value.trim();
-        const email = document.getElementById('leadEmail').value.trim();
-        const country = document.getElementById('leadCountry').value;
+        const name = document.getElementById('leadName')?.value.trim();
+        const phone = document.getElementById('leadPhone')?.value.trim();
+        const email = document.getElementById('leadEmail')?.value.trim();
+        const country = document.getElementById('leadCountry')?.value;
         if(!name || !phone || !email || !country) { alert("All fields required."); return; }
         const score = getAverage();
         const tier = getTier(score);
@@ -247,33 +267,44 @@
     }
     
     function printPDF() { window.print(); }
+    
     function retakeFull() { 
         answers.fill(null); 
         currentQ = 0; 
-        introScreen.classList.remove('hidden'); 
-        progressArea.classList.add('hidden'); 
-        questionScreen.classList.add('hidden'); 
-        contactScreen.classList.add('hidden'); 
-        resultsScreen.classList.add('hidden'); 
+        if(introScreen) introScreen.classList.remove('hidden'); 
+        if(progressArea) progressArea.classList.add('hidden'); 
+        if(questionScreen) questionScreen.classList.add('hidden'); 
+        if(contactScreen) contactScreen.classList.add('hidden'); 
+        if(resultsScreen) resultsScreen.classList.add('hidden'); 
     }
 
-    // Attach event listeners
-    document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
-    document.getElementById('nextQBtn').addEventListener('click', nextQuestion);
-    document.getElementById('prevQBtn').addEventListener('click', prevQuestion);
-    document.getElementById('submitLeadBtn').addEventListener('click', submitContact);
-    document.getElementById('printPdfBtn').addEventListener('click', printPDF);
-    document.getElementById('retakeAllBtn').addEventListener('click', retakeFull);
-    
-    document.querySelectorAll('.tab-btn').forEach(btn=>{ 
-        btn.addEventListener('click',()=>{ 
-            const tab = btn.getAttribute('data-tab'); 
-            document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); 
-            btn.classList.add('active'); 
-            document.querySelectorAll('.tab-content').forEach((tc,i)=>{ 
-                tc.classList.toggle('active', i==tab); 
+    // Wait for DOM to be fully loaded before attaching event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+        const startBtn = document.getElementById('startQuizBtn');
+        const nextBtn = document.getElementById('nextQBtn');
+        const prevBtn = document.getElementById('prevQBtn');
+        const submitBtn = document.getElementById('submitLeadBtn');
+        const printBtn = document.getElementById('printPdfBtn');
+        const retakeBtn = document.getElementById('retakeAllBtn');
+        
+        if(startBtn) startBtn.addEventListener('click', startQuiz);
+        if(nextBtn) nextBtn.addEventListener('click', nextQuestion);
+        if(prevBtn) prevBtn.addEventListener('click', prevQuestion);
+        if(submitBtn) submitBtn.addEventListener('click', submitContact);
+        if(printBtn) printBtn.addEventListener('click', printPDF);
+        if(retakeBtn) retakeBtn.addEventListener('click', retakeFull);
+        
+        // Tab buttons
+        document.querySelectorAll('.tab-btn').forEach(btn => { 
+            btn.addEventListener('click', () => { 
+                const tab = btn.getAttribute('data-tab'); 
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); 
+                btn.classList.add('active'); 
+                document.querySelectorAll('.tab-content').forEach((tc, i) => { 
+                    tc.classList.toggle('active', i == tab); 
+                }); 
             }); 
-        }); 
+        });
     });
 </script>
 </body>
