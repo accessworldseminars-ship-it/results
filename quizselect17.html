@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AccessWorld | NLP For Life: Feel Good for No Good Reason</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg, #080d18 0%, #1A2744 100%); color: #F0F4F8; min-height: 100vh; line-height: 1.6; }
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+        .card, .question-card, .contact-card, .result-card { background: rgba(26, 39, 68, 0.75); backdrop-filter: blur(8px); border-radius: 28px; padding: 28px; margin-bottom: 20px; border: 1px solid rgba(201,168,76,0.25); }
+        .logo { width: 110px; margin-bottom: 15px; border-radius: 60px; }
+        .hero-image { width: 100%; max-width: 500px; border-radius: 24px; margin: 20px auto; display: block; border: 2px solid rgba(201,168,76,0.4); }
+        .quiz-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 700; color: #C9A84C; margin-bottom: 15px; line-height: 1.3; }
+        .gold { color: #C9A84C; }
+        .btn-primary, .start-btn { background: linear-gradient(135deg, #C9A84C 0%, #E8D5A3 100%); color: #080d18; border: none; padding: 14px 32px; font-weight: 700; border-radius: 60px; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .btn-outline { background: transparent; border: 2px solid #C9A84C; color: #C9A84C; padding: 12px 28px; border-radius: 60px; font-weight: 600; cursor: pointer; }
+        .scale-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin: 25px 0; justify-content: center; }
+        .scale-btn { flex: 1; min-width: 70px; background: rgba(255,255,255,0.07); border: 2px solid rgba(201,168,76,0.4); border-radius: 20px; padding: 14px 6px; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; gap: 8px; backdrop-filter: blur(4px); }
+        .scale-btn span:first-child { font-size: 1.7rem; font-weight: 800; line-height: 1; }
+        .scale-btn span:last-child { font-size: 0.65rem; opacity: 0.8; font-weight: 500; text-transform: uppercase; }
+        .scale-btn.selected { background: #C9A84C; color: #080d18; border-color: #C9A84C; transform: scale(1.02); }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; margin: 10px 0; }
+        .progress-fill { height: 100%; background: #C9A84C; width: 0%; transition: width 0.3s; }
+        .tab-nav { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+        .tab-btn { background: rgba(255,255,255,0.05); border: 2px solid rgba(201,168,76,0.3); padding: 10px 20px; border-radius: 40px; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: #C9A84C; color: #080d18; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(#C9A84C 0deg, rgba(255,255,255,0.1) 0deg); margin: 15px auto; display: flex; align-items: center; justify-content: center; position: relative; }
+        .score-circle::before { content: ''; position: absolute; width: 120px; height: 120px; background: #080d18; border-radius: 50%; }
+        .score-text { position: relative; font-size: 2.6rem; font-weight: 800; color: #C9A84C; z-index: 2; }
+        .action-btn { padding: 10px 20px; border-radius: 40px; border: 2px solid #C9A84C; background: transparent; color: #C9A84C; cursor: pointer; margin: 5px; font-weight: 600; }
+        .action-btn.primary { background: #C9A84C; color: #080d18; border: none; }
+        .hidden { display: none; }
+        .status-message { margin-top: 15px; padding: 12px; border-radius: 16px; display: none; text-align: center; }
+        .quote-block { background: rgba(201,168,76,0.12); border-left: 4px solid #C9A84C; padding: 16px; margin: 18px 0; border-radius: 12px; font-style: italic; }
+        .webinar-card { background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(26,39,68,0.9)); border-radius: 24px; padding: 20px; margin-top: 25px; text-align: center; border: 2px solid #C9A84C; }
+        .webinar-card a { color: #C9A84C; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+        @media print { body { background: white; color: black; } .action-btn, .tab-nav, .btn-primary, .hero-image { display: none; } }
+        footer { font-size: 0.7rem; text-align: center; margin-top: 30px; opacity: 0.7; }
+        input, select { background: rgba(255,255,255,0.1); border: 1px solid #C9A84C; padding: 12px; border-radius: 20px; width: 100%; color: white; margin-top: 5px; }
+        .form-group { margin-bottom: 15px; }
+        #qText { font-size: 1.55rem; font-weight: 600; margin: 18px 0; }
+        .coach-bio { background: rgba(201,168,76,0.08); border-radius: 20px; padding: 18px; margin-top: 20px; text-align: left; border: 1px solid rgba(201,168,76,0.2); }
+    </style>
+</head>
+<body><div class="container" id="app"></div>
+<script>
+    const CHAPTER_TITLE = "Feel Good for No Good Reason";
+    const CHAPTER_NUM = 2;
+    const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+    const QUESTIONS = [
+        { text: "I understand that my emotional state can be chosen and trained, not just random.", category: "State Choice", teaching: "Your emotional state isn't random—it's something you can choose, train, and activate on purpose." },
+        { text: "I can recall a past positive memory and feel the emotion again in my body.", category: "Memory Recalling", teaching: "Your nervous system doesn't know the difference between a real event and a vividly imagined one." },
+        { text: "I use my body posture and breath to intentionally shift how I feel.", category: "Physiology Shifting", teaching: "Studies show power posing for 2 minutes increases testosterone and decreases cortisol." },
+        { text: "I understand that 'feelings follow focus'—where I place my attention shapes my emotions.", category: "Focus", teaching: "Where focus goes, energy flows. Feelings follow focus." },
+        { text: "I have practiced the Excitement Activation Drill (recalling excitement, moving, saying 'YES').", category: "Excitement Drill", teaching: "Do this once daily for 7 days—you'll prove you can generate powerful states at will." },
+        { text: "I know that physiology affects neurochemistry (motion creates emotion).", category: "Mind-Body Connection", teaching: "Change your body, change your brain's chemistry. That's why exercise makes you feel amazing." },
+        { text: "I can amplify a positive emotion by turning up an 'internal dial' in my mind.", category: "Amplification", teaching: "Double it, triple it, quadruple it—peaks create stronger neural imprints." },
+        { text: "I believe I can feel good without needing external circumstances to change first.", category: "Internal State", teaching: "You don't need a million dollars or perfect circumstances to feel amazing." },
+        { text: "I have conditioned my body to associate a specific gesture with a positive state.", category: "Anchoring", teaching: "Anchor positive emotions to a physical trigger—your fist pump becomes an 'on switch'." },
+        { text: "I understand that emotional rehearsal (practicing how I want to feel) creates real results.", category: "Emotional Rehearsal", teaching: "The man who rehearsed confidence before his interview was offered two positions, both better than he imagined." }
+    ];
+    let answers=Array(QUESTIONS.length).fill(null), currentQ=0;
+    let intro,progress,question,contact,results;
+    function getAvg(){let s=0,c=0;for(let i=0;i<answers.length;i++)if(answers[i]!==null){s+=answers[i];c++;}return c===0?0:s/c;}
+    function getTier(s){
+        if(s<=1.2) return {label:"Emotional Latency",desc:"You're beginning to discover that emotions can be chosen. Start with the Excitement Activation Drill tomorrow morning."};
+        if(s<=2.3) return {label:"Emerging Activation",desc:"You can recall positive memories. Practice amplifying them—double the joy, then triple it."};
+        if(s<=3.4) return {label:"Building Emotional Fitness",desc:"You're using your body to shift states. Add daily anchoring to lock in the feeling."};
+        if(s<=4.2) return {label:"Skilled State Changer",desc:"Strong ability to generate emotions at will. Now practice feeling good for no reason at all."};
+        return {label:"Emotional Mastery",desc:"Exceptional! You embody 'feeling good for no good reason.' Now share this gift."};
+    }
+    function renderApp(){
+        document.getElementById('app').innerHTML = `<div id="introScreen" class="card" style="text-align:center;"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" class="logo"><h1 class="quiz-title">NLP For Life: ${CHAPTER_TITLE}</h1><img src="https://i.ibb.co/TD40fb0M/Picture2.png" class="hero-image"><p>Discover how to generate powerful emotional states at will—without waiting for external circumstances.</p><div class="coach-bio"><h3 class="gold">🎯 Joshua Roy | NLP Coach</h3><p><em>"Feeling good for no good reason."</em> 📞 +61 432 119 091</p></div><button class="start-btn" id="startQuizBtn">Begin Assessment →</button><footer>AccessWorld · NLP For Life</footer></div><div id="progressArea" class="hidden"><div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div><div id="progressText" style="text-align:center;"></div></div><div id="questionScreen" class="hidden"><div class="question-card"><div id="qCat" class="gold"></div><div id="qText"></div><div class="scale-buttons" id="scaleBtns"></div><div style="display:flex; justify-content:space-between;"><button id="prevQBtn" class="btn-outline">← Previous</button><button id="nextQBtn" class="btn-primary">Next →</button></div></div></div><div id="contactScreen" class="hidden"><div class="contact-card"><h2 class="gold">Your Emotional Mastery Report</h2><div class="form-group"><input type="text" id="leadName" placeholder="Full Name"></div><div class="form-group"><input type="tel" id="leadPhone" placeholder="Phone"></div><div class="form-group"><input type="email" id="leadEmail" placeholder="Email"></div><div class="form-group"><select id="leadCountry"><option>Select</option><option>Australia</option><option>Canada</option><option>UK</option><option>US</option></select></div><button id="submitLeadBtn" class="btn-primary">Generate Report</button><div id="webhookStatus" class="status-message"></div></div></div><div id="resultsScreen" class="hidden"><div class="card"><div style="text-align:center;"><div class="score-circle" id="scoreRing"><div class="score-text" id="finalScoreVal">0.0</div></div><div id="tierBadge" style="background:#C9A84C; display:inline-block; padding:6px 24px; border-radius:60px; color:#080d18;"></div><p id="tierDesc"></p></div><div class="tab-nav"><button class="tab-btn active" data-tab="0">Page 1</button><button class="tab-btn" data-tab="1">Page 2</button><button class="tab-btn" data-tab="2">Page 3</button></div><div class="tab-content active" id="tab0"></div><div class="tab-content" id="tab1"></div><div class="tab-content" id="tab2"></div><div><button id="printPdfBtn" class="action-btn primary">📄 Save PDF</button><button id="retakeAllBtn" class="action-btn">🔄 Retake</button></div></div></div>`;
+        intro=document.getElementById('introScreen');progress=document.getElementById('progressArea');question=document.getElementById('questionScreen');contact=document.getElementById('contactScreen');results=document.getElementById('resultsScreen');
+        document.getElementById('startQuizBtn')?.addEventListener('click',startQuiz);
+        document.getElementById('nextQBtn')?.addEventListener('click',nextQ);
+        document.getElementById('prevQBtn')?.addEventListener('click',prevQ);
+        document.getElementById('submitLeadBtn')?.addEventListener('click',submit);
+        document.getElementById('printPdfBtn')?.addEventListener('click',()=>window.print());
+        document.getElementById('retakeAllBtn')?.addEventListener('click',retake);
+        document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>{let t=b.dataset.tab;document.querySelectorAll('.tab-btn').forEach(bb=>bb.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.tab-content').forEach((tc,i)=>tc.classList.toggle('active',i==t));}));
+    }
+    function renderQ(){let q=QUESTIONS[currentQ];document.getElementById('qCat').innerHTML=`⚡ ${q.category} · ${currentQ+1}/${QUESTIONS.length}`;document.getElementById('qText').innerHTML=q.text;let c=document.getElementById('scaleBtns');c.innerHTML='';let l=['Not at all','Slightly','Somewhat','Mostly','Very much','Completely'];for(let i=0;i<=5;i++){let btn=document.createElement('div');btn.className=`scale-btn ${answers[currentQ]===i?'selected':''}`;btn.innerHTML=`<span>${i}</span><span>${l[i]}</span>`;btn.onclick=()=>{answers[currentQ]=i;renderQ();};c.appendChild(btn);}document.getElementById('progressFill').style.width=`${((currentQ+1)/QUESTIONS.length)*100}%`;document.getElementById('progressText').innerHTML=`Q${currentQ+1}/${QUESTIONS.length}`;document.getElementById('prevQBtn').disabled=(currentQ===0);let has=answers[currentQ]!==null;document.getElementById('nextQBtn').style.opacity=has?"1":"0.6";}
+    function nextQ(){if(answers[currentQ]===null){alert("Please answer");return;}if(currentQ<QUESTIONS.length-1){currentQ++;renderQ();}else{showContact();}}
+    function prevQ(){if(currentQ>0){currentQ--;renderQ();}}
+    function startQuiz(){answers.fill(null);currentQ=0;intro.classList.add('hidden');progress.classList.remove('hidden');question.classList.remove('hidden');contact.classList.add('hidden');results.classList.add('hidden');renderQ();}
+    function showContact(){question.classList.add('hidden');progress.classList.add('hidden');contact.classList.remove('hidden');}
+    async function sendTelegram(n,p,c,e,s,t){let payload={name:n,phone:p,country:c,email:e,score:s.toFixed(1),tier:t.label,quiz:`NLP Ch${CHAPTER_NUM}: ${CHAPTER_TITLE}`,timestamp:new Date().toISOString()};let st=document.getElementById('webhookStatus');st.style.display='block';st.innerHTML='⏳ Sending...';try{await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});st.innerHTML='✓ Ready!';}catch(e){st.innerHTML='⚠️ Showing results.';}setTimeout(()=>showResults(),500);}
+    function showResults(){let s=getAvg(),t=getTier(s),p=(s/5)*100;document.getElementById('scoreRing').style.background=`conic-gradient(#C9A84C 0deg ${p*3.6}deg, rgba(255,255,255,0.1) ${p*3.6}deg 360deg)`;document.getElementById('finalScoreVal').innerHTML=s.toFixed(1);document.getElementById('tierBadge').innerHTML=t.label;document.getElementById('tierDesc').innerHTML=t.desc;let low=[];answers.forEach((a,i)=>{if(a!==null&&a<=2)low.push(i);});document.getElementById('tab0').innerHTML=`<div><h3 class="gold">Your Emotional State Blueprint</h3><p>Score: ${s.toFixed(1)}/5 — ${t.label}</p><div class="quote-block">“Your nervous system doesn't know the difference between a real event and a vividly imagined one.” — Joshua Roy</div></div>`;document.getElementById('tab1').innerHTML=`<div><h3 class="gold">Growth Opportunities</h3>${low.length?QUESTIONS[low[0]].teaching:'Great awareness! Keep practicing the Excitement Activation Drill daily.'}<div class="quote-block"><h4>⚙️ 7-Day Excitement Challenge</h4><p>Each morning: recall excitement, move your body, say 'YES!' Rate your state before and after.</p></div></div>`;document.getElementById('tab2').innerHTML=`<div><h3 class="gold">Action Plan</h3><div class="webinar-card"><a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank">🎓 Join Live NLP Trainings →</a></div></div>`;contact.classList.add('hidden');results.classList.remove('hidden');}
+    async function submit(){let n=document.getElementById('leadName')?.value.trim(),p=document.getElementById('leadPhone')?.value.trim(),e=document.getElementById('leadEmail')?.value.trim(),c=document.getElementById('leadCountry')?.value;if(!n||!p||!e||!c){alert("All fields required");return;}let s=getAvg(),t=getTier(s);await sendTelegram(n,p,c,e,s,t);}
+    function retake(){answers.fill(null);currentQ=0;intro.classList.remove('hidden');progress.classList.add('hidden');question.classList.add('hidden');contact.classList.add('hidden');results.classList.add('hidden');}
+    renderApp();
+</script>
+</body>
+</html>
