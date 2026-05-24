@@ -68,34 +68,133 @@
             { text: "I believe that my nervous system is brilliant—it just needs new instructions.", category: "System Trust", teaching: "Your system is not broken. It's doing exactly what it was programmed to do. Now you're learning to give it better code." }
         ];
 
-        let answers = Array(QUESTIONS.length).fill(null), currentQ = 0;
-        let intro, progressArea, questionScreen, contactScreen, resultsScreen;
+        let answers = Array(QUESTIONS.length).fill(null);
+        let currentQ = 0;
+        let introScreen, progressArea, questionScreen, contactScreen, resultsScreen;
         
-        function getAverage() { let s=0,c=0; for(let i=0;i<answers.length;i++) if(answers[i]!==null) { s+=answers[i]; c++; } return c===0?0:s/c; }
+        function getAverage() { 
+            let s = 0, c = 0; 
+            for (let i = 0; i < answers.length; i++) { 
+                if (answers[i] !== null) { 
+                    s += answers[i]; 
+                    c++; 
+                } 
+            } 
+            return c === 0 ? 0 : s / c; 
+        }
         
         function getTier(score) {
-            if(score<=1.2) return { label:"Nervous System Awakening", desc:"You're becoming aware that your emotional patterns can change. The good news: awareness is the first and most powerful step." };
-            if(score<=2.3) return { label:"Emerging Regulator", desc:"You can recognize states but struggle to shift them. Start with physiology—change your body, change your chemistry." };
-            if(score<=3.4) return { label:"Active Reprogrammer", desc:"You're practicing NSR tools. Consistency is key—daily anchoring will lock in your new patterns." };
-            if(score<=4.2) return { label:"Skilled NSR Practitioner", desc:"Strong emotional mastery skills. Now focus on the 5 Core Phases for deeper integration." };
-            return { label:"Nervous System Mastery", desc:"Exceptional! You've rewired your emotional operating system. Now guide others to do the same." };
+            if (score <= 1.2) return { label: "Nervous System Awakening", desc: "You're becoming aware that your emotional patterns can change. The good news: awareness is the first and most powerful step." };
+            if (score <= 2.3) return { label: "Emerging Regulator", desc: "You can recognize states but struggle to shift them. Start with physiology—change your body, change your chemistry." };
+            if (score <= 3.4) return { label: "Active Reprogrammer", desc: "You're practicing NSR tools. Consistency is key—daily anchoring will lock in your new patterns." };
+            if (score <= 4.2) return { label: "Skilled NSR Practitioner", desc: "Strong emotional mastery skills. Now focus on the 5 Core Phases for deeper integration." };
+            return { label: "Nervous System Mastery", desc: "Exceptional! You've rewired your emotional operating system. Now guide others to do the same." };
+        }
+
+        function buildIntroScreen() {
+            const div = document.createElement('div');
+            div.id = 'introScreen';
+            div.className = 'card';
+            div.style.textAlign = 'center';
+            div.innerHTML = `
+                <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" class="logo">
+                <h1 class="quiz-title">NLP For Life: ${CHAPTER_TITLE}</h1>
+                <img src="https://i.ibb.co/TD40fb0M/Picture2.png" class="hero-image" onerror="this.src='https://placehold.co/500x300'">
+                <p>Discover how to master your emotions and reprogram your nervous system using Joshua Roy's NSR (Nervous System Reprogramming) framework.</p>
+                <div class="coach-bio">
+                    <h3 class="gold">🎯 Joshua Roy | NSR Creator & NLP Coach</h3>
+                    <p>3,500+ coaching sessions. Creator of Nervous System Reprogramming. <em>"Feeling good for no good reason."</em> 📞 +61 432 119 091</p>
+                </div>
+                <button class="start-btn" id="startQuizBtn">Begin Assessment →</button>
+                <footer>AccessWorld Seminars · NSR & Emotional Mastery</footer>
+            `;
+            return div;
+        }
+
+        function buildProgressArea() {
+            const div = document.createElement('div');
+            div.id = 'progressArea';
+            div.className = 'hidden';
+            div.innerHTML = `<div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div><div id="progressText" style="text-align:center; font-size:0.85rem;"></div>`;
+            return div;
+        }
+
+        function buildQuestionScreen() {
+            const div = document.createElement('div');
+            div.id = 'questionScreen';
+            div.className = 'hidden';
+            div.innerHTML = `
+                <div class="question-card">
+                    <div id="qCat" class="gold"></div>
+                    <div id="qText"></div>
+                    <div class="scale-buttons" id="scaleBtns"></div>
+                    <div style="display:flex; justify-content:space-between;">
+                        <button id="prevQBtn" class="btn-outline">← Previous</button>
+                        <button id="nextQBtn" class="btn-primary">Next →</button>
+                    </div>
+                </div>
+            `;
+            return div;
+        }
+
+        function buildContactScreen() {
+            const div = document.createElement('div');
+            div.id = 'contactScreen';
+            div.className = 'hidden';
+            div.innerHTML = `
+                <div class="contact-card">
+                    <h2 class="gold">Your NSR & Emotional Mastery Report</h2>
+                    <p>Get a personalized 1000+ word analysis with Joshua Roy's Nervous System Reprogramming framework and daily practices.</p>
+                    <div class="form-group"><input type="text" id="leadName" placeholder="Full Name"></div>
+                    <div class="form-group"><input type="tel" id="leadPhone" placeholder="Phone"></div>
+                    <div class="form-group"><input type="email" id="leadEmail" placeholder="Email"></div>
+                    <div class="form-group"><select id="leadCountry"><option value="">Select Country</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option></select></div>
+                    <button id="submitLeadBtn" class="btn-primary">Generate Comprehensive Report →</button>
+                    <div id="webhookStatus" class="status-message"></div>
+                </div>
+            `;
+            return div;
+        }
+
+        function buildResultsScreen() {
+            const div = document.createElement('div');
+            div.id = 'resultsScreen';
+            div.className = 'hidden';
+            div.innerHTML = `
+                <div class="card">
+                    <div style="display:flex; justify-content:space-between;"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:40px;"><span>NSR Report</span></div>
+                    <div style="text-align:center;">
+                        <div class="score-circle" id="scoreRing"><div class="score-text" id="finalScoreVal">0.0</div></div>
+                        <div id="tierBadge" style="background:#C9A84C; display:inline-block; padding:6px 24px; border-radius:60px; color:#080d18; font-weight:800;"></div>
+                        <p id="tierDesc"></p>
+                    </div>
+                    <div class="tab-nav">
+                        <button class="tab-btn active" data-tab="0">📄 Score & Overview</button>
+                        <button class="tab-btn" data-tab="1">📄 Growth Areas</button>
+                        <button class="tab-btn" data-tab="2">📄 Deep Teaching & Action Plan</button>
+                    </div>
+                    <div class="tab-content active" id="tab0"></div>
+                    <div class="tab-content" id="tab1"></div>
+                    <div class="tab-content" id="tab2"></div>
+                    <div style="display:flex; gap:15px; justify-content:center;">
+                        <button id="printPdfBtn" class="action-btn primary">📄 Save PDF</button>
+                        <button id="retakeAllBtn" class="action-btn">🔄 Retake Quiz</button>
+                    </div>
+                </div>
+            `;
+            return div;
         }
 
         function renderApp() {
-            document.getElementById('app').innerHTML = `
-                <div id="introScreen" class="card" style="text-align:center;">
-                    <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" class="logo"><h1 class="quiz-title">NLP For Life: ${CHAPTER_TITLE}</h1>
-                    <img src="https://i.ibb.co/TD40fb0M/Picture2.png" class="hero-image" onerror="this.src='https://placehold.co/500x300'">
-                    <p>Discover how to master your emotions and reprogram your nervous system using Joshua Roy's NSR (Nervous System Reprogramming) framework.</p>
-                    <div class="coach-bio"><h3 class="gold">🎯 Joshua Roy | NSR Creator & NLP Coach</h3><p>3,500+ coaching sessions. Creator of Nervous System Reprogramming. <em>"Feeling good for no good reason."</em> 📞 +61 432 119 091</p></div>
-                    <button class="start-btn" id="startQuizBtn">Begin Assessment →</button><footer>AccessWorld Seminars · NSR & Emotional Mastery</footer>
-                </div>
-                <div id="progressArea" class="hidden"><div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div><div id="progressText" style="text-align:center; font-size:0.85rem;"></div></div>
-                <div id="questionScreen" class="hidden"><div class="question-card"><div id="qCat" class="gold"></div><div id="qText"></div><div class="scale-buttons" id="scaleBtns"></div><div style="display:flex; justify-content:space-between;"><button id="prevQBtn" class="btn-outline">← Previous</button><button id="nextQBtn" class="btn-primary">Next →</button></div></div></div>
-                <div id="contactScreen" class="hidden"><div class="contact-card"><h2 class="gold">Your NSR & Emotional Mastery Report</h2><p>Get a personalized 1000+ word analysis with Joshua Roy's Nervous System Reprogramming framework and daily practices.</p><div class="form-group"><input type="text" id="leadName" placeholder="Full Name"></div><div class="form-group"><input type="tel" id="leadPhone" placeholder="Phone"></div><div class="form-group"><input type="email" id="leadEmail" placeholder="Email"></div><div class="form-group"><select id="leadCountry"><option value="">Select Country</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option></select></div><button id="submitLeadBtn" class="btn-primary">Generate Comprehensive Report →</button><div id="webhookStatus" class="status-message"></div></div></div>
-                <div id="resultsScreen" class="hidden"><div class="card"><div style="display:flex; justify-content:space-between;"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:40px;"><span>NSR Report</span></div><div style="text-align:center;"><div class="score-circle" id="scoreRing"><div class="score-text" id="finalScoreVal">0.0</div></div><div id="tierBadge" style="background:#C9A84C; display:inline-block; padding:6px 24px; border-radius:60px; color:#080d18; font-weight:800;"></div><p id="tierDesc"></p></div><div class="tab-nav"><button class="tab-btn active" data-tab="0">📄 Score & Overview</button><button class="tab-btn" data-tab="1">📄 Growth Areas</button><button class="tab-btn" data-tab="2">📄 Deep Teaching & Action Plan</button></div><div class="tab-content active" id="tab0"></div><div class="tab-content" id="tab1"></div><div class="tab-content" id="tab2"></div><div style="display:flex; gap:15px; justify-content:center;"><button id="printPdfBtn" class="action-btn primary">📄 Save PDF</button><button id="retakeAllBtn" class="action-btn">🔄 Retake Quiz</button></div></div></div>`;
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+            app.appendChild(buildIntroScreen());
+            app.appendChild(buildProgressArea());
+            app.appendChild(buildQuestionScreen());
+            app.appendChild(buildContactScreen());
+            app.appendChild(buildResultsScreen());
             
-            intro = document.getElementById('introScreen');
+            introScreen = document.getElementById('introScreen');
             progressArea = document.getElementById('progressArea');
             questionScreen = document.getElementById('questionScreen');
             contactScreen = document.getElementById('contactScreen');
@@ -105,213 +204,264 @@
             document.getElementById('nextQBtn')?.addEventListener('click', nextQuestion);
             document.getElementById('prevQBtn')?.addEventListener('click', prevQuestion);
             document.getElementById('submitLeadBtn')?.addEventListener('click', submitContact);
-            document.getElementById('printPdfBtn')?.addEventListener('click', ()=>window.print());
+            document.getElementById('printPdfBtn')?.addEventListener('click', () => window.print());
             document.getElementById('retakeAllBtn')?.addEventListener('click', retakeFull);
             
-            document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',()=>{ let tab=btn.dataset.tab; document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.tab-content').forEach((tc,i)=>tc.classList.toggle('active', i==tab)); }));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tab = this.getAttribute('data-tab');
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    document.querySelectorAll('.tab-content').forEach((tc, i) => {
+                        tc.classList.toggle('active', i == tab);
+                    });
+                });
+            });
         }
         
         function renderQuestion() {
-            let q = QUESTIONS[currentQ];
-            document.getElementById('qCat').innerHTML = `⚡ ${q.category} · Question ${currentQ+1} of ${QUESTIONS.length}`;
-            document.getElementById('qText').innerHTML = q.text;
-            let container = document.getElementById('scaleBtns'); 
-            if(!container) return;
-            container.innerHTML = '';
-            let labels = ['Not at all','Slightly','Somewhat','Mostly','Very much','Completely'];
-            for(let i=0;i<=5;i++) { 
-                let btn = document.createElement('div'); 
-                btn.className = `scale-btn ${answers[currentQ]===i ? 'selected' : ''}`; 
-                btn.innerHTML = `<span>${i}</span><span>${labels[i]}</span>`; 
-                btn.onclick = (()=>{ let val=i; return function(){ answers[currentQ]=val; renderQuestion(); }; })(); 
-                container.appendChild(btn); 
+            const q = QUESTIONS[currentQ];
+            const qCat = document.getElementById('qCat');
+            const qText = document.getElementById('qText');
+            const scaleContainer = document.getElementById('scaleBtns');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const prevBtn = document.getElementById('prevQBtn');
+            const nextBtn = document.getElementById('nextQBtn');
+            
+            if (qCat) qCat.innerHTML = `⚡ ${q.category} · Question ${currentQ+1} of ${QUESTIONS.length}`;
+            if (qText) qText.innerHTML = q.text;
+            
+            if (scaleContainer) {
+                scaleContainer.innerHTML = '';
+                const labels = ['Not at all', 'Slightly', 'Somewhat', 'Mostly', 'Very much', 'Completely'];
+                for (let i = 0; i <= 5; i++) {
+                    const btn = document.createElement('div');
+                    btn.className = 'scale-btn' + (answers[currentQ] === i ? ' selected' : '');
+                    btn.innerHTML = `<span>${i}</span><span>${labels[i]}</span>`;
+                    btn.addEventListener('click', (function(score) {
+                        return function() { answers[currentQ] = score; renderQuestion(); };
+                    })(i));
+                    scaleContainer.appendChild(btn);
+                }
             }
-            let fillEl = document.getElementById('progressFill');
-            let textEl = document.getElementById('progressText');
-            let prevBtn = document.getElementById('prevQBtn');
-            let nextBtn = document.getElementById('nextQBtn');
-            if(fillEl) fillEl.style.width = `${((currentQ+1)/QUESTIONS.length)*100}%`;
-            if(textEl) textEl.innerHTML = `Question ${currentQ+1} of ${QUESTIONS.length}`;
-            if(prevBtn) prevBtn.disabled = (currentQ===0);
-            let hasAns = answers[currentQ]!==null;
-            if(nextBtn) {
-                nextBtn.style.opacity = hasAns ? "1" : "0.6";
-                nextBtn.style.cursor = hasAns ? "pointer" : "not-allowed";
+            
+            if (progressFill) progressFill.style.width = ((currentQ + 1) / QUESTIONS.length) * 100 + '%';
+            if (progressText) progressText.innerHTML = 'Question ' + (currentQ + 1) + ' of ' + QUESTIONS.length;
+            if (prevBtn) prevBtn.disabled = (currentQ === 0);
+            
+            const hasAns = answers[currentQ] !== null;
+            if (nextBtn) {
+                nextBtn.style.opacity = hasAns ? '1' : '0.6';
+                nextBtn.style.cursor = hasAns ? 'pointer' : 'not-allowed';
             }
         }
         
-        function nextQuestion() { 
-            if(answers[currentQ]===null) { alert("Please select an answer."); return; } 
-            if(currentQ < QUESTIONS.length-1) { currentQ++; renderQuestion(); } 
-            else { showContact(); } 
-        }
-        
-        function prevQuestion() { if(currentQ>0) { currentQ--; renderQuestion(); } }
-        
-        function startQuiz() { 
-            answers.fill(null); 
-            currentQ = 0; 
-            if(intro) intro.classList.add('hidden'); 
-            if(progressArea) progressArea.classList.remove('hidden'); 
-            if(questionScreen) questionScreen.classList.remove('hidden'); 
-            if(contactScreen) contactScreen.classList.add('hidden'); 
-            if(resultsScreen) resultsScreen.classList.add('hidden'); 
-            renderQuestion(); 
-        }
-        
-        function showContact() { 
-            if(questionScreen) questionScreen.classList.add('hidden'); 
-            if(progressArea) progressArea.classList.add('hidden'); 
-            if(contactScreen) contactScreen.classList.remove('hidden'); 
-        }
-        
-        async function sendToTelegram(name,phone,country,email,score,tier) {
-            let payload={name,phone,country,email,score:score.toFixed(1),tier:tier.label,quiz:`NLP Ch${CHAPTER_NUM}: ${CHAPTER_TITLE}`,timestamp:new Date().toISOString()};
-            let status=document.getElementById('webhookStatus'); 
-            if(status) {
-                status.style.display='block'; 
-                status.innerHTML='⏳ Generating your comprehensive NSR report...';
+        function nextQuestion() {
+            if (answers[currentQ] === null) {
+                alert('Please select an answer before continuing.');
+                return;
             }
-            try{ await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}); 
-                 if(status) status.innerHTML='✓ Report ready!'; 
-            } catch(e){ if(status) status.innerHTML='⚠️ Showing results below.'; }
-            setTimeout(()=>showResults(),500);
+            if (currentQ < QUESTIONS.length - 1) {
+                currentQ++;
+                renderQuestion();
+            } else {
+                showContact();
+            }
         }
         
-        function generateDeepTeaching(score, tier, lowIndices, highIndices) {
+        function prevQuestion() {
+            if (currentQ > 0) {
+                currentQ--;
+                renderQuestion();
+            }
+        }
+        
+        function startQuiz() {
+            answers.fill(null);
+            currentQ = 0;
+            if (introScreen) introScreen.classList.add('hidden');
+            if (progressArea) progressArea.classList.remove('hidden');
+            if (questionScreen) questionScreen.classList.remove('hidden');
+            if (contactScreen) contactScreen.classList.add('hidden');
+            if (resultsScreen) resultsScreen.classList.add('hidden');
+            renderQuestion();
+        }
+        
+        function showContact() {
+            if (questionScreen) questionScreen.classList.add('hidden');
+            if (progressArea) progressArea.classList.add('hidden');
+            if (contactScreen) contactScreen.classList.remove('hidden');
+        }
+        
+        async function sendToTelegram(name, phone, country, email, score, tier) {
+            const payload = {
+                name: name, phone: phone, country: country, email: email,
+                score: score.toFixed(1), tier: tier.label,
+                quiz: 'NLP Ch' + CHAPTER_NUM + ': ' + CHAPTER_TITLE,
+                timestamp: new Date().toISOString()
+            };
+            const statusDiv = document.getElementById('webhookStatus');
+            if (statusDiv) {
+                statusDiv.style.display = 'block';
+                statusDiv.innerHTML = '⏳ Generating your NSR report...';
+            }
+            try {
+                await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (statusDiv) statusDiv.innerHTML = '✓ Report ready!';
+            } catch (e) {
+                if (statusDiv) statusDiv.innerHTML = '⚠️ Showing results below.';
+            }
+            setTimeout(function() { showResults(); }, 500);
+        }
+        
+        function generateDeepTeaching(score, tier, lowIndices) {
+            let lowText = '';
+            if (lowIndices.length > 0) {
+                lowText = '<p><strong>Key reprogramming areas identified:</strong> ' + lowIndices.slice(0,3).map(function(i) { return QUESTIONS[i].category; }).join(', ') + '. Focus on these phases of NSR in the coming weeks.</p>';
+            } else {
+                lowText = '<p>You\'re already demonstrating strong NSR integration. Your next level is mastering advanced techniques and teaching others.</p>';
+            }
+            
             return `
                 <div class="teaching-section">
                     <h4>🧠 You Are Not Your Emotions: The Foundation of NSR</h4>
                     <p>Eckhart Tolle wrote: "You are not your emotions. You are the awareness behind them." This single distinction changes everything. Most people believe their emotions are who they are. "I am angry." "I am anxious." "I am depressed." But these are states—temporary conditions, not permanent identities.</p>
-                    <p>When you realize that you are the observer of your emotions, not the emotion itself, you gain something precious: <strong>choice</strong>. You can notice anger arising without becoming anger. You can observe anxiety without being consumed by it. This awareness is the gateway to emotional mastery.</p>
+                    <p>When you realize that you are the observer of your emotions, not the emotion itself, you gain something precious: <strong>choice</strong>. You can notice anger arising without becoming anger. This awareness is the gateway to emotional mastery.</p>
                 </div>
-                
                 <div class="teaching-section">
                     <h4>🔄 The State Loop: Your Emotional Operating System</h4>
                     <p>Every emotional state follows a predictable loop: <strong>Thought → Emotion → Physiology → Behavior → Result → Belief (Reinforced)</strong></p>
-                    <p>Most people try to change their thoughts directly—but thoughts are the hardest part of the loop to control. Your mind generates 60,000-80,000 thoughts per day, most of them automatic and unconscious. Trying to outthink your thoughts is like trying to empty the ocean with a teaspoon.</p>
-                    <p>The secret is to start with <strong>physiology</strong>. Change your posture. Change your breath. Change your movement. When you move differently, you feel differently. When you feel differently, you think differently. When you think differently, you act differently. And when you act differently, your results change—which rewires the belief that started the whole loop.</p>
-                    <p><strong>Try this now:</strong> Stand up. Roll your shoulders back. Lift your chest. Take three deep breaths. Smile—even if you don't feel like it. Notice: did your emotional state shift? That's the State Loop in action.</p>
+                    <p>The secret is to start with <strong>physiology</strong>. Change your posture. Change your breath. Change your movement. When you move differently, you feel differently. When you feel differently, you think differently. When you think differently, you act differently.</p>
+                    <p><strong>Try this now:</strong> Stand up. Roll your shoulders back. Lift your chest. Take three deep breaths. Smile. Notice: did your emotional state shift? That's the State Loop in action.</p>
                 </div>
-                
                 <div class="teaching-section">
                     <h4>⚓ Anchoring: Your Emotional Remote Control</h4>
-                    <p>Anchoring is one of the most powerful NLP techniques for emotional mastery. It works because of a principle called "classical conditioning"—the same principle that made Pavlov's dogs salivate at the sound of a bell.</p>
-                    <p>Here's how to install an anchor for confidence, calm, or any state you want on demand:</p>
-                    <ol style="margin-left: 20px; margin-top: 10px;">
-                        <li><strong>Recall a peak moment</strong> when you felt the emotion strongly (e.g., complete confidence). Close your eyes and re-enter that memory fully.</li>
-                        <li><strong>Amplify the feeling</strong>—turn up the volume, brightness, and intensity until it peaks in your body.</li>
-                        <li><strong>Apply a unique physical trigger</strong> at the peak of the emotion—squeeze your thumb and middle finger together, or press two fingers to your chest.</li>
-                        <li><strong>Repeat</strong> this sequence 5-10 times over several days. Each repetition strengthens the neural pathway.</li>
-                        <li><strong>Fire the anchor</strong>—use your trigger in real situations. Within a week, you'll be able to access the state instantly.</li>
-                    </ol>
+                    <p>Anchoring works because of "classical conditioning"—the same principle that made Pavlov's dogs salivate at the sound of a bell.</p>
+                    <p><strong>How to install an anchor:</strong><br>
+                    1. Recall a peak moment of confidence or calm.<br>
+                    2. Amplify the feeling—turn up the intensity.<br>
+                    3. Apply a unique physical trigger (squeeze thumb and finger together).<br>
+                    4. Repeat 5-10 times over several days.<br>
+                    5. Fire the anchor in real situations—within a week, you'll access the state instantly.</p>
                 </div>
-                
                 <div class="teaching-section">
                     <h4>🧬 The 5 Core Phases of Nervous System Reprogramming (NSR)</h4>
-                    <p>Joshua Roy's NSR framework provides a complete system for rewiring your emotional operating system:</p>
-                    <p><strong>Phase 1: Emotional Clearing</strong> — Release stuck emotions like guilt, fear, or shame. Use breath, sound, or movement to let emotions move through you rather than getting stuck in your body.</p>
-                    <p><strong>Phase 2: Vision Activation</strong> — Connect to a future version of you that feels alive, powerful, and free. Visualize your highest self in vivid detail. What do they believe? How do they move? What do they say?</p>
-                    <p><strong>Phase 3: Belief Rewiring</strong> — Identify the subconscious beliefs holding you back. Write the old belief, then rewrite an empowering alternative. Example: "It's not safe to be seen" → "My voice is powerful and needed."</p>
-                    <p><strong>Phase 4: Anchoring Empowered States</strong> — Train your body to feel emotions like confidence or calm on command using the anchoring technique above.</p>
-                    <p><strong>Phase 5: Ongoing Integration</strong> — Growth happens through repetition and reflection. Use daily affirmations, journaling, and embodiment to install new patterns permanently.</p>
+                    <p><strong>Phase 1: Emotional Clearing</strong> — Release stuck emotions like guilt, fear, or shame using breath, sound, or movement.<br>
+                    <strong>Phase 2: Vision Activation</strong> — Connect to a future version of you that feels alive, powerful, and free.<br>
+                    <strong>Phase 3: Belief Rewiring</strong> — Identify limiting beliefs and rewrite empowering alternatives.<br>
+                    <strong>Phase 4: Anchoring Empowered States</strong> — Train your body to feel emotions on command.<br>
+                    <strong>Phase 5: Ongoing Integration</strong> — Use daily affirmations, journaling, and embodiment to install new patterns permanently.</p>
                 </div>
-                
                 <div class="teaching-section">
                     <h4>📊 Your Personalized NSR Profile</h4>
                     <p><strong>Your Score:</strong> ${score.toFixed(1)}/5 — ${tier.label}</p>
                     <p>${tier.desc}</p>
-                    ${lowIndices.length > 0 ? `<p><strong>Key reprogramming areas identified:</strong> ${lowIndices.slice(0,3).map(i=>QUESTIONS[i].category).join(', ')}. Focus on these phases of NSR in the coming weeks.</p>` : '<p>You're already demonstrating strong NSR integration. Your next level is mastering advanced techniques and teaching others.</p>'}
+                    ${lowText}
                 </div>
-                
                 <div class="teaching-section">
                     <h4>📅 Your 7-Day NSR Integration Plan</h4>
-                    <ol style="margin-left: 20px;">
-                        <li><strong>Day 1 — Emotional Clearing:</strong> Spend 5 minutes breathing deeply. Notice any stuck emotions. Let them move through you without judgment.</li>
-                        <li><strong>Day 2 — Vision Activation:</strong> Close your eyes. Visualize your highest self for 5 minutes. See, hear, and feel what they experience.</li>
-                        <li><strong>Day 3 — Belief Rewiring:</strong> Write one limiting belief. Then write its empowering opposite. Read the new belief aloud 10 times.</li>
-                        <li><strong>Day 4 — Anchoring:</strong> Choose one positive state (confidence, calm, joy). Install the anchor using the 5-step process above.</li>
-                        <li><strong>Day 5 — Fire Your Anchor:</strong> Use your anchor 5 times today in different situations. Notice how quickly the state arises.</li>
-                        <li><strong>Day 6 — State Loop Interruption:</strong> When you notice a negative state, immediately change your physiology (stand up, stretch, deep breath).</li>
-                        <li><strong>Day 7 — Integration & Celebration:</strong> Journal everything that shifted this week. Choose your favorite NSR tool to continue daily.</li>
-                    </ol>
+                    <p><strong>Day 1:</strong> Emotional Clearing — 5 minutes of deep breathing, let stuck emotions move through you.<br>
+                    <strong>Day 2:</strong> Vision Activation — Visualize your highest self for 5 minutes.<br>
+                    <strong>Day 3:</strong> Belief Rewiring — Write one limiting belief, then its empowering opposite. Read aloud 10 times.<br>
+                    <strong>Day 4:</strong> Anchoring — Install an anchor for confidence or calm.<br>
+                    <strong>Day 5:</strong> Fire Your Anchor — Use your anchor 5 times today in different situations.<br>
+                    <strong>Day 6:</strong> State Loop Interruption — When you notice a negative state, change your physiology immediately.<br>
+                    <strong>Day 7:</strong> Integration & Celebration — Journal everything that shifted this week.</p>
                 </div>
-                
                 <div class="quote-block">
                     <h4>💬 Joshua Roy on NSR</h4>
                     <p>"You're not stuck. You're just running outdated programming. The moment you rewire the source, everything changes. Your nervous system is brilliant—it just needs new instructions. When you retrain your nervous system, results follow automatically. You are safe. You are powerful. You are ready."</p>
                 </div>
-                
                 <div class="webinar-card">
-                    <p><strong>📚 Ready to reprogram your nervous system?</strong> Join Joshua Roy's live NSR Certification and Emotional Mastery training to accelerate your transformation with personalized coaching.</p>
+                    <p><strong>📚 Ready to reprogram your nervous system?</strong> Join Joshua Roy's live NSR Certification and Emotional Mastery training.</p>
                     <a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank">🎓 Click here for upcoming NSR & NLP Training →</a>
                 </div>
-                
-                <footer style="margin-top: 20px;">“Feeling good for no good reason.” — Joshua Roy</footer>
+                <footer>"Feeling good for no good reason." — Joshua Roy</footer>
             `;
         }
         
         function showResults() {
-            let score = getAverage(), tier = getTier(score), percent = (score/5)*100;
-            let scoreRing = document.getElementById('scoreRing');
-            if(scoreRing) scoreRing.style.background = `conic-gradient(#C9A84C 0deg ${percent*3.6}deg, rgba(255,255,255,0.1) ${percent*3.6}deg 360deg)`;
-            let finalVal = document.getElementById('finalScoreVal');
-            if(finalVal) finalVal.innerHTML = score.toFixed(1);
-            let tierBadge = document.getElementById('tierBadge');
-            if(tierBadge) tierBadge.innerHTML = tier.label;
-            let tierDescEl = document.getElementById('tierDesc');
-            if(tierDescEl) tierDescEl.innerHTML = tier.desc;
-            
-            let lowIndices = []; answers.forEach((a,i)=>{ if(a!==null && a<=2) lowIndices.push(i); });
-            let highIndices = []; answers.forEach((a,i)=>{ if(a!==null && a>=4) highIndices.push(i); });
-            
-            let tab0 = document.getElementById('tab0');
-            if(tab0) tab0.innerHTML = `
-                <div>
-                    <h3 class="gold">🧠 Your NSR & Emotional Mastery Assessment</h3>
-                    <p>Your score of <strong>${score.toFixed(1)}/5</strong> places you in the <strong>${tier.label}</strong> category.</p>
-                    <div class="quote-block">“You are not your emotions. You are the awareness behind them.” — Eckhart Tolle</div>
-                    <p>This assessment measured your understanding of emotional mastery, the State Loop, anchoring, and the 5 Core Phases of Nervous System Reprogramming.</p>
-                </div>`;
-            
-            let page2 = `<div><h3 class="gold">🔻 Your NSR Growth Areas</h3>`;
-            if(lowIndices.length === 0) page2 += `<p>✨ Excellent NSR awareness! Your next step is deepening daily integration and sharing these tools with others.</p>`;
-            else {
-                lowIndices.slice(0,4).forEach(idx => {
-                    let q = QUESTIONS[idx];
-                    page2 += `<div style="margin-bottom:20px;"><h4>${q.category}</h4><p>${q.teaching}</p><div style="background:#1e2a3a; border-radius:16px; padding:12px;"><strong>✨ This Week's NSR Practice:</strong><br/>${q.category==="State Loop"?"Tomorrow morning, when you wake up, notice your state. Then change your physiology deliberately. Track the shift.":q.category==="Anchoring"?"Choose one emotion you want on demand. Practice the 5-step anchoring sequence daily for 7 days.":"Complete the Belief Change Worksheet: Write old belief → new belief → rehearse with emotion."}</div></div>`;
-                });
+            const score = getAverage();
+            const tier = getTier(score);
+            const percent = (score / 5) * 100;
+            const scoreRing = document.getElementById('scoreRing');
+            if (scoreRing) {
+                scoreRing.style.background = 'conic-gradient(#C9A84C 0deg ' + (percent * 3.6) + 'deg, rgba(255,255,255,0.1) ' + (percent * 3.6) + 'deg 360deg)';
             }
-            page2 += `<div class="quote-block"><h4>💡 The NSR Promise</h4><p>“You're not broken. Your system is brilliant—it just needs new instructions. When you retrain your nervous system, results follow automatically.”</p></div></div>`;
-            let tab1 = document.getElementById('tab1');
-            if(tab1) tab1.innerHTML = page2;
+            const finalVal = document.getElementById('finalScoreVal');
+            if (finalVal) finalVal.innerHTML = score.toFixed(1);
+            const tierBadge = document.getElementById('tierBadge');
+            if (tierBadge) tierBadge.innerHTML = tier.label;
+            const tierDescEl = document.getElementById('tierDesc');
+            if (tierDescEl) tierDescEl.innerHTML = tier.desc;
             
-            const deepTeaching = generateDeepTeaching(score, tier, lowIndices, highIndices);
-            let tab2 = document.getElementById('tab2');
-            if(tab2) tab2.innerHTML = deepTeaching;
+            const lowIndices = [];
+            answers.forEach(function(a, i) { if (a !== null && a <= 2) lowIndices.push(i); });
             
-            if(contactScreen) contactScreen.classList.add('hidden');
-            if(resultsScreen) resultsScreen.classList.remove('hidden');
+            const tab0 = document.getElementById('tab0');
+            if (tab0) {
+                tab0.innerHTML = '<div><h3 class="gold">🧠 Your NSR & Emotional Mastery Assessment</h3>' +
+                    '<p>Your score of <strong>' + score.toFixed(1) + '/5</strong> places you in the <strong>' + tier.label + '</strong> category.</p>' +
+                    '<div class="quote-block">"You are not your emotions. You are the awareness behind them." — Eckhart Tolle</div>' +
+                    '<p>This assessment measured your understanding of emotional mastery, the State Loop, anchoring, and the 5 Core Phases of Nervous System Reprogramming.</p></div>';
+            }
+            
+            const page2 = document.getElementById('tab1');
+            if (page2) {
+                let page2Html = '<div><h3 class="gold">🔻 Your NSR Growth Areas</h3>';
+                if (lowIndices.length === 0) {
+                    page2Html += '<p>✨ Excellent NSR awareness! Your next level is deepening daily integration and sharing these tools with others.</p>';
+                } else {
+                    lowIndices.slice(0, 4).forEach(function(idx) {
+                        const q = QUESTIONS[idx];
+                        page2Html += '<div style="margin-bottom:20px;"><h4>' + q.category + '</h4><p>' + q.teaching + '</p>' +
+                            '<div style="background:#1e2a3a; border-radius:16px; padding:12px;"><strong>✨ This Week\'s NSR Practice:</strong><br/>' +
+                            (q.category === "State Loop" ? "Tomorrow morning, notice your state when you wake up. Then change your physiology deliberately. Track the shift." :
+                             q.category === "Anchoring" ? "Choose one emotion you want on demand. Practice the 5-step anchoring sequence daily for 7 days." :
+                             q.category === "Belief Rewiring" ? "Complete the Belief Change Worksheet: Write old belief → new belief → rehearse with emotion." :
+                             "Practice the 5 Core Phases in order this week—one phase per day.") +
+                            '</div></div>';
+                    });
+                }
+                page2Html += '<div class="quote-block"><h4>💡 The NSR Promise</h4><p>"You\'re not broken. Your system is brilliant—it just needs new instructions. When you retrain your nervous system, results follow automatically."</p></div></div>';
+                page2.innerHTML = page2Html;
+            }
+            
+            const deepTeaching = generateDeepTeaching(score, tier, lowIndices);
+            const tab2 = document.getElementById('tab2');
+            if (tab2) tab2.innerHTML = deepTeaching;
+            
+            if (contactScreen) contactScreen.classList.add('hidden');
+            if (resultsScreen) resultsScreen.classList.remove('hidden');
         }
         
         async function submitContact() {
-            let n = document.getElementById('leadName')?.value.trim(), 
-                p = document.getElementById('leadPhone')?.value.trim(), 
-                e = document.getElementById('leadEmail')?.value.trim(), 
-                c = document.getElementById('leadCountry')?.value;
-            if(!n || !p || !e || !c) { alert("All fields required."); return; }
-            let score = getAverage(), tier = getTier(score);
-            await sendToTelegram(n, p, c, e, score, tier);
+            const name = document.getElementById('leadName')?.value.trim();
+            const phone = document.getElementById('leadPhone')?.value.trim();
+            const email = document.getElementById('leadEmail')?.value.trim();
+            const country = document.getElementById('leadCountry')?.value;
+            if (!name || !phone || !email || !country) {
+                alert("All fields required.");
+                return;
+            }
+            const score = getAverage();
+            const tier = getTier(score);
+            await sendToTelegram(name, phone, country, email, score, tier);
         }
         
-        function retakeFull() { 
-            answers.fill(null); 
-            currentQ = 0; 
-            if(intro) intro.classList.remove('hidden'); 
-            if(progressArea) progressArea.classList.add('hidden'); 
-            if(questionScreen) questionScreen.classList.add('hidden'); 
-            if(contactScreen) contactScreen.classList.add('hidden'); 
-            if(resultsScreen) resultsScreen.classList.add('hidden'); 
+        function retakeFull() {
+            answers.fill(null);
+            currentQ = 0;
+            if (introScreen) introScreen.classList.remove('hidden');
+            if (progressArea) progressArea.classList.add('hidden');
+            if (questionScreen) questionScreen.classList.add('hidden');
+            if (contactScreen) contactScreen.classList.add('hidden');
+            if (resultsScreen) resultsScreen.classList.add('hidden');
         }
         
         renderApp();
