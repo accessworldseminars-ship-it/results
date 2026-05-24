@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AccessWorld | The Permission to Just Be: Enoughness Assessment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg, #0a0f1a 0%, #1a1f2e 100%); color: #e8eef2; min-height: 100vh; line-height: 1.6; }
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+        .card, .question-card, .contact-card, .result-card { background: rgba(25, 30, 45, 0.85); backdrop-filter: blur(10px); border-radius: 28px; padding: 32px; margin-bottom: 20px; border: 1px solid rgba(200, 180, 120, 0.25); }
+        .logo { width: 100px; margin-bottom: 15px; border-radius: 50px; }
+        .hero-image { width: 100%; max-width: 500px; border-radius: 24px; margin: 20px auto; display: block; border: 2px solid rgba(200, 180, 120, 0.5); }
+        .quiz-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 700; color: #d4b87a; margin-bottom: 15px; line-height: 1.2; }
+        .gold { color: #d4b87a; }
+        .btn-primary, .start-btn { background: linear-gradient(135deg, #d4b87a 0%, #c4a56a 100%); color: #0a0f1a; border: none; padding: 14px 32px; font-weight: 700; border-radius: 60px; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .btn-outline { background: transparent; border: 2px solid #d4b87a; color: #d4b87a; padding: 12px 28px; border-radius: 60px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        .btn-outline:hover { background: rgba(212, 184, 122, 0.1); }
+        .scale-buttons { display: flex; gap: 10px; flex-wrap: wrap; margin: 25px 0; justify-content: center; }
+        .scale-btn { flex: 1; min-width: 65px; background: rgba(255,255,255,0.05); border: 2px solid rgba(212,184,122,0.4); border-radius: 20px; padding: 12px 6px; cursor: pointer; transition: all 0.2s; text-align: center; backdrop-filter: blur(4px); }
+        .scale-btn span:first-child { font-size: 1.4rem; font-weight: 800; display: block; }
+        .scale-btn span:last-child { font-size: 0.65rem; opacity: 0.7; }
+        .scale-btn.selected { background: #d4b87a; color: #0a0f1a; border-color: #d4b87a; transform: scale(1.02); }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; margin: 10px 0; }
+        .progress-fill { height: 100%; background: #d4b87a; width: 0%; transition: width 0.3s; }
+        .tab-nav { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+        .tab-btn { background: rgba(255,255,255,0.05); border: 2px solid rgba(212,184,122,0.3); padding: 10px 20px; border-radius: 40px; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: #d4b87a; color: #0a0f1a; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(#d4b87a 0deg, rgba(255,255,255,0.1) 0deg); margin: 15px auto; display: flex; align-items: center; justify-content: center; position: relative; }
+        .score-circle::before { content: ''; position: absolute; width: 120px; height: 120px; background: #0a0f1a; border-radius: 50%; }
+        .score-text { position: relative; font-size: 2.4rem; font-weight: 800; color: #d4b87a; z-index: 2; }
+        .action-btn { padding: 10px 20px; border-radius: 40px; border: 2px solid #d4b87a; background: transparent; color: #d4b87a; cursor: pointer; margin: 5px; font-weight: 600; }
+        .action-btn.primary { background: #d4b87a; color: #0a0f1a; border: none; }
+        .hidden { display: none; }
+        .status-message { margin-top: 15px; padding: 12px; border-radius: 16px; display: none; text-align: center; }
+        .quote-block { background: rgba(212,184,122,0.1); border-left: 4px solid #d4b87a; padding: 16px; margin: 18px 0; border-radius: 12px; font-style: italic; }
+        .teaching-section { background: rgba(212,184,122,0.06); border-radius: 20px; padding: 20px; margin: 20px 0; }
+        .teaching-section h4 { color: #d4b87a; margin-bottom: 12px; }
+        .webinar-card { background: linear-gradient(135deg, rgba(212,184,122,0.12), rgba(25,30,45,0.9)); border-radius: 24px; padding: 20px; margin-top: 25px; text-align: center; border: 2px solid #d4b87a; }
+        .webinar-card a { color: #d4b87a; text-decoration: none; font-weight: bold; font-size: 1rem; }
+        footer { font-size: 0.7rem; text-align: center; margin-top: 30px; opacity: 0.7; }
+        input, select { background: rgba(255,255,255,0.08); border: 1px solid #d4b87a; padding: 12px; border-radius: 20px; width: 100%; color: white; margin-top: 5px; font-family: 'Montserrat', sans-serif; }
+        .form-group { margin-bottom: 15px; }
+        #qText { font-size: 1.4rem; font-weight: 600; margin: 20px 0; line-height: 1.4; }
+        .coach-bio { background: rgba(212,184,122,0.08); border-radius: 20px; padding: 18px; margin-top: 20px; text-align: left; border: 1px solid rgba(212,184,122,0.2); }
+        @media print { body { background: white; color: black; } .action-btn, .tab-nav, .btn-primary, .hero-image { display: none; } .card, .result-card { background: white; color: black; } .tab-content { display: block !important; page-break-after: always; } .tab-nav { display: none; } .teaching-section { background: #f0f0f0; } }
+    </style>
+</head>
+<body>
+<div class="container" id="app"></div>
+<script>
+    (function() {
+        const BOOK_TITLE = "The Permission to Just Be";
+        const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+        
+        const QUESTIONS = [
+            { text: "I can allow myself to say 'no' to something without guilt or explanation.", category: "Honest Boundaries", teaching: "The Gift of Saying 'No' — When you allow the 'no,' when you let yourself feel the resistance fully, you stop fighting. And in that stopping, the resistance often begins to dissolve on its own." },
+            { text: "I can sit with uncomfortable feelings without immediately trying to fix or escape them.", category: "Welcoming Discomfort", teaching: "Welcoming the Opposite — When we welcome something like ease or peace, we will often feel its opposite first. That's not a bad sign; it's a sign that things are getting better." },
+            { text: "I notice the restless energy in my body (fidgeting, racing thoughts, agitation) without judging it.", category: "Restless Awareness", teaching: "The Restless Energy Within — Could you get a sense of that restless energy right now? Could you simply allow it to be here, however it shows up? Notice how there's already space for it here." },
+            { text: "I can distinguish between a thought and the awareness that notices the thought.", category: "Witness Consciousness", teaching: "You are the sky, not the cloud. The thoughts are passing weather patterns, but you are the vast, open space that holds them all." },
+            { text: "I recognize that many of my feelings of 'not enough' may be inherited from family or culture.", category: "Inherited Feelings", teaching: "The Stories We Absorb — When we're experiencing a deep sense of scarcity or fear, it's not even entirely ours. We're swimming in an ocean of it. Just seeing this can bring up immense compassion." },
+            { text: "I can access the feeling of enoughness with what I already have, right now.", category: "Abundance Awareness", teaching: "The Ten-Dollar Note — The feeling of enoughness isn't something we have to earn. It's something we had all along, before we learned to cover it up with stories of lack." },
+            { text: "I notice when I'm putting conditions on my happiness ('I can't feel good until X happens').", category: "Conditional Happiness", teaching: "The Feeling of 'I Can't' — Could you allow for the possibility that those blocks are actually completely within your own mind? And that there's no key because there's no lock? The door was always open." },
+            { text: "I can recognize the familiar pull of 'not enough' as an old habit, not an absolute truth.", category: "Enoughness Addiction", teaching: "The Addiction to Not Feeling Enough — When something's really common and surrounds us all the time, we naturally buy into it over time. Just noticing it without judgment is the first step." },
+            { text: "I am able to ask for help (from the universe, source, others) when I feel overwhelmed.", category: "Surrender", teaching: "Asking for Help — Every single time I've asked for help, it has come. You don't have to do this alone. You were never meant to. Asking for help is not weakness; it's recognition that you are part of something larger." },
+            { text: "I can rest in the present moment without needing to figure anything out or change anything.", category: "Just Being", teaching: "Could You Just Be Here? — The present moment is the only place where life actually happens. And it's the only place where enoughness can be found, because enoughness is not a concept; it's an experience." }
+        ];
+
+        let answers = Array(QUESTIONS.length).fill(null);
+        let currentQ = 0;
+        let introScreen, progressArea, questionScreen, contactScreen, resultsScreen;
+        
+        function getAverage() { 
+            let s = 0, c = 0; 
+            for (let i = 0; i < answers.length; i++) { 
+                if (answers[i] !== null) { 
+                    s += answers[i]; 
+                    c++; 
+                } 
+            } 
+            return c === 0 ? 0 : s / c; 
+        }
+        
+        function getTier(score) {
+            if (score <= 1.2) return { label: "The Longing", desc: "You're aware of the feeling of 'not enough' but haven't yet touched the permission to just be. The good news: awareness is the first and most powerful step." };
+            if (score <= 2.3) return { label: "The Awakening", desc: "You can sense the restless energy and inherited patterns. You're beginning to notice the locks on your own enoughness." };
+            if (score <= 3.4) return { label: "The Practice", desc: "You're actively practicing presence and honesty. Your enoughness is emerging from beneath the layers of conditioning." };
+            if (score <= 4.2) return { label: "The Homecoming", desc: "You can access enoughness more often than not. The restless energy has quieted. You're learning to just be." };
+            return { label: "The Permission", desc: "Exceptional! You've remembered what you never lost. Your enoughness is your ground. Now share this permission with others." };
+        }
+
+        function renderApp() {
+            document.getElementById('app').innerHTML = `
+                <div id="introScreen" class="card" style="text-align:center;">
+                    <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" class="logo">
+                    <h1 class="quiz-title">${BOOK_TITLE}</h1>
+                    <p style="font-size:1.1rem;">A Guide to Finding Enoughness in a World That Always Wants More</p>
+                    <img src="https://i.ibb.co/jk30TLqf/Picture1.png" class="hero-image" onerror="this.src='https://placehold.co/500x300'">
+                    <p>Discover how close you are to feeling enough — not through achievement, but through permission.</p>
+                    <div class="coach-bio">
+                        <h3 class="gold">📖 Based on the Book by Joshua Roy</h3>
+                        <p>"You don't have to have your life figured out. You don't have to understand your childhood trauma. You can just be the way you are."</p>
+                    </div>
+                    <button class="start-btn" id="startQuizBtn">Begin Assessment →</button>
+                    <footer>AccessWorld · The Permission to Just Be</footer>
+                </div>
+                <div id="progressArea" class="hidden">
+                    <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+                    <div id="progressText" style="text-align:center; font-size:0.85rem;"></div>
+                </div>
+                <div id="questionScreen" class="hidden">
+                    <div class="question-card">
+                        <div id="qCat" class="gold"></div>
+                        <div id="qText"></div>
+                        <div class="scale-buttons" id="scaleBtns"></div>
+                        <div style="display:flex; justify-content:space-between;">
+                            <button id="prevQBtn" class="btn-outline">← Previous</button>
+                            <button id="nextQBtn" class="btn-primary">Next →</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="contactScreen" class="hidden">
+                    <div class="contact-card">
+                        <h2 class="gold">Your Enoughness Report</h2>
+                        <p>Enter your details to receive a personalized reflection with teachings from the book.</p>
+                        <div class="form-group"><input type="text" id="leadName" placeholder="Full Name"></div>
+                        <div class="form-group"><input type="tel" id="leadPhone" placeholder="Phone"></div>
+                        <div class="form-group"><input type="email" id="leadEmail" placeholder="Email"></div>
+                        <div class="form-group"><select id="leadCountry"><option value="">Select Country</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option></select></div>
+                        <button id="submitLeadBtn" class="btn-primary">Generate My Report →</button>
+                        <div id="webhookStatus" class="status-message"></div>
+                    </div>
+                </div>
+                <div id="resultsScreen" class="hidden">
+                    <div class="card">
+                        <div style="display:flex; justify-content:space-between; align-items:center;"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:40px;"><span class="gold">Enoughness Report</span></div>
+                        <div style="text-align:center;">
+                            <div class="score-circle" id="scoreRing"><div class="score-text" id="finalScoreVal">0.0</div></div>
+                            <div id="tierBadge" style="background:#d4b87a; display:inline-block; padding:6px 24px; border-radius:60px; color:#0a0f1a; font-weight:800;"></div>
+                            <p id="tierDesc" style="margin-top:12px;"></p>
+                        </div>
+                        <div class="tab-nav">
+                            <button class="tab-btn active" data-tab="0">📄 Overview & Score</button>
+                            <button class="tab-btn" data-tab="1">📄 Growth & Practices</button>
+                            <button class="tab-btn" data-tab="2">📄 Deep Teachings & Integration</button>
+                        </div>
+                        <div class="tab-content active" id="tab0"></div>
+                        <div class="tab-content" id="tab1"></div>
+                        <div class="tab-content" id="tab2"></div>
+                        <div style="display:flex; gap:15px; justify-content:center; margin-top:20px;">
+                            <button id="printPdfBtn" class="action-btn primary">📄 Save PDF</button>
+                            <button id="retakeAllBtn" class="action-btn">🔄 Retake</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            introScreen = document.getElementById('introScreen');
+            progressArea = document.getElementById('progressArea');
+            questionScreen = document.getElementById('questionScreen');
+            contactScreen = document.getElementById('contactScreen');
+            resultsScreen = document.getElementById('resultsScreen');
+            
+            document.getElementById('startQuizBtn')?.addEventListener('click', startQuiz);
+            document.getElementById('nextQBtn')?.addEventListener('click', nextQuestion);
+            document.getElementById('prevQBtn')?.addEventListener('click', prevQuestion);
+            document.getElementById('submitLeadBtn')?.addEventListener('click', submitContact);
+            document.getElementById('printPdfBtn')?.addEventListener('click', () => window.print());
+            document.getElementById('retakeAllBtn')?.addEventListener('click', retakeFull);
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tab = this.getAttribute('data-tab');
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    document.querySelectorAll('.tab-content').forEach((tc, i) => {
+                        tc.classList.toggle('active', i == tab);
+                    });
+                });
+            });
+        }
+        
+        function renderQuestion() {
+            const q = QUESTIONS[currentQ];
+            document.getElementById('qCat').innerHTML = `✧ ${q.category} · Question ${currentQ+1} of ${QUESTIONS.length}`;
+            document.getElementById('qText').innerHTML = q.text;
+            const container = document.getElementById('scaleBtns');
+            container.innerHTML = '';
+            const labels = ['Not at all', 'Slightly', 'Somewhat', 'Mostly', 'Very much', 'Completely'];
+            for (let i = 0; i <= 5; i++) {
+                const btn = document.createElement('div');
+                btn.className = 'scale-btn' + (answers[currentQ] === i ? ' selected' : '');
+                btn.innerHTML = `<span>${i}</span><span>${labels[i]}</span>`;
+                btn.onclick = (function(score) { return function() { answers[currentQ] = score; renderQuestion(); }; })(i);
+                container.appendChild(btn);
+            }
+            document.getElementById('progressFill').style.width = ((currentQ + 1) / QUESTIONS.length) * 100 + '%';
+            document.getElementById('progressText').innerHTML = `Question ${currentQ+1} of ${QUESTIONS.length}`;
+            document.getElementById('prevQBtn').disabled = (currentQ === 0);
+            const hasAns = answers[currentQ] !== null;
+            const nextBtn = document.getElementById('nextQBtn');
+            nextBtn.style.opacity = hasAns ? '1' : '0.6';
+            nextBtn.style.cursor = hasAns ? 'pointer' : 'not-allowed';
+        }
+        
+        function nextQuestion() {
+            if (answers[currentQ] === null) { alert('Please select an answer before continuing.'); return; }
+            if (currentQ < QUESTIONS.length - 1) { currentQ++; renderQuestion(); } 
+            else { showContact(); }
+        }
+        function prevQuestion() { if (currentQ > 0) { currentQ--; renderQuestion(); } }
+        function startQuiz() { answers.fill(null); currentQ = 0; introScreen.classList.add('hidden'); progressArea.classList.remove('hidden'); questionScreen.classList.remove('hidden'); contactScreen.classList.add('hidden'); resultsScreen.classList.add('hidden'); renderQuestion(); }
+        function showContact() { questionScreen.classList.add('hidden'); progressArea.classList.add('hidden'); contactScreen.classList.remove('hidden'); }
+        
+        async function sendToTelegram(name, phone, country, email, score, tier) {
+            const payload = { name, phone, country, email, score: score.toFixed(1), tier: tier.label, quiz: BOOK_TITLE, timestamp: new Date().toISOString() };
+            const statusDiv = document.getElementById('webhookStatus');
+            statusDiv.style.display = 'block';
+            statusDiv.innerHTML = '⏳ Generating your enoughness report...';
+            try {
+                await fetch(WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                statusDiv.innerHTML = '✓ Report ready!';
+            } catch(e) { statusDiv.innerHTML = '⚠️ Showing results.'; }
+            setTimeout(() => showResults(), 500);
+        }
+        
+        function generateDeepTeaching(score, tier, lowIndices) {
+            return `
+                <div class="teaching-section">
+                    <h4>🌿 The Gift of Saying "No"</h4>
+                    <p>One of the most liberating moments in any inner practice is the realization that you are allowed to resist. You are allowed to say "no." When you allow the "no," when you let yourself feel the resistance fully, you stop fighting. And in that stopping, the resistance often begins to dissolve on its own. It runs off the energy of fighting.</p>
+                    <p><strong>Practice:</strong> Bring to mind something you think you <em>should</em> feel peaceful about, but don't. Instead of forcing gratitude, just say "no" out loud. Notice what happens in your body.</p>
+                </div>
+                <div class="teaching-section">
+                    <h4>🌀 The Restless Energy Within</h4>
+                    <p>We all have a hum, a buzz, a subtle agitation. It's the feeling of always waiting for the next thing, of never being fully here. In our practice, all we're doing is becoming aware of it. Here's what happens naturally: as we become aware of it, it just slows down.</p>
+                    <p><strong>Practice:</strong> Set a timer for 5 minutes. Sit comfortably. Don't try to relax or empty your mind. Just notice the restless energy. Where does it live in your body? Just observe it like a scientist observing a phenomenon.</p>
+                </div>
+                <div class="teaching-section">
+                    <h4>🎁 The Ten-Dollar Note</h4>
+                    <p>In primary school, ten dollars meant abundance. Now, it doesn't feel like anything. The money didn't change. What changed was our learned relationship with it. The feeling of enoughness isn't something we have to earn. It's something we had all along, before we learned to cover it up with stories of lack.</p>
+                    <p><strong>Practice:</strong> List five things you already have enough of right now. Oxygen. A heartbeat. The ability to read. Let the feeling of that enoughness sink in.</p>
+                </div>
+                <div class="teaching-section">
+                    <h4>🔑 The Locks That Aren't There</h4>
+                    <p>Could you allow for the possibility that the blocks you feel are completely within your own mind? And that there's no key because there's no lock? The door was always open. You just forgot how to push. The "I can't feel good until X happens" is just a belief the mind bought into innocently.</p>
+                    <p><strong>Practice:</strong> Ask yourself: Who would I be without the thought that I need something external to feel whole?</p>
+                </div>
+                <div class="teaching-section">
+                    <h4>🙏 Asking for Help</h4>
+                    <p>Every single time I've asked for help, it has come. When it feels like the world is unraveling, when something terrible is going to happen, there's some willingness to say, "Please help." And it comes. It might not come immediately. Sometimes part of that help is the strength to stay present. But it comes.</p>
+                    <p><strong>Practice:</strong> Right now, silently say, "Please help me see things differently." Then just notice. No need to force anything.</p>
+                </div>
+                <div class="quote-block">
+                    <h4>✧ Your Enoughness Profile</h4>
+                    <p><strong>Your Score:</strong> ${score.toFixed(1)}/5 — ${tier.label}</p>
+                    <p>${tier.desc}</p>
+                    ${lowIndices.length > 0 ? `<p><strong>Areas to explore:</strong> ${lowIndices.slice(0,3).map(i => QUESTIONS[i].category).join(', ')}. These are the locks that are beginning to open.</p>` : '<p>You're already living from a deep sense of permission and enoughness. Your presence is a gift to others.</p>'}
+                </div>
+                <div class="webinar-card">
+                    <p><strong>📖 Continue Your Journey</strong><br>Deepen your practice with guided sessions and community support.</p>
+                    <a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank">🎓 Explore Upcoming Sessions →</a>
+                </div>
+                <footer>"You don't have to have your life figured out. You can just be the way you are." — Joshua Roy</footer>
+            `;
+        }
+        
+        function showResults() {
+            const score = getAverage();
+            const tier = getTier(score);
+            const percent = (score / 5) * 100;
+            document.getElementById('scoreRing').style.background = `conic-gradient(#d4b87a 0deg ${percent * 3.6}deg, rgba(255,255,255,0.1) ${percent * 3.6}deg 360deg)`;
+            document.getElementById('finalScoreVal').innerHTML = score.toFixed(1);
+            document.getElementById('tierBadge').innerHTML = tier.label;
+            document.getElementById('tierDesc').innerHTML = tier.desc;
+            
+            const lowIndices = [];
+            answers.forEach((a, i) => { if (a !== null && a <= 2) lowIndices.push(i); });
+            
+            document.getElementById('tab0').innerHTML = `
+                <div>
+                    <h3 class="gold">✧ Your Enoughness Assessment</h3>
+                    <p>Your score of <strong>${score.toFixed(1)}/5</strong> places you in <strong>${tier.label}</strong>.</p>
+                    <div class="quote-block">"Could you allow yourself to just be here? Could you let this be enough? Could you let yourself be enough?" — from The Permission to Just Be</div>
+                    <p>This assessment measures your relationship with enoughness, your ability to sit with discomfort, your awareness of inherited patterns, and your capacity to rest in the present moment.</p>
+                </div>
+            `;
+            
+            let page2Html = '<div><h3 class="gold">🔓 Practices for Opening to Enoughness</h3>';
+            if (lowIndices.length === 0) {
+                page2Html += '<p>✨ You're already practicing presence and honesty. Continue deepening with the exercises in the Deep Teachings section.</p>';
+            } else {
+                lowIndices.slice(0, 4).forEach(idx => {
+                    const q = QUESTIONS[idx];
+                    page2Html += `
+                        <div style="margin-bottom:20px;">
+                            <h4>${q.category}</h4>
+                            <p>${q.teaching}</p>
+                            <div style="background:rgba(0,0,0,0.2); border-radius:16px; padding:12px; margin-top:8px;">
+                                <strong>✨ This Week's Invitation:</strong><br/>
+                                ${q.category === "Honest Boundaries" ? "Find one small 'yes' that's actually a 'no' and gently say 'no' instead. Notice the relief." :
+                                  q.category === "Welcoming Discomfort" ? "When a difficult feeling arises, welcome it with 'I see you. You are allowed to be here.' Stay for 30 seconds." :
+                                  q.category === "Restless Awareness" ? "Set a timer for 5 minutes. Just watch the restless energy without trying to change it." :
+                                  q.category === "Inherited Feelings" ? "Ask: 'Who else in my family felt this?' Then breathe compassion for them and yourself." :
+                                  q.category === "Conditional Happiness" ? "Identify one 'I can't feel good until X' belief. Ask: 'Is that absolutely true?'" :
+                                  "Ask for help. Silently say, 'Please help me see things differently.' Then just wait."}
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            page2Html += `<div class="quote-block"><h4>💬 A Reminder</h4><p>"The present moment is the only place where life actually happens. And it's the only place where enoughness can be found, because enoughness is not a concept; it's an experience."</p></div></div>`;
+            document.getElementById('tab1').innerHTML = page2Html;
+            
+            const deepTeaching = generateDeepTeaching(score, tier, lowIndices);
+            document.getElementById('tab2').innerHTML = deepTeaching;
+            
+            contactScreen.classList.add('hidden');
+            resultsScreen.classList.remove('hidden');
+        }
+        
+        async function submitContact() {
+            const name = document.getElementById('leadName')?.value.trim();
+            const phone = document.getElementById('leadPhone')?.value.trim();
+            const email = document.getElementById('leadEmail')?.value.trim();
+            const country = document.getElementById('leadCountry')?.value;
+            if (!name || !phone || !email || !country) { alert("All fields required."); return; }
+            const score = getAverage();
+            const tier = getTier(score);
+            await sendToTelegram(name, phone, country, email, score, tier);
+        }
+        
+        function retakeFull() {
+            answers.fill(null);
+            currentQ = 0;
+            introScreen.classList.remove('hidden');
+            progressArea.classList.add('hidden');
+            questionScreen.classList.add('hidden');
+            contactScreen.classList.add('hidden');
+            resultsScreen.classList.add('hidden');
+        }
+        
+        renderApp();
+    })();
+</script>
+</body>
+</html>
