@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AccessWorld | Destiny & Embodied Transformation Assessment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+            color: #F0F4F8;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+        .card, .question-card, .contact-card, .result-card { background: rgba(26, 39, 68, 0.75); backdrop-filter: blur(8px); border-radius: 28px; padding: 28px; margin-bottom: 20px; border: 1px solid rgba(201,168,76,0.25); }
+        .logo { width: 110px; margin-bottom: 15px; border-radius: 60px; }
+        .hero-image { width: 100%; max-width: 500px; border-radius: 24px; margin: 20px auto; display: block; border: 2px solid rgba(201,168,76,0.4); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+        .quiz-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 700; color: #C9A84C; margin-bottom: 15px; line-height: 1.3; }
+        .gold { color: #C9A84C; }
+        .btn-primary, .start-btn { background: linear-gradient(135deg, #C9A84C 0%, #E8D5A3 100%); color: #080d18; border: none; padding: 14px 32px; font-weight: 700; border-radius: 60px; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .btn-outline { background: transparent; border: 2px solid #C9A84C; color: #C9A84C; padding: 12px 28px; border-radius: 60px; font-weight: 600; cursor: pointer; }
+        .scale-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin: 25px 0; justify-content: center; }
+        .scale-btn { flex: 1; min-width: 70px; background: rgba(255,255,255,0.07); border: 2px solid rgba(201,168,76,0.4); border-radius: 20px; padding: 14px 6px; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; backdrop-filter: blur(4px); }
+        .scale-btn span:first-child { font-size: 1.7rem; font-weight: 800; line-height: 1; }
+        .scale-btn span:last-child { font-size: 0.65rem; opacity: 0.8; line-height: 1.2; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; }
+        .scale-btn.selected { background: #C9A84C; color: #080d18; border-color: #C9A84C; transform: scale(1.02); box-shadow: 0 6px 14px rgba(201,168,76,0.3); }
+        .scale-btn:hover { background: rgba(201,168,76,0.2); border-color: #C9A84C; transform: translateY(-2px); }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; margin: 10px 0; }
+        .progress-fill { height: 100%; background: #C9A84C; width: 0%; transition: width 0.3s; }
+        .tab-nav { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+        .tab-btn { background: rgba(255,255,255,0.05); border: 2px solid rgba(201,168,76,0.3); padding: 10px 20px; border-radius: 40px; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: #C9A84C; color: #080d18; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(#C9A84C 0deg, rgba(255,255,255,0.1) 0deg); margin: 15px auto; display: flex; align-items: center; justify-content: center; position: relative; }
+        .score-circle::before { content: ''; position: absolute; width: 120px; height: 120px; background: #080d18; border-radius: 50%; }
+        .score-text { position: relative; font-size: 2.6rem; font-weight: 800; color: #C9A84C; z-index: 2; }
+        .category-bar { margin: 14px 0; }
+        .bar-bg { background: #2a3650; border-radius: 8px; height: 10px; overflow: hidden; }
+        .bar-fill { background: #C9A84C; height: 100%; border-radius: 8px; width: 0%; }
+        .action-btn { padding: 10px 20px; border-radius: 40px; border: 2px solid #C9A84C; background: transparent; color: #C9A84C; cursor: pointer; margin: 5px; font-weight: 600; }
+        .action-btn.primary { background: #C9A84C; color: #080d18; border: none; }
+        .hidden { display: none; }
+        .status-message { margin-top: 15px; padding: 12px; border-radius: 16px; display: none; text-align: center; }
+        .quote-block { background: rgba(201,168,76,0.12); border-left: 4px solid #C9A84C; padding: 16px; margin: 18px 0; border-radius: 12px; font-style: italic; }
+        .webinar-card { background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(26,39,68,0.9)); border-radius: 24px; padding: 20px; margin-top: 25px; text-align: center; border: 2px solid #C9A84C; transition: 0.2s; }
+        .webinar-card:hover { transform: scale(1.01); background: rgba(201,168,76,0.25); }
+        .webinar-card a { color: #C9A84C; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+        @media print { body { background: white; color: black; } .action-btn, .tab-nav, .btn-primary, .status-message, .hero-image { display: none; } .card, .result-card { background: white; color: black; border: 1px solid #ccc; } .tab-content { display: block !important; page-break-after: always; } .tab-nav { display: none; } }
+        footer { font-size: 0.7rem; text-align: center; margin-top: 30px; opacity: 0.7; }
+        input, select { font-family: 'Montserrat', sans-serif; background: rgba(255,255,255,0.1); border: 1px solid #C9A84C; padding: 12px; border-radius: 20px; width: 100%; color: white; margin-top: 5px; }
+        .form-group { margin-bottom: 15px; }
+        #qText { font-size: 1.55rem; font-weight: 600; margin: 18px 0; line-height: 1.4; }
+    </style>
+</head>
+<body>
+<div class="container" id="app">
+    <!-- INTRO SCREEN -->
+    <div id="introScreen" class="card" style="text-align:center;">
+        <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" class="logo" alt="AccessWorld">
+        <h1 class="quiz-title">Destiny & Embodied Transformation</h1>
+        <img src="https://i.ibb.co/Zp8xwpYk/Screenshot-2026-01-29-104856.png" class="hero-image" alt="Destiny Pathway" onerror="this.src='https://placehold.co/500x300?text=Destiny+Pathway'">
+        <p style="margin:15px 0;">Discover how small daily actions shape your character and destiny. Based on Joshua Roy's Destiny Pathway and the transformative story of the heavy metal guitarist.</p>
+        <div style="background:rgba(201,168,76,0.12); border-radius:24px; padding:22px; margin:20px 0; text-align:left;">
+            <h3 class="gold">🎯 Joshua Roy | Results Coach & Seminar Leader</h3>
+            <p style="font-size:0.9rem;">24+ years law enforcement, 900+ seminars, 3,500+ coaching sessions. Creator of NSR (Nervous System Reprogramming). <em>"Feeling good for no good reason."</em></p>
+            <p style="font-size:0.85rem; margin-top:10px;">📞 +61 432 119 091 | payhip.com/b/jO2o1</p>
+        </div>
+        <button class="start-btn" id="startQuizBtn">Begin Your Assessment →</button>
+        <footer>AccessWorld Seminars · Nervous System Reprogramming</footer>
+    </div>
+
+    <div id="progressArea" class="hidden" style="margin-bottom:15px;"><div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div><div id="progressText" style="text-align:center; font-size:0.85rem; margin-top:8px;"></div></div>
+    <div id="questionScreen" class="hidden"><div class="question-card"><div id="qCat" class="gold" style="font-size:0.8rem; letter-spacing:1.5px;">DESTINY PATHWAY</div><div id="qText"></div><div class="scale-buttons" id="scaleBtns"></div><div style="display:flex; justify-content:space-between; margin-top:25px;"><button id="prevQBtn" class="btn-outline">← Previous</button><button id="nextQBtn" class="btn-primary">Next →</button></div></div></div>
+    <div id="contactScreen" class="hidden"><div class="contact-card"><h2 class="gold">Your Destiny & Embodied Transformation Report</h2><p>Enter your details to receive a personalized analysis of your destiny pathway, plus Joshua Roy's signature frameworks for rapid transformation.</p><div class="form-group"><input type="text" id="leadName" placeholder="Full Name"></div><div class="form-group"><input type="tel" id="leadPhone" placeholder="Phone Number"></div><div class="form-group"><input type="email" id="leadEmail" placeholder="Email Address"></div><div class="form-group"><select id="leadCountry"><option value="">Select Country</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option></select></div><button id="submitLeadBtn" class="btn-primary" style="width:100%;">Generate My Report →</button><div id="webhookStatus" class="status-message"></div></div></div>
+    <div id="resultsScreen" class="hidden"><div class="card"><div style="display:flex; justify-content:space-between;"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:40px;"><span style="font-size:0.75rem;">Destiny Report</span></div><div style="text-align:center;"><div class="score-circle" id="scoreRing"><div class="score-text" id="finalScoreVal">0.0</div></div><div id="tierBadge" style="background:#C9A84C; display:inline-block; padding:6px 24px; border-radius:60px; color:#080d18; font-weight:800;"></div><p id="tierDesc" style="margin-top:12px;"></p></div><div class="tab-nav"><button class="tab-btn active" data-tab="0">📄 Page 1 · Score & Destiny Framework</button><button class="tab-btn" data-tab="1">📄 Page 2 · Growth Areas & The Hinge Principle</button><button class="tab-btn" data-tab="2">📄 Page 3 · Action Plan & Upcoming Events</button></div><div class="tab-content active" id="tab0"></div><div class="tab-content" id="tab1"></div><div class="tab-content" id="tab2"></div><div style="display:flex; gap:15px; justify-content:center; margin-top:25px;"><button id="printPdfBtn" class="action-btn primary">📄 Save as PDF</button><button id="retakeAllBtn" class="action-btn">🔄 Retake Quiz</button></div></div></div>
+</div>
+
+<script>
+    const QUESTIONS = [
+        { id:0, text:"I understand the Destiny Pathway: Thought → Action → Habit → Character → Destiny.", category:"Destiny Pathway", teaching:"'Sow a thought, reap an action; sow an action, reap a habit; sow a habit, reap a character; sow a character, reap a destiny.'" },
+        { id:1, text:"I am currently rewriting an old limiting story that kept me stuck in the past.", category:"Story Rewriting", teaching:"'The story you tell yourself about your life is powerful. It can keep you stuck or set you free. You have the power to change your story.'" },
+        { id:2, text:"I have taken at least one bold action this month that my 'old self' would have avoided.", category:"Bold Action", teaching:"'Don't wait to feel ready. Act first, and the feeling follows.' Sanjay didn't overthink — he just did it." },
+        { id:3, text:"I have a clear strategy for success aligned with proven principles (mentorship, daily practice, repetition).", category:"Proven Strategy", teaching:"'Success leaves clues. Model what works. Following a proven strategy will yield better results than trying to figure everything out alone.'" },
+        { id:4, text:"I understand the 'hinge principle' — that small physiology shifts create massive destiny swings.", category:"Hinge Principle", teaching:"'Your physiology is the hinge. Move it one millimeter, and your entire destiny swings open.'" },
+        { id:5, text:"I see my life as a 'fight' I'm winning, and I get back up quickly after setbacks.", category:"Resilience", teaching:"'Life is a fight. The true test isn't avoiding the hits — it's getting back up. We are all fighters.'" },
+        { id:6, text:"I believe I can experience rapid transformation — not just slow, incremental change.", category:"Rapid Change", teaching:"'Can things happen in a moment? Yes, if you're ready. If the nervous system is ripe for interruption.' — The heavy metal guitarist story." },
+        { id:7, text:"I have integrated NSR (Nervous System Reprogramming) or similar body-based practices into my routine.", category:"NSR Integration", teaching:"'Your unconscious mind doesn't know the difference between physical and emotional pain. Reprogram the nervous system, and everything changes.'" },
+        { id:8, text:"I am ready to 'unleash my incredible self' in service to others and live a life of contribution.", category:"Contribution", teaching:"'Your commitment to yourself should be to discover who you really are, unlock your incredible self, and unleash that on the world.'" },
+        { id:9, text:"I understand that my personality is not fixed — it's a practiced emotion that I can change.", category:"Personality Flexibility", teaching:"'Your personality is not set in stone. It's set in pattern. And patterns can be interrupted and replaced.'" }
+    ];
+
+    let answers = Array(QUESTIONS.length).fill(null);
+    let currentQ = 0;
+    let step = "intro";
+    const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+
+    function getAverage() { let sum=0,count=0; for(let i=0;i<answers.length;i++) if(answers[i]!==null) { sum+=answers[i]; count++; } return count===0?0:sum/count; }
+    function getTier(score) {
+        if(score<=1.2) return { label:"Awakening Needed", description:"You're still waiting to feel ready before acting. The secret: the hinge moves first. Start with 60 seconds of deliberate physiology change tomorrow." };
+        if(score<=2.3) return { label:"Emerging Warrior", description:"You're aware of the destiny pathway but haven't fully embodied it. Small daily actions will build unstoppable momentum." };
+        if(score<=3.4) return { label:"Building Character", description:"You're taking action and building habits. Your destiny is shifting. Keep rehearsing the new you." };
+        if(score<=4.2) return { label:"Thriving", description:"Strong alignment between your actions and your destiny. You're becoming the person you were meant to be." };
+        return { label:"Mastery", description:"Exceptional! You embody the destiny pathway. Now mentor others and expand your impact." };
+    }
+
+    function renderQuestion() {
+        const q = QUESTIONS[currentQ];
+        document.getElementById('qCat').innerHTML = `⚡ ${q.category} · Question ${currentQ+1} of ${QUESTIONS.length}`;
+        document.getElementById('qText').innerHTML = q.text;
+        const scaleDiv = document.getElementById('scaleBtns');
+        scaleDiv.innerHTML = '';
+        const labels = ['Not at all','Slightly','Somewhat','Mostly','Very much','Completely'];
+        for(let i=0;i<=5;i++) {
+            const btn = document.createElement('div');
+            btn.className = `scale-btn ${answers[currentQ]===i ? 'selected' : ''}`;
+            btn.innerHTML = `<span>${i}</span><span>${labels[i]}</span>`;
+            btn.onclick = () => { answers[currentQ]=i; renderQuestion(); };
+            scaleDiv.appendChild(btn);
+        }
+        document.getElementById('progressFill').style.width = `${((currentQ+1)/QUESTIONS.length)*100}%`;
+        document.getElementById('progressText').innerHTML = `Question ${currentQ+1} of ${QUESTIONS.length} · Select your answer`;
+        document.getElementById('prevQBtn').disabled = (currentQ===0);
+        const hasAns = answers[currentQ]!==null;
+        const nextBtn = document.getElementById('nextQBtn');
+        nextBtn.style.opacity = hasAns ? "1" : "0.6";
+        nextBtn.style.cursor = hasAns ? "pointer" : "not-allowed";
+    }
+
+    function nextQuestion() { if(answers[currentQ]===null) return; if(currentQ<QUESTIONS.length-1) { currentQ++; renderQuestion(); } else { showContact(); } }
+    function prevQuestion() { if(currentQ>0) { currentQ--; renderQuestion(); } }
+    function startQuiz() { answers.fill(null); currentQ=0; document.getElementById('introScreen').classList.add('hidden'); document.getElementById('progressArea').classList.remove('hidden'); document.getElementById('questionScreen').classList.remove('hidden'); renderQuestion(); }
+    function showContact() { document.getElementById('questionScreen').classList.add('hidden'); document.getElementById('progressArea').classList.add('hidden'); document.getElementById('contactScreen').classList.remove('hidden'); }
+
+    async function sendToTelegram(name, phone, country, email, score, tier) {
+        const payload = { name, phone, country, email, score:score.toFixed(1), tier:tier.label, quiz:"Destiny & Embodied Transformation", timestamp:new Date().toISOString() };
+        const statusDiv = document.getElementById('webhookStatus');
+        statusDiv.style.display = 'block';
+        statusDiv.innerHTML = '⏳ Generating your destiny report...';
+        statusDiv.style.background = '#fff3cd';
+        try { await fetch(WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) }); statusDiv.innerHTML = '✓ Report ready!'; statusDiv.style.background='#d4edda'; } catch(e) { statusDiv.innerHTML = '⚠️ Showing results below.'; statusDiv.style.background='#f8d7da'; }
+        setTimeout(()=>{ showResults(); }, 600);
+    }
+
+    function showResults() {
+        const score = getAverage();
+        const tier = getTier(score);
+        const percent = (score/5)*100;
+        const deg = percent * 3.6;
+        document.getElementById('scoreRing').style.background = `conic-gradient(#C9A84C 0deg ${deg}deg, rgba(255,255,255,0.1) ${deg}deg 360deg)`;
+        document.getElementById('finalScoreVal').innerHTML = score.toFixed(1);
+        document.getElementById('tierBadge').innerHTML = tier.label;
+        document.getElementById('tierDesc').innerHTML = tier.description;
+
+        let lowIndices = []; answers.forEach((a,i)=>{ if(a!==null && a<=2) lowIndices.push(i); });
+        let highIndices = []; answers.forEach((a,i)=>{ if(a!==null && a>=4) highIndices.push(i); });
+
+        let page1 = `<div><h3 class="gold">🗝️ Your Destiny Pathway Blueprint</h3><p>Your score of <strong>${score.toFixed(1)}/5</strong> places you in the <strong>${tier.label}</strong> category. ${tier.description}</p><div class="quote-block">“Your commitment to yourself should be to discover who you really are, unlock your incredible self, and unleash that on the world.” — Joshua Roy</div><h4>📖 The Destiny Pathway</h4><p><strong>Thought → Action → Habit → Character → Destiny</strong></p><p>You don't start with destiny. You start with a single thought. Then you repeat it as an action. Then you repeat the action until it becomes a habit. Then the habit builds character. Then character writes your destiny.</p><div class="quote-block"><h4>🎸 The Heavy Metal Guitarist Story</h4><p>A young man was triggered by a touch on his back during a concert — it activated childhood sexual abuse stored in his nervous system. Through a kinesthetic bridge and pattern interrupt, he was free in 90 minutes. He cut his hair, went to university, found a girlfriend, and started a completely different life.</p><p><strong>The lesson:</strong> Your nervous system can change in a moment. The past doesn't have to equal the future. You can be transformed faster than you think.</p></div></div>`;
+        
+        let page2 = `<div><h3 class="gold">🔑 Your Destiny Leverage Points (The Hinge)</h3>`;
+        if(lowIndices.length===0) page2 += `<p>✨ You're already moving the hinge! Your destiny is swinging open. Maintain momentum with daily rehearsal and contribution.</p>`;
+        else {
+            lowIndices.slice(0,3).forEach(idx => {
+                const q = QUESTIONS[idx];
+                page2 += `<div style="margin-bottom:20px;"><h4>${q.category}</h4><p>${q.teaching}</p><div style="background:#1e2a3a; border-radius:16px; padding:12px;"><strong>✨ Hinge Movement Practice:</strong><br/>${q.category==="Destiny Pathway"?"Write down: one thought you want to sow. Then take one action today. Then repeat it tomorrow. Watch the chain reaction.":q.category==="Story Rewriting"?"Write the old story. Cross it out. Write the new story. Read it aloud 3x with power posture.":q.category==="Bold Action"?"What's one thing your future self would do today? Do it before sunset. No excuses.":q.category==="Hinge Principle"?"Tomorrow morning, spend 2 minutes on posture: chest up, shoulders back, deep breath. That's your hinge. Watch how your day changes.":"Identify one area where you've been the chicken (involved but not committed). Decide today to be the pig."}</div></div>');
+            });
+        }
+        page2 += `<div class="quote-block"><h4>⚙️ The Hinge Principle</h4><p>Imagine a massive cathedral door. It's heavy, intricate, seemingly immovable. The secret to opening it isn't pushing on its vast surface — it's focusing on the tiny hinge. Your physiology is that hinge. A tiny shift in your posture, breath, or movement creates a monumental swing in your destiny.</p><p><strong>Move the hinge. Swing the door.</strong></p></div></div>`;
+
+        let page3 = `<div><h3 class="gold">✨ Your Embodied Strengths</h3>`;
+        if(highIndices.length>0) { highIndices.slice(0,2).forEach(idx => { page3 += `<p><strong>✓ ${QUESTIONS[idx].category}</strong>: You're already embodying transformation. Use this strength to uplift your lower areas.</p>`; }); }
+        page3 += `<div class="quote-block"><h4>📅 Your 7-Day Destiny Activation Plan</h4><ol><li><strong>Day 1 — The Hinge:</strong> 2 minutes of power posture before every meal. Notice the shift.</li><li><strong>Day 2 — The Thought:</strong> Write down one new empowering thought. Repeat it 10x with movement.</li><li><strong>Day 3 — The Action:</strong> Take one bold action your old self would avoid. Do it before noon.</li><li><strong>Day 4 — The Habit:</strong> Repeat day 1-3. That's how habits form.</li><li><strong>Day 5 — The Character:</strong> Ask: 'What would the person I'm becoming do today?' Do that.</li><li><strong>Day 6 — The Contribution:</strong> Help someone else without expecting anything in return.</li><li><strong>Day 7 — The Destiny:</strong> Write your new destiny statement. Read it aloud. Commit.</li></ol><p><strong>'If you fail to prepare, you prepare to fail. Constant mental rehearsal is what sets aside those who succeed.' — Joshua Roy</strong></p></div><div class="webinar-card"><p><strong>📚 Education can improve income, help you deal with relationship challenges, and master your emotions.</strong></p><a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank">🎓 Click here for upcoming webinars & coaching sessions →</a></div><footer style="margin-top:20px;">“Feeling good for no good reason.” — Joshua Roy</footer></div>`;
+
+        document.getElementById('tab0').innerHTML = page1;
+        document.getElementById('tab1').innerHTML = page2;
+        document.getElementById('tab2').innerHTML = page3;
+        document.getElementById('contactScreen').classList.add('hidden');
+        document.getElementById('resultsScreen').classList.remove('hidden');
+    }
+
+    async function submitContact() {
+        const name = document.getElementById('leadName').value.trim();
+        const phone = document.getElementById('leadPhone').value.trim();
+        const email = document.getElementById('leadEmail').value.trim();
+        const country = document.getElementById('leadCountry').value;
+        if(!name || !phone || !email || !country) { alert("All fields required."); return; }
+        const score = getAverage();
+        const tier = getTier(score);
+        await sendToTelegram(name, phone, country, email, score, tier);
+    }
+    function printPDF() { window.print(); }
+    function retakeFull() { answers.fill(null); currentQ=0; document.getElementById('introScreen').classList.remove('hidden'); document.getElementById('progressArea').classList.add('hidden'); document.getElementById('questionScreen').classList.add('hidden'); document.getElementById('contactScreen').classList.add('hidden'); document.getElementById('resultsScreen').classList.add('hidden'); }
+
+    document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
+    document.getElementById('nextQBtn').addEventListener('click', nextQuestion);
+    document.getElementById('prevQBtn').addEventListener('click', prevQuestion);
+    document.getElementById('submitLeadBtn').addEventListener('click', submitContact);
+    document.getElementById('printPdfBtn').addEventListener('click', printPDF);
+    document.getElementById('retakeAllBtn').addEventListener('click', retakeFull);
+    document.querySelectorAll('.tab-btn').forEach(btn=>{ btn.addEventListener('click',()=>{ const tab=btn.getAttribute('data-tab'); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.tab-content').forEach((tc,i)=>{ tc.classList.toggle('active', i==tab); }); }); });
+</script>
+</body>
+</html>
+```
