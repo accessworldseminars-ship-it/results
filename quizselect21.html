@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AccessWorld | Problem to Solution Assessment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+            color: #F0F4F8;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+        .card, .intro-card, .question-card, .contact-card, .result-card {
+            background: rgba(26, 39, 68, 0.75);
+            backdrop-filter: blur(8px);
+            border-radius: 28px;
+            padding: 28px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(201,168,76,0.25);
+        }
+        .logo { width: 110px; margin-bottom: 15px; border-radius: 60px; }
+        .hero-image { width: 100%; max-width: 500px; border-radius: 24px; margin: 20px auto; display: block; border: 2px solid rgba(201,168,76,0.4); }
+        .quiz-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 700; color: #C9A84C; margin-bottom: 15px; line-height: 1.3; }
+        .gold { color: #C9A84C; }
+        .btn-primary, .start-btn { background: linear-gradient(135deg, #C9A84C 0%, #E8D5A3 100%); color: #080d18; border: none; padding: 14px 32px; font-weight: 700; border-radius: 60px; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .btn-outline { background: transparent; border: 2px solid #C9A84C; color: #C9A84C; padding: 12px 28px; border-radius: 60px; font-weight: 600; cursor: pointer; }
+        .option-grid { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+        .option-btn { background: rgba(255,255,255,0.07); border: 2px solid rgba(201,168,76,0.4); border-radius: 20px; padding: 16px 20px; cursor: pointer; transition: all 0.2s; text-align: left; font-weight: 500; }
+        .option-btn:hover { background: rgba(201,168,76,0.15); border-color: #C9A84C; transform: translateX(5px); }
+        .option-btn.selected { background: #C9A84C; color: #080d18; border-color: #C9A84C; }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; margin: 10px 0; }
+        .progress-fill { height: 100%; background: #C9A84C; width: 0%; transition: width 0.3s; }
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 25px; }
+        .hidden { display: none; }
+        .tag { display: inline-block; background: rgba(45, 212, 191, 0.15); color: #2dd4bf; padding: 5px 12px; border-radius: 30px; font-size: 0.75rem; margin: 5px 5px 0 0; border: 1px solid rgba(45,212,191,0.3); }
+        .tag.core { background: rgba(251,191,36,0.15); color: #fbbf24; border-color: rgba(251,191,36,0.3); }
+        .program-card { background: rgba(0,0,0,0.3); border-radius: 20px; padding: 20px; margin: 20px 0; border-left: 4px solid #C9A84C; }
+        .program-card h4 { color: #C9A84C; margin-bottom: 10px; }
+        .webinar-link { background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(26,39,68,0.9)); border-radius: 24px; padding: 20px; margin-top: 25px; text-align: center; border: 2px solid #C9A84C; }
+        .webinar-link a { color: #C9A84C; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+        footer { font-size: 0.7rem; text-align: center; margin-top: 30px; opacity: 0.7; }
+        input, select { background: rgba(255,255,255,0.1); border: 1px solid #C9A84C; padding: 12px; border-radius: 20px; width: 100%; color: white; margin-top: 5px; }
+        .form-group { margin-bottom: 15px; }
+        .coach-bio { background: rgba(201,168,76,0.08); border-radius: 20px; padding: 18px; margin-top: 20px; text-align: left; border: 1px solid rgba(201,168,76,0.2); }
+        @media print { .btn-primary, .nav-buttons, .webinar-link, .contact-card, .status-message { display: none; } }
+    </style>
+</head>
+<body>
+<div class="container" id="app"></div>
+<script>
+    // Problem categories and their mapped solutions
+    const PROBLEM_CATEGORIES = [
+        { id: "health", text: "🩺 Health issues (low energy, chronic pain, physical challenges)", solutions: ["Health Series", "Emotional Mastery Series"] },
+        { id: "workplace", text: "💼 Workplace issues / Career pressure", solutions: ["Emotional Mastery Series", "Life Skills Series", "Stepping Into Wealth"] },
+        { id: "emptiness", text: "😔 Emptiness / Lack of purpose / Feeling lost", solutions: ["Design Your Identity", "Ultimate Freedom", "Gratitude Session"] },
+        { id: "friendship", text: "👥 Friendship problems / Social isolation", solutions: ["Communicate From the Heart", "Relationship Series"] },
+        { id: "failure", text: "📉 Fear of failure / Past failure holding me back", solutions: ["Emotional Mastery Series", "Stepping Into Wealth"] },
+        { id: "financial", text: "💰 Financial crisis / Want more money", solutions: ["Stepping Into Wealth", "Emotional Mastery Series", "Master Your Memory"] },
+        { id: "unfair", text: "⚖️ Unfair treatment / Feeling victimized", solutions: ["Emotional Mastery Series", "Communicate From the Heart", "Relationship Series"] },
+        { id: "innerpeace", text: "🧘 Inner peace / Calm / Reducing anxiety", solutions: ["Gratitude Session", "Emotional Mastery Series", "NSR Program"] },
+        { id: "mentalhealth", text: "🧠 Mental health challenges (depression, anxiety)", solutions: ["Emotional Mastery Series", "Life Skills Series", "NSR Program"] },
+        { id: "breakup", text: "💔 Breakup / Divorce / Heartbreak", solutions: ["Relationship Series", "Emotional Mastery Series", "Unlock Your Incredible Self"] },
+        { id: "relationship", text: "💑 Relationship challenges / Communication issues", solutions: ["Relationship Series", "Life Skills Series", "Emotional Mastery Series"] },
+        { id: "abuse", text: "🛡️ Past abuse / Trauma / Domestic violence", solutions: ["Emotional Mastery Series", "Unlock Your Incredible Self", "Ultimate Freedom"] },
+        { id: "attractlove", text: "💕 Want to attract a romantic partner", solutions: ["The Chemistry of Love", "Communicate From the Heart"] },
+        { id: "betterrelationship", text: "💞 Want a better relationship with current partner", solutions: ["Relationship Series", "Create a Relationship Vision"] },
+        { id: "sexlife", text: "🔥 Want a better sex life / More passion", solutions: ["Pathway to Passion", "Intimacy Series"] },
+        { id: "energy", text: "⚡ Low energy / Fatigue / Want more vitality", solutions: ["Health Series", "Morning Routine", "Life Skills Series"] },
+        { id: "addiction", text: "🚬 Addiction challenges (substances, behaviors, mood)", solutions: ["Emotional Mastery Series", "Unlock Your Incredible Self", "NSR Program"] },
+        { id: "laziness", text: "😴 Laziness / Procrastination / Lack of motivation", solutions: ["Life Skills Series", "Morning Routine", "Emotional Mastery Series"] },
+        { id: "fear", text: "😨 Overwhelming fear / Phobias / Panic", solutions: ["Emotional Mastery Series", "Unlock Your Incredible Self", "NSR Program"] },
+        { id: "confidence", text: "💪 Lack of confidence / Low self-esteem", solutions: ["Emotional Mastery Series", "Design Your Identity", "Life Skills Series"] },
+        { id: "memory", text: "🧠 Poor memory / Forgetfulness", solutions: ["Master Your Memory", "Life Skills Series"] },
+        { id: "communication", text: "🗣️ Poor communication skills", solutions: ["Communicate From the Heart", "Life Skills Series", "Relationship Series"] }
+    ];
+
+    let selectedProblems = [];
+    let currentStep = "intro";
+    let userName = "", userEmail = "";
+
+    const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+
+    function renderApp() {
+        if (currentStep === "intro") renderIntro();
+        else if (currentStep === "quiz") renderQuiz();
+        else if (currentStep === "contact") renderContact();
+        else if (currentStep === "results") renderResults();
+    }
+
+    function renderIntro() {
+        const html = `
+            <div id="introScreen" class="intro-card" style="text-align:center;">
+                <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" class="logo" alt="AccessWorld">
+                <h1 class="quiz-title">From Problem to Solution</h1>
+                <p style="font-size:1.2rem; margin:10px 0;">"A problem well stated is a problem half solved."</p>
+                <img src="https://i.ibb.co/TD40fb0M/Picture2.png" class="hero-image" onerror="this.src='https://placehold.co/500x300'">
+                <p style="margin:15px 0;">Tell us what challenges you're facing, and we'll show you the exact training programs designed to help you transform.</p>
+                <div class="coach-bio">
+                    <h3 class="gold">🎯 Joshua Roy | Results Coach & Seminar Leader</h3>
+                    <p>Creator of NSR (Nervous System Reprogramming). 3,500+ coaching sessions, 900+ seminars. <em>"Feeling good for no good reason."</em></p>
+                </div>
+                <button class="start-btn" id="startBtn">Begin Assessment →</button>
+                <footer>AccessWorld Seminars · Knowledge → Application → Momentum → Character</footer>
+            </div>
+        `;
+        document.getElementById('app').innerHTML = html;
+        document.getElementById('startBtn')?.addEventListener('click', () => { currentStep = "quiz"; renderApp(); });
+    }
+
+    function renderQuiz() {
+        let html = `
+            <div class="card">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:50px;">
+                    <span class="gold">Select the challenges you face</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill" style="width:${(selectedProblems.length / PROBLEM_CATEGORIES.length) * 100}%"></div></div>
+                <p style="margin:15px 0;">Choose all that apply (you can select multiple). The more you select, the more personalized your recommendations will be.</p>
+                <div class="option-grid" id="optionsGrid"></div>
+                <div class="nav-buttons">
+                    <button class="btn-outline" id="backBtn">← Back</button>
+                    <button class="btn-primary" id="nextBtn">See My Solutions →</button>
+                </div>
+            </div>
+        `;
+        document.getElementById('app').innerHTML = html;
+        
+        const grid = document.getElementById('optionsGrid');
+        PROBLEM_CATEGORIES.forEach(cat => {
+            const isSelected = selectedProblems.includes(cat.id);
+            const btn = document.createElement('div');
+            btn.className = `option-btn ${isSelected ? 'selected' : ''}`;
+            btn.innerHTML = cat.text;
+            btn.onclick = () => {
+                if (selectedProblems.includes(cat.id)) {
+                    selectedProblems = selectedProblems.filter(p => p !== cat.id);
+                } else {
+                    selectedProblems.push(cat.id);
+                }
+                renderQuiz();
+            };
+            grid.appendChild(btn);
+        });
+        
+        document.getElementById('backBtn').onclick = () => { currentStep = "intro"; renderApp(); };
+        document.getElementById('nextBtn').onclick = () => {
+            if (selectedProblems.length === 0) {
+                alert("Please select at least one challenge you're facing.");
+                return;
+            }
+            currentStep = "contact";
+            renderApp();
+        };
+    }
+
+    function renderContact() {
+        const html = `
+            <div class="contact-card">
+                <h2 class="gold">Your Personalized Solution Map</h2>
+                <p>Enter your details to receive your custom training recommendations and a free copy of our training guide.</p>
+                <div class="form-group"><input type="text" id="nameInput" placeholder="Full Name"></div>
+                <div class="form-group"><input type="email" id="emailInput" placeholder="Email Address"></div>
+                <div class="form-group"><select id="countrySelect"><option value="">Select Country</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option></select></div>
+                <button class="btn-primary" id="submitBtn" style="width:100%;">Generate My Solution Map →</button>
+                <div id="statusMsg" class="status-message" style="display:none;"></div>
+                <button class="btn-outline" id="backToQuizBtn" style="margin-top:15px; width:100%;">← Back to select challenges</button>
+            </div>
+        `;
+        document.getElementById('app').innerHTML = html;
+        document.getElementById('submitBtn').onclick = submitContact;
+        document.getElementById('backToQuizBtn').onclick = () => { currentStep = "quiz"; renderApp(); };
+    }
+
+    async function submitContact() {
+        const name = document.getElementById('nameInput')?.value.trim();
+        const email = document.getElementById('emailInput')?.value.trim();
+        const country = document.getElementById('countrySelect')?.value;
+        if (!name || !email || !country) { alert("Please fill all fields."); return; }
+        userName = name;
+        userEmail = email;
+        
+        const statusDiv = document.getElementById('statusMsg');
+        statusDiv.style.display = 'block';
+        statusDiv.innerHTML = '⏳ Generating your solution map...';
+        statusDiv.style.background = '#fff3cd';
+        statusDiv.style.color = '#000';
+        
+        // Send to webhook
+        const payload = { name, email, country, selectedProblems, timestamp: new Date().toISOString(), quiz: "Problem to Solution Map" };
+        try {
+            await fetch(WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+            statusDiv.innerHTML = '✓ Report ready!';
+            statusDiv.style.background = '#d4edda';
+            statusDiv.style.color = '#155724';
+        } catch(e) { console.warn(e); statusDiv.innerHTML = '⚠️ Showing results below.'; }
+        
+        setTimeout(() => { currentStep = "results"; renderApp(); }, 800);
+    }
+
+    function renderResults() {
+        // Collect unique solutions from selected problems
+        const solutionMap = new Map(); // solution name -> count and if core
+        selectedProblems.forEach(problemId => {
+            const problem = PROBLEM_CATEGORIES.find(p => p.id === problemId);
+            if (problem) {
+                problem.solutions.forEach(sol => {
+                    const isCore = (sol === "Emotional Mastery Series");
+                    solutionMap.set(sol, { count: (solutionMap.get(sol)?.count || 0) + 1, core: isCore || solutionMap.get(sol)?.core });
+                });
+            }
+        });
+        
+        // Sort solutions by count (most relevant first)
+        const sortedSolutions = Array.from(solutionMap.entries()).sort((a,b) => b[1].count - a[1].count);
+        
+        // Map solution names to detailed program descriptions
+        const programDetails = {
+            "Health Series": { desc: "Improve energy, vitality, and physical wellbeing. Learn about healing foods, pain elimination, and morning routines that transform your day.", components: ["Ultimate Health", "Eliminate Physical and Emotional Pain Fast", "Morning Routine", "Gratitude Session"] },
+            "Emotional Mastery Series": { desc: "Release trapped emotions, heal trauma, and rewire your nervous system for lasting peace and confidence. The cornerstone of transformation.", components: ["Emotional Clearing", "Ultimate Freedom", "NLP Foundation Principles", "Design Your Identity"], core: true },
+            "Life Skills Series": { desc: "Master practical skills for wealth, memory, communication, and self-concept. Build the foundation for a thriving life.", components: ["Stepping Into Wealth", "Ultimate Memory", "Communicating From the Heart", "Unlock Your Incredible Self"] },
+            "Stepping Into Wealth": { desc: "Transform your money mindset, attract abundance, and create financial freedom. Learn the 4 levels of wealth creation.", components: ["Money Mindset", "Financial Blueprint Upgrade", "Gratitude for Wealth"] },
+            "Relationship Series": { desc: "Create deep, lasting connections. Whether single or partnered, learn the art of attraction, intimacy, and lasting love.", components: ["The Chemistry of Love", "Create a Relationship Vision", "Intimacy", "Pathway to Passion"] },
+            "The Chemistry of Love": { desc: "Discover the 3 stages of love, the 6 human needs for relationship success, and non-verbal cues of attraction.", components: ["Falling in Love", "Dating Tools", "Love Archetypes"] },
+            "Create a Relationship Vision": { desc: "Manifest your ideal relationship using strategic visioning and the COMMIT formula.", components: ["Vision Building", "Shared Values", "Relationship Manifestation"] },
+            "Intimacy Series": { desc: "Deepen emotional and physical connection through love languages and deep communication.", components: ["Love Languages", "Deep Communication", "Emotional Safety"] },
+            "Pathway to Passion": { desc: "Ignite or reignite passion in the bedroom. Understand sexual archetypes and masculine/feminine energies.", components: ["Sexual Archetypes", "Energy Work", "Pleasure Enhancement"] },
+            "Communicate From the Heart": { desc: "Master the 5 levels of communication, build instant rapport, and become the most interesting person in any room.", components: ["Rapport Building", "Awakened Communication", "Naked Communication"] },
+            "Master Your Memory": { desc: "Enhance recall, learn faster, and sharpen your mind with 4 key memory tools.", components: ["Memory Techniques", "Rapid Learning", "Recall Systems"] },
+            "Unlock Your Incredible Self": { desc: "Discover who you really are and unleash that on the world. The foundational seminar for personal transformation.", components: ["Identity Discovery", "Nervous System Basics", "Action Planning"] },
+            "Design Your Identity": { desc: "Upgrade your self-image with powerful 'I am' statements and incantations that rewire your nervous system.", components: ["Identity Statements", "Incantations", "Self-Worth Anchoring"] },
+            "Ultimate Freedom": { desc: "Break free from self-sabotage, addiction, and suffering using the 4-step healing process and WIN formula.", components: ["Self-Sabotage Solutions", "Addiction Recovery", "Healing Process"] },
+            "Gratitude Session": { desc: "Install gratitude as a neurological anchor you can access at will, even in difficult moments.", components: ["Somatic Gratitude", "Gratitude Anchoring", "Healing Through Gratitude"] },
+            "Morning Routine": { desc: "Take control of your first hour and prime your nervous system for energy, focus, and emotional regulation.", components: ["DOSE Chemicals", "Morning Stacking", "RAS Programming"] },
+            "NSR Program": { desc: "Nervous System Reprogramming - deep emotional clearing using The Gift, Grey Room, Womb of Eternity, and Space Odyssey processes.", components: ["The Gift", "The Grey Room", "The Womb of Eternity", "Space Odyssey"] }
+        };
+        
+        let programsHtml = '';
+        sortedSolutions.forEach(([name, data]) => {
+            const details = programDetails[name] || { desc: "Transformative program designed to help you overcome challenges and create lasting change.", components: ["Core Training", "Integration", "Support"] };
+            const isCore = data.core || name === "Emotional Mastery Series";
+            programsHtml += `
+                <div class="program-card">
+                    <h4>${isCore ? '⭐ ' : ''}${name}</h4>
+                    <p>${details.desc}</p>
+                    <div style="margin-top:12px;">
+                        ${details.components.map(c => `<span class="tag ${isCore ? 'core' : ''}">${c}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        });
+        
+        // Build full results with teaching content
+        const resultsHtml = `
+            <div class="result-card">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:50px;">
+                    <span class="gold">Personalized Solution Map for ${userName}</span>
+                </div>
+                
+                <div style="margin:25px 0; text-align:center;">
+                    <p style="font-size:1.1rem;">Based on your selected challenges, we've identified the most relevant training programs to help you transform.</p>
+                    <div style="background:rgba(201,168,76,0.1); border-radius:20px; padding:15px; margin:20px 0;">
+                        <p class="gold" style="font-weight:bold;">Knowledge → Application → Momentum → Character</p>
+                        <p>"A problem well stated is a problem half solved."</p>
+                    </div>
+                </div>
+                
+                <h3 class="gold">🎯 Your Recommended Training Programs</h3>
+                ${programsHtml}
+                
+                <div class="teaching-section" style="background:rgba(0,0,0,0.2); border-radius:20px; padding:20px; margin:20px 0;">
+                    <h4 class="gold">📖 The Emotional Mastery Series: Your Core Solution</h4>
+                    <p>Notice that the <strong>Emotional Mastery Series</strong> appears as a recommended solution for nearly every challenge—from health issues to relationship struggles to financial blocks. Why? Because <strong>emotions drive every aspect of your life</strong>. Your nervous system is the operating system for your entire being. When you clear trapped emotions, regulate your nervous system, and master your internal state, everything else begins to shift automatically.</p>
+                    <p style="margin-top:12px;">The Emotional Mastery Series includes four powerful components:</p>
+                    <ul style="margin-left:25px; margin-top:8px;">
+                        <li><strong>The Emotional Clearing</strong> – Release trauma and trapped emotions from the past</li>
+                        <li><strong>Ultimate Freedom</strong> – Break self-sabotage and addiction patterns</li>
+                        <li><strong>NLP Foundation Principles</strong> – Learn to generate any emotional state at will</li>
+                        <li><strong>Design Your Identity</strong> – Rewire your self-image for confidence and worth</li>
+                    </ul>
+                </div>
+                
+                <div class="teaching-section" style="background:rgba(0,0,0,0.2); border-radius:20px; padding:20px; margin:20px 0;">
+                    <h4 class="gold">🧠 Nervous System Reprogramming (NSR): Deep Transformation</h4>
+                    <p>For those facing trauma, addiction, anxiety, or deep-seated patterns, the NSR Program offers four powerful processes:</p>
+                    <ul style="margin-left:25px; margin-top:8px;">
+                        <li><strong>The Gift</strong> – Timeline therapy that overrides negative emotions with joy</li>
+                        <li><strong>The Grey Room</strong> – Reframe past trauma and release emotional charge</li>
+                        <li><strong>The Womb of Eternity</strong> – Reimprint the voice of authority in your mind</li>
+                        <li><strong>Space Odyssey</strong> – Spatial relocation to neutralize painful memories</li>
+                    </ul>
+                    <p style="margin-top:12px;">These processes work directly with your unconscious mind to create lasting change at the nervous system level.</p>
+                </div>
+                
+                <div class="teaching-section" style="background:rgba(0,0,0,0.2); border-radius:20px; padding:20px; margin:20px 0;">
+                    <h4 class="gold">⚙️ The 12-Month Transformation Framework</h4>
+                    <p>Real change doesn't happen overnight. It happens through <strong>consistent repetition with new patterns</strong>. Joshua Roy recommends a 12-month commitment to deep transformation:</p>
+                    <ul style="margin-left:25px; margin-top:8px;">
+                        <li><strong>Months 1-3:</strong> Emotional Mastery – Clear the past and regulate your nervous system</li>
+                        <li><strong>Months 4-6:</strong> Life Skills – Build wealth, memory, and communication mastery</li>
+                        <li><strong>Months 7-9:</strong> Relationship Series – Transform your connections with others</li>
+                        <li><strong>Months 10-12:</strong> Health & NSR – Integrate physical health and deep nervous system reprogramming</li>
+                    </ul>
+                    <p>"Knowledge is not information. It is application." – Joshua Roy</p>
+                </div>
+                
+                <div class="webinar-link">
+                    <p><strong>📚 Ready to transform?</strong> Join Joshua Roy's live training programs and coaching to accelerate your results.</p>
+                    <a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank">🎓 Click here for upcoming webinars & training sessions →</a>
+                </div>
+                
+                <div style="display:flex; gap:15px; justify-content:center; margin-top:25px;">
+                    <button class="btn-outline" id="retakeBtn">🔄 Start Over</button>
+                    <button class="btn-primary" onclick="window.print()">📄 Save as PDF</button>
+                </div>
+                
+                <footer style="margin-top:25px;">AccessWorld Seminars · Joshua Roy · NSR Nervous System Reprogramming</footer>
+            </div>
+        `;
+        
+        document.getElementById('app').innerHTML = resultsHtml;
+        document.getElementById('retakeBtn')?.addEventListener('click', () => {
+            selectedProblems = [];
+            currentStep = "intro";
+            renderApp();
+        });
+    }
+    
+    renderApp();
+</script>
+</body>
+</html>
