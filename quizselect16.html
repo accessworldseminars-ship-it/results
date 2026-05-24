@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AccessWorld | NLP For Life: What Is NLP?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg, #080d18 0%, #1A2744 100%); color: #F0F4F8; min-height: 100vh; line-height: 1.6; }
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+        .card, .question-card, .contact-card, .result-card { background: rgba(26, 39, 68, 0.75); backdrop-filter: blur(8px); border-radius: 28px; padding: 28px; margin-bottom: 20px; border: 1px solid rgba(201,168,76,0.25); }
+        .logo { width: 110px; margin-bottom: 15px; border-radius: 60px; }
+        .hero-image { width: 100%; max-width: 500px; border-radius: 24px; margin: 20px auto; display: block; border: 2px solid rgba(201,168,76,0.4); }
+        .quiz-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 700; color: #C9A84C; margin-bottom: 15px; line-height: 1.3; }
+        .gold { color: #C9A84C; }
+        .btn-primary, .start-btn { background: linear-gradient(135deg, #C9A84C 0%, #E8D5A3 100%); color: #080d18; border: none; padding: 14px 32px; font-weight: 700; border-radius: 60px; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .btn-outline { background: transparent; border: 2px solid #C9A84C; color: #C9A84C; padding: 12px 28px; border-radius: 60px; font-weight: 600; cursor: pointer; }
+        .scale-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin: 25px 0; justify-content: center; }
+        .scale-btn { flex: 1; min-width: 70px; background: rgba(255,255,255,0.07); border: 2px solid rgba(201,168,76,0.4); border-radius: 20px; padding: 14px 6px; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; gap: 8px; backdrop-filter: blur(4px); }
+        .scale-btn span:first-child { font-size: 1.7rem; font-weight: 800; line-height: 1; }
+        .scale-btn span:last-child { font-size: 0.65rem; opacity: 0.8; font-weight: 500; text-transform: uppercase; }
+        .scale-btn.selected { background: #C9A84C; color: #080d18; border-color: #C9A84C; transform: scale(1.02); box-shadow: 0 6px 14px rgba(201,168,76,0.3); }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; margin: 10px 0; }
+        .progress-fill { height: 100%; background: #C9A84C; width: 0%; transition: width 0.3s; }
+        .tab-nav { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+        .tab-btn { background: rgba(255,255,255,0.05); border: 2px solid rgba(201,168,76,0.3); padding: 10px 20px; border-radius: 40px; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: #C9A84C; color: #080d18; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(#C9A84C 0deg, rgba(255,255,255,0.1) 0deg); margin: 15px auto; display: flex; align-items: center; justify-content: center; position: relative; }
+        .score-circle::before { content: ''; position: absolute; width: 120px; height: 120px; background: #080d18; border-radius: 50%; }
+        .score-text { position: relative; font-size: 2.6rem; font-weight: 800; color: #C9A84C; z-index: 2; }
+        .action-btn { padding: 10px 20px; border-radius: 40px; border: 2px solid #C9A84C; background: transparent; color: #C9A84C; cursor: pointer; margin: 5px; font-weight: 600; }
+        .action-btn.primary { background: #C9A84C; color: #080d18; border: none; }
+        .hidden { display: none; }
+        .status-message { margin-top: 15px; padding: 12px; border-radius: 16px; display: none; text-align: center; }
+        .quote-block { background: rgba(201,168,76,0.12); border-left: 4px solid #C9A84C; padding: 16px; margin: 18px 0; border-radius: 12px; font-style: italic; }
+        .webinar-card { background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(26,39,68,0.9)); border-radius: 24px; padding: 20px; margin-top: 25px; text-align: center; border: 2px solid #C9A84C; }
+        .webinar-card a { color: #C9A84C; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+        @media print { body { background: white; color: black; } .action-btn, .tab-nav, .btn-primary, .status-message, .hero-image { display: none; } .card, .result-card { background: white; color: black; border: 1px solid #ccc; } .tab-content { display: block !important; page-break-after: always; } .tab-nav { display: none; } }
+        footer { font-size: 0.7rem; text-align: center; margin-top: 30px; opacity: 0.7; }
+        input, select { background: rgba(255,255,255,0.1); border: 1px solid #C9A84C; padding: 12px; border-radius: 20px; width: 100%; color: white; margin-top: 5px; font-family: 'Montserrat', sans-serif; }
+        .form-group { margin-bottom: 15px; }
+        #qText { font-size: 1.55rem; font-weight: 600; margin: 18px 0; line-height: 1.4; }
+        .coach-bio { background: rgba(201,168,76,0.08); border-radius: 20px; padding: 18px; margin-top: 20px; text-align: left; border: 1px solid rgba(201,168,76,0.2); }
+    </style>
+</head>
+<body>
+<div class="container" id="app"></div>
+<script>
+    const CHAPTER_TITLE = "What Is NLP?";
+    const CHAPTER_NUM = 1;
+    const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+    const QUESTIONS = [
+        { text: "I understand that NLP stands for Neuro-Linguistic Programming and what it means.", category: "NLP Foundations", teaching: "NLP studies how we create our subjective reality—our 'map'—and provides tools to upgrade it." },
+        { text: "I recognize that every person's 'map of the world' is unique, like a thumbprint.", category: "Maps of Reality", teaching: "'Every person's map of the world is as unique as their thumbprint.' — Milton Erickson" },
+        { text: "I am aware that my brain filters information through time, space, language, beliefs, and memories.", category: "Internal Filters", teaching: "Your internal representation is not reality—it's your interpretation. Change the interpretation, change the experience." },
+        { text: "I understand the three brains: Reptilian (survival), Limbic (emotion), and Neocortex (rational thinking).", category: "Three Brains", teaching: "Old programming often lingers in lower systems. NLP helps reprogram patterns stored there." },
+        { text: "I believe that reframing my past can change how I feel about it today.", category: "Reframing", teaching: "Reframing helps you look at difficult experiences through a new lens—mining wisdom instead of wounds." },
+        { text: "I know that my internal map is not reality—it's just my interpretation of events.", category: "Map vs Territory", teaching: "Just like a paper map is not the actual land—your thoughts are not absolute truth." },
+        { text: "I am willing to step into others' 'maps' to build rapport and understanding.", category: "Rapport", teaching: "When someone says 'rock solid,' don't change it to 'concrete.' Step into their world." },
+        { text: "I understand that NLP was created by studying master therapists who got rapid results.", category: "Origins", teaching: "Bandler and Grinder modeled Satir, Perls, and Erickson to discover what works." },
+        { text: "I believe I can upgrade my internal map instead of being stuck with old programming.", category: "Upgradability", teaching: "You're not stuck with your old map. NLP gives you tools to create a new one." },
+        { text: "I am aware that awareness is the first step toward change.", category: "Awareness", teaching: "Don't judge your answers—just notice them. Awareness opens the door to transformation." }
+    ];
+
+    let answers = Array(QUESTIONS.length).fill(null), currentQ = 0;
+    let intro, progressArea, questionScreen, contactScreen, resultsScreen;
+    function getAverage() { let s=0,c=0; for(let i=0;i<answers.length;i++) if(answers[i]!==null) { s+=answers[i]; c++; } return c===0?0:s/c; }
+    function getTier(score) {
+        if(score<=1.2) return { label:"Map Exploration Needed", desc:"You're beginning to understand NLP foundations. The good news: awareness is the first step. Start by mapping one thought pattern this week." };
+        if(score<=2.3) return { label:"Emerging Navigator", desc:"You sense there's more to your internal map. Practice reframing one past event with a new perspective." };
+        if(score<=3.4) return { label:"Building Your Compass", desc:"You're actively learning NLP principles. Keep practicing—consistency rewires the brain." };
+        if(score<=4.2) return { label:"Skilled Mapmaker", desc:"Strong understanding of NLP foundations. Now apply reframing to daily situations." };
+        return { label:"NLP Mastery", desc:"Exceptional! You embody the principle that maps can be upgraded. Share this wisdom with others." };
+    }
+
+    function renderApp() { document.getElementById('app').innerHTML = `
+        <div id="introScreen" class="card" style="text-align:center;">
+            <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" class="logo"><h1 class="quiz-title">NLP For Life: ${CHAPTER_TITLE}</h1>
+            <img src="https://i.ibb.co/jk30TLqf/Picture1.png" class="hero-image" onerror="this.src='https://placehold.co/500x300'">
+            <p>Discover how your brain creates your reality—and how to upgrade your internal map using Neuro-Linguistic Programming.</p>
+            <div class="coach-bio"><h3 class="gold">🎯 Joshua Roy | NLP Coach & Seminar Leader</h3><p>Creator of NSR (Nervous System Reprogramming). <em>"Feeling good for no good reason."</em> 📞 +61 432 119 091</p></div>
+            <button class="start-btn" id="startQuizBtn">Begin Assessment →</button><footer>AccessWorld Seminars · NLP For Life</footer>
+        </div>
+        <div id="progressArea" class="hidden"><div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div><div id="progressText" style="text-align:center; font-size:0.85rem;"></div></div>
+        <div id="questionScreen" class="hidden"><div class="question-card"><div id="qCat" class="gold"></div><div id="qText"></div><div class="scale-buttons" id="scaleBtns"></div><div style="display:flex; justify-content:space-between;"><button id="prevQBtn" class="btn-outline">← Previous</button><button id="nextQBtn" class="btn-primary">Next →</button></div></div></div>
+        <div id="contactScreen" class="hidden"><div class="contact-card"><h2 class="gold">Your NLP Assessment Report</h2><p>Get personalized insights based on Joshua Roy's NLP framework.</p><div class="form-group"><input type="text" id="leadName" placeholder="Full Name"></div><div class="form-group"><input type="tel" id="leadPhone" placeholder="Phone"></div><div class="form-group"><input type="email" id="leadEmail" placeholder="Email"></div><div class="form-group"><select id="leadCountry"><option value="">Select Country</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option></select></div><button id="submitLeadBtn" class="btn-primary">Generate Report →</button><div id="webhookStatus" class="status-message"></div></div></div>
+        <div id="resultsScreen" class="hidden"><div class="card"><div style="display:flex; justify-content:space-between;"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:40px;"><span>NLP Report</span></div><div style="text-align:center;"><div class="score-circle" id="scoreRing"><div class="score-text" id="finalScoreVal">0.0</div></div><div id="tierBadge" style="background:#C9A84C; display:inline-block; padding:6px 24px; border-radius:60px; color:#080d18; font-weight:800;"></div><p id="tierDesc"></p></div><div class="tab-nav"><button class="tab-btn active" data-tab="0">Page 1 · Score</button><button class="tab-btn" data-tab="1">Page 2 · Growth Areas</button><button class="tab-btn" data-tab="2">Page 3 · Action Plan</button></div><div class="tab-content active" id="tab0"></div><div class="tab-content" id="tab1"></div><div class="tab-content" id="tab2"></div><div style="display:flex; gap:15px; justify-content:center;"><button id="printPdfBtn" class="action-btn primary">📄 Save PDF</button><button id="retakeAllBtn" class="action-btn">🔄 Retake</button></div></div></div>`;
+        intro = document.getElementById('introScreen'); progressArea = document.getElementById('progressArea'); questionScreen = document.getElementById('questionScreen'); contactScreen = document.getElementById('contactScreen'); resultsScreen = document.getElementById('resultsScreen');
+        document.getElementById('startQuizBtn')?.addEventListener('click', startQuiz);
+        document.getElementById('nextQBtn')?.addEventListener('click', nextQuestion);
+        document.getElementById('prevQBtn')?.addEventListener('click', prevQuestion);
+        document.getElementById('submitLeadBtn')?.addEventListener('click', submitContact);
+        document.getElementById('printPdfBtn')?.addEventListener('click', ()=>window.print());
+        document.getElementById('retakeAllBtn')?.addEventListener('click', retakeFull);
+        document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',()=>{ let tab=btn.dataset.tab; document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.tab-content').forEach((tc,i)=>tc.classList.toggle('active', i==tab)); }));
+    }
+    function renderQuestion() {
+        let q = QUESTIONS[currentQ];
+        document.getElementById('qCat').innerHTML = `⚡ ${q.category} · Question ${currentQ+1} of ${QUESTIONS.length}`;
+        document.getElementById('qText').innerHTML = q.text;
+        let container = document.getElementById('scaleBtns'); container.innerHTML = '';
+        let labels = ['Not at all','Slightly','Somewhat','Mostly','Very much','Completely'];
+        for(let i=0;i<=5;i++) { let btn = document.createElement('div'); btn.className = `scale-btn ${answers[currentQ]===i ? 'selected' : ''}`; btn.innerHTML = `<span>${i}</span><span>${labels[i]}</span>`; btn.onclick = ()=>{ answers[currentQ]=i; renderQuestion(); }; container.appendChild(btn); }
+        document.getElementById('progressFill').style.width = `${((currentQ+1)/QUESTIONS.length)*100}%`;
+        document.getElementById('progressText').innerHTML = `Question ${currentQ+1} of ${QUESTIONS.length}`;
+        document.getElementById('prevQBtn').disabled = (currentQ===0);
+        let hasAns = answers[currentQ]!==null;
+        let nextBtn = document.getElementById('nextQBtn');
+        nextBtn.style.opacity = hasAns ? "1" : "0.6";
+        nextBtn.style.cursor = hasAns ? "pointer" : "not-allowed";
+    }
+    function nextQuestion() { if(answers[currentQ]===null) { alert("Please select an answer."); return; } if(currentQ < QUESTIONS.length-1) { currentQ++; renderQuestion(); } else { showContact(); } }
+    function prevQuestion() { if(currentQ>0) { currentQ--; renderQuestion(); } }
+    function startQuiz() { answers.fill(null); currentQ=0; intro.classList.add('hidden'); progressArea.classList.remove('hidden'); questionScreen.classList.remove('hidden'); contactScreen.classList.add('hidden'); resultsScreen.classList.add('hidden'); renderQuestion(); }
+    function showContact() { questionScreen.classList.add('hidden'); progressArea.classList.add('hidden'); contactScreen.classList.remove('hidden'); }
+    async function sendToTelegram(name,phone,country,email,score,tier) { let payload={name,phone,country,email,score:score.toFixed(1),tier:tier.label,quiz:`NLP Ch${CHAPTER_NUM}: ${CHAPTER_TITLE}`,timestamp:new Date().toISOString()}; let status=document.getElementById('webhookStatus'); status.style.display='block'; status.innerHTML='⏳ Sending...'; try{ await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}); status.innerHTML='✓ Report ready!'; } catch(e){ status.innerHTML='⚠️ Showing results.'; } setTimeout(()=>showResults(),500); }
+    function showResults() {
+        let score=getAverage(), tier=getTier(score), percent=(score/5)*100;
+        document.getElementById('scoreRing').style.background = `conic-gradient(#C9A84C 0deg ${percent*3.6}deg, rgba(255,255,255,0.1) ${percent*3.6}deg 360deg)`;
+        document.getElementById('finalScoreVal').innerHTML = score.toFixed(1);
+        document.getElementById('tierBadge').innerHTML = tier.label;
+        document.getElementById('tierDesc').innerHTML = tier.desc;
+        let lowIdx=[]; answers.forEach((a,i)=>{ if(a!==null && a<=2) lowIdx.push(i); });
+        let highIdx=[]; answers.forEach((a,i)=>{ if(a!==null && a>=4) highIdx.push(i); });
+        document.getElementById('tab0').innerHTML = `<div><h3 class="gold">🧠 Your NLP Map Blueprint</h3><p>Score: <strong>${score.toFixed(1)}/5</strong> — ${tier.label}</p><div class="quote-block">“Every person's map of the world is as unique as their thumbprint.” — Milton Erickson</div><p>NLP teaches that your internal map is not reality—it's your interpretation. This assessment reveals how well you understand and apply this principle.</p><div class="quote-block"><h4>📖 Key NLP Insight</h4><p>You have three brains: Reptilian (survival), Limbic (emotion), and Neocortex (logic). Old programming lives in the lower systems. NLP helps you reprogram those patterns.</p></div></div>`;
+        let page2 = `<div><h3 class="gold">🔻 Your Map Growth Areas</h3>`;
+        if(lowIdx.length===0) page2 += `<p>✨ Excellent awareness of NLP principles! Continue practicing reframing and map-building daily.</p>`;
+        else { lowIdx.slice(0,3).forEach(idx=>{ let q=QUESTIONS[idx]; page2+=`<div style="margin-bottom:20px;"><h4>${q.category}</h4><p>${q.teaching}</p><div style="background:#1e2a3a; border-radius:16px; padding:12px;"><strong>✨ Practice:</strong><br/>${q.category==="Maps of Reality"?"Write down a recent disagreement. Ask: 'What was their map? What was mine?'":q.category==="Reframing"?"Pick one negative memory. Find three positive lessons it taught you.":"Take 2 minutes to map your current dominant emotion—where does it come from?"}</div></div>`; }); }
+        page2+=`<div class="quote-block"><h4>⚙️ Awareness Exercise</h4><p>Take 5 minutes to journal: 'What's one recurring thought that runs through my mind? What emotion does it create? What result does it produce in my life?'</p></div></div>`;
+        document.getElementById('tab1').innerHTML = page2;
+        document.getElementById('tab2').innerHTML = `<div><h3 class="gold">✨ Your NLP Strengths</h3>${highIdx.length>0?highIdx.slice(0,2).map(idx=>`<p><strong>✓ ${QUESTIONS[idx].category}</strong></p>`).join(''):'<p>Continue building your NLP toolkit.</p>'}<div class="quote-block"><h4>📅 7-Day Map Upgrade Plan</h4><ol><li>Day 1: Identify one limiting belief</li><li>Day 2: Ask 'Is this absolutely true?'</li><li>Day 3: Find evidence against it</li><li>Day 4: Create an empowering alternative</li><li>Day 5: Rehearse the new belief with emotion</li><li>Day 6: Anchor it with a physical gesture</li><li>Day 7: Live as if it's already true</li></ol></div><div class="webinar-card"><a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank">🎓 Upcoming NLP Training & Coaching →</a></div></div>`;
+        contactScreen.classList.add('hidden'); resultsScreen.classList.remove('hidden');
+    }
+    async function submitContact() { let n=document.getElementById('leadName')?.value.trim(), p=document.getElementById('leadPhone')?.value.trim(), e=document.getElementById('leadEmail')?.value.trim(), c=document.getElementById('leadCountry')?.value; if(!n||!p||!e||!c){alert("All fields required");return;} let score=getAverage(), tier=getTier(score); await sendToTelegram(n,p,c,e,score,tier); }
+    function retakeFull() { answers.fill(null); currentQ=0; intro.classList.remove('hidden'); progressArea.classList.add('hidden'); questionScreen.classList.add('hidden'); contactScreen.classList.add('hidden'); resultsScreen.classList.add('hidden'); }
+    renderApp();
+</script>
+</body>
+</html>
