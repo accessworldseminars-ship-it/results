@@ -54,6 +54,7 @@
         input, select { font-family: 'Montserrat', sans-serif; background: rgba(255,255,255,0.1); border: 1px solid #C9A84C; padding: 12px; border-radius: 20px; width: 100%; color: white; margin-top: 5px; }
         .form-group { margin-bottom: 15px; }
         #qText { font-size: 1.55rem; font-weight: 600; margin: 18px 0; line-height: 1.4; }
+        .coach-bio { background: rgba(201,168,76,0.08); border-radius: 20px; padding: 18px; margin-top: 20px; text-align: left; border: 1px solid rgba(201,168,76,0.2); }
     </style>
 </head>
 <body>
@@ -64,11 +65,14 @@
         <h1 class="quiz-title">Destiny & Embodied Transformation</h1>
         <img src="https://i.ibb.co/Zp8xwpYk/Screenshot-2026-01-29-104856.png" class="hero-image" alt="Destiny Pathway" onerror="this.src='https://placehold.co/500x300?text=Destiny+Pathway'">
         <p style="margin:15px 0;">Discover how small daily actions shape your character and destiny. Based on Joshua Roy's Destiny Pathway and the transformative story of the heavy metal guitarist.</p>
-        <div style="background:rgba(201,168,76,0.12); border-radius:24px; padding:22px; margin:20px 0; text-align:left;">
-            <h3 class="gold">🎯 Joshua Roy | Results Coach & Seminar Leader</h3>
-            <p style="font-size:0.9rem;">24+ years law enforcement, 900+ seminars, 3,500+ coaching sessions. Creator of NSR (Nervous System Reprogramming). <em>"Feeling good for no good reason."</em></p>
-            <p style="font-size:0.85rem; margin-top:10px;">📞 +61 432 119 091 | payhip.com/b/jO2o1</p>
+        
+        <div class="coach-bio">
+            <h3 class="gold">🎯 Joshua Roy | Results Coach & Seminar Leader | AccessWorld Seminars</h3>
+            <p style="font-size:0.9rem;">With over 23 years as a police officer and more than a decade as a results coach, Joshua Roy has conducted 3,500+ one-on-one coaching sessions and led hundreds of seminars across Australia. He is the creator of NSR (Nervous System Reprogramming) and combines NLP, emotional clearing, mindset conditioning, and practical strategy to help people create rapid, lasting change. A former Australian Karate Champion, university graduate, and certified NLP practitioner — Joshua's coaching is direct, caring, and action-focused.</p>
+            <p style="font-size:0.85rem; margin-top:10px;"><em>"Feeling good for no good reason."</em></p>
+            <p style="font-size:0.85rem;">📞 +61 432 119 091 | payhip.com/b/jO2o1</p>
         </div>
+        
         <button class="start-btn" id="startQuizBtn">Begin Your Assessment →</button>
         <footer>AccessWorld Seminars · Nervous System Reprogramming</footer>
     </div>
@@ -95,10 +99,17 @@
 
     let answers = Array(QUESTIONS.length).fill(null);
     let currentQ = 0;
-    let step = "intro";
     const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
 
+    // Get DOM elements
+    const introScreen = document.getElementById('introScreen');
+    const progressArea = document.getElementById('progressArea');
+    const questionScreen = document.getElementById('questionScreen');
+    const contactScreen = document.getElementById('contactScreen');
+    const resultsScreen = document.getElementById('resultsScreen');
+
     function getAverage() { let sum=0,count=0; for(let i=0;i<answers.length;i++) if(answers[i]!==null) { sum+=answers[i]; count++; } return count===0?0:sum/count; }
+    
     function getTier(score) {
         if(score<=1.2) return { label:"Awakening Needed", description:"You're still waiting to feel ready before acting. The secret: the hinge moves first. Start with 60 seconds of deliberate physiology change tomorrow." };
         if(score<=2.3) return { label:"Emerging Warrior", description:"You're aware of the destiny pathway but haven't fully embodied it. Small daily actions will build unstoppable momentum." };
@@ -123,17 +134,52 @@
         }
         document.getElementById('progressFill').style.width = `${((currentQ+1)/QUESTIONS.length)*100}%`;
         document.getElementById('progressText').innerHTML = `Question ${currentQ+1} of ${QUESTIONS.length} · Select your answer`;
-        document.getElementById('prevQBtn').disabled = (currentQ===0);
+        const prevBtn = document.getElementById('prevQBtn');
+        if(prevBtn) prevBtn.disabled = (currentQ===0);
         const hasAns = answers[currentQ]!==null;
         const nextBtn = document.getElementById('nextQBtn');
-        nextBtn.style.opacity = hasAns ? "1" : "0.6";
-        nextBtn.style.cursor = hasAns ? "pointer" : "not-allowed";
+        if(nextBtn) {
+            nextBtn.style.opacity = hasAns ? "1" : "0.6";
+            nextBtn.style.cursor = hasAns ? "pointer" : "not-allowed";
+        }
     }
 
-    function nextQuestion() { if(answers[currentQ]===null) return; if(currentQ<QUESTIONS.length-1) { currentQ++; renderQuestion(); } else { showContact(); } }
-    function prevQuestion() { if(currentQ>0) { currentQ--; renderQuestion(); } }
-    function startQuiz() { answers.fill(null); currentQ=0; document.getElementById('introScreen').classList.add('hidden'); document.getElementById('progressArea').classList.remove('hidden'); document.getElementById('questionScreen').classList.remove('hidden'); renderQuestion(); }
-    function showContact() { document.getElementById('questionScreen').classList.add('hidden'); document.getElementById('progressArea').classList.add('hidden'); document.getElementById('contactScreen').classList.remove('hidden'); }
+    function nextQuestion() { 
+        if(answers[currentQ]===null) {
+            alert("Please select an answer before continuing.");
+            return; 
+        }
+        if(currentQ < QUESTIONS.length-1) { 
+            currentQ++; 
+            renderQuestion(); 
+        } else { 
+            showContact(); 
+        } 
+    }
+    
+    function prevQuestion() { 
+        if(currentQ > 0) { 
+            currentQ--; 
+            renderQuestion(); 
+        } 
+    }
+    
+    function startQuiz() { 
+        answers.fill(null); 
+        currentQ = 0; 
+        introScreen.classList.add('hidden'); 
+        progressArea.classList.remove('hidden'); 
+        questionScreen.classList.remove('hidden'); 
+        contactScreen.classList.add('hidden'); 
+        resultsScreen.classList.add('hidden'); 
+        renderQuestion(); 
+    }
+    
+    function showContact() { 
+        questionScreen.classList.add('hidden'); 
+        progressArea.classList.add('hidden'); 
+        contactScreen.classList.remove('hidden'); 
+    }
 
     async function sendToTelegram(name, phone, country, email, score, tier) {
         const payload = { name, phone, country, email, score:score.toFixed(1), tier:tier.label, quiz:"Destiny & Embodied Transformation", timestamp:new Date().toISOString() };
@@ -141,7 +187,14 @@
         statusDiv.style.display = 'block';
         statusDiv.innerHTML = '⏳ Generating your destiny report...';
         statusDiv.style.background = '#fff3cd';
-        try { await fetch(WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) }); statusDiv.innerHTML = '✓ Report ready!'; statusDiv.style.background='#d4edda'; } catch(e) { statusDiv.innerHTML = '⚠️ Showing results below.'; statusDiv.style.background='#f8d7da'; }
+        try { 
+            await fetch(WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) }); 
+            statusDiv.innerHTML = '✓ Report ready!'; 
+            statusDiv.style.background='#d4edda'; 
+        } catch(e) { 
+            statusDiv.innerHTML = '⚠️ Showing results below.'; 
+            statusDiv.style.background='#f8d7da'; 
+        }
         setTimeout(()=>{ showResults(); }, 600);
     }
 
@@ -150,7 +203,8 @@
         const tier = getTier(score);
         const percent = (score/5)*100;
         const deg = percent * 3.6;
-        document.getElementById('scoreRing').style.background = `conic-gradient(#C9A84C 0deg ${deg}deg, rgba(255,255,255,0.1) ${deg}deg 360deg)`;
+        const scoreRing = document.getElementById('scoreRing');
+        if(scoreRing) scoreRing.style.background = `conic-gradient(#C9A84C 0deg ${deg}deg, rgba(255,255,255,0.1) ${deg}deg 360deg)`;
         document.getElementById('finalScoreVal').innerHTML = score.toFixed(1);
         document.getElementById('tierBadge').innerHTML = tier.label;
         document.getElementById('tierDesc').innerHTML = tier.description;
@@ -177,8 +231,8 @@
         document.getElementById('tab0').innerHTML = page1;
         document.getElementById('tab1').innerHTML = page2;
         document.getElementById('tab2').innerHTML = page3;
-        document.getElementById('contactScreen').classList.add('hidden');
-        document.getElementById('resultsScreen').classList.remove('hidden');
+        contactScreen.classList.add('hidden');
+        resultsScreen.classList.remove('hidden');
     }
 
     async function submitContact() {
@@ -191,17 +245,37 @@
         const tier = getTier(score);
         await sendToTelegram(name, phone, country, email, score, tier);
     }
+    
     function printPDF() { window.print(); }
-    function retakeFull() { answers.fill(null); currentQ=0; document.getElementById('introScreen').classList.remove('hidden'); document.getElementById('progressArea').classList.add('hidden'); document.getElementById('questionScreen').classList.add('hidden'); document.getElementById('contactScreen').classList.add('hidden'); document.getElementById('resultsScreen').classList.add('hidden'); }
+    
+    function retakeFull() { 
+        answers.fill(null); 
+        currentQ = 0; 
+        introScreen.classList.remove('hidden'); 
+        progressArea.classList.add('hidden'); 
+        questionScreen.classList.add('hidden'); 
+        contactScreen.classList.add('hidden'); 
+        resultsScreen.classList.add('hidden'); 
+    }
 
+    // Attach event listeners
     document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
     document.getElementById('nextQBtn').addEventListener('click', nextQuestion);
     document.getElementById('prevQBtn').addEventListener('click', prevQuestion);
     document.getElementById('submitLeadBtn').addEventListener('click', submitContact);
     document.getElementById('printPdfBtn').addEventListener('click', printPDF);
     document.getElementById('retakeAllBtn').addEventListener('click', retakeFull);
-    document.querySelectorAll('.tab-btn').forEach(btn=>{ btn.addEventListener('click',()=>{ const tab=btn.getAttribute('data-tab'); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.tab-content').forEach((tc,i)=>{ tc.classList.toggle('active', i==tab); }); }); });
+    
+    document.querySelectorAll('.tab-btn').forEach(btn=>{ 
+        btn.addEventListener('click',()=>{ 
+            const tab = btn.getAttribute('data-tab'); 
+            document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); 
+            btn.classList.add('active'); 
+            document.querySelectorAll('.tab-content').forEach((tc,i)=>{ 
+                tc.classList.toggle('active', i==tab); 
+            }); 
+        }); 
+    });
 </script>
 </body>
 </html>
-```
