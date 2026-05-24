@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AccessWorld | Emotional Home & Personality Reprogramming</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+            color: #F0F4F8;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+        .card, .question-card, .contact-card, .result-card { background: rgba(26, 39, 68, 0.75); backdrop-filter: blur(8px); border-radius: 28px; padding: 28px; margin-bottom: 20px; border: 1px solid rgba(201,168,76,0.25); }
+        .logo { width: 110px; margin-bottom: 15px; border-radius: 60px; }
+        .hero-image { width: 100%; max-width: 500px; border-radius: 24px; margin: 20px auto; display: block; border: 2px solid rgba(201,168,76,0.4); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+        .quiz-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 700; color: #C9A84C; margin-bottom: 15px; line-height: 1.3; }
+        .gold { color: #C9A84C; }
+        .btn-primary, .start-btn { background: linear-gradient(135deg, #C9A84C 0%, #E8D5A3 100%); color: #080d18; border: none; padding: 14px 32px; font-weight: 700; border-radius: 60px; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .btn-outline { background: transparent; border: 2px solid #C9A84C; color: #C9A84C; padding: 12px 28px; border-radius: 60px; font-weight: 600; cursor: pointer; }
+        .scale-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin: 25px 0; justify-content: center; }
+        .scale-btn { flex: 1; min-width: 70px; background: rgba(255,255,255,0.07); border: 2px solid rgba(201,168,76,0.4); border-radius: 20px; padding: 14px 6px; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; backdrop-filter: blur(4px); }
+        .scale-btn span:first-child { font-size: 1.7rem; font-weight: 800; line-height: 1; }
+        .scale-btn span:last-child { font-size: 0.65rem; opacity: 0.8; line-height: 1.2; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; }
+        .scale-btn.selected { background: #C9A84C; color: #080d18; border-color: #C9A84C; transform: scale(1.02); box-shadow: 0 6px 14px rgba(201,168,76,0.3); }
+        .scale-btn:hover { background: rgba(201,168,76,0.2); border-color: #C9A84C; transform: translateY(-2px); }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; margin: 10px 0; }
+        .progress-fill { height: 100%; background: #C9A84C; width: 0%; transition: width 0.3s; }
+        .tab-nav { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+        .tab-btn { background: rgba(255,255,255,0.05); border: 2px solid rgba(201,168,76,0.3); padding: 10px 20px; border-radius: 40px; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: #C9A84C; color: #080d18; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(#C9A84C 0deg, rgba(255,255,255,0.1) 0deg); margin: 15px auto; display: flex; align-items: center; justify-content: center; position: relative; }
+        .score-circle::before { content: ''; position: absolute; width: 120px; height: 120px; background: #080d18; border-radius: 50%; }
+        .score-text { position: relative; font-size: 2.6rem; font-weight: 800; color: #C9A84C; z-index: 2; }
+        .category-bar { margin: 14px 0; }
+        .bar-bg { background: #2a3650; border-radius: 8px; height: 10px; overflow: hidden; }
+        .bar-fill { background: #C9A84C; height: 100%; border-radius: 8px; width: 0%; }
+        .action-btn { padding: 10px 20px; border-radius: 40px; border: 2px solid #C9A84C; background: transparent; color: #C9A84C; cursor: pointer; margin: 5px; font-weight: 600; }
+        .action-btn.primary { background: #C9A84C; color: #080d18; border: none; }
+        .hidden { display: none; }
+        .status-message { margin-top: 15px; padding: 12px; border-radius: 16px; display: none; text-align: center; }
+        .quote-block { background: rgba(201,168,76,0.12); border-left: 4px solid #C9A84C; padding: 16px; margin: 18px 0; border-radius: 12px; font-style: italic; }
+        .webinar-card { background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(26,39,68,0.9)); border-radius: 24px; padding: 20px; margin-top: 25px; text-align: center; border: 2px solid #C9A84C; transition: 0.2s; }
+        .webinar-card:hover { transform: scale(1.01); background: rgba(201,168,76,0.25); }
+        .webinar-card a { color: #C9A84C; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+        @media print { body { background: white; color: black; } .action-btn, .tab-nav, .btn-primary, .status-message, .hero-image { display: none; } .card, .result-card { background: white; color: black; border: 1px solid #ccc; } .tab-content { display: block !important; page-break-after: always; } .tab-nav { display: none; } }
+        footer { font-size: 0.7rem; text-align: center; margin-top: 30px; opacity: 0.7; }
+        input, select { font-family: 'Montserrat', sans-serif; background: rgba(255,255,255,0.1); border: 1px solid #C9A84C; padding: 12px; border-radius: 20px; width: 100%; color: white; margin-top: 5px; }
+        .form-group { margin-bottom: 15px; }
+        #qText { font-size: 1.55rem; font-weight: 600; margin: 18px 0; line-height: 1.4; }
+    </style>
+</head>
+<body>
+<div class="container" id="app">
+    <!-- INTRO SCREEN -->
+    <div id="introScreen" class="card" style="text-align:center;">
+        <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" class="logo" alt="AccessWorld">
+        <h1 class="quiz-title">Emotional Home & Personality Reprogramming</h1>
+        <img src="https://i.ibb.co/7NYVM9Zc/Pictureaz1.png" class="hero-image" alt="Emotional Home" onerror="this.src='https://placehold.co/500x300?text=Emotional+Home'">
+        <p style="margin:15px 0;">Discover the emotional patterns that shape your personality — and learn how to build a new emotional home using Joshua Roy's proven frameworks.</p>
+        <div style="background:rgba(201,168,76,0.12); border-radius:24px; padding:22px; margin:20px 0; text-align:left;">
+            <h3 class="gold">🎯 Joshua Roy | Results Coach & Seminar Leader</h3>
+            <p style="font-size:0.9rem;">24+ years law enforcement, 900+ seminars, 3,500+ coaching sessions. Creator of NSR (Nervous System Reprogramming). <em>"Feeling good for no good reason."</em></p>
+            <p style="font-size:0.85rem; margin-top:10px;">📞 +61 432 119 091 | payhip.com/b/jO2o1</p>
+        </div>
+        <button class="start-btn" id="startQuizBtn">Begin Your Assessment →</button>
+        <footer>AccessWorld Seminars · Nervous System Reprogramming</footer>
+    </div>
+
+    <div id="progressArea" class="hidden" style="margin-bottom:15px;"><div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div><div id="progressText" style="text-align:center; font-size:0.85rem; margin-top:8px;"></div></div>
+    <div id="questionScreen" class="hidden"><div class="question-card"><div id="qCat" class="gold" style="font-size:0.8rem; letter-spacing:1.5px;">EMOTIONAL HOME</div><div id="qText"></div><div class="scale-buttons" id="scaleBtns"></div><div style="display:flex; justify-content:space-between; margin-top:25px;"><button id="prevQBtn" class="btn-outline">← Previous</button><button id="nextQBtn" class="btn-primary">Next →</button></div></div></div>
+    <div id="contactScreen" class="hidden"><div class="contact-card"><h2 class="gold">Your Emotional Home & Personality Report</h2><p>Enter your details to receive a personalized analysis of your emotional patterns, plus Joshua Roy's 10-day emotional reprogramming challenge.</p><div class="form-group"><input type="text" id="leadName" placeholder="Full Name"></div><div class="form-group"><input type="tel" id="leadPhone" placeholder="Phone Number"></div><div class="form-group"><input type="email" id="leadEmail" placeholder="Email Address"></div><div class="form-group"><select id="leadCountry"><option value="">Select Country</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option></select></div><button id="submitLeadBtn" class="btn-primary" style="width:100%;">Generate My Report →</button><div id="webhookStatus" class="status-message"></div></div></div>
+    <div id="resultsScreen" class="hidden"><div class="card"><div style="display:flex; justify-content:space-between;"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:40px;"><span style="font-size:0.75rem;">Personality Reprogramming Report</span></div><div style="text-align:center;"><div class="score-circle" id="scoreRing"><div class="score-text" id="finalScoreVal">0.0</div></div><div id="tierBadge" style="background:#C9A84C; display:inline-block; padding:6px 24px; border-radius:60px; color:#080d18; font-weight:800;"></div><p id="tierDesc" style="margin-top:12px;"></p></div><div class="tab-nav"><button class="tab-btn active" data-tab="0">📄 Page 1 · Score & Framework</button><button class="tab-btn" data-tab="1">📄 Page 2 · Growth Areas & Practices</button><button class="tab-btn" data-tab="2">📄 Page 3 · Action Plan & Events</button></div><div class="tab-content active" id="tab0"></div><div class="tab-content" id="tab1"></div><div class="tab-content" id="tab2"></div><div style="display:flex; gap:15px; justify-content:center; margin-top:25px;"><button id="printPdfBtn" class="action-btn primary">📄 Save as PDF</button><button id="retakeAllBtn" class="action-btn">🔄 Retake Quiz</button></div></div></div>
+</div>
+
+<script>
+    const QUESTIONS = [
+        { id:0, text:"I am aware of my 'emotional home' — the default mood or temperament I naturally gravitate to.", category:"Emotional Awareness", teaching:"'Your personality is not fixed. It's who you've practiced being.' The first step is recognizing where you live emotionally." },
+        { id:1, text:"I have been consciously practicing a new emotion (excitement, gratitude, peace) to create a new disposition.", category:"Emotional Practice", teaching:"Emotion → Mood → Temperament → Disposition → Personality. Practice a new feeling daily, and it becomes who you are." },
+        { id:2, text:"I understand that repeated emotion becomes a mood, then temperament, then personality trait.", category:"Emotion Pathway", teaching:"'What sort of personality has Jenny got? She's a sad person.' That's not permanent — just practiced." },
+        { id:3, text:"I am actively working to break a negative family pattern or disposition that was passed down to me.", category:"Generational Patterns", teaching:"'Sharman's scowl' — the story of a woman whose mother and sister had the exact same scowling disposition. Patterns can be inherited, but they can also be reprogrammed." },
+        { id:4, text:"I can identify at least one personality trait I thought was fixed but now realize is just a practiced emotion.", category:"Fixed vs Practiced", teaching:"'I can't change. I've always been this way.' That's a story, not a fact. Your mind can reprogram anything." },
+        { id:5, text:"I have done intentional emotional conditioning (like the 10-day excitement challenge) to shift my default state.", category:"Emotional Conditioning", teaching:"Joshua practiced excitement every day for five years. People called him 'the excited guy.' He didn't care — his life turned to gold." },
+        { id:6, text:"I use my morning routine to 'lay bricks' for my new emotional home every single day.", category:"Daily Construction", teaching:"'Building your emotional home' — each morning is a brick. One brick at a time, you build a new residence for your soul." },
+        { id:7, text:"I rarely say 'that's just who I am' to excuse reactive behavior — I know I can change.", category:"Growth Mindset", teaching:"'Your personality is not set in stone. It's set in pattern. And patterns can be interrupted.'" },
+        { id:8, text:"Other people have noticed a positive shift in my default energy or outlook in the last 6 months.", category:"External Validation", teaching:"When you change your emotional home, the world notices. Your energy becomes contagious." },
+        { id:9, text:"I believe I am the architect of my emotional reality, not a victim of my upbringing or circumstances.", category:"Emotional Ownership", teaching:"'The emotion you practice consistently over time will shape your mood, temperament, disposition, and ultimately your personality. You have the power to choose.'" }
+    ];
+
+    let answers = Array(QUESTIONS.length).fill(null);
+    let currentQ = 0;
+    let step = "intro";
+    const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+
+    function getAverage() { let sum=0,count=0; for(let i=0;i<answers.length;i++) if(answers[i]!==null) { sum+=answers[i]; count++; } return count===0?0:sum/count; }
+    function getTier(score) {
+        if(score<=1.2) return { label:"Emotional Foundation Needed", description:"You're living in an emotional home you didn't consciously choose. The good news: you have the blueprint and the tools to build a new one." };
+        if(score<=2.3) return { label:"Emerging Awareness", description:"You can see the patterns but haven't started the rebuild. The 10-day excitement challenge will lay your first bricks." };
+        if(score<=3.4) return { label:"Building Momentum", description:"You're practicing new emotions inconsistently. Daily repetition will turn this into your new default." };
+        if(score<=4.2) return { label:"Thriving", description:"You're building a strong emotional home. Keep rehearsing and expand to other emotional states." };
+        return { label:"Emotional Mastery", description:"Exceptional! You've reprogrammed your disposition. Now mentor others and deepen your emotional range." };
+    }
+
+    function renderQuestion() {
+        const q = QUESTIONS[currentQ];
+        document.getElementById('qCat').innerHTML = `⚡ ${q.category} · Question ${currentQ+1} of ${QUESTIONS.length}`;
+        document.getElementById('qText').innerHTML = q.text;
+        const scaleDiv = document.getElementById('scaleBtns');
+        scaleDiv.innerHTML = '';
+        const labels = ['Not at all','Slightly','Somewhat','Mostly','Very much','Completely'];
+        for(let i=0;i<=5;i++) {
+            const btn = document.createElement('div');
+            btn.className = `scale-btn ${answers[currentQ]===i ? 'selected' : ''}`;
+            btn.innerHTML = `<span>${i}</span><span>${labels[i]}</span>`;
+            btn.onclick = () => { answers[currentQ]=i; renderQuestion(); };
+            scaleDiv.appendChild(btn);
+        }
+        document.getElementById('progressFill').style.width = `${((currentQ+1)/QUESTIONS.length)*100}%`;
+        document.getElementById('progressText').innerHTML = `Question ${currentQ+1} of ${QUESTIONS.length} · Select your answer`;
+        document.getElementById('prevQBtn').disabled = (currentQ===0);
+        const hasAns = answers[currentQ]!==null;
+        const nextBtn = document.getElementById('nextQBtn');
+        nextBtn.style.opacity = hasAns ? "1" : "0.6";
+        nextBtn.style.cursor = hasAns ? "pointer" : "not-allowed";
+    }
+
+    function nextQuestion() { if(answers[currentQ]===null) return; if(currentQ<QUESTIONS.length-1) { currentQ++; renderQuestion(); } else { showContact(); } }
+    function prevQuestion() { if(currentQ>0) { currentQ--; renderQuestion(); } }
+    function startQuiz() { answers.fill(null); currentQ=0; document.getElementById('introScreen').classList.add('hidden'); document.getElementById('progressArea').classList.remove('hidden'); document.getElementById('questionScreen').classList.remove('hidden'); renderQuestion(); }
+    function showContact() { document.getElementById('questionScreen').classList.add('hidden'); document.getElementById('progressArea').classList.add('hidden'); document.getElementById('contactScreen').classList.remove('hidden'); }
+
+    async function sendToTelegram(name, phone, country, email, score, tier) {
+        const payload = { name, phone, country, email, score:score.toFixed(1), tier:tier.label, quiz:"Emotional Home & Personality", timestamp:new Date().toISOString() };
+        const statusDiv = document.getElementById('webhookStatus');
+        statusDiv.style.display = 'block';
+        statusDiv.innerHTML = '⏳ Generating your emotional home report...';
+        statusDiv.style.background = '#fff3cd';
+        try { await fetch(WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) }); statusDiv.innerHTML = '✓ Report ready!'; statusDiv.style.background='#d4edda'; } catch(e) { statusDiv.innerHTML = '⚠️ Showing results below.'; statusDiv.style.background='#f8d7da'; }
+        setTimeout(()=>{ showResults(); }, 600);
+    }
+
+    function showResults() {
+        const score = getAverage();
+        const tier = getTier(score);
+        const percent = (score/5)*100;
+        const deg = percent * 3.6;
+        document.getElementById('scoreRing').style.background = `conic-gradient(#C9A84C 0deg ${deg}deg, rgba(255,255,255,0.1) ${deg}deg 360deg)`;
+        document.getElementById('finalScoreVal').innerHTML = score.toFixed(1);
+        document.getElementById('tierBadge').innerHTML = tier.label;
+        document.getElementById('tierDesc').innerHTML = tier.description;
+
+        let lowIndices = []; answers.forEach((a,i)=>{ if(a!==null && a<=2) lowIndices.push(i); });
+        let highIndices = []; answers.forEach((a,i)=>{ if(a!==null && a>=4) highIndices.push(i); });
+
+        let page1 = `<div><h3 class="gold">🏠 Your Emotional Home Blueprint</h3><p>Your score of <strong>${score.toFixed(1)}/5</strong> places you in the <strong>${tier.label}</strong> category. ${tier.description}</p><div class="quote-block">“Your 'personality' is not fixed. It's not who you are. It's who you've practiced being. Run an emotion long enough and it becomes automatic. Run excitement daily and excitement becomes your personality. Run depression daily and depression becomes your personality. Not permanent. Just practiced.” — Joshua Roy</div><h4>📖 The Emotion Pathway</h4><p><strong>Emotion → Mood → Temperament → Disposition → Personality</strong></p><p>You practiced your way in. You can practice your way out. Your personality is not set in stone — it's set in pattern. And patterns can be interrupted and replaced.</p><div class="quote-block"><h4>📖 The Story of Sharman's Scowl</h4><p>Joshua met a woman who always had a scowl. When he met her mother and sister, they had the exact same scowl — a generational disposition passed down. But anything can be reprogrammed in your mind. You don't have to inherit your parents' emotional home. You can build your own.</p></div></div>`;
+        
+        let page2 = `<div><h3 class="gold">🔨 Your Emotional Home Construction Zones</h3>`;
+        if(lowIndices.length===0) page2 += `<p>✨ You're already building a strong emotional home! Maintain momentum with daily emotional conditioning and expand to new emotional states.</p>`;
+        else {
+            lowIndices.slice(0,3).forEach(idx => {
+                const q = QUESTIONS[idx];
+                page2 += `<div style="margin-bottom:20px;"><h4>${q.category}</h4><p>${q.teaching}</p><div style="background:#1e2a3a; border-radius:16px; padding:12px;"><strong>✨ Brick-Laying Practice:</strong><br/>${q.category==="Emotional Awareness"?"Journal each night: 'What emotion did I practice most today? Is that who I want to become?'":q.category==="Emotional Practice"?"Set a timer for 3 times today. Each time, do 30 seconds of the emotion you want to become (excitement, peace, gratitude).":q.category==="Generational Patterns"?"Write down one pattern you inherited. Then write: 'I choose to release this. It was never mine to carry.'":q.category==="Daily Construction"?"Tomorrow morning, before checking your phone, spend 5 minutes visualizing your new emotional home. What does it feel like to live there?":"Choose one new emotion to practice for 10 days. Anchor it with a physical gesture (touch your chest, fist pump)."}</div></div>`;
+            });
+        }
+        page2 += `<div class="quote-block"><h4>⚙️ The 10-Day Excitement Challenge</h4><p>Joshua's personal transformation began with a simple practice: every morning, he would raise his arms, clench his fists, and shout 'YES!' Then again. Then again. He did this up to 20 times a day for five years. People thought he was crazy. He didn't care. His life turned to gold.</p><p><strong>Your challenge:</strong> For the next 10 days, do three 'YES!' exercises every morning before your phone. That's it. 60 seconds. Watch what happens to your emotional home.</p></div></div>`;
+
+        let page3 = `<div><h3 class="gold">✨ Your Emotional Strengths</h3>`;
+        if(highIndices.length>0) { highIndices.slice(0,2).forEach(idx => { page3 += `<p><strong>✓ ${QUESTIONS[idx].category}</strong>: This is a brick you've already laid. Use this strength to build adjacent rooms in your emotional home.</p>`; }); }
+        page3 += `<div class="quote-block"><h4>📅 Your 10-Day Emotional Home Blueprint</h4><ol><li><strong>Days 1-2:</strong> Identify your current emotional home. Describe it in one sentence.</li><li><strong>Days 3-4:</strong> Choose your new emotional home (e.g., 'I am calm and confident').</li><li><strong>Days 5-6:</strong> Practice the new emotion for 60 seconds, 3x daily, with movement.</li><li><strong>Days 7-8:</strong> Add an incantation: say your new emotional state aloud while power posing.</li><li><strong>Days 9-10:</strong> Notice the shift. Journal what changed in your interactions, energy, and self-talk.</li></ol><p><strong>'The emotion you practice consistently over time will shape your mood, temperament, disposition, and ultimately your personality. Your emotional home doesn't have to be negative. You have the power to choose.'</strong> — Joshua Roy</p></div><div class="webinar-card"><p><strong>📚 Education can improve income, help you deal with relationship challenges, and master your emotions.</strong></p><a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank">🎓 Click here for upcoming webinars & coaching sessions →</a></div><footer style="margin-top:20px;">“Feeling good for no good reason.” — Joshua Roy</footer></div>`;
+
+        document.getElementById('tab0').innerHTML = page1;
+        document.getElementById('tab1').innerHTML = page2;
+        document.getElementById('tab2').innerHTML = page3;
+        document.getElementById('contactScreen').classList.add('hidden');
+        document.getElementById('resultsScreen').classList.remove('hidden');
+    }
+
+    async function submitContact() {
+        const name = document.getElementById('leadName').value.trim();
+        const phone = document.getElementById('leadPhone').value.trim();
+        const email = document.getElementById('leadEmail').value.trim();
+        const country = document.getElementById('leadCountry').value;
+        if(!name || !phone || !email || !country) { alert("All fields required."); return; }
+        const score = getAverage();
+        const tier = getTier(score);
+        await sendToTelegram(name, phone, country, email, score, tier);
+    }
+    function printPDF() { window.print(); }
+    function retakeFull() { answers.fill(null); currentQ=0; document.getElementById('introScreen').classList.remove('hidden'); document.getElementById('progressArea').classList.add('hidden'); document.getElementById('questionScreen').classList.add('hidden'); document.getElementById('contactScreen').classList.add('hidden'); document.getElementById('resultsScreen').classList.add('hidden'); }
+
+    document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
+    document.getElementById('nextQBtn').addEventListener('click', nextQuestion);
+    document.getElementById('prevQBtn').addEventListener('click', prevQuestion);
+    document.getElementById('submitLeadBtn').addEventListener('click', submitContact);
+    document.getElementById('printPdfBtn').addEventListener('click', printPDF);
+    document.getElementById('retakeAllBtn').addEventListener('click', retakeFull);
+    document.querySelectorAll('.tab-btn').forEach(btn=>{ btn.addEventListener('click',()=>{ const tab=btn.getAttribute('data-tab'); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.tab-content').forEach((tc,i)=>{ tc.classList.toggle('active', i==tab); }); }); });
+</script>
+</body>
+</html>
