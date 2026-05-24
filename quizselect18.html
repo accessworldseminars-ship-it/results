@@ -51,7 +51,9 @@
 <body>
 <div class="container" id="app"></div>
 <script>
-    (function() {
+    // Wait for DOM to be fully loaded before running
+    document.addEventListener('DOMContentLoaded', function() {
+        
         const CHAPTER_TITLE = "The Tools Really Do Work";
         const CHAPTER_NUM = 3;
         const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
@@ -187,6 +189,7 @@
 
         function renderApp() {
             const app = document.getElementById('app');
+            if (!app) return;
             app.innerHTML = '';
             app.appendChild(buildIntroScreen());
             app.appendChild(buildProgressArea());
@@ -200,20 +203,28 @@
             contactScreen = document.getElementById('contactScreen');
             resultsScreen = document.getElementById('resultsScreen');
             
-            document.getElementById('startQuizBtn')?.addEventListener('click', startQuiz);
-            document.getElementById('nextQBtn')?.addEventListener('click', nextQuestion);
-            document.getElementById('prevQBtn')?.addEventListener('click', prevQuestion);
-            document.getElementById('submitLeadBtn')?.addEventListener('click', submitContact);
-            document.getElementById('printPdfBtn')?.addEventListener('click', () => window.print());
-            document.getElementById('retakeAllBtn')?.addEventListener('click', retakeFull);
+            const startBtn = document.getElementById('startQuizBtn');
+            const nextBtn = document.getElementById('nextQBtn');
+            const prevBtn = document.getElementById('prevQBtn');
+            const submitBtn = document.getElementById('submitLeadBtn');
+            const printBtn = document.getElementById('printPdfBtn');
+            const retakeBtn = document.getElementById('retakeAllBtn');
             
-            document.querySelectorAll('.tab-btn').forEach(btn => {
+            if (startBtn) startBtn.addEventListener('click', startQuiz);
+            if (nextBtn) nextBtn.addEventListener('click', nextQuestion);
+            if (prevBtn) prevBtn.addEventListener('click', prevQuestion);
+            if (submitBtn) submitBtn.addEventListener('click', submitContact);
+            if (printBtn) printBtn.addEventListener('click', function() { window.print(); });
+            if (retakeBtn) retakeBtn.addEventListener('click', retakeFull);
+            
+            document.querySelectorAll('.tab-btn').forEach(function(btn) {
                 btn.addEventListener('click', function() {
-                    const tab = this.getAttribute('data-tab');
-                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    var tab = this.getAttribute('data-tab');
+                    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
                     this.classList.add('active');
-                    document.querySelectorAll('.tab-content').forEach((tc, i) => {
-                        tc.classList.toggle('active', i == tab);
+                    document.querySelectorAll('.tab-content').forEach(function(tc, i) {
+                        if (i == tab) tc.classList.add('active');
+                        else tc.classList.remove('active');
                     });
                 });
             });
@@ -229,18 +240,22 @@
             const prevBtn = document.getElementById('prevQBtn');
             const nextBtn = document.getElementById('nextQBtn');
             
-            if (qCat) qCat.innerHTML = `⚡ ${q.category} · Question ${currentQ+1} of ${QUESTIONS.length}`;
+            if (qCat) qCat.innerHTML = '⚡ ' + q.category + ' · Question ' + (currentQ+1) + ' of ' + QUESTIONS.length;
             if (qText) qText.innerHTML = q.text;
             
             if (scaleContainer) {
                 scaleContainer.innerHTML = '';
-                const labels = ['Not at all', 'Slightly', 'Somewhat', 'Mostly', 'Very much', 'Completely'];
-                for (let i = 0; i <= 5; i++) {
-                    const btn = document.createElement('div');
-                    btn.className = 'scale-btn' + (answers[currentQ] === i ? ' selected' : '');
-                    btn.innerHTML = `<span>${i}</span><span>${labels[i]}</span>`;
+                var labels = ['Not at all', 'Slightly', 'Somewhat', 'Mostly', 'Very much', 'Completely'];
+                for (var i = 0; i <= 5; i++) {
+                    var btn = document.createElement('div');
+                    btn.className = 'scale-btn';
+                    if (answers[currentQ] === i) btn.className += ' selected';
+                    btn.innerHTML = '<span>' + i + '</span><span>' + labels[i] + '</span>';
                     btn.addEventListener('click', (function(score) {
-                        return function() { answers[currentQ] = score; renderQuestion(); };
+                        return function() { 
+                            answers[currentQ] = score; 
+                            renderQuestion(); 
+                        };
                     })(i));
                     scaleContainer.appendChild(btn);
                 }
@@ -250,7 +265,7 @@
             if (progressText) progressText.innerHTML = 'Question ' + (currentQ + 1) + ' of ' + QUESTIONS.length;
             if (prevBtn) prevBtn.disabled = (currentQ === 0);
             
-            const hasAns = answers[currentQ] !== null;
+            var hasAns = answers[currentQ] !== null;
             if (nextBtn) {
                 nextBtn.style.opacity = hasAns ? '1' : '0.6';
                 nextBtn.style.cursor = hasAns ? 'pointer' : 'not-allowed';
@@ -278,7 +293,7 @@
         }
         
         function startQuiz() {
-            answers.fill(null);
+            for (var i = 0; i < answers.length; i++) answers[i] = null;
             currentQ = 0;
             if (introScreen) introScreen.classList.add('hidden');
             if (progressArea) progressArea.classList.remove('hidden');
@@ -294,35 +309,38 @@
             if (contactScreen) contactScreen.classList.remove('hidden');
         }
         
-        async function sendToTelegram(name, phone, country, email, score, tier) {
-            const payload = {
+        function sendToTelegram(name, phone, country, email, score, tier) {
+            var payload = {
                 name: name, phone: phone, country: country, email: email,
                 score: score.toFixed(1), tier: tier.label,
                 quiz: 'NLP Ch' + CHAPTER_NUM + ': ' + CHAPTER_TITLE,
                 timestamp: new Date().toISOString()
             };
-            const statusDiv = document.getElementById('webhookStatus');
+            var statusDiv = document.getElementById('webhookStatus');
             if (statusDiv) {
                 statusDiv.style.display = 'block';
                 statusDiv.innerHTML = '⏳ Generating your NLP tools report...';
             }
-            try {
-                await fetch(WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
+            fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(function() {
                 if (statusDiv) statusDiv.innerHTML = '✓ Report ready!';
-            } catch (e) {
+            }).catch(function() {
                 if (statusDiv) statusDiv.innerHTML = '⚠️ Showing results below.';
-            }
+            });
             setTimeout(function() { showResults(); }, 500);
         }
         
         function generateDeepTeaching(score, tier, lowIndices) {
-            let lowText = '';
+            var lowText = '';
             if (lowIndices.length > 0) {
-                lowText = '<p><strong>Key growth areas identified:</strong> ' + lowIndices.slice(0,3).map(function(i) { return QUESTIONS[i].category; }).join(', ') + '. Focus on practicing the State Elicitation Script daily for these specific patterns.</p>';
+                var cats = [];
+                for (var i = 0; i < Math.min(3, lowIndices.length); i++) {
+                    cats.push(QUESTIONS[lowIndices[i]].category);
+                }
+                lowText = '<p><strong>Key growth areas identified:</strong> ' + cats.join(', ') + '. Focus on practicing the State Elicitation Script daily for these specific patterns.</p>';
             } else {
                 lowText = '<p>You\'re already demonstrating strong understanding of NLP tools. Your next level is mastering advanced techniques like anchoring and reframing.</p>';
             }
@@ -350,11 +368,6 @@
                     <p><strong>Neurons that fire together, wire together.</strong> Every repetition strengthens the neural pathway.</p>
                 </div>
                 <div class="teaching-section">
-                    <h4>🔄 The State Loop</h4>
-                    <p><strong>Thought → Emotion → Physiology → Behavior → Result → Belief Reinforced</strong></p>
-                    <p>The secret is to start with <strong>physiology</strong>. Change your posture, your breath, your movement. When you move differently, you feel differently. When you feel differently, you think differently. When you think differently, you act differently.</p>
-                </div>
-                <div class="teaching-section">
                     <h4>📊 Your Personalized Insights</h4>
                     <p><strong>Your Score:</strong> ${score.toFixed(1)}/5 — ${tier.label}</p>
                     <p>${tier.desc}</p>
@@ -379,26 +392,26 @@
         }
         
         function showResults() {
-            const score = getAverage();
-            const tier = getTier(score);
-            const percent = (score / 5) * 100;
-            const scoreRing = document.getElementById('scoreRing');
+            var score = getAverage();
+            var tier = getTier(score);
+            var percent = (score / 5) * 100;
+            var scoreRing = document.getElementById('scoreRing');
             if (scoreRing) {
                 scoreRing.style.background = 'conic-gradient(#C9A84C 0deg ' + (percent * 3.6) + 'deg, rgba(255,255,255,0.1) ' + (percent * 3.6) + 'deg 360deg)';
             }
-            const finalVal = document.getElementById('finalScoreVal');
+            var finalVal = document.getElementById('finalScoreVal');
             if (finalVal) finalVal.innerHTML = score.toFixed(1);
-            const tierBadge = document.getElementById('tierBadge');
+            var tierBadge = document.getElementById('tierBadge');
             if (tierBadge) tierBadge.innerHTML = tier.label;
-            const tierDescEl = document.getElementById('tierDesc');
+            var tierDescEl = document.getElementById('tierDesc');
             if (tierDescEl) tierDescEl.innerHTML = tier.desc;
             
-            const lowIndices = [];
-            answers.forEach(function(a, i) { if (a !== null && a <= 2) lowIndices.push(i); });
-            const highIndices = [];
-            answers.forEach(function(a, i) { if (a !== null && a >= 4) highIndices.push(i); });
+            var lowIndices = [];
+            for (var i = 0; i < answers.length; i++) {
+                if (answers[i] !== null && answers[i] <= 2) lowIndices.push(i);
+            }
             
-            const tab0 = document.getElementById('tab0');
+            var tab0 = document.getElementById('tab0');
             if (tab0) {
                 tab0.innerHTML = '<div><h3 class="gold">🧠 Your NLP Tools Assessment</h3>' +
                     '<p>Your score of <strong>' + score.toFixed(1) + '/5</strong> places you in the <strong>' + tier.label + '</strong> category.</p>' +
@@ -407,51 +420,53 @@
                     '<div class="teaching-section"><h4>Quick Insight</h4><p>People who get the fastest results with NLP share one quality: they\'re willing to try before they fully understand. Empty your cup. Experience first, analyze second.</p></div></div>';
             }
             
-            const page2 = document.getElementById('tab1');
+            var page2 = document.getElementById('tab1');
             if (page2) {
-                let page2Html = '<div><h3 class="gold">🔻 Your Growth Opportunities</h3>';
+                var page2Html = '<div><h3 class="gold">🔻 Your Growth Opportunities</h3>';
                 if (lowIndices.length === 0) {
                     page2Html += '<p>✨ Excellent awareness of NLP principles! Your next step is mastering advanced techniques like anchoring, reframing, and the Swish Pattern.</p>';
                 } else {
-                    lowIndices.slice(0, 4).forEach(function(idx) {
-                        const q = QUESTIONS[idx];
+                    for (var j = 0; j < Math.min(4, lowIndices.length); j++) {
+                        var idx = lowIndices[j];
+                        var q = QUESTIONS[idx];
+                        var practiceText = '';
+                        if (q.category === "Smart Person Syndrome") practiceText = "Identify one area where you've been 'too smart' to try. Commit to experiencing it once before judging.";
+                        else if (q.category === "State Elicitation") practiceText = "Set a timer for 2 minutes daily. Practice the full script—recall, re-enter, amplify, anchor.";
+                        else if (q.category === "Openness") practiceText = "Choose one NLP tool you've been skeptical about. Try it for 7 days before evaluating.";
+                        else practiceText = "Pick one NLP tool and use it 5 times this week. Track what changes.";
+                        
                         page2Html += '<div style="margin-bottom:20px;"><h4>' + q.category + '</h4><p>' + q.teaching + '</p>' +
-                            '<div style="background:#1e2a3a; border-radius:16px; padding:12px;"><strong>✨ This Week\'s Practice:</strong><br/>' +
-                            (q.category === "Smart Person Syndrome" ? "Identify one area where you've been 'too smart' to try. Commit to experiencing it once before judging." :
-                             q.category === "State Elicitation" ? "Set a timer for 2 minutes daily. Practice the full script—recall, re-enter, amplify, anchor." :
-                             q.category === "Openness" ? "Choose one NLP tool you've been skeptical about. Try it for 7 days before evaluating." :
-                             "Pick one NLP tool and use it 5 times this week. Track what changes.") +
-                            '</div></div>';
-                    });
+                            '<div style="background:#1e2a3a; border-radius:16px; padding:12px;"><strong>✨ This Week\'s Practice:</strong><br/>' + practiceText + '</div></div>';
+                    }
                 }
                 page2Html += '<div class="quote-block"><h4>💡 The Bruce Lee Principle</h4><p>"Empty your cup. Learning requires humility. The cup that is full cannot receive."</p></div></div>';
                 page2.innerHTML = page2Html;
             }
             
-            const deepTeaching = generateDeepTeaching(score, tier, lowIndices);
-            const tab2 = document.getElementById('tab2');
+            var deepTeaching = generateDeepTeaching(score, tier, lowIndices);
+            var tab2 = document.getElementById('tab2');
             if (tab2) tab2.innerHTML = deepTeaching;
             
             if (contactScreen) contactScreen.classList.add('hidden');
             if (resultsScreen) resultsScreen.classList.remove('hidden');
         }
         
-        async function submitContact() {
-            const name = document.getElementById('leadName')?.value.trim();
-            const phone = document.getElementById('leadPhone')?.value.trim();
-            const email = document.getElementById('leadEmail')?.value.trim();
-            const country = document.getElementById('leadCountry')?.value;
+        function submitContact() {
+            var name = document.getElementById('leadName') ? document.getElementById('leadName').value.trim() : '';
+            var phone = document.getElementById('leadPhone') ? document.getElementById('leadPhone').value.trim() : '';
+            var email = document.getElementById('leadEmail') ? document.getElementById('leadEmail').value.trim() : '';
+            var country = document.getElementById('leadCountry') ? document.getElementById('leadCountry').value : '';
             if (!name || !phone || !email || !country) {
                 alert("All fields required.");
                 return;
             }
-            const score = getAverage();
-            const tier = getTier(score);
-            await sendToTelegram(name, phone, country, email, score, tier);
+            var score = getAverage();
+            var tier = getTier(score);
+            sendToTelegram(name, phone, country, email, score, tier);
         }
         
         function retakeFull() {
-            answers.fill(null);
+            for (var i = 0; i < answers.length; i++) answers[i] = null;
             currentQ = 0;
             if (introScreen) introScreen.classList.remove('hidden');
             if (progressArea) progressArea.classList.add('hidden');
@@ -461,7 +476,7 @@
         }
         
         renderApp();
-    })();
+    });
 </script>
 </body>
 </html>
