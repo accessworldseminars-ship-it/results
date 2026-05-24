@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AccessWorld | NLP For Life: The 7-Day Integration System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg, #080d18 0%, #1A2744 100%); color: #F0F4F8; min-height: 100vh; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .card, .question-card, .contact-card, .result-card { background: rgba(26, 39, 68, 0.75); backdrop-filter: blur(8px); border-radius: 28px; padding: 28px; margin-bottom: 20px; border: 1px solid rgba(201,168,76,0.25); }
+        .logo { width: 110px; margin-bottom: 15px; border-radius: 60px; }
+        .hero-image { width: 100%; max-width: 500px; border-radius: 24px; margin: 20px auto; display: block; border: 2px solid rgba(201,168,76,0.4); }
+        .quiz-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 700; color: #C9A84C; margin-bottom: 15px; line-height: 1.3; }
+        .gold { color: #C9A84C; }
+        .btn-primary, .start-btn { background: linear-gradient(135deg, #C9A84C 0%, #E8D5A3 100%); color: #080d18; border: none; padding: 14px 32px; font-weight: 700; border-radius: 60px; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .btn-outline { background: transparent; border: 2px solid #C9A84C; color: #C9A84C; padding: 12px 28px; border-radius: 60px; font-weight: 600; cursor: pointer; }
+        .scale-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin: 25px 0; justify-content: center; }
+        .scale-btn { flex: 1; min-width: 70px; background: rgba(255,255,255,0.07); border: 2px solid rgba(201,168,76,0.4); border-radius: 20px; padding: 14px 6px; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; gap: 8px; backdrop-filter: blur(4px); }
+        .scale-btn span:first-child { font-size: 1.7rem; font-weight: 800; line-height: 1; }
+        .scale-btn span:last-child { font-size: 0.65rem; opacity: 0.8; font-weight: 500; text-transform: uppercase; }
+        .scale-btn.selected { background: #C9A84C; color: #080d18; border-color: #C9A84C; transform: scale(1.02); box-shadow: 0 6px 14px rgba(201,168,76,0.3); }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; margin: 10px 0; }
+        .progress-fill { height: 100%; background: #C9A84C; width: 0%; transition: width 0.3s; }
+        .tab-nav { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+        .tab-btn { background: rgba(255,255,255,0.05); border: 2px solid rgba(201,168,76,0.3); padding: 10px 20px; border-radius: 40px; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: #C9A84C; color: #080d18; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(#C9A84C 0deg, rgba(255,255,255,0.1) 0deg); margin: 15px auto; display: flex; align-items: center; justify-content: center; position: relative; }
+        .score-circle::before { content: ''; position: absolute; width: 120px; height: 120px; background: #080d18; border-radius: 50%; }
+        .score-text { position: relative; font-size: 2.6rem; font-weight: 800; color: #C9A84C; z-index: 2; }
+        .action-btn { padding: 10px 20px; border-radius: 40px; border: 2px solid #C9A84C; background: transparent; color: #C9A84C; cursor: pointer; margin: 5px; font-weight: 600; }
+        .action-btn.primary { background: #C9A84C; color: #080d18; border: none; }
+        .hidden { display: none; }
+        .status-message { margin-top: 15px; padding: 12px; border-radius: 16px; display: none; text-align: center; }
+        .quote-block { background: rgba(201,168,76,0.12); border-left: 4px solid #C9A84C; padding: 16px; margin: 18px 0; border-radius: 12px; font-style: italic; }
+        .teaching-section { background: rgba(201,168,76,0.08); border-radius: 20px; padding: 20px; margin: 20px 0; }
+        .teaching-section h4 { color: #C9A84C; margin-bottom: 12px; }
+        .webinar-card { background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(26,39,68,0.9)); border-radius: 24px; padding: 20px; margin-top: 25px; text-align: center; border: 2px solid #C9A84C; }
+        .webinar-card a { color: #C9A84C; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+        @media print { body { background: white; color: black; } .action-btn, .tab-nav, .btn-primary, .hero-image { display: none; } .card, .result-card { background: white; color: black; } .tab-content { display: block !important; page-break-after: always; } .tab-nav { display: none; } }
+        footer { font-size: 0.7rem; text-align: center; margin-top: 30px; opacity: 0.7; }
+        input, select { background: rgba(255,255,255,0.1); border: 1px solid #C9A84C; padding: 12px; border-radius: 20px; width: 100%; color: white; margin-top: 5px; font-family: 'Montserrat', sans-serif; }
+        .form-group { margin-bottom: 15px; }
+        #qText { font-size: 1.55rem; font-weight: 600; margin: 18px 0; line-height: 1.4; }
+        .coach-bio { background: rgba(201,168,76,0.08); border-radius: 20px; padding: 18px; margin-top: 20px; text-align: left; border: 1px solid rgba(201,168,76,0.2); }
+    </style>
+</head>
+<body>
+<div class="container" id="app"></div>
+<script>
+    (function() {
+        const CHAPTER_TITLE = "The 7-Day Integration System";
+        const CHAPTER_NUM = 5;
+        const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+        const QUESTIONS = [
+            { text: "I have a daily practice (breathwork, journaling, or visualization) that supports my emotional growth.", category: "Daily Practice", teaching: "Consistency is the secret to transformation. Small daily actions create massive long-term change." },
+            { text: "I use journaling to track my emotional patterns and insights.", category: "Journaling", teaching: "Journaling externalizes your inner world. What you write, you can review, reflect on, and release." },
+            { text: "I understand the principle of neuroplasticity—that my brain can rewire itself with consistent practice.", category: "Neuroplasticity", teaching: "Neurons that fire together, wire together. Every repetition strengthens the neural pathway." },
+            { text: "I have set a clear intention for my personal transformation.", category: "Intention Setting", teaching: "Intention without action is a wish. Action without intention is chaos. Both together create transformation." },
+            { text: "I use affirmations to rewire my subconscious beliefs.", category: "Affirmations", teaching: "Affirmations repeated with emotion and embodiment become neural reality. Your brain believes what you tell it with feeling." },
+            { text: "I track my integration progress using a checklist or tracker.", category: "Progress Tracking", teaching: "What gets measured gets managed. A simple checklist creates accountability and momentum." },
+            { text: "I understand that change sticks best when it's felt, not just thought.", category: "Embodied Learning", teaching: "Use your body, emotions, and voice to reinforce transformation. Thinking alone is not enough." },
+            { text: "I have completed a 7-day integration challenge for a personal development goal.", category: "Integration Experience", teaching: "Seven days of focused practice creates the neural repetition needed for lasting change." },
+            { text: "I use evening reflection to review my emotional state and progress.", category: "Evening Reflection", teaching: "What you review, you can improve. Evening reflection closes the loop on your daily practice." },
+            { text: "I believe that consistency and presence are the keys to lasting change.", category: "Consistency Mindset", teaching: "Show up every day. Be present. Trust the process. Transformation is cumulative, not instantaneous." }
+        ];
+
+        let answers = Array(QUESTIONS.length).fill(null);
+        let currentQ = 0;
+        let introScreen, progressArea, questionScreen, contactScreen, resultsScreen;
+        
+        function getAverage() { 
+            let s = 0, c = 0; 
+            for (let i = 0; i < answers.length; i++) { 
+                if (answers[i] !== null) { 
+                    s += answers[i]; 
+                    c++; 
+                } 
+            } 
+            return c === 0 ? 0 : s / c; 
+        }
+        
+        function getTier(score) {
+            if (score <= 1.2) return { label: "Integration Beginner", desc: "You're starting to understand the importance of daily practice. Start small—5 minutes of morning breathwork is enough to begin." };
+            if (score <= 2.3) return { label: "Emerging Practitioner", desc: "You have some integration habits but lack consistency. The 7-Day Challenge will build your momentum." };
+            if (score <= 3.4) return { label: "Active Integrator", desc: "You're practicing daily but inconsistently. A structured tracker will double your results." };
+            if (score <= 4.2) return { label: "Skilled Integrator", desc: "Strong daily habits! Your next level is deepening embodiment and teaching others." };
+            return { label: "Integration Mastery", desc: "Exceptional! You embody the principle that consistency creates transformation. Now expand your impact." };
+        }
+
+        // Build intro screen
+        function buildIntroScreen() {
+            const div = document.createElement('div');
+            div.id = 'introScreen';
+            div.className = 'card';
+            div.style.textAlign = 'center';
+            div.innerHTML = `
+                <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" class="logo">
+                <h1 class="quiz-title">NLP For Life: ${CHAPTER_TITLE}</h1>
+                <img src="https://i.ibb.co/CsPRYN8s/Screenshot-2026-01-29-104941.png" class="hero-image" onerror="this.src='https://placehold.co/500x300'">
+                <p>Discover how to turn NLP tools into lasting habits with Joshua Roy's 7-Day Integration System—your blueprint for consistent transformation.</p>
+                <div class="coach-bio">
+                    <h3 class="gold">🎯 Joshua Roy | NLP Coach & NSR Creator</h3>
+                    <p>3,500+ coaching sessions. Creator of Nervous System Reprogramming. <em>"Feeling good for no good reason."</em> 📞 +61 432 119 091</p>
+                </div>
+                <button class="start-btn" id="startQuizBtn">Begin Assessment →</button>
+                <footer>AccessWorld Seminars · NLP For Life</footer>
+            `;
+            return div;
+        }
+
+        function buildProgressArea() {
+            const div = document.createElement('div');
+            div.id = 'progressArea';
+            div.className = 'hidden';
+            div.innerHTML = `
+                <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+                <div id="progressText" style="text-align:center; font-size:0.85rem;"></div>
+            `;
+            return div;
+        }
+
+        function buildQuestionScreen() {
+            const div = document.createElement('div');
+            div.id = 'questionScreen';
+            div.className = 'hidden';
+            div.innerHTML = `
+                <div class="question-card">
+                    <div id="qCat" class="gold"></div>
+                    <div id="qText"></div>
+                    <div class="scale-buttons" id="scaleBtns"></div>
+                    <div style="display:flex; justify-content:space-between;">
+                        <button id="prevQBtn" class="btn-outline">← Previous</button>
+                        <button id="nextQBtn" class="btn-primary">Next →</button>
+                    </div>
+                </div>
+            `;
+            return div;
+        }
+
+        function buildContactScreen() {
+            const div = document.createElement('div');
+            div.id = 'contactScreen';
+            div.className = 'hidden';
+            div.innerHTML = `
+                <div class="contact-card">
+                    <h2 class="gold">Your Integration System Report</h2>
+                    <p>Get a personalized 1000+ word analysis with Joshua Roy's 7-Day Integration framework and daily practice guide.</p>
+                    <div class="form-group"><input type="text" id="leadName" placeholder="Full Name"></div>
+                    <div class="form-group"><input type="tel" id="leadPhone" placeholder="Phone"></div>
+                    <div class="form-group"><input type="email" id="leadEmail" placeholder="Email"></div>
+                    <div class="form-group"><select id="leadCountry"><option value="">Select Country</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option></select></div>
+                    <button id="submitLeadBtn" class="btn-primary">Generate Comprehensive Report →</button>
+                    <div id="webhookStatus" class="status-message"></div>
+                </div>
+            `;
+            return div;
+        }
+
+        function buildResultsScreen() {
+            const div = document.createElement('div');
+            div.id = 'resultsScreen';
+            div.className = 'hidden';
+            div.innerHTML = `
+                <div class="card">
+                    <div style="display:flex; justify-content:space-between;"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:40px;"><span>Integration Report</span></div>
+                    <div style="text-align:center;">
+                        <div class="score-circle" id="scoreRing"><div class="score-text" id="finalScoreVal">0.0</div></div>
+                        <div id="tierBadge" style="background:#C9A84C; display:inline-block; padding:6px 24px; border-radius:60px; color:#080d18; font-weight:800;"></div>
+                        <p id="tierDesc"></p>
+                    </div>
+                    <div class="tab-nav">
+                        <button class="tab-btn active" data-tab="0">📄 Score & Overview</button>
+                        <button class="tab-btn" data-tab="1">📄 Growth Areas</button>
+                        <button class="tab-btn" data-tab="2">📄 Deep Teaching & Action Plan</button>
+                    </div>
+                    <div class="tab-content active" id="tab0"></div>
+                    <div class="tab-content" id="tab1"></div>
+                    <div class="tab-content" id="tab2"></div>
+                    <div style="display:flex; gap:15px; justify-content:center;">
+                        <button id="printPdfBtn" class="action-btn primary">📄 Save PDF</button>
+                        <button id="retakeAllBtn" class="action-btn">🔄 Retake Quiz</button>
+                    </div>
+                </div>
+            `;
+            return div;
+        }
+
+        function renderApp() {
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+            app.appendChild(buildIntroScreen());
+            app.appendChild(buildProgressArea());
+            app.appendChild(buildQuestionScreen());
+            app.appendChild(buildContactScreen());
+            app.appendChild(buildResultsScreen());
+            
+            introScreen = document.getElementById('introScreen');
+            progressArea = document.getElementById('progressArea');
+            questionScreen = document.getElementById('questionScreen');
+            contactScreen = document.getElementById('contactScreen');
+            resultsScreen = document.getElementById('resultsScreen');
+            
+            document.getElementById('startQuizBtn')?.addEventListener('click', startQuiz);
+            document.getElementById('nextQBtn')?.addEventListener('click', nextQuestion);
+            document.getElementById('prevQBtn')?.addEventListener('click', prevQuestion);
+            document.getElementById('submitLeadBtn')?.addEventListener('click', submitContact);
+            document.getElementById('printPdfBtn')?.addEventListener('click', () => window.print());
+            document.getElementById('retakeAllBtn')?.addEventListener('click', retakeFull);
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tab = this.getAttribute('data-tab');
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    document.querySelectorAll('.tab-content').forEach((tc, i) => {
+                        tc.classList.toggle('active', i == tab);
+                    });
+                });
+            });
+        }
+        
+        function renderQuestion() {
+            const q = QUESTIONS[currentQ];
+            const qCat = document.getElementById('qCat');
+            const qText = document.getElementById('qText');
+            const scaleContainer = document.getElementById('scaleBtns');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const prevBtn = document.getElementById('prevQBtn');
+            const nextBtn = document.getElementById('nextQBtn');
+            
+            if (qCat) qCat.innerHTML = `⚡ ${q.category} · Question ${currentQ+1} of ${QUESTIONS.length}`;
+            if (qText) qText.innerHTML = q.text;
+            
+            if (scaleContainer) {
+                scaleContainer.innerHTML = '';
+                const labels = ['Not at all', 'Slightly', 'Somewhat', 'Mostly', 'Very much', 'Completely'];
+                for (let i = 0; i <= 5; i++) {
+                    const btn = document.createElement('div');
+                    btn.className = 'scale-btn' + (answers[currentQ] === i ? ' selected' : '');
+                    btn.innerHTML = `<span>${i}</span><span>${labels[i]}</span>`;
+                    btn.addEventListener('click', (function(score) {
+                        return function() { answers[currentQ] = score; renderQuestion(); };
+                    })(i));
+                    scaleContainer.appendChild(btn);
+                }
+            }
+            
+            if (progressFill) progressFill.style.width = ((currentQ + 1) / QUESTIONS.length) * 100 + '%';
+            if (progressText) progressText.innerHTML = 'Question ' + (currentQ + 1) + ' of ' + QUESTIONS.length;
+            if (prevBtn) prevBtn.disabled = (currentQ === 0);
+            
+            const hasAns = answers[currentQ] !== null;
+            if (nextBtn) {
+                nextBtn.style.opacity = hasAns ? '1' : '0.6';
+                nextBtn.style.cursor = hasAns ? 'pointer' : 'not-allowed';
+            }
+        }
+        
+        function nextQuestion() {
+            if (answers[currentQ] === null) {
+                alert('Please select an answer before continuing.');
+                return;
+            }
+            if (currentQ < QUESTIONS.length - 1) {
+                currentQ++;
+                renderQuestion();
+            } else {
+                showContact();
+            }
+        }
+        
+        function prevQuestion() {
+            if (currentQ > 0) {
+                currentQ--;
+                renderQuestion();
+            }
+        }
+        
+        function startQuiz() {
+            answers.fill(null);
+            currentQ = 0;
+            if (introScreen) introScreen.classList.add('hidden');
+            if (progressArea) progressArea.classList.remove('hidden');
+            if (questionScreen) questionScreen.classList.remove('hidden');
+            if (contactScreen) contactScreen.classList.add('hidden');
+            if (resultsScreen) resultsScreen.classList.add('hidden');
+            renderQuestion();
+        }
+        
+        function showContact() {
+            if (questionScreen) questionScreen.classList.add('hidden');
+            if (progressArea) progressArea.classList.add('hidden');
+            if (contactScreen) contactScreen.classList.remove('hidden');
+        }
+        
+        async function sendToTelegram(name, phone, country, email, score, tier) {
+            const payload = {
+                name: name, phone: phone, country: country, email: email,
+                score: score.toFixed(1), tier: tier.label,
+                quiz: 'NLP Ch' + CHAPTER_NUM + ': ' + CHAPTER_TITLE,
+                timestamp: new Date().toISOString()
+            };
+            const statusDiv = document.getElementById('webhookStatus');
+            if (statusDiv) {
+                statusDiv.style.display = 'block';
+                statusDiv.innerHTML = '⏳ Generating your integration report...';
+            }
+            try {
+                await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (statusDiv) statusDiv.innerHTML = '✓ Report ready!';
+            } catch (e) {
+                if (statusDiv) statusDiv.innerHTML = '⚠️ Showing results below.';
+            }
+            setTimeout(function() { showResults(); }, 500);
+        }
+        
+        function generateDeepTeaching(score, tier, lowIndices, highIndices) {
+            let lowText = '';
+            if (lowIndices.length > 0) {
+                lowText = '<p><strong>Key integration areas to develop:</strong> ' + lowIndices.slice(0,3).map(function(i) { return QUESTIONS[i].category; }).join(', ') + '. Start with just one of these practices daily—mastery comes through consistency, not intensity.</p>';
+            } else {
+                lowText = '<p>You\'re already demonstrating strong integration habits. Your next level is deepening embodiment and expanding to teach others.</p>';
+            }
+            
+            return `
+                <div class="teaching-section">
+                    <h4>🧠 Why Integration Matters More Than Inspiration</h4>
+                    <p>Most people chase inspiration. They attend seminars, read books, watch videos—and feel amazing for a few days. Then the feeling fades. They return to their old patterns. They wonder why nothing ever changes.</p>
+                    <p>The answer is simple: <strong>inspiration without integration is just entertainment.</strong> Transformation doesn't come from a single powerful moment. It comes from what you do the day after that moment. And the day after that. And the day after that.</p>
+                    <p>Joshua Roy's 7-Day Integration System is designed to bridge the gap between knowing and doing, between feeling inspired and being transformed. It turns sporadic effort into consistent practice. And consistent practice rewires your nervous system.</p>
+                </div>
+                <div class="teaching-section">
+                    <h4>🧬 Neuroplasticity: How Your Brain Actually Changes</h4>
+                    <p>Neuroplasticity is the brain's ability to reorganize itself by forming new neural connections throughout life. In simple terms: <strong>your brain changes based on what you repeatedly think, feel, and do.</strong></p>
+                    <p>The principle is called "Hebbian learning"—neurons that fire together, wire together. Every time you practice a new thought, emotion, or behavior, you strengthen the neural pathway for that pattern. Do it once, and the pathway is faint. Do it a hundred times, and it becomes a superhighway.</p>
+                    <p>This is why the 7-Day Integration System works. Seven days of consistent practice creates enough repetition to begin forming new neural pathways. Thirty days creates noticeable change. Ninety days creates a new identity.</p>
+                </div>
+                <div class="teaching-section">
+                    <h4>📝 The Daily Integration Checklist</h4>
+                    <p>Joshua Roy recommends tracking five core practices daily. Use this checklist to build your integration habit:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Morning Breathwork (3 minutes):</strong> Deep belly breathing to activate your parasympathetic nervous system.</li>
+                        <li><strong>Emotional Anchoring:</strong> Fire your anchor 3-5 times to reinforce positive states.</li>
+                        <li><strong>NLP Visualization:</strong> 5 minutes of mental rehearsal for your desired outcomes.</li>
+                        <li><strong>Journaling (2-5 minutes):</strong> Track emotions, insights, and patterns.</li>
+                        <li><strong>Evening Reflection:</strong> Review your day and set intention for tomorrow.</li>
+                    </ul>
+                </div>
+                <div class="teaching-section">
+                    <h4>📖 The 7-Day Guided Integration Plan</h4>
+                    <p><strong>Day 1:</strong> Set Your Intention — Define your transformation goal.<br>
+                    <strong>Day 2:</strong> Learn & Feel — Practice the State Elicitation Script.<br>
+                    <strong>Day 3:</strong> Apply It — Take real-life action using an NLP tool.<br>
+                    <strong>Day 4:</strong> Go Deeper — Revisit insights, practice visualization.<br>
+                    <strong>Day 5:</strong> Anchor Progress — Review journal entries, make decisions as your future self.<br>
+                    <strong>Day 6:</strong> Solidify Change — Review neuroplasticity principles.<br>
+                    <strong>Day 7:</strong> Integrate & Celebrate — Reflect, highlight top 3 shifts, choose tools to continue.</p>
+                </div>
+                <div class="teaching-section">
+                    <h4>📊 Your Personalized Integration Profile</h4>
+                    <p><strong>Your Score:</strong> ${score.toFixed(1)}/5 — ${tier.label}</p>
+                    <p>${tier.desc}</p>
+                    ${lowText}
+                </div>
+                <div class="quote-block">
+                    <h4>💬 Daily Affirmations</h4>
+                    <p>"I am worthy of healing, growth, and abundance."<br>
+                    "Every breath I take grounds me in peace and possibility."<br>
+                    "I trust the process of transformation, even when it's uncomfortable."</p>
+                </div>
+                <div class="webinar-card">
+                    <p><strong>📚 Ready to lock in your integration?</strong> Join Joshua Roy's live NLP certification and coaching program.</p>
+                    <a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank">🎓 Click here for upcoming NLP Integration & Coaching Sessions →</a>
+                </div>
+                <footer>"If you fail to prepare, you prepare to fail. Constant mental rehearsal is what sets aside those who succeed." — Joshua Roy</footer>
+            `;
+        }
+        
+        function showResults() {
+            const score = getAverage();
+            const tier = getTier(score);
+            const percent = (score / 5) * 100;
+            const scoreRing = document.getElementById('scoreRing');
+            if (scoreRing) {
+                scoreRing.style.background = 'conic-gradient(#C9A84C 0deg ' + (percent * 3.6) + 'deg, rgba(255,255,255,0.1) ' + (percent * 3.6) + 'deg 360deg)';
+            }
+            const finalVal = document.getElementById('finalScoreVal');
+            if (finalVal) finalVal.innerHTML = score.toFixed(1);
+            const tierBadge = document.getElementById('tierBadge');
+            if (tierBadge) tierBadge.innerHTML = tier.label;
+            const tierDescEl = document.getElementById('tierDesc');
+            if (tierDescEl) tierDescEl.innerHTML = tier.desc;
+            
+            const lowIndices = [];
+            answers.forEach(function(a, i) { if (a !== null && a <= 2) lowIndices.push(i); });
+            const highIndices = [];
+            answers.forEach(function(a, i) { if (a !== null && a >= 4) highIndices.push(i); });
+            
+            const tab0 = document.getElementById('tab0');
+            if (tab0) {
+                tab0.innerHTML = '<div><h3 class="gold">🧠 Your Integration System Assessment</h3>' +
+                    '<p>Your score of <strong>' + score.toFixed(1) + '/5</strong> places you in the <strong>' + tier.label + '</strong> category.</p>' +
+                    '<div class="quote-block">"Change sticks best when it\'s felt, not just thought. Use your body, emotions, and voice to reinforce transformation." — Joshua Roy</div>' +
+                    '<p>This assessment measured your daily integration habits, understanding of neuroplasticity, and consistency with NLP practices.</p></div>';
+            }
+            
+            const page2 = document.getElementById('tab1');
+            if (page2) {
+                let page2Html = '<div><h3 class="gold">🔻 Your Integration Growth Areas</h3>';
+                if (lowIndices.length === 0) {
+                    page2Html += '<p>✨ Excellent integration habits! Your next level is deepening embodiment and teaching these practices to others.</p>';
+                } else {
+                    lowIndices.slice(0, 4).forEach(function(idx) {
+                        const q = QUESTIONS[idx];
+                        page2Html += '<div style="margin-bottom:20px;"><h4>' + q.category + '</h4><p>' + q.teaching + '</p>' +
+                            '<div style="background:#1e2a3a; border-radius:16px; padding:12px;"><strong>✨ This Week\'s Integration Practice:</strong><br/>' +
+                            (q.category === "Daily Practice" ? "Start with 3 minutes of morning breathwork tomorrow. That's it. Build from there." :
+                             q.category === "Journaling" ? "Write for 2 minutes each night: 'What emotion did I feel most today?'" :
+                             "Choose 3 affirmations. Say them aloud while looking in the mirror each morning.") +
+                            '</div></div>';
+                    });
+                }
+                page2Html += '<div class="quote-block"><h4>💡 The Integration Promise</h4><p>"Consistency and presence are the keys to lasting change. Show up every day. Be present. Trust the process."</p></div></div>';
+                page2.innerHTML = page2Html;
+            }
+            
+            const deepTeaching = generateDeepTeaching(score, tier, lowIndices, highIndices);
+            const tab2 = document.getElementById('tab2');
+            if (tab2) tab2.innerHTML = deepTeaching;
+            
+            if (contactScreen) contactScreen.classList.add('hidden');
+            if (resultsScreen) resultsScreen.classList.remove('hidden');
+        }
+        
+        async function submitContact() {
+            const name = document.getElementById('leadName')?.value.trim();
+            const phone = document.getElementById('leadPhone')?.value.trim();
+            const email = document.getElementById('leadEmail')?.value.trim();
+            const country = document.getElementById('leadCountry')?.value;
+            if (!name || !phone || !email || !country) {
+                alert("All fields required.");
+                return;
+            }
+            const score = getAverage();
+            const tier = getTier(score);
+            await sendToTelegram(name, phone, country, email, score, tier);
+        }
+        
+        function retakeFull() {
+            answers.fill(null);
+            currentQ = 0;
+            if (introScreen) introScreen.classList.remove('hidden');
+            if (progressArea) progressArea.classList.add('hidden');
+            if (questionScreen) questionScreen.classList.add('hidden');
+            if (contactScreen) contactScreen.classList.add('hidden');
+            if (resultsScreen) resultsScreen.classList.add('hidden');
+        }
+        
+        renderApp();
+    })();
+</script>
+</body>
+</html>
