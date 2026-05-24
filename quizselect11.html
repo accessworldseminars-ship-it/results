@@ -102,6 +102,13 @@
     let currentQ = 0;
     const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
 
+    // Get DOM elements
+    const introScreen = document.getElementById('introScreen');
+    const progressArea = document.getElementById('progressArea');
+    const questionScreen = document.getElementById('questionScreen');
+    const contactScreen = document.getElementById('contactScreen');
+    const resultsScreen = document.getElementById('resultsScreen');
+
     function getAverage() { let sum=0,count=0; for(let i=0;i<answers.length;i++) if(answers[i]!==null) { sum+=answers[i]; count++; } return count===0?0:sum/count; }
     function getTier(score) {
         if(score<=1.2) return { label:"Foundation Needed", description:"You're experiencing significant incongruence between your values and actions. The good news: awareness is the first step. Small, consistent actions create massive shifts." };
@@ -127,17 +134,52 @@
         }
         document.getElementById('progressFill').style.width = `${((currentQ+1)/QUESTIONS.length)*100}%`;
         document.getElementById('progressText').innerHTML = `Question ${currentQ+1} of ${QUESTIONS.length} · Select your answer`;
-        document.getElementById('prevQBtn').disabled = (currentQ===0);
+        const prevBtn = document.getElementById('prevQBtn');
+        if(prevBtn) prevBtn.disabled = (currentQ===0);
         const hasAns = answers[currentQ]!==null;
         const nextBtn = document.getElementById('nextQBtn');
-        nextBtn.style.opacity = hasAns ? "1" : "0.6";
-        nextBtn.style.cursor = hasAns ? "pointer" : "not-allowed";
+        if(nextBtn) {
+            nextBtn.style.opacity = hasAns ? "1" : "0.6";
+            nextBtn.style.cursor = hasAns ? "pointer" : "not-allowed";
+        }
     }
 
-    function nextQuestion() { if(answers[currentQ]===null) return; if(currentQ<QUESTIONS.length-1) { currentQ++; renderQuestion(); } else { showContact(); } }
-    function prevQuestion() { if(currentQ>0) { currentQ--; renderQuestion(); } }
-    function startQuiz() { answers.fill(null); currentQ=0; document.getElementById('introScreen').classList.add('hidden'); document.getElementById('progressArea').classList.remove('hidden'); document.getElementById('questionScreen').classList.remove('hidden'); renderQuestion(); }
-    function showContact() { document.getElementById('questionScreen').classList.add('hidden'); document.getElementById('progressArea').classList.add('hidden'); document.getElementById('contactScreen').classList.remove('hidden'); }
+    function nextQuestion() { 
+        if(answers[currentQ]===null) {
+            alert("Please select an answer before continuing.");
+            return; 
+        }
+        if(currentQ < QUESTIONS.length-1) { 
+            currentQ++; 
+            renderQuestion(); 
+        } else { 
+            showContact(); 
+        } 
+    }
+    
+    function prevQuestion() { 
+        if(currentQ > 0) { 
+            currentQ--; 
+            renderQuestion(); 
+        } 
+    }
+    
+    function startQuiz() { 
+        answers.fill(null); 
+        currentQ = 0; 
+        introScreen.classList.add('hidden'); 
+        progressArea.classList.remove('hidden'); 
+        questionScreen.classList.remove('hidden'); 
+        contactScreen.classList.add('hidden'); 
+        resultsScreen.classList.add('hidden'); 
+        renderQuestion(); 
+    }
+    
+    function showContact() { 
+        questionScreen.classList.add('hidden'); 
+        progressArea.classList.add('hidden'); 
+        contactScreen.classList.remove('hidden'); 
+    }
 
     async function sendToTelegram(name, phone, country, email, score, tier) {
         const payload = { name, phone, country, email, score:score.toFixed(1), tier:tier.label, quiz:"Congruence & Mood Awareness", timestamp:new Date().toISOString() };
@@ -145,7 +187,14 @@
         statusDiv.style.display = 'block';
         statusDiv.innerHTML = '⏳ Generating your congruence report...';
         statusDiv.style.background = '#fff3cd';
-        try { await fetch(WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) }); statusDiv.innerHTML = '✓ Report ready!'; statusDiv.style.background='#d4edda'; } catch(e) { statusDiv.innerHTML = '⚠️ Showing results below.'; statusDiv.style.background='#f8d7da'; }
+        try { 
+            await fetch(WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) }); 
+            statusDiv.innerHTML = '✓ Report ready!'; 
+            statusDiv.style.background='#d4edda'; 
+        } catch(e) { 
+            statusDiv.innerHTML = '⚠️ Showing results below.'; 
+            statusDiv.style.background='#f8d7da'; 
+        }
         setTimeout(()=>{ showResults(); }, 600);
     }
 
@@ -154,7 +203,8 @@
         const tier = getTier(score);
         const percent = (score/5)*100;
         const deg = percent * 3.6;
-        document.getElementById('scoreRing').style.background = `conic-gradient(#C9A84C 0deg ${deg}deg, rgba(255,255,255,0.1) ${deg}deg 360deg)`;
+        const scoreRing = document.getElementById('scoreRing');
+        if(scoreRing) scoreRing.style.background = `conic-gradient(#C9A84C 0deg ${deg}deg, rgba(255,255,255,0.1) ${deg}deg 360deg)`;
         document.getElementById('finalScoreVal').innerHTML = score.toFixed(1);
         document.getElementById('tierBadge').innerHTML = tier.label;
         document.getElementById('tierDesc').innerHTML = tier.description;
@@ -181,8 +231,8 @@
         document.getElementById('tab0').innerHTML = page1;
         document.getElementById('tab1').innerHTML = page2;
         document.getElementById('tab2').innerHTML = page3;
-        document.getElementById('contactScreen').classList.add('hidden');
-        document.getElementById('resultsScreen').classList.remove('hidden');
+        contactScreen.classList.add('hidden');
+        resultsScreen.classList.remove('hidden');
     }
 
     async function submitContact() {
@@ -195,17 +245,36 @@
         const tier = getTier(score);
         await sendToTelegram(name, phone, country, email, score, tier);
     }
+    
     function printPDF() { window.print(); }
-    function retakeFull() { answers.fill(null); currentQ=0; document.getElementById('introScreen').classList.remove('hidden'); document.getElementById('progressArea').classList.add('hidden'); document.getElementById('questionScreen').classList.add('hidden'); document.getElementById('contactScreen').classList.add('hidden'); document.getElementById('resultsScreen').classList.add('hidden'); }
+    function retakeFull() { 
+        answers.fill(null); 
+        currentQ = 0; 
+        introScreen.classList.remove('hidden'); 
+        progressArea.classList.add('hidden'); 
+        questionScreen.classList.add('hidden'); 
+        contactScreen.classList.add('hidden'); 
+        resultsScreen.classList.add('hidden'); 
+    }
 
+    // Attach event listeners
     document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
     document.getElementById('nextQBtn').addEventListener('click', nextQuestion);
     document.getElementById('prevQBtn').addEventListener('click', prevQuestion);
     document.getElementById('submitLeadBtn').addEventListener('click', submitContact);
     document.getElementById('printPdfBtn').addEventListener('click', printPDF);
     document.getElementById('retakeAllBtn').addEventListener('click', retakeFull);
-    document.querySelectorAll('.tab-btn').forEach(btn=>{ btn.addEventListener('click',()=>{ const tab=btn.getAttribute('data-tab'); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.tab-content').forEach((tc,i)=>{ tc.classList.toggle('active', i==tab); }); }); });
+    
+    document.querySelectorAll('.tab-btn').forEach(btn=>{ 
+        btn.addEventListener('click',()=>{ 
+            const tab = btn.getAttribute('data-tab'); 
+            document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); 
+            btn.classList.add('active'); 
+            document.querySelectorAll('.tab-content').forEach((tc,i)=>{ 
+                tc.classList.toggle('active', i==tab); 
+            }); 
+        }); 
+    });
 </script>
 </body>
 </html>
-```
