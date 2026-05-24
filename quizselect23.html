@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AccessWorld | Coaching Certification Readiness Assessment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg, #0a0f1a 0%, #1a1f2e 100%); color: #e8eef2; min-height: 100vh; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .card, .question-card, .contact-card, .result-card { background: rgba(25, 30, 45, 0.85); backdrop-filter: blur(10px); border-radius: 28px; padding: 32px; margin-bottom: 20px; border: 1px solid rgba(212, 184, 122, 0.3); }
+        .logo { width: 100px; margin-bottom: 15px; border-radius: 50px; }
+        .hero-image { width: 100%; max-width: 450px; border-radius: 24px; margin: 20px auto; display: block; border: 2px solid #d4b87a; }
+        .quiz-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 700; color: #d4b87a; margin-bottom: 15px; line-height: 1.2; }
+        .gold { color: #d4b87a; }
+        .btn-primary, .start-btn { background: linear-gradient(135deg, #d4b87a 0%, #c4a56a 100%); color: #0a0f1a; border: none; padding: 14px 32px; font-weight: 700; border-radius: 60px; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .btn-outline { background: transparent; border: 2px solid #d4b87a; color: #d4b87a; padding: 12px 28px; border-radius: 60px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        .btn-outline:hover { background: rgba(212, 184, 122, 0.1); }
+        .scale-buttons { display: flex; gap: 10px; flex-wrap: wrap; margin: 25px 0; justify-content: center; }
+        .scale-btn { flex: 1; min-width: 65px; background: rgba(255,255,255,0.05); border: 2px solid rgba(212,184,122,0.4); border-radius: 20px; padding: 12px 6px; cursor: pointer; transition: all 0.2s; text-align: center; }
+        .scale-btn span:first-child { font-size: 1.4rem; font-weight: 800; display: block; }
+        .scale-btn span:last-child { font-size: 0.65rem; opacity: 0.7; }
+        .scale-btn.selected { background: #d4b87a; color: #0a0f1a; border-color: #d4b87a; transform: scale(1.02); }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; margin: 10px 0; }
+        .progress-fill { height: 100%; background: #d4b87a; width: 0%; transition: width 0.3s; }
+        .tab-nav { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+        .tab-btn { background: rgba(255,255,255,0.05); border: 2px solid rgba(212,184,122,0.3); padding: 10px 20px; border-radius: 40px; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: #d4b87a; color: #0a0f1a; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(#d4b87a 0deg, rgba(255,255,255,0.1) 0deg); margin: 15px auto; display: flex; align-items: center; justify-content: center; position: relative; }
+        .score-circle::before { content: ''; position: absolute; width: 120px; height: 120px; background: #0a0f1a; border-radius: 50%; }
+        .score-text { position: relative; font-size: 2.4rem; font-weight: 800; color: #d4b87a; z-index: 2; }
+        .action-btn { padding: 10px 20px; border-radius: 40px; border: 2px solid #d4b87a; background: transparent; color: #d4b87a; cursor: pointer; margin: 5px; font-weight: 600; }
+        .action-btn.primary { background: #d4b87a; color: #0a0f1a; border: none; }
+        .hidden { display: none; }
+        .status-message { margin-top: 15px; padding: 12px; border-radius: 16px; display: none; text-align: center; }
+        .quote-block { background: rgba(212,184,122,0.1); border-left: 4px solid #d4b87a; padding: 16px; margin: 18px 0; border-radius: 12px; font-style: italic; }
+        .teaching-section { background: rgba(212,184,122,0.06); border-radius: 20px; padding: 20px; margin: 20px 0; }
+        .teaching-section h4 { color: #d4b87a; margin-bottom: 12px; }
+        .cert-badge { display: inline-block; background: rgba(212,184,122,0.15); border: 1px solid #d4b87a; border-radius: 40px; padding: 6px 16px; margin: 5px; font-size: 0.8rem; }
+        .webinar-card { background: linear-gradient(135deg, rgba(212,184,122,0.12), rgba(25,30,45,0.9)); border-radius: 24px; padding: 20px; margin-top: 25px; text-align: center; border: 2px solid #d4b87a; }
+        .webinar-card a { color: #d4b87a; text-decoration: none; font-weight: bold; font-size: 1rem; }
+        footer { font-size: 0.7rem; text-align: center; margin-top: 30px; opacity: 0.7; }
+        input, select { background: rgba(255,255,255,0.08); border: 1px solid #d4b87a; padding: 12px; border-radius: 20px; width: 100%; color: white; margin-top: 5px; font-family: 'Montserrat', sans-serif; }
+        .form-group { margin-bottom: 15px; }
+        #qText { font-size: 1.3rem; font-weight: 500; margin: 20px 0; line-height: 1.4; }
+        .coach-bio { background: rgba(212,184,122,0.08); border-radius: 20px; padding: 18px; margin-top: 20px; text-align: left; border: 1px solid rgba(212,184,122,0.2); }
+        @media print { body { background: white; color: black; } .action-btn, .tab-nav, .btn-primary, .hero-image { display: none; } .card, .result-card { background: white; color: black; } .tab-content { display: block !important; page-break-after: always; } .teaching-section { background: #f0f0f0; } }
+    </style>
+</head>
+<body>
+<div class="container" id="app"></div>
+<script>
+    (function() {
+        const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+        
+        const QUESTIONS = [
+            { text: "I am committed to investing at least 4 hours per week into my personal and professional development for the next 12 months.", category: "Commitment", weight: "high", teaching: "Even the most comprehensive certification can be completed within 12 months by investing as little as 4 hours per week. That is less time than most people spend scrolling their phone in a single day." },
+            { text: "I am willing to do my own deep emotional and mindset work before coaching others.", category: "Personal Healing", weight: "high", teaching: "Every certification pathway is designed not simply to produce a qualified coach, but to produce a transformed human being — someone who has done the work on themselves and can now lead others through it with genuine skill and authentic empathy." },
+            { text: "I understand the value of live training and am willing to attend sessions (live or via recording).", category: "Learning Style", weight: "medium", teaching: "I encourage every participant to attend as many live sessions as possible. There is a quality of learning, presence, and transformation that happens in a live environment that recordings simply cannot fully replicate." },
+            { text: "I have a strong desire to help others heal, grow, and transform their lives.", category: "Calling", weight: "high", teaching: "The world does not need more average coaches. It needs coaches who have done the work. Who have lived the transformation. Who show up for their clients with depth, skill, and earned authority." },
+            { text: "I am comfortable with the idea of recording coaching sessions for feedback and assessment.", category: "Feedback Readiness", weight: "medium", teaching: "You will record and submit sessions for feedback. This is how mastery is built — through honest reflection and expert guidance." },
+            { text: "I am willing to commit to a 3-Month Morning Routine (1 hour, 5 days/week) as a personal practice.", category: "Morning Routine", weight: "high", teaching: "The 3-Month Morning Routine is not just a requirement — it is the foundation of your own transformation. You cannot lead others where you have not gone yourself." },
+            { text: "I have or am willing to develop basic communication and listening skills.", category: "Communication", weight: "medium", teaching: "Coaching is built on deep listening, rapport, and the ability to ask powerful questions. These skills are developed through practice." },
+            { text: "I understand that certification requires both training hours AND practical application with real clients.", category: "Practical Application", weight: "high", teaching: "External practice requirements ensure you are not just academically qualified — but genuinely capable of creating powerful, lasting transformation for your clients." },
+            { text: "I am excited about the possibility of pursuing multiple certifications with concurrent hours.", category: "Multi-Cert Interest", weight: "low", teaching: "One of the most powerful features of the AccessWorld model is that your training hours run concurrently across all five certifications. A single session counts toward every certificate you are working toward." },
+            { text: "I am ready to invest in myself — not just financially, but with my time, energy, and presence.", category: "Self-Investment", weight: "high", teaching: "The question is not whether you have the time. The question is whether you are willing to invest it in yourself. Every hour you invest in your own learning counts." }
+        ];
+
+        let answers = Array(QUESTIONS.length).fill(null);
+        let currentQ = 0;
+        let introScreen, progressArea, questionScreen, contactScreen, resultsScreen;
+        
+        function getAverage() { 
+            let s = 0, c = 0; 
+            for (let i = 0; i < answers.length; i++) { 
+                if (answers[i] !== null) { 
+                    s += answers[i]; 
+                    c++; 
+                } 
+            } 
+            return c === 0 ? 0 : s / c; 
+        }
+        
+        function getWeightedScore() {
+            let totalWeight = 0;
+            let weightedSum = 0;
+            for (let i = 0; i < answers.length; i++) {
+                if (answers[i] !== null) {
+                    let weight = QUESTIONS[i].weight === "high" ? 2 : (QUESTIONS[i].weight === "medium" ? 1.5 : 1);
+                    totalWeight += weight;
+                    weightedSum += answers[i] * weight;
+                }
+            }
+            return totalWeight === 0 ? 0 : weightedSum / totalWeight;
+        }
+        
+        function getTier(score) {
+            if (score <= 1.5) return { label: "Curious Explorer", desc: "You're intrigued by coaching but may not be ready to commit fully. Consider starting with a single seminar or workshop to experience the work firsthand.", recommended: "Start with Emotional Mastery Seminar or NSR Introduction" };
+            if (score <= 2.5) return { label: "Emerging Practitioner", desc: "You see the value and are beginning to invest in yourself. You could complete a certification within 18-24 months at a sustainable pace.", recommended: "NLP Coach Practitioner or Wellness Coaching Certificate" };
+            if (score <= 3.5) return { label: "Dedicated Student", desc: "You're ready to commit. With consistent effort, you can complete your chosen certification within 12 months.", recommended: "Mindset or Relationship Coaching Certificate" };
+            if (score <= 4.2) return { label: "Certification Ready", desc: "You have the commitment, mindset, and readiness. You could pursue multiple certifications concurrently using the concurrent hours system.", recommended: "Multiple Certifications or Trauma Coaching Certificate" };
+            return { label: "Coach in the Making", desc: "Exceptional readiness. You embody the commitment and passion needed to become an outstanding coach. The world needs your light.", recommended: "Trauma Coaching Certificate + NLP Practitioner" };
+        }
+        
+        function getRecommendedCert(score) {
+            if (score <= 2) return ["NLP Coach Practitioner Certificate"];
+            if (score <= 3) return ["NLP Coach Practitioner Certificate", "Wellness Coaching Certificate"];
+            if (score <= 4) return ["Mindset Coaching Certificate", "Relationship Coaching Certificate"];
+            return ["Trauma Coaching Certificate", "Multiple Certifications (Concurrent Hours)"];
+        }
+        
+        function renderApp() {
+            document.getElementById('app').innerHTML = `
+                <div id="introScreen" class="card" style="text-align:center;">
+                    <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" class="logo">
+                    <h1 class="quiz-title">Coaching Certification<br>Readiness Assessment</h1>
+                    <p style="font-size:1rem;">Discover which AccessWorld certification pathway aligns with your commitment, experience, and calling.</p>
+                    <img src="https://i.ibb.co/7NYVM9Zc/Pictureaz1.png" class="hero-image" onerror="this.src='https://placehold.co/450x280'">
+                    <div class="coach-bio">
+                        <h3 class="gold">✦ Joshua Roy | Founder, AccessWorld Seminars</h3>
+                        <p>9 Coaching Certifications | 3,500+ Sessions | 900+ Seminars<br>"The world does not need more average coaches. It needs coaches who have done the work."</p>
+                    </div>
+                    <button class="start-btn" id="startQuizBtn">Begin Assessment →</button>
+                    <footer>AccessWorld · Coaching Certification Pathways</footer>
+                </div>
+                <div id="progressArea" class="hidden">
+                    <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+                    <div id="progressText" style="text-align:center; font-size:0.85rem;"></div>
+                </div>
+                <div id="questionScreen" class="hidden">
+                    <div class="question-card">
+                        <div id="qCat" class="gold"></div>
+                        <div id="qText"></div>
+                        <div class="scale-buttons" id="scaleBtns"></div>
+                        <div style="display:flex; justify-content:space-between; margin-top:20px;">
+                            <button id="prevQBtn" class="btn-outline">← Previous</button>
+                            <button id="nextQBtn" class="btn-primary">Next →</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="contactScreen" class="hidden">
+                    <div class="contact-card">
+                        <h2 class="gold">Your Certification Roadmap</h2>
+                        <p>Enter your details to receive a personalized certification plan and free coaching consultation invitation.</p>
+                        <div class="form-group"><input type="text" id="leadName" placeholder="Full Name"></div>
+                        <div class="form-group"><input type="tel" id="leadPhone" placeholder="Phone"></div>
+                        <div class="form-group"><input type="email" id="leadEmail" placeholder="Email"></div>
+                        <div class="form-group"><select id="leadCountry"><option value="">Select Country</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option></select></div>
+                        <button id="submitLeadBtn" class="btn-primary">Generate My Roadmap →</button>
+                        <div id="webhookStatus" class="status-message"></div>
+                    </div>
+                </div>
+                <div id="resultsScreen" class="hidden">
+                    <div class="card">
+                        <div style="display:flex; justify-content:space-between; align-items:center;"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:40px;"><span class="gold">Certification Roadmap</span></div>
+                        <div style="text-align:center;">
+                            <div class="score-circle" id="scoreRing"><div class="score-text" id="finalScoreVal">0.0</div></div>
+                            <div id="tierBadge" style="background:#d4b87a; display:inline-block; padding:6px 24px; border-radius:60px; color:#0a0f1a; font-weight:800;"></div>
+                            <p id="tierDesc" style="margin-top:12px;"></p>
+                        </div>
+                        <div class="tab-nav">
+                            <button class="tab-btn active" data-tab="0">📄 Your Certification Path</button>
+                            <button class="tab-btn" data-tab="1">📄 Requirements & Teaching</button>
+                            <button class="tab-btn" data-tab="2">📄 Next Steps & Commitment</button>
+                        </div>
+                        <div class="tab-content active" id="tab0"></div>
+                        <div class="tab-content" id="tab1"></div>
+                        <div class="tab-content" id="tab2"></div>
+                        <div style="display:flex; gap:15px; justify-content:center; margin-top:20px;">
+                            <button id="printPdfBtn" class="action-btn primary">📄 Save PDF</button>
+                            <button id="retakeAllBtn" class="action-btn">🔄 Retake</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            introScreen = document.getElementById('introScreen');
+            progressArea = document.getElementById('progressArea');
+            questionScreen = document.getElementById('questionScreen');
+            contactScreen = document.getElementById('contactScreen');
+            resultsScreen = document.getElementById('resultsScreen');
+            
+            document.getElementById('startQuizBtn')?.addEventListener('click', startQuiz);
+            document.getElementById('nextQBtn')?.addEventListener('click', nextQuestion);
+            document.getElementById('prevQBtn')?.addEventListener('click', prevQuestion);
+            document.getElementById('submitLeadBtn')?.addEventListener('click', submitContact);
+            document.getElementById('printPdfBtn')?.addEventListener('click', () => window.print());
+            document.getElementById('retakeAllBtn')?.addEventListener('click', retakeFull);
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tab = this.getAttribute('data-tab');
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    document.querySelectorAll('.tab-content').forEach((tc, i) => {
+                        tc.classList.toggle('active', i == tab);
+                    });
+                });
+            });
+        }
+        
+        function renderQuestion() {
+            const q = QUESTIONS[currentQ];
+            document.getElementById('qCat').innerHTML = `✦ ${q.category} · Question ${currentQ+1} of ${QUESTIONS.length}`;
+            document.getElementById('qText').innerHTML = q.text;
+            const container = document.getElementById('scaleBtns');
+            container.innerHTML = '';
+            const labels = ['Not at all', 'Slightly', 'Somewhat', 'Mostly', 'Very much', 'Completely'];
+            for (let i = 0; i <= 5; i++) {
+                const btn = document.createElement('div');
+                btn.className = 'scale-btn' + (answers[currentQ] === i ? ' selected' : '');
+                btn.innerHTML = `<span>${i}</span><span>${labels[i]}</span>`;
+                btn.onclick = (function(score) { return function() { answers[currentQ] = score; renderQuestion(); }; })(i);
+                container.appendChild(btn);
+            }
+            document.getElementById('progressFill').style.width = ((currentQ + 1) / QUESTIONS.length) * 100 + '%';
+            document.getElementById('progressText').innerHTML = `Question ${currentQ+1} of ${QUESTIONS.length}`;
+            document.getElementById('prevQBtn').disabled = (currentQ === 0);
+            const hasAns = answers[currentQ] !== null;
+            const nextBtn = document.getElementById('nextQBtn');
+            nextBtn.style.opacity = hasAns ? '1' : '0.6';
+            nextBtn.style.cursor = hasAns ? 'pointer' : 'not-allowed';
+        }
+        
+        function nextQuestion() {
+            if (answers[currentQ] === null) { alert('Please select an answer before continuing.'); return; }
+            if (currentQ < QUESTIONS.length - 1) { currentQ++; renderQuestion(); } 
+            else { showContact(); }
+        }
+        function prevQuestion() { if (currentQ > 0) { currentQ--; renderQuestion(); } }
+        function startQuiz() { answers.fill(null); currentQ = 0; introScreen.classList.add('hidden'); progressArea.classList.remove('hidden'); questionScreen.classList.remove('hidden'); contactScreen.classList.add('hidden'); resultsScreen.classList.add('hidden'); renderQuestion(); }
+        function showContact() { questionScreen.classList.add('hidden'); progressArea.classList.add('hidden'); contactScreen.classList.remove('hidden'); }
+        
+        async function sendToTelegram(name, phone, country, email, score, tier, recommended) {
+            const payload = { name, phone, country, email, score: score.toFixed(1), tier: tier.label, recommended: recommended.join(", "), quiz: "Certification Readiness", timestamp: new Date().toISOString() };
+            const statusDiv = document.getElementById('webhookStatus');
+            statusDiv.style.display = 'block';
+            statusDiv.innerHTML = '⏳ Generating your certification roadmap...';
+            try {
+                await fetch(WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                statusDiv.innerHTML = '✓ Roadmap ready!';
+            } catch(e) { statusDiv.innerHTML = '⚠️ Showing results.'; }
+            setTimeout(() => showResults(), 500);
+        }
+        
+        function showResults() {
+            const rawScore = getAverage();
+            const weightedScore = getWeightedScore();
+            const tier = getTier(weightedScore);
+            const recommended = getRecommendedCert(weightedScore);
+            const percent = (weightedScore / 5) * 100;
+            
+            document.getElementById('scoreRing').style.background = `conic-gradient(#d4b87a 0deg ${percent * 3.6}deg, rgba(255,255,255,0.1) ${percent * 3.6}deg 360deg)`;
+            document.getElementById('finalScoreVal').innerHTML = weightedScore.toFixed(1);
+            document.getElementById('tierBadge').innerHTML = tier.label;
+            document.getElementById('tierDesc').innerHTML = tier.desc;
+            
+            // Page 1: Certification Path
+            let certList = '';
+            recommended.forEach(c => { certList += `<span class="cert-badge">✦ ${c}</span>`; });
+            
+            document.getElementById('tab0').innerHTML = `
+                <div>
+                    <h3 class="gold">✦ Your Recommended Certification Path</h3>
+                    <div style="margin: 20px 0;">${certList}</div>
+                    <div class="quote-block">
+                        <strong>📊 Your Readiness Score:</strong> ${weightedScore.toFixed(1)}/5<br>
+                        <strong>${tier.label}</strong> — ${tier.desc}
+                    </div>
+                    <div class="teaching-section">
+                        <h4>📅 You Can Do This in 12 Months</h4>
+                        <p>Even the most comprehensive certification in this programme can be completed within 12 months by investing as little as <strong>4 hours per week</strong> in yourself. The NLP Coach Practitioner Certificate requires just 2.3 hours per week. The Trauma Coaching Certificate — 4 hours per week.</p>
+                        <p><strong>The question is not whether you have the time. The question is whether you are willing to invest it in yourself.</strong></p>
+                    </div>
+                </div>
+            `;
+            
+            // Page 2: Requirements & Teaching
+            document.getElementById('tab1').innerHTML = `
+                <div>
+                    <h3 class="gold">📖 What Your Certification Requires</h3>
+                    <div class="teaching-section">
+                        <h4>⚡ Concurrent Hours — A Powerful Advantage</h4>
+                        <p>Your training hours run concurrently across all five certifications. A single coaching session counts toward every certificate you are working toward. This makes pursuing multiple certifications not just possible, but genuinely efficient.</p>
+                    </div>
+                    <div class="teaching-section">
+                        <h4>🌟 Best Practice — From Joshua Roy</h4>
+                        <p>"I encourage every participant to attend as many live sessions as possible. There is a quality of learning, presence, and transformation that happens in a live environment that recordings simply cannot fully replicate. Show up. Be in the room. Engage."</p>
+                        <p>Between live sessions, watch recordings, listen to podcasts, and engage with other material. Every hour you invest in your own learning counts.</p>
+                    </div>
+                    <div class="teaching-section">
+                        <h4>🔑 The Five Certifications at a Glance</h4>
+                        <p><strong>01 NLP Coach Practitioner</strong> — 52+ hrs | Language patterns, anchoring, reframing<br>
+                        <strong>02 Wellness Coaching</strong> — 52+ hrs | Whole-body health, breathwork, alkaline living<br>
+                        <strong>03 Mindset Coaching</strong> — 52+ hrs | Rewiring beliefs, emotional mastery, identity<br>
+                        <strong>04 Relationship Coaching</strong> — 66+ hrs | Communication, attachment, love languages<br>
+                        <strong>05 Trauma Coaching</strong> — 141+ hrs | NSR, emotional clearing, somatic healing</p>
+                    </div>
+                    <div class="quote-block">
+                        <p>Every certification pathway is designed not simply to produce a qualified coach, but to produce a <strong>transformed human being</strong> — someone who has done the work on themselves and can now lead others through it with genuine skill and authentic empathy.</p>
+                    </div>
+                </div>
+            `;
+            
+            // Page 3: Next Steps
+            document.getElementById('tab2').innerHTML = `
+                <div>
+                    <h3 class="gold">🚀 Your Next Steps</h3>
+                    <div class="teaching-section">
+                        <h4>✨ What All Programmes Include</h4>
+                        <p>• 15 Group Coaching & Mentoring Sessions (22.5 hrs)<br>
+                        • "How to Become a World Class Coach" Session (3 hrs)<br>
+                        • 3 NLP Process Recordings for assessment<br>
+                        • 3-Month Morning Routine: 1 hour, 5 days per week<br>
+                        • External practice with real clients or peers</p>
+                    </div>
+                    <div class="teaching-section">
+                        <h4>📞 Get Started Today</h4>
+                        <p>To begin your certification journey, contact Joshua Roy directly.</p>
+                        <p><strong>Phone / WhatsApp:</strong> 0432 119 091<br>
+                        <strong>Email:</strong> accessworldseminars@gmail.com<br>
+                        <strong>Website:</strong> accessworldseminars.org</p>
+                    </div>
+                    <div class="quote-block">
+                        <p><strong>"The goal is not simply to accumulate hours. The goal is to develop yourself — beyond the average person. To become someone who is exceptional, exemplary, and outstanding — both as an individual and as a coach."</strong><br>— Joshua Roy</p>
+                    </div>
+                    <div class="webinar-card">
+                        <p><strong>🎓 Ready to begin your coaching journey?</strong></p>
+                        <a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank">View Upcoming Certification Info Sessions →</a>
+                    </div>
+                    <footer>AccessWorld Seminars · Brisbane, Australia · ABN: 72 546 137 885</footer>
+                </div>
+            `;
+            
+            contactScreen.classList.add('hidden');
+            resultsScreen.classList.remove('hidden');
+        }
+        
+        async function submitContact() {
+            const name = document.getElementById('leadName')?.value.trim();
+            const phone = document.getElementById('leadPhone')?.value.trim();
+            const email = document.getElementById('leadEmail')?.value.trim();
+            const country = document.getElementById('leadCountry')?.value;
+            if (!name || !phone || !email || !country) { alert("All fields required."); return; }
+            const weightedScore = getWeightedScore();
+            const tier = getTier(weightedScore);
+            const recommended = getRecommendedCert(weightedScore);
+            await sendToTelegram(name, phone, country, email, weightedScore, tier, recommended);
+        }
+        
+        function retakeFull() {
+            answers.fill(null);
+            currentQ = 0;
+            introScreen.classList.remove('hidden');
+            progressArea.classList.add('hidden');
+            questionScreen.classList.add('hidden');
+            contactScreen.classList.add('hidden');
+            resultsScreen.classList.add('hidden');
+        }
+        
+        renderApp();
+    })();
+</script>
+</body>
+</html>
