@@ -1,10 +1,12 @@
+Here is the complete HTML calendar with all your updated rules, including the renamed NLP Tool Development Training for Coaches and Trainers.
 
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AccessWorld Seminars Schedule – June to Dec 2026 | Live Training Calendar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AccessWorld Upcoming Events Schedule | June – December 2026</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -15,7 +17,7 @@
             color: #e0e0e0;
             line-height: 1.6;
         }
-        h1,h2,h3,h4 {
+        h1, h2, h3, h4 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             color: #ffffff;
@@ -26,28 +28,6 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        :root {
-            --primary-blue: #0f1a3d;
-            --secondary-blue: #1a2b5e;
-            --accent-gold: #d4af37;
-            --seminar-color: #d4af37;
-            --paid-color: #4CAF50;
-            --free-color: #2196F3;
-            --nlp-color: #9C27B0;
-            --lowtier-color: #FF9800;
-        }
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            background: linear-gradient(135deg, #d4af37, #b8941f);
-            color: #0f1a3d;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(212,175,55,0.3);
-        }
-        .btn:hover { transform: translateY(-3px); background: #e6c158; }
         header {
             background: linear-gradient(135deg, #0f1a3d, #1a2b5e);
             padding: 40px 0;
@@ -61,12 +41,14 @@
             justify-content: center;
             gap: 15px;
             margin-bottom: 15px;
+            flex-wrap: wrap;
         }
         .logo-img { height: 70px; filter: drop-shadow(0 0 8px #d4af37); }
         .logo-text {
             font-size: 2.5rem; font-weight: 800;
             background: linear-gradient(to right, #d4af37, #c0c0c0);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; background-clip: text;
+            color: transparent;
         }
         .timezone-selector {
             background: rgba(26,43,94,0.5);
@@ -78,6 +60,7 @@
             background: #1a2b5e; color: #fff;
             border: 1px solid #d4af37; padding: 12px 20px;
             border-radius: 6px; font-size: 1rem;
+            margin: 0 5px;
         }
         .legend {
             background: rgba(26,43,94,0.5); padding: 25px;
@@ -85,13 +68,13 @@
             margin: 30px auto;
         }
         .legend-items {
-            display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 10px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 10px;
         }
         .legend-item { display: flex; align-items: center; gap: 10px; }
         .color-swatch { width: 20px; height: 20px; border-radius: 4px; }
         .seminar { background: #d4af37; }
-        .paid { background: #4CAF50; }
-        .free { background: #2196F3; }
+        .coaching { background: #4CAF50; }
+        .intro { background: #2196F3; }
         .nlp { background: #9C27B0; }
         .lowtier { background: #FF9800; }
         .month-section {
@@ -104,17 +87,19 @@
             background: linear-gradient(135deg,#1a2b5e,#2d3b6b);
             padding: 25px; border-bottom: 2px solid #d4af37;
             display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         .month-header h2 { font-size: 1.8rem; margin:0; }
         .month-badge {
             background: #d4af37; color: #0f1a3d; padding: 5px 15px;
-            border-radius: 20px; font-weight: 700; font-size: 0.9rem;
+            border-radius: 20px; font-weight: 700; font-size: 0.8rem;
         }
         .week-grid { padding: 20px; }
         .week-card {
             background: rgba(15,26,61,0.7); border-radius: 8px;
-            padding: 20px; margin-bottom: 20px; border-left: 4px solid transparent;
-            transition: 0.3s;
+            padding: 20px; margin-bottom: 20px;
+            border-left: 4px solid transparent;
         }
         .week-card.seminar-week { border-left-color: #d4af37; background: rgba(212,175,55,0.1); }
         .week-card h3 { color: #d4af37; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px; }
@@ -127,37 +112,26 @@
             flex-wrap: wrap;
         }
         .session-item.seminar { border-left-color: #d4af37; }
-        .session-item.paid { border-left-color: #4CAF50; }
-        .session-item.free { border-left-color: #2196F3; }
+        .session-item.coaching { border-left-color: #4CAF50; }
+        .session-item.intro { border-left-color: #2196F3; }
         .session-item.nlp { border-left-color: #9C27B0; }
         .session-item.lowtier { border-left-color: #FF9800; }
-        .session-item.holiday { border-left-color: #6c7a9e; opacity: 0.8; background: rgba(0,0,0,0.3); }
         .session-date { min-width: 100px; font-weight: 600; color: #fff; }
         .session-time {
             background: rgba(255,255,255,0.1); padding: 5px 10px;
             border-radius: 4px; min-width: 180px; font-family: 'Montserrat',sans-serif;
         }
-        .session-details { flex:1; }
+        .session-details { flex: 1; }
         .session-title { font-weight: 600; color: #fff; }
-        .session-type {
-            font-size: 0.8rem; padding: 3px 10px; border-radius: 12px;
-            font-weight: 600; display: inline-block; text-transform: uppercase;
-        }
-        .zoom-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        .session-link {
+            display: inline-flex; align-items: center; gap: 6px;
             background: rgba(33,150,243,0.2);
-            padding: 6px 12px;
-            border-radius: 30px;
-            text-decoration: none;
-            color: #90caf9;
-            font-size: 0.8rem;
-            margin-top: 8px;
-            transition: 0.2s;
+            padding: 6px 12px; border-radius: 30px;
+            text-decoration: none; color: #90caf9;
+            font-size: 0.75rem; transition: 0.2s;
             border: 1px solid #2196F3;
         }
-        .zoom-link:hover { background: #2196F3; color: white; }
+        .session-link:hover { background: #2196F3; color: white; }
         .footer-section {
             text-align: center; padding: 50px 20px;
             background: linear-gradient(135deg,#0f1a3d,#1a2b5e);
@@ -166,228 +140,267 @@
         @media (max-width: 700px) {
             .session-item { flex-direction: column; align-items: flex-start; }
             .session-time { min-width: 100%; }
-            .month-header { flex-direction: column; align-items: start; gap: 10px; }
+            .month-header { flex-direction: column; align-items: start; }
         }
+        .btn-link { background: none; border: none; }
+        i { margin-right: 4px; }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo-container">
-                <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" alt="AccessWorld" class="logo-img">
-                <div class="logo-text">ACCESSWORLD SEMINARS</div>
-            </div>
-            <h1>Live Training & Events – June to December 2026</h1>
-            <div class="subtitle"><i class="fas fa-calendar-alt"></i> No Saturday sessions – All events on Thursdays & Fridays</div>
-            <div class="timezone-selector">
-                <label for="timezone"><i class="fas fa-globe"></i> Your time zone</label>
-                <select id="timezone">
-                    <option value="Australia/Sydney">Sydney (AEST)</option>
-                    <option value="America/New_York">New York (EST)</option>
-                    <option value="Europe/London">London (GMT)</option>
-                    <option value="Asia/Singapore">Singapore (SGT)</option>
-                </select>
-            </div>
+<header>
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" alt="AccessWorld" class="logo-img">
+            <div class="logo-text">ACCESSWORLD</div>
         </div>
-    </header>
-
-    <main class="container">
-        <div class="legend">
-            <h3><i class="fas fa-key"></i> session types</h3>
-            <div class="legend-items">
-                <div class="legend-item"><span class="color-swatch seminar"></span> 2‑Day Premium Seminars</div>
-                <div class="legend-item"><span class="color-swatch paid"></span> Group Coaching</div>
-                <div class="legend-item"><span class="color-swatch free"></span> Free Introduction (Zoom)</div>
-                <div class="legend-item"><span class="color-swatch nlp"></span> NLP Tool Development</div>
-                <div class="legend-item"><span class="color-swatch lowtier"></span> Low‑tier programs (Unlock / WC Coach)</div>
-            </div>
+        <h1>Upcoming Events Schedule</h1>
+        <div class="timezone-selector">
+            <label for="timezone"><i class="fas fa-globe"></i> Your time zone:</label>
+            <select id="timezone">
+                <optgroup label="Australia">
+                    <option value="Australia/Sydney">Sydney (AEST/AEDT)</option>
+                    <option value="Australia/Brisbane">Brisbane (AEST)</option>
+                    <option value="Australia/Perth">Perth (AWST)</option>
+                </optgroup>
+                <optgroup label="USA">
+                    <option value="America/New_York">Eastern (EST/EDT)</option>
+                    <option value="America/Chicago">Central (CST/CDT)</option>
+                    <option value="America/Denver">Mountain (MST/MDT)</option>
+                    <option value="America/Los_Angeles">Pacific (PST/PDT)</option>
+                </optgroup>
+                <optgroup label="Asia & Pacific">
+                    <option value="Asia/Kolkata">India (IST)</option>
+                    <option value="Pacific/Auckland">New Zealand (NZST/NZDT)</option>
+                    <option value="Europe/London">United Kingdom (GMT/BST)</option>
+                </optgroup>
+            </select>
         </div>
+    </div>
+</header>
 
-        <!-- ================= JUNE 2026 ================= -->
-        <div class="month-section">
-            <div class="month-header"><h2><i class="fas fa-sun"></i> June 2026</h2><div class="month-badge">Coaching + NLP + Unlock</div></div>
-            <div class="week-grid">
-                <div class="week-card"><h3>Week 1</h3><ul class="session-list">
-                    <li class="session-item paid" data-utc="2026-06-04T19:00:00+10:00"><span class="session-date">Thu 4 Jun</span><span class="session-time"></span><div class="session-details"><div class="session-title">Group Coaching (evening)</div><span class="session-type paid">coaching</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> Member notes</a></div></div></li>
-                    <li class="session-item paid" data-utc="2026-06-05T09:00:00+10:00"><span class="session-date">Fri 5 Jun</span><span class="session-time"></span><div class="session-details"><div class="session-title">Group Coaching #2</div><span class="session-type paid">coaching</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> Member notes</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-06-05T11:00:00+10:00"><span class="session-date">Fri 5 Jun</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                </ul></div>
-                <div class="week-card"><h3>Week 2</h3><ul class="session-list">
-                    <li class="session-item free" data-utc="2026-06-11T19:00:00+10:00"><span class="session-date">Thu 11 Jun</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                    <li class="session-item nlp" data-utc="2026-06-12T09:00:00+10:00"><span class="session-date">Fri 12 Jun</span><span class="session-time"></span><div class="session-details"><div class="session-title">NLP Tool Development #1</div><span class="session-type nlp">nlp</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1oqvKAfrmLslMq3mAZ716aA0h2blSzPXh/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> NLP resources</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-06-12T11:00:00+10:00"><span class="session-date">Fri 12 Jun</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                </ul></div>
-                <div class="week-card"><h3>Week 3</h3><ul class="session-list">
-                    <li class="session-item nlp" data-utc="2026-06-18T19:00:00+10:00"><span class="session-date">Thu 18 Jun</span><span class="session-time"></span><div class="session-details"><div class="session-title">NLP Tool Development #2</div><span class="session-type nlp">nlp</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1oqvKAfrmLslMq3mAZ716aA0h2blSzPXh/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> NLP resources</a></div></div></li>
-                    <li class="session-item paid" data-utc="2026-06-19T09:00:00+10:00"><span class="session-date">Fri 19 Jun</span><span class="session-time"></span><div class="session-details"><div class="session-title">Group Coaching #3</div><span class="session-type paid">coaching</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> Member notes</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-06-19T11:00:00+10:00"><span class="session-date">Fri 19 Jun</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                </ul></div>
-                <div class="week-card"><h3>Week 4</h3><ul class="session-list">
-                    <li class="session-item free" data-utc="2026-06-25T19:00:00+10:00"><span class="session-date">Thu 25 Jun</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                    <li class="session-item lowtier" data-utc="2026-06-26T07:00:00+10:00"><span class="session-date">Fri 26 Jun</span><span class="session-time"></span><div class="session-details"><div class="session-title">🔥 Unlock Your Incredible Self (6 hours) – $39 / free for members</div><span class="session-type lowtier">$39 program</span><div><a class="zoom-link" href="https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808" target="_blank"><i class="fas fa-ticket"></i> Register</a></div></div></li>
-                </ul></div>
-            </div>
+<main class="container">
+    <div class="legend">
+        <h3><i class="fas fa-key"></i> Session types</h3>
+        <div class="legend-items">
+            <div class="legend-item"><span class="color-swatch seminar"></span> 2‑Day Premium Seminar</div>
+            <div class="legend-item"><span class="color-swatch coaching"></span> Group Coaching & Mentoring</div>
+            <div class="legend-item"><span class="color-swatch intro"></span> Introduction Webinar (Zoom)</div>
+            <div class="legend-item"><span class="color-swatch nlp"></span> NLP Tool Dev for Coaches & Trainers</div>
+            <div class="legend-item"><span class="color-swatch lowtier"></span> Low‑tier programs (Unlock / WC Coach)</div>
         </div>
+    </div>
 
-        <!-- ================= JULY 2026 ================= -->
-        <div class="month-section">
-            <div class="month-header"><h2><i class="fas fa-snowflake"></i> July 2026</h2><div class="month-badge">Winter break + Coaching & NLP</div></div>
-            <div class="week-grid">
-                <div class="week-card"><h3>Holiday weeks (Jul 2-10)</h3><ul class="session-list">
-                    <li class="session-item holiday"><span class="session-date">Thu 2 – Fri 10 Jul</span><span class="session-time">—</span><div class="session-details"><div class="session-title">❄️ WINTER SCHOOL HOLIDAYS – No sessions</div><span class="session-type">break</span></div></li>
-                </ul></div>
-                <div class="week-card"><h3>Week 3 (Jul 16-17)</h3><ul class="session-list">
-                    <li class="session-item free" data-utc="2026-07-16T19:00:00+10:00"><span class="session-date">Thu 16 Jul</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                    <li class="session-item paid" data-utc="2026-07-17T09:00:00+10:00"><span class="session-date">Fri 17 Jul</span><span class="session-time"></span><div class="session-details"><div class="session-title">Group Coaching #1</div><span class="session-type paid">coaching</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> Member notes</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-07-17T11:00:00+10:00"><span class="session-date">Fri 17 Jul</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                </ul></div>
-                <div class="week-card"><h3>Week 4 (Jul 23-24)</h3><ul class="session-list">
-                    <li class="session-item paid" data-utc="2026-07-23T19:00:00+10:00"><span class="session-date">Thu 23 Jul</span><span class="session-time"></span><div class="session-details"><div class="session-title">Group Coaching (evening)</div><span class="session-type paid">coaching</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> Member notes</a></div></div></li>
-                    <li class="session-item nlp" data-utc="2026-07-24T09:00:00+10:00"><span class="session-date">Fri 24 Jul</span><span class="session-time"></span><div class="session-details"><div class="session-title">NLP Tool Development #1</div><span class="session-type nlp">nlp</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1oqvKAfrmLslMq3mAZ716aA0h2blSzPXh/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> NLP resources</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-07-24T11:00:00+10:00"><span class="session-date">Fri 24 Jul</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                </ul></div>
-                <div class="week-card"><h3>Week 5 (Jul 30-31)</h3><ul class="session-list">
-                    <li class="session-item nlp" data-utc="2026-07-30T19:00:00+10:00"><span class="session-date">Thu 30 Jul</span><span class="session-time"></span><div class="session-details"><div class="session-title">NLP Tool Development #2</div><span class="session-type nlp">nlp</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1oqvKAfrmLslMq3mAZ716aA0h2blSzPXh/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> NLP resources</a></div></div></li>
-                    <li class="session-item paid" data-utc="2026-07-31T09:00:00+10:00"><span class="session-date">Fri 31 Jul</span><span class="session-time"></span><div class="session-details"><div class="session-title">Group Coaching #3</div><span class="session-type paid">coaching</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> Member notes</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-07-31T11:00:00+10:00"><span class="session-date">Fri 31 Jul</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                </ul></div>
-            </div>
-        </div>
+    <!-- DYNAMIC CALENDAR -->
+    <div id="calendarRoot"></div>
+</main>
 
-        <!-- ================= AUGUST 2026 ================= -->
-        <div class="month-section">
-            <div class="month-header"><h2><i class="fas fa-brain"></i> August 2026</h2><div class="month-badge">2-Day Emotional Mastery + Free Intro + Coaching</div></div>
-            <div class="week-grid">
-                <div class="week-card seminar-week"><h3>⭐ 2-Day Seminar: Emotional Mastery</h3><ul class="session-list">
-                    <li class="session-item seminar" data-utc="2026-08-06T07:00:00+10:00"><span class="session-date">Thu 6 Aug</span><span class="session-time"></span><div class="session-details"><div class="session-title">Emotional Mastery Day 1 (7am–3pm AEST)</div><span class="session-type seminar">premium seminar</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/2dayevents" target="_blank"><i class="fas fa-star"></i> Seminar hub</a></div></div></li>
-                    <li class="session-item seminar" data-utc="2026-08-07T07:00:00+10:00"><span class="session-date">Fri 7 Aug</span><span class="session-time"></span><div class="session-details"><div class="session-title">Emotional Mastery Day 2 (7am–3pm AEST)</div><span class="session-type seminar">premium seminar</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/2dayevents" target="_blank"><i class="fas fa-star"></i> Seminar hub</a></div></div></li>
-                </ul></div>
-                <div class="week-card"><h3>Week 2 (Aug 13-14)</h3><ul class="session-list">
-                    <li class="session-item free" data-utc="2026-08-13T19:00:00+10:00"><span class="session-date">Thu 13 Aug</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                    <li class="session-item paid" data-utc="2026-08-14T09:00:00+10:00"><span class="session-date">Fri 14 Aug</span><span class="session-time"></span><div class="session-details"><div class="session-title">Group Coaching (integration)</div><span class="session-type paid">coaching</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> Member notes</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-08-14T11:00:00+10:00"><span class="session-date">Fri 14 Aug</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                </ul></div>
-            </div>
-        </div>
+<footer class="footer-section">
+    <div class="footer-logo">
+        <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" alt="" style="height:40px;">
+        <span class="logo-text" style="font-size:1.4rem;"> ACCESSWORLD</span>
+    </div>
+    <p>AccessWorld Upcoming Events Schedule · June – December 2026</p>
+    <p style="opacity:0.7;">© 2026 AccessWorld Seminars | Introduction Webinars: <a href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank" style="color:#d4af37;">Zoom link</a> | Member docs for Coaching & NLP</p>
+</footer>
 
-        <!-- ================= SEPTEMBER 2026 ================= -->
-        <div class="month-section">
-            <div class="month-header"><h2><i class="fas fa-leaf"></i> September 2026</h2><div class="month-badge">Coaching + NLP + World-Class Coach</div></div>
-            <div class="week-grid">
-                <div class="week-card"><h3>Week 1-3 (Sep 3-18)</h3><ul class="session-list">
-                    <li class="session-item free" data-utc="2026-09-03T19:00:00+10:00"><span class="session-date">Thu 3 Sep</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                    <li class="session-item paid" data-utc="2026-09-04T09:00:00+10:00"><span class="session-date">Fri 4 Sep</span><span class="session-time"></span><div class="session-details"><div class="session-title">Group Coaching #1</div><span class="session-type paid">coaching</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> Member notes</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-09-04T11:00:00+10:00"><span class="session-date">Fri 4 Sep</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                    <li class="session-item paid" data-utc="2026-09-10T19:00:00+10:00"><span class="session-date">Thu 10 Sep</span><span class="session-time"></span><div class="session-details"><div class="session-title">Group Coaching (evening)</div><span class="session-type paid">coaching</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> Member notes</a></div></div></li>
-                    <li class="session-item nlp" data-utc="2026-09-11T09:00:00+10:00"><span class="session-date">Fri 11 Sep</span><span class="session-time"></span><div class="session-details"><div class="session-title">NLP Tool Development #1</div><span class="session-type nlp">nlp</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1oqvKAfrmLslMq3mAZ716aA0h2blSzPXh/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> NLP resources</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-09-11T11:00:00+10:00"><span class="session-date">Fri 11 Sep</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                    <li class="session-item nlp" data-utc="2026-09-17T19:00:00+10:00"><span class="session-date">Thu 17 Sep</span><span class="session-time"></span><div class="session-details"><div class="session-title">NLP Tool Development #2</div><span class="session-type nlp">nlp</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1oqvKAfrmLslMq3mAZ716aA0h2blSzPXh/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> NLP resources</a></div></div></li>
-                    <li class="session-item lowtier" data-utc="2026-09-18T09:00:00+10:00"><span class="session-date">Fri 18 Sep</span><span class="session-time"></span><div class="session-details"><div class="session-title">How to Become a World-Class Coach – $29</div><span class="session-type lowtier">$29 program</span><div><a class="zoom-link" href="https://www.accessworldseminars.org/the-perfect-squeeze-page--45e9d" target="_blank"><i class="fas fa-ticket"></i> Register</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-09-18T11:00:00+10:00"><span class="session-date">Fri 18 Sep</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                </ul></div>
-                <div class="week-card"><h3>Holiday (Sep 25)</h3><ul class="session-list">
-                    <li class="session-item holiday"><span class="session-date">Fri 25 Sep</span><span class="session-time">—</span><div class="session-details"><div class="session-title">🌸 SPRING SCHOOL HOLIDAYS BEGIN – No session</div></div></li>
-                </ul></div>
-            </div>
-        </div>
+<script>
+    // ----- LINKS -----
+    const ZOOM_LINK = "https://accessworldseminars-ship-it.github.io/results/zoomlink";
+    const GROUP_LINK = "https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk";
+    const NLP_LINK = "https://docs.google.com/document/d/1oqvKAfrmLslMq3mAZ716aA0h2blSzPXh/edit?usp=drivesdk&ouid=116911817819525150049&rtpof=true&sd=true";
+    const SEMINAR_LINK = "https://accessworldseminars-ship-it.github.io/results/2dayevents";
+    const UNLOCK_LINK = "https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808";
+    const WCCOACH_LINK = "https://www.accessworldseminars.org/the-perfect-squeeze-page--45e9d";
 
-        <!-- ================= OCTOBER 2026 ================= -->
-        <div class="month-section">
-            <div class="month-header"><h2><i class="fas fa-pump-soap"></i> October 2026</h2><div class="month-badge">Holidays + Coaching + NLP + Unlock</div></div>
-            <div class="week-grid">
-                <div class="week-card"><h3>Holiday weeks (Oct 1-9)</h3><ul class="session-list">
-                    <li class="session-item holiday"><span class="session-date">Thu 1 – Fri 9 Oct</span><span class="session-time">—</span><div class="session-details"><div class="session-title">🌸 SPRING HOLIDAYS – No sessions</div></div></li>
-                </ul></div>
-                <div class="week-card"><h3>Week 3-4 (Oct 15-30)</h3><ul class="session-list">
-                    <li class="session-item paid" data-utc="2026-10-15T19:00:00+10:00"><span class="session-date">Thu 15 Oct</span><span class="session-time"></span><div class="session-details"><div class="session-title">Group Coaching (evening)</div><span class="session-type paid">coaching</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> Member notes</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-10-16T09:00:00+10:00"><span class="session-date">Fri 16 Oct</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-10-16T11:00:00+10:00"><span class="session-date">Fri 16 Oct</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                    <li class="session-item paid" data-utc="2026-10-22T19:00:00+10:00"><span class="session-date">Thu 22 Oct</span><span class="session-time"></span><div class="session-details"><div class="session-title">Group Coaching (evening)</div><span class="session-type paid">coaching</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> Member notes</a></div></div></li>
-                    <li class="session-item nlp" data-utc="2026-10-23T09:00:00+10:00"><span class="session-date">Fri 23 Oct</span><span class="session-time"></span><div class="session-details"><div class="session-title">NLP Tool Development #1</div><span class="session-type nlp">nlp</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1oqvKAfrmLslMq3mAZ716aA0h2blSzPXh/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> NLP resources</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-10-23T11:00:00+10:00"><span class="session-date">Fri 23 Oct</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                    <li class="session-item nlp" data-utc="2026-10-29T19:00:00+10:00"><span class="session-date">Thu 29 Oct</span><span class="session-time"></span><div class="session-details"><div class="session-title">NLP Tool Development #2</div><span class="session-type nlp">nlp</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1oqvKAfrmLslMq3mAZ716aA0h2blSzPXh/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> NLP resources</a></div></div></li>
-                    <li class="session-item lowtier" data-utc="2026-10-30T07:00:00+10:00"><span class="session-date">Fri 30 Oct</span><span class="session-time"></span><div class="session-details"><div class="session-title">🔥 Unlock Your Incredible Self (6 hours) – $39 / free for members</div><span class="session-type lowtier">$39 program</span><div><a class="zoom-link" href="https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808" target="_blank"><i class="fas fa-ticket"></i> Register</a></div></div></li>
-                </ul></div>
-            </div>
-        </div>
+    // ----- MASTER SCHEDULE (AEST base) -----
+    const sessions = [
+        // JUNE 2026
+        { date: "2026-06-04", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-06-05", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-06-05", time: "11:00", type: "intro", title: "Introduction Webinar – Upgrade Your Identity", link: ZOOM_LINK },
+        { date: "2026-06-11", time: "19:00", type: "intro", title: "Introduction Webinar – Upgrade Your Identity", link: ZOOM_LINK },
+        { date: "2026-06-12", time: "09:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+        { date: "2026-06-12", time: "11:00", type: "intro", title: "Introduction Webinar – Upgrade Your Identity", link: ZOOM_LINK },
+        { date: "2026-06-18", time: "19:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+        { date: "2026-06-19", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-06-19", time: "11:00", type: "intro", title: "Introduction Webinar – Upgrade Your Identity", link: ZOOM_LINK },
+        { date: "2026-06-25", time: "19:00", type: "intro", title: "Introduction Webinar – Upgrade Your Identity", link: ZOOM_LINK },
+        { date: "2026-06-26", time: "07:00", type: "lowtier", title: "Unlock Your Incredible Self (6 hour event)", link: UNLOCK_LINK },
 
-        <!-- ================= NOVEMBER 2026 ================= -->
-        <div class="month-section">
-            <div class="month-header"><h2><i class="fas fa-graduation-cap"></i> November 2026</h2><div class="month-badge">2-Day Life Skills + Coaching + Free Intro</div></div>
-            <div class="week-grid">
-                <div class="week-card seminar-week"><h3>⭐ 2-Day Seminar: Life Skills</h3><ul class="session-list">
-                    <li class="session-item seminar" data-utc="2026-11-05T07:00:00+10:00"><span class="session-date">Thu 5 Nov</span><span class="session-time"></span><div class="session-details"><div class="session-title">Life Skills Day 1 (7am–3pm)</div><span class="session-type seminar">premium seminar</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/2dayevents" target="_blank"><i class="fas fa-star"></i> Seminar hub</a></div></div></li>
-                    <li class="session-item seminar" data-utc="2026-11-06T07:00:00+10:00"><span class="session-date">Fri 6 Nov</span><span class="session-time"></span><div class="session-details"><div class="session-title">Life Skills Day 2 (7am–3pm)</div><span class="session-type seminar">premium seminar</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/2dayevents" target="_blank"><i class="fas fa-star"></i> Seminar hub</a></div></div></li>
-                </ul></div>
-                <div class="week-card"><h3>Week 2 & 4 (Nov 13-27)</h3><ul class="session-list">
-                    <li class="session-item free" data-utc="2026-11-13T11:00:00+10:00"><span class="session-date">Fri 13 Nov</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                    <li class="session-item paid" data-utc="2026-11-26T19:00:00+10:00"><span class="session-date">Thu 26 Nov</span><span class="session-time"></span><div class="session-details"><div class="session-title">Group Coaching (evening)</div><span class="session-type paid">coaching</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> Member notes</a></div></div></li>
-                    <li class="session-item paid" data-utc="2026-11-27T09:00:00+10:00"><span class="session-date">Fri 27 Nov</span><span class="session-time"></span><div class="session-details"><div class="session-title">Group Coaching</div><span class="session-type paid">coaching</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> Member notes</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-11-27T11:00:00+10:00"><span class="session-date">Fri 27 Nov</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                </ul></div>
-            </div>
-        </div>
+        // JULY 2026
+        { date: "2026-07-16", time: "19:00", type: "intro", title: "Introduction Webinar – Emotional Clearing", link: ZOOM_LINK },
+        { date: "2026-07-17", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-07-17", time: "11:00", type: "intro", title: "Introduction Webinar – Emotional Clearing", link: ZOOM_LINK },
+        { date: "2026-07-23", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-07-24", time: "09:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+        { date: "2026-07-24", time: "11:00", type: "intro", title: "Introduction Webinar – Emotional Clearing", link: ZOOM_LINK },
+        { date: "2026-07-30", time: "19:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+        { date: "2026-07-31", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-07-31", time: "11:00", type: "intro", title: "Introduction Webinar – Emotional Clearing", link: ZOOM_LINK },
 
-        <!-- ================= DECEMBER 2026 ================= -->
-        <div class="month-section">
-            <div class="month-header"><h2><i class="fas fa-gift"></i> December 2026</h2><div class="month-badge">Coaching + NLP + WC Coach + Holidays</div></div>
-            <div class="week-grid">
-                <div class="week-card"><h3>Weeks 1-3 (Dec 3-18)</h3><ul class="session-list">
-                    <li class="session-item free" data-utc="2026-12-03T19:00:00+10:00"><span class="session-date">Thu 3 Dec</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                    <li class="session-item paid" data-utc="2026-12-04T09:00:00+10:00"><span class="session-date">Fri 4 Dec</span><span class="session-time"></span><div class="session-details"><div class="session-title">Group Coaching #1</div><span class="session-type paid">coaching</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> Member notes</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-12-04T11:00:00+10:00"><span class="session-date">Fri 4 Dec</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                    <li class="session-item paid" data-utc="2026-12-10T19:00:00+10:00"><span class="session-date">Thu 10 Dec</span><span class="session-time"></span><div class="session-details"><div class="session-title">Group Coaching (evening)</div><span class="session-type paid">coaching</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> Member notes</a></div></div></li>
-                    <li class="session-item nlp" data-utc="2026-12-11T09:00:00+10:00"><span class="session-date">Fri 11 Dec</span><span class="session-time"></span><div class="session-details"><div class="session-title">NLP Tool Development #1</div><span class="session-type nlp">nlp</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1oqvKAfrmLslMq3mAZ716aA0h2blSzPXh/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> NLP resources</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-12-11T11:00:00+10:00"><span class="session-date">Fri 11 Dec</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                    <li class="session-item nlp" data-utc="2026-12-17T19:00:00+10:00"><span class="session-date">Thu 17 Dec</span><span class="session-time"></span><div class="session-details"><div class="session-title">NLP Tool Development #2</div><span class="session-type nlp">nlp</span><div><a class="zoom-link" href="https://docs.google.com/document/d/1oqvKAfrmLslMq3mAZ716aA0h2blSzPXh/edit?usp=drivesdk" target="_blank"><i class="fas fa-video"></i> NLP resources</a></div></div></li>
-                    <li class="session-item lowtier" data-utc="2026-12-18T09:00:00+10:00"><span class="session-date">Fri 18 Dec</span><span class="session-time"></span><div class="session-details"><div class="session-title">How to Become a World-Class Coach – $29</div><span class="session-type lowtier">$29 program</span><div><a class="zoom-link" href="https://www.accessworldseminars.org/the-perfect-squeeze-page--45e9d" target="_blank"><i class="fas fa-ticket"></i> Register</a></div></div></li>
-                    <li class="session-item free" data-utc="2026-12-18T11:00:00+10:00"><span class="session-date">Fri 18 Dec</span><span class="session-time"></span><div class="session-details"><div class="session-title">Free Introduction Session</div><span class="session-type free">free</span><div><a class="zoom-link" href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank"><i class="fas fa-video"></i> Join Zoom</a></div></div></li>
-                </ul></div>
-                <div class="week-card"><h3>Christmas Break</h3><ul class="session-list">
-                    <li class="session-item holiday"><span class="session-date">Fri 25 Dec – Jan 1</span><span class="session-time">—</span><div class="session-details"><div class="session-title">🎄 SUMMER HOLIDAYS – No sessions</div></div></li>
-                </ul></div>
-            </div>
-        </div>
-    </main>
+        // AUGUST 2026
+        { date: "2026-08-06", time: "07:00", type: "seminar", title: "Emotional Mastery Day 1 (2-Day Seminar)", link: SEMINAR_LINK },
+        { date: "2026-08-07", time: "07:00", type: "seminar", title: "Emotional Mastery Day 2 (2-Day Seminar)", link: SEMINAR_LINK },
+        { date: "2026-08-13", time: "19:00", type: "intro", title: "Introduction Webinar – Upgrade Your Financial Blueprint", link: ZOOM_LINK },
+        { date: "2026-08-14", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-08-14", time: "11:00", type: "intro", title: "Introduction Webinar – Upgrade Your Financial Blueprint", link: ZOOM_LINK },
+        { date: "2026-08-20", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-08-21", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-08-21", time: "11:00", type: "intro", title: "Introduction Webinar – Upgrade Your Financial Blueprint", link: ZOOM_LINK },
 
-    <footer class="footer-section">
-        <div class="footer-logo"><img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" alt="" style="height:40px;"><span class="logo-text" style="font-size:1.4rem;"> ACCESSWORLD</span></div>
-        <p>Master Training Calendar · June – December 2026 · <strong>No Saturday sessions</strong></p>
-        <p style="opacity:0.7;">© 2026 AccessWorld Seminars | FREE webinars: <a href="https://accessworldseminars-ship-it.github.io/results/zoomlink" style="color:#d4af37;">Zoom link</a> | Member docs for Coaching & NLP</p>
-        <p style="color:#d4af37;"><i class="fas fa-clock"></i> All times converted to your local zone</p>
-    </footer>
+        // SEPTEMBER 2026
+        { date: "2026-09-03", time: "19:00", type: "intro", title: "Introduction Webinar – Increase Your Influence", link: ZOOM_LINK },
+        { date: "2026-09-04", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-09-04", time: "11:00", type: "intro", title: "Introduction Webinar – Increase Your Influence", link: ZOOM_LINK },
+        { date: "2026-09-10", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-09-11", time: "09:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+        { date: "2026-09-11", time: "11:00", type: "intro", title: "Introduction Webinar – Increase Your Influence", link: ZOOM_LINK },
+        { date: "2026-09-17", time: "19:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+        { date: "2026-09-18", time: "09:00", type: "lowtier", title: "How to Become a World-Class Coach ($29)", link: WCCOACH_LINK },
 
-    <script>
-        function updateTimes(tz = Intl.DateTimeFormat().resolvedOptions().timeZone) {
-            document.querySelectorAll('.session-item[data-utc]').forEach(item => {
-                const utc = item.getAttribute('data-utc');
-                if (!utc) return;
-                const d = new Date(utc);
-                const span = item.querySelector('.session-time');
-                if (span) {
-                    span.textContent = d.toLocaleString('en-US', {
-                        weekday: 'short', month: 'short', day: 'numeric',
-                        hour: '2-digit', minute: '2-digit', hour12: true,
-                        timeZone: tz
-                    });
-                }
+        // OCTOBER 2026
+        { date: "2026-10-08", time: "19:00", type: "intro", title: "Introduction Webinar – Master Your Memory", link: ZOOM_LINK },
+        { date: "2026-10-09", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-10-09", time: "11:00", type: "intro", title: "Introduction Webinar – Master Your Memory", link: ZOOM_LINK },
+        { date: "2026-10-16", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-10-16", time: "11:00", type: "intro", title: "Introduction Webinar – Master Your Memory", link: ZOOM_LINK },
+        { date: "2026-10-22", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-10-23", time: "09:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+        { date: "2026-10-23", time: "11:00", type: "intro", title: "Introduction Webinar – Master Your Memory", link: ZOOM_LINK },
+        { date: "2026-10-29", time: "19:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+        { date: "2026-10-30", time: "07:00", type: "lowtier", title: "Unlock Your Incredible Self (6 hour event)", link: UNLOCK_LINK },
+
+        // NOVEMBER 2026
+        { date: "2026-11-05", time: "07:00", type: "seminar", title: "Life Skills Day 1 (2-Day Seminar)", link: SEMINAR_LINK },
+        { date: "2026-11-06", time: "07:00", type: "seminar", title: "Life Skills Day 2 (2-Day Seminar)", link: SEMINAR_LINK },
+        { date: "2026-11-13", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-11-13", time: "11:00", type: "intro", title: "Introduction Webinar – Learn About Nervous System Reprogramming", link: ZOOM_LINK },
+        { date: "2026-11-26", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-11-27", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-11-27", time: "11:00", type: "intro", title: "Introduction Webinar – Learn About Nervous System Reprogramming", link: ZOOM_LINK },
+
+        // DECEMBER 2026
+        { date: "2026-12-03", time: "19:00", type: "intro", title: "Introduction Webinar – Learn About Nervous System Reprogramming", link: ZOOM_LINK },
+        { date: "2026-12-04", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-12-04", time: "11:00", type: "intro", title: "Introduction Webinar – Learn About Nervous System Reprogramming", link: ZOOM_LINK },
+        { date: "2026-12-10", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+        { date: "2026-12-11", time: "09:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+        { date: "2026-12-11", time: "11:00", type: "intro", title: "Introduction Webinar – Learn About Nervous System Reprogramming", link: ZOOM_LINK },
+        { date: "2026-12-17", time: "19:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+        { date: "2026-12-18", time: "09:00", type: "lowtier", title: "How to Become a World-Class Coach ($29)", link: WCCOACH_LINK },
+        { date: "2026-12-18", time: "11:00", type: "intro", title: "Introduction Webinar – Learn About Nervous System Reprogramming", link: ZOOM_LINK }
+    ];
+
+    function groupByMonth(arr) {
+        const map = new Map();
+        arr.forEach(s => {
+            if (!s.date) return;
+            const [year, month] = s.date.split('-');
+            const key = `${year}-${month}`;
+            if (!map.has(key)) map.set(key, []);
+            map.get(key).push(s);
+        });
+        return map;
+    }
+
+    function formatTimeLocal(dateStr, timeStr, tz) {
+        if (!timeStr) return '';
+        try {
+            const [h, m] = timeStr.split(':');
+            const d = new Date(`${dateStr}T${h}:${m}:00`);
+            return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true, timeZone: tz });
+        } catch(e) { return timeStr; }
+    }
+
+    function renderCalendar(tz) {
+        const grouped = groupByMonth(sessions);
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        let html = '';
+
+        for (let [key, monthSessions] of grouped.entries()) {
+            const [year, monthNum] = key.split('-');
+            const monthName = monthNames[parseInt(monthNum)-1];
+            const isSeminarMonth = monthSessions.some(s => s.type === 'seminar');
+            html += `<div class="month-section">
+                        <div class="month-header">
+                            <h2>${monthName} ${year}</h2>
+                            <div class="month-badge">${isSeminarMonth ? '⭐ 2-Day Seminar month' : 'Live events'}</div>
+                        </div>
+                        <div class="week-grid">
+                            <div class="week-card">
+                                <ul class="session-list">`;
+            
+            monthSessions.sort((a,b) => {
+                if (a.date !== b.date) return a.date.localeCompare(b.date);
+                return (a.time || '00:00').localeCompare(b.time || '00:00');
             });
-        }
-        const tzSelect = document.getElementById('timezone');
-        tzSelect.addEventListener('change', ()=>{
-            const tz = tzSelect.value || Intl.DateTimeFormat().resolvedOptions().timeZone;
-            updateTimes(tz);
-        });
-        document.addEventListener('DOMContentLoaded', ()=>{
-            updateTimes();
-            const userTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            for (let opt of tzSelect.options) {
-                if (opt.value && userTz.includes(opt.value.split('/').pop())) {
-                    tzSelect.value = opt.value; break;
+
+            monthSessions.forEach(s => {
+                const dateObj = new Date(s.date + 'T00:00:00');
+                const dayName = dateObj.toLocaleDateString('en-US', { weekday: 'short', timeZone: tz });
+                const dateFormatted = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: tz });
+                const timeLocal = s.time ? formatTimeLocal(s.date, s.time, tz) : '';
+                let typeClass = '';
+                let linkButton = '';
+                if (s.link) {
+                    let btnText = '';
+                    if (s.type === 'intro') btnText = 'Join Zoom';
+                    else if (s.type === 'coaching') btnText = 'Member notes';
+                    else if (s.type === 'nlp') btnText = 'NLP resources';
+                    else if (s.type === 'lowtier') btnText = 'Register';
+                    else if (s.type === 'seminar') btnText = 'Seminar hub';
+                    linkButton = `<a href="${s.link}" target="_blank" class="session-link"><i class="fas fa-external-link-alt"></i> ${btnText}</a>`;
                 }
-            }
-        });
-    </script>
+                switch(s.type) {
+                    case 'seminar': typeClass = 'seminar'; break;
+                    case 'coaching': typeClass = 'coaching'; break;
+                    case 'intro': typeClass = 'intro'; break;
+                    case 'nlp': typeClass = 'nlp'; break;
+                    case 'lowtier': typeClass = 'lowtier'; break;
+                    default: typeClass = '';
+                }
+                html += `<li class="session-item ${typeClass}">
+                            <div class="session-date">${dayName} ${dateFormatted}</div>
+                            <div class="session-time">${timeLocal}</div>
+                            <div class="session-details">
+                                <div class="session-title">${s.title}</div>
+                            </div>
+                            ${linkButton}
+                         </li>`;
+            });
+            html += `</ul></div></div></div>`;
+        }
+        document.getElementById('calendarRoot').innerHTML = html;
+    }
+
+    const tzSelect = document.getElementById('timezone');
+    function updateCalendar() {
+        renderCalendar(tzSelect.value);
+    }
+    tzSelect.addEventListener('change', updateCalendar);
+    
+    // detect user timezone and try to match to one of the presets
+    function detectAndSetTz() {
+        const userTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const options = Array.from(tzSelect.options);
+        let matched = options.find(opt => opt.value === userTz);
+        if (!matched) {
+            if (userTz.includes('Sydney') || userTz.includes('Melbourne')) matched = options.find(opt => opt.value === 'Australia/Sydney');
+            else if (userTz.includes('Brisbane')) matched = options.find(opt => opt.value === 'Australia/Brisbane');
+            else if (userTz.includes('Perth')) matched = options.find(opt => opt.value === 'Australia/Perth');
+            else if (userTz.includes('New_York')) matched = options.find(opt => opt.value === 'America/New_York');
+            else if (userTz.includes('Chicago')) matched = options.find(opt => opt.value === 'America/Chicago');
+            else if (userTz.includes('Denver')) matched = options.find(opt => opt.value === 'America/Denver');
+            else if (userTz.includes('Los_Angeles')) matched = options.find(opt => opt.value === 'America/Los_Angeles');
+            else if (userTz.includes('Kolkata')) matched = options.find(opt => opt.value === 'Asia/Kolkata');
+            else if (userTz.includes('Auckland')) matched = options.find(opt => opt.value === 'Pacific/Auckland');
+            else if (userTz.includes('London')) matched = options.find(opt => opt.value === 'Europe/London');
+        }
+        if (matched) tzSelect.value = matched.value;
+        renderCalendar(tzSelect.value);
+    }
+    detectAndSetTz();
+</script>
 </body>
 </html>
 ```
