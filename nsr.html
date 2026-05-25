@@ -1,485 +1,633 @@
-Here is the complete HTML page ready to use. Copy and save as index.html.
+Here is the HTML page showing all payment methods plus the bundle option, using your navy and gold brand colors.
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>NSR Nervous System Reprogramming | 2-Day Emotional Breakthrough Seminar</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AccessWorld Seminars — Payment Methods & Bundles</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root {
+    --primary-blue: #0f1a3d;
+    --secondary-blue: #1a2b5e;
+    --accent-gold: #d4af37;
+    --accent-silver: #c0c0c0;
+    --light-blue: #2d3b6b;
+    --text-light: #ffffff;
+    --text-gray: #e0e0e0;
+    --bg-dark: #050a1a;
+    --transition: all 0.3s ease;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --radius: 12px;
+  }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(145deg, #f5f7e9 0%, #e8f0e5 100%);
-            color: #1a2e1f;
-            line-height: 1.5;
-        }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
+  body {
+    background: var(--bg-dark);
+    color: var(--text-light);
+    font-family: 'Open Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-        /* hero */
-        .hero-img {
-            width: 100%;
-            border-radius: 2rem;
-            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.25);
-            margin-bottom: 2rem;
-            object-fit: cover;
-            aspect-ratio: 1200/630;
-        }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 20%, rgba(212,175,55,0.08) 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 90%, rgba(192,192,192,0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-        img.hero {
-            width: 100%;
-            border-radius: 2rem;
-            display: block;
-        }
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
 
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #1c4d2d, #3a7c4d);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-        }
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
 
-        .badge {
-            background: #e9c46a;
-            color: #2d3e2b;
-            padding: 0.3rem 1rem;
-            border-radius: 100px;
-            display: inline-block;
-            font-weight: 600;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-        }
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
 
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
+  .logo-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+  }
 
-        .card {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(2px);
-            border-radius: 2rem;
-            padding: 2rem;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(100, 120, 80, 0.2);
-            transition: all 0.2s;
-        }
+  .logo-icon img {
+    width: 42px;
+    height: auto;
+  }
 
-        .card-full {
-            grid-column: span 2;
-        }
+  .logo-text h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-silver));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 1px;
+  }
 
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
+  .logo-text p {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(224, 224, 224, 0.5);
+    text-transform: uppercase;
+  }
 
-        .process-item {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            border-left: 6px solid #5e9b6e;
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.05);
-        }
+  .currency-note {
+    background: rgba(26, 43, 94, 0.6);
+    padding: 8px 18px;
+    border-radius: 40px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent-gold);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
 
-        .process-item h3 {
-            font-size: 1.4rem;
-            color: #1f5437;
-            margin-bottom: 0.75rem;
-        }
+  /* Hero */
+  .hero {
+    text-align: center;
+    margin-bottom: 48px;
+  }
 
-        .btn {
-            display: inline-block;
-            background: #2c6e3c;
-            color: white;
-            font-weight: 700;
-            padding: 0.9rem 2rem;
-            border-radius: 60px;
-            text-decoration: none;
-            transition: 0.2s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            text-align: center;
-        }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(212, 175, 55, 0.12);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
 
-        .btn-large {
-            font-size: 1.25rem;
-            padding: 1rem 2.5rem;
-            width: 100%;
-        }
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #ffffff, var(--text-gray));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 
-        .btn-outline {
-            background: transparent;
-            border: 2px solid #2c6e3c;
-            color: #2c6e3c;
-        }
+  h1 span {
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-silver));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 
-        .btn-outline:hover {
-            background: #2c6e3c;
-            color: white;
-        }
+  .hero-sub {
+    font-size: 16px;
+    color: var(--text-gray);
+    max-width: 580px;
+    margin: 0 auto;
+    opacity: 0.8;
+  }
 
-        .btn:hover {
-            background: #1b4f2a;
-            transform: scale(1.02);
-        }
+  /* Section titles */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 48px 0 28px 0;
+    background: rgba(26, 43, 94, 0.4);
+    padding: 12px 24px;
+    border-left: 5px solid var(--accent-gold);
+    border-radius: var(--radius);
+  }
 
-        .payment-group {
-            background: #fef9e6;
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
+  .section-title i {
+    font-size: 24px;
+    color: var(--accent-gold);
+  }
 
-        .bank-details {
-            background: #1f2e1c;
-            color: #e2f0da;
-            padding: 1.2rem;
-            border-radius: 1rem;
-            font-family: monospace;
-            font-size: 1.1rem;
-            margin: 1rem 0;
-        }
+  .section-title h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
+  }
 
-        input, select {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            margin: 0.5rem 0 1rem;
-            border: 1px solid #cbd5c0;
-            border-radius: 1rem;
-            font-size: 1rem;
-            background: white;
-        }
+  /* Payment Methods Grid */
+  .payments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+    margin-bottom: 48px;
+  }
 
-        label {
-            font-weight: 600;
-            margin-top: 0.5rem;
-            display: block;
-        }
+  .payment-card {
+    background: rgba(26, 43, 94, 0.45);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    transition: var(--transition);
+  }
 
-        .success-message {
-            background: #d4edc9;
-            color: #155724;
-            padding: 1rem;
-            border-radius: 1rem;
-            margin-top: 1rem;
-            display: none;
-        }
+  .payment-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212, 175, 55, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    background: rgba(26, 43, 94, 0.6);
+  }
 
-        .footer {
-            margin-top: 3rem;
-            text-align: center;
-            border-top: 1px solid #cbdcc2;
-            padding-top: 2rem;
-            font-size: 0.85rem;
-        }
+  .payment-icon {
+    font-size: 42px;
+    color: var(--accent-gold);
+    margin-bottom: 20px;
+  }
 
-        @media (max-width: 800px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-            .card-full {
-                grid-column: span 1;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+  .payment-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-light);
+  }
+
+  .bank-details {
+    background: rgba(15, 26, 61, 0.8);
+    padding: 16px;
+    border-radius: 10px;
+    margin: 16px 0;
+    font-family: monospace;
+    font-size: 14px;
+    border-left: 3px solid var(--accent-gold);
+  }
+
+  .payment-list {
+    list-style: none;
+    margin: 16px 0;
+  }
+
+  .payment-list li {
+    padding: 8px 0;
+    font-size: 13px;
+    color: var(--text-gray);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .payment-list li i {
+    color: var(--accent-gold);
+    width: 20px;
+    font-size: 12px;
+  }
+
+  /* Bundle Section */
+  .bundle-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin: 32px 0;
+  }
+
+  .bundle-card {
+    background: linear-gradient(145deg, rgba(212, 175, 55, 0.08), rgba(26, 43, 94, 0.5));
+    border: 2px solid rgba(212, 175, 55, 0.4);
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: var(--transition);
+    position: relative;
+  }
+
+  .bundle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(212, 175, 55, 0.3);
+  }
+
+  .bundle-badge {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: linear-gradient(135deg, var(--accent-gold), #b8941f);
+    color: var(--primary-blue);
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 16px;
+    border-radius: 30px;
+    letter-spacing: 1px;
+  }
+
+  .bundle-price {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--accent-gold);
+    margin: 16px 0;
+  }
+
+  .bundle-price small {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text-gray);
+  }
+
+  .original-price {
+    text-decoration: line-through;
+    color: rgba(224, 224, 224, 0.5);
+    font-size: 0.9rem;
+    margin-left: 10px;
+  }
+
+  .savings {
+    background: rgba(212, 175, 55, 0.2);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-gold);
+    margin: 12px 0;
+  }
+
+  .bundle-list {
+    list-style: none;
+    margin: 20px 0;
+  }
+
+  .bundle-list li {
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .bundle-list li i {
+    color: var(--accent-gold);
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent-gold), #b8941f);
+    color: var(--primary-blue);
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: var(--transition);
+    width: 100%;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    border: 2px solid var(--accent-gold);
+    color: var(--accent-gold);
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: var(--transition);
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateY(-3px);
+  }
+
+  /* Comparison Table */
+  .compare-table {
+    background: rgba(26, 43, 94, 0.3);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 32px 0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .table-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .table-header {
+    background: rgba(212, 175, 55, 0.15);
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .table-cell {
+    padding: 14px 20px;
+    font-size: 13px;
+  }
+
+  .table-cell i.fa-check {
+    color: var(--accent-gold);
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: rgba(224, 224, 224, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 24px 16px 60px; }
+    .header { flex-direction: column; text-align: center; }
+    .logo-area { justify-content: center; }
+    .bundle-container { grid-template-columns: 1fr; }
+    .table-row { grid-template-columns: 1fr 1fr; }
+    .table-row .table-cell:first-child { grid-column: span 2; background: rgba(212,175,55,0.08); }
+  }
+</style>
 </head>
 <body>
 <div class="container">
-    <!-- Hero Image -->
-    <div class="hero-img">
-        <img class="hero" src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="NSR Webinar Hero">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-area">
+      <div class="logo-icon">
+        <img src="https://github.com/accessworldseminars-ship-it/results/blob/2fcfdae671b699ec0b578911336fcc3ffc346532/worldjjpgsf.png?raw=true" alt="AccessWorld Logo">
+      </div>
+      <div class="logo-text">
+        <h2>ACCESSWORLD SEMINARS</h2>
+        <p>Transformative Coaching & Training Programs</p>
+      </div>
+    </div>
+    <div class="currency-note">
+      <i class="fas fa-dollar-sign"></i> All prices in AUD (Australian Dollars)
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">
+      <i class="fas fa-credit-card"></i> SECURE PAYMENT OPTIONS
+    </div>
+    <h1>Choose Your <span>Payment Method</span></h1>
+    <p class="hero-sub">Flexible, secure, and instant access to all AccessWorld Seminars programs.</p>
+  </div>
+
+  <!-- Payment Methods Grid -->
+  <div class="section-title">
+    <i class="fas fa-wallet"></i>
+    <h2>Payment Methods</h2>
+  </div>
+
+  <div class="payments-grid">
+    <!-- Option 1: Credit Card -->
+    <div class="payment-card">
+      <div class="payment-icon"><i class="fab fa-cc-visa"></i> <i class="fab fa-cc-mastercard"></i> <i class="fab fa-cc-amex"></i></div>
+      <h3>Option 1 — Credit / Debit Card</h3>
+      <ul class="payment-list">
+        <li><i class="fas fa-check-circle"></i> Visa, Mastercard, American Express</li>
+        <li><i class="fas fa-bolt"></i> Instant approval</li>
+        <li><i class="fas fa-envelope"></i> Receipt sent immediately</li>
+        <li><i class="fas fa-lock"></i> 256-bit SSL encryption</li>
+      </ul>
+      <button class="btn-primary" onclick="alert('Redirect to secure card checkout — demo mode')"><i class="fab fa-cc-visa"></i> Pay with Card</button>
     </div>
 
-    <div class="badge">🌿 Live 2-Day Seminar · Nervous System Reprogramming</div>
-    <h1>NSR Nervous System Programming<br>Emotional Freedom & Procrastination Breakthrough</h1>
-    <p style="font-size: 1.2rem; margin: 1rem 0 2rem;">Discover the path to regulate your nervous system, eliminate unconscious resistance, and rewire old identity patterns. <strong>Includes The Gift, Grey Room, Womb of Eternity & Space Odyssey</strong> — real-time healing.</p>
-
-    <!-- 2 column layout: left content / right payment & quiz -->
-    <div class="grid-2">
-        <!-- LEFT COLUMN: program info -->
-        <div>
-            <div class="card">
-                <h2>🌱 Who Is This For?</h2>
-                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
-                    <li>🌀 Healing past trauma — living with an unregulated nervous system</li>
-                    <li>🌀 Made big changes but still react from old unconscious patterns</li>
-                    <li>🌀 Facing inner resistance, want to turn "red lights" into green lights for success</li>
-                    <li>🌀 Anyone who wants deep work + community + <strong>fun</strong></li>
-                </ul>
-            </div>
-
-            <div class="card" style="margin-top: 1.5rem;">
-                <h2>✨ Learning Outcomes (Webinar)</h2>
-                <ol style="margin-left: 1.5rem;">
-                    <li>Identify & eliminate unconscious resistance</li>
-                    <li>Emotional clearing & NSR techniques</li>
-                    <li>Integrate tools into daily life</li>
-                    <li>Understand dopamine & addiction patterns</li>
-                    <li>Real-time transformation & healing</li>
-                </ol>
-            </div>
-
-            <div class="card" style="margin-top: 1.5rem;">
-                <h2>🧬 Core Processes You'll Experience</h2>
-                <div class="process-grid">
-                    <div class="process-item"><h3>🎁 The Gift</h3><p>Timeline therapy to override negative emotions with joy, lift trauma weight.</p></div>
-                    <div class="process-item"><h3>🌫️ The Grey Room</h3><p>Release rejection, hurt, fear, anger — make peace with past.</p></div>
-                    <div class="process-item"><h3>🌀 Womb of Eternity</h3><p>Reimprint inner voice, silence negative self-talk, build compassion.</p></div>
-                    <div class="process-item"><h3>🚀 Space Odyssey</h3><p>Spatial relocation strategy, neutralize pain from failure/tragedy.</p></div>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2>👨‍🏫 About Joshua Roy</h2>
-                <p>Ex-Queensland Police Sergeant (22 yrs), overcame severe stutter at 14 using mindset, became Australian Karate Champion at 16. Holds Bachelor’s in Psychology, Neuro Transformation Therapist, 9 coaching certs, 3,500+ 1:1 sessions, 900+ live seminars. <em>“Real world results, not just inspiration.”</em></p>
-                <p style="margin-top: 1rem;"><strong>📍 Brisbane, QLD · with Rebecca & 5 children</strong></p>
-            </div>
-        </div>
-
-        <!-- RIGHT COLUMN: Assessment Quiz + Payment Option 3 + Webhook -->
-        <div>
-            <!-- PROCRASTINATION BREAKTHROUGH ASSESSMENT -->
-            <div class="card" style="background: #fef7e0;">
-                <h2>📋 The Procrastination Breakthrough Assessment</h2>
-                <p>Discover what’s really blocking your nervous system from taking action. Get personalized insight before the seminar.</p>
-                <form id="quizForm">
-                    <label>1. When facing a difficult task, I usually:</label>
-                    <select id="q1" required>
-                        <option value="">Select...</option>
-                        <option value="avoid">Avoid it until last minute</option>
-                        <option value="anxiety">Feel anxious and freeze</option>
-                        <option value="focus">Break it down and start</option>
-                    </select>
-                    <label>2. How often do you feel “stuck” even when you know what to do?</label>
-                    <select id="q2" required>
-                        <option value="">Select...</option>
-                        <option value="daily">Daily / almost always</option>
-                        <option value="weekly">Few times a week</option>
-                        <option value="rare">Rarely</option>
-                    </select>
-                    <label>3. Do you experience physical tension when thinking about important goals?</label>
-                    <select id="q3" required>
-                        <option value="">Select...</option>
-                        <option value="yes">Yes - tight chest, shallow breath</option>
-                        <option value="sometimes">Sometimes</option>
-                        <option value="no">No, not really</option>
-                    </select>
-                    <button type="button" id="quizSubmitBtn" class="btn" style="margin-top: 1rem; background:#e9b35f;">Get Assessment Result</button>
-                    <div id="quizResult" style="margin-top: 1rem; font-weight: 500;"></div>
-                </form>
-            </div>
-
-            <!-- PAYMENT OPTION 3 : DIRECT TRANSFER + WEBHOOK -->
-            <div class="card" style="margin-top: 1.5rem; background: white;">
-                <h2>💚 Option 3 – Bank Transfer (Paid in Full)</h2>
-                <p><strong>2-Day NSR Seminar + Procrastination Breakthrough Kit + Lifetime Access</strong><br>💰 <span style="font-size: 1.8rem; font-weight:800;">$497 AUD</span> <span style="text-decoration: line-through; color:gray;">$997</span></p>
-                
-                <div class="payment-group">
-                    <div class="bank-details">
-                        🏦 <strong>AccessWorld Trust Account</strong><br>
-                        BSB: 124001<br>
-                        Account Number: 22710071<br>
-                        <span style="font-size:0.9rem;">✅ Reference: <u>YOUR EMAIL ADDRESS</u></span>
-                    </div>
-                    <p style="font-size:0.9rem;">🔹 After payment, fill the registration form below and click <strong>"Confirm Payment & Send Approval Request"</strong>. We’ll verify & grant instant webinar access.</p>
-                </div>
-
-                <!-- REGISTRATION + WEBHOOK FORM -->
-                <form id="purchaseForm">
-                    <label>Full Name *</label>
-                    <input type="text" id="fullName" placeholder="e.g., Sarah Mitchell" required>
-
-                    <label>Email Address (use as bank reference) *</label>
-                    <input type="email" id="email" placeholder="you@example.com" required>
-
-                    <label>Phone Number *</label>
-                    <input type="tel" id="phone" placeholder="+61 4XX XXX XXX" required>
-
-                    <label>State / Province</label>
-                    <input type="text" id="state" placeholder="e.g., Queensland, Victoria, NSW">
-
-                    <label>Country</label>
-                    <input type="text" id="country" placeholder="Australia" value="Australia">
-
-                    <label>Postcode / Zip</label>
-                    <input type="text" id="postcode" placeholder="e.g., 4101">
-
-                    <div style="margin: 1rem 0; background:#eef5ea; padding:0.8rem; border-radius:1rem;">
-                        <input type="checkbox" id="confirmPaid" required>
-                        <label style="display:inline; font-weight:normal;">✔️ I confirm I have transferred <strong>$497 AUD</strong> to AccessWorld Trust (BSB 124001 Acc 22710071) using my email as reference.</label>
-                    </div>
-
-                    <button type="submit" class="btn btn-large" id="webhookBtn">✅ Confirm Payment & Send to Zapier (Option 3)</button>
-                    <div id="paymentSuccessMsg" class="success-message"></div>
-                    <div id="errorMsg" style="color:#b13a3a; margin-top:0.5rem;"></div>
-                </form>
-                <p style="font-size:0.75rem; margin-top:1rem;">🔐 After submission, our team verifies bank transfer within 12 business hours. You'll receive webinar access & materials via email once approved.</p>
-            </div>
-
-            <!-- PROGRAM OFFERS LINK (extra resource) -->
-            <div style="text-align: center; margin-top: 1rem;">
-                <a href="https://accessworldseminars-ship-it.github.io/results/programoffers.html" target="_blank" style="color:#2c6e3c;">📘 View all program offers →</a>
-            </div>
-        </div>
+    <!-- Option 2: PayPal -->
+    <div class="payment-card">
+      <div class="payment-icon"><i class="fab fa-paypal"></i></div>
+      <h3>Option 2 — PayPal</h3>
+      <ul class="payment-list">
+        <li><i class="fas fa-check-circle"></i> PayPal account or guest checkout</li>
+        <li><i class="fas fa-bolt"></i> Instant processing</li>
+        <li><i class="fas fa-calendar-alt"></i> PayPal Pay in 4 available</li>
+        <li><i class="fas fa-shield-alt"></i> Buyer protection included</li>
+      </ul>
+      <button class="btn-secondary" onclick="alert('Redirect to PayPal checkout — demo mode')"><i class="fab fa-paypal"></i> Pay with PayPal</button>
     </div>
 
-    <!-- FULL WIDTH: 2-DAY SEMINAR BONUS + WEBHOOK EXPLANATION -->
-    <div class="card card-full" style="margin-top: 2rem; text-align:center;">
-        <h2>🌻 By the End of This Program, You Will:</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 1.5rem 0;">
-            <span style="background:#e0eed9; padding:0.5rem 1rem; border-radius:40px;">✅ Regulate nervous system instantly</span>
-            <span style="background:#e0eed9; padding:0.5rem 1rem; border-radius:40px;">✅ Break the habit of your old self</span>
-            <span style="background:#e0eed9; padding:0.5rem 1rem; border-radius:40px;">✅ Eliminate unconscious resistance</span>
-            <span style="background:#e0eed9; padding:0.5rem 1rem; border-radius:40px;">✅ Reclaim energy for creativity & joy</span>
-        </div>
-        <p>🌟 <strong>Includes The Gift, Grey Room, Womb of Eternity, Space Odyssey</strong> — live with Joshua Roy + community healing.</p>
+    <!-- Option 3: Bank Transfer -->
+    <div class="payment-card">
+      <div class="payment-icon"><i class="fas fa-university"></i></div>
+      <h3>Option 3 — Bank Transfer</h3>
+      <div class="bank-details">
+        <strong>AccessWorld Trust Account</strong><br>
+        BSB: 124001<br>
+        Account: 22710071<br>
+        <span style="font-size: 11px;">Reference: <u>YOUR EMAIL ADDRESS</u></span>
+      </div>
+      <ul class="payment-list">
+        <li><i class="fas fa-clock"></i> 1-2 business days clearance</li>
+        <li><i class="fas fa-check-circle"></i> Manual verification after payment</li>
+        <li><i class="fas fa-envelope"></i> Use email as reference</li>
+      </ul>
+      <button class="btn-secondary" onclick="alert('Bank transfer instructions copied — please use your email as reference')"><i class="fas fa-copy"></i> Copy Bank Details</button>
+    </div>
+  </div>
+
+  <!-- BUNDLE OPTION SECTION -->
+  <div class="section-title">
+    <i class="fas fa-gift"></i>
+    <h2>✨ Bundle & Save ✨</h2>
+  </div>
+
+  <div class="bundle-container">
+    <!-- Bundle: All 5 Series -->
+    <div class="bundle-card">
+      <div class="bundle-badge">⭐ BEST VALUE ⭐</div>
+      <h3>Ultimate Transformation Bundle</h3>
+      <div class="bundle-price">
+        $1,997 <small>AUD</small>
+        <span class="original-price">$2,485</span>
+      </div>
+      <div class="savings"><i class="fas fa-tag"></i> Save $488 (20% OFF)</div>
+      <ul class="bundle-list">
+        <li><i class="fas fa-check-circle"></i> Access to Health Series</li>
+        <li><i class="fas fa-check-circle"></i> Access to Emotional Mastery</li>
+        <li><i class="fas fa-check-circle"></i> Access to Relationship Series</li>
+        <li><i class="fas fa-check-circle"></i> Access to Life Skills</li>
+        <li><i class="fas fa-check-circle"></i> <strong>Nervous System Reprogramming (NSR)</strong></li>
+        <li><i class="fas fa-gem"></i> Bonus: Lifetime access to all recordings</li>
+        <li><i class="fas fa-gem"></i> Bonus: Private community access</li>
+      </ul>
+      <button class="btn-primary" onclick="alert('Ultimate Bundle — $1,997 AUD. Proceed to checkout?')"><i class="fas fa-shopping-cart"></i> Buy Bundle – Save $488</button>
     </div>
 
-    <div class="footer">
-        <p>© 2025 NSR Nervous System Programming · Joshua Roy · Brisbane QLD · All rights reserved.<br>
-        Webhook endpoint active: https://hooks.zapier.com/hooks/catch/3779260/unt9eik/ — all purchase data (name, email, phone, state, country, postcode, program name, paid in full) sent automatically.</p>
+    <!-- Bundle: NSR + Emotional Mastery -->
+    <div class="bundle-card">
+      <div class="bundle-badge">🔥 POPULAR</div>
+      <h3>Deep Healing Bundle</h3>
+      <div class="bundle-price">
+        $897 <small>AUD</small>
+        <span class="original-price">$994</span>
+      </div>
+      <div class="savings"><i class="fas fa-tag"></i> Save $97</div>
+      <ul class="bundle-list">
+        <li><i class="fas fa-check-circle"></i> Nervous System Reprogramming (NSR)</li>
+        <li><i class="fas fa-check-circle"></i> Access to Emotional Mastery</li>
+        <li><i class="fas fa-check-circle"></i> The Gift + Grey Room + Womb of Eternity</li>
+        <li><i class="fas fa-gem"></i> Bonus: 1-hour 1:1 Q&A with Joshua</li>
+      </ul>
+      <button class="btn-secondary" onclick="alert('Deep Healing Bundle — $897 AUD. Proceed to checkout?')"><i class="fas fa-heart"></i> Buy Bundle – Save $97</button>
     </div>
+  </div>
+
+  <!-- Comparison Table: Individual vs Bundle -->
+  <div class="section-title">
+    <i class="fas fa-chart-simple"></i>
+    <h2>Price Comparison</h2>
+  </div>
+
+  <div class="compare-table">
+    <div class="table-row table-header">
+      <div class="table-cell">Program</div>
+      <div class="table-cell">Individual Price</div>
+      <div class="table-cell">In Bundle?</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">Access to Health Series</div>
+      <div class="table-cell">$497</div>
+      <div class="table-cell"><i class="fas fa-check" style="color: #d4af37;"></i> Included</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">Access to Emotional Mastery</div>
+      <div class="table-cell">$497</div>
+      <div class="table-cell"><i class="fas fa-check" style="color: #d4af37;"></i> Included</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">Access to Relationship Series</div>
+      <div class="table-cell">$497</div>
+      <div class="table-cell"><i class="fas fa-check" style="color: #d4af37;"></i> Included</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">Access to Life Skills</div>
+      <div class="table-cell">$497</div>
+      <div class="table-cell"><i class="fas fa-check" style="color: #d4af37;"></i> Included</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell"><strong>Nervous System Reprogramming (NSR)</strong></div>
+      <div class="table-cell"><strong>$497</strong></div>
+      <div class="table-cell"><i class="fas fa-check" style="color: #d4af37;"></i> Included</div>
+    </div>
+    <div class="table-row table-header" style="background: rgba(212,175,55,0.1);">
+      <div class="table-cell"><strong>TOTAL (All 5)</strong></div>
+      <div class="table-cell"><strong>$2,485</strong></div>
+      <div class="table-cell"><strong>Bundle: $1,997</strong> <span style="color:#d4af37;">(Save $488)</span></div>
+    </div>
+  </div>
+
+  <!-- Secure payment note -->
+  <div style="text-align: center; margin: 32px 0 0; padding: 20px; background: rgba(26, 43, 94, 0.3); border-radius: var(--radius); border: 1px solid rgba(212,175,55,0.15);">
+    <i class="fas fa-shield-alt" style="color: var(--accent-gold); font-size: 28px; margin-bottom: 12px; display: block;"></i>
+    <p style="font-size: 12px; color: var(--text-gray);">🔒 256-bit SSL encryption · PCI compliant · No card details stored on our servers</p>
+    <p style="font-size: 11px; margin-top: 10px; opacity: 0.6;"><i class="fas fa-clock"></i> All payments processed securely · Instant access upon verification</p>
+  </div>
+
+  <footer>
+    <i class="far fa-copyright"></i> AccessWorld Seminars · Joshua Roy · Brisbane QLD · All prices in AUD (Australian Dollars)
+  </footer>
+
 </div>
 
 <script>
-    // ZAPIER WEBHOOK ENDPOINT (exactly provided)
-    const ZAPIER_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/3779260/unt9eik/";
-
-    // Quiz logic - simple feedback
-    document.getElementById("quizSubmitBtn").addEventListener("click", function() {
-        const q1 = document.getElementById("q1").value;
-        const q2 = document.getElementById("q2").value;
-        const q3 = document.getElementById("q3").value;
-        if (!q1 || !q2 || !q3) {
-            document.getElementById("quizResult").innerHTML = "⚠️ Please answer all questions.";
-            return;
-        }
-        let resultText = "🔍 Your procrastination pattern: ";
-        if (q1 === "avoid" || q2 === "daily" || q3 === "yes") {
-            resultText += "Nervous system red light — unconscious resistance is high. The Gift + Grey Room processes are perfect for you. Expect immediate relief during the seminar.";
-        } else if (q1 === "anxiety" || q2 === "weekly" || q3 === "sometimes") {
-            resultText += "Mixed signals: old identity patterns still holding. NSR Space Odyssey & Womb of Eternity will help shift inner dialogue and triggers.";
-        } else {
-            resultText += "You have momentum! NSR will fine-tune your emotional clearing for next-level results and deeper peace.";
-        }
-        document.getElementById("quizResult").innerHTML = resultText + " 🧠✨";
+  // Copy bank details functionality
+  const copyBtn = document.querySelector('.payment-card:last-child .btn-secondary');
+  if (copyBtn && copyBtn.innerText.includes('Copy')) {
+    copyBtn.addEventListener('click', function(e) {
+      const bankText = "AccessWorld Trust Account\nBSB: 124001\nAccount: 22710071\nReference: YOUR EMAIL ADDRESS";
+      navigator.clipboard.writeText(bankText).then(() => {
+        alert('Bank details copied! Use YOUR EMAIL ADDRESS as reference when transferring.');
+      }).catch(() => {
+        alert('Please manually copy: BSB 124001, Acc 22710071, Ref: your email');
+      });
     });
-
-    // MAIN PURCHASE FORM - sends webhook + includes ALL relevant information
-    const purchaseForm = document.getElementById("purchaseForm");
-    const successDiv = document.getElementById("paymentSuccessMsg");
-    const errorDiv = document.getElementById("errorMsg");
-
-    purchaseForm.addEventListener("submit", async function(event) {
-        event.preventDefault();
-
-        // get values
-        const fullName = document.getElementById("fullName").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const phone = document.getElementById("phone").value.trim();
-        const state = document.getElementById("state").value.trim();
-        const country = document.getElementById("country").value.trim();
-        const postcode = document.getElementById("postcode").value.trim();
-        const confirmCheck = document.getElementById("confirmPaid").checked;
-
-        if (!fullName || !email || !phone) {
-            errorDiv.innerText = "❌ Please fill in Name, Email, and Phone.";
-            successDiv.style.display = "none";
-            return;
-        }
-        if (!confirmCheck) {
-            errorDiv.innerText = "❌ You must confirm that you've made the bank transfer (BSB 124001 / Acc 22710071) with email reference.";
-            return;
-        }
-        if (!email.includes("@")) {
-            errorDiv.innerText = "❌ Valid email required (used as bank reference).";
-            return;
-        }
-
-        errorDiv.innerText = "";
-        
-        // Prepare the payload - ALL relevant purchase info requested
-        const payload = {
-            purchase_status: "paid_in_full",
-            program_name: "NSR Nervous System Programming Webinar – 2 Day Seminar (Overcoming Procrastination + Emotional Clearing + Trauma Healing)",
-            payment_option: "Option 3 – Bank Transfer (BSB 124001 Acc 22710071)",
-            payment_method: "Direct Bank Transfer / AccessWorld Trust",
-            amount_paid: "497.00",
-            currency: "AUD",
-            customer_name: fullName,
-            customer_email: email,
-            customer_phone: phone,
-            customer_state: state || "Not provided",
-            customer_country: country || "Australia",
-            postcode: postcode || "",
-            payment_reference_used: email,   // because they must use email as reference
-            bank_bsb: "124001",
-            bank_account: "22710071",
-            account_name: "AccessWorld Trust",
-            payment_date_utc: new Date().toISOString(),
-            requires_manual_verification: true,
-            webinar_access: "pending_verification",
-            seminar_dates: "2-day live NSR seminar (next cohort dates sent via email)"
-        };
-
-        // Disable button to avoid double submission
-        const submitBtn = document.getElementById("webhookBtn");
-        const originalText = submitBtn.innerText;
-        submitBtn.innerText = "⏳ Sending approval request...";
-        submitBtn.disabled = true;
-
-        try {
-            const response = await fetch(ZAPIER_WEBHOOK_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload)
-            });
-
-            if (response.ok) {
-                successDiv.style.display = "block";
-                successDiv.innerHTML = `✅ Purchase notification sent to Zapier! <br> 📧 We'll verify your bank transfer to ${email} (reference) and send webinar access within 12h. <br> Thank you ${fullName}, your spot is reserved. 🧠🌿`;
-                // clear sensitive fields but keep name for visual
-                document.getElementById("purchaseForm").reset();
-                document.getElementById("confirmPaid").checked = false;
-                errorDiv.innerText = "";
-            } else {
-                throw new Error(`HTTP ${response.status}`);
-            }
-        } catch (err) {
-            console.error("Webhook error:", err);
-            errorDiv.innerText = "⚠️ Network issue. Please confirm your payment & try again, or email support. Your payment is safe — contact us directly with reference.";
-            successDiv.style.display = "none";
-        } finally {
-            submitBtn.innerText = originalText;
-            submitBtn.disabled = false;
-        }
-    });
+  }
 </script>
-
-<!-- ensure webhook also sends if Zapier catch is hit, plus all fields exactly as required: name, number, state/country/postcode, email, program, paid in full, details -->
 </body>
 </html>
 ```
