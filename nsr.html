@@ -1,0 +1,485 @@
+Here is the complete HTML page ready to use. Copy and save as index.html.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>NSR Nervous System Reprogramming | 2-Day Emotional Breakthrough Seminar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(145deg, #f5f7e9 0%, #e8f0e5 100%);
+            color: #1a2e1f;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* hero */
+        .hero-img {
+            width: 100%;
+            border-radius: 2rem;
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.25);
+            margin-bottom: 2rem;
+            object-fit: cover;
+            aspect-ratio: 1200/630;
+        }
+
+        img.hero {
+            width: 100%;
+            border-radius: 2rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1c4d2d, #3a7c4d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            background: #e9c46a;
+            color: #2d3e2b;
+            padding: 0.3rem 1rem;
+            border-radius: 100px;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(100, 120, 80, 0.2);
+            transition: all 0.2s;
+        }
+
+        .card-full {
+            grid-column: span 2;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .process-item {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border-left: 6px solid #5e9b6e;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .process-item h3 {
+            font-size: 1.4rem;
+            color: #1f5437;
+            margin-bottom: 0.75rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #2c6e3c;
+            color: white;
+            font-weight: 700;
+            padding: 0.9rem 2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .btn-large {
+            font-size: 1.25rem;
+            padding: 1rem 2.5rem;
+            width: 100%;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #2c6e3c;
+            color: #2c6e3c;
+        }
+
+        .btn-outline:hover {
+            background: #2c6e3c;
+            color: white;
+        }
+
+        .btn:hover {
+            background: #1b4f2a;
+            transform: scale(1.02);
+        }
+
+        .payment-group {
+            background: #fef9e6;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .bank-details {
+            background: #1f2e1c;
+            color: #e2f0da;
+            padding: 1.2rem;
+            border-radius: 1rem;
+            font-family: monospace;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            margin: 0.5rem 0 1rem;
+            border: 1px solid #cbd5c0;
+            border-radius: 1rem;
+            font-size: 1rem;
+            background: white;
+        }
+
+        label {
+            font-weight: 600;
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        .success-message {
+            background: #d4edc9;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .footer {
+            margin-top: 3rem;
+            text-align: center;
+            border-top: 1px solid #cbdcc2;
+            padding-top: 2rem;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 800px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .card-full {
+                grid-column: span 1;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Hero Image -->
+    <div class="hero-img">
+        <img class="hero" src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="NSR Webinar Hero">
+    </div>
+
+    <div class="badge">🌿 Live 2-Day Seminar · Nervous System Reprogramming</div>
+    <h1>NSR Nervous System Programming<br>Emotional Freedom & Procrastination Breakthrough</h1>
+    <p style="font-size: 1.2rem; margin: 1rem 0 2rem;">Discover the path to regulate your nervous system, eliminate unconscious resistance, and rewire old identity patterns. <strong>Includes The Gift, Grey Room, Womb of Eternity & Space Odyssey</strong> — real-time healing.</p>
+
+    <!-- 2 column layout: left content / right payment & quiz -->
+    <div class="grid-2">
+        <!-- LEFT COLUMN: program info -->
+        <div>
+            <div class="card">
+                <h2>🌱 Who Is This For?</h2>
+                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                    <li>🌀 Healing past trauma — living with an unregulated nervous system</li>
+                    <li>🌀 Made big changes but still react from old unconscious patterns</li>
+                    <li>🌀 Facing inner resistance, want to turn "red lights" into green lights for success</li>
+                    <li>🌀 Anyone who wants deep work + community + <strong>fun</strong></li>
+                </ul>
+            </div>
+
+            <div class="card" style="margin-top: 1.5rem;">
+                <h2>✨ Learning Outcomes (Webinar)</h2>
+                <ol style="margin-left: 1.5rem;">
+                    <li>Identify & eliminate unconscious resistance</li>
+                    <li>Emotional clearing & NSR techniques</li>
+                    <li>Integrate tools into daily life</li>
+                    <li>Understand dopamine & addiction patterns</li>
+                    <li>Real-time transformation & healing</li>
+                </ol>
+            </div>
+
+            <div class="card" style="margin-top: 1.5rem;">
+                <h2>🧬 Core Processes You'll Experience</h2>
+                <div class="process-grid">
+                    <div class="process-item"><h3>🎁 The Gift</h3><p>Timeline therapy to override negative emotions with joy, lift trauma weight.</p></div>
+                    <div class="process-item"><h3>🌫️ The Grey Room</h3><p>Release rejection, hurt, fear, anger — make peace with past.</p></div>
+                    <div class="process-item"><h3>🌀 Womb of Eternity</h3><p>Reimprint inner voice, silence negative self-talk, build compassion.</p></div>
+                    <div class="process-item"><h3>🚀 Space Odyssey</h3><p>Spatial relocation strategy, neutralize pain from failure/tragedy.</p></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>👨‍🏫 About Joshua Roy</h2>
+                <p>Ex-Queensland Police Sergeant (22 yrs), overcame severe stutter at 14 using mindset, became Australian Karate Champion at 16. Holds Bachelor’s in Psychology, Neuro Transformation Therapist, 9 coaching certs, 3,500+ 1:1 sessions, 900+ live seminars. <em>“Real world results, not just inspiration.”</em></p>
+                <p style="margin-top: 1rem;"><strong>📍 Brisbane, QLD · with Rebecca & 5 children</strong></p>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Assessment Quiz + Payment Option 3 + Webhook -->
+        <div>
+            <!-- PROCRASTINATION BREAKTHROUGH ASSESSMENT -->
+            <div class="card" style="background: #fef7e0;">
+                <h2>📋 The Procrastination Breakthrough Assessment</h2>
+                <p>Discover what’s really blocking your nervous system from taking action. Get personalized insight before the seminar.</p>
+                <form id="quizForm">
+                    <label>1. When facing a difficult task, I usually:</label>
+                    <select id="q1" required>
+                        <option value="">Select...</option>
+                        <option value="avoid">Avoid it until last minute</option>
+                        <option value="anxiety">Feel anxious and freeze</option>
+                        <option value="focus">Break it down and start</option>
+                    </select>
+                    <label>2. How often do you feel “stuck” even when you know what to do?</label>
+                    <select id="q2" required>
+                        <option value="">Select...</option>
+                        <option value="daily">Daily / almost always</option>
+                        <option value="weekly">Few times a week</option>
+                        <option value="rare">Rarely</option>
+                    </select>
+                    <label>3. Do you experience physical tension when thinking about important goals?</label>
+                    <select id="q3" required>
+                        <option value="">Select...</option>
+                        <option value="yes">Yes - tight chest, shallow breath</option>
+                        <option value="sometimes">Sometimes</option>
+                        <option value="no">No, not really</option>
+                    </select>
+                    <button type="button" id="quizSubmitBtn" class="btn" style="margin-top: 1rem; background:#e9b35f;">Get Assessment Result</button>
+                    <div id="quizResult" style="margin-top: 1rem; font-weight: 500;"></div>
+                </form>
+            </div>
+
+            <!-- PAYMENT OPTION 3 : DIRECT TRANSFER + WEBHOOK -->
+            <div class="card" style="margin-top: 1.5rem; background: white;">
+                <h2>💚 Option 3 – Bank Transfer (Paid in Full)</h2>
+                <p><strong>2-Day NSR Seminar + Procrastination Breakthrough Kit + Lifetime Access</strong><br>💰 <span style="font-size: 1.8rem; font-weight:800;">$497 AUD</span> <span style="text-decoration: line-through; color:gray;">$997</span></p>
+                
+                <div class="payment-group">
+                    <div class="bank-details">
+                        🏦 <strong>AccessWorld Trust Account</strong><br>
+                        BSB: 124001<br>
+                        Account Number: 22710071<br>
+                        <span style="font-size:0.9rem;">✅ Reference: <u>YOUR EMAIL ADDRESS</u></span>
+                    </div>
+                    <p style="font-size:0.9rem;">🔹 After payment, fill the registration form below and click <strong>"Confirm Payment & Send Approval Request"</strong>. We’ll verify & grant instant webinar access.</p>
+                </div>
+
+                <!-- REGISTRATION + WEBHOOK FORM -->
+                <form id="purchaseForm">
+                    <label>Full Name *</label>
+                    <input type="text" id="fullName" placeholder="e.g., Sarah Mitchell" required>
+
+                    <label>Email Address (use as bank reference) *</label>
+                    <input type="email" id="email" placeholder="you@example.com" required>
+
+                    <label>Phone Number *</label>
+                    <input type="tel" id="phone" placeholder="+61 4XX XXX XXX" required>
+
+                    <label>State / Province</label>
+                    <input type="text" id="state" placeholder="e.g., Queensland, Victoria, NSW">
+
+                    <label>Country</label>
+                    <input type="text" id="country" placeholder="Australia" value="Australia">
+
+                    <label>Postcode / Zip</label>
+                    <input type="text" id="postcode" placeholder="e.g., 4101">
+
+                    <div style="margin: 1rem 0; background:#eef5ea; padding:0.8rem; border-radius:1rem;">
+                        <input type="checkbox" id="confirmPaid" required>
+                        <label style="display:inline; font-weight:normal;">✔️ I confirm I have transferred <strong>$497 AUD</strong> to AccessWorld Trust (BSB 124001 Acc 22710071) using my email as reference.</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-large" id="webhookBtn">✅ Confirm Payment & Send to Zapier (Option 3)</button>
+                    <div id="paymentSuccessMsg" class="success-message"></div>
+                    <div id="errorMsg" style="color:#b13a3a; margin-top:0.5rem;"></div>
+                </form>
+                <p style="font-size:0.75rem; margin-top:1rem;">🔐 After submission, our team verifies bank transfer within 12 business hours. You'll receive webinar access & materials via email once approved.</p>
+            </div>
+
+            <!-- PROGRAM OFFERS LINK (extra resource) -->
+            <div style="text-align: center; margin-top: 1rem;">
+                <a href="https://accessworldseminars-ship-it.github.io/results/programoffers.html" target="_blank" style="color:#2c6e3c;">📘 View all program offers →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FULL WIDTH: 2-DAY SEMINAR BONUS + WEBHOOK EXPLANATION -->
+    <div class="card card-full" style="margin-top: 2rem; text-align:center;">
+        <h2>🌻 By the End of This Program, You Will:</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 1.5rem 0;">
+            <span style="background:#e0eed9; padding:0.5rem 1rem; border-radius:40px;">✅ Regulate nervous system instantly</span>
+            <span style="background:#e0eed9; padding:0.5rem 1rem; border-radius:40px;">✅ Break the habit of your old self</span>
+            <span style="background:#e0eed9; padding:0.5rem 1rem; border-radius:40px;">✅ Eliminate unconscious resistance</span>
+            <span style="background:#e0eed9; padding:0.5rem 1rem; border-radius:40px;">✅ Reclaim energy for creativity & joy</span>
+        </div>
+        <p>🌟 <strong>Includes The Gift, Grey Room, Womb of Eternity, Space Odyssey</strong> — live with Joshua Roy + community healing.</p>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 NSR Nervous System Programming · Joshua Roy · Brisbane QLD · All rights reserved.<br>
+        Webhook endpoint active: https://hooks.zapier.com/hooks/catch/3779260/unt9eik/ — all purchase data (name, email, phone, state, country, postcode, program name, paid in full) sent automatically.</p>
+    </div>
+</div>
+
+<script>
+    // ZAPIER WEBHOOK ENDPOINT (exactly provided)
+    const ZAPIER_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/3779260/unt9eik/";
+
+    // Quiz logic - simple feedback
+    document.getElementById("quizSubmitBtn").addEventListener("click", function() {
+        const q1 = document.getElementById("q1").value;
+        const q2 = document.getElementById("q2").value;
+        const q3 = document.getElementById("q3").value;
+        if (!q1 || !q2 || !q3) {
+            document.getElementById("quizResult").innerHTML = "⚠️ Please answer all questions.";
+            return;
+        }
+        let resultText = "🔍 Your procrastination pattern: ";
+        if (q1 === "avoid" || q2 === "daily" || q3 === "yes") {
+            resultText += "Nervous system red light — unconscious resistance is high. The Gift + Grey Room processes are perfect for you. Expect immediate relief during the seminar.";
+        } else if (q1 === "anxiety" || q2 === "weekly" || q3 === "sometimes") {
+            resultText += "Mixed signals: old identity patterns still holding. NSR Space Odyssey & Womb of Eternity will help shift inner dialogue and triggers.";
+        } else {
+            resultText += "You have momentum! NSR will fine-tune your emotional clearing for next-level results and deeper peace.";
+        }
+        document.getElementById("quizResult").innerHTML = resultText + " 🧠✨";
+    });
+
+    // MAIN PURCHASE FORM - sends webhook + includes ALL relevant information
+    const purchaseForm = document.getElementById("purchaseForm");
+    const successDiv = document.getElementById("paymentSuccessMsg");
+    const errorDiv = document.getElementById("errorMsg");
+
+    purchaseForm.addEventListener("submit", async function(event) {
+        event.preventDefault();
+
+        // get values
+        const fullName = document.getElementById("fullName").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const state = document.getElementById("state").value.trim();
+        const country = document.getElementById("country").value.trim();
+        const postcode = document.getElementById("postcode").value.trim();
+        const confirmCheck = document.getElementById("confirmPaid").checked;
+
+        if (!fullName || !email || !phone) {
+            errorDiv.innerText = "❌ Please fill in Name, Email, and Phone.";
+            successDiv.style.display = "none";
+            return;
+        }
+        if (!confirmCheck) {
+            errorDiv.innerText = "❌ You must confirm that you've made the bank transfer (BSB 124001 / Acc 22710071) with email reference.";
+            return;
+        }
+        if (!email.includes("@")) {
+            errorDiv.innerText = "❌ Valid email required (used as bank reference).";
+            return;
+        }
+
+        errorDiv.innerText = "";
+        
+        // Prepare the payload - ALL relevant purchase info requested
+        const payload = {
+            purchase_status: "paid_in_full",
+            program_name: "NSR Nervous System Programming Webinar – 2 Day Seminar (Overcoming Procrastination + Emotional Clearing + Trauma Healing)",
+            payment_option: "Option 3 – Bank Transfer (BSB 124001 Acc 22710071)",
+            payment_method: "Direct Bank Transfer / AccessWorld Trust",
+            amount_paid: "497.00",
+            currency: "AUD",
+            customer_name: fullName,
+            customer_email: email,
+            customer_phone: phone,
+            customer_state: state || "Not provided",
+            customer_country: country || "Australia",
+            postcode: postcode || "",
+            payment_reference_used: email,   // because they must use email as reference
+            bank_bsb: "124001",
+            bank_account: "22710071",
+            account_name: "AccessWorld Trust",
+            payment_date_utc: new Date().toISOString(),
+            requires_manual_verification: true,
+            webinar_access: "pending_verification",
+            seminar_dates: "2-day live NSR seminar (next cohort dates sent via email)"
+        };
+
+        // Disable button to avoid double submission
+        const submitBtn = document.getElementById("webhookBtn");
+        const originalText = submitBtn.innerText;
+        submitBtn.innerText = "⏳ Sending approval request...";
+        submitBtn.disabled = true;
+
+        try {
+            const response = await fetch(ZAPIER_WEBHOOK_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                successDiv.style.display = "block";
+                successDiv.innerHTML = `✅ Purchase notification sent to Zapier! <br> 📧 We'll verify your bank transfer to ${email} (reference) and send webinar access within 12h. <br> Thank you ${fullName}, your spot is reserved. 🧠🌿`;
+                // clear sensitive fields but keep name for visual
+                document.getElementById("purchaseForm").reset();
+                document.getElementById("confirmPaid").checked = false;
+                errorDiv.innerText = "";
+            } else {
+                throw new Error(`HTTP ${response.status}`);
+            }
+        } catch (err) {
+            console.error("Webhook error:", err);
+            errorDiv.innerText = "⚠️ Network issue. Please confirm your payment & try again, or email support. Your payment is safe — contact us directly with reference.";
+            successDiv.style.display = "none";
+        } finally {
+            submitBtn.innerText = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+</script>
+
+<!-- ensure webhook also sends if Zapier catch is hit, plus all fields exactly as required: name, number, state/country/postcode, email, program, paid in full, details -->
+</body>
+</html>
+```
