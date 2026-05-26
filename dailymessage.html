@@ -1,6 +1,4 @@
-<!Here is the updated Daily Message HTML with the corrected May 29 schedule (Group Coaching at 9am, Free Intro at 11am) and the renamed "NLP Tool Development Training for Coaches and Trainers" for June and beyond.
 
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -276,13 +274,16 @@
 
 <script>
 // ============================================
-// UPDATED MASTER EVENT LIST (with corrections)
-// - May 29: Group Coaching at 9am, Free Intro at 11am
+// UPDATED MASTER EVENT LIST (FINAL CORRECTED)
+// - Added Thursday May 28 @ 7pm Free Intro
+// - May 29: Group Coaching 9am, Free Intro 11am
+// - Removed Dec 24 and Dec 25 sessions
 // - Renamed: "NLP Tool Development Training for Coaches and Trainers"
 // - All times AEST (Brisbane)
 // ============================================
 const EVENTS = [
-  // ----- MAY 2026 (remaining) -----
+  // ----- MAY 2026 -----
+  { date: "2026-05-28", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
   { date: "2026-05-29", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
   { date: "2026-05-29", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
   
@@ -374,7 +375,7 @@ const EVENTS = [
   { date: "2026-11-27", time: "9:00 AM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
   { date: "2026-11-27", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
   
-  // ----- DECEMBER 2026 -----
+  // ----- DECEMBER 2026 (No Dec 24/25 sessions) -----
   { date: "2026-12-03", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
   { date: "2026-12-04", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
   { date: "2026-12-04", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
@@ -383,13 +384,11 @@ const EVENTS = [
   { date: "2026-12-11", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
   { date: "2026-12-17", time: "7:00 PM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
   { date: "2026-12-18", time: "9:00 AM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
-  { date: "2026-12-18", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-12-24", time: "7:00 PM", title: "Free Introduction Session (Holiday Special)", type: "free" },
-  { date: "2026-12-25", time: "11:00 AM", title: "Christmas Day Reflection Session", type: "free" }
+  { date: "2026-12-18", time: "11:00 AM", title: "Free Introduction Session", type: "free" }
 ];
 
 // ============================================
-// QUOTE DATABASES
+// QUOTE DATABASES (unchanged, same powerful content)
 // ============================================
 const SHORT_QUOTES = [
   "The quality of your life is relative to the quality of your emotions.",
