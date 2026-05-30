@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to AccessWorld | Ultimate Success Series</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deep: #0a0f1e;
+    --navy-mid: #111827;
+    --navy-light: #1a2540;
+    --navy-card: #16203a;
+    --gold: #D4AF37;
+    --gold-light: #e8c84a;
+    --gold-muted: #C9A84C;
+    --gold-dim: rgba(212,175,55,0.15);
+    --gold-border: rgba(212,175,55,0.3);
+    --text-primary: #f0ead6;
+    --text-secondary: #b8a98a;
+    --text-muted: #7a6e5a;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy-deep);
+    color: var(--text-primary);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,175,55,0.12) 0%, transparent 60%),
+      linear-gradient(160deg, #0d1528 0%, #0a0f1e 40%, #060b16 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(212,175,55,0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 20%, rgba(212,175,55,0.06) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .hero-ornament {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    margin: 0 auto 32px;
+    animation: fadeDown 1.2s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-badge {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold-border);
+    padding: 8px 20px;
+    margin-bottom: 32px;
+    display: inline-block;
+    animation: fadeUp 1s ease 0.2s forwards;
+    opacity: 0;
+  }
+
+  .hero-welcome {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(14px, 3vw, 18px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+    animation: fadeUp 1s ease 0.4s forwards;
+    opacity: 0;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 8vw, 88px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    animation: fadeUp 1s ease 0.5s forwards;
+    opacity: 0;
+  }
+
+  .hero-title .gold { color: var(--gold); font-weight: 600; }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 4vw, 32px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    animation: fadeUp 1s ease 0.6s forwards;
+    opacity: 0;
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    animation: fadeUp 1s ease 0.7s forwards;
+    opacity: 0;
+  }
+  .hero-divider span { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-muted); }
+  .hero-divider::before, .hero-divider::after {
+    content: ''; flex: 1; max-width: 80px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-muted));
+  }
+  .hero-divider::after { background: linear-gradient(to left, transparent, var(--gold-muted)); }
+
+  .hero-intro {
+    max-width: 640px;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.9;
+    animation: fadeUp 1s ease 0.8s forwards;
+    opacity: 0;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 56px;
+    animation: fadeUp 1s ease 1s forwards;
+    opacity: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 80px 24px; }
+
+  .container { max-width: 900px; margin: 0 auto; }
+  .container-wide { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .section-body {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.9;
+    max-width: 680px;
+  }
+
+  .gold-rule {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 24px 0;
+  }
+
+  /* ─── MESSAGE FROM JOSHUA ─── */
+  .message-section {
+    background: linear-gradient(135deg, #0d1528 0%, #111c35 100%);
+    border-top: 1px solid var(--gold-border);
+    border-bottom: 1px solid var(--gold-border);
+  }
+
+  .message-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    align-items: start;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .message-left {}
+
+  .presenter-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .presenter-title {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-muted);
+    margin-bottom: 24px;
+  }
+
+  .credentials {
+    list-style: none;
+  }
+
+  .credentials li {
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .credentials li::before {
+    content: '✓';
+    color: var(--gold);
+    font-size: 11px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .message-right {}
+
+  .message-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--text-primary);
+    line-height: 1.5;
+    margin-bottom: 28px;
+    padding-left: 24px;
+    border-left: 2px solid var(--gold);
+  }
+
+  .message-body {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.9;
+  }
+
+  .message-body p + p { margin-top: 16px; }
+
+  /* ─── CHALLENGES MAP ─── */
+  .challenges-section {
+    background: var(--navy-deep);
+  }
+
+  .challenges-intro {
+    max-width: 900px;
+    margin: 0 auto 56px;
+  }
+
+  .challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1px;
+    background: var(--gold-border);
+    border: 1px solid var(--gold-border);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .challenge-row {
+    background: var(--navy-card);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: background 0.2s;
+  }
+
+  .challenge-row:hover { background: #1c2845; }
+
+  .challenge-problem {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+  }
+
+  .challenge-solution {
+    font-size: 11px;
+    color: var(--gold-muted);
+    line-height: 1.5;
+  }
+
+  /* ─── SERIES OVERVIEW ─── */
+  .series-section { background: var(--navy-mid); }
+
+  .series-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 48px auto 0;
+  }
+
+  .series-card {
+    background: var(--navy-card);
+    border: 1px solid var(--gold-border);
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .series-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .series-card:hover { transform: translateY(-4px); border-color: var(--gold-muted); }
+  .series-card:hover::before { opacity: 1; }
+
+  .series-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--gold-dim);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .series-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .series-tagline {
+    font-size: 11px;
+    color: var(--gold-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .series-parts {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 14px;
+    margin-top: 14px;
+  }
+
+  .series-parts span { color: var(--gold); font-weight: 600; }
+
+  /* ─── DETAILED SERIES ─── */
+  .detail-section { background: var(--navy-deep); }
+
+  .detail-series + .detail-series { margin-top: 80px; }
+
+  .detail-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--gold-border);
+  }
+
+  .detail-series-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px;
+    font-weight: 700;
+    color: var(--gold-dim);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .detail-series-info {}
+
+  .detail-series-label {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .detail-series-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 300;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    line-height: 1.1;
+  }
+
+  .detail-series-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 620px;
+  }
+
+  .webinars-list { display: flex; flex-direction: column; gap: 20px; }
+
+  .webinar-card {
+    background: var(--navy-card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-left: 3px solid var(--gold-border);
+    padding: 28px 32px;
+    transition: border-left-color 0.2s;
+  }
+
+  .webinar-card:hover { border-left-color: var(--gold); }
+
+  .webinar-number {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-muted);
+    margin-bottom: 8px;
+  }
+
+  .webinar-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .webinar-for {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 4px;
+  }
+
+  .outcomes-col-title {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-muted);
+    margin-bottom: 10px;
+  }
+
+  .outcomes-list {
+    list-style: none;
+  }
+
+  .outcomes-list li {
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .outcomes-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 10px;
+  }
+
+  /* ─── COACHING ─── */
+  .coaching-section { background: var(--navy-mid); }
+
+  .resistors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 40px 0;
+    max-width: 900px;
+  }
+
+  .resistor-card {
+    background: var(--navy-card);
+    border: 1px solid var(--gold-border);
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .resistor-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .resistor-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .resistor-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .sessions-table {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    margin-top: 40px;
+  }
+
+  .sessions-table th {
+    background: var(--gold-dim);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 14px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--gold-border);
+  }
+
+  .sessions-table td {
+    padding: 14px 20px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    vertical-align: top;
+  }
+
+  .sessions-table tr:hover td { background: rgba(212,175,55,0.03); }
+
+  .session-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--gold-muted);
+    font-weight: 600;
+  }
+
+  .session-focus {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  /* ─── BENEFITS ─── */
+  .benefits-section { background: var(--navy-deep); }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin-top: 48px;
+  }
+
+  .benefit-card {
+    background: var(--navy-card);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 28px 24px;
+    position: relative;
+  }
+
+  .benefit-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .benefit-card:hover::after { opacity: 1; }
+
+  .benefit-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--gold-dim);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .benefit-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .benefit-body {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ─── WHAT'S INCLUDED ─── */
+  .included-section { background: var(--navy-mid); }
+
+  .included-list {
+    list-style: none;
+    max-width: 700px;
+    margin-top: 40px;
+  }
+
+  .included-list li {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .included-list li::before {
+    content: '★';
+    color: var(--gold);
+    font-size: 11px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  /* ─── CERTIFICATIONS ─── */
+  .cert-section { background: var(--navy-deep); }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    max-width: 900px;
+    margin-top: 48px;
+  }
+
+  .cert-card {
+    background: var(--navy-card);
+    border: 1px solid var(--gold-border);
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .cert-icon { font-size: 28px; margin-bottom: 12px; }
+
+  .cert-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+
+  /* ─── CLOSING ─── */
+  .closing-section {
+    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(212,175,55,0.1) 0%, transparent 60%),
+                linear-gradient(180deg, #0a0f1e 0%, #060b16 100%);
+    text-align: center;
+    padding: 100px 24px;
+  }
+
+  .closing-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 38px);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--text-primary);
+    max-width: 700px;
+    margin: 0 auto 48px;
+    line-height: 1.5;
+  }
+
+  .closing-quote em { color: var(--gold); font-style: normal; }
+
+  .closing-details {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    line-height: 2;
+  }
+
+  .closing-details a {
+    color: var(--gold-muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .closing-details a:hover { border-color: var(--gold-muted); }
+
+  /* ─── NAV ─── */
+  .toc {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+  }
+
+  .toc-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .toc-dot:hover, .toc-dot.active {
+    background: var(--gold);
+    transform: scale(1.4);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 700px) {
+    .message-inner { grid-template-columns: 1fr; gap: 36px; }
+    .outcomes-grid { grid-template-columns: 1fr; }
+    .resistors-grid { grid-template-columns: 1fr; }
+    .toc { display: none; }
+    .detail-header { flex-direction: column; gap: 8px; }
+    .detail-series-num { font-size: 52px; }
+    .sessions-table { font-size: 12px; }
+    .sessions-table th, .sessions-table td { padding: 10px 12px; }
+  }
+
+  /* Print */
+  @media print {
+    .toc { display: none; }
+    .hero { min-height: auto; padding: 40px 24px; }
+    section { padding: 40px 24px; }
+    .series-card, .webinar-card, .benefit-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV DOTS -->
+<nav class="toc" aria-label="Quick navigation">
+  <div class="toc-dot active" onclick="scrollTo(0)" title="Top"></div>
+  <div class="toc-dot" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})" title="About Joshua"></div>
+  <div class="toc-dot" onclick="document.getElementById('challenges').scrollIntoView({behavior:'smooth'})" title="Challenge Map"></div>
+  <div class="toc-dot" onclick="document.getElementById('series').scrollIntoView({behavior:'smooth'})" title="Series Overview"></div>
+  <div class="toc-dot" onclick="document.getElementById('program').scrollIntoView({behavior:'smooth'})" title="Full Program"></div>
+  <div class="toc-dot" onclick="document.getElementById('coaching').scrollIntoView({behavior:'smooth'})" title="Coaching"></div>
+  <div class="toc-dot" onclick="document.getElementById('benefits').scrollIntoView({behavior:'smooth'})" title="Benefits"></div>
+  <div class="toc-dot" onclick="document.getElementById('certifications').scrollIntoView({behavior:'smooth'})" title="Certifications"></div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="top">
+  <div class="hero-ornament"></div>
+  <div class="hero-badge">AccessWorld Seminars · Brisbane, Queensland</div>
+  <div class="hero-welcome">You have taken the first step.</div>
+  <h1 class="hero-title">Welcome to the<br><span class="gold">Ultimate Success</span><br>Series</h1>
+  <p class="hero-subtitle">Your Complete Personal Development Journey</p>
+  <div class="hero-divider"><span>Presented by Joshua Roy</span></div>
+  <p class="hero-intro">This guide is your companion for everything ahead. The Ultimate Success Series spans 17 seminars across 18 months. Your first 12 months are the beginning of that journey — a powerful foundation that sets everything else in motion. Inside you will find a detailed map of every seminar, every series, and every coaching session, so you always know where you are, what's coming next, and why it matters.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-number">17</div><div class="stat-label">Total Seminars</div></div>
+    <div class="stat"><div class="stat-number">5</div><div class="stat-label">Powerful Series</div></div>
+    <div class="stat"><div class="stat-number">18</div><div class="stat-label">Month Full Journey</div></div>
+    <div class="stat"><div class="stat-number">3,500+</div><div class="stat-label">Sessions Delivered</div></div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT JOSHUA ═══ -->
+<section class="message-section" id="about">
+  <div class="message-inner fade-in">
+    <div class="message-left">
+      <div class="presenter-name">Joshua Roy</div>
+      <div class="presenter-title">Seminar Leader & Results Coach</div>
+      <ul class="credentials">
+        <li>9 Coaching Certifications</li>
+        <li>Neuro Transformation Therapist (NTT)</li>
+        <li>Bachelor's Degree in Psychology</li>
+        <li>Diploma of Results Coaching</li>
+        <li>NLP & Neurological Re-patterning Practitioner</li>
+        <li>Process Communication Model Graduate</li>
+        <li>Personal Trainer — Cert III & IV</li>
+        <li>3,500+ one-on-one coaching sessions</li>
+        <li>900+ live seminars & webinars delivered</li>
+        <li>Australian Karate Champion</li>
+        <li>22 years — Queensland Police Service</li>
+      </ul>
+    </div>
+    <div class="message-right">
+      <div class="message-quote">"My commitment is to create an atmosphere that will linger in the minds of those who attend my trainings — one that inspires real transformation and produces REAL WORLD RESULTS."</div>
+      <div class="message-body">
+        <p>As a teenager, Joshua faced a significant personal challenge — a stutter that made speaking in front of others his greatest fear. At 14, he attended a transformative seminar that showed him he could take control of his life through choice and mindset. Using affirmations, Joshua overcame his stutter.</p>
+        <p>At just 16, he became an Australian Karate Champion — a testament to his belief that hard work, commitment, and dedication lead to extraordinary results. After 22 years in the Queensland Police Service, Joshua now devotes himself entirely to helping others create the same lasting change in their lives.</p>
+        <p>Everything you are about to experience — every process, every framework, every exercise — has been forged through thousands of hours of real coaching with real people facing real challenges.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CHALLENGE MAP ═══ -->
+<section class="challenges-section" id="challenges">
+  <div class="container">
+    <div class="challenges-intro fade-in">
+      <span class="section-label">Start Here</span>
+      <h2 class="section-title">Your <em>Challenge Map</em></h2>
+      <div class="gold-rule"></div>
+      <p class="section-body">Every challenge of life can be categorised. Find your challenge below and discover the exact series and seminars designed to resolve it. Remember: a problem well stated is a problem half solved.</p>
+    </div>
+    <div class="challenges-grid fade-in">
+
+      <div class="challenge-row"><div class="challenge-problem">Health Crisis</div><div class="challenge-solution">Health Series + Emotional Mastery Series</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Workplace Issues</div><div class="challenge-solution">Emotional Mastery + Life Skills + Relationship Series</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Emptiness</div><div class="challenge-solution">Design Your Identity + Ultimate Freedom + Gratitude Webinar</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Friendship Problems</div><div class="challenge-solution">Communicate from the Heart + Relationship Series</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Failure</div><div class="challenge-solution">Emotional Mastery Series + Stepping into Wealth</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Financial Crisis</div><div class="challenge-solution">Stepping into Wealth + Emotional Mastery + Ultimate Memory</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Career Pressure</div><div class="challenge-solution">Stepping into Wealth + Emotional Mastery + Health Series</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Unfair Treatment</div><div class="challenge-solution">Emotional Mastery + Communicate from the Heart + Relationship Series</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Inner Peace</div><div class="challenge-solution">Gratitude Webinar + Emotional Mastery Series</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Mental Health Issues</div><div class="challenge-solution">Emotional Mastery + Life Skills + Relationship Series</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Breakup</div><div class="challenge-solution">Relationship Series + Emotional Mastery + Unlock Your Incredible Self</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Relationship Challenges</div><div class="challenge-solution">Relationship Series + Life Skills + Emotional Mastery</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Trauma / Abuse Recovery</div><div class="challenge-solution">Emotional Mastery + Unlock Your Incredible Self + Ultimate Freedom</div></div>
+      <div class="challenge-row"><div class="challenge-problem">I Want More Money</div><div class="challenge-solution">Stepping into Wealth + Unlock Your Incredible Self</div></div>
+      <div class="challenge-row"><div class="challenge-problem">I Want a Better Relationship</div><div class="challenge-solution">Relationship Series</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Attract / Manifest a Lover</div><div class="challenge-solution">The Chemistry of Love + Communicate from the Heart</div></div>
+      <div class="challenge-row"><div class="challenge-problem">I Want a Better Sex Life</div><div class="challenge-solution">Pathway to Passion</div></div>
+      <div class="challenge-row"><div class="challenge-problem">I Want More Energy</div><div class="challenge-solution">Health Series + Life Skills</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Addiction Challenges</div><div class="challenge-solution">Emotional Mastery + Unlock Your Incredible Self</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Laziness</div><div class="challenge-solution">Life Skills + Emotional Mastery</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Overwhelming Fear</div><div class="challenge-solution">Emotional Mastery + Unlock Your Incredible Self</div></div>
+      <div class="challenge-row"><div class="challenge-problem">Lack of Confidence</div><div class="challenge-solution">Emotional Mastery + Life Skills + Relationship Series</div></div>
+
+    </div>
+    <div style="max-width:900px;margin:24px auto 0;padding:20px 24px;background:rgba(212,175,55,0.06);border:1px solid var(--gold-border);" class="fade-in">
+      <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;"><strong style="color:var(--gold);">The Pattern You'll Notice:</strong> The Emotional Mastery Series appears as the foundation for almost every challenge. This is intentional. When you master your emotional state, every other area of life becomes more responsive to your effort. Begin there — and let everything else build from that foundation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERIES OVERVIEW ═══ -->
+<section class="series-section" id="series">
+  <div class="container-wide">
+    <div class="fade-in" style="max-width:900px;">
+      <span class="section-label">Program Structure</span>
+      <h2 class="section-title">Your Five <em>Series</em></h2>
+      <div class="gold-rule"></div>
+      <p class="section-body">The complete program spans 17 seminars across 18 months. The four core series each contain 4 webinars. NSR is a standalone advanced training. Your first 12 months give you a powerful foundation — attending all 17 seminars requires the full 18-month journey.</p>
+    </div>
+    <div class="series-cards fade-in">
+      <div class="series-card">
+        <div class="series-number">01</div>
+        <div class="series-name">Emotional Mastery Series</div>
+        <div class="series-tagline">NLP, identity, emotional freedom and deep unconscious reprogramming</div>
+        <div class="series-parts"><span>4</span> Webinars · 2-Day Live Event</div>
+      </div>
+      <div class="series-card">
+        <div class="series-number">02</div>
+        <div class="series-name">Health Series</div>
+        <div class="series-tagline">Healing, pain relief, morning rituals and the neuroscience of gratitude</div>
+        <div class="series-parts"><span>4</span> Webinars · 2-Day Live Event</div>
+      </div>
+      <div class="series-card">
+        <div class="series-number">03</div>
+        <div class="series-name">Life Skills Series</div>
+        <div class="series-tagline">Wealth mindset, memory mastery, communication and self-concept</div>
+        <div class="series-parts"><span>4</span> Webinars · 2-Day Live Event</div>
+      </div>
+      <div class="series-card">
+        <div class="series-number">04</div>
+        <div class="series-name">Relationship Series</div>
+        <div class="series-tagline">Chemistry, vision, intimacy and passion — for singles and couples</div>
+        <div class="series-parts"><span>4</span> Webinars · 2-Day Live Event</div>
+      </div>
+      <div class="series-card" style="border-color: var(--gold-muted);">
+        <div class="series-number" style="color:rgba(212,175,55,0.3);">05</div>
+        <div class="series-name">NSR — Nervous System Reprogramming</div>
+        <div class="series-tagline">Deep emotional clearing, addiction recovery and nervous system regulation</div>
+        <div class="series-parts"><span>Standalone</span> Advanced Training Program</div>
+      </div>
+    </div>
+
+    <!-- Journey timeline callout -->
+    <div style="max-width:1100px;margin:32px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="fade-in">
+      <div style="background:var(--navy-card);border:1px solid var(--gold-border);padding:28px 32px;">
+        <div style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Your First 12 Months</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--text-primary);margin-bottom:10px;">The Foundation Year</div>
+        <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;">This is where your journey begins. Over the first 12 months you will attend a powerful selection of the seminars, build your skills, and begin creating real change in your life. This is not a shortcut — it is a solid, intentional start.</p>
+      </div>
+      <div style="background:var(--navy-card);border:1px solid rgba(212,175,55,0.5);padding:28px 32px;">
+        <div style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">The Full 18-Month Journey</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--text-primary);margin-bottom:10px;">All 17 Seminars</div>
+        <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;">To attend every seminar across all 5 series — including the complete NSR Nervous System Reprogramming program — you need to stay with the program for the full 18 months. Those who commit to the complete journey experience the deepest and most lasting transformation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FULL PROGRAM DETAIL ═══ -->
+<section class="detail-section" id="program">
+  <div class="container">
+    <div class="fade-in" style="margin-bottom:64px;">
+      <span class="section-label">Detailed Course Descriptions</span>
+      <h2 class="section-title">What You <em>Learn</em></h2>
+      <div class="gold-rule"></div>
+      <p class="section-body">Here is everything you need to know about each seminar — who it's for, what you will learn, and what you will be able to do by the end. The four core series each have 4 webinars. NSR is a standalone advanced training program. Together they total 17 seminars across your 18-month journey.</p>
+    </div>
+
+    <!-- SERIES 1: EMOTIONAL MASTERY -->
+    <div class="detail-series fade-in">
+      <div class="detail-header">
+        <div class="detail-series-num">01</div>
+        <div class="detail-series-info">
+          <div class="detail-series-label">Series One</div>
+          <div class="detail-series-name">Emotional Mastery Series</div>
+          <div class="detail-series-desc">Four webinars to free the mind, reprogram identity, and create lasting emotional change. Designed for anyone who wants to take full control of their thoughts, emotions, and future. This series forms the foundation of your entire transformation.</div>
+        </div>
+      </div>
+      <div class="webinars-list">
+
+        <div class="webinar-card">
+          <div class="webinar-number">Webinar 1 of 4</div>
+          <div class="webinar-name">NLP Foundation Principles</div>
+          <div class="webinar-for">For anyone experiencing less-than-positive thoughts, emotions or results — and for those ready to take full control of their unconscious mind.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>How positive emotional states impact thinking</li>
+                <li>State elicitation to bring positive emotions into the present</li>
+                <li>Timeline work and tools for enhanced results</li>
+                <li>How to reprogram yourself for success and happiness</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Be Able to Do</div>
+              <ul class="outcomes-list">
+                <li>Feel good for no external reason</li>
+                <li>Stop negative thoughts disrupting your peace</li>
+                <li>Anchor positive emotions into the nervous system</li>
+                <li>Take charge of your emotions and your future</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="webinar-card">
+          <div class="webinar-number">Webinar 2 of 4</div>
+          <div class="webinar-name">Design Your Identity</div>
+          <div class="webinar-for">For people wanting to improve self-worth and self-image — and to confidently create new results across health, relationships, finances, spirituality and lifestyle.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>How 'I am' statements have shaped your life</li>
+                <li>How to create empowering identity statements</li>
+                <li>Which values to incorporate into your identity</li>
+                <li>Using incantations to override negative chatter</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Be Able to Do</div>
+              <ul class="outcomes-list">
+                <li>Turn any value into a powerful identity statement</li>
+                <li>Anchor new identity personas into the nervous system</li>
+                <li>Stop negative chatter through incantations</li>
+                <li>Change at one level to produce automatic cascading change</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="webinar-card">
+          <div class="webinar-number">Webinar 3 of 4</div>
+          <div class="webinar-name">Ultimate Freedom</div>
+          <div class="webinar-for">For people who want to release trapped emotions, break addictive behaviours, and move forward with a new level of freedom.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>The six reasons behind self-sabotage</li>
+                <li>The three-step solution to self-sabotage</li>
+                <li>The real difference between happiness and suffering</li>
+                <li>A four-step healing process</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Be Able to Do</div>
+              <ul class="outcomes-list">
+                <li>Stop reliving negative experiences</li>
+                <li>Rapidly break bad habits and addictive behaviours</li>
+                <li>Apply the WIN formula to move life forward</li>
+                <li>Understand the four levels of addiction</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="webinar-card">
+          <div class="webinar-number">Webinar 4 of 4</div>
+          <div class="webinar-name">Emotional Clearing</div>
+          <div class="webinar-for">For people who have suffered from trauma, rejection, or loss — and for those wondering why their effort isn't producing the results they want.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>Tools for eliminating unconscious resistance</li>
+                <li>Four powerful emotional clearing techniques</li>
+                <li>How to change perspective on traumatic past events</li>
+                <li>What trauma actually is and how healing works</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Be Able to Do</div>
+              <ul class="outcomes-list">
+                <li>Think about the past without feeling bad about it</li>
+                <li>Acknowledge, accept and appreciate your trauma</li>
+                <li>Experience renewed energy directed into results</li>
+                <li>Identify changes in mood, behaviour, and former triggers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SERIES 2: HEALTH -->
+    <div class="detail-series fade-in">
+      <div class="detail-header">
+        <div class="detail-series-num">02</div>
+        <div class="detail-series-info">
+          <div class="detail-series-label">Series Two</div>
+          <div class="detail-series-name">Health Series</div>
+          <div class="detail-series-desc">Four webinars covering physical healing, pain elimination, daily morning power rituals, and the neuroscience of gratitude — transforming your health, energy, and vitality from the inside out.</div>
+        </div>
+      </div>
+      <div class="webinars-list">
+
+        <div class="webinar-card">
+          <div class="webinar-number">Webinar 1 of 4</div>
+          <div class="webinar-name">Ultimate Health: Mind Repatterning</div>
+          <div class="webinar-for">For anyone wanting to improve their health and energy — whether managing minor issues, committed to real change, or simply wanting to feel vibrant at the end of every day.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>The body's remarkable ability to heal itself</li>
+                <li>Specific foods that move your health forward</li>
+                <li>How less-than-ideal foods create long-term problems</li>
+                <li>The NLP Swish Pattern applied to health habits</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Be Able to Do</div>
+              <ul class="outcomes-list">
+                <li>Use food as a tool to heal specific health challenges</li>
+                <li>Refrain from foods with a negative impact on health</li>
+                <li>Develop positive habits with a step-by-step process</li>
+                <li>Apply affirmations, incantations, and gratitude for health</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="webinar-card">
+          <div class="webinar-number">Webinar 2 of 4</div>
+          <div class="webinar-name">Eliminate Physical and Emotional Pain Fast</div>
+          <div class="webinar-for">For people experiencing physical or emotional pain rooted in repressed emotions — including those who want to become a healer for others.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>How and why people experience persistent pain</li>
+                <li>Using imagination to reduce pain faster than medication</li>
+                <li>Psychosomatic neuro-modulation techniques</li>
+                <li>Tools to reduce suffering in self and others</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Be Able to Do</div>
+              <ul class="outcomes-list">
+                <li>Know the three prerequisites to rapid pain elimination</li>
+                <li>Qualify yourself and others for fast relief</li>
+                <li>Confidently use these tools safely for self and others</li>
+                <li>Intervene effectively with physical and emotional pain</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="webinar-card">
+          <div class="webinar-number">Webinar 3 of 4</div>
+          <div class="webinar-name">Morning Routine</div>
+          <div class="webinar-for">For people who want to take control of their first hour — replacing reactive, scattered mornings with a sense of power, purpose, and presence.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>Why the first 60 minutes determine your day</li>
+                <li>The relationship between morning rituals and the RAS</li>
+                <li>The specific order for hydration, breathwork, and movement</li>
+                <li>How to protect your morning from distraction</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Be Able to Do</div>
+              <ul class="outcomes-list">
+                <li>Get your morning DOSE: dopamine, oxytocin, serotonin, endorphins</li>
+                <li>Stop letting the external world dictate your internal state</li>
+                <li>Stack small wins before the demands of the day arrive</li>
+                <li>Identify habits draining you — and habits fuelling you</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="webinar-card">
+          <div class="webinar-number">Webinar 4 of 4</div>
+          <div class="webinar-name">Gratitude: The Great Healer</div>
+          <div class="webinar-for">For people who know they 'should' be more grateful but struggle to feel it consistently — who want gratitude as a neurological anchor, not just a journalling habit.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>The difference between intellectual and somatic gratitude</li>
+                <li>Gratitude as a state elicitation tool</li>
+                <li>The neurological effect of gratitude on rumination</li>
+                <li>Incantations and anchoring to lock gratitude into the nervous system</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Be Able to Do</div>
+              <ul class="outcomes-list">
+                <li>Generate gratitude on command — without waiting for good news</li>
+                <li>Run a 5-minute gratitude session that outperforms 20 minutes of journalling</li>
+                <li>Dissolve the emotional charge of resentment, envy, and fear</li>
+                <li>Use gratitude as the final step in the healing process</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SERIES 3: LIFE SKILLS -->
+    <div class="detail-series fade-in">
+      <div class="detail-header">
+        <div class="detail-series-num">03</div>
+        <div class="detail-series-info">
+          <div class="detail-series-label">Series Three</div>
+          <div class="detail-series-name">Life Skills Series</div>
+          <div class="detail-series-desc">Four webinars covering wealth mindset, memory mastery, heart-centred communication, and unlocking your true self — giving you the practical skills that produce real-world results.</div>
+        </div>
+      </div>
+      <div class="webinars-list">
+
+        <div class="webinar-card">
+          <div class="webinar-number">Webinar 1 of 4</div>
+          <div class="webinar-name">Stepping Into Wealth</div>
+          <div class="webinar-for">For anyone wanting to improve their financial future — whether surviving and wanting more, tired of trading time for money, or ready to become a money magnet.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>The four levels of wealth creation</li>
+                <li>Tools that move your financial thermostat up</li>
+                <li>The seven fundamental principles of financial security</li>
+                <li>Applying gratitude to assist your wealth journey</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Be Able to Do</div>
+              <ul class="outcomes-list">
+                <li>Attract more wealth by shifting your relationship with money</li>
+                <li>Develop a growth money mindset step by step</li>
+                <li>Identify the resistors to financial progress</li>
+                <li>Use affirmations and incantations for wealth</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="webinar-card">
+          <div class="webinar-number">Webinar 2 of 4</div>
+          <div class="webinar-name">Ultimate Memory</div>
+          <div class="webinar-for">For people wanting to sharpen their mind, advance their career, become a proficient public speaker, or simply stop forgetting where they put things.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>The four key tools for memory enhancement</li>
+                <li>The most effective ways to prepare the mind for learning</li>
+                <li>How to install information for effortless recall</li>
+                <li>How to learn more rapidly</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Be Able to Do</div>
+              <ul class="outcomes-list">
+                <li>Use memory techniques to supplement — not depend on — technology</li>
+                <li>Build a powerful memory with a step-by-step guide</li>
+                <li>Apply three effective memory tools practically</li>
+                <li>Apply memory skills to education and daily life</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="webinar-card">
+          <div class="webinar-number">Webinar 3 of 4</div>
+          <div class="webinar-name">Communicating from the Heart</div>
+          <div class="webinar-for">For anyone who feels lonely, fears rejection, struggles to build friendships, or wants to enhance their influence and deepen connections.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>The five levels of communication</li>
+                <li>The four types of communication</li>
+                <li>How to get instantaneous rapport with anyone</li>
+                <li>The most impactful words you can say to another person</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Be Able to Do</div>
+              <ul class="outcomes-list">
+                <li>Listen with the intent to understand</li>
+                <li>Become the most interesting person in any setting</li>
+                <li>Identify the representational system others use</li>
+                <li>Engage in deep, open communication confidently</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="webinar-card">
+          <div class="webinar-number">Webinar 4 of 4</div>
+          <div class="webinar-name">Unlock Your Incredible Self</div>
+          <div class="webinar-for">For anyone ready to recognise their own greatness, step into their potential, and begin producing results that reflect their true capabilities.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>The blocks that have prevented you from seeing your own value</li>
+                <li>The process of unlocking hidden strengths and resources</li>
+                <li>Powerful mindset tools to create rapid shifts in self-perception</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Be Able to Do</div>
+              <ul class="outcomes-list">
+                <li>Access a new awareness of who you truly are</li>
+                <li>Access your best self on demand</li>
+                <li>Take bold action and step into your incredible life</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SERIES 4: RELATIONSHIP -->
+    <div class="detail-series fade-in">
+      <div class="detail-header">
+        <div class="detail-series-num">04</div>
+        <div class="detail-series-info">
+          <div class="detail-series-label">Series Four</div>
+          <div class="detail-series-name">Relationship Series</div>
+          <div class="detail-series-desc">Four webinars covering the chemistry of attraction, creating a relationship vision, deepening intimacy, and reigniting passion — for singles and couples alike.</div>
+        </div>
+      </div>
+      <div class="webinars-list">
+
+        <div class="webinar-card">
+          <div class="webinar-number">Webinar 1 of 4</div>
+          <div class="webinar-name">The Chemistry of Love</div>
+          <div class="webinar-for">For singles wanting to attract the right person, and for couples wanting to reignite the spark through intentional dating.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>The three stages every relationship passes through</li>
+                <li>Making a great selection using the six human needs</li>
+                <li>Non-verbal cues of interest, desire, and love</li>
+                <li>The eight different types of love</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Be Able to Do</div>
+              <ul class="outcomes-list">
+                <li>Make someone fall in love — for the first time, or again</li>
+                <li>Date from a place of inspiration, not desperation</li>
+                <li>Approach a potential love interest with confidence</li>
+                <li>Maintain attraction and dating indefinitely</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="webinar-card">
+          <div class="webinar-number">Webinar 2 of 4</div>
+          <div class="webinar-name">Create a Relationship Vision</div>
+          <div class="webinar-for">For singles ready to manifest their ideal future relationship, and for couples wanting to build cooperation, synergy, and a shared vision.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>How having a vision automatically improves commitment levels</li>
+                <li>Strategic visioning to engage the unconscious mind</li>
+                <li>The positive-to-negative ratio required for a phenomenal relationship</li>
+                <li>Five inevitable relationship challenges</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Be Able to Do</div>
+              <ul class="outcomes-list">
+                <li>Solidify your relationship vision through an actual process</li>
+                <li>Keep your heart open so that love can be nurtured</li>
+                <li>Apply the COMMIT formula</li>
+                <li>Understand how influence is more effective than control</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="webinar-card">
+          <div class="webinar-number">Webinar 3 of 4</div>
+          <div class="webinar-name">Maintain High Levels of Intimacy</div>
+          <div class="webinar-for">For those wanting to prepare their mind and heart for deep connection, and for couples wanting to foster trust, honesty, and heartfelt understanding.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>How to give and receive love according to love languages</li>
+                <li>How putting another's needs first can get you more of what you want</li>
+                <li>The value of deep communication and how to deepen conversation</li>
+                <li>Communicating from the level of needs and feelings</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Be Able to Do</div>
+              <ul class="outcomes-list">
+                <li>Keep your lover's love cup full</li>
+                <li>Create a phenomenal relationship through love languages</li>
+                <li>Engage in deep communication step by step</li>
+                <li>Make your lover's needs your needs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="webinar-card">
+          <div class="webinar-number">Webinar 4 of 4</div>
+          <div class="webinar-name">Pathway to Passion</div>
+          <div class="webinar-for">For singles preparing for a passionate future relationship, and for couples who want to feel the thrill and excitement again.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>The five sexual archetypes and three parts to passion</li>
+                <li>The interplay between masculine and feminine energies</li>
+                <li>Strategies to stimulate interest, desire, and pleasure</li>
+                <li>Biological differences that create confusion and dissatisfaction</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Be Able to Do</div>
+              <ul class="outcomes-list">
+                <li>Give yourself permission to allow more pleasure into your life</li>
+                <li>Feed your lover's blueprint for more passion</li>
+                <li>Use energy work and energy recycling to create never-ending passion</li>
+                <li>Identify your passion archetype and fuel the erotic engine</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SERIES 5: NSR -->
+    <div class="detail-series fade-in">
+      <div class="detail-header" style="border-color: var(--gold-muted);">
+        <div class="detail-series-num">05</div>
+        <div class="detail-series-info">
+          <div class="detail-series-label">Series Five · Advanced</div>
+          <div class="detail-series-name">NSR — Nervous System Reprogramming</div>
+          <div class="detail-series-desc">A 2-day live webinar that takes you deeper than any other series. NSR goes beyond mindset work to regulate the nervous system at a biological level — helping you overcome compulsive behaviours, break free from trauma, and find lasting inner peace. This is where transformation becomes embodied. Ideal for those healing from past trauma, those who've done personal development work but still react from old patterns, and those facing unconscious resistance.</div>
+        </div>
+      </div>
+      <div class="webinars-list">
+
+        <div class="webinar-card" style="border-left-color: var(--gold-muted);">
+          <div class="webinar-number">Process 1 of 4</div>
+          <div class="webinar-name">The Gift</div>
+          <div class="webinar-for">An emotional clearing and timeline therapy designed to help you view your past in a more positive light — overriding negative emotions with joy and transforming the impact of past trauma.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>How trapped emotions from the past continue to influence present behaviour</li>
+                <li>Using timeline therapy to revisit and reframe key emotional events</li>
+                <li>How joy can override and replace stored pain in the nervous system</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Experience</div>
+              <ul class="outcomes-list">
+                <li>A weight lifted — lighter, more motivated, free from procrastination</li>
+                <li>Negative triggers losing their power</li>
+                <li>Reduced depression, anxiety, and other mental health conditions</li>
+                <li>Increased confidence and access to positive emotions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="webinar-card" style="border-left-color: var(--gold-muted);">
+          <div class="webinar-number">Process 2 of 4</div>
+          <div class="webinar-name">The Grey Room</div>
+          <div class="webinar-for">An emotional clearing process that enables you to reframe your past and release negative emotions caused by trauma or painful experiences — including rejection, hurt, sadness, fear, anger, guilt, and shame.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>How unresolved emotions become stored as body-level responses</li>
+                <li>Using the Grey Room process to neutralise past emotional triggers</li>
+                <li>The relationship between emotion, memory, and identity</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Experience</div>
+              <ul class="outcomes-list">
+                <li>Feeling lighter and more at peace, with profound emotional release</li>
+                <li>Freedom from negative emotional triggers</li>
+                <li>Renewed energy, motivation, and freedom to pursue new opportunities</li>
+                <li>More consistent positive emotional states</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="webinar-card" style="border-left-color: var(--gold-muted);">
+          <div class="webinar-number">Process 3 of 4</div>
+          <div class="webinar-name">The Womb of Eternity</div>
+          <div class="webinar-for">A deep timeline therapy process that reimprints the voice of authority in your mind — reducing negative self-talk and promoting kindness and compassion in the way you speak to yourself.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>How the inner critical voice was formed and how it operates</li>
+                <li>How to release unhelpful internal patterns of negative self-talk</li>
+                <li>How to reimprint a new, empowering internal voice of authority</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Experience</div>
+              <ul class="outcomes-list">
+                <li>A quieter, more peaceful mind</li>
+                <li>Greater positivity and focus on what is good in life</li>
+                <li>Reduced or eliminated depression and anxiety</li>
+                <li>Strengthened confidence and self-belief</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="webinar-card" style="border-left-color: var(--gold-muted);">
+          <div class="webinar-number">Process 4 of 4</div>
+          <div class="webinar-name">Space Odyssey</div>
+          <div class="webinar-for">A rapid and effective spatial relocation strategy designed to reduce or eliminate negative emotional responses to past memories — allowing you to recall events without reliving their pain.</div>
+          <div class="outcomes-grid">
+            <div><div class="outcomes-col-title">What You Will Learn</div>
+              <ul class="outcomes-list">
+                <li>How the brain stores emotional charge alongside memory</li>
+                <li>Spatial relocation to neutralise emotions tied to failure and rejection</li>
+                <li>The relationship between addiction, dopamine, and unconscious patterning</li>
+              </ul>
+            </div>
+            <div><div class="outcomes-col-title">What You Will Experience</div>
+              <ul class="outcomes-list">
+                <li>No longer able to access the same negative emotions tied to memories</li>
+                <li>Less rumination and reduced catastrophising</li>
+                <li>A sense of balance, calm, and improved daily coping</li>
+                <li>Greater access to positive emotions and a regulated nervous system</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COACHING ═══ -->
+<section class="coaching-section" id="coaching">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">Your Support Structure</span>
+      <h2 class="section-title">The <em>Coaching Program</em></h2>
+      <div class="gold-rule"></div>
+      <p class="section-body">One-on-one and group coaching sessions designed to help you integrate your breakthroughs, overcome hidden resistance, and keep moving forward with consistent accountability and support.</p>
+    </div>
+    <div class="resistors-grid fade-in">
+      <div class="resistor-card">
+        <div class="resistor-icon">I</div>
+        <div class="resistor-name">Fear</div>
+        <div class="resistor-desc">The emotional barrier that leads to hesitation and self-doubt. We clear stored emotional blocks and past pain through emotional release and NLP techniques.</div>
+      </div>
+      <div class="resistor-card">
+        <div class="resistor-icon">II</div>
+        <div class="resistor-name">Laziness</div>
+        <div class="resistor-desc">Often the symptom of unresolved values conflicts and lack of alignment. We align your subconscious values so your goals feel natural and self-driven.</div>
+      </div>
+      <div class="resistor-card">
+        <div class="resistor-icon">III</div>
+        <div class="resistor-name">Limited Beliefs</div>
+        <div class="resistor-desc">Unconscious ceilings that restrict what we believe is possible. We reprogram limiting stories and install new empowering beliefs for elevated achievement.</div>
+      </div>
+    </div>
+
+    <div class="fade-in">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--text-primary);margin-bottom:8px;">Your Six Foundation Coaching Sessions</h3>
+      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:0;">Each session builds on the last to create complete transformation — from clarity to confidence to measurable results.</p>
+    </div>
+    <table class="sessions-table fade-in">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Session Focus</th>
+          <th>Outcome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><div class="session-num">1</div></td><td><div class="session-focus">Clarify Results</div>Define exact outcomes and key goals</td><td>Transform vague desires into measurable targets</td></tr>
+        <tr><td><div class="session-num">2</div></td><td><div class="session-focus">Strategic Visioning</div>Design your long-term roadmap</td><td>Establish a clear path with purpose and motivation</td></tr>
+        <tr><td><div class="session-num">3</div></td><td><div class="session-focus">Empowering Learning & Thankful Reflection</div>Integrate growth through gratitude and awareness</td><td>Strengthen self-belief and inner peace</td></tr>
+        <tr><td><div class="session-num">4</div></td><td><div class="session-focus">Future Belonging</div>Step into your identity as your future self</td><td>Feel worthy and capable of your desired life now</td></tr>
+        <tr><td><div class="session-num">5</div></td><td><div class="session-focus">Resource Anchoring</div>Install peak emotional states with NLP techniques</td><td>Access confidence, calm, and focus on demand</td></tr>
+        <tr><td><div class="session-num">6</div></td><td><div class="session-focus">Success Score</div>Track and measure progress (Attitude, Effort, Skill)</td><td>Build accountability, motivation, and mastery</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══ BENEFITS ═══ -->
+<section class="benefits-section" id="benefits">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">Why Paid Membership Matters</span>
+      <h2 class="section-title">What Your <em>Investment</em> Gives You</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="benefits-grid fade-in">
+      <div class="benefit-card"><div class="benefit-num">01</div><div class="benefit-title">Distraction-Free Learning</div><div class="benefit-body">Paid sessions ensure a controlled, professional environment. No interruptions, no Zoom bombers — just focused, deep learning.</div></div>
+      <div class="benefit-card"><div class="benefit-num">02</div><div class="benefit-title">Advanced Training</div><div class="benefit-body">Move beyond foundational concepts into advanced, transformative techniques that produce deeper insights and lasting results.</div></div>
+      <div class="benefit-card"><div class="benefit-num">03</div><div class="benefit-title">Safe Practice Environment</div><div class="benefit-body">Engage in hands-on activities and practice your skills in a secure space where constructive feedback is encouraged.</div></div>
+      <div class="benefit-card"><div class="benefit-num">04</div><div class="benefit-title">Certifications</div><div class="benefit-body">Many programs offer internationally recognised certifications, enabling you to enhance your qualifications and income potential.</div></div>
+      <div class="benefit-card"><div class="benefit-num">05</div><div class="benefit-title">Personalised Attention</div><div class="benefit-body">Smaller, focused groups ensure you receive the attention and clarity you need to make meaningful progress on your unique challenges.</div></div>
+      <div class="benefit-card"><div class="benefit-num">06</div><div class="benefit-title">Ongoing Coaching</div><div class="benefit-body">Regular follow-ups, check-ins, and personalised guidance across your full journey. Staying for 18 months means you receive ongoing support as each new series opens up.</div></div>
+      <div class="benefit-card"><div class="benefit-num">07</div><div class="benefit-title">Access to Recordings</div><div class="benefit-body">Every session recorded and available for review. Revisit key concepts, reinforce your understanding, and deepen mastery at your own pace.</div></div>
+      <div class="benefit-card"><div class="benefit-num">08</div><div class="benefit-title">Broader Topics</div><div class="benefit-body">Access a wider variety of specialised areas — covering every dimension of life that matters most to you.</div></div>
+    </div>
+    <div class="included-section" style="background:transparent;padding:48px 0 0;" id="included">
+      <div class="fade-in">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--text-primary);margin-bottom:4px;">Everything Included in Your Journey</h3>
+        <div class="gold-rule"></div>
+        <ul class="included-list">
+          <li>Access to seminars across your 12-month enrolment — your foundation year</li>
+          <li>The complete 17-seminar journey is available over 18 months — stay with the program to attend them all</li>
+          <li>Weekly group coaching calls with Joshua Roy</li>
+          <li>Ongoing mentoring and accountability throughout your transformation</li>
+          <li>Private community access for support between sessions</li>
+          <li>All recorded session libraries for anytime review</li>
+          <li>Practice exercises and integration materials for each module</li>
+          <li>Distraction-free learning environment</li>
+          <li>Certification pathways for career growth and credentials</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CERTIFICATIONS ═══ -->
+<section class="cert-section" id="certifications">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">AccessWorld Certifications</span>
+      <h2 class="section-title">Internationally <em>Recognised</em></h2>
+      <div class="gold-rule"></div>
+      <p class="section-body">Upon completing AccessWorld programs, participants are eligible to apply for internationally recognised coaching certifications. Each certificate represents a commitment to excellence, personal mastery, and the ability to transform the lives of others.</p>
+    </div>
+    <div class="cert-grid fade-in">
+      <div class="cert-card"><div class="cert-icon">◈</div><div class="cert-name">NLP Coach Practitioner Certificate</div></div>
+      <div class="cert-card"><div class="cert-icon">◈</div><div class="cert-name">Wellness Coaching Certificate</div></div>
+      <div class="cert-card"><div class="cert-icon">◈</div><div class="cert-name">Mindset Coaching Certificate</div></div>
+      <div class="cert-card"><div class="cert-icon">◈</div><div class="cert-name">Relationship Coaching Certificate</div></div>
+      <div class="cert-card"><div class="cert-icon">◈</div><div class="cert-name">Trauma Coaching Certificate</div></div>
+    </div>
+    <div style="margin-top:32px;padding:24px 28px;background:var(--gold-dim);border:1px solid var(--gold-border);max-width:640px;" class="fade-in">
+      <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;">Want to work toward certification? Ask Joshua: <em style="color:var(--gold);">"How do I become a certified NLP Coach, Wellness, Mindset, Relationship, or Trauma Coaching Practitioner?"</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLOSING ═══ -->
+<section class="closing-section">
+  <div class="closing-quote fade-in">"Stand a little taller. Lift your sights. Laugh a little easier. And take the action steps required to improve the quality of your life — <em>forever.</em>"</div>
+  <div class="closing-details fade-in">
+    <strong style="color:var(--text-secondary);letter-spacing:0.1em;">JOSHUA ROY</strong> · AccessWorld Seminars · ABN 72 546 137 885<br>
+    Free MP3s: Pathways to Power &amp; The Gift Demo — available on request<br>
+    Pricing &amp; Enrolment: <a href="https://accessworldseminars-ship-it.github.io/results/offers2" target="_blank">accessworldseminars-ship-it.github.io/results/offers2</a><br><br>
+    <a href="https://accessworldseminars-ship-it.github.io/results" target="_blank">accessworldseminars-ship-it.github.io/results</a>
+  </div>
+</section>
+
+<script>
+  // Intersection Observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // TOC dot active state
+  const sections = ['top','about','challenges','series','program','coaching','benefits','certifications'];
+  const dots = document.querySelectorAll('.toc-dot');
+
+  window.addEventListener('scroll', () => {
+    let current = 0;
+    sections.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 200) current = i;
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  });
+</script>
+</body>
+</html>
