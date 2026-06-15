@@ -1,495 +1,716 @@
+Here is a complete, unified HTML payment page that lets customers choose between your three programs, select their preferred payment method, and submit their details via webhook.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>AccessWorld | Unlock Yourself – 6 Hour Healing Journey</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>AccessWorld | Choose Your Program</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
-      font-family: 'Montserrat', sans-serif;
-      color: #f0f3fa;
-      line-height: 1.5;
-      min-height: 100vh;
-      padding: 2rem 1.5rem;
-    }
+        body {
+            background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+            font-family: 'Montserrat', sans-serif;
+            color: #f0f3fa;
+            line-height: 1.5;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+        }
 
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: rgba(8, 13, 24, 0.75);
-      backdrop-filter: blur(4px);
-      border-radius: 2rem;
-      padding: 2rem 2rem 2.5rem;
-      border: 1px solid rgba(201, 168, 76, 0.25);
-      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
-      transition: all 0.2s;
-    }
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
 
-    h1, h2, h3, .serif {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
+        .logo {
+            max-width: 160px;
+            margin-bottom: 1rem;
+        }
 
-    h1 {
-      font-size: 2.6rem;
-      color: #C9A84C;
-      margin-bottom: 0.5rem;
-      text-align: center;
-    }
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: #C9A84C;
+            margin-bottom: 0.5rem;
+        }
 
-    h2 {
-      font-size: 1.8rem;
-      color: #C9A84C;
-      margin: 1rem 0 0.75rem;
-    }
+        .subhead {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-    .accent {
-      color: #C9A84C;
-      font-weight: 500;
-    }
+        /* Program Cards Grid */
+        .programs-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
 
-    .logo {
-      text-align: center;
-      margin-bottom: 1.2rem;
-    }
+        .program-card {
+            background: rgba(8, 13, 24, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            padding: 1.8rem;
+            flex: 1;
+            min-width: 260px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
 
-    .logo img {
-      max-width: 160px;
-      border-radius: 16px;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-    }
+        .program-card:hover {
+            transform: translateY(-5px);
+            border-color: #C9A84C;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
 
-    .price-badge {
-      background: rgba(201, 168, 76, 0.15);
-      display: inline-block;
-      padding: 0.3rem 1.2rem;
-      border-radius: 40px;
-      font-weight: bold;
-      font-size: 1.2rem;
-      border: 1px solid #C9A84C;
-      margin: 0.8rem 0;
-    }
+        .program-card.selected {
+            border: 2px solid #C9A84C;
+            background: rgba(201, 168, 76, 0.1);
+            box-shadow: 0 0 20px rgba(201, 168, 76, 0.2);
+        }
 
-    .program-description {
-      background: rgba(201, 168, 76, 0.08);
-      padding: 1.2rem;
-      border-radius: 1.2rem;
-      margin: 1rem 0 1.5rem 0;
-      border-left: 4px solid #C9A84C;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
+        .program-card.selected::before {
+            content: '✓ SELECTED';
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #C9A84C;
+            color: #080d18;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
 
-    .program-description p {
-      margin-bottom: 0.75rem;
-    }
+        .program-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #C9A84C;
+            margin-bottom: 0.5rem;
+        }
 
-    .program-description strong {
-      color: #C9A84C;
-    }
+        .program-price small {
+            font-size: 0.9rem;
+            font-weight: normal;
+        }
 
-    .payment-options {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin: 2rem 0 1.5rem;
-    }
+        .program-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
 
-    .payment-card {
-      background: rgba(26, 39, 68, 0.7);
-      border-radius: 1.2rem;
-      padding: 1.2rem 1.5rem;
-      transition: all 0.2s ease;
-      border-left: 4px solid #C9A84C;
-    }
+        .program-desc {
+            color: #cbd5e1;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
 
-    .payment-card h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+        .program-duration {
+            display: inline-block;
+            background: rgba(201, 168, 76, 0.15);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #C9A84C;
+        }
 
-    .payment-detail {
-      font-family: monospace;
-      font-size: 1rem;
-      background: #0f172f;
-      padding: 0.5rem 0.8rem;
-      border-radius: 14px;
-      margin: 0.5rem 0;
-      word-break: break-all;
-      color: #e2e8f0;
-    }
+        /* Two Column Layout */
+        .payment-layout {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
 
-    .btn-link {
-      background: transparent;
-      border: 2px solid #C9A84C;
-      color: #C9A84C;
-      font-weight: 600;
-      padding: 0.6rem 1.4rem;
-      border-radius: 40px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: 0.2s;
-      display: inline-block;
-      text-decoration: none;
-      text-align: center;
-    }
+        .payment-methods {
+            flex: 1.2;
+            min-width: 280px;
+            background: rgba(8, 13, 24, 0.6);
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+        }
 
-    .btn-link:hover {
-      background: #C9A84C;
-      color: #080d18;
-      transform: translateY(-2px);
-    }
+        .lead-form {
+            flex: 1;
+            min-width: 280px;
+            background: rgba(8, 13, 24, 0.6);
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+        }
 
-    .btn-primary {
-      background: #C9A84C;
-      color: #080d18;
-      border: none;
-      font-weight: bold;
-      padding: 0.75rem 1.8rem;
-    }
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: #C9A84C;
+            margin-bottom: 1.2rem;
+            border-left: 3px solid #C9A84C;
+            padding-left: 0.8rem;
+        }
 
-    .btn-primary:hover {
-      background: #b8922e;
-      transform: translateY(-2px);
-    }
+        h3 {
+            font-size: 1rem;
+            margin: 1rem 0 0.5rem;
+            color: #e2e8f0;
+        }
 
-    button, .btn-link, .btn-primary {
-      cursor: pointer;
-      font-family: 'Montserrat', sans-serif;
-    }
+        /* Payment Option Buttons */
+        .payment-option {
+            background: rgba(26, 39, 68, 0.6);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-radius: 1rem;
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-    button:focus-visible, .btn-link:focus-visible {
-      outline: 3px solid #C9A84C;
-      outline-offset: 2px;
-    }
+        .payment-option:hover {
+            background: rgba(201, 168, 76, 0.15);
+            border-color: #C9A84C;
+        }
 
-    .form-group {
-      margin-bottom: 1.3rem;
-    }
+        .payment-option.selected {
+            background: rgba(201, 168, 76, 0.2);
+            border: 2px solid #C9A84C;
+        }
 
-    label {
-      display: block;
-      margin-bottom: 0.4rem;
-      font-weight: 500;
-      color: #e0e7ff;
-    }
+        .payment-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            text-align: center;
+        }
 
-    input, select {
-      width: 100%;
-      padding: 12px 16px;
-      border-radius: 16px;
-      border: 1px solid #334155;
-      background: #0f172f;
-      color: white;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.95rem;
-      transition: 0.2s;
-    }
+        .payment-details {
+            flex: 1;
+        }
 
-    input:focus, select:focus {
-      outline: none;
-      border-color: #C9A84C;
-      box-shadow: 0 0 0 2px rgba(201,168,76,0.3);
-    }
+        .payment-title {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
 
-    .webhook-status {
-      margin-top: 1rem;
-      padding: 0.8rem;
-      border-radius: 1rem;
-      text-align: center;
-      font-weight: 500;
-      display: none;
-    }
+        .payment-link {
+            font-size: 0.7rem;
+            color: #94a3b8;
+            word-break: break-all;
+            font-family: monospace;
+        }
 
-    hr {
-      border-color: rgba(201, 168, 76, 0.3);
-      margin: 1.8rem 0;
-    }
+        .bank-detail {
+            font-family: monospace;
+            font-size: 0.75rem;
+            background: #0f172f;
+            padding: 0.4rem 0.6rem;
+            border-radius: 8px;
+            margin-top: 0.3rem;
+        }
 
-    .coach-bio {
-      background: rgba(0,0,0,0.3);
-      padding: 1.2rem;
-      border-radius: 1.2rem;
-      margin: 1.5rem 0;
-      font-size: 0.9rem;
-      border-left: 3px solid #C9A84C;
-    }
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 1rem;
+        }
 
-    footer {
-      text-align: center;
-      font-size: 0.75rem;
-      margin-top: 2rem;
-      opacity: 0.7;
-    }
+        label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #cbd5e1;
+        }
 
-    @media (max-width: 550px) {
-      body { padding: 1rem; }
-      .container { padding: 1.5rem; }
-      h1 { font-size: 2rem; }
-      .payment-card { padding: 1rem; }
-    }
-  </style>
+        input, select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid #334155;
+            background: #0f172f;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #C9A84C;
+            box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.3);
+        }
+
+        .btn-pay {
+            width: 100%;
+            background: linear-gradient(135deg, #C9A84C, #b8922e);
+            color: #080d18;
+            border: none;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-pay:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(201, 168, 76, 0.3);
+        }
+
+        .btn-pay:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .webhook-status {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            border-radius: 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            display: none;
+        }
+
+        .coach-bio {
+            margin-top: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.2rem;
+            border-radius: 1rem;
+            border-left: 3px solid #C9A84C;
+            font-size: 0.85rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.7rem;
+            color: #64748b;
+        }
+
+        hr {
+            border-color: rgba(201, 168, 76, 0.2);
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            h1 { font-size: 2rem; }
+            .programs-grid { flex-direction: column; }
+            .program-card { min-width: auto; }
+        }
+    </style>
 </head>
 <body>
-
-<div class="container" id="paymentApp">
-  <div class="logo">
-    <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars Logo">
-  </div>
-  <h1>✨ Unlock Yourself</h1>
-  <div style="text-align: center;">
-    <span class="price-badge">💎 $69 AUD – 6 Hour Life‑Changing Program</span>
-  </div>
-
-  <!-- NEW PROGRAM DESCRIPTION: Emotional & Mental Healing Journey -->
-  <div class="program-description">
-    <p><strong>Unlock Yourself</strong> is a deep dive into <strong>emotional and mental healing</strong> — a journey into a new life and adventure.</p>
-    <p>Over <strong>6 transformative hours</strong>, you will release old patterns, heal unconscious blocks, and reconnect with your authentic self. This is not just another course; it's a guided expedition into the parts of you that are ready to be seen, healed, and set free.</p>
-    <p>✨ <strong>What awaits you:</strong> Emotional clearing, nervous system reprogramming, inner child healing, and a roadmap to lasting inner peace.</p>
-    <p>🌱 <strong>Your new adventure starts here.</strong> One decision. One investment. A lifetime of feeling good for no good reason.</p>
-  </div>
-
-  <!-- Coach bio (non-relationship topic) -->
-  <div class="coach-bio">
-    <strong>Joshua Roy | Results Coach & Seminar Leader | AccessWorld Seminars</strong><br>
-    With over 23 years as a police officer and more than a decade as a results coach, Joshua Roy has conducted 3,500+ one-on-one coaching sessions and led hundreds of seminars across Australia. He is the creator of NSR (Nervous System Reprogramming) and combines NLP, emotional clearing, mindset conditioning, and practical strategy to help people create rapid, lasting change. A former Australian Karate Champion, university graduate, and certified NLP practitioner — Joshua's coaching is direct, caring, and action-focused.
-    <div style="margin-top: 6px; font-style: italic;">"Feeling good for no good reason."</div>
-  </div>
-
-  <!-- PAYMENT METHODS SECTION -->
-  <h2>💳 Select your payment method</h2>
-  <div class="payment-options">
-    <!-- Square link -->
-    <div class="payment-card">
-      <h3>🔲 Pay with Square</h3>
-      <p>Credit / Debit card – fast & secure</p>
-      <a href="https://square.link/u/HSFRyC8C" target="_blank" rel="noopener noreferrer" class="btn-link">Pay with Square →</a>
+<div class="container">
+    <div class="header">
+        <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" class="logo">
+        <h1>Choose Your Transformation</h1>
+        <p class="subhead">Select a program, choose your payment method, and begin your journey</p>
     </div>
 
-    <!-- PayPal invoice links (both provided) -->
-    <div class="payment-card">
-      <h3>🟦 PayPal Invoice</h3>
-      <p>PayPal balance, credit card or bank account</p>
-      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px;">
-        <a href="https://www.paypal.com/invoice/p/#QE3JQVM785NGR24Z" target="_blank" class="btn-link" style="background:#0f172f;">Invoice Option 1 →</a>
-        <a href="https://www.paypal.com/invoice/p/#2Z2FRL5KZGPVVBUX" target="_blank" class="btn-link" style="background:#0f172f;">Invoice Option 2 →</a>
-      </div>
+    <!-- Program Selection Cards -->
+    <div class="programs-grid" id="programsGrid">
+        <!-- Program 1: World Class Coach -->
+        <div class="program-card" data-program="world-class-coach" data-price="49" data-name="How To Become A World Class Coach" data-desc="3-hour intensive program for aspiring coaches">
+            <div class="program-price">$49 <small>AUD</small></div>
+            <div class="program-name">How To Become A World Class Coach</div>
+            <div class="program-desc">3-hour intensive program covering coaching frameworks, client psychology, and proven methodologies to accelerate your coaching career.</div>
+            <span class="program-duration"><i class="far fa-clock"></i> 3 hours</span>
+        </div>
+
+        <!-- Program 2: Unlock Yourself -->
+        <div class="program-card" data-program="unlock-yourself" data-price="69" data-name="Unlock Your Incredible Self" data-desc="6-hour emotional & mental healing journey">
+            <div class="program-price">$69 <small>AUD</small></div>
+            <div class="program-name">Unlock Your Incredible Self</div>
+            <div class="program-desc">A 6-hour deep dive into emotional and mental healing. Release old patterns and step into a new life adventure.</div>
+            <span class="program-duration"><i class="far fa-clock"></i> 6 hours</span>
+        </div>
+
+        <!-- Program 3: 2-Day Seminar -->
+        <div class="program-card" data-program="two-day-seminar" data-price="399" data-name="2-Day Breakthrough Seminar" data-desc="16 hours of transformation">
+            <div class="program-price">$399 <small>AUD</small></div>
+            <div class="program-name">2-Day Breakthrough Seminar</div>
+            <div class="program-desc">16 hours of immersive nervous system reprogramming, emotional clearing, and mindset mastery with Joshua Roy.</div>
+            <span class="program-duration"><i class="far fa-calendar-alt"></i> 2 full days</span>
+        </div>
     </div>
 
-    <!-- Bank Transfer (Australia) -->
-    <div class="payment-card">
-      <h3>🏦 Bank Transfer (Australia)</h3>
-      <div class="payment-detail">Account: Accessworld Trust<br>BSB: 124 001<br>Acc: 227 10071<br><span style="font-size:0.85rem;">Reference: YOUR FULL NAME</span></div>
+    <div class="payment-layout">
+        <!-- Payment Methods Column -->
+        <div class="payment-methods">
+            <h2><i class="fas fa-credit-card"></i> Payment Method</h2>
+            <div id="paymentOptionsContainer">
+                <!-- Dynamic payment options will appear here -->
+                <p style="color: #94a3b8; text-align: center; padding: 2rem;">Please select a program first</p>
+            </div>
+        </div>
+
+        <!-- Lead Form Column -->
+        <div class="lead-form">
+            <h2><i class="fas fa-user-check"></i> Your Details</h2>
+            <form id="leadForm">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="name" required placeholder="e.g., Sarah Mitchell">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="phone" required placeholder="+61 412 345 678">
+                </div>
+                <div class="form-group">
+                    <label>Country *</label>
+                    <select id="country" required>
+                        <option value="" disabled selected>🌍 Select Country</option>
+                        <option value="Australia">🇦🇺 Australia</option>
+                        <option value="Canada">🇨🇦 Canada</option>
+                        <option value="Ireland">🇮🇪 Ireland</option>
+                        <option value="New Zealand">🇳🇿 New Zealand</option>
+                        <option value="United Kingdom">🇬🇧 United Kingdom</option>
+                        <option value="United States">🇺🇸 United States</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" id="email" required placeholder="you@example.com">
+                </div>
+                <button type="button" id="processPaymentBtn" class="btn-pay"><i class="fas fa-lock"></i> Proceed to Payment</button>
+                <div id="webhookStatus" class="webhook-status"></div>
+            </form>
+        </div>
     </div>
 
-    <!-- Phone / PayID -->
-    <div class="payment-card">
-      <h3>📱 PayID (Phone number)</h3>
-      <div class="payment-detail">PayID: 0432 119 091<br>Amount: $69 AUD<br>Reference: Your full name</div>
+    <!-- Coach Bio -->
+    <div class="coach-bio">
+        <strong>Joshua Roy | Results Coach & Seminar Leader | AccessWorld Seminars</strong><br>
+        With over 23 years as a police officer and more than a decade as a results coach, Joshua Roy has conducted 3,500+ one-on-one coaching sessions and led hundreds of seminars across Australia. He is the creator of NSR (Nervous System Reprogramming) and combines NLP, emotional clearing, mindset conditioning, and practical strategy to help people create rapid, lasting change. A former Australian Karate Champion, university graduate, and certified NLP practitioner — Joshua's coaching is direct, caring, and action-focused.
+        <div style="margin-top: 6px; font-style: italic;">"Feeling good for no good reason."</div>
     </div>
-  </div>
-
-  <hr>
-
-  <!-- LEAD FORM + WEBHOOK SECTION (sends to Activepieces Telegram) -->
-  <h2>📋 Confirm your details</h2>
-  <p style="margin-bottom: 1rem;">After completing your payment, please fill out the form below. We will send you immediate access to the <strong>6‑hour Unlock Yourself program</strong> (video modules, workbook, and healing exercises).</p>
-
-  <form id="leadForm">
-    <div class="form-group">
-      <label for="name">Full Name *</label>
-      <input type="text" id="name" name="name" required placeholder="e.g., Michael Chen">
-    </div>
-    <div class="form-group">
-      <label for="phone">Phone Number *</label>
-      <input type="tel" id="phone" name="phone" required placeholder="+61 412 345 678">
-    </div>
-    <div class="form-group">
-      <label for="country">Country *</label>
-      <select id="country" name="country" required>
-        <option value="" disabled selected>🌍 Select Country</option>
-        <option value="Australia">🇦🇺 Australia</option>
-        <option value="Canada">🇨🇦 Canada</option>
-        <option value="Ireland">🇮🇪 Ireland</option>
-        <option value="New Zealand">🇳🇿 New Zealand</option>
-        <option value="United Kingdom">🇬🇧 United Kingdom</option>
-        <option value="United States">🇺🇸 United States</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="email">Email Address *</label>
-      <input type="email" id="email" name="email" required placeholder="you@example.com">
-    </div>
-
-    <!-- Hidden field to reflect the updated program -->
-    <input type="hidden" id="programName" value="Unlock Yourself – 6 Hour Emotional & Mental Healing Journey">
-
-    <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem;">
-      <button type="submit" class="btn-primary" id="submitBtn">✓ Complete Registration & Send Details</button>
-      <span style="font-size: 0.8rem; opacity:0.8;">We’ll email your access + healing workbook</span>
-    </div>
-  </form>
-
-  <div id="webhookStatus" class="webhook-status" aria-live="polite"></div>
-
-  <footer>
-    ⚡ Secure payment links provided. After registration, you'll receive instant access to the complete 6‑hour Unlock Yourself journey. Begin your emotional & mental healing today.
-  </footer>
+    <footer>
+        <i class="fas fa-shield-alt"></i> Secure checkout • All prices in AUD • Your information is protected
+    </footer>
 </div>
 
 <script>
-  // WEBHOOK URL (exactly as provided)
-  const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
-
-  // Send lead + purchase data to Activepieces (Telegram via webhook)
-  async function sendToTelegram(name, phone, country, email, program) {
-    const formData = {
-      name: name,
-      phone: phone,
-      country: country,
-      email: email,
-      program: program,
-      amount: "69 AUD",
-      product: "Unlock Yourself - 6 Hour Healing Program",
-      timestamp: new Date().toISOString()
+    // ==================== PROGRAM & PAYMENT DATA ====================
+    const programs = {
+        'world-class-coach': {
+            name: 'How To Become A World Class Coach',
+            price: 49,
+            duration: '3 hours',
+            stripe: 'https://buy.stripe.com/28EdR9e8f10j2kTf5tg3603',
+            square: 'https://square.link/u/vdOZmPn9',
+            paypal: 'https://www.paypal.com/invoice/p/#2JJTVL32Q6Y2HKLB'
+        },
+        'unlock-yourself': {
+            name: 'Unlock Your Incredible Self',
+            price: 69,
+            duration: '6 hours',
+            stripe: 'https://buy.stripe.com/8x228rd4b38r7Fd7D1g3602',
+            square: null,
+            paypal: ['https://www.paypal.com/invoice/p/#2Z2FRL5KZGPVVBUX', 'https://www.paypal.com/invoice/p/#QE3JQVM785NGR24Z']
+        },
+        'two-day-seminar': {
+            name: '2-Day Breakthrough Seminar',
+            price: 399,
+            duration: '2 days',
+            stripe: 'https://buy.stripe.com/00w00j7JR10j1gPg9xg3601',
+            square: 'https://square.link/u/sNBsxzSr',
+            paypal: 'https://www.paypal.com/invoice/p/#Q9BEWE8MMFMH24JJ'
+        }
     };
 
-    console.log('[Webhook] Sending lead data:', formData);
+    // Bank & PayID details (same for all)
+    const bankDetails = {
+        bsb: '124 001',
+        account: '227 10071',
+        accountName: 'Accessworld Trust'
+    };
+    const payIdDetails = {
+        phone: '0432 119 091'
+    };
 
-    const statusDiv = document.getElementById('webhookStatus');
-    if (statusDiv) {
-      statusDiv.style.display = 'block';
-      statusDiv.style.backgroundColor = '#1e293b';
-      statusDiv.style.color = '#facc15';
-      statusDiv.innerHTML = '⏳ Sending registration info...';
+    let selectedProgramId = null;
+    let selectedPaymentMethod = null;
+    let currentPaymentUrl = null;
+
+    // DOM Elements
+    const programCards = document.querySelectorAll('.program-card');
+    const paymentContainer = document.getElementById('paymentOptionsContainer');
+    const processBtn = document.getElementById('processPaymentBtn');
+    const webhookStatus = document.getElementById('webhookStatus');
+
+    // Webhook URL
+    const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+
+    // Helper: Send lead data to webhook
+    async function sendLeadToWebhook(name, phone, country, email, programName, amount, paymentMethod, transactionRef = 'pending') {
+        const formData = {
+            name: name,
+            phone: phone,
+            country: country,
+            email: email,
+            program: programName,
+            amount: `$${amount} AUD`,
+            payment_method: paymentMethod,
+            timestamp: new Date().toISOString(),
+            transaction_ref: transactionRef
+        };
+
+        console.log('[Webhook] Sending lead data:', formData);
+
+        webhookStatus.style.display = 'block';
+        webhookStatus.style.backgroundColor = '#1e293b';
+        webhookStatus.style.color = '#facc15';
+        webhookStatus.innerHTML = '⏳ Sending registration info...';
+
+        try {
+            const response = await fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                webhookStatus.innerHTML = '✓ Registration sent! Redirecting to payment...';
+                webhookStatus.style.backgroundColor = '#14532d';
+                webhookStatus.style.color = '#dcfce7';
+                return true;
+            } else {
+                webhookStatus.innerHTML = '⚠️ Webhook issue, but you can proceed with payment.';
+                webhookStatus.style.backgroundColor = '#7f1d1d';
+                return true; // Still allow payment
+            }
+        } catch (error) {
+            console.error('Webhook error:', error);
+            webhookStatus.innerHTML = '⚠️ Connection issue. Proceeding to payment.';
+            webhookStatus.style.backgroundColor = '#7f1d1d';
+            return true;
+        }
     }
 
-    try {
-      const response = await fetch(WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+    // Render payment options based on selected program
+    function renderPaymentOptions(programId) {
+        const prog = programs[programId];
+        if (!prog) return;
 
-      if (response.ok) {
-        if (statusDiv) {
-          statusDiv.innerHTML = '✓ Registration sent successfully! You will receive access details within minutes. Welcome to your healing journey.';
-          statusDiv.style.backgroundColor = '#14532d';
-          statusDiv.style.color = '#dcfce7';
-          statusDiv.style.border = '1px solid #4ade80';
+        let html = `<p style="margin-bottom: 0.8rem; font-size: 0.85rem;">Selected: <strong style="color:#C9A84C;">${prog.name}</strong> — $${prog.price} AUD</p>`;
+
+        // Stripe option (all programs have Stripe)
+        if (prog.stripe) {
+            html += `
+                <div class="payment-option" data-method="stripe" data-url="${prog.stripe}">
+                    <div class="payment-icon"><i class="fab fa-stripe-s"></i></div>
+                    <div class="payment-details">
+                        <div class="payment-title">Stripe (Credit/Debit Card)</div>
+                        <div class="payment-link">Secure card payment</div>
+                    </div>
+                </div>
+            `;
         }
+
+        // Square option
+        if (prog.square) {
+            html += `
+                <div class="payment-option" data-method="square" data-url="${prog.square}">
+                    <div class="payment-icon"><i class="fas fa-square"></i></div>
+                    <div class="payment-details">
+                        <div class="payment-title">Square Payment</div>
+                        <div class="payment-link">Fast & secure checkout</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // PayPal option (handle single or multiple)
+        if (prog.paypal) {
+            if (Array.isArray(prog.paypal)) {
+                prog.paypal.forEach((url, idx) => {
+                    html += `
+                        <div class="payment-option" data-method="paypal" data-url="${url}">
+                            <div class="payment-icon"><i class="fab fa-paypal"></i></div>
+                            <div class="payment-details">
+                                <div class="payment-title">PayPal ${idx + 1}</div>
+                                <div class="payment-link">${url.substring(0, 50)}...</div>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                html += `
+                    <div class="payment-option" data-method="paypal" data-url="${prog.paypal}">
+                        <div class="payment-icon"><i class="fab fa-paypal"></i></div>
+                        <div class="payment-details">
+                            <div class="payment-title">PayPal Invoice</div>
+                            <div class="payment-link">Secure PayPal checkout</div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Bank Transfer (always available)
+        html += `
+            <div class="payment-option" data-method="bank" data-url="">
+                <div class="payment-icon"><i class="fas fa-university"></i></div>
+                <div class="payment-details">
+                    <div class="payment-title">Bank Transfer (Australia)</div>
+                    <div class="bank-detail">BSB: ${bankDetails.bsb} | Acc: ${bankDetails.account}<br>Name: ${bankDetails.accountName}<br>Reference: YOUR FULL NAME</div>
+                </div>
+            </div>
+        `;
+
+        // PayID (always available)
+        html += `
+            <div class="payment-option" data-method="payid" data-url="">
+                <div class="payment-icon"><i class="fas fa-mobile-alt"></i></div>
+                <div class="payment-details">
+                    <div class="payment-title">PayID (Phone)</div>
+                    <div class="bank-detail">PayID: ${payIdDetails.phone}<br>Reference: Your full name</div>
+                </div>
+            </div>
+        `;
+
+        paymentContainer.innerHTML = html;
+
+        // Attach click event to payment options
+        document.querySelectorAll('.payment-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedPaymentMethod = this.dataset.method;
+                currentPaymentUrl = this.dataset.url || null;
+            });
+        });
+    }
+
+    // Handle program selection
+    programCards.forEach(card => {
+        card.addEventListener('click', () => {
+            programCards.forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            selectedProgramId = card.dataset.program;
+            selectedPaymentMethod = null;
+            currentPaymentUrl = null;
+            renderPaymentOptions(selectedProgramId);
+        });
+    });
+
+    // Process payment: validate, send webhook, then redirect or show instructions
+    processBtn.addEventListener('click', async () => {
+        // Validate program selection
+        if (!selectedProgramId) {
+            alert('Please select a program first.');
+            return;
+        }
+
+        // Validate payment method
+        if (!selectedPaymentMethod) {
+            alert('Please select a payment method.');
+            return;
+        }
+
+        // Get form values
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const country = document.getElementById('country').value;
+        const email = document.getElementById('email').value.trim();
+
+        if (!name) { alert('Please enter your full name.'); return; }
+        if (!phone) { alert('Please enter your phone number.'); return; }
+        if (!country) { alert('Please select your country.'); return; }
+        if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+
+        const program = programs[selectedProgramId];
+        const programName = program.name;
+        const amount = program.price;
+
+        // Disable button during processing
+        processBtn.disabled = true;
+        processBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Processing...';
+
+        // Send to webhook (Activepieces -> Telegram)
+        await sendLeadToWebhook(name, phone, country, email, programName, amount, selectedPaymentMethod);
+
+        // Store lead locally for reference
+        try {
+            localStorage.setItem('accessworld_lead', JSON.stringify({
+                name, phone, country, email, program: programName, amount, paymentMethod: selectedPaymentMethod, timestamp: new Date().toISOString()
+            }));
+        } catch(e) {}
+
+        // Handle redirection or display instructions based on payment method
+        if (selectedPaymentMethod === 'stripe' && currentPaymentUrl) {
+            window.open(currentPaymentUrl, '_blank');
+            webhookStatus.innerHTML = '✓ Stripe payment page opened. Complete your payment.';
+            webhookStatus.style.backgroundColor = '#14532d';
+            setTimeout(() => { webhookStatus.style.display = 'none'; }, 5000);
+        } 
+        else if (selectedPaymentMethod === 'square' && currentPaymentUrl) {
+            window.open(currentPaymentUrl, '_blank');
+            webhookStatus.innerHTML = '✓ Square checkout opened. Complete your purchase.';
+            webhookStatus.style.backgroundColor = '#14532d';
+            setTimeout(() => { webhookStatus.style.display = 'none'; }, 5000);
+        }
+        else if (selectedPaymentMethod === 'paypal' && currentPaymentUrl) {
+            window.open(currentPaymentUrl, '_blank');
+            webhookStatus.innerHTML = '✓ PayPal invoice opened. Complete your payment.';
+            webhookStatus.style.backgroundColor = '#14532d';
+            setTimeout(() => { webhookStatus.style.display = 'none'; }, 5000);
+        }
+        else if (selectedPaymentMethod === 'bank') {
+            webhookStatus.innerHTML = `✓ Bank transfer details sent to your email. Use BSB: ${bankDetails.bsb}, Acc: ${bankDetails.account}, Ref: ${name}. We'll confirm receipt within 24h.`;
+            webhookStatus.style.backgroundColor = '#14532d';
+            setTimeout(() => { webhookStatus.style.display = 'none'; }, 8000);
+        }
+        else if (selectedPaymentMethod === 'payid') {
+            webhookStatus.innerHTML = `✓ PayID details: ${payIdDetails.phone} (Ref: ${name}). Complete payment and we'll activate your access.`;
+            webhookStatus.style.backgroundColor = '#14532d';
+            setTimeout(() => { webhookStatus.style.display = 'none'; }, 8000);
+        }
+        else {
+            webhookStatus.innerHTML = '✓ Registration complete. Our team will contact you shortly.';
+            webhookStatus.style.backgroundColor = '#14532d';
+        }
+
+        // Reset button after 2 seconds
         setTimeout(() => {
-          if (statusDiv) statusDiv.style.display = 'none';
-        }, 7000);
-      } else {
-        if (statusDiv) {
-          statusDiv.innerHTML = '⚠️ Webhook error, but we saved your details. Our team will reach out within 24h.';
-          statusDiv.style.backgroundColor = '#7f1d1d';
-          statusDiv.style.color = '#fecaca';
-        }
-        console.error('Webhook response not OK:', response.status);
-      }
-    } catch (error) {
-      console.error('Webhook fetch error:', error);
-      if (statusDiv) {
-        statusDiv.innerHTML = '⚠️ Connection issue. Your details have been recorded locally. We will contact you within 24h to complete your enrollment.';
-        statusDiv.style.backgroundColor = '#7f1d1d';
-        statusDiv.style.color = '#ffe0e0';
-      }
+            processBtn.disabled = false;
+            processBtn.innerHTML = '<i class="fas fa-lock"></i> Proceed to Payment';
+        }, 2000);
+    });
+
+    // Pre-select first program by default
+    if (programCards.length > 0) {
+        programCards[0].click();
     }
-  }
-
-  const form = document.getElementById('leadForm');
-  const submitBtn = document.getElementById('submitBtn');
-  let isSubmitting = false;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    if (isSubmitting) return;
-
-    const nameInput = document.getElementById('name');
-    const phoneInput = document.getElementById('phone');
-    const countrySelect = document.getElementById('country');
-    const emailInput = document.getElementById('email');
-    const programField = document.getElementById('programName');
-
-    const name = nameInput.value.trim();
-    const phone = phoneInput.value.trim();
-    const country = countrySelect.value;
-    const email = emailInput.value.trim();
-    const program = programField.value;
-
-    if (!name) {
-      alert('Please enter your full name.');
-      nameInput.focus();
-      return;
-    }
-    if (!phone) {
-      alert('Phone number is required.');
-      phoneInput.focus();
-      return;
-    }
-    if (!country) {
-      alert('Please select your country.');
-      countrySelect.focus();
-      return;
-    }
-    if (!email || !email.includes('@')) {
-      alert('Please enter a valid email address.');
-      emailInput.focus();
-      return;
-    }
-
-    const confirmMsg = "IMPORTANT: Please ensure you have completed your $69 AUD payment via Square, PayPal, Bank Transfer, or PayID before submitting.\n\nClick OK to confirm payment done and complete registration.";
-    if (!confirm(confirmMsg)) {
-      return;
-    }
-
-    isSubmitting = true;
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Processing...';
-
-    await sendToTelegram(name, phone, country, email, program);
-
-    // store locally for reference
-    try {
-      localStorage.setItem('accessworld_unlock_lead', JSON.stringify({
-        name, phone, country, email, program,
-        submittedAt: new Date().toISOString()
-      }));
-    } catch(e) {}
-
-    setTimeout(() => {
-      isSubmitting = false;
-      submitBtn.disabled = false;
-      submitBtn.textContent = '✓ Registration Sent!';
-      setTimeout(() => {
-        if (submitBtn) submitBtn.textContent = 'Complete Registration & Send Details';
-      }, 3500);
-    }, 1500);
-  });
-
-  // ARIA labels for accessibility
-  document.querySelectorAll('.btn-link').forEach(link => {
-    link.setAttribute('aria-label', link.innerText.trim() + ' payment link');
-  });
-  if (submitBtn) submitBtn.setAttribute('aria-label', 'Submit registration and send lead information to AccessWorld for Unlock Yourself program');
 </script>
 </body>
 </html>
+```
