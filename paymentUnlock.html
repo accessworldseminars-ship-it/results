@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>AccessWorld | Unlock Your Incredible Self – $69 AUD</title>
+  <title>AccessWorld | Unlock Yourself – 6 Hour Healing Journey</title>
   <style>
     * {
       margin: 0;
@@ -78,6 +78,24 @@
       font-size: 1.2rem;
       border: 1px solid #C9A84C;
       margin: 0.8rem 0;
+    }
+
+    .program-description {
+      background: rgba(201, 168, 76, 0.08);
+      padding: 1.2rem;
+      border-radius: 1.2rem;
+      margin: 1rem 0 1.5rem 0;
+      border-left: 4px solid #C9A84C;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .program-description p {
+      margin-bottom: 0.75rem;
+    }
+
+    .program-description strong {
+      color: #C9A84C;
     }
 
     .payment-options {
@@ -160,7 +178,6 @@
       outline-offset: 2px;
     }
 
-    /* form styling */
     .form-group {
       margin-bottom: 1.3rem;
     }
@@ -234,11 +251,18 @@
   <div class="logo">
     <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars Logo">
   </div>
-  <h1>✨ Unlock Your Incredible Self</h1>
+  <h1>✨ Unlock Yourself</h1>
   <div style="text-align: center;">
-    <span class="price-badge">💎 $69 AUD – Lifetime Access</span>
+    <span class="price-badge">💎 $69 AUD – 6 Hour Life‑Changing Program</span>
   </div>
-  <p style="text-align: center; margin-top: 0.5rem;">Breakthrough patterns, reprogram your nervous system & step into your most confident, aligned self.</p>
+
+  <!-- NEW PROGRAM DESCRIPTION: Emotional & Mental Healing Journey -->
+  <div class="program-description">
+    <p><strong>Unlock Yourself</strong> is a deep dive into <strong>emotional and mental healing</strong> — a journey into a new life and adventure.</p>
+    <p>Over <strong>6 transformative hours</strong>, you will release old patterns, heal unconscious blocks, and reconnect with your authentic self. This is not just another course; it's a guided expedition into the parts of you that are ready to be seen, healed, and set free.</p>
+    <p>✨ <strong>What awaits you:</strong> Emotional clearing, nervous system reprogramming, inner child healing, and a roadmap to lasting inner peace.</p>
+    <p>🌱 <strong>Your new adventure starts here.</strong> One decision. One investment. A lifetime of feeling good for no good reason.</p>
+  </div>
 
   <!-- Coach bio (non-relationship topic) -->
   <div class="coach-bio">
@@ -257,7 +281,7 @@
       <a href="https://square.link/u/HSFRyC8C" target="_blank" rel="noopener noreferrer" class="btn-link">Pay with Square →</a>
     </div>
 
-    <!-- PayPal invoice 2 links (both provided) -->
+    <!-- PayPal invoice links (both provided) -->
     <div class="payment-card">
       <h3>🟦 PayPal Invoice</h3>
       <p>PayPal balance, credit card or bank account</p>
@@ -284,7 +308,7 @@
 
   <!-- LEAD FORM + WEBHOOK SECTION (sends to Activepieces Telegram) -->
   <h2>📋 Confirm your details</h2>
-  <p style="margin-bottom: 1rem;">After completing your payment, please fill out the form below so we can instantly send your program access and coaching resources.</p>
+  <p style="margin-bottom: 1rem;">After completing your payment, please fill out the form below. We will send you immediate access to the <strong>6‑hour Unlock Yourself program</strong> (video modules, workbook, and healing exercises).</p>
 
   <form id="leadForm">
     <div class="form-group">
@@ -312,19 +336,19 @@
       <input type="email" id="email" name="email" required placeholder="you@example.com">
     </div>
 
-    <!-- Hidden field to track program -->
-    <input type="hidden" id="programName" value="Unlock Your Incredible Self - $69 AUD">
+    <!-- Hidden field to reflect the updated program -->
+    <input type="hidden" id="programName" value="Unlock Yourself – 6 Hour Emotional & Mental Healing Journey">
 
     <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem;">
       <button type="submit" class="btn-primary" id="submitBtn">✓ Complete Registration & Send Details</button>
-      <span style="font-size: 0.8rem; opacity:0.8;">We’ll email your access + bonus materials</span>
+      <span style="font-size: 0.8rem; opacity:0.8;">We’ll email your access + healing workbook</span>
     </div>
   </form>
 
   <div id="webhookStatus" class="webhook-status" aria-live="polite"></div>
 
   <footer>
-    ⚡ Secure payment links provided. After registration, you'll receive instant access to "Unlock Your Incredible Self" modules & coaching tools.
+    ⚡ Secure payment links provided. After registration, you'll receive instant access to the complete 6‑hour Unlock Yourself journey. Begin your emotional & mental healing today.
   </footer>
 </div>
 
@@ -332,7 +356,7 @@
   // WEBHOOK URL (exactly as provided)
   const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
 
-  // Helper: send lead + purchase data to Activepieces (Telegram via webhook)
+  // Send lead + purchase data to Activepieces (Telegram via webhook)
   async function sendToTelegram(name, phone, country, email, program) {
     const formData = {
       name: name,
@@ -341,7 +365,7 @@
       email: email,
       program: program,
       amount: "69 AUD",
-      product: "Unlock Your Incredible Self",
+      product: "Unlock Yourself - 6 Hour Healing Program",
       timestamp: new Date().toISOString()
     };
 
@@ -364,19 +388,17 @@
 
       if (response.ok) {
         if (statusDiv) {
-          statusDiv.innerHTML = '✓ Registration sent successfully! You will receive access details shortly.';
+          statusDiv.innerHTML = '✓ Registration sent successfully! You will receive access details within minutes. Welcome to your healing journey.';
           statusDiv.style.backgroundColor = '#14532d';
           statusDiv.style.color = '#dcfce7';
           statusDiv.style.border = '1px solid #4ade80';
         }
-        // Optional: auto-clear success after 6 seconds
         setTimeout(() => {
           if (statusDiv) statusDiv.style.display = 'none';
-        }, 6000);
+        }, 7000);
       } else {
-        let errorText = `⚠️ Webhook error: ${response.status}`;
         if (statusDiv) {
-          statusDiv.innerHTML = errorText + ' — but we saved your details locally. Our team will reach out.';
+          statusDiv.innerHTML = '⚠️ Webhook error, but we saved your details. Our team will reach out within 24h.';
           statusDiv.style.backgroundColor = '#7f1d1d';
           statusDiv.style.color = '#fecaca';
         }
@@ -385,29 +407,22 @@
     } catch (error) {
       console.error('Webhook fetch error:', error);
       if (statusDiv) {
-        statusDiv.innerHTML = '⚠️ Connection issue. Your details have been recorded. We will contact you within 24h.';
+        statusDiv.innerHTML = '⚠️ Connection issue. Your details have been recorded locally. We will contact you within 24h to complete your enrollment.';
         statusDiv.style.backgroundColor = '#7f1d1d';
         statusDiv.style.color = '#ffe0e0';
       }
     }
   }
 
-  // local storage fallback simulation + form validation
   const form = document.getElementById('leadForm');
   const submitBtn = document.getElementById('submitBtn');
-
-  // disable double submission
   let isSubmitting = false;
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    if (isSubmitting) {
-      // prevent multiple rapid submissions
-      return;
-    }
+    if (isSubmitting) return;
 
-    // get fields
     const nameInput = document.getElementById('name');
     const phoneInput = document.getElementById('phone');
     const countrySelect = document.getElementById('country');
@@ -420,7 +435,6 @@
     const email = emailInput.value.trim();
     const program = programField.value;
 
-    // basic validation
     if (!name) {
       alert('Please enter your full name.');
       nameInput.focus();
@@ -442,8 +456,7 @@
       return;
     }
 
-    // Additional tip: recommend payment first? but not mandatory, just helpful.
-    const confirmMsg = "Please ensure you have completed your payment via Square, PayPal, Bank Transfer or PayID before submitting.\n\nClick OK to continue registration.";
+    const confirmMsg = "IMPORTANT: Please ensure you have completed your $69 AUD payment via Square, PayPal, Bank Transfer, or PayID before submitting.\n\nClick OK to confirm payment done and complete registration.";
     if (!confirm(confirmMsg)) {
       return;
     }
@@ -452,53 +465,31 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Processing...';
 
-    // send to webhook (Activepieces → Telegram)
     await sendToTelegram(name, phone, country, email, program);
 
-    // also store locally for reference (user can see summary)
-    const leadRecord = {
-      name, phone, country, email, program,
-      submittedAt: new Date().toISOString()
-    };
+    // store locally for reference
     try {
-      localStorage.setItem('accessworld_lead', JSON.stringify(leadRecord));
-    } catch(e) { /* silent */ }
+      localStorage.setItem('accessworld_unlock_lead', JSON.stringify({
+        name, phone, country, email, program,
+        submittedAt: new Date().toISOString()
+      }));
+    } catch(e) {}
 
-    // reset button after delay, but keep success info
     setTimeout(() => {
       isSubmitting = false;
       submitBtn.disabled = false;
       submitBtn.textContent = '✓ Registration Sent!';
-      // reset after 2 seconds to original text
       setTimeout(() => {
         if (submitBtn) submitBtn.textContent = 'Complete Registration & Send Details';
-      }, 3000);
+      }, 3500);
     }, 1500);
-
-    // optionally clear sensitive form? not clearing to let user see data
-    // but we reset after a short period, but keep as is.
   });
 
-  // Additional ARIA + accessibility for buttons and links
-  const allLinks = document.querySelectorAll('.btn-link');
-  allLinks.forEach(link => {
+  // ARIA labels for accessibility
+  document.querySelectorAll('.btn-link').forEach(link => {
     link.setAttribute('aria-label', link.innerText.trim() + ' payment link');
   });
-  const submitButton = document.getElementById('submitBtn');
-  if (submitButton) {
-    submitButton.setAttribute('aria-label', 'Submit registration and send lead information to AccessWorld');
-  }
-
-  // Optional: print / page functionality not needed for payment page, but we keep robust
-
-  // if you want to prefill any demo? no, but we'll ensure webhook status area is properly styled
-  console.log('Payment page ready — Activepieces webhook integrated');
-
-  // Additional manual retry for failed webhook? Not needed, but we show status.
+  if (submitBtn) submitBtn.setAttribute('aria-label', 'Submit registration and send lead information to AccessWorld for Unlock Yourself program');
 </script>
-
-<!-- Additional note: all payment options are external links. Webhook only sends lead data.
-     Webhook URL is used exactly as defined, no token needed – Activepieces backend handles Telegram.
--->
 </body>
 </html>
