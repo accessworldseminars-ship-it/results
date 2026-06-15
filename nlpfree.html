@@ -1,0 +1,2430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREE NLP Challenge For Beginners | 90-Min Recorded Training with Joshua Roy</title>
+    <meta name="description" content="Join the FREE 90-minute NLP Challenge. Learn Neuro-Linguistic Programming tools to shift your state, break through comfort zones, and ignite lasting motivation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0f1a3d;
+            --secondary-blue: #1a2b5e;
+            --light-blue: #2d3b6b;
+            --accent-gold: #d4af37;
+            --accent-silver: #c0c0c0;
+            --text-light: #ffffff;
+            --text-gray: #e0e0e0;
+            --bg-dark: #050a1a;
+            --success: #22c55e;
+            --error: #ef4444;
+            --radius: 12px;
+            --shadow: 0 20px 40px rgba(0,0,0,0.4);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(5, 10, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 12px 0;
+            transition: var(--transition);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 48px;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+        }
+
+        .header-cta {
+            display: none;
+            background: linear-gradient(135deg, var(--accent-gold), #b8941f);
+            color: var(--primary-blue);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: var(--transition);
+        }
+
+        .header-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 140px 24px 100px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(26, 43, 94, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+                linear-gradient(180deg, rgba(5,10,26,0.97), rgba(15,26,61,0.95)),
+                url('https://i.ibb.co/TD40fb0M/Picture2.png');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .hero-content { position: relative; z-index: 2; max-width: 900px; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--accent-gold);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 28px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--text-gray);
+            margin-bottom: 16px;
+            font-weight: 500;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-description {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 650px;
+            margin: 0 auto 36px;
+            line-height: 1.8;
+        }
+
+        .recorded-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: var(--success);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 28px;
+        }
+
+        .recorded-badge i { animation: flash 1.5s infinite; }
+
+        /* Countdown */
+        .countdown-wrap {
+            background: rgba(26, 43, 94, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: var(--radius);
+            padding: 24px 32px;
+            margin-bottom: 32px;
+            display: inline-block;
+        }
+
+        .countdown-label {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .countdown-item {
+            text-align: center;
+            min-width: 70px;
+        }
+
+        .countdown-item .num {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-light);
+            line-height: 1;
+            display: block;
+        }
+
+        .countdown-item .label {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        .countdown-sep {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            line-height: 1.2;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--accent-gold), #b8941f);
+            color: var(--primary-blue);
+            padding: 18px 44px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg) translateY(-100%);
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-primary:hover::after {
+            transform: rotate(45deg) translateY(100%);
+            transition: 0.7s;
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--accent-gold);
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            border: 2px solid var(--accent-gold);
+            cursor: pointer;
+            transition: var(--transition);
+            margin-left: 16px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .limited-note {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        .limited-note i { margin-right: 6px; animation: flash 1.5s infinite; }
+
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 100px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-alt {
+            background: linear-gradient(180deg, var(--bg-dark), var(--primary-blue));
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            color: var(--accent-gold);
+            margin-bottom: 16px;
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .gold-line {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), transparent);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== VIDEO SECTION ===== */
+        .video-section {
+            background: linear-gradient(180deg, var(--primary-blue), var(--bg-dark));
+            padding: 100px 24px;
+        }
+
+        .video-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--radius);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            background: rgba(26, 43, 94, 0.3);
+        }
+
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+            border-radius: var(--radius);
+        }
+
+        .video-fallback {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(26, 43, 94, 0.6);
+            color: var(--text-gray);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .video-fallback i {
+            font-size: 4rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .video-fallback a {
+            color: var(--accent-gold);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .video-note {
+            margin-top: 20px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .video-note i { color: var(--success); }
+
+        /* ===== REGISTRATION FORM ===== */
+        .form-section {
+            background: linear-gradient(180deg, var(--bg-dark), var(--primary-blue));
+            padding: 100px 24px;
+        }
+
+        .form-inner {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-card {
+            background: rgba(26, 43, 94, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: var(--radius);
+            padding: 48px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), transparent);
+        }
+
+        .form-card h3 {
+            font-size: 1.6rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .form-card .form-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            margin-bottom: 32px;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group label i {
+            color: var(--accent-gold);
+            margin-right: 6px;
+            font-size: 0.8rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(15, 26, 61, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-group select option {
+            background: var(--primary-blue);
+            color: var(--text-light);
+        }
+
+        .form-status {
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-status.success {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: var(--success);
+            display: flex;
+        }
+
+        .form-status.error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: var(--error);
+            display: flex;
+        }
+
+        .form-status.loading {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--accent-gold);
+            display: flex;
+        }
+
+        .form-status i { font-size: 1.1rem; }
+
+        .privacy-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+            margin-top: 20px;
+        }
+
+        .privacy-note i { color: var(--success); margin-right: 6px; }
+
+        /* ===== CARDS ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .info-card {
+            background: rgba(26, 43, 94, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            padding: 40px 32px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: linear-gradient(180deg, var(--accent-gold), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .info-card:hover::before { opacity: 1; }
+
+        .info-card .icon-wrap {
+            width: 60px; height: 60px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .info-card .icon-wrap i {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        .info-card h3 {
+            color: var(--text-light);
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .info-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== STATE SHIFT ===== */
+        .state-shift {
+            background: linear-gradient(135deg, rgba(26, 43, 94, 0.5), rgba(15, 26, 61, 0.6));
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: var(--radius);
+            padding: 50px;
+            text-align: center;
+        }
+
+        .state-shift h3 {
+            font-size: 1.8rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .state-shift h3 span { color: var(--accent-gold); }
+
+        .shift-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .shift-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(5, 10, 26, 0.4);
+            padding: 20px 28px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .shift-item .from {
+            font-size: 1.3rem;
+            opacity: 0.6;
+        }
+
+        .shift-item .arrow {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
+
+        .shift-item .to {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        /* ===== HOST ===== */
+        .host-section { background: var(--bg-dark); }
+
+        .host-inner {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .host-img-wrap {
+            position: relative;
+        }
+
+        .host-img {
+            width: 100%;
+            border-radius: var(--radius);
+            border: 3px solid var(--accent-gold);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
+            position: relative;
+            z-index: 2;
+        }
+
+        .host-img-wrap::before {
+            content: '';
+            position: absolute;
+            inset: -15px;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: calc(var(--radius) + 4px);
+            z-index: 1;
+        }
+
+        .host-content h2 {
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+        }
+
+        .host-role {
+            color: var(--accent-silver);
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .host-content p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .host-help {
+            margin-top: 28px;
+        }
+
+        .host-help h4 {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .help-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .help-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .help-item i { color: var(--accent-gold); font-size: 0.9rem; }
+
+        /* ===== OFFER BAR ===== */
+        .offer-bar {
+            background: linear-gradient(135deg, var(--secondary-blue), var(--light-blue));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: var(--radius);
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-bar::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .offer-content { position: relative; z-index: 2; }
+
+        .value-stack {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+
+        .value-old {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.4);
+            text-decoration: line-through;
+            text-decoration-color: var(--accent-gold);
+        }
+
+        .value-arrow {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+        }
+
+        .value-new {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .urgency-text {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 28px;
+            line-height: 1.8;
+        }
+
+        .urgency-text strong { color: var(--accent-gold); }
+
+        /* ===== FAQ ===== */
+        .faq-item {
+            background: rgba(26, 43, 94, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(212, 175, 55, 0.15);
+        }
+
+        .faq-question {
+            padding: 24px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--text-light);
+            font-size: 1.05rem;
+            gap: 16px;
+        }
+
+        .faq-question i {
+            color: var(--accent-gold);
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
+
+        .faq-answer {
+            padding: 0 28px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 28px 24px;
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* ===== FINAL CTA ===== */
+        .final-cta {
+            background: linear-gradient(180deg, var(--primary-blue), var(--bg-dark));
+            padding: 100px 24px;
+            text-align: center;
+        }
+
+        .final-cta-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .final-cta h2 span { color: var(--accent-gold); }
+
+        .final-cta > div > p {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        /* ===== FLOATING CTA (MOBILE) ===== */
+        .floating-cta {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: rgba(5, 10, 26, 0.98);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            z-index: 999;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .floating-cta.visible { transform: translateY(0); }
+
+        .floating-cta .btn-primary {
+            padding: 14px 32px;
+            font-size: 0.95rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--bg-dark);
+            padding: 50px 24px 100px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        .footer p {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.9rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header-cta { display: inline-flex; }
+            .hero { padding: 120px 20px 80px; }
+            .btn-secondary { margin-left: 0; margin-top: 12px; }
+            .countdown-item { min-width: 55px; }
+            .countdown-item .num { font-size: 1.6rem; }
+            .section { padding: 70px 20px; }
+            .video-section { padding: 70px 20px; }
+            .form-section { padding: 70px 20px; }
+            .form-card { padding: 32px 24px; }
+            .state-shift { padding: 32px 24px; }
+            .shift-item { padding: 14px 20px; }
+            .shift-item .from, .shift-item .to { font-size: 1.1rem; }
+            .host-inner { grid-template-columns: 1fr; text-align: center; }
+            .host-img-wrap { max-width: 280px; margin: 0 auto; }
+            .help-list { grid-template-columns: 1fr; text-align: left; max-width: 400px; margin: 0 auto; }
+            .offer-bar { padding: 40px 24px; }
+            .value-new { font-size: 2rem; }
+            .faq-question { padding: 20px; font-size: 0.95rem; }
+            .floating-cta { display: flex; }
+        }
+
+        @media (min-width: 769px) {
+            .floating-cta { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .countdown { gap: 10px; }
+            .countdown-item { min-width: 50px; }
+            .countdown-item .num { font-size: 1.4rem; }
+            .countdown-sep { font-size: 1.4rem; }
+            .shift-grid { gap: 16px; }
+            .shift-item { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <img src="https://i.ibb.co/spJSMY16/worldjjpgsf.png" alt="AccessWorld Seminars" class="logo">
+            <a href="#register" class="header-cta"><i class="fas fa-play-circle"></i> Watch Free Now</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="recorded-badge"><i class="fas fa-circle"></i> INSTANT ACCESS — Recorded Training</div>
+            <h1>NLP For Beginners:<br>Your Transformation Starts Here</h1>
+            <p class="hero-subtitle">Learn Neuro-Linguistic Programming tools to shift your state, break through your comfort zone, and ignite lasting motivation.</p>
+            <p class="hero-description">Join master coach Joshua Roy for a transformational 90-minute recorded experience. Watch instantly on any device — no waiting, no scheduling conflicts.</p>
+
+            <div class="countdown-wrap">
+                <div class="countdown-label"><i class="fas fa-gift"></i> Free Access Expires In:</div>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item"><span class="num" id="days">02</span><span class="label">Days</span></div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-item"><span class="num" id="hours">14</span><span class="label">Hours</span></div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-item"><span class="num" id="minutes">36</span><span class="label">Mins</span></div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-item"><span class="num" id="seconds">48</span><span class="label">Secs</span></div>
+                </div>
+            </div>
+
+            <div>
+                <a href="#register" class="btn-primary"><i class="fas fa-play-circle"></i> Get Instant Access — FREE</a>
+                <a href="#what-is" class="btn-secondary">Learn More</a>
+            </div>
+            <div class="limited-note"><i class="fas fa-fire"></i> LIMITED TIME — FREE ACCESS WON'T LAST</div>
+        </div>
+    </section>
+
+    <!-- What is NLP -->
+    <section class="section section-alt" id="what-is">
+        <div class="section-title reveal">
+            <h2>What Is NLP?</h2>
+            <div class="gold-line"></div>
+        </div>
+        <div class="nlp-box reveal">
+            <h3><i class="fas fa-brain"></i> Neuro-Linguistic Programming</h3>
+            <p>NLP is the study of how we use language (both verbal and internal) and mental patterns to shape our experiences, habits, and results in life. Developed in the 1970s by Richard Bandler and John Grinder, NLP offers a series of models and techniques that allow you to update the unconscious programs that drive your behaviors — just like upgrading the software in your computer or phone.</p>
+            <p style="font-weight: 600; color: var(--text-light);">In simple terms, NLP gives you the <span style="color: var(--accent-gold);">manual for your mind</span>.</p>
+            <div class="benefit-grid">
+                <div class="benefit-item"><i class="fas fa-check-circle"></i> Reprogram limiting beliefs</div>
+                <div class="benefit-item"><i class="fas fa-check-circle"></i> Shift emotional states quickly</div>
+                <div class="benefit-item"><i class="fas fa-check-circle"></i> Build confidence and clarity</div>
+                <div class="benefit-item"><i class="fas fa-check-circle"></i> Communicate better with yourself and others</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section" id="video">
+        <div class="video-inner">
+            <div class="section-title reveal">
+                <h2>Watch The Full Training Now</h2>
+                <p>Enter your details below to unlock instant access to the complete 90-minute recorded session.</p>
+                <div class="gold-line"></div>
+            </div>
+            <div class="video-container reveal" id="videoContainer">
+                <!-- Video loads here after form submission -->
+                <div class="video-fallback" id="videoPlaceholder">
+                    <i class="fas fa-lock"></i>
+                    <h3 style="color: var(--text-light); margin-bottom: 12px; font-size: 1.4rem;">Video Locked</h3>
+                    <p>Complete the free registration form below to unlock instant access to this training.</p>
+                </div>
+            </div>
+            <div class="video-note reveal">
+                <i class="fas fa-mobile-alt"></i>
+            display: inline-block;
+        }
+
+        .countdown-label {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .countdown-item {
+            text-align: center;
+            min-width: 70px;
+        }
+
+        .countdown-item .num {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-light);
+            line-height: 1;
+            display: block;
+        }
+
+        .countdown-item .label {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        .countdown-sep {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            line-height: 1.2;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--accent-gold), #b8941f);
+            color: var(--primary-blue);
+            padding: 18px 44px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg) translateY(-100%);
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-primary:hover::after {
+            transform: rotate(45deg) translateY(100%);
+            transition: 0.7s;
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--accent-gold);
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            border: 2px solid var(--accent-gold);
+            cursor: pointer;
+            transition: var(--transition);
+            margin-left: 16px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-gold);
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .limited-note {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        .limited-note i { margin-right: 6px; animation: flash 1.5s infinite; }
+
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 100px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-alt {
+            background: linear-gradient(180deg, var(--bg-dark), var(--primary-blue));
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            color: var(--accent-gold);
+            margin-bottom: 16px;
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .gold-line {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), transparent);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== VIDEO SECTION ===== */
+        .video-section {
+            background: linear-gradient(180deg, var(--primary-blue), var(--bg-dark));
+            padding: 100px 24px;
+        }
+
+        .video-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--radius);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            background: rgba(26, 43, 94, 0.3);
+        }
+
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+            border-radius: var(--radius);
+        }
+
+        .video-fallback {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(26, 43, 94, 0.6);
+            color: var(--text-gray);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .video-fallback i {
+            font-size: 4rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .video-fallback a {
+            color: var(--accent-gold);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .video-note {
+            margin-top: 20px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .video-note i { color: var(--success); }
+
+        /* ===== REGISTRATION FORM ===== */
+        .form-section {
+            background: linear-gradient(180deg, var(--bg-dark), var(--primary-blue));
+            padding: 100px 24px;
+        }
+
+        .form-inner {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-card {
+            background: rgba(26, 43, 94, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: var(--radius);
+            padding: 48px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), transparent);
+        }
+
+        .form-card h3 {
+            font-size: 1.6rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .form-card .form-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            margin-bottom: 32px;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group label i {
+            color: var(--accent-gold);
+            margin-right: 6px;
+            font-size: 0.8rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(15, 26, 61, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-group select option {
+            background: var(--primary-blue);
+            color: var(--text-light);
+        }
+
+        .form-status {
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-status.success {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: var(--success);
+            display: flex;
+        }
+
+        .form-status.error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: var(--error);
+            display: flex;
+        }
+
+        .form-status.loading {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--accent-gold);
+            display: flex;
+        }
+
+        .form-status i { font-size: 1.1rem; }
+
+        .privacy-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+            margin-top: 20px;
+        }
+
+        .privacy-note i { color: var(--success); margin-right: 6px; }
+
+        /* ===== CARDS ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .info-card {
+            background: rgba(26, 43, 94, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            padding: 40px 32px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: linear-gradient(180deg, var(--accent-gold), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .info-card:hover::before { opacity: 1; }
+
+        .info-card .icon-wrap {
+            width: 60px; height: 60px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .info-card .icon-wrap i {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        .info-card h3 {
+            color: var(--text-light);
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .info-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== STATE SHIFT ===== */
+        .state-shift {
+            background: linear-gradient(135deg, rgba(26, 43, 94, 0.5), rgba(15, 26, 61, 0.6));
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: var(--radius);
+            padding: 50px;
+            text-align: center;
+        }
+
+        .state-shift h3 {
+            font-size: 1.8rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .state-shift h3 span { color: var(--accent-gold); }
+
+        .shift-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .shift-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(5, 10, 26, 0.4);
+            padding: 20px 28px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .shift-item .from {
+            font-size: 1.3rem;
+            opacity: 0.6;
+        }
+
+        .shift-item .arrow {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
+
+        .shift-item .to {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        /* ===== HOST ===== */
+        .host-section { background: var(--bg-dark); }
+
+        .host-inner {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .host-img-wrap {
+            position: relative;
+        }
+
+        .host-img {
+            width: 100%;
+            border-radius: var(--radius);
+            border: 3px solid var(--accent-gold);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
+            position: relative;
+            z-index: 2;
+        }
+
+        .host-img-wrap::before {
+            content: '';
+            position: absolute;
+            inset: -15px;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: calc(var(--radius) + 4px);
+            z-index: 1;
+        }
+
+        .host-content h2 {
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+        }
+
+        .host-role {
+            color: var(--accent-silver);
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .host-content p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .host-help {
+            margin-top: 28px;
+        }
+
+        .host-help h4 {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .help-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .help-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .help-item i { color: var(--accent-gold); font-size: 0.9rem; }
+
+        /* ===== OFFER BAR ===== */
+        .offer-bar {
+            background: linear-gradient(135deg, var(--secondary-blue), var(--light-blue));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: var(--radius);
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-bar::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .offer-content { position: relative; z-index: 2; }
+
+        .value-stack {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+
+        .value-old {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.4);
+            text-decoration: line-through;
+            text-decoration-color: var(--accent-gold);
+        }
+
+        .value-arrow {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+        }
+
+        .value-new {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .urgency-text {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 28px;
+            line-height: 1.8;
+        }
+
+        .urgency-text strong { color: var(--accent-gold); }
+
+        /* ===== FAQ ===== */
+        .faq-item {
+            background: rgba(26, 43, 94, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(212, 175, 55, 0.15);
+        }
+
+        .faq-question {
+            padding: 24px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--text-light);
+            font-size: 1.05rem;
+            gap: 16px;
+        }
+
+        .faq-question i {
+            color: var(--accent-gold);
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
+
+        .faq-answer {
+            padding: 0 28px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 28px 24px;
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* ===== FINAL CTA ===== */
+        .final-cta {
+            background: linear-gradient(180deg, var(--primary-blue), var(--bg-dark));
+            padding: 100px 24px;
+            text-align: center;
+        }
+
+        .final-cta-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .final-cta h2 span { color: var(--accent-gold); }
+
+        .final-cta > div > p {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        /* ===== FLOATING CTA (MOBILE) ===== */
+        .floating-cta {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: rgba(5, 10, 26, 0.98);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            z-index: 999;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .floating-cta.visible { transform: translateY(0); }
+
+        .floating-cta .btn-primary {
+            padding: 14px 32px;
+            font-size: 0.95rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--bg-dark);
+            padding: 50px 24px 100px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        .footer p {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.9rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header-cta { display: inline-flex; }
+            .hero { padding: 120px 20px 80px; }
+            .btn-secondary { margin-left: 0; margin-top: 12px; }
+            .countdown-item { min-width: 55px; }
+            .countdown-item .num { font-size: 1.6rem; }
+            .section { padding: 70px 20px; }
+            .video-section { padding: 70px 20px; }
+            .form-section { padding: 70px 20px; }
+            .form-card { padding: 32px 24px; }
+            .state-shift { padding: 32px 24px; }
+            .shift-item { padding: 14px 20px; }
+            .shift-item .from, .shift-item .to { font-size: 1.1rem; }
+            .host-inner { grid-template-columns: 1fr; text-align: center; }
+            .host-img-wrap { max-width: 280px; margin: 0 auto; }
+            .help-list { grid-template-columns: 1fr; text-align: left; max-width: 400px; margin: 0 auto; }
+            .offer-bar { padding: 40px 24px; }
+            .value-new { font-size: 2rem; }
+            .faq-question { padding: 20px; font-size: 0.95rem; }
+            .floating-cta { display: flex; }
+        }
+
+        @media (min-width: 769px) {
+            .floating-cta { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .countdown { gap: 10px; }
+            .countdown-item { min-width: 50px; }
+            .countdown-item .num { font-size: 1.4rem; }
+            .countdown-sep { font-size: 1.4rem; }
+            .shift-grid { gap: 16px; }
+            .shift-item { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <img src="https://i.ibb.co/spJSMY16/worldjjpgsf.png" alt="AccessWorld Seminars" class="logo">
+            <a href="#register" class="header-cta"><i class="fas fa-play-circle"></i> Watch Free Now</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="recorded-badge"><i class="fas fa-circle"></i> INSTANT ACCESS — Recorded Training</div>
+            <h1>NLP For Beginners:<br>Your Transformation Starts Here</h1>
+            <p class="hero-subtitle">Learn Neuro-Linguistic Programming tools to shift your state, break through your comfort zone, and ignite lasting motivation.</p>
+            <p class="hero-description">Join master coach Joshua Roy for a transformational 90-minute recorded experience. Watch instantly on any device — no waiting, no scheduling conflicts.</p>
+
+            <div class="countdown-wrap">
+                <div class="countdown-label"><i class="fas fa-gift"></i> Free Access Expires In:</div>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item"><span class="num" id="days">02</span><span class="label">Days</span></div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-item"><span class="num" id="hours">14</span><span class="label">Hours</span></div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-item"><span class="num" id="minutes">36</span><span class="label">Mins</span></div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-item"><span class="num" id="seconds">48</span><span class="label">Secs</span></div>
+                </div>
+            </div>
+
+            <div>
+                <a href="#register" class="btn-primary"><i class="fas fa-play-circle"></i> Get Instant Access — FREE</a>
+                <a href="#what-is" class="btn-secondary">Learn More</a>
+            </div>
+            <div class="limited-note"><i class="fas fa-fire"></i> LIMITED TIME — FREE ACCESS WON'T LAST</div>
+        </div>
+    </section>
+
+    <!-- What is NLP -->
+    <section class="section section-alt" id="what-is">
+        <div class="section-title reveal">
+            <h2>What Is NLP?</h2>
+            <div class="gold-line"></div>
+        </div>
+        <div class="nlp-box reveal">
+            <h3><i class="fas fa-brain"></i> Neuro-Linguistic Programming</h3>
+            <p>NLP is the study of how we use language (both verbal and internal) and mental patterns to shape our experiences, habits, and results in life. Developed in the 1970s by Richard Bandler and John Grinder, NLP offers a series of models and techniques that allow you to update the unconscious programs that drive your behaviors — just like upgrading the software in your computer or phone.</p>
+            <p style="font-weight: 600; color: var(--text-light);">In simple terms, NLP gives you the <span style="color: var(--accent-gold);">manual for your mind</span>.</p>
+            <div class="benefit-grid">
+                <div class="benefit-item"><i class="fas fa-check-circle"></i> Reprogram limiting beliefs</div>
+                <div class="benefit-item"><i class="fas fa-check-circle"></i> Shift emotional states quickly</div>
+                <div class="benefit-item"><i class="fas fa-check-circle"></i> Build confidence and clarity</div>
+                <div class="benefit-item"><i class="fas fa-check-circle"></i> Communicate better with yourself and others</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section" id="video">
+        <div class="video-inner">
+            <div class="section-title reveal">
+                <h2>Watch The Full Training Now</h2>
+                <p>Enter your details below to unlock instant access to the complete 90-minute recorded session.</p>
+                <div class="gold-line"></div>
+            </div>
+            <div class="video-container reveal" id="videoContainer">
+                <!-- Video loads here after form submission -->
+                <div class="video-fallback" id="videoPlaceholder">
+                    <i class="fas fa-lock"></i>
+                    <h3 style="color: var(--text-light); margin-bottom: 12px; font-size: 1.4rem;">Video Locked</h3>
+                    <p>Complete the free registration form below to unlock instant access to this training.</p>
+                </div>
+            </div>
+            <div class="video-note reveal">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Works on all devices — desktop, tablet, and mobile</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section class="form-section" id="register">
+        <div class="form-inner">
+            <div class="form-card reveal">
+                <h3><i class="fas fa-unlock-alt" style="color: var(--accent-gold);"></i> Unlock Free Access</h3>
+                <p class="form-subtitle">Enter your details below. No credit card required.</p>
+
+                <div class="form-status" id="formStatus">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span id="statusText">Processing...</span>
+                </div>
+
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Full Name</label>
+                        <input type="text" name="name" id="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email Address</label>
+                        <input type="email" name="email" id="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Phone Number</label>
+                        <input type="tel" name="phone" id="phone" placeholder="+61 412 345 678" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-globe"></i> Country</label>
+                        <select name="country" id="country" required>
+                            <option value="" disabled selected>Select your country</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Ireland">Ireland</option>
+                            <option value="New Zealand">New Zealand</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="United States">United States</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary" id="submitBtn" style="width: 100%; justify-content: center;">
+                        <i class="fas fa-play-circle"></i> Unlock My Free Access Now
+                    </button>
+                </form>
+
+                <p class="privacy-note">
+                    <i class="fas fa-shield-alt"></i> Your information is secure. We never spam or share your details.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You'll Learn -->
+    <section class="section">
+        <div class="section-title reveal">
+            <h2>What You'll Learn During The FREE Challenge</h2>
+            <p>This isn't just a lecture. This is a hands-on experience designed to give you real tools you can use immediately.</p>
+            <div class="gold-line"></div>
+        </div>
+        <div class="cards-grid">
+            <div class="info-card reveal">
+                <div class="icon-wrap"><i class="fas fa-magic"></i></div>
+                <h3>Try an NLP Technique — LIVE</h3>
+                <p>Joshua will guide you through a real NLP technique that you can use immediately to feel more focused, confident, and in control. Experience what transformation actually feels like.</p>
+            </div>
+            <div class="info-card reveal">
+                <div class="icon-wrap"><i class="fas fa-sliders-h"></i></div>
+                <h3>Master State Management</h3>
+                <p>One of the foundations of NLP is the ability to choose how you feel, no matter the situation. Learn tools to manage your emotions and build a foundation for lasting growth.</p>
+            </div>
+            <div class="info-card reveal">
+                <div class="icon-wrap"><i class="fas fa-door-open"></i></div>
+                <h3>Break Through Your Comfort Zone</h3>
+                <p>If you're feeling stuck, procrastinating, or held back by fear — NLP has a tool for that. Get a practical method to move forward, even on the tough days.</p>
+            </div>
+            <div class="info-card reveal">
+                <div class="icon-wrap"><i class="fas fa-fire-alt"></i></div>
+                <h3>Ignite Lasting Motivation</h3>
+                <p>Discover why motivation fades and how to create sustainable drive from within. No more relying on willpower alone.</p>
+            </div>
+            <div class="info-card reveal">
+                <div class="icon-wrap"><i class="fas fa-comments"></i></div>
+                <h3>Upgrade Your Internal Dialogue</h3>
+                <p>Learn how the language you use with yourself shapes your reality — and how to change it to produce empowering results.</p>
+            </div>
+            <div class="info-card reveal">
+                <div class="icon-wrap"><i class="fas fa-seedling"></i></div>
+                <h3>Build a Base for Personal Growth</h3>
+                <p>These tools form the foundation for your personal development journey. State management is fundamental to everything else you want to achieve.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- State Shift -->
+    <section class="section section-alt">
+        <div class="section-title reveal">
+            <h2>Imagine Being Able to Shift Your State at Will</h2>
+            <p>One of the foundations of NLP is state management — the ability to choose how you feel, no matter the situation.</p>
+            <div class="gold-line"></div>
+        </div>
+        <div class="state-shift reveal">
+            <h3>Go From <span>Stuck</span> to <span>Empowered</span>:</h3>
+            <div class="shift-grid">
+                <div class="shift-item"><span class="from">😰 Anxiety</span><span class="arrow"><i class="fas fa-long-arrow-alt-right"></i></span><span class="to">Calm</span></div>
+                <div class="shift-item"><span class="from">😞 Low Energy</span><span class="arrow"><i class="fas fa-long-arrow-alt-right"></i></span><span class="to">Motivation</span></div>
+                <div class="shift-item"><span class="from">😨 Fear</span><span class="arrow"><i class="fas fa-long-arrow-alt-right"></i></span><span class="to">Confidence</span></div>
+            </div>
+            <a href="#register" class="btn-primary"><i class="fas fa-play-circle"></i> I Want This — Get Access Now</a>
+        </div>
+    </section>
+
+    <!-- Struggle Section -->
+    <section class="section">
+        <div class="section-title reveal">
+            <h2>Struggle with Motivation or Leaving Your Comfort Zone?</h2>
+            <p>If you're feeling stuck, procrastinating, or held back by fear... you're not alone. The good news? NLP has a tool for that.</p>
+            <div class="gold-line"></div>
+        </div>
+        <div class="cards-grid">
+            <div class="info-card reveal">
+                <div class="icon-wrap"><i class="fas fa-mountain"></i></div>
+                <h3>Break Through Old Patterns</h3>
+                <p>Identify the unconscious loops keeping you stuck and learn how to interrupt them with precision.</p>
+            </div>
+            <div class="info-card reveal">
+                <div class="icon-wrap"><i class="fas fa-walking"></i></div>
+                <h3>Step Outside Your Comfort Zone</h3>
+                <p>Discover why your comfort zone expands when you take action — and how to make that action effortless.</p>
+            </div>
+            <div class="info-card reveal">
+                <div class="icon-wrap"><i class="fas fa-rocket"></i></div>
+                <h3>Ignite Lasting Motivation</h3>
+                <p>Move from short bursts of inspiration to sustainable, daily momentum that compounds over time.</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px;" class="reveal">
+            <a href="#register" class="btn-primary"><i class="fas fa-play-circle"></i> Get Instant Access — FREE</a>
+            <p class="limited-note" style="margin-top: 16px;"><i class="fas fa-fire"></i> LIMITED TIME — FREE ACCESS WON'T LAST</p>
+        </div>
+    </section>
+
+    <!-- Host -->
+    <section class="section host-section">
+        <div class="host-inner reveal">
+            <div class="host-img-wrap">
+                <img src="https://i.ibb.co/p6V5HvcK/Screenshot-2025-11-11-122952.png" alt="Joshua Roy" class="host-img">
+            </div>
+            <div class="host-content">
+                <h2>Your Host: Joshua Roy</h2>
+                <span class="host-role">Life & Results Coach | Neuro Transformation Therapist</span>
+                <p>Joshua lives in Brisbane, Queensland with his wife Rebecca and their five children. He served 22 years in the Queensland Police Service, achieving the rank of Sergeant.</p>
+                <p>As a teenager, Joshua overcame a significant stutter using affirmations and mindset work — an experience that became the foundation for his life's work. At just 16, he became an Australian Karate Champion.</p>
+                <p>Today, Joshua has conducted <strong style="color: var(--accent-gold);">3,500+ one-on-one coaching sessions</strong> and delivered <strong style="color: var(--accent-gold);">900+ live seminars</strong>. His commitment is to create an atmosphere that inspires real transformation and produces REAL WORLD RESULTS.</p>
+                <div class="host-help">
+                    <h4>Joshua Can Help You:</h4>
+                    <div class="help-list">
+                        <div class="help-item"><i class="fas fa-check"></i> Heal Your Inner Child</div>
+                        <div class="help-item"><i class="fas fa-check"></i> Attract Deep, Meaningful Relationships</div>
+                        <div class="help-item"><i class="fas fa-check"></i> Achieve Vibrant Health & Emotional Balance</div>
+                        <div class="help-item"><i class="fas fa-check"></i> Find Lasting Motivation & Fulfillment</div>
+                        <div class="help-item"><i class="fas fa-check"></i> Create Personal & Professional Success</div>
+                        <div class="help-item"><i class="fas fa-check"></i> Reprogram Your Nervous System</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offer / Registration -->
+    <section class="section" id="offer">
+        <div class="offer-bar reveal">
+            <div class="offer-content">
+                <div class="section-title" style="margin-bottom: 30px;">
+                    <h2>Your Chance To Learn NLP — FREE</h2>
+                    <p>Using the tools of NLP is fun and rewarding... <strong style="color: var(--text-light);">WILL YOU DO IT?!</strong></p>
+                </div>
+                <div class="value-stack">
+                    <div class="value-old">TOTAL VALUE: $197</div>
+                    <div class="value-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="value-new">TODAY: FREE!</div>
+                </div>
+                <p class="urgency-text">
+                    You are not getting any younger. Now is the time to take action. Because waiting keeps you stuck in the same cycle. <strong>Your future self is begging you to say yes today.</strong>
+                </p>
+                <a href="#register" class="btn-primary" style="font-size: 1.15rem; padding: 20px 50px;">
+                    <i class="fas fa-play-circle"></i> YES! SIGN ME UP TODAY FOR FREE
+                </a>
+                <div class="countdown-wrap" style="margin-top: 32px; margin-bottom: 0;">
+                    <div class="countdown-label" style="margin-bottom: 8px;"><i class="fas fa-clock"></i> Offer Expires In:</div>
+                    <div class="countdown" id="countdown2">
+                        <div class="countdown-item"><span class="num" id="days2">02</span><span class="label">Days</span></div>
+                        <div class="countdown-sep">:</div>
+                        <div class="countdown-item"><span class="num" id="hours2">14</span><span class="label">Hours</span></div>
+                        <div class="countdown-sep">:</div>
+                        <div class="countdown-item"><span class="num" id="minutes2">36</span><span class="label">Mins</span></div>
+                        <div class="countdown-sep">:</div>
+                        <div class="countdown-item"><span class="num" id="seconds2">48</span><span class="label">Secs</span></div>
+                    </div>
+                </div>
+                <p class="limited-note" style="margin-top: 20px;"><i class="fas fa-fire"></i> ACT FAST — LIMITED SLOTS AVAILABLE</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt">
+        <div class="section-title reveal">
+            <h2>Frequently Asked Questions</h2>
+            <div class="gold-line"></div>
+        </div>
+        <div class="reveal">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Why are your events on Zoom instead of in person?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Because we want to make life-changing personal development work accessible to as many people as possible — without the added cost of travel, accommodation, or time off work. Zoom allows us to connect globally and keep the focus on transformation, not logistics.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Are your Zoom events as effective as live, in-person ones?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely. These sessions are designed to be highly interactive, using tools like breakout rooms, live exercises, and Q&A to ensure real breakthroughs happen — even through a screen.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Why are some events free? What's the catch?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>There's no catch. We follow the freemium model: we offer high-value free events to give people real results upfront. If they love the experience and want to go deeper, we offer premium programs with personalized coaching and ongoing support.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Will I still get personal attention in a virtual setting?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes. Even in larger events, we create moments for individual coaching, small-group sharing, and live interaction so you feel seen, heard, and supported.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>How long are your Zoom events, and do I need to attend the whole thing?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Most events are 60 to 90 minutes and structured to deliver maximum value in that time. We encourage full participation, but you'll benefit even if you can only attend part of it.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>What if I can't make the live event — will there be a recording?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Sometimes, yes — but live attendance is always more powerful because you get to participate, ask questions, and experience the energy in real time. If a replay is available, we'll let you know in advance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="final-cta-inner reveal">
+            <h2>Don't Wait. <span>Your Transformation Starts Now.</span></h2>
+            <p>Opportunities like this don't wait, and neither should you. Join the FREE 90-minute NLP Challenge and discover the tools to take control of your mind, your emotions, and your future.</p>
+            <a href="#register" class="btn-primary" style="font-size: 1.2rem; padding: 20px 56px;">
+                <i class="fas fa-play-circle"></i> Click Here To Get Free Access Now
+            </a>
+            <p class="limited-note" style="margin-top: 24px;"><i class="fas fa-fire"></i> LIMITED TIME — FREE ACCESS WON'T LAST</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <img src="https://i.ibb.co/spJSMY16/worldjjpgsf.png" alt="AccessWorld Seminars" class="footer-logo">
+        <p>© 2026 AccessWorld Seminars. Transformative Coaching & Training Programs.</p>
+        <p style="margin-top: 8px;">All prices in AUD (Australian Dollars) where applicable.</p>
+    </footer>
+
+    <!-- Floating Mobile CTA -->
+    <div class="floating-cta" id="floatingCta">
+        <a href="#register" class="btn-primary"><i class="fas fa-play-circle"></i> Get Free Access</a>
+    </div>
+
+    <script>
+        // ===== WEBHOOK CONFIG =====
+        const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+        const VIDEO_URL = 'https://drive.google.com/file/d/1Ly91ugQ3EAZ1SR4OxSIrsz9h6fY42WXe/preview';
+
+        // ===== COUNTDOWN TIMER =====
+        const eventDate = new Date();
+        eventDate.setDate(eventDate.getDate() + 3);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance < 0) {
+                document.querySelectorAll('.num').forEach(el => el.textContent = '00');
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            document.getElementById('days2').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours2').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes2').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds2').textContent = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // ===== FORM SUBMISSION =====
+        const form = document.getElementById('registrationForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formStatus = document.getElementById('formStatus');
+        const statusText = document.getElementById('statusText');
+        const videoContainer = document.getElementById('videoContainer');
+        const videoPlaceholder = document.getElementById('videoPlaceholder');
+
+        function showStatus(type, message) {
+            formStatus.className = 'form-status ' + type;
+            const icon = type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-spinner fa-spin';
+            formStatus.innerHTML = `<i class="fas ${icon}"></i><span>${message}</span>`;
+        }
+
+        function loadVideo() {
+            videoContainer.innerHTML = `
+                <iframe 
+                    src="${VIDEO_URL}" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen>
+                </iframe>
+            `;
+            // Scroll to video
+            document.getElementById('video').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Gather data
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                country: document.getElementById('country').value,
+                program: 'NLP For Beginners - FREE Challenge',
+                amount: '$0 AUD',
+                payment_method: 'free_registration',
+                timestamp: new Date().toISOString()
+            };
+
+            // Disable button
+            submitBtn.disabled = true;
+            showStatus('loading', 'Unlocking your access...');
+
+            try {
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    showStatus('success', 'Success! Your access is unlocked. Loading video...');
+                    setTimeout(() => {
+                        loadVideo();
+                        formStatus.style.display = 'none';
+                        form.style.display = 'none';
+                        document.querySelector('.form-subtitle').textContent = 'Your video is ready below!';
+                        document.querySelector('.form-subtitle').style.color = 'var(--success)';
+                        document.querySelector('.form-subtitle').style.fontWeight = '600';
+                    }, 1500);
+                } else {
+                    throw new Error('Server error');
+                }
+            } catch (error) {
+                showStatus('error', 'Something went wrong. Please try again or contact support.');
+                submitBtn.disabled = false;
+                console.error('Webhook error:', error);
+            }
+        });
+
+        // ===== FAQ TOGGLE =====
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const wasActive = item.classList.contains('active');
+            
+            document.querySelectorAll('.faq-item').forEach(faq => faq.classList.remove('active'));
+            
+            if (!wasActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // ===== SCROLL REVEAL =====
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ===== FLOATING CTA =====
+        const floatingCta = document.getElementById('floatingCta');
+        const registerSection = document.getElementById('register');
+        const header = document.getElementById('header');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const registerTop = registerSection.offsetTop - window.innerHeight;
+            
+            if (scrollY > 600 && scrollY < registerTop) {
+                floatingCta.classList.add('visible');
+            } else {
+                floatingCta.classList.remove('visible');
+            }
+
+            if (scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
