@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unlock Your Incredible Self | AccessWorld Seminars</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Montserrat',sans-serif; background:linear-gradient(135deg,#080d18 0%,#1A2744 100%); min-height:100vh; display:flex; justify-content:center; align-items:center; padding:20px; }
+        .container { max-width:580px; width:100%; background:rgba(255,255,255,0.05); backdrop-filter:blur(10px); border-radius:24px; padding:40px 30px; border:1px solid rgba(201,168,76,0.25); box-shadow:0 20px 60px rgba(0,0,0,0.6); }
+        .logo { text-align:center; margin-bottom:24px; }
+        .logo img { max-width:160px; height:auto; }
+        .badge { display:inline-block; background:rgba(201,168,76,0.15); color:#C9A84C; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; padding:6px 16px; border-radius:100px; border:1px solid rgba(201,168,76,0.3); margin-bottom:16px; }
+        h1 { font-family:'Cormorant Garamond',serif; font-weight:700; font-size:34px; color:#ffffff; text-align:center; line-height:1.2; margin-bottom:8px; }
+        h1 span { color:#C9A84C; }
+        .price { text-align:center; font-size:48px; font-weight:600; color:#C9A84C; font-family:'Cormorant Garamond',serif; margin:8px 0 4px; }
+        .price-sub { text-align:center; font-size:14px; color:rgba(255,255,255,0.5); font-weight:300; margin-bottom:20px; }
+        .description { text-align:center; color:rgba(255,255,255,0.75); font-size:15px; line-height:1.7; font-weight:300; margin-bottom:28px; padding:0 10px; }
+        .divider { width:60px; height:2px; background:#C9A84C; margin:0 auto 28px; opacity:0.5; }
+        .form-group { margin-bottom:16px; }
+        .form-group label { display:block; font-size:12px; font-weight:500; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:1px; margin-bottom:5px; }
+        .form-group input, .form-group select { width:100%; padding:14px 16px; border-radius:12px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.06); color:#ffffff; font-size:15px; font-family:'Montserrat',sans-serif; transition:border-color 0.3s; outline:none; }
+        .form-group input:focus, .form-group select:focus { border-color:#C9A84C; background:rgba(255,255,255,0.08); }
+        .form-group select option { background:#1A2744; color:#fff; }
+        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+        .payment-methods { margin:24px 0 20px; }
+        .payment-methods h3 { font-size:13px; font-weight:500; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:1.5px; text-align:center; margin-bottom:16px; }
+        .payment-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+        .payment-item { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:14px 12px; text-align:center; transition:all 0.3s; cursor:pointer; text-decoration:none; display:block; }
+        .payment-item:hover { background:rgba(201,168,76,0.08); border-color:rgba(201,168,76,0.3); transform:translateY(-2px); }
+        .payment-item .icon { font-size:28px; display:block; margin-bottom:4px; }
+        .payment-item .label { font-size:11px; font-weight:500; color:rgba(255,255,255,0.7); letter-spacing:0.5px; }
+        .payment-item .sub-label { font-size:9px; color:rgba(255,255,255,0.35); display:block; margin-top:2px; }
+        .payment-item.full-width { grid-column:1 / -1; }
+        .bank-details { background:rgba(255,255,255,0.04); border-radius:12px; padding:16px 18px; margin-top:12px; border:1px solid rgba(255,255,255,0.06); }
+        .bank-details p { font-size:13px; color:rgba(255,255,255,0.65); font-weight:300; line-height:1.8; }
+        .bank-details strong { color:#ffffff; font-weight:500; }
+        .bank-details .label { color:rgba(255,255,255,0.35); font-size:10px; text-transform:uppercase; letter-spacing:1px; font-weight:500; }
+        .submit-btn { width:100%; padding:16px; background:#C9A84C; border:none; border-radius:12px; font-family:'Montserrat',sans-serif; font-weight:600; font-size:16px; color:#080d18; cursor:pointer; transition:all 0.3s; margin-top:8px; letter-spacing:0.5px; }
+        .submit-btn:hover { background:#dbb95e; transform:translateY(-2px); box-shadow:0 8px 30px rgba(201,168,76,0.3); }
+        .submit-btn:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+        .status-msg { text-align:center; font-size:14px; padding:12px; border-radius:10px; margin-top:12px; display:none; font-weight:400; }
+        .status-msg.success { display:block; background:rgba(46,213,115,0.15); color:#2ed573; border:1px solid rgba(46,213,115,0.2); }
+        .status-msg.error { display:block; background:rgba(255,71,87,0.15); color:#ff4757; border:1px solid rgba(255,71,87,0.2); }
+        .status-msg.loading { display:block; background:rgba(201,168,76,0.1); color:#C9A84C; border:1px solid rgba(201,168,76,0.2); }
+        .footer { text-align:center; margin-top:24px; font-size:12px; color:rgba(255,255,255,0.25); font-weight:300; line-height:1.6; }
+        .footer a { color:rgba(201,168,76,0.6); text-decoration:none; }
+        .footer a:hover { color:#C9A84C; }
+        .qr-code-img { display:none; text-align:center; margin:8px 0 12px; }
+        .qr-code-img img { max-width:140px; border-radius:12px; border:1px solid rgba(255,255,255,0.08); padding:8px; background:rgba(255,255,255,0.05); }
+        .qr-code-img.show { display:block; }
+        @media (max-width:480px) { .container { padding:28px 18px; } h1 { font-size:28px; } .price { font-size:38px; } .form-row { grid-template-columns:1fr; } .payment-grid { grid-template-columns:1fr 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" /></div>
+        <div style="text-align:center;"><span class="badge">Self-Paced Program</span></div>
+        <h1>Unlock Your <span>Incredible</span> Self</h1>
+        <div class="price">$69 AUD</div>
+        <div class="price-sub">6-hour emotional &amp; mental healing journey</div>
+        <div class="divider"></div>
+        <p class="description">A powerful 6-hour journey into emotional and mental healing. Dive into a new life and adventure with proven NSR techniques and guided exercises.</p>
+
+        <form id="paymentForm" novalidate>
+            <div class="form-row">
+                <div class="form-group"><label for="fullName">Full Name *</label><input type="text" id="fullName" placeholder="e.g. John Smith" required /></div>
+                <div class="form-group"><label for="phone">Phone *</label><input type="tel" id="phone" placeholder="e.g. 0412 345 678" required /></div>
+            </div>
+            <div class="form-group"><label for="email">Email Address *</label><input type="email" id="email" placeholder="john@example.com" required /></div>
+            <div class="form-group"><label for="country">Country *</label>
+                <select id="country" required>
+                    <option value="">Select your country</option>
+                    <option value="Australia">Australia</option><option value="Canada">Canada</option>
+                    <option value="Ireland">Ireland</option><option value="New Zealand">New Zealand</option>
+                    <option value="United Kingdom">United Kingdom</option><option value="United States">United States</option>
+                </select>
+            </div>
+
+            <div class="payment-methods">
+                <h3>Choose Payment Method</h3>
+                <div class="payment-grid">
+                    <a href="https://www.paypal.com/ncp/payment/26226VKXJD7UY" target="_blank" class="payment-item" onclick="capturePayment('PayPal')"><span class="icon">💳</span><span class="label">PayPal</span><span class="sub-label">Credit Card / Account</span></a>
+                    <div class="payment-item" onclick="toggleQR('paypalQR')" style="cursor:pointer;"><span class="icon">📱</span><span class="label">PayPal QR</span><span class="sub-label">Scan to pay</span></div>
+                    <a href="https://square.link/u/Xy3l1KkL" target="_blank" class="payment-item" onclick="capturePayment('Square')"><span class="icon">🟦</span><span class="label">Square</span><span class="sub-label">Card / Mobile</span></a>
+                    <div class="payment-item" onclick="toggleQR('squareQR')" style="cursor:pointer;"><span class="icon">📲</span><span class="label">Square QR</span><span class="sub-label">Scan to pay</span></div>
+                    <a href="https://buy.stripe.com/9B69AT3tBaAT3oXcXlg3602" target="_blank" class="payment-item" onclick="capturePayment('Stripe')"><span class="icon">⚡</span><span class="label">Stripe</span><span class="sub-label">Card Payment</span></a>
+                    <div class="payment-item full-width" onclick="toggleBankDetails()" style="cursor:pointer;"><span class="icon">🏦</span><span class="label">Bank Transfer / PayID</span><span class="sub-label">Click to show details</span></div>
+                </div>
+            </div>
+
+            <div id="paypalQR" class="qr-code-img"><img src="https://i.ibb.co/YFg1pSw6/Unlock-your-in-qrcode.png" alt="PayPal QR Code" /></div>
+            <div id="squareQR" class="qr-code-img"><img src="https://i.ibb.co/NgthRGRs/checkout-link-qr-code-1.png" alt="Square QR Code" /></div>
+
+            <div id="bankDetails" class="bank-details" style="display:none;">
+                <p><span class="label">Bank Transfer</span><br /><strong>BSB:</strong> 124 001 &nbsp;|&nbsp; <strong>Account:</strong> 227 10071<br /><strong>Account Name:</strong> Accessworld Trust BC</p>
+                <p style="margin-top:8px; border-top:1px solid rgba(255,255,255,0.06); padding-top:10px;"><span class="label">PayID</span><br /><strong>PayID:</strong> 0432 119 091<br /><span style="font-size:11px; color:rgba(255,255,255,0.35);">(PayID transfers are instant)</span></p>
+                <p style="margin-top:8px; font-size:12px; color:rgba(201,168,76,0.6);">⚠️ Please use your <strong>full name</strong> as reference so we can match your payment.</p>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">✅ I'm Paying — Record My Details</button>
+            <div id="statusMsg" class="status-msg"></div>
+        </form>
+
+        <div class="footer"><p>For support, contact us at <a href="mailto:support@accessworld.com">support@accessworld.com</a><br />By proceeding you agree to our terms and conditions.</p></div>
+    </div>
+
+    <script>
+        function toggleQR(id) { const el=document.getElementById(id); const isShowing=el.classList.contains('show'); document.querySelectorAll('.qr-code-img').forEach(q=>q.classList.remove('show')); if(!isShowing) el.classList.add('show'); document.getElementById('bankDetails').style.display='none'; }
+        function toggleBankDetails() { const bank=document.getElementById('
