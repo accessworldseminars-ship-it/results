@@ -1,521 +1,1174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gold Transformation Package | AccessWorld Seminars</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .container {
-            max-width: 580px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 40px 30px;
-            border: 1px solid rgba(201, 168, 76, 0.25);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-        }
-        .logo {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-        .logo img {
-            max-width: 160px;
-            height: auto;
-        }
-        .badge {
-            display: inline-block;
-            background: rgba(201, 168, 76, 0.15);
-            color: #C9A84C;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 6px 16px;
-            border-radius: 100px;
-            border: 1px solid rgba(201, 168, 76, 0.3);
-            margin-bottom: 16px;
-        }
-        h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 700;
-            font-size: 34px;
-            color: #ffffff;
-            text-align: center;
-            line-height: 1.2;
-            margin-bottom: 8px;
-        }
-        h1 span {
-            color: #C9A84C;
-        }
-        .price {
-            text-align: center;
-            font-size: 48px;
-            font-weight: 600;
-            color: #C9A84C;
-            font-family: 'Cormorant Garamond', serif;
-            margin: 8px 0 4px;
-        }
-        .price-sub {
-            text-align: center;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 300;
-            margin-bottom: 20px;
-        }
-        .description {
-            text-align: center;
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 15px;
-            line-height: 1.7;
-            font-weight: 300;
-            margin-bottom: 28px;
-            padding: 0 10px;
-        }
-        .divider {
-            width: 60px;
-            height: 2px;
-            background: #C9A84C;
-            margin: 0 auto 28px;
-            opacity: 0.5;
-        }
-        .form-group {
-            margin-bottom: 16px;
-        }
-        .form-group label {
-            display: block;
-            font-size: 12px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.6);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 14px 16px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.06);
-            color: #ffffff;
-            font-size: 15px;
-            font-family: 'Montserrat', sans-serif;
-            transition: border-color 0.3s;
-            outline: none;
-        }
-        .form-group input:focus,
-        .form-group select:focus {
-            border-color: #C9A84C;
-            background: rgba(255, 255, 255, 0.08);
-        }
-        .form-group select option {
-            background: #1A2744;
-            color: #fff;
-        }
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-        }
-        .payment-methods {
-            margin: 24px 0 20px;
-        }
-        .payment-methods h3 {
-            font-size: 13px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.5);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            text-align: center;
-            margin-bottom: 16px;
-        }
-        .payment-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-        .payment-item {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 14px 12px;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-        }
-        .payment-item:hover {
-            background: rgba(201, 168, 76, 0.08);
-            border-color: rgba(201, 168, 76, 0.3);
-            transform: translateY(-2px);
-        }
-        .payment-item .icon {
-            font-size: 28px;
-            display: block;
-            margin-bottom: 4px;
-        }
-        .payment-item .label {
-            font-size: 11px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.7);
-            letter-spacing: 0.5px;
-        }
-        .payment-item .sub-label {
-            font-size: 9px;
-            color: rgba(255, 255, 255, 0.35);
-            display: block;
-            margin-top: 2px;
-        }
-        .payment-item.full-width {
-            grid-column: 1 / -1;
-        }
-        .bank-details {
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 12px;
-            padding: 16px 18px;
-            margin-top: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        .bank-details p {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.65);
-            font-weight: 300;
-            line-height: 1.8;
-        }
-        .bank-details strong {
-            color: #ffffff;
-            font-weight: 500;
-        }
-        .bank-details .label {
-            color: rgba(255, 255, 255, 0.35);
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 500;
-        }
-        .submit-btn {
-            width: 100%;
-            padding: 16px;
-            background: #C9A84C;
-            border: none;
-            border-radius: 12px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 16px;
-            color: #080d18;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 8px;
-            letter-spacing: 0.5px;
-        }
-        .submit-btn:hover {
-            background: #dbb95e;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(201, 168, 76, 0.3);
-        }
-        .submit-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-        .status-msg {
-            text-align: center;
-            font-size: 14px;
-            padding: 12px;
-            border-radius: 10px;
-            margin-top: 12px;
-            display: none;
-            font-weight: 400;
-        }
-        .status-msg.success {
-            display: block;
-            background: rgba(46, 213, 115, 0.15);
-            color: #2ed573;
-            border: 1px solid rgba(46, 213, 115, 0.2);
-        }
-        .status-msg.error {
-            display: block;
-            background: rgba(255, 71, 87, 0.15);
-            color: #ff4757;
-            border: 1px solid rgba(255, 71, 87, 0.2);
-        }
-        .status-msg.loading {
-            display: block;
-            background: rgba(201, 168, 76, 0.1);
-            color: #C9A84C;
-            border: 1px solid rgba(201, 168, 76, 0.2);
-        }
-        .footer {
-            text-align: center;
-            margin-top: 24px;
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.25);
-            font-weight: 300;
-            line-height: 1.6;
-        }
-        .footer a {
-            color: rgba(201, 168, 76, 0.6);
-            text-decoration: none;
-        }
-        .footer a:hover {
-            color: #C9A84C;
-        }
-        .qr-code-img {
-            display: none;
-            text-align: center;
-            margin: 8px 0 12px;
-        }
-        .qr-code-img img {
-            max-width: 140px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 8px;
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .qr-code-img.show {
-            display: block;
-        }
-        .gold-badge {
-            background: linear-gradient(135deg, #C9A84C, #a8872e);
-            color: #080d18;
-            font-weight: 700;
-            padding: 4px 14px;
-            border-radius: 100px;
-            font-size: 11px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            display: inline-block;
-        }
-        @media (max-width: 480px) {
-            .container {
-                padding: 28px 18px;
-            }
-            h1 {
-                font-size: 28px;
-            }
-            .price {
-                font-size: 38px;
-            }
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            .payment-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gold Transformation Package | Joshua Roy | AccessWorld Seminars</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1A2744;
+    --navy-deep: #101929;
+    --navy-mid: #243050;
+    --gold: #C9A84C;
+    --gold-light: #E2C97E;
+    --gold-pale: #F5EDD6;
+    --teal: #2A7B7C;
+    --teal-light: #3AADAE;
+    --white: #FFFFFF;
+    --off-white: #F8F6F1;
+    --text-muted: #8A9ABB;
+    --border: rgba(201,168,76,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy-deep);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #0a1020 0%, #1A2744 50%, #0f1e38 100%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .hero-content {
+    padding: 80px 60px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 30px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 4.5vw, 62px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: var(--white);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: #b0bdd8;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 480px;
+  }
+
+  .hero-sub strong {
+    color: var(--white);
+  }
+
+  .pain-list {
+    list-style: none;
+    margin-bottom: 44px;
+  }
+
+  .pain-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    color: #8A9ABB;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .pain-list li::before {
+    content: '—';
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .cta-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold) 0%, #E2C97E 50%, var(--gold) 100%);
+    color: var(--navy-deep);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    padding: 18px 44px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 40px rgba(201,168,76,0.35);
+  }
+
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 50px rgba(201,168,76,0.45);
+  }
+
+  .hero-image-col {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-image-col::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, #1A2744 0%, transparent 40%);
+    z-index: 1;
+  }
+
+  .hero-image-col::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 300px;
+    background: linear-gradient(to top, #0f1e38 0%, transparent 100%);
+    z-index: 1;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    filter: brightness(0.85) contrast(1.05);
+  }
+
+  .price-badge {
+    position: absolute;
+    bottom: 50px;
+    right: 40px;
+    z-index: 3;
+    background: rgba(10,16,32,0.85);
+    border: 1px solid var(--gold);
+    padding: 20px 28px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .price-badge .amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .price-badge .currency {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .price-badge .duration {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  /* ── PAIN SECTION ── */
+  .pain-section {
+    background: #0a1020;
+    padding: 100px 40px;
+    text-align: center;
+    position: relative;
+  }
+
+  .pain-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .pain-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 700;
+    max-width: 760px;
+    margin: 0 auto 20px;
+    line-height: 1.2;
+  }
+
+  .pain-section h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .pain-section p {
+    font-size: 17px;
+    color: #8A9ABB;
+    max-width: 620px;
+    margin: 0 auto 60px;
+    line-height: 1.8;
+  }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .pain-card {
+    background: #111827;
+    padding: 36px 28px;
+    text-align: left;
+    border-top: 2px solid transparent;
+    transition: border-color 0.3s;
+  }
+
+  .pain-card:hover {
+    border-top-color: var(--gold);
+  }
+
+  .pain-card .icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .pain-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+
+  .pain-card p {
+    font-size: 14px;
+    color: #6B7FA3;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── RESULTS ── */
+  .results-section {
+    background: var(--navy);
+    padding: 100px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .results-section::before {
+    content: '';
+    position: absolute;
+    top: -300px; right: -300px;
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(42,123,124,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .results-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .results-header {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+
+  .results-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 3.5vw, 50px);
+    font-weight: 900;
+    line-height: 1.15;
+  }
+
+  .results-header h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .results-header p {
+    font-size: 17px;
+    color: #8A9ABB;
+    margin-top: 16px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .result-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 28px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.12);
+  }
+
+  .result-check {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+    color: var(--navy-deep);
+    font-weight: 700;
+  }
+
+  .result-item h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--white);
+  }
+
+  .result-item p {
+    font-size: 13px;
+    color: #6B7FA3;
+    line-height: 1.6;
+  }
+
+  /* ── OFFER ── */
+  .offer-section {
+    background: #0a1020;
+    padding: 100px 40px;
+  }
+
+  .offer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .offer-header {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+
+  .offer-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 3.5vw, 50px);
+    font-weight: 900;
+  }
+
+  .offer-header h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .offer-header p {
+    font-size: 17px;
+    color: #8A9ABB;
+    margin-top: 16px;
+    max-width: 560px;
+    margin: 16px auto 0;
+  }
+
+  .offer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin-bottom: 60px;
+  }
+
+  .offer-card {
+    background: #111827;
+    padding: 40px 36px;
+  }
+
+  .offer-card.featured {
+    background: linear-gradient(145deg, #1d2f55, #1A2744);
+    border: 1px solid rgba(201,168,76,0.3);
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .offer-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .offer-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .offer-card p {
+    font-size: 14px;
+    color: #6B7FA3;
+    line-height: 1.7;
+  }
+
+  .stat-row {
+    display: flex;
+    gap: 32px;
+    margin-top: 24px;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat .lbl {
+    font-size: 11px;
+    color: #6B7FA3;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+
+  .offer-list {
+    list-style: none;
+    margin-top: 20px;
+  }
+
+  .offer-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #b0bdd8;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .offer-list li:last-child { border-bottom: none; }
+
+  .offer-list li .tick {
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── WEBINARS ── */
+  .webinars-section {
+    background: var(--navy);
+    padding: 80px 40px;
+  }
+
+  .webinars-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .webinars-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .webinars-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 3vw, 42px);
+    font-weight: 700;
+  }
+
+  .webinars-header h2 em { font-style: italic; color: var(--gold); }
+
+  .webinars-header p {
+    color: #8A9ABB;
+    font-size: 16px;
+    margin-top: 12px;
+  }
+
+  .webinar-series {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3px;
+    margin-bottom: 50px;
+  }
+
+  .series-card {
+    background: #111827;
+    padding: 28px 20px;
+    text-align: center;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+    cursor: default;
+  }
+
+  .series-card:hover {
+    background: #161f30;
+    border-bottom-color: var(--gold);
+  }
+
+  .series-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: rgba(201,168,76,0.2);
+    margin-bottom: 12px;
+  }
+
+  .series-card h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--white);
+  }
+
+  .series-card p {
+    font-size: 12px;
+    color: #6B7FA3;
+  }
+
+  /* ── NSR ── */
+  .nsr-section {
+    background: #0a1020;
+    padding: 80px 40px;
+  }
+
+  .nsr-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .nsr-box {
+    background: linear-gradient(135deg, #1d2f55 0%, #0f1e38 100%);
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nsr-box::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+  }
+
+  .nsr-box-header {
+    margin-bottom: 40px;
+  }
+
+  .nsr-box-header .bonus-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy-deep);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    margin-bottom: 20px;
+  }
+
+  .nsr-box-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 900;
+  }
+
+  .nsr-box-header h2 em { font-style: italic; color: var(--gold); }
+
+  .nsr-box-header p {
+    font-size: 16px;
+    color: #8A9ABB;
+    margin-top: 14px;
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  .nsr-processes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .process-card {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 28px 22px;
+    text-align: center;
+    position: relative;
+  }
+
+  .process-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .process-card:hover::after { opacity: 1; }
+
+  .process-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .process-card p {
+    font-size: 12px;
+    color: #6B7FA3;
+    line-height: 1.6;
+  }
+
+  /* ── ABOUT ── */
+  .about-section {
+    background: var(--navy);
+    padding: 100px 40px;
+  }
+
+  .about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-img-wrap {
+    position: relative;
+  }
+
+  .about-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top;
+    filter: brightness(0.9) contrast(1.05);
+    display: block;
+  }
+
+  .about-img-wrap::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border: 1px solid rgba(201,168,76,0.3);
+    pointer-events: none;
+    z-index: 1;
+    transform: translate(8px, 8px);
+  }
+
+  .about-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  .about-content h2 em { font-style: italic; color: var(--gold); }
+
+  .about-content p {
+    font-size: 16px;
+    color: #8A9ABB;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+
+  .cred-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 6px 14px;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* ── CTA FINAL ── */
+  .cta-section {
+    background: #0a1020;
+    padding: 120px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cta-section::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .cta-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .cta-inner h2 em { font-style: italic; color: var(--gold); }
+
+  .cta-inner p {
+    font-size: 17px;
+    color: #8A9ABB;
+    margin-bottom: 50px;
+    line-height: 1.7;
+  }
+
+  .price-display {
+    margin-bottom: 44px;
+  }
+
+  .price-display .price-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .price-display .price-note {
+    font-size: 14px;
+    color: #6B7FA3;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold) 0%, #E2C97E 50%, var(--gold) 100%);
+    color: var(--navy-deep);
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    padding: 22px 64px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 50px rgba(201,168,76,0.4);
+    text-transform: uppercase;
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 60px rgba(201,168,76,0.5);
+  }
+
+  .guarantee {
+    margin-top: 32px;
+    font-size: 13px;
+    color: #6B7FA3;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #050d1a;
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  footer p {
+    font-size: 13px;
+    color: #3a4a6a;
+  }
+
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-content { padding: 60px 30px 40px; }
+    .hero-image-col { height: 60vw; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr; }
+    .offer-grid { grid-template-columns: 1fr; }
+    .offer-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .webinar-series { grid-template-columns: repeat(2, 1fr); }
+    .nsr-processes { grid-template-columns: repeat(2, 1fr); }
+    .about-inner { grid-template-columns: 1fr; gap: 40px; }
+    .about-img { aspect-ratio: 4/3; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" />
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="eyebrow">Gold Transformation Package</span>
+    <h1>You're not stuck.<br>You're <em>running the wrong program.</em></h1>
+    <p class="hero-sub">If you're exhausted, going in circles, or watching life pass while you wait to feel ready — this isn't a motivation problem. <strong>It's a nervous system problem.</strong> And it's fixable.</p>
+    <ul class="pain-list">
+      <li>You know what you want but can't make yourself do it</li>
+      <li>You've tried courses, books, therapy — nothing sticks</li>
+      <li>Old patterns keep showing up no matter how hard you try</li>
+      <li>You feel capable of so much more and it frustrates you</li>
+    </ul>
+    <a href="https://accessworldseminars-ship-it.github.io/results/purchasegold" class="cta-primary">Secure Your Place — AUD $3,295</a>
+  </div>
+  <div class="hero-image-col">
+    <img src="https://i.ibb.co/p6V5HvcK/Screenshot-2025-11-11-122952.png" alt="Joshua Roy" class="hero-img">
+    <div class="price-badge">
+      <div class="currency">AUD</div>
+      <div class="amount">$3,295</div>
+      <div class="duration">6-month guided program</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PAIN ══════════════ -->
+<section class="pain-section">
+  <div class="section-label">The real problem</div>
+  <h2>Most people try to think their way out of a <em>feeling</em> problem.</h2>
+  <p>Willpower, mindset hacks, and motivational content don't rewire the nervous system. That's why they don't last. Real change happens at a deeper level — and that's exactly where we work.</p>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <span class="icon">🔁</span>
+      <h3>The Loop You Can't Break</h3>
+      <p>You set goals. You start strong. Then life happens and you're back at square one. Not because you lack discipline — because the underlying pattern was never touched.</p>
+    </div>
+    <div class="pain-card">
+      <span class="icon">🧠</span>
+      <h3>Your Brain Is Running Old Code</h3>
+      <p>Beliefs formed before age 12 are still running the show. Anxiety, self-doubt, people-pleasing — these are programs, not personality traits. Programs can be changed.</p>
+    </div>
+    <div class="pain-card">
+      <span class="icon">😮‍💨</span>
+      <h3>Tired of Trying So Hard</h3>
+      <p>When you're fighting yourself from the inside, everything takes twice the effort. The goal isn't to try harder. It's to stop the internal war so you can finally move freely.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ RESULTS ══════════════ -->
+<section class="results-section">
+  <div class="results-inner">
+    <div class="results-header">
+      <div class="section-label">What becomes possible</div>
+      <h2>This is what happens when the <em>pattern changes.</em></h2>
+      <p>Not surface-level change. The kind that rewires how you feel, respond, and move through the world every single day.</p>
+    </div>
+    <div class="results-grid">
+      <div class="result-item">
+        <div class="result-check">✓</div>
+        <div>
+          <h4>Emotional freedom — not just management</h4>
+          <p>You stop being hijacked by reactions. You respond from clarity instead of fear, and you actually enjoy your own company.</p>
         </div>
-        <div style="text-align: center;">
-            <span class="gold-badge">⭐ Premium Package</span>
+      </div>
+      <div class="result-item">
+        <div class="result-check">✓</div>
+        <div>
+          <h4>Momentum that doesn't collapse</h4>
+          <p>Action starts to feel natural — not forced. When the nervous system is calibrated, consistency becomes the default, not the struggle.</p>
         </div>
-        <h1>Gold <span>Transformation</span> Package</h1>
-        <div class="price">$3,295 AUD</div>
-        <div class="price-sub">Premium 12-week coaching &amp; transformation experience</div>
-        <div class="divider"></div>
-        <p class="description">
-            A comprehensive 12-week deep-dive transformation combining NSR, emotional clearing, and 1-on-1 coaching with Joshua Roy. Includes private sessions, premium workbook, and ongoing support.
-        </p>
-
-        <form id="paymentForm" novalidate>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="fullName">Full Name *</label>
-                    <input type="text" id="fullName" placeholder="e.g. John Smith" required />
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone *</label>
-                    <input type="tel" id="phone" placeholder="e.g. 0412 345 678" required />
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" placeholder="john@example.com" required />
-            </div>
-            <div class="form-group">
-                <label for="country">Country *</label>
-                <select id="country" required>
-                    <option value="">Select your country</option>
-                    <option value="Australia">Australia</option>
-                    <option value="Canada">Canada</option>
-                    <option value="Ireland">Ireland</option>
-                    <option value="New Zealand">New Zealand</option>
-                    <option value="United Kingdom">United Kingdom</option>
-                    <option value="United States">United States</option>
-                </select>
-            </div>
-
-            <div class="payment-methods">
-                <h3>Choose Payment Method</h3>
-                <div class="payment-grid">
-                    <a href="https://www.paypal.com/ncp/payment/WP44MC8ZVQPNG" target="_blank" class="payment-item" onclick="capturePayment('PayPal')">
-                        <span class="icon">💳</span>
-                        <span class="label">PayPal</span>
-                        <span class="sub-label">Credit Card / Account</span>
-                    </a>
-                    <div class="payment-item" onclick="toggleQR('paypalQR')" style="cursor:pointer;">
-                        <span class="icon">📱</span>
-                        <span class="label">PayPal QR</span>
-                        <span class="sub-label">Scan to pay</span>
-                    </div>
-                    <a href="https://square.link/u/92CBTM8Q" target="_blank" class="payment-item" onclick="capturePayment('Square')">
-                        <span class="icon">🟦</span>
-                        <span class="label">Square</span>
-                        <span class="sub-label">Card / Mobile</span>
-                    </a>
-                    <div class="payment-item" onclick="toggleQR('squareQR')" style="cursor:pointer;">
-                        <span class="icon">📲</span>
-                        <span class="label">Square QR</span>
-                        <span class="sub-label">Scan to pay</span>
-                    </div>
-                    <a href="https://buy.stripe.com/bJe8wP1lt10j8Jh0azg3604" target="_blank" class="payment-item" onclick="capturePayment('Stripe')">
-                        <span class="icon">⚡</span>
-                        <span class="label">Stripe</span>
-                        <span class="sub-label">Card Payment</span>
-                    </a>
-                    <div class="payment-item full-width" onclick="toggleBankDetails()" style="cursor:pointer;">
-                        <span class="icon">🏦</span>
-                        <span class="label">Bank Transfer / PayID</span>
-                        <span class="sub-label">Click to show details</span>
-                    </div>
-                </div>
-            </div>
-
-            <div id="paypalQR" class="qr-code-img">
-                <img src="https://i.ibb.co/wmg7M0Q/Gold-Coaching-qrcode.png" alt="PayPal QR Code" />
-            </div>
-            <div id="squareQR" class="qr-code-img">
-                <img src="https://i.ibb.co/1f8gKdQ3/checkout-link-qr-code.png" alt="Square QR Code" />
-            </div>
-
-            <div id="bankDetails" class="bank-details" style="display:none;">
-                <p>
-                    <span class="label">Bank Transfer</span><br />
-                    <strong>BSB:</strong> 124 001 &nbsp;|&nbsp; <strong>Account:</strong> 227 10071<br />
-                    <strong>Account Name:</strong> Accessworld Trust BC
-                </p>
-                <p style="margin-top:8px; border-top:1px solid rgba(255,255,255,0.06); padding-top:10px;">
-                    <span class="label">PayID</span><br />
-                    <strong>PayID:</strong> 0432 119 091<br />
-                    <span style="font-size:11px; color:rgba(255,255,255,0.35);">(PayID transfers are instant)</span>
-                </p>
-                <p style="margin-top:8px; font-size:12px; color:rgba(201,168,76,0.6);">
-                    ⚠️ Please use your <strong>full name</strong> as reference so we can match your payment.
-                </p>
-            </div>
-
-            <button type="submit" class="submit-btn" id="submitBtn">
-                ✅ I'm Paying — Record My Details
-            </button>
-            <div id="statusMsg" class="status-msg"></div>
-        </form>
-
-        <div class="footer">
-            <p>
-                For support, contact us at <a href="mailto:support@accessworld.com">support@accessworld.com</a><br />
-                By proceeding you agree to our terms and conditions.
-            </p>
+      </div>
+      <div class="result-item">
+        <div class="result-check">✓</div>
+        <div>
+          <h4>Relationships that actually work</h4>
+          <p>Old relational wounds stop distorting how you connect. You show up present, boundaried, and genuinely interested.</p>
         </div>
+      </div>
+      <div class="result-item">
+        <div class="result-check">✓</div>
+        <div>
+          <h4>A body that isn't always braced</h4>
+          <p>Chronic tension, fatigue, and that background hum of anxiety — these shift when the nervous system learns it's safe to relax.</p>
+        </div>
+      </div>
+      <div class="result-item">
+        <div class="result-check">✓</div>
+        <div>
+          <h4>A clear sense of who you actually are</h4>
+          <p>Strip away the conditioning and the real you surfaces — confident, purposeful, and no longer needing external validation to move forward.</p>
+        </div>
+      </div>
+      <div class="result-item">
+        <div class="result-check">✓</div>
+        <div>
+          <h4>Results you can see in your real life</h4>
+          <p>Career, finances, health, relationships — all of them are downstream of your inner state. Change the state, and the external world shifts with it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ OFFER ══════════════ -->
+<section class="offer-section">
+  <div class="offer-inner">
+    <div class="offer-header">
+      <div class="section-label">What's included</div>
+      <h2>The <em>Gold Transformation Package</em></h2>
+      <p>Not a course. A guided transformation — with Joshua working alongside you, every step of the way.</p>
     </div>
 
-    <script>
-        function toggleQR(id) {
-            const el = document.getElementById(id);
-            const isShowing = el.classList.contains('show');
-            document.querySelectorAll('.qr-code-img').forEach(q => q.classList.remove('show'));
-            if (!isShowing) el.classList.add('show');
-            document.getElementById('bankDetails').style.display = 'none';
-        }
+    <div class="offer-grid">
 
-        function toggleBankDetails() {
-            const bank = document.getElementById('bankDetails');
-            const isVisible = bank.style.display === 'block';
-            document.querySelectorAll('.qr-code-img').forEach(q => q.classList.remove('show'));
-            bank.style.display = isVisible ? 'none' : 'block';
-        }
+      <div class="offer-card featured">
+        <div>
+          <div class="offer-card-label">The Core Program</div>
+          <h3>Private 1:1 Coaching with Joshua</h3>
+          <p>This is the heart of the Gold Package. Over 5–6 months, you work directly with Joshua Roy — not a junior coach, not a recorded video. Joshua brings NLP, NSR, and 20+ years of transformation experience to every session. Each conversation is tailored specifically to you: your blocks, your patterns, your goals.</p>
+          <div class="stat-row">
+            <div class="stat"><div class="num">12</div><div class="lbl">Private Sessions</div></div>
+            <div class="stat"><div class="num">120</div><div class="lbl">Min Per Session</div></div>
+            <div class="stat"><div class="num">5–6</div><div class="lbl">Months Guided</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="offer-card-label">Everything Included</div>
+          <ul class="offer-list">
+            <li><span class="tick">✓</span> 12 private 1:1 sessions — 120 min/month with Joshua</li>
+            <li><span class="tick">✓</span> Up to 4 live 2-day webinar events (your choice)</li>
+            <li><span class="tick">✓</span> Full NLP & webinar training library — 12 months access</li>
+            <li><span class="tick">✓</span> All event recordings — revisit every session</li>
+            <li><span class="tick">✓</span> Group coaching & mentoring — 12 months live sessions</li>
+            <li><span class="tick">✓</span> AccessWorld community membership — 12 months</li>
+            <li><span class="tick">✓</span> The Four NSR Transformation Processes (bonus)</li>
+          </ul>
+        </div>
+      </div>
 
-        function capturePayment(method) {
-            document.getElementById('paymentForm').dataset.paymentMethod = method;
-        }
+      <div class="offer-card">
+        <div class="offer-card-label">Group Training</div>
+        <h3>Live Group Coaching Access</h3>
+        <p>12 months of live group sessions for accountability, community, and ongoing reinforcement. Learn alongside others going through real transformation — and lock in what you're building in 1:1.</p>
+      </div>
 
-        document.getElementById('paymentForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const name = document.getElementById('fullName').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const country = document.getElementById('country').value;
-            const statusMsg = document.getElementById('statusMsg');
+      <div class="offer-card">
+        <div class="offer-card-label">Full Library</div>
+        <h3>NLP & Training Video Library</h3>
+        <p>12 months of on-demand access to the complete AccessWorld training library — NLP masterclasses, recorded webinar events, and deep-dive content you can revisit any time.</p>
+      </div>
 
-            if (!name || !phone || !email || !country) {
-                statusMsg.className = 'status-msg error';
-                statusMsg.textContent = '⚠️ Please fill in all required fields.';
-                return;
-            }
-            if (!email.includes('@') || !email.includes('.')) {
-                statusMsg.className = 'status-msg error';
-                statusMsg.textContent = '⚠️ Please enter a valid email address.';
-                return;
-            }
+    </div>
+  </div>
+</section>
 
-            const paymentMethod = this.dataset.paymentMethod || 'Not specified (manual)';
-            const payload = {
-                name: name,
-                phone: phone,
-                email: email,
-                country: country,
-                program: 'Gold Transformation Package',
-                amount: '$3,295 AUD',
-                payment_method: paymentMethod,
-                timestamp: new Date().toISOString()
-            };
+<!-- ══════════════ WEBINARS ══════════════ -->
+<section class="webinars-section">
+  <div class="webinars-inner">
+    <div class="webinars-header">
+      <div class="section-label">Ultimate Webinar Series</div>
+      <h2>Choose up to <em>4 live 2-day events</em></h2>
+      <p>Five transformative programs covering every area of life. Pick the ones that matter most to you.</p>
+    </div>
+    <div class="webinar-series">
+      <div class="series-card">
+        <div class="series-num">01</div>
+        <h4>Health Series</h4>
+        <p>Body, energy & healing</p>
+      </div>
+      <div class="series-card">
+        <div class="series-num">02</div>
+        <h4>Emotional Mastery</h4>
+        <p>NLP, identity & freedom</p>
+      </div>
+      <div class="series-card">
+        <div class="series-num">03</div>
+        <h4>Life Skills Series</h4>
+        <p>Wealth, memory & connection</p>
+      </div>
+      <div class="series-card">
+        <div class="series-num">04</div>
+        <h4>Relationship Series</h4>
+        <p>Love, intimacy & passion</p>
+      </div>
+      <div class="series-card">
+        <div class="series-num">05</div>
+        <h4>NSR Intensive</h4>
+        <p>AccessWorld's deepest 2-day experience</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-            statusMsg.className = 'status-msg loading';
-            statusMsg.textContent = '⏳ Submitting your details...';
-            document.getElementById('submitBtn').disabled = true;
+<!-- ══════════════ NSR ══════════════ -->
+<section class="nsr-section">
+  <div class="nsr-inner">
+    <div class="nsr-box">
+      <div class="nsr-box-header">
+        <div class="bonus-tag">Bonus — Included</div>
+        <h2>The Four <em>NSR Transformation Processes</em></h2>
+        <p>Joshua's four core Nervous System Reprogramming processes — the deepest, most powerful work AccessWorld offers. These are not theory. They are experiential processes that shift things at a level most modalities never reach.</p>
+      </div>
+      <div class="nsr-processes">
+        <div class="process-card">
+          <h4>The Gift</h4>
+          <p>Reclaiming what was taken. Turning your deepest wound into your greatest resource.</p>
+        </div>
+        <div class="process-card">
+          <h4>The Grey Room</h4>
+          <p>Confronting the void. Finding the self that exists beyond story, pain, and identity.</p>
+        </div>
+        <div class="process-card">
+          <h4>The Womb of Eternity</h4>
+          <p>A profound reset. Reconnecting to the original state before the world told you who to be.</p>
+        </div>
+        <div class="process-card">
+          <h4>Space Odyssey</h4>
+          <p>Expanding beyond limitation. Accessing a version of yourself you may not yet know exists.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            try {
-                const response = await fetch('https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                if (response.ok) {
-                    statusMsg.className = 'status-msg success';
-                    statusMsg.textContent = '✅ Your details have been recorded. Please complete your payment using one of the methods above. We\'ll be in touch within 24 hours.';
-                    this.reset();
-                    delete this.dataset.paymentMethod;
-                } else {
-                    throw new Error('Server responded with ' + response.status);
-                }
-            } catch (error) {
-                statusMsg.className = 'status-msg error';
-                statusMsg.textContent = '❌ Something went wrong. Please try again or contact support.';
-                console.error('Webhook error:', error);
-            } finally {
-                document.getElementById('submitBtn').disabled = false;
-            }
-        });
-    </script>
+<!-- ══════════════ ABOUT ══════════════ -->
+<section class="about-section">
+  <div class="about-inner">
+    <div class="about-img-wrap">
+      <img src="https://i.ibb.co/p6V5HvcK/Screenshot-2025-11-11-122952.png" alt="Joshua Roy" class="about-img">
+    </div>
+    <div class="about-content">
+      <div class="section-label">Your coach</div>
+      <h2>Working directly with <em>Joshua Roy</em></h2>
+      <p>Joshua Roy has spent over two decades helping people break through the patterns that keep them stuck — in their careers, relationships, health, and sense of self.</p>
+      <p>Drawing on NLP, his proprietary NSR (Nervous System Reprogramming) methodology, a Bachelor of Psychology, and real-world experience spanning policing, church leadership, and personal development — Joshua brings a rare combination of depth, practicality, and warmth to every coaching relationship.</p>
+      <p>He's not interested in surface-level shifts. He goes after the root — and stays with you until it changes.</p>
+      <div class="credentials">
+        <span class="cred-tag">NLP Practitioner</span>
+        <span class="cred-tag">Neuro Transformation Therapist</span>
+        <span class="cred-tag">B.Psych</span>
+        <span class="cred-tag">NSR Methodology Creator</span>
+        <span class="cred-tag">Seminar Leader</span>
+        <span class="cred-tag">Author</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FINAL CTA ══════════════ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-label">Ready to begin</div>
+    <h2>The version of you that's <em>already there</em> — let's go get it.</h2>
+    <p>This isn't a course you add to a list. It's a decision to work directly with someone who knows how to get to the root of what's keeping you from the life you know is possible.</p>
+    <div class="price-display">
+      <div class="price-main">AUD $3,295</div>
+      <div class="price-note">6-month guided program · 12 months full access · Limited places available</div>
+    </div>
+    <a href="https://accessworldseminars-ship-it.github.io/results/purchasegold" class="cta-btn">Secure Your Place Now</a>
+    <p class="guarantee">Questions? Email Joshua directly at accessworldseminars.com</p>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <p>© 2025 AccessWorld Seminars · Brisbane, Queensland, Australia · <a href="https://accessworldseminars.org">accessworldseminars.org</a></p>
+  <p style="margin-top:8px;">Joshua Roy | NLP Practitioner | Neuro Transformation Therapist | Coach | Speaker</p>
+</footer>
+
 </body>
 </html>
