@@ -42,7 +42,6 @@ body {
   overflow: hidden;
 }
 
-/* layered radial glow */
 .hero::before {
   content: '';
   position: absolute;
@@ -54,7 +53,6 @@ body {
   pointer-events: none;
 }
 
-/* animated shimmer lines */
 .hero::after {
   content: '';
   position: absolute;
@@ -1119,14 +1117,22 @@ body {
   font-size: 36px;
   font-weight: 400;
   color: var(--navy);
-  margin-bottom: 48px;
+  margin-bottom: 16px;
+}
+
+.timezones-sub {
+  font-size: 15px;
+  color: var(--mid);
+  max-width: 500px;
+  margin: 0 auto 48px;
+  line-height: 1.7;
 }
 
 .tz-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
   background: rgba(26,39,68,0.08);
 }
@@ -1135,7 +1141,9 @@ body {
   background: var(--warm-white);
   padding: 24px 20px;
   text-align: left;
+  transition: background 0.3s ease;
 }
+.tz-item:hover { background: var(--cream); }
 
 .tz-flag { font-size: 20px; margin-bottom: 6px; display: block; }
 .tz-region {
@@ -1152,6 +1160,7 @@ body {
   color: var(--navy);
 }
 .tz-date { font-size: 12px; color: var(--mid); margin-top: 2px; }
+.tz-check { color: #27ae60; font-size: 14px; margin-left: 6px; }
 
 /* ── FINAL CTA ─────────────────────────────────────────────────── */
 .final-cta {
@@ -1398,25 +1407,25 @@ footer a { color: rgba(201,168,76,0.6); text-decoration: none; }
   <p class="hero-body">For anyone who wakes up tired, feels dimmer than they used to, and suspects there is a version of themselves — healthy, free, alive — that they have not yet fully met.</p>
 
   <div class="countdown-wrap">
-    <p class="countdown-label">Event begins in</p>
+    <p class="countdown-label">Starts Very Soon</p>
     <div class="countdown">
       <div class="countdown-unit">
-        <div class="countdown-num" id="cd-days">02</div>
+        <div class="countdown-num" id="cd-days">00</div>
         <div class="countdown-word">Days</div>
       </div>
       <div class="countdown-sep">:</div>
       <div class="countdown-unit">
-        <div class="countdown-num" id="cd-hours">21</div>
+        <div class="countdown-num" id="cd-hours">00</div>
         <div class="countdown-word">Hours</div>
       </div>
       <div class="countdown-sep">:</div>
       <div class="countdown-unit">
-        <div class="countdown-num" id="cd-mins">52</div>
+        <div class="countdown-num" id="cd-mins">00</div>
         <div class="countdown-word">Mins</div>
       </div>
       <div class="countdown-sep">:</div>
       <div class="countdown-unit">
-        <div class="countdown-num" id="cd-secs">59</div>
+        <div class="countdown-num" id="cd-secs">00</div>
         <div class="countdown-word">Secs</div>
       </div>
     </div>
@@ -1770,57 +1779,74 @@ footer a { color: rgba(201,168,76,0.6); text-decoration: none; }
   </div>
 </section>
 
-<!-- ══ TIMEZONES ══════════════════════════════════════════════════ -->
+<!-- ══ TIMEZONES — UPDATED FOR JUNE 26, 2026 ════════════════════ -->
 <section class="timezones">
   <h3>Join from Anywhere in the World</h3>
+  <p class="timezones-sub">The live virtual event runs 7:00 AM – 1:00 PM AEST (Brisbane time). Here is when that is for you.</p>
+
   <div class="tz-grid reveal">
+    <!-- Australia - Brisbane / Sydney / Melbourne -->
     <div class="tz-item">
       <span class="tz-flag">🇦🇺</span>
-      <div class="tz-region">Brisbane (AEST)</div>
+      <div class="tz-region">Brisbane / Sydney / Melbourne (AEST)</div>
       <div class="tz-time">7:00 AM – 1:00 PM</div>
-      <div class="tz-date">Friday 20 March 2026</div>
+      <div class="tz-date">Fri, June 26, 2026</div>
     </div>
+    <!-- Australia - Adelaide -->
     <div class="tz-item">
       <span class="tz-flag">🇦🇺</span>
-      <div class="tz-region">Sydney / Melbourne (AEDT)</div>
-      <div class="tz-time">8:00 AM – 2:00 PM</div>
-      <div class="tz-date">Friday 20 March 2026</div>
+      <div class="tz-region">Adelaide (ACST)</div>
+      <div class="tz-time">6:30 AM – 12:30 PM</div>
+      <div class="tz-date">Fri, June 26, 2026</div>
     </div>
-    <div class="tz-item">
-      <span class="tz-flag">🇦🇺</span>
-      <div class="tz-region">Adelaide (ACDT)</div>
-      <div class="tz-time">7:30 AM – 1:30 PM</div>
-      <div class="tz-date">Friday 20 March 2026</div>
-    </div>
+    <!-- Australia - Perth -->
     <div class="tz-item">
       <span class="tz-flag">🇦🇺</span>
       <div class="tz-region">Perth (AWST)</div>
       <div class="tz-time">5:00 AM – 11:00 AM</div>
-      <div class="tz-date">Friday 20 March 2026</div>
+      <div class="tz-date">Fri, June 26, 2026</div>
     </div>
+    <!-- New Zealand -->
     <div class="tz-item">
       <span class="tz-flag">🇳🇿</span>
-      <div class="tz-region">New Zealand (NZDT)</div>
-      <div class="tz-time">10:00 AM – 4:00 PM</div>
-      <div class="tz-date">Friday 20 March 2026</div>
+      <div class="tz-region">New Zealand (NZST)</div>
+      <div class="tz-time">9:00 AM – 3:00 PM</div>
+      <div class="tz-date">Fri, June 26, 2026 <span class="tz-check">✅</span></div>
     </div>
-    <div class="tz-item">
-      <span class="tz-flag">🇮🇳</span>
-      <div class="tz-region">India (IST)</div>
-      <div class="tz-time">2:30 AM – 8:30 AM</div>
-      <div class="tz-date">Friday 20 March 2026</div>
-    </div>
+    <!-- USA Eastern -->
     <div class="tz-item">
       <span class="tz-flag">🇺🇸</span>
       <div class="tz-region">USA Eastern (EDT)</div>
       <div class="tz-time">5:00 PM – 11:00 PM</div>
-      <div class="tz-date">Thursday 19 March 2026</div>
+      <div class="tz-date">Thu, June 25, 2026 <span class="tz-check">✅</span></div>
     </div>
+    <!-- USA Central -->
+    <div class="tz-item">
+      <span class="tz-flag">🇺🇸</span>
+      <div class="tz-region">USA Central (CDT)</div>
+      <div class="tz-time">4:00 PM – 10:00 PM</div>
+      <div class="tz-date">Thu, June 25, 2026</div>
+    </div>
+    <!-- USA Mountain -->
+    <div class="tz-item">
+      <span class="tz-flag">🇺🇸</span>
+      <div class="tz-region">USA Mountain (MDT)</div>
+      <div class="tz-time">3:00 PM – 9:00 PM</div>
+      <div class="tz-date">Thu, June 25, 2026</div>
+    </div>
+    <!-- USA Pacific -->
     <div class="tz-item">
       <span class="tz-flag">🇺🇸</span>
       <div class="tz-region">USA Pacific (PDT)</div>
       <div class="tz-time">2:00 PM – 8:00 PM</div>
-      <div class="tz-date">Thursday 19 March 2026</div>
+      <div class="tz-date">Thu, June 25, 2026</div>
+    </div>
+    <!-- India -->
+    <div class="tz-item">
+      <span class="tz-flag">🇮🇳</span>
+      <div class="tz-region">India (IST)</div>
+      <div class="tz-time">2:30 AM – 8:30 AM</div>
+      <div class="tz-date">Fri, June 26, 2026</div>
     </div>
   </div>
 </section>
@@ -1840,8 +1866,8 @@ footer a { color: rgba(201,168,76,0.6); text-decoration: none; }
 </footer>
 
 <script>
-// ── Countdown Timer ─────────────────────────────────────────────
-const targetDate = new Date('2026-03-20T07:00:00+10:00');
+// ── Countdown Timer for June 26, 2026 at 7:00 AM AEST ──────────
+const targetDate = new Date('2026-06-26T07:00:00+10:00');
 
 function updateCountdown() {
   const now  = new Date();
