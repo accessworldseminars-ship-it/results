@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gold Transformation Package · AccessWorld 1:1 Coaching</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.25rem;
+      color: #F0F4F8;
+    }
+    .page {
+      max-width: 960px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-radius: 40px;
+      padding: 2.8rem 2.2rem;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.7);
+    }
+    .logo {
+      display: block;
+      max-width: 180px;
+      height: auto;
+      margin: 0 auto 1.2rem;
+    }
+    .gold { color: #C9A84C; }
+    .badge {
+      display: inline-block;
+      background: rgba(201, 168, 76, 0.15);
+      border: 1px solid #C9A84C;
+      border-radius: 60px;
+      padding: 4px 18px;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #C9A84C;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 2.8rem;
+      color: #fff;
+      line-height: 1.2;
+      text-align: center;
+    }
+    h1 span { color: #C9A84C; }
+    .subhead {
+      text-align: center;
+      color: rgba(255,255,255,0.7);
+      font-size: 1.05rem;
+      font-weight: 300;
+      margin: 0.5rem 0 1.5rem;
+      line-height: 1.6;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .coach-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: rgba(201, 168, 76, 0.08);
+      border-radius: 80px;
+      padding: 12px 24px 12px 12px;
+      margin: 1.2rem 0 1.8rem;
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .coach-row img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #C9A84C;
+    }
+    .coach-row .bio {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.4;
+      flex: 1;
+      min-width: 180px;
+    }
+    .coach-row .bio strong { color: #fff; }
+
+    .price-box {
+      text-align: center;
+      background: rgba(201, 168, 76, 0.06);
+      border-radius: 24px;
+      padding: 1.5rem 1rem;
+      margin: 1.8rem 0;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+    }
+    .price-box .amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.2rem;
+      font-weight: 700;
+      color: #C9A84C;
+      line-height: 1;
+    }
+    .price-box .currency { font-size: 1.8rem; color: #C9A84C; font-weight: 400; margin-right: 4px; }
+    .price-box .note {
+      display: block;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      margin-top: 6px;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin: 1.5rem 0;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.03);
+      border-radius: 20px;
+      padding: 1.2rem 1.4rem;
+      border: 1px solid rgba(201, 168, 76, 0.08);
+    }
+    .feature-card h4 { color: #C9A84C; font-size: 0.9rem; margin-bottom: 6px; }
+    .feature-card p { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+    .feature-card .icon { font-size: 1.4rem; margin-right: 6px; }
+
+    .series-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin: 12px 0;
+    }
+    .series-tag {
+      background: rgba(201, 168, 76, 0.08);
+      border-radius: 40px;
+      padding: 6px 14px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      text-align: center;
+    }
+    .series-tag strong { color: #C9A84C; }
+
+    .bonus-box {
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.12), rgba(26, 39, 68, 0.8));
+      border-radius: 20px;
+      padding: 1.2rem 1.4rem;
+      border: 1px solid #C9A84C;
+      margin: 1.2rem 0;
+    }
+    .bonus-box h4 { color: #C9A84C; font-size: 1rem; }
+    .bonus-box .pill {
+      display: inline-block;
+      background: rgba(201, 168, 76, 0.2);
+      border-radius: 40px;
+      padding: 4px 14px;
+      font-size: 0.7rem;
+      color: #C9A84C;
+      margin: 3px 4px 3px 0;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .payment-section {
+      margin: 2rem 0 1.2rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.15);
+      padding-top: 1.8rem;
+    }
+    .payment-section h3 {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+    .payment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .payment-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.25s;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+    }
+    .payment-btn:hover {
+      background: rgba(201, 168, 76, 0.12);
+      border-color: #C9A84C;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(201,168,76,0.15);
+    }
+    .payment-btn .icon { font-size: 1.6rem; line-height: 1; }
+    .payment-btn .sub {
+      font-size: 0.65rem;
+      opacity: 0.5;
+      font-weight: 300;
+      display: block;
+      margin-top: 2px;
+    }
+    .payment-btn.full { grid-column: 1 / -1; }
+    .payment-btn .coupon-note {
+      font-size: 0.7rem;
+      color: #C9A84C;
+      font-weight: 500;
+      background: rgba(201,168,76,0.12);
+      padding: 4px 12px;
+      border-radius: 30px;
+      margin-left: 8px;
+    }
+
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      transition: border 0.2s;
+      outline: none;
+    }
+    .form-group input::placeholder { color: rgba(255,255,255,0.25); }
+    .form-group input:focus { border-color: #C9A84C; background: rgba(255,255,255,0.08); }
+
+    .webhook-status {
+      margin: 1rem 0 0.8rem;
+      padding: 12px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border-left: 3px solid #C9A84C;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem;
+      display: none;
+    }
+    .webhook-status.success {
+      display: block;
+      border-left-color: #2ecc71;
+      background: rgba(46, 204, 113, 0.08);
+    }
+    .webhook-status.error {
+      display: block;
+      border-left-color: #e74c3c;
+      background: rgba(231, 76, 60, 0.08);
+    }
+    .webhook-status .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-top-color: #C9A84C;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.5px;
+    }
+    .footer-note a { color: rgba(201, 168, 76, 0.5); text-decoration: none; }
+
+    @media (max-width: 700px) {
+      .page { padding: 1.5rem 1rem; }
+      h1 { font-size: 2rem; }
+      .price-box .amount { font-size: 3rem; }
+      .grid-2col { grid-template-columns: 1fr; }
+      .series-grid { grid-template-columns: 1fr 1fr; }
+      .payment-grid { grid-template-columns: 1fr; }
+      .payment-btn.full { grid-column: auto; }
+      .coach-row { flex-direction: column; text-align: center; padding: 16px; }
+    }
+    @media (max-width: 450px) {
+      .series-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- LOGO -->
+  <img src="https://i.ibb.co/spJSMY16/worldjjpgsf.png" alt="AccessWorld Seminars" class="logo" />
+
+  <!-- BADGE -->
+  <div style="text-align:center;"><span class="badge">⚡ Premium 1:1 Coaching</span></div>
+
+  <!-- TITLE -->
+  <h1>Gold Transformation <span>Package</span></h1>
+  <p class="subhead">
+    Your personal breakthrough, with Joshua by your side.<br>
+    Designed for the person serious about change — not a course, but a guided transformation over 5–6 months, working directly with Joshua, backed by 12 months of full program access.
+  </p>
+
+  <!-- COACH ROW -->
+  <div class="coach-row">
+    <img src="https://i.ibb.co/p6V5HvcK/Screenshot-2025-11-11-122952.png" alt="Joshua Roy" />
+    <div class="bio">
+      <strong>Joshua Roy</strong> · NLP Practitioner · Neuro Transformation Therapist · Coach<br>
+      <span style="font-size:0.75rem; opacity:0.6;">24 years law enforcement · NSR creator · 3,500+ sessions</span>
+    </div>
+  </div>
+
+  <!-- PRICE -->
+  <div class="price-box">
+    <span class="currency">$</span><span class="amount">2,995</span>
+    <span style="color:rgba(255,255,255,0.3); font-size:1.2rem; font-weight:300;"> AUD</span>
+    <span class="note">6-month guided program · 12 months full program access</span>
+  </div>
+
+  <!-- 2-COLUMN FEATURES -->
+  <div class="grid-2col">
+    <div class="feature-card"><h4><span class="icon">🎯</span> Private Sessions</h4><p>12 sessions over 5–6 months · 120 min/month, 1:1 with Joshua</p></div>
+    <div class="feature-card"><h4><span class="icon">👥</span> Group Coaching</h4><p>12 months included · live group mentoring & accountability</p></div>
+    <div class="feature-card"><h4><span class="icon">🌐</span> Community Membership</h4><p>12-month AccessWorld community access</p></div>
+    <div class="feature-card"><h4><span class="icon">📚</span> Full Library Access</h4><p>All NLP & webinar training recordings · 12 months</p></div>
+  </div>
+
+  <!-- WHAT'S INCLUDED -->
+  <div style="background:rgba(255,255,255,0.03); border-radius:20px; padding:1.2rem 1.4rem; margin:1.2rem 0; border:1px solid rgba(201,168,76,0.08);">
+    <h4 style="color:#C9A84C; margin-bottom:10px;">✨ Everything Included in Your 12 Months</h4>
+    <ul style="list-style:none; padding:0; font-size:0.85rem; color:rgba(255,255,255,0.7); line-height:2;">
+      <li>✓ 12 private 1:1 coaching sessions with Joshua Roy — 120 min/month, tailored to your goals</li>
+      <li>✓ Attend up to 4 live 2-day webinar events — choose from any of the 5 series below</li>
+      <li>✓ Full NLP & webinar training library — 12 months access to all recorded programs</li>
+      <li>✓ All event recordings — 12 months access to revisit every session at your own pace</li>
+      <li>✓ Group coaching & mentoring — 12 months of live group sessions for accountability</li>
+      <li>✓ AccessWorld community membership — 12-month access to connect with others on the journey</li>
+    </ul>
+  </div>
+
+  <!-- WEBINAR SERIES -->
+  <div style="margin:1.2rem 0;">
+    <h4 style="color:#C9A84C; font-size:0.9rem;">🎓 The Ultimate Webinar Series — Up to 4 Powerful 2-Day Events</h4>
+    <p style="font-size:0.8rem; color:rgba(255,255,255,0.5); margin:4px 0 12px;">Your program includes your choice of up to 4 live 2-day events from AccessWorld's Ultimate Webinar Series.</p>
+    <div class="series-grid">
+      <div class="series-tag"><strong>01</strong> Health Series<br><span style="font-size:0.6rem;">Body, energy & healing</span></div>
+      <div class="series-tag"><strong>02</strong> Emotional Mastery<br><span style="font-size:0.6rem;">NLP, identity & freedom</span></div>
+      <div class="series-tag"><strong>03</strong> Life Skills Series<br><span style="font-size:0.6rem;">Wealth, memory & connection</span></div>
+      <div class="series-tag"><strong>04</strong> Relationship Series<br><span style="font-size:0.6rem;">Love, intimacy & passion</span></div>
+      <div class="series-tag" style="grid-column: span 1;"><strong>05</strong> NSR — Nervous System Reprogramming<br><span style="font-size:0.6rem;">AccessWorld's deepest 2-day intensive</span></div>
+    </div>
+  </div>
+
+  <!-- BONUS NSR -->
+  <div class="bonus-box">
+    <h4>⚡ BONUS — NSR METHODOLOGY</h4>
+    <p style="font-size:0.85rem; color:rgba(255,255,255,0.65);">The Four Transformation Processes — Joshua's four core NSR processes, the deepest work AccessWorld offers, included in your program.</p>
+    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">
+      <span class="pill">🎁 The Gift</span>
+      <span class="pill">🌫️ The Grey Room</span>
+      <span class="pill">🌀 The Womb of Eternity</span>
+      <span class="pill">🚀 Space Odyssey</span>
+    </div>
+  </div>
+
+  <!-- LEAD FORM -->
+  <form id="coachingForm">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+      <div class="form-group"><label for="fullName">Full name</label><input type="text" id="fullName" placeholder="e.g. Sarah Mitchell" required /></div>
+      <div class="form-group"><label for="phone">Phone number</label><input type="tel" id="phone" placeholder="+61 400 000 000" required /></div>
+    </div>
+    <div class="form-group"><label for="email">Email address</label><input type="email" id="email" placeholder="you@example.com" required /></div>
+
+    <div id="webhookStatus" class="webhook-status"><span class="spinner"></span> Sending your details…</div>
+
+    <!-- PAYMENT -->
+    <div class="payment-section">
+      <h3>Choose your payment method</h3>
+      <div class="payment-grid">
+
+        <!-- Square (Primary) -->
+        <a href="https://square.link/u/92CBTM8Q" target="_blank" class="payment-btn full" data-method="Square">
+          <span class="icon">▣</span> Pay with Square
+          <span class="coupon-note">Use coupon: accessworldgift</span>
+          <span class="sub">Secure checkout · all major cards accepted</span>
+        </a>
+
+        <!-- PayPal -->
+        <a href="https://www.paypal.com/ncp/payment/7AKX4M85Y7FY4" target="_blank" class="payment-btn" data-method="PayPal">
+          <span class="icon">💳</span> PayPal
+        </a>
+
+        <!-- Stripe -->
+        <a href="https://buy.stripe.com/28EdR9e8f10j2kTf5tg3603" target="_blank" class="payment-btn" data-method="Stripe">
+          <span class="icon">⚡</span> Stripe
+        </a>
+
+        <!-- Bank Transfer -->
+        <a href="#" class="payment-btn full" data-method="Bank Transfer" style="cursor:default; background:rgba(255,255,255,0.02);">
+          <span class="icon">🏦</span> Bank Transfer
+          <span class="sub">BSB: 124‑001 &nbsp; Acc: 227‑100‑71 &nbsp; Accessworld Trust BC</span>
+        </a>
+
+      </div>
+    </div>
+
+    <input type="hidden" id="paymentMethod" value="" />
+  </form>
+
+  <div style="text-align:center; margin-top:0.5rem;">
+    <span style="color:rgba(255,255,255,0.2); font-size:0.7rem;">🔒 secure checkout &bull; 12-month program access</span>
+  </div>
+
+  <div class="footer-note">
+    AccessWorld Seminars · Brisbane, Queensland, Australia · <a href="mailto:accessworldseminars@gmail.com">accessworldseminars@gmail.com</a> · <a href="tel:0432119091">0432 119 091</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const form = document.getElementById('coachingForm');
+    const statusDiv = document.getElementById('webhookStatus');
+    const paymentMethodInput = document.getElementById('paymentMethod');
+
+    // ----- capture payment method click -----
+    document.querySelectorAll('.payment-btn[data-method]').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        // if it's bank transfer dummy link, prevent default
+        if (this.dataset.method === 'Bank Transfer') {
+          e.preventDefault();
+        }
+        const method = this.dataset.method;
+        paymentMethodInput.value = method;
+
+        // trigger webhook submission if form is valid
+        if (form.checkValidity()) {
+          submitWebhook(method);
+        } else {
+          statusDiv.className = 'webhook-status error';
+          statusDiv.innerHTML = '⚠️ Please fill in all fields before selecting payment.';
+          statusDiv.style.display = 'block';
+          setTimeout(() => { statusDiv.style.display = 'none'; }, 3000);
+          form.reportValidity();
+        }
+      });
+    });
+
+    // ----- webhook submission -----
+    function submitWebhook(method) {
+      const name = document.getElementById('fullName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      const payload = {
+        name: name,
+        phone: phone,
+        email: email,
+        program: 'Gold Transformation Package (1:1 Coaching)',
+        amount: '2,995 AUD',
+        paymentMethod: method,
+        timestamp: new Date().toISOString()
+      };
+
+      statusDiv.className = 'webhook-status';
+      statusDiv.innerHTML = `<span class="spinner"></span> Sending your details…`;
+      statusDiv.style.display = 'block';
+
+      const webhookUrl = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+
+      fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      .then(response => {
+        if (response.ok) {
+          statusDiv.className = 'webhook-status success';
+          statusDiv.innerHTML = `✅ Details sent (${method}). You'll receive a confirmation shortly.`;
+        } else {
+          throw new Error('Webhook responded with ' + response.status);
+        }
+      })
+      .catch(err => {
+        statusDiv.className = 'webhook-status error';
+        statusDiv.innerHTML = `⚠️ Could not send details: ${err.message}. Please complete your payment manually.`;
+        console.warn('Webhook error:', err);
+      });
+
+      setTimeout(() => {
+        if (!statusDiv.className.includes('success')) {
+          statusDiv.style.display = 'none';
+        }
+      }, 8000);
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+    });
+
+  })();
+</script>
+
+</body>
+</html>
