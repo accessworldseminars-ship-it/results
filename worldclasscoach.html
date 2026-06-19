@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Your Incredible Self | AccessWorld Seminars</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== CSS VARIABLES (exact from main page) ===== */
+        :root {
+            --primary-gold: #d4a017;
+            --primary-gold-dark: #b8860b;
+            --primary-gold-light: #f0d080;
+            --primary-dark: #1a1a2e;
+            --primary-dark-blue: #16213e;
+            --secondary-dark: #0f0f1f;
+            --text-light: #f5f5f5;
+            --text-muted: #b0b0b0;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(212, 160, 23, 0.3);
+            --shadow-gold: 0 0 30px rgba(212, 160, 23, 0.15);
+            --transition: all 0.3s ease;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .section-title .gold-underline {
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gold);
+            margin: 0.5rem auto 1rem;
+            border-radius: 2px;
+        }
+        .accent-text {
+            color: var(--primary-gold);
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 14px 36px;
+            background: var(--primary-gold);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 20px rgba(212, 160, 23, 0.3);
+        }
+        .btn:hover {
+            background: var(--primary-gold-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 160, 23, 0.5);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+        }
+        .btn-outline:hover {
+            background: var(--primary-gold);
+            color: #fff;
+        }
+        .btn-large {
+            padding: 18px 48px;
+            font-size: 1.1rem;
+        }
+
+        /* ===== NAVIGATION (exact copy from main) ===== */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 0 20px;
+            border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+            transition: var(--transition);
+        }
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .nav-logo span {
+            color: var(--primary-gold);
+        }
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+        }
+        .nav-links a {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-gold);
+        }
+        .nav-links a.active {
+            border-bottom: 2px solid var(--primary-gold);
+            padding-bottom: 4px;
+        }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-header {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark-blue) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid rgba(212, 160, 23, 0.15);
+        }
+        .hero-header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(212, 160, 23, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+        .hero-content h1 .accent-text {
+            display: inline-block;
+        }
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(212, 160, 23, 0.15);
+            border: 1px solid rgba(212, 160, 23, 0.3);
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+        .hero-image-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 2rem 0 1.5rem;
+        }
+        .hero-image-container img {
+            border-radius: 16px;
+            max-width: 200px;
+            border: 2px solid rgba(212, 160, 23, 0.2);
+            box-shadow: var(--shadow-gold);
+            transition: var(--transition);
+        }
+        .hero-image-container img:hover {
+            transform: scale(1.02);
+            border-color: var(--primary-gold);
+        }
+        .hero-video {
+            max-width: 700px;
+            margin: 2rem auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-gold);
+            border: 2px solid rgba(212, 160, 23, 0.2);
+        }
+        .hero-video iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: block;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        .section:last-of-type {
+            border-bottom: none;
+        }
+        .section-dark {
+            background: var(--secondary-dark);
+        }
+
+        /* ===== CARDS / GRID ===== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px 25px;
+            transition: var(--transition);
+            backdrop-filter: blur(4px);
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-gold);
+            border-color: var(--primary-gold);
+        }
+        .card i {
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .testimonial-card {
+            background: var(--card-bg);
+            border-left: 4px solid var(--primary-gold);
+            padding: 24px 22px;
+            border-radius: 8px;
+        }
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        .testimonial-card .author {
+            font-weight: 700;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+            font-style: normal;
+        }
+        .testimonial-card .author span {
+            color: var(--primary-gold);
+            font-weight: 400;
+        }
+
+        /* ===== PRICING / CTA ===== */
+        .pricing-box {
+            background: linear-gradient(145deg, rgba(212, 160, 23, 0.08), rgba(26, 26, 46, 0.6));
+            border: 2px solid var(--primary-gold);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-gold);
+        }
+        .pricing-box .price-old {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+        .pricing-box .price-new {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary-gold);
+            line-height: 1;
+        }
+        .pricing-box .price-sub {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .pricing-box .btn {
+            font-size: 1.1rem;
+            padding: 16px 48px;
+        }
+        .pricing-box .guarantee {
+            margin-top: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .pricing-box .guarantee i {
+            color: var(--primary-gold);
+            margin-right: 0.5rem;
+        }
+
+        /* ===== COUNTDOWN ===== */
+        .countdown-wrapper {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(212, 160, 23, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(212, 160, 23, 0.15);
+            margin: 30px 0;
+        }
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+        .countdown-timer .time-block {
+            background: var(--primary-dark-blue);
+            padding: 12px 20px;
+            border-radius: 12px;
+            min-width: 70px;
+            border: 1px solid rgba(212, 160, 23, 0.2);
+        }
+        .countdown-timer .time-block .number {
+            font-size: 2.2rem;
+            color: var(--primary-gold);
+        }
+        .countdown-timer .time-block .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        /* ===== TIMEZONES ===== */
+        .timezone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        .timezone-item {
+            background: var(--card-bg);
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+        }
+        .timezone-item strong {
+            color: var(--text-light);
+        }
+        .timezone-item .check {
+            color: var(--primary-gold);
+            margin-left: 4px;
+        }
+
+        /* ===== IMAGE GALLERY / LOGOS ===== */
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .image-gallery img {
+            border-radius: 12px;
+            max-width: 200px;
+            border: 1px solid rgba(212, 160, 23, 0.15);
+            transition: var(--transition);
+            background: var(--card-bg);
+            padding: 4px;
+        }
+        .image-gallery img:hover {
+            transform: scale(1.03);
+            border-color: var(--primary-gold);
+        }
+        .image-gallery .gallery-item {
+            flex: 0 0 auto;
+        }
+        .image-gallery .gallery-item.large {
+            flex: 0 0 280px;
+        }
+
+        /* ===== NAV BUTTONS ===== */
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 40px 0 20px;
+        }
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 50px;
+            color: var(--text-light);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .nav-button:hover {
+            background: var(--primary-gold);
+            color: #fff;
+            border-color: var(--primary-gold);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER (exact copy from main) ===== */
+        footer {
+            background: var(--secondary-dark);
+            padding: 50px 0 30px;
+            border-top: 1px solid rgba(212, 160, 23, 0.1);
+            margin-top: 20px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--primary-gold);
+        }
+        .footer-content p, .footer-content a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        .footer-content a:hover {
+            color: var(--primary-gold);
+        }
+        .footer-social {
+            display: flex;
+            gap: 16px;
+            margin-top: 10px;
+        }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+        .footer-social a:hover {
+            background: var(--primary-gold);
+            color: #fff;
+            border-color: var(--primary-gold);
+            transform: translateY(-3px);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 20px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ===== FADE-IN ANIMATION ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                padding: 0 16px;
+                height: 64px;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                width: 100%;
+                background: rgba(26, 26, 46, 0.98);
+                padding: 20px;
+                gap: 1rem;
+                border-bottom: 2px solid rgba(212, 160, 23, 0.2);
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero-header {
+                padding: 110px 0 50px;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            .section {
+                padding: 50px 0;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .pricing-box {
+                padding: 25px 18px;
+            }
+            .pricing-box .price-new {
+                font-size: 2.6rem;
+            }
+            .countdown-timer {
+                gap: 10px;
+            }
+            .countdown-timer .time-block {
+                min-width: 55px;
+                padding: 8px 12px;
+            }
+            .countdown-timer .time-block .number {
+                font-size: 1.6rem;
+            }
+            .image-gallery img {
+                max-width: 140px;
+            }
+            .hero-image-container img {
+                max-width: 120px;
+            }
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+            .btn-large {
+                padding: 14px 28px;
+                font-size: 1rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            .pricing-box .price-new {
+                font-size: 2.2rem;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION (exact copy from main) ===== -->
+    <nav class="main-nav">
+        <div class="nav-logo">
+            <i class="fas fa-globe-americas" style="color: var(--primary-gold);"></i>
+            Access<span>World</span>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links" id="navLinks">
+            <a href="https://accessworldseminars-ship-it.github.io/results/">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="#" class="active">
+                <i class="fas fa-star"></i> Unlock Your Self
+            </a>
+            <a href="#">
+                <i class="fas fa-calendar-check"></i> Events
+            </a>
+            <a href="#">
+                <i class="fas fa-certificate"></i> Certify
+            </a>
+            <a href="#">
+                <i class="fas fa-envelope"></i> Contact
+            </a>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero-header">
+        <div class="container hero-content fade-in">
+            <div class="hero-badge"><i class="fas fa-fire"></i> LIVE VIRTUAL EVENT — JUNE 2026</div>
+            <h1>
+                Discover How You Can<br>
+                <span class="accent-text">Unlock Your Incredible Self</span>
+            </h1>
+            <p>Your emotions aren't the problem. Your relationship with them is. In 6 hours, we change that — at the level where change actually sticks.</p>
+
+            <!-- Images: logo + profile pic -->
+            <div class="hero-image-container">
+                <img src="https://i.ibb.co/spJSMY16/worldjjpgsf.png" alt="AccessWorld Logo" style="max-width:140px;">
+                <img src="https://i.ibb.co/F4c0V58q/Screenshot-2025-12-12-162510.png" alt="Joshua Roy" style="max-width:140px; border-radius:50%; object-fit:cover; height:140px;">
+            </div>
+
+            <!-- YouTube Video Intro -->
+            <div class="hero-video">
+                <iframe src="https://www.youtube.com/embed/jtmJUqAzTIo?autoplay=0&rel=0" title="Unlock Your Incredible Self Intro" allowfullscreen></iframe>
+            </div>
+
+            <!-- CTA Button -->
+            <a href="https://accessworldseminars-ship-it.github.io/results/purchaseworldclasscoachingtraining" class="btn btn-large">
+                <i class="fas fa-ticket-alt"></i> Join the Challenge Now — $39 USD
+            </a>
+            <p style="font-size:0.9rem; color:var(--text-muted); margin-top:0.5rem;">
+                <s style="color:#888;">~~$900~~</s> <strong style="color:var(--primary-gold);">$39</strong> — Last time at this low price!
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== COUNTDOWN + TIMEZONES ===== -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="countdown-wrapper fade-in">
+                <h3 style="font-family:var(--font-heading);"><i class="fas fa-clock" style="color:var(--primary-gold);"></i> "Unlock Your Incredible Self" Starts Very Soon:</h3>
+                <div class="countdown-timer" id="countdownTimer">
+                    <div class="time-block"><span class="number" id="days">06</span><span class="label">Days</span></div>
+                    <div class="time-block"><span class="number" id="hours">16</span><span class="label">Hours</span></div>
+                    <div class="time-block"><span class="number" id="minutes">46</span><span class="label">Minutes</span></div>
+                    <div class="time-block"><span class="number" id="seconds">03</span><span class="label">Seconds</span></div>
+                </div>
+                <div style="margin-top:20px;">
+                    <p style="color:var(--text-muted); font-size:0.95rem;"><i class="fas fa-globe" style="color:var(--primary-gold);"></i> <strong>Event Time:</strong> Fri, June 26, 2026 · 7:00 AM AEST (Brisbane/Sydney/Melbourne)</p>
+                </div>
+                <div class="timezone-grid">
+                    <div class="timezone-item"><strong>🇦🇺 Brisbane/Sydney/Melbourne</strong> (AEST) Fri, 7:00 AM – 1:00 PM</div>
+                    <div class="timezone-item"><strong>🇦🇺 Adelaide</strong> (ACST) Fri, 6:30 AM – 12:30 PM</div>
+                    <div class="timezone-item"><strong>🇦🇺 Perth</strong> (AWST) Fri, 5:00 AM – 11:00 AM</div>
+                    <div class="timezone-item"><strong>🇳🇿 New Zealand</strong> (NZST) Fri, 9:00 AM – 3:00 PM <span class="check">✅</span></div>
+                    <div class="timezone-item"><strong>🇺🇸 USA Eastern</strong> (EDT) Thu, 5:00 PM – 11:00 PM <span class="check">✅</span></div>
+                    <div class="timezone-item"><strong>🇺🇸 USA Central</strong> (CDT) Thu, 4:00 PM – 10:00 PM</div>
+                    <div class="timezone-item"><strong>🇺🇸 USA Mountain</strong> (MDT) Thu, 3:00 PM – 9:00 PM</div>
+                    <div class="timezone-item"><strong>🇺🇸 USA Pacific</strong> (PDT) Thu, 2:00 PM – 8:00 PM</div>
+                    <div class="timezone-item"><strong>🇮🇳 India</strong> (IST) Fri, 2:30 AM – 8:30 AM</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHAT YOU'LL GAIN ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">What You'll Gain <span class="gold-underline"></span></h2>
+                <p class="section-subtitle">In 6 transformative hours, you'll walk away with tools that create lasting change.</p>
+            </div>
+            <div class="card-grid fade-in">
+                <div class="card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Eliminate Emotional Barriers</h3>
+                    <p>Release the physical and emotional blocks that have been holding you back from success.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Rewire Your Mindset</h3>
+                    <p>Replace limiting beliefs with unstoppable confidence and motivation that lasts.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Overcome Self-Sabotage</h3>
+                    <p>Break the cycle of negative self-talk and self-defeating patterns for good.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Master High-Energy Techniques</h3>
+                    <p>Learn the same strategies used by elite performers to stay in peak state.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-route"></i>
+                    <h3>Develop a Strategic Plan</h3>
+                    <p>Create a clear, actionable roadmap for your personal growth journey.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Emotional Mastery</h3>
+                    <p>Learn to feel good for no good reason, and stay in control of your emotional state.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== THE 3 SUCCESS PATHWAYS ===== -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">The 3 Success Pathways <span class="gold-underline"></span></h2>
+                <p class="section-subtitle">The complete framework for lasting transformation.</p>
+            </div>
+            <div class="card-grid fade-in">
+                <div class="card">
+                    <i class="fas fa-compass"></i>
+                    <h3>Destiny Pathway</h3>
+                    <p><strong>Define your life's purpose</strong> and create a clear success roadmap. Align your vision with actionable steps for real transformation.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Emotion Pathway</h3>
+                    <p><strong>Master emotional intelligence</strong> and resilience. Release repressed emotions and eliminate internal conflicts that drain your energy.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-gem"></i>
+                    <h3>Mindset Pathway</h3>
+                    <p><strong>Reprogram limiting beliefs</strong> and negative self-talk. Adopt a champion mindset that keeps you energized and motivated daily.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">What People Are Saying <span class="gold-underline"></span></h2>
+                <p class="section-subtitle">Real transformations from real people.</p>
+            </div>
+            <div class="testimonial-grid fade-in">
+                <div class="testimonial-card">
+                    <p>"Just want say a BIG thanks to Joshua Roy for his amazing work. He teaches you how to feel better about yourself and how to be more positive. I now have the tools to better myself."</p>
+                    <div class="author">— Sharman <span>Single Mum, Qld</span></div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"I gained valuable insight as to why I was the way I was… and then, the tools to be able to change it! Simple and incredibly effective methods to disempower the 'yuk' stuff."</p>
+                    <div class="author">— Kay <span>Qld</span></div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"I've been slow to pick up on past events, but today's clarity was great. The presentation was very clear and given in a very entertaining way."</p>
+                    <div class="author">— Participant <span>Live Seminar</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== IMAGE GALLERY (certification, tools, workshop, etc.) ===== -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Tools, Training & Certification <span class="gold-underline"></span></h2>
+                <p class="section-subtitle">Everything you need to become a world-class coach.</p>
+            </div>
+            <div class="image-gallery fade-in">
+                <div class="gallery-item"><img src="https://i.ibb.co/21Hpwm1x/Screenshot-2025-11-24-063153.png" alt="Become a World Class Coach"></div>
+                <div class="gallery-item"><img src="https://i.ibb.co/0RmH3ghz/Screenshot-2026-01-29-105001.png" alt="Learn the Tools of the Trade"></div>
+                <div class="gallery-item"><img src="https://i.ibb.co/0RmH3ghz/Screenshot-2026-01-29-105001.png" alt="New Opportunity to Become Certified"></div>
+                <div class="gallery-item large"><img src="https://i.ibb.co/pvJ488Tv/BCO-073e00ee-a81e-4f24-a8a3-ac75358df841.png" alt="Diagram Impact of Coaching"></div>
+                <div class="gallery-item large"><img src="https://i.ibb.co/JRFZYF7h/workshop-1345512-960-720.jpg" alt="Workshop Picture"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRICING / CTA SECTION ===== -->
+    <section class="section" style="background: linear-gradient(135deg, var(--secondary-dark), var(--primary-dark-blue));">
+        <div class="container">
+            <div class="fade-in">
+                <div class="pricing-box">
+                    <h3 style="font-size:1.8rem; font-weight:800;"><i class="fas fa-gem" style="color:var(--primary-gold);"></i> Your Investment</h3>
+                    <p style="color:var(--text-muted); margin-bottom:0.5rem;">One-time discounted fee for this transformative 2-part challenge</p>
+                    <div class="price-old">~~$900~~</div>
+                    <div class="price-new">$39 <span style="font-size:1.2rem; font-weight:400; color:var(--text-muted);">USD</span></div>
+                    <div class="price-sub">First 100 Seats: <strong style="color:var(--primary-gold);">$39</strong> with Bonus Mystery Gifts!<br>
+                    <span style="font-size:0.85rem;">101-200 seats: $139 | 201-300 seats: $239</span></div>
+                    <a href="https://accessworldseminars-ship-it.github.io/results/purchaseworldclasscoachingtraining" class="btn btn-large" style="font-size:1.1rem; padding:16px 48px;">
+                        <i class="fas fa-ticket-alt"></i> Get Started NOW — $39
+                    </a>
+                    <div class="guarantee">
+                        <i class="fas fa-shield-alt"></i> 100% Satisfaction Guarantee — Full refund if you're not amazed.
+                    </div>
+                    <p style="margin-top:1rem; color:var(--text-muted); font-size:0.9rem;">
+                        <i class="fas fa-gift" style="color:var(--primary-gold);"></i> Bonus: Join live & receive a copy of the Highlights recording!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== NAVIGATION BUTTONS (Return Home, etc.) ===== -->
+    <div class="container">
+        <div class="nav-buttons">
+            <a href="https://accessworldseminars-ship-it.github.io/results/" class="nav-button">
+                <i class="fas fa-home"></i> Return Home
+            </a>
+            <a href="#top" class="nav-button">
+                <i class="fas fa-arrow-up"></i> Back to Top
+            </a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/purchaseworldclasscoachingtraining" class="nav-button" style="background:var(--primary-gold); color:#fff; border-color:var(--primary-gold);">
+                <i class="fas fa-ticket-alt"></i> Register Now
+            </a>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER (exact copy from main) ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4><i class="fas fa-globe-americas" style="color:var(--primary-gold);"></i> AccessWorld Seminars</h4>
+                    <p>Results Coach · NLP · NSR Specialist<br>Nervous System Reprogramming for real change.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="https://accessworldseminars-ship-it.github.io/results/">Home</a><br>
+                    <a href="#">Events</a><br>
+                    <a href="#">Certification</a><br>
+                    <a href="#">Contact</a>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-map-pin" style="color:var(--primary-gold);"></i> Brisbane, Australia</p>
+                    <p><i class="fas fa-envelope" style="color:var(--primary-gold);"></i> support@accessworldseminars.com</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>AccessWorldSeminars © 2015 — 2026. All Rights Reserved. | Brisbane Australia</p>
+                <p style="font-size:0.8rem; margin-top:4px;">Designed for transformation. Built for results.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        mobileBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu on link click (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                const icon = mobileBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // Fade-in on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Countdown timer (set to June 26, 2026 7:00 AM AEST = UTC+10)
+        function startCountdown() {
+            const targetDate = new Date('2026-06-25T21:00:00Z'); // 7:00 AM AEST = 21:00 UTC previous day
+            function update() {
+                const now = new Date();
+                const diff = Math.max(0, targetDate - now);
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }
+            update();
+            setInterval(update, 1000);
+        }
+        startCountdown();
+    </script>
+
+</body>
+</html>
