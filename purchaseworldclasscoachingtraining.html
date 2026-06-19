@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>World Class Coach – AccessWorld Seminars</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.25rem;
+    }
+    .page {
+      max-width: 860px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-radius: 32px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    }
+    .logo {
+      display: block;
+      max-width: 200px;
+      height: auto;
+      margin: 0 auto 1.5rem;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 2.6rem;
+      color: #fff;
+      text-align: center;
+      letter-spacing: -0.5px;
+    }
+    h1 span {
+      color: #C9A84C;
+    }
+    .subhead {
+      text-align: center;
+      color: rgba(255,255,255,0.7);
+      font-size: 1rem;
+      font-weight: 300;
+      margin: 0.5rem 0 1.8rem;
+      line-height: 1.6;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .price-tag {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .price-tag .amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.8rem;
+      font-weight: 700;
+      color: #C9A84C;
+      line-height: 1;
+    }
+    .price-tag .currency {
+      font-size: 1.6rem;
+      color: #C9A84C;
+      font-weight: 400;
+      margin-right: 4px;
+    }
+    .price-tag .note {
+      display: block;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      margin-top: 6px;
+      font-weight: 300;
+    }
+
+    /* form */
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    .form-group label {
+      display: block;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      transition: border 0.2s;
+      outline: none;
+    }
+    .form-group input::placeholder {
+      color: rgba(255,255,255,0.3);
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #C9A84C;
+      background: rgba(255,255,255,0.08);
+    }
+    .form-group select option {
+      background: #1A2744;
+      color: #fff;
+    }
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* payment methods */
+    .payment-methods {
+      margin: 2rem 0 1.8rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.15);
+      padding-top: 1.8rem;
+    }
+    .payment-methods h3 {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+    .payment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .payment-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 10px;
+      border-radius: 16px;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      font-weight: 500;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+    }
+    .payment-btn:hover {
+      background: rgba(201, 168, 76, 0.12);
+      border-color: #C9A84C;
+      transform: translateY(-2px);
+    }
+    .payment-btn .icon {
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+    .payment-btn.bank {
+      grid-column: 1 / -1;
+    }
+    .payment-btn.payid {
+      grid-column: 1 / -1;
+    }
+    .bank-detail {
+      font-size: 0.7rem;
+      opacity: 0.6;
+      font-weight: 300;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .webhook-status {
+      margin: 1.2rem 0 0.8rem;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.04);
+      border-left: 3px solid #C9A84C;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem;
+      display: none;
+    }
+    .webhook-status.success {
+      display: block;
+      border-left-color: #2ecc71;
+      background: rgba(46, 204, 113, 0.08);
+    }
+    .webhook-status.error {
+      display: block;
+      border-left-color: #e74c3c;
+      background: rgba(231, 76, 60, 0.08);
+    }
+    .webhook-status .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-top-color: #C9A84C;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.5px;
+    }
+    .footer-note a {
+      color: rgba(201, 168, 76, 0.5);
+      text-decoration: none;
+    }
+
+    .coach-badge {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,0.04);
+      padding: 14px 18px;
+      border-radius: 60px;
+      margin: 1.8rem 0 0.8rem;
+      border: 1px solid rgba(201, 168, 76, 0.1);
+    }
+    .coach-badge img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #C9A84C;
+    }
+    .coach-badge .bio {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+    .coach-badge .bio strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .page { padding: 1.8rem 1rem; }
+      h1 { font-size: 2rem; }
+      .price-tag .amount { font-size: 2.8rem; }
+      .row-2 { grid-template-columns: 1fr; }
+      .payment-grid { grid-template-columns: 1fr; }
+      .payment-btn.bank { grid-column: auto; }
+      .payment-btn.payid { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- LOGO -->
+  <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" class="logo" />
+
+  <!-- HEADER -->
+  <h1>How to become a <span>world class coach</span></h1>
+  <p class="subhead">
+    3‑hour intensive program &bull; nervous system reprogramming &bull; NLP foundations &bull; real-world coaching tools
+  </p>
+
+  <!-- PRICE -->
+  <div class="price-tag">
+    <span class="currency">$</span><span class="amount">49</span>
+    <span style="color:rgba(255,255,255,0.3); font-size:1.2rem; font-weight:300;"> AUD</span>
+    <span class="note">one‑time payment &bull; instant access</span>
+  </div>
+
+  <!-- COACH BADGE -->
+  <div class="coach-badge">
+    <img src="https://i.ibb.co/F4c0V58q/Screenshot-2025-12-12-162510.png" alt="Joshua Roy" />
+    <div class="bio">
+      <strong>Joshua Roy</strong> &bull; 24 years law enforcement &bull; NSR creator &bull; Karate champion<br>
+      <span style="font-size:0.7rem; opacity:0.6;">3,500+ coaching sessions &bull; 800+ seminars worldwide</span>
+    </div>
+  </div>
+
+  <!-- LEAD CAPTURE FORM -->
+  <form id="purchaseForm">
+    <div class="row-2">
+      <div class="form-group">
+        <label for="fullName">Full name</label>
+        <input type="text" id="fullName" placeholder="e.g. Jamie Smith" required />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone number</label>
+        <input type="tel" id="phone" placeholder="+61 400 000 000" required />
+      </div>
+    </div>
+    <div class="row-2">
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" id="email" placeholder="you@example.com" required />
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <select id="country" required>
+          <option value="">Select…</option>
+          <option value="Australia">Australia</option>
+          <option value="Canada">Canada</option>
+          <option value="Ireland">Ireland</option>
+          <option value="New Zealand">New Zealand</option>
+          <option value="United Kingdom">United Kingdom</option>
+          <option value="United States">United States</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- WEBHOOK STATUS MESSAGE -->
+    <div id="webhookStatus" class="webhook-status">
+      <span class="spinner"></span> Sending your details…
+    </div>
+
+    <!-- PAYMENT METHODS -->
+    <div class="payment-methods">
+      <h3>Choose your payment method</h3>
+      <div class="payment-grid">
+
+        <!-- PayPal -->
+        <a href="https://www.paypal.com/ncp/payment/96KU47K5YFVUW" target="_blank" class="payment-btn" data-method="PayPal">
+          <span class="icon">💳</span> PayPal
+        </a>
+
+        <!-- Stripe -->
+        <a href="https://buy.stripe.com/28EdR9e8f10j2kTf5tg3603" target="_blank" class="payment-btn" data-method="Stripe">
+          <span class="icon">⚡</span> Stripe
+        </a>
+
+        <!-- Square -->
+        <a href="https://square.link/u/vdOZmPn9" target="_blank" class="payment-btn" data-method="Square">
+          <span class="icon">▣</span> Square
+        </a>
+
+        <!-- PayPal QR (direct image link) -->
+        <a href="https://i.ibb.co/0yrm0VcQ/How-to-become-qrcode.png" target="_blank" class="payment-btn" data-method="PayPal QR">
+          <span class="icon">📱</span> PayPal QR
+        </a>
+
+        <!-- Bank Transfer (full width) -->
+        <a href="#" class="payment-btn bank" data-method="Bank Transfer" style="cursor:default; background:rgba(255,255,255,0.02);">
+          <span class="icon">🏦</span> Bank Transfer
+          <span class="bank-detail">BSB: 124‑001 &nbsp; Acc: 227‑100‑71 &nbsp; Accessworld Trust BC</span>
+        </a>
+
+        <!-- PayID (full width) -->
+        <a href="#" class="payment-btn payid" data-method="PayID" style="cursor:default; background:rgba(255,255,255,0.02);">
+          <span class="icon">📲</span> PayID
+          <span class="bank-detail">0432 119 091 &nbsp; (Accessworld Trust BC)</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- hidden field to track which method was clicked -->
+    <input type="hidden" id="paymentMethod" value="" />
+  </form>
+
+  <div style="text-align:center; margin-top:0.5rem;">
+    <span style="color:rgba(255,255,255,0.2); font-size:0.7rem;">🔒 secure checkout &bull; all major cards accepted</span>
+  </div>
+
+  <div class="footer-note">
+    Questions? <a href="mailto:accessworldseminars@gmail.com">accessworldseminars@gmail.com</a> &bull; <a href="tel:0432119091">0432 119 091</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const form = document.getElementById('purchaseForm');
+    const statusDiv = document.getElementById('webhookStatus');
+    const paymentMethodInput = document.getElementById('paymentMethod');
+
+    // ----- capture payment method click -----
+    document.querySelectorAll('.payment-btn[data-method]').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        // if it's a bank or PayID dummy link, prevent default (they are not real links)
+        if (this.dataset.method === 'Bank Transfer' || this.dataset.method === 'PayID') {
+          e.preventDefault();
+        }
+        const method = this.dataset.method;
+        paymentMethodInput.value = method;
+
+        // trigger webhook submission (only if form is valid)
+        if (form.checkValidity()) {
+          submitWebhook(method);
+        } else {
+          // show a gentle hint
+          statusDiv.className = 'webhook-status error';
+          statusDiv.innerHTML = '⚠️ Please fill in all fields before selecting payment.';
+          statusDiv.style.display = 'block';
+          setTimeout(() => { statusDiv.style.display = 'none'; }, 3000);
+          form.reportValidity();
+        }
+      });
+    });
+
+    // ----- webhook submission -----
+    function submitWebhook(method) {
+      const name = document.getElementById('fullName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const country = document.getElementById('country').value;
+
+      // build payload
+      const payload = {
+        name: name,
+        phone: phone,
+        email: email,
+        country: country,
+        program: 'How to become a world class coach',
+        amount: '49 AUD',
+        paymentMethod: method,
+        timestamp: new Date().toISOString()
+      };
+
+      // show sending status
+      statusDiv.className = 'webhook-status';
+      statusDiv.innerHTML = `<span class="spinner"></span> Sending your details…`;
+      statusDiv.style.display = 'block';
+
+      const webhookUrl = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+
+      fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      .then(response => {
+        if (response.ok) {
+          statusDiv.className = 'webhook-status success';
+          statusDiv.innerHTML = `✅ Webhook sent successfully (${method}). You'll receive a confirmation shortly.`;
+        } else {
+          throw new Error('Webhook responded with ' + response.status);
+        }
+      })
+      .catch(err => {
+        statusDiv.className = 'webhook-status error';
+        statusDiv.innerHTML = `⚠️ Could not send details: ${err.message}. Please complete your payment manually.`;
+        console.warn('Webhook error:', err);
+      });
+
+      // auto-hide after 8 seconds (but keep success visible)
+      setTimeout(() => {
+        if (statusDiv.className.includes('success')) {
+          // keep it
+        } else {
+          statusDiv.style.display = 'none';
+        }
+      }, 8000);
+    }
+
+    // ----- optional: if user clicks any payment button without filling form, we already handle above.
+    // but if they click a real link (PayPal, Stripe, Square) we also want to send webhook.
+    // we already attached click listeners to all .payment-btn
+    // but we need to also send webhook for real links (they will navigate)
+    // we'll use the same listener – but for real links, we send webhook then let navigation happen.
+    // we already have the listener above, but we need to allow navigation for real links.
+    // we'll refine: for real links, we don't prevent default, just send webhook.
+    // modify the listener to differentiate:
+    document.querySelectorAll('.payment-btn[data-method]').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const method = this.dataset.method;
+        // if it's bank/payid dummy, prevent navigation
+        if (method === 'Bank Transfer' || method === 'PayID') {
+          e.preventDefault();
+        }
+        // else let the link navigate naturally (we still send webhook)
+        paymentMethodInput.value = method;
+
+        if (form.checkValidity()) {
+          submitWebhook(method);
+        } else {
+          e.preventDefault(); // prevent navigation if form invalid
+          statusDiv.className = 'webhook-status error';
+          statusDiv.innerHTML = '⚠️ Please fill in all fields before selecting payment.';
+          statusDiv.style.display = 'block';
+          setTimeout(() => { statusDiv.style.display = 'none'; }, 3000);
+          form.reportValidity();
+        }
+      });
+    });
+
+    // small extra: if user hits enter on form, don't submit traditionally
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+    });
+
+  })();
+</script>
+
+</body>
+</html>
