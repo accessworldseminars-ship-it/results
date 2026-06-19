@@ -237,6 +237,13 @@
       border-radius: 30px;
       margin-left: 8px;
     }
+    .payment-btn .payid-detail {
+      font-size: 0.7rem;
+      opacity: 0.6;
+      font-weight: 300;
+      display: block;
+      margin-top: 2px;
+    }
 
     .form-group { margin-bottom: 1rem; }
     .form-group label {
@@ -426,9 +433,10 @@
           <span class="icon">💳</span> PayPal
         </a>
 
-        <!-- Stripe -->
-        <a href="https://buy.stripe.com/28EdR9e8f10j2kTf5tg3603" target="_blank" class="payment-btn" data-method="Stripe">
-          <span class="icon">⚡</span> Stripe
+        <!-- PayID (replaces Stripe) -->
+        <a href="#" class="payment-btn" data-method="PayID" style="cursor:default; background:rgba(255,255,255,0.02);">
+          <span class="icon">📲</span> PayID
+          <span class="payid-detail">0432 119 091 · Accessworld Trust BC</span>
         </a>
 
         <!-- Bank Transfer -->
@@ -461,8 +469,8 @@
     // ----- capture payment method click -----
     document.querySelectorAll('.payment-btn[data-method]').forEach(btn => {
       btn.addEventListener('click', function(e) {
-        // if it's bank transfer dummy link, prevent default
-        if (this.dataset.method === 'Bank Transfer') {
+        // if it's bank transfer or PayID dummy link, prevent default
+        if (this.dataset.method === 'Bank Transfer' || this.dataset.method === 'PayID') {
           e.preventDefault();
         }
         const method = this.dataset.method;
