@@ -1,522 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>World Class Coach – AccessWorld Seminars</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1.25rem;
-    }
-    .page {
-      max-width: 860px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border: 1px solid rgba(201, 168, 76, 0.25);
-      border-radius: 32px;
-      padding: 2.5rem 2rem;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-    }
-    .logo {
-      display: block;
-      max-width: 200px;
-      height: auto;
-      margin: 0 auto 1.5rem;
-    }
-    h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      font-size: 2.6rem;
-      color: #fff;
-      text-align: center;
-      letter-spacing: -0.5px;
-    }
-    h1 span {
-      color: #C9A84C;
-    }
-    .subhead {
-      text-align: center;
-      color: rgba(255,255,255,0.7);
-      font-size: 1rem;
-      font-weight: 300;
-      margin: 0.5rem 0 1.8rem;
-      line-height: 1.6;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .price-tag {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .price-tag .amount {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.8rem;
-      font-weight: 700;
-      color: #C9A84C;
-      line-height: 1;
-    }
-    .price-tag .currency {
-      font-size: 1.6rem;
-      color: #C9A84C;
-      font-weight: 400;
-      margin-right: 4px;
-    }
-    .price-tag .note {
-      display: block;
-      color: rgba(255,255,255,0.4);
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      margin-top: 6px;
-      font-weight: 300;
-    }
-
-    /* form */
-    .form-group {
-      margin-bottom: 1.2rem;
-    }
-    .form-group label {
-      display: block;
-      color: rgba(255,255,255,0.7);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      padding: 12px 16px;
-      border-radius: 12px;
-      border: 1px solid rgba(201, 168, 76, 0.25);
-      background: rgba(255,255,255,0.06);
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.95rem;
-      transition: border 0.2s;
-      outline: none;
-    }
-    .form-group input::placeholder {
-      color: rgba(255,255,255,0.3);
-    }
-    .form-group input:focus,
-    .form-group select:focus {
-      border-color: #C9A84C;
-      background: rgba(255,255,255,0.08);
-    }
-    .form-group select option {
-      background: #1A2744;
-      color: #fff;
-    }
-    .row-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    /* payment methods */
-    .payment-methods {
-      margin: 2rem 0 1.8rem;
-      border-top: 1px solid rgba(201, 168, 76, 0.15);
-      padding-top: 1.8rem;
-    }
-    .payment-methods h3 {
-      color: rgba(255,255,255,0.6);
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: 1.2rem;
-      text-align: center;
-    }
-    .payment-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .payment-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px 10px;
-      border-radius: 16px;
-      border: 1px solid rgba(201, 168, 76, 0.2);
-      background: rgba(255,255,255,0.04);
-      color: #fff;
-      font-weight: 500;
-      font-size: 0.85rem;
-      text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
-      font-family: 'Montserrat', sans-serif;
-      text-align: center;
-    }
-    .payment-btn:hover {
-      background: rgba(201, 168, 76, 0.12);
-      border-color: #C9A84C;
-      transform: translateY(-2px);
-    }
-    .payment-btn .icon {
-      font-size: 1.4rem;
-      line-height: 1;
-    }
-    .payment-btn.bank {
-      grid-column: 1 / -1;
-    }
-    .payment-btn.payid {
-      grid-column: 1 / -1;
-    }
-    .bank-detail {
-      font-size: 0.7rem;
-      opacity: 0.6;
-      font-weight: 300;
-      display: block;
-      margin-top: 2px;
-    }
-
-    .webhook-status {
-      margin: 1.2rem 0 0.8rem;
-      padding: 12px 16px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.04);
-      border-left: 3px solid #C9A84C;
-      color: rgba(255,255,255,0.7);
-      font-size: 0.85rem;
-      display: none;
-    }
-    .webhook-status.success {
-      display: block;
-      border-left-color: #2ecc71;
-      background: rgba(46, 204, 113, 0.08);
-    }
-    .webhook-status.error {
-      display: block;
-      border-left-color: #e74c3c;
-      background: rgba(231, 76, 60, 0.08);
-    }
-    .webhook-status .spinner {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      border: 2px solid rgba(255,255,255,0.15);
-      border-top-color: #C9A84C;
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-      margin-right: 10px;
-      vertical-align: middle;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .footer-note {
-      text-align: center;
-      margin-top: 2rem;
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.2);
-      letter-spacing: 0.5px;
-    }
-    .footer-note a {
-      color: rgba(201, 168, 76, 0.5);
-      text-decoration: none;
-    }
-
-    .coach-badge {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: rgba(255,255,255,0.04);
-      padding: 14px 18px;
-      border-radius: 60px;
-      margin: 1.8rem 0 0.8rem;
-      border: 1px solid rgba(201, 168, 76, 0.1);
-    }
-    .coach-badge img {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #C9A84C;
-    }
-    .coach-badge .bio {
-      color: rgba(255,255,255,0.7);
-      font-size: 0.8rem;
-      line-height: 1.4;
-    }
-    .coach-badge .bio strong {
-      color: #fff;
-      font-weight: 600;
-    }
-
-    @media (max-width: 600px) {
-      .page { padding: 1.8rem 1rem; }
-      h1 { font-size: 2rem; }
-      .price-tag .amount { font-size: 2.8rem; }
-      .row-2 { grid-template-columns: 1fr; }
-      .payment-grid { grid-template-columns: 1fr; }
-      .payment-btn.bank { grid-column: auto; }
-      .payment-btn.payid { grid-column: auto; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AccessWorld | Congruence & Mood Awareness Assessment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+            color: #F0F4F8;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+        .card, .question-card, .contact-card, .result-card { background: rgba(26, 39, 68, 0.75); backdrop-filter: blur(8px); border-radius: 28px; padding: 28px; margin-bottom: 20px; border: 1px solid rgba(201,168,76,0.25); }
+        .logo { width: 110px; margin-bottom: 15px; border-radius: 60px; }
+        .hero-image { width: 100%; max-width: 500px; border-radius: 24px; margin: 20px auto; display: block; border: 2px solid rgba(201,168,76,0.4); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+        .quiz-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 700; color: #C9A84C; margin-bottom: 15px; line-height: 1.3; }
+        .gold { color: #C9A84C; }
+        .btn-primary, .start-btn { background: linear-gradient(135deg, #C9A84C 0%, #E8D5A3 100%); color: #080d18; border: none; padding: 14px 32px; font-weight: 700; border-radius: 60px; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .btn-outline { background: transparent; border: 2px solid #C9A84C; color: #C9A84C; padding: 12px 28px; border-radius: 60px; font-weight: 600; cursor: pointer; }
+        .scale-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin: 25px 0; justify-content: center; }
+        .scale-btn { flex: 1; min-width: 70px; background: rgba(255,255,255,0.07); border: 2px solid rgba(201,168,76,0.4); border-radius: 20px; padding: 14px 6px; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; backdrop-filter: blur(4px); }
+        .scale-btn span:first-child { font-size: 1.7rem; font-weight: 800; line-height: 1; }
+        .scale-btn span:last-child { font-size: 0.65rem; opacity: 0.8; line-height: 1.2; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; }
+        .scale-btn.selected { background: #C9A84C; color: #080d18; border-color: #C9A84C; transform: scale(1.02); box-shadow: 0 6px 14px rgba(201,168,76,0.3); }
+        .scale-btn:hover { background: rgba(201,168,76,0.2); border-color: #C9A84C; transform: translateY(-2px); }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; margin: 10px 0; }
+        .progress-fill { height: 100%; background: #C9A84C; width: 0%; transition: width 0.3s; }
+        .tab-nav { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+        .tab-btn { background: rgba(255,255,255,0.05); border: 2px solid rgba(201,168,76,0.3); padding: 10px 20px; border-radius: 40px; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: #C9A84C; color: #080d18; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(#C9A84C 0deg, rgba(255,255,255,0.1) 0deg); margin: 15px auto; display: flex; align-items: center; justify-content: center; position: relative; }
+        .score-circle::before { content: ''; position: absolute; width: 120px; height: 120px; background: #080d18; border-radius: 50%; }
+        .score-text { position: relative; font-size: 2.6rem; font-weight: 800; color: #C9A84C; z-index: 2; }
+        .category-bar { margin: 14px 0; }
+        .bar-bg { background: #2a3650; border-radius: 8px; height: 10px; overflow: hidden; }
+        .bar-fill { background: #C9A84C; height: 100%; border-radius: 8px; width: 0%; }
+        .action-btn { padding: 10px 20px; border-radius: 40px; border: 2px solid #C9A84C; background: transparent; color: #C9A84C; cursor: pointer; margin: 5px; font-weight: 600; }
+        .action-btn.primary { background: #C9A84C; color: #080d18; border: none; }
+        .hidden { display: none; }
+        .status-message { margin-top: 15px; padding: 12px; border-radius: 16px; display: none; text-align: center; }
+        .quote-block { background: rgba(201,168,76,0.12); border-left: 4px solid #C9A84C; padding: 16px; margin: 18px 0; border-radius: 12px; font-style: italic; }
+        .webinar-card { background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(26,39,68,0.9)); border-radius: 24px; padding: 20px; margin-top: 25px; text-align: center; border: 2px solid #C9A84C; transition: 0.2s; }
+        .webinar-card:hover { transform: scale(1.01); background: rgba(201,168,76,0.25); }
+        .webinar-card a { color: #C9A84C; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+        @media print { body { background: white; color: black; } .action-btn, .tab-nav, .btn-primary, .status-message, .hero-image { display: none; } .card, .result-card { background: white; color: black; border: 1px solid #ccc; } .tab-content { display: block !important; page-break-after: always; } .tab-nav { display: none; } }
+        footer { font-size: 0.7rem; text-align: center; margin-top: 30px; opacity: 0.7; }
+        input, select { font-family: 'Montserrat', sans-serif; background: rgba(255,255,255,0.1); border: 1px solid #C9A84C; padding: 12px; border-radius: 20px; width: 100%; color: white; margin-top: 5px; }
+        .form-group { margin-bottom: 15px; }
+        #qText { font-size: 1.55rem; font-weight: 600; margin: 18px 0; line-height: 1.4; }
+        .coach-bio { background: rgba(201,168,76,0.08); border-radius: 20px; padding: 18px; margin-top: 20px; text-align: left; border: 1px solid rgba(201,168,76,0.2); }
+    </style>
 </head>
 <body>
-
-<div class="page">
-
-  <!-- LOGO -->
-  <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" class="logo" />
-
-  <!-- HEADER -->
-  <h1>How to become a <span>world class coach</span></h1>
-  <p class="subhead">
-    3‑hour intensive program &bull; nervous system reprogramming &bull; NLP foundations &bull; real-world coaching tools
-  </p>
-
-  <!-- PRICE -->
-  <div class="price-tag">
-    <span class="currency">$</span><span class="amount">49</span>
-    <span style="color:rgba(255,255,255,0.3); font-size:1.2rem; font-weight:300;"> AUD</span>
-    <span class="note">one‑time payment &bull; instant access</span>
-  </div>
-
-  <!-- COACH BADGE -->
-  <div class="coach-badge">
-    <img src="https://i.ibb.co/F4c0V58q/Screenshot-2025-12-12-162510.png" alt="Joshua Roy" />
-    <div class="bio">
-      <strong>Joshua Roy</strong> &bull; 24 years law enforcement &bull; NSR creator &bull; Karate champion<br>
-      <span style="font-size:0.7rem; opacity:0.6;">3,500+ coaching sessions &bull; 800+ seminars worldwide</span>
-    </div>
-  </div>
-
-  <!-- LEAD CAPTURE FORM -->
-  <form id="purchaseForm">
-    <div class="row-2">
-      <div class="form-group">
-        <label for="fullName">Full name</label>
-        <input type="text" id="fullName" placeholder="e.g. Jamie Smith" required />
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone number</label>
-        <input type="tel" id="phone" placeholder="+61 400 000 000" required />
-      </div>
-    </div>
-    <div class="row-2">
-      <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" id="email" placeholder="you@example.com" required />
-      </div>
-      <div class="form-group">
-        <label for="country">Country</label>
-        <select id="country" required>
-          <option value="">Select…</option>
-          <option value="Australia">Australia</option>
-          <option value="Canada">Canada</option>
-          <option value="Ireland">Ireland</option>
-          <option value="New Zealand">New Zealand</option>
-          <option value="United Kingdom">United Kingdom</option>
-          <option value="United States">United States</option>
-        </select>
-      </div>
+<div class="container" id="app">
+    <!-- INTRO SCREEN -->
+    <div id="introScreen" class="card" style="text-align:center;">
+        <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" class="logo" alt="AccessWorld">
+        <h1 class="quiz-title">Congruence & Mood Awareness</h1>
+        <p style="font-size:1.2rem; margin:10px 0;">Discover the gap between what you say you value and where you actually invest your time, energy, and attention.</p>
+        <img src="https://i.ibb.co/jk30TLqf/Picture1.png" class="hero-image" alt="Congruence Assessment" onerror="this.src='https://placehold.co/500x300?text=Congruence+Assessment'">
+        <p style="margin:15px 0;">Based on Joshua Roy's signature seminar — measure your alignment, mood patterns, and readiness for transformation.</p>
+        
+        <div class="coach-bio">
+            <h3 class="gold">🎯 Joshua Roy | Results Coach & Seminar Leader | AccessWorld Seminars</h3>
+            <p style="font-size:0.9rem;">With over 23 years as a police officer and more than a decade as a results coach, Joshua Roy has conducted 3,500+ one-on-one coaching sessions and led hundreds of seminars across Australia. He is the creator of NSR (Nervous System Reprogramming) and combines NLP, emotional clearing, mindset conditioning, and practical strategy to help people create rapid, lasting change. A former Australian Karate Champion, university graduate, and certified NLP practitioner — Joshua's coaching is direct, caring, and action-focused.</p>
+            <p style="font-size:0.85rem; margin-top:10px;"><em>"Feeling good for no good reason."</em></p>
+            <p style="font-size:0.85rem;">📞 +61 432 119 091 | payhip.com/b/jO2o1</p>
+        </div>
+        
+        <button class="start-btn" id="startQuizBtn">Begin Your Assessment →</button>
+        <footer>AccessWorld Seminars · Nervous System Reprogramming</footer>
     </div>
 
-    <!-- WEBHOOK STATUS MESSAGE -->
-    <div id="webhookStatus" class="webhook-status">
-      <span class="spinner"></span> Sending your details…
-    </div>
-
-    <!-- PAYMENT METHODS -->
-    <div class="payment-methods">
-      <h3>Choose your payment method</h3>
-      <div class="payment-grid">
-
-        <!-- PayPal -->
-        <a href="https://www.paypal.com/ncp/payment/96KU47K5YFVUW" target="_blank" class="payment-btn" data-method="PayPal">
-          <span class="icon">💳</span> PayPal
-        </a>
-
-        <!-- Stripe -->
-        <a href="https://buy.stripe.com/28EdR9e8f10j2kTf5tg3603" target="_blank" class="payment-btn" data-method="Stripe">
-          <span class="icon">⚡</span> Stripe
-        </a>
-
-        <!-- Square -->
-        <a href="https://square.link/u/vdOZmPn9" target="_blank" class="payment-btn" data-method="Square">
-          <span class="icon">▣</span> Square
-        </a>
-
-        <!-- PayPal QR (direct image link) -->
-        <a href="https://i.ibb.co/0yrm0VcQ/How-to-become-qrcode.png" target="_blank" class="payment-btn" data-method="PayPal QR">
-          <span class="icon">📱</span> PayPal QR
-        </a>
-
-        <!-- Bank Transfer (full width) -->
-        <a href="#" class="payment-btn bank" data-method="Bank Transfer" style="cursor:default; background:rgba(255,255,255,0.02);">
-          <span class="icon">🏦</span> Bank Transfer
-          <span class="bank-detail">BSB: 124‑001 &nbsp; Acc: 227‑100‑71 &nbsp; Accessworld Trust BC</span>
-        </a>
-
-        <!-- PayID (full width) -->
-        <a href="#" class="payment-btn payid" data-method="PayID" style="cursor:default; background:rgba(255,255,255,0.02);">
-          <span class="icon">📲</span> PayID
-          <span class="bank-detail">0432 119 091 &nbsp; (Accessworld Trust BC)</span>
-        </a>
-
-      </div>
-    </div>
-
-    <!-- hidden field to track which method was clicked -->
-    <input type="hidden" id="paymentMethod" value="" />
-  </form>
-
-  <div style="text-align:center; margin-top:0.5rem;">
-    <span style="color:rgba(255,255,255,0.2); font-size:0.7rem;">🔒 secure checkout &bull; all major cards accepted</span>
-  </div>
-
-  <div class="footer-note">
-    Questions? <a href="mailto:accessworldseminars@gmail.com">accessworldseminars@gmail.com</a> &bull; <a href="tel:0432119091">0432 119 091</a>
-  </div>
+    <div id="progressArea" class="hidden" style="margin-bottom:15px;"><div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div><div id="progressText" style="text-align:center; font-size:0.85rem; margin-top:8px;"></div></div>
+    <div id="questionScreen" class="hidden"><div class="question-card"><div id="qCat" class="gold" style="font-size:0.8rem; letter-spacing:1.5px;">CONGRUENCE & MOOD</div><div id="qText"></div><div class="scale-buttons" id="scaleBtns"></div><div style="display:flex; justify-content:space-between; margin-top:25px;"><button id="prevQBtn" class="btn-outline">← Previous</button><button id="nextQBtn" class="btn-primary">Next →</button></div></div></div>
+    <div id="contactScreen" class="hidden"><div class="contact-card"><h2 class="gold">Your Comprehensive Congruence Report</h2><p>Enter your details to receive a personalized analysis of your mood patterns, congruence gaps, and practical strategies from Joshua Roy's coaching methodology.</p><div class="form-group"><input type="text" id="leadName" placeholder="Full Name"></div><div class="form-group"><input type="tel" id="leadPhone" placeholder="Phone Number"></div><div class="form-group"><input type="email" id="leadEmail" placeholder="Email Address"></div><div class="form-group"><select id="leadCountry"><option value="">Select Country</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option></select></div><button id="submitLeadBtn" class="btn-primary" style="width:100%;">Generate My Report →</button><div id="webhookStatus" class="status-message"></div></div></div>
+    <div id="resultsScreen" class="hidden"><div class="card"><div style="display:flex; justify-content:space-between;"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" style="height:40px;"><span style="font-size:0.75rem;">Congruence Report</span></div><div style="text-align:center;"><div class="score-circle" id="scoreRing"><div class="score-text" id="finalScoreVal">0.0</div></div><div id="tierBadge" style="background:#C9A84C; display:inline-block; padding:6px 24px; border-radius:60px; color:#080d18; font-weight:800;"></div><p id="tierDesc" style="margin-top:12px;"></p></div><div class="tab-nav"><button class="tab-btn active" data-tab="0">📄 Page 1 · Score & Insights</button><button class="tab-btn" data-tab="1">📄 Page 2 · Growth Areas & Practices</button><button class="tab-btn" data-tab="2">📄 Page 3 · Action Plan & Events</button></div><div class="tab-content active" id="tab0"></div><div class="tab-content" id="tab1"></div><div class="tab-content" id="tab2"></div><div style="display:flex; gap:15px; justify-content:center; margin-top:25px;"><button id="printPdfBtn" class="action-btn primary">📄 Save as PDF</button><button id="retakeAllBtn" class="action-btn">🔄 Retake Quiz</button></div></div></div>
 </div>
 
 <script>
-  (function() {
-    const form = document.getElementById('purchaseForm');
-    const statusDiv = document.getElementById('webhookStatus');
-    const paymentMethodInput = document.getElementById('paymentMethod');
+    const QUESTIONS = [
+        { id:0, text:"I consistently spend time, effort, and energy on what I claim is important to me.", category:"Congruence", teaching:"'The truth of what you value isn't what you say you value. It's what you invest time, effort, and energy in.' Check your calendar. Check your bank statement. That's the truth." },
+        { id:1, text:"When I wake up, I feel that I have some control over my mood rather than being a victim of it.", category:"Mood Ownership", teaching:"'What if your mood doesn't just happen to you? What if somewhere along the way, your brain learned that this mood serves a purpose? Keeps you safe from disappointment?'" },
+        { id:2, text:"I follow through on new goals or habits for at least 3 months, even when excitement fades.", category:"Persistence", teaching:"'Stick to the task till it sticks to you. Beginners of many, but end as a few. Honor, power, place, and praise will always come to one who stays.'" },
+        { id:3, text:"I have a clear picture of the person I want to become, and I take daily action toward that version of me.", category:"Vision & Action", teaching:"'Your commitment to yourself should be to discover who you really are, unlock your incredible self, and unleash that on the world.'" },
+        { id:4, text:"I notice when I fall into low-energy moods (like feeling stuck, anxious, or numb) and can interrupt them.", category:"Mood Awareness", teaching:"'You can get addicted to feeling depressed. Your nervous system has learned the pattern because familiar feels safer than unknown.'" },
+        { id:5, text:"I take full responsibility for my emotional state and personal growth without blaming circumstances or others.", category:"Responsibility", teaching:"'Responsibility is the only position from which you can steer. If the problem is outside you, you are a passenger. If the problem is inside you — you can grab the wheel.'" },
+        { id:6, text:"I rarely say 'that's just the way I am' to excuse reactive behaviors; I believe I can change.", category:"Growth Mindset", teaching:"'Your personality is not fixed. It's not who you are. It's who you've practiced being. Not permanent. Just practiced.'" },
+        { id:7, text:"I have a morning ritual (even 5 minutes) that sets a positive tone before I check my phone.", category:"Morning Routine", teaching:"'The best time to plant a tree was ten years ago. The second best time is now.' Your morning sets your trajectory for the entire day." },
+        { id:8, text:"I understand that my body posture, breathing, and movement directly influence how I feel and think.", category:"Physiology", teaching:"'Motion creates emotion. Your brain is a pharmaceutical factory — and you are the one placing the order.'" },
+        { id:9, text:"When something good happens, I allow myself to feel joy fully without waiting for the other shoe to drop.", category:"Joy Capacity", teaching:"'What goes up must come down — that's gravity. When it comes to your emotions, if you consistently practice emotional stretching, you can go up and up and up forever.'" }
+    ];
 
-    // ----- capture payment method click -----
-    document.querySelectorAll('.payment-btn[data-method]').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        // if it's a bank or PayID dummy link, prevent default (they are not real links)
-        if (this.dataset.method === 'Bank Transfer' || this.dataset.method === 'PayID') {
-          e.preventDefault();
-        }
-        const method = this.dataset.method;
-        paymentMethodInput.value = method;
+    let answers = Array(QUESTIONS.length).fill(null);
+    let currentQ = 0;
+    const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
 
-        // trigger webhook submission (only if form is valid)
-        if (form.checkValidity()) {
-          submitWebhook(method);
-        } else {
-          // show a gentle hint
-          statusDiv.className = 'webhook-status error';
-          statusDiv.innerHTML = '⚠️ Please fill in all fields before selecting payment.';
-          statusDiv.style.display = 'block';
-          setTimeout(() => { statusDiv.style.display = 'none'; }, 3000);
-          form.reportValidity();
-        }
-      });
-    });
+    // Get DOM elements
+    const introScreen = document.getElementById('introScreen');
+    const progressArea = document.getElementById('progressArea');
+    const questionScreen = document.getElementById('questionScreen');
+    const contactScreen = document.getElementById('contactScreen');
+    const resultsScreen = document.getElementById('resultsScreen');
 
-    // ----- webhook submission -----
-    function submitWebhook(method) {
-      const name = document.getElementById('fullName').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const country = document.getElementById('country').value;
-
-      // build payload
-      const payload = {
-        name: name,
-        phone: phone,
-        email: email,
-        country: country,
-        program: 'How to become a world class coach',
-        amount: '49 AUD',
-        paymentMethod: method,
-        timestamp: new Date().toISOString()
-      };
-
-      // show sending status
-      statusDiv.className = 'webhook-status';
-      statusDiv.innerHTML = `<span class="spinner"></span> Sending your details…`;
-      statusDiv.style.display = 'block';
-
-      const webhookUrl = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
-
-      fetch(webhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      })
-      .then(response => {
-        if (response.ok) {
-          statusDiv.className = 'webhook-status success';
-          statusDiv.innerHTML = `✅ Webhook sent successfully (${method}). You'll receive a confirmation shortly.`;
-        } else {
-          throw new Error('Webhook responded with ' + response.status);
-        }
-      })
-      .catch(err => {
-        statusDiv.className = 'webhook-status error';
-        statusDiv.innerHTML = `⚠️ Could not send details: ${err.message}. Please complete your payment manually.`;
-        console.warn('Webhook error:', err);
-      });
-
-      // auto-hide after 8 seconds (but keep success visible)
-      setTimeout(() => {
-        if (statusDiv.className.includes('success')) {
-          // keep it
-        } else {
-          statusDiv.style.display = 'none';
-        }
-      }, 8000);
+    function getAverage() { let sum=0,count=0; for(let i=0;i<answers.length;i++) if(answers[i]!==null) { sum+=answers[i]; count++; } return count===0?0:sum/count; }
+    function getTier(score) {
+        if(score<=1.2) return { label:"Foundation Needed", description:"You're experiencing significant incongruence between your values and actions. The good news: awareness is the first step. Small, consistent actions create massive shifts." };
+        if(score<=2.3) return { label:"Emerging Awareness", description:"You sense the gap but haven't closed it. The 'mood addiction' may be running in the background. Start with one small congruent action tomorrow morning." };
+        if(score<=3.4) return { label:"Building Momentum", description:"You're taking action but inconsistently. The 10-day morning routine challenge will lock in your new pattern." };
+        if(score<=4.2) return { label:"Thriving", description:"Strong congruence and mood awareness. Your nervous system is upgrading. Keep rehearsing daily." };
+        return { label:"Mastery", description:"Exceptional! You embody congruence and emotional ownership. Now share this with others and deepen your impact." };
     }
 
-    // ----- optional: if user clicks any payment button without filling form, we already handle above.
-    // but if they click a real link (PayPal, Stripe, Square) we also want to send webhook.
-    // we already attached click listeners to all .payment-btn
-    // but we need to also send webhook for real links (they will navigate)
-    // we'll use the same listener – but for real links, we send webhook then let navigation happen.
-    // we already have the listener above, but we need to allow navigation for real links.
-    // we'll refine: for real links, we don't prevent default, just send webhook.
-    // modify the listener to differentiate:
-    document.querySelectorAll('.payment-btn[data-method]').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        const method = this.dataset.method;
-        // if it's bank/payid dummy, prevent navigation
-        if (method === 'Bank Transfer' || method === 'PayID') {
-          e.preventDefault();
+    function renderQuestion() {
+        const q = QUESTIONS[currentQ];
+        document.getElementById('qCat').innerHTML = `⚡ ${q.category} · Question ${currentQ+1} of ${QUESTIONS.length}`;
+        document.getElementById('qText').innerHTML = q.text;
+        const scaleDiv = document.getElementById('scaleBtns');
+        scaleDiv.innerHTML = '';
+        const labels = ['Not at all','Slightly','Somewhat','Mostly','Very much','Completely'];
+        for(let i=0;i<=5;i++) {
+            const btn = document.createElement('div');
+            btn.className = `scale-btn ${answers[currentQ]===i ? 'selected' : ''}`;
+            btn.innerHTML = `<span>${i}</span><span>${labels[i]}</span>`;
+            btn.onclick = () => { answers[currentQ]=i; renderQuestion(); };
+            scaleDiv.appendChild(btn);
         }
-        // else let the link navigate naturally (we still send webhook)
-        paymentMethodInput.value = method;
-
-        if (form.checkValidity()) {
-          submitWebhook(method);
-        } else {
-          e.preventDefault(); // prevent navigation if form invalid
-          statusDiv.className = 'webhook-status error';
-          statusDiv.innerHTML = '⚠️ Please fill in all fields before selecting payment.';
-          statusDiv.style.display = 'block';
-          setTimeout(() => { statusDiv.style.display = 'none'; }, 3000);
-          form.reportValidity();
+        document.getElementById('progressFill').style.width = `${((currentQ+1)/QUESTIONS.length)*100}%`;
+        document.getElementById('progressText').innerHTML = `Question ${currentQ+1} of ${QUESTIONS.length} · Select your answer`;
+        const prevBtn = document.getElementById('prevQBtn');
+        if(prevBtn) prevBtn.disabled = (currentQ===0);
+        const hasAns = answers[currentQ]!==null;
+        const nextBtn = document.getElementById('nextQBtn');
+        if(nextBtn) {
+            nextBtn.style.opacity = hasAns ? "1" : "0.6";
+            nextBtn.style.cursor = hasAns ? "pointer" : "not-allowed";
         }
-      });
-    });
+    }
 
-    // small extra: if user hits enter on form, don't submit traditionally
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-    });
+    function nextQuestion() { 
+        if(answers[currentQ]===null) {
+            alert("Please select an answer before continuing.");
+            return; 
+        }
+        if(currentQ < QUESTIONS.length-1) { 
+            currentQ++; 
+            renderQuestion(); 
+        } else { 
+            showContact(); 
+        } 
+    }
+    
+    function prevQuestion() { 
+        if(currentQ > 0) { 
+            currentQ--; 
+            renderQuestion(); 
+        } 
+    }
+    
+    function startQuiz() { 
+        answers.fill(null); 
+        currentQ = 0; 
+        introScreen.classList.add('hidden'); 
+        progressArea.classList.remove('hidden'); 
+        questionScreen.classList.remove('hidden'); 
+        contactScreen.classList.add('hidden'); 
+        resultsScreen.classList.add('hidden'); 
+        renderQuestion(); 
+    }
+    
+    function showContact() { 
+        questionScreen.classList.add('hidden'); 
+        progressArea.classList.add('hidden'); 
+        contactScreen.classList.remove('hidden'); 
+    }
 
-  })();
+    async function sendToTelegram(name, phone, country, email, score, tier) {
+        const payload = { name, phone, country, email, score:score.toFixed(1), tier:tier.label, quiz:"Congruence & Mood Awareness", timestamp:new Date().toISOString() };
+        const statusDiv = document.getElementById('webhookStatus');
+        statusDiv.style.display = 'block';
+        statusDiv.innerHTML = '⏳ Generating your congruence report...';
+        statusDiv.style.background = '#fff3cd';
+        try { 
+            await fetch(WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) }); 
+            statusDiv.innerHTML = '✓ Report ready!'; 
+            statusDiv.style.background='#d4edda'; 
+        } catch(e) { 
+            statusDiv.innerHTML = '⚠️ Showing results below.'; 
+            statusDiv.style.background='#f8d7da'; 
+        }
+        setTimeout(()=>{ showResults(); }, 600);
+    }
+
+    function showResults() {
+        const score = getAverage();
+        const tier = getTier(score);
+        const percent = (score/5)*100;
+        const deg = percent * 3.6;
+        const scoreRing = document.getElementById('scoreRing');
+        if(scoreRing) scoreRing.style.background = `conic-gradient(#C9A84C 0deg ${deg}deg, rgba(255,255,255,0.1) ${deg}deg 360deg)`;
+        document.getElementById('finalScoreVal').innerHTML = score.toFixed(1);
+        document.getElementById('tierBadge').innerHTML = tier.label;
+        document.getElementById('tierDesc').innerHTML = tier.description;
+
+        let lowIndices = []; answers.forEach((a,i)=>{ if(a!==null && a<=2) lowIndices.push(i); });
+        let highIndices = []; answers.forEach((a,i)=>{ if(a!==null && a>=4) highIndices.push(i); });
+
+        let page1 = `<div><h3 class="gold">🧠 Your Congruence & Mood Blueprint</h3><p>Your score of <strong>${score.toFixed(1)}/5</strong> places you in the <strong>${tier.label}</strong> category. ${tier.description}</p><div class="quote-block">“You already know what to do. That's not the problem. The problem is that knowing doesn't change anything. You might be addicted to the mood that keeps you stuck.” — Joshua Roy</div><h4>📖 The Fourth Addiction (Mood Addiction)</h4><p>We tend to think addiction means substances. But there's a fourth type: <strong>mood addiction</strong>. You can get addicted to feeling depressed, anxious, or hopeless. Not because you want to — because your nervous system learned the pattern. That mood has become familiar, and familiar feels safer than unknown.</p><div class="quote-block"><h4>🔑 The Gap of Incongruence</h4><p>Incongruence happens when your thoughts, words, intentions, and actions aren't lined up. You say you value family but don't think about them. You say you want to make more money but spend evenings playing games. The gap creates tension — low-grade, constant. Your body feels the split. And that tension becomes the mood you wake up to.</p><p><strong>Check your calendar. Check your bank statement. Check where your attention goes when no one is watching. That's what you value. Everything else is just a story.</strong></p></div></div>`;
+        
+        let page2 = `<div><h3 class="gold">🔻 Your Congruence Gaps (Growth Opportunities)</h3>`;
+        if(lowIndices.length===0) page2 += `<p>✨ You're already living with high congruence! Maintain momentum with daily morning rituals and continue to check your calendar against your values.</p>`;
+        else {
+            lowIndices.slice(0,3).forEach(idx => {
+                const q = QUESTIONS[idx];
+                page2 += `<div style="margin-bottom:20px;"><h4>${q.category}</h4><p>${q.teaching}</p><div style="background:#1e2a3a; border-radius:16px; padding:12px;"><strong>✨ Daily Practice:</strong><br/>${q.category==="Congruence"?"Tomorrow morning, do one thing you say you value before checking your phone. Notice what happens in your body.":q.category==="Mood Ownership"?"When you wake up, notice your mood. Ask: 'Is this mine, or did I inherit it?' Choose one small movement to shift it.":q.category==="Persistence"?"Pick one goal. Commit to 30 days of daily action — even 5 minutes. No excuses.":q.category==="Morning Routine"?"Set your alarm 15 minutes earlier. Before your phone: stretch, breathe, say 'I choose my state.'":q.category==="Physiology"?"Every hour today, stand up, raise your arms, and take 3 deep breaths. Move first, feel second.":"Write down one thing you're waiting to feel ready for. Take one tiny action toward it today."}</div></div>`;
+            });
+        }
+        page2 += `<div class="quote-block"><h4>⚙️ The 60-Second Energy Shift</h4><p>Joshua's personal practice: Stand up. Raise your arms. Clench your fists. Shout 'YES!' Then again. Three times. That's it.</p><p><strong>Try it now:</strong> Your brain is a pharmaceutical factory. That movement just placed a new order. You're not waiting to feel excited — you're creating excitement through motion.</p><p>Do this every hour for one day. Notice what shifts.</p></div></div>`;
+
+        let page3 = `<div><h3 class="gold">✨ Your Congruence Strengths</h3>`;
+        if(highIndices.length>0) { highIndices.slice(0,2).forEach(idx => { page3 += `<p><strong>✓ ${QUESTIONS[idx].category}</strong>: This area is already aligned. Use this strength to uplift your lower-scoring areas.</p>`; }); }
+        page3 += `<div class="quote-block"><h4>📅 Your 10-Day Congruence Challenge</h4><ol><li><strong>Days 1-2:</strong> Identify one area of incongruence. Write the gap between what you say and what you do.</li><li><strong>Days 3-4:</strong> Each morning, do one congruent action before your phone.</li><li><strong>Days 5-6:</strong> Add the 60-second excitement exercise, 3x daily.</li><li><strong>Days 7-8:</strong> Check your calendar. Does it reflect your values? Adjust one thing.</li><li><strong>Days 9-10:</strong> Ask each night: 'What mood did I practice today? Is that who I want to become?'</li></ol><p><strong>'The truth of what you value isn't what you say you value. It's what you invest time, effort, and energy in.' — Joshua Roy</strong></p></div><div class="webinar-card"><p><strong>📚 Education can improve income, help you deal with relationship challenges, and master your emotions.</strong></p><a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank">🎓 Click here for upcoming webinars & coaching sessions →</a></div><footer style="margin-top:20px;">“Feeling good for no good reason.” — Joshua Roy</footer></div>`;
+
+        document.getElementById('tab0').innerHTML = page1;
+        document.getElementById('tab1').innerHTML = page2;
+        document.getElementById('tab2').innerHTML = page3;
+        contactScreen.classList.add('hidden');
+        resultsScreen.classList.remove('hidden');
+    }
+
+    async function submitContact() {
+        const name = document.getElementById('leadName').value.trim();
+        const phone = document.getElementById('leadPhone').value.trim();
+        const email = document.getElementById('leadEmail').value.trim();
+        const country = document.getElementById('leadCountry').value;
+        if(!name || !phone || !email || !country) { alert("All fields required."); return; }
+        const score = getAverage();
+        const tier = getTier(score);
+        await sendToTelegram(name, phone, country, email, score, tier);
+    }
+    
+    function printPDF() { window.print(); }
+    function retakeFull() { 
+        answers.fill(null); 
+        currentQ = 0; 
+        introScreen.classList.remove('hidden'); 
+        progressArea.classList.add('hidden'); 
+        questionScreen.classList.add('hidden'); 
+        contactScreen.classList.add('hidden'); 
+        resultsScreen.classList.add('hidden'); 
+    }
+
+    // Attach event listeners
+    document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
+    document.getElementById('nextQBtn').addEventListener('click', nextQuestion);
+    document.getElementById('prevQBtn').addEventListener('click', prevQuestion);
+    document.getElementById('submitLeadBtn').addEventListener('click', submitContact);
+    document.getElementById('printPdfBtn').addEventListener('click', printPDF);
+    document.getElementById('retakeAllBtn').addEventListener('click', retakeFull);
+    
+    document.querySelectorAll('.tab-btn').forEach(btn=>{ 
+        btn.addEventListener('click',()=>{ 
+            const tab = btn.getAttribute('data-tab'); 
+            document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); 
+            btn.classList.add('active'); 
+            document.querySelectorAll('.tab-content').forEach((tc,i)=>{ 
+                tc.classList.toggle('active', i==tab); 
+            }); 
+        }); 
+    });
 </script>
-
 </body>
 </html>
