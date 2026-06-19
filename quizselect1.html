@@ -56,8 +56,57 @@
         .webinar-card a { color: #C9A84C; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
         @media print { body { background: white; color: black; } .action-btn, .tab-nav, .btn-primary, .status-message, .hero-image { display: none; } .card, .result-card { background: white; color: black; border: 1px solid #ccc; } .tab-content { display: block !important; page-break-after: always; } .tab-nav { display: none; } }
         footer { font-size: 0.7rem; text-align: center; margin-top: 30px; opacity: 0.7; }
-        input, select { font-family: 'Montserrat', sans-serif; background: rgba(255,255,255,0.1); border: 1px solid #C9A84C; padding: 12px; border-radius: 20px; width: 100%; color: white; margin-top: 5px; }
-        input:focus, select:focus { outline: none; border-color: #E8D5A3; }
+        
+        /* FIXED SELECT STYLES */
+        input, select { 
+            font-family: 'Montserrat', sans-serif; 
+            background: rgba(255,255,255,0.08); 
+            border: 1px solid rgba(201,168,76,0.4); 
+            padding: 12px 16px; 
+            border-radius: 20px; 
+            width: 100%; 
+            color: #F0F4F8; 
+            margin-top: 5px;
+            font-size: 0.95rem;
+            transition: border 0.3s, background 0.3s;
+            appearance: auto;
+            -webkit-appearance: auto;
+            -moz-appearance: auto;
+        }
+        input:focus, select:focus { 
+            outline: none; 
+            border-color: #C9A84C; 
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+        }
+        input::placeholder { color: rgba(255,255,255,0.35); }
+        
+        /* SELECT OPTIONS - FIXED VISIBILITY */
+        select option {
+            background: #1A2744 !important;
+            color: #F0F4F8 !important;
+            padding: 10px !important;
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 0.95rem !important;
+        }
+        select option:hover {
+            background: #C9A84C !important;
+            color: #080d18 !important;
+        }
+        select option:checked {
+            background: #C9A84C !important;
+            color: #080d18 !important;
+        }
+        
+        /* Fix for Firefox */
+        select:-moz-focusring {
+            color: transparent;
+            text-shadow: 0 0 0 #F0F4F8;
+        }
+        select::-moz-focus-inner {
+            border: 0;
+        }
+        
         .form-group { margin-bottom: 15px; }
         #qText { font-size: 1.55rem; font-weight: 600; margin: 18px 0; line-height: 1.4; }
         .coach-bio { background: rgba(201,168,76,0.08); border-radius: 20px; padding: 18px; margin-top: 20px; text-align: left; border: 1px solid rgba(201,168,76,0.2); }
@@ -65,6 +114,29 @@
         .nav-buttons button { flex: 1; }
         #prevQBtn:disabled { opacity: 0.3; cursor: not-allowed; }
         #nextQBtn:disabled { opacity: 0.3; cursor: not-allowed; }
+        
+        /* Select wrapper for better styling */
+        .select-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        .select-wrapper::after {
+            content: '▾';
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #C9A84C;
+            pointer-events: none;
+            font-size: 1.2rem;
+        }
+        .select-wrapper select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            padding-right: 40px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -112,10 +184,66 @@
         <div class="contact-card">
             <h2 class="gold">Your Comprehensive Congruence Report</h2>
             <p>Enter your details to receive a personalized analysis of your mood patterns, congruence gaps, and practical strategies from Joshua Roy's coaching methodology.</p>
-            <div class="form-group"><input type="text" id="leadName" placeholder="Full Name"></div>
-            <div class="form-group"><input type="tel" id="leadPhone" placeholder="Phone Number"></div>
-            <div class="form-group"><input type="email" id="leadEmail" placeholder="Email Address"></div>
-            <div class="form-group"><select id="leadCountry"><option value="">Select Country</option><option>Australia</option><option>Canada</option><option>Ireland</option><option>New Zealand</option><option>United Kingdom</option><option>United States</option></select></div>
+            <div class="form-group">
+                <input type="text" id="leadName" placeholder="Full Name">
+            </div>
+            <div class="form-group">
+                <input type="tel" id="leadPhone" placeholder="Phone Number">
+            </div>
+            <div class="form-group">
+                <input type="email" id="leadEmail" placeholder="Email Address">
+            </div>
+            <div class="form-group">
+                <div class="select-wrapper">
+                    <select id="leadCountry">
+                        <option value="">Select Country</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Ireland">Ireland</option>
+                        <option value="New Zealand">New Zealand</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="United States">United States</option>
+                        <option value="Afghanistan">Afghanistan</option>
+                        <option value="Albania">Albania</option>
+                        <option value="Algeria">Algeria</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Austria">Austria</option>
+                        <option value="Belgium">Belgium</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="China">China</option>
+                        <option value="Denmark">Denmark</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="Finland">Finland</option>
+                        <option value="France">France</option>
+                        <option value="Germany">Germany</option>
+                        <option value="Greece">Greece</option>
+                        <option value="India">India</option>
+                        <option value="Indonesia">Indonesia</option>
+                        <option value="Italy">Italy</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Malaysia">Malaysia</option>
+                        <option value="Mexico">Mexico</option>
+                        <option value="Netherlands">Netherlands</option>
+                        <option value="Norway">Norway</option>
+                        <option value="Philippines">Philippines</option>
+                        <option value="Poland">Poland</option>
+                        <option value="Portugal">Portugal</option>
+                        <option value="Russia">Russia</option>
+                        <option value="Saudi Arabia">Saudi Arabia</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="South Africa">South Africa</option>
+                        <option value="South Korea">South Korea</option>
+                        <option value="Spain">Spain</option>
+                        <option value="Sweden">Sweden</option>
+                        <option value="Switzerland">Switzerland</option>
+                        <option value="Taiwan">Taiwan</option>
+                        <option value="Thailand">Thailand</option>
+                        <option value="Turkey">Turkey</option>
+                        <option value="United Arab Emirates">United Arab Emirates</option>
+                        <option value="Vietnam">Vietnam</option>
+                    </select>
+                </div>
+            </div>
             <button id="submitLeadBtn" class="btn-primary" style="width:100%;">Generate My Report →</button>
             <div id="webhookStatus" class="status-message"></div>
         </div>
