@@ -1,0 +1,216 @@
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webhook Test (FormData + no-cors)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 35px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        h1 { color: #C9A84C; font-size: 1.6rem; text-align: center; margin-bottom: 5px; }
+        .subtitle { color: #aab; text-align: center; margin-bottom: 25px; font-size: 0.9rem; }
+        .field-group { margin-bottom: 14px; }
+        label { display: block; color: #ccd; font-weight: 500; font-size: 0.85rem; margin-bottom: 4px; }
+        input { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.12); background: rgba(0,0,0,0.3); color: #eee; font-size: 0.95rem; }
+        input:focus { outline: none; border-color: #C9A84C; }
+        .btn-row { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+        .btn { flex: 1; min-width: 120px; padding: 14px; border: none; border-radius: 14px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+        .btn-primary { background: linear-gradient(135deg, #C9A84C, #b8923a); color: #080d18; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,0.3); }
+        .btn-secondary { background: rgba(255,255,255,0.08); color: #ccd; border: 1px solid rgba(255,255,255,0.1); }
+        .status-box { margin-top: 16px; padding: 16px; border-radius: 14px; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.06); font-family: monospace; font-size: 0.8rem; color: #bbc; min-height: 60px; white-space: pre-wrap; word-break: break-all; max-height: 300px; overflow-y: auto; }
+        .status-box.success { border-color: rgba(80,220,100,0.3); background: rgba(80,220,100,0.05); color: #8f8; }
+        .status-box.error { border-color: rgba(255,80,80,0.3); background: rgba(255,80,80,0.05); color: #f88; }
+        .status-box.sending { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.05); color: #C9A84C; }
+        .payload-preview { background: rgba(0,0,0,0.25); padding: 10px 14px; border-radius: 10px; font-family: monospace; font-size: 0.75rem; color: #8af; margin-top: 8px; border: 1px solid rgba(255,255,255,0.05); }
+        .footer { margin-top: 20px; text-align: center; color: #667; font-size: 0.75rem; }
+        .badge { display: inline-block; background: rgba(201,168,76,0.15); color: #C9A84C; padding: 2px 12px; border-radius: 30px; font-size: 0.7rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📨 Webhook Test</h1>
+        <p class="subtitle">Exact same FormData + no-cors as your quizzes</p>
+
+        <div class="field-group">
+            <label>Full Name</label>
+            <input type="text" id="fieldName" value="John Smith" />
+        </div>
+        <div class="field-group">
+            <label>Phone</label>
+            <input type="text" id="fieldPhone" value="+61 412 345 678" />
+        </div>
+        <div class="field-group">
+            <label>Country</label>
+            <input type="text" id="fieldCountry" value="Australia" />
+        </div>
+        <div class="field-group">
+            <label>Email</label>
+            <input type="text" id="fieldEmail" value="john@example.com" />
+        </div>
+        <div class="field-group">
+            <label>Score (0-5)</label>
+            <input type="text" id="fieldScore" value="4.2" />
+        </div>
+        <div class="field-group">
+            <label>Tier</label>
+            <input type="text" id="fieldTier" value="Skilled Practitioner" />
+        </div>
+
+        <div class="payload-preview" id="payloadPreview">📦 FormData will be sent (not JSON)</div>
+
+        <div class="btn-row">
+            <button class="btn btn-primary" id="sendBtn">🚀 Send</button>
+            <button class="btn btn-secondary" id="resetBtn">↺ Reset</button>
+        </div>
+
+        <div class="status-box" id="statusBox">⏳ Ready to send...</div>
+        <div class="footer">🔗 Webhook: <span class="badge">52NbZ98JuauiBQh5movJ1</span></div>
+    </div>
+
+    <script>
+        const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+
+        const DEFAULTS = {
+            name: 'John Smith',
+            phone: '+61 412 345 678',
+            country: 'Australia',
+            email: 'john@example.com',
+            score: '4.2',
+            tier: 'Skilled Practitioner'
+        };
+
+        const fieldName = document.getElementById('fieldName');
+        const fieldPhone = document.getElementById('fieldPhone');
+        const fieldCountry = document.getElementById('fieldCountry');
+        const fieldEmail = document.getElementById('fieldEmail');
+        const fieldScore = document.getElementById('fieldScore');
+        const fieldTier = document.getElementById('fieldTier');
+        const statusBox = document.getElementById('statusBox');
+        const payloadPreview = document.getElementById('payloadPreview');
+
+        function setStatus(msg, type) {
+            statusBox.textContent = msg;
+            statusBox.className = 'status-box';
+            if (type === 'success') statusBox.classList.add('success');
+            else if (type === 'error') statusBox.classList.add('error');
+            else if (type === 'sending') statusBox.classList.add('sending');
+        }
+
+        function updatePreview() {
+            payloadPreview.textContent = `📦 Sending: name=${fieldName.value || DEFAULTS.name}, phone=${fieldPhone.value || DEFAULTS.phone}, country=${fieldCountry.value || DEFAULTS.country}, email=${fieldEmail.value || DEFAULTS.email}, score=${fieldScore.value || DEFAULTS.score}, tier=${fieldTier.value || DEFAULTS.tier}`;
+        }
+
+        async function sendToWebhook() {
+            const name = fieldName.value.trim() || DEFAULTS.name;
+            const phone = fieldPhone.value.trim() || DEFAULTS.phone;
+            const country = fieldCountry.value.trim() || DEFAULTS.country;
+            const email = fieldEmail.value.trim() || DEFAULTS.email;
+            const score = fieldScore.value.trim() || DEFAULTS.score;
+            const tier = fieldTier.value.trim() || DEFAULTS.tier;
+
+            setStatus('⏳ Sending request (no-cors mode)...', 'sending');
+            document.getElementById('sendBtn').disabled = true;
+            document.getElementById('sendBtn').textContent = '⏳ Sending...';
+
+            console.log('📤 Sending FormData:', { name, phone, country, email, score, tier });
+
+            try {
+                const formData = new FormData();
+                formData.append('name', name);
+                formData.append('phone', phone);
+                formData.append('country', country);
+                formData.append('email', email);
+                formData.append('score', score);
+                formData.append('tier', tier);
+                formData.append('timestamp', new Date().toISOString());
+
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors'
+                });
+
+                console.log('📥 Response (no-cors mode - status may not be accessible):', response);
+
+                setStatus(`✅ Request sent!\n\n📦 Data sent:\nName: ${name}\nPhone: ${phone}\nCountry: ${country}\nEmail: ${email}\nScore: ${score}\nTier: ${tier}\n\n💡 With no-cors mode, we can't read the response status. Check your Activepieces dashboard to confirm receipt.`, 'success');
+
+            } catch (error) {
+                console.error('❌ Error:', error);
+                setStatus(`❌ Error: ${error.message}\n\n📦 Data attempted:\nName: ${name}\nPhone: ${phone}\nCountry: ${country}\nEmail: ${email}\nScore: ${score}\nTier: ${tier}`, 'error');
+            } finally {
+                document.getElementById('sendBtn').disabled = false;
+                document.getElementById('sendBtn').textContent = '🚀 Send';
+            }
+        }
+
+        function resetFields() {
+            fieldName.value = DEFAULTS.name;
+            fieldPhone.value = DEFAULTS.phone;
+            fieldCountry.value = DEFAULTS.country;
+            fieldEmail.value = DEFAULTS.email;
+            fieldScore.value = DEFAULTS.score;
+            fieldTier.value = DEFAULTS.tier;
+            updatePreview();
+            setStatus('⏳ Ready to send...', '');
+        }
+
+        [fieldName, fieldPhone, fieldCountry, fieldEmail, fieldScore, fieldTier].forEach(f => {
+            f.addEventListener('input', updatePreview);
+        });
+
+        document.getElementById('sendBtn').addEventListener('click', sendToWebhook);
+        document.getElementById('resetBtn').addEventListener('click', resetFields);
+
+        resetFields();
+    </script>
+</body>
+</html>
+```
+
+Key Differences Explained
+
+Feature Your Quizzes This Test Page
+Data format FormData ✅ FormData
+Fetch mode no-cors ✅ no-cors
+Field names name, phone, country, email, score, tier ✅ Same
+Timestamp Included ✅ Included
+
+Why no-cors + FormData
+
+Your quizzes use no-cors mode, which means:
+
+· ✅ The request is sent
+· ❌ You can't read the response status
+· ❌ You can't read the response body
+· ❌ You can't use Content-Type: application/json headers
+
+This is a limitation that prevents the test page from showing you the actual server response. The only way to confirm the webhook worked is to check your Activepieces dashboard.
+
+To Test Your Webhook
+
+1. Open the test page in your browser
+2. Click "Send"
+3. Check your Activepieces dashboard to see if the data arrived
+4. Check if Telegram received the message
+
+If data appears in Activepieces/Telegram, your webhook is working correctly. If not, the issue is likely on the Activepieces side (webhook not published, Telegram connection broken, etc.).
