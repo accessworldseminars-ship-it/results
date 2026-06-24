@@ -4,67 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | AccessWorld Seminars</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Barlow:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --navy: #0e1b35;
             --navy-mid: #162240;
-            --navy-light: #1e2f55;
             --gold: #c9a84c;
-            --gold-light: #e2c47a;
             --white: #ffffff;
             --text: #d8dde8;
             --telegram: #26A5E4;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Barlow', sans-serif; background: var(--navy); color: var(--text); }
 
         /* NAV */
-        .nav { position: fixed; top: 0; width: 100%; background: rgba(14,27,53,0.97); border-bottom: 1px solid rgba(201,168,76,0.25); z-index: 1000; padding: 0 3%; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+        .nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(14,27,53,0.97);
+            border-bottom: 1px solid rgba(201,168,76,0.25);
+            z-index: 1000; padding: 0 3%;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 68px;
+        }
         .nav-logo img { height: 48px; }
-        .nav-links a { color: var(--text); text-decoration: none; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; padding: 6px 10px; transition: 0.25s; }
-        .nav-links a.cta-nav { background: var(--gold); color: var(--navy); padding: 7px 14px; border-radius: 30px; margin-left: 6px; }
+        .nav-links a {
+            color: var(--text); text-decoration: none;
+            font-size: 0.75rem; font-weight: 600;
+            text-transform: uppercase; padding: 6px 10px;
+            transition: 0.25s;
+        }
+        .nav-links a.cta-nav {
+            background: var(--gold); color: var(--navy);
+            padding: 7px 14px; border-radius: 30px;
+        }
 
         /* HEADER */
-        .page-header { padding: 130px 5% 70px; background: linear-gradient(160deg, #0a1428 0%, #0e1b35 100%); text-align: center; }
-        .page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: var(--white); margin-bottom: 20px; }
-        .page-header h1 em { color: var(--gold); font-style: italic; }
+        .page-header {
+            padding: 130px 5% 70px;
+            background: linear-gradient(160deg, #0a1428 0%, #0e1b35 100%);
+            text-align: center;
+        }
+        .page-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem; color: var(--white);
+            margin-bottom: 20px;
+        }
+        .page-header h1 em { color: var(--gold); }
 
-        /* BIO SECTION */
-        .bio-section { max-width: 900px; margin: -40px auto 40px; padding: 30px; background: var(--navy-mid); border: 1px solid var(--gold); border-radius: 12px; }
-        .bio-text { font-size: 1.05rem; line-height: 1.7; font-style: italic; color: var(--white); }
+        /* BIO */
+        .bio-section {
+            max-width: 900px; margin: -40px auto 40px;
+            padding: 30px; background: var(--navy-mid);
+            border: 1px solid var(--gold); border-radius: 12px;
+        }
+        .bio-text {
+            font-size: 1.05rem; line-height: 1.7;
+            font-style: italic; color: var(--white);
+        }
 
         /* FORM */
-        .form-section { padding: 50px 5%; display: flex; flex-direction: column; align-items: center; }
-        .form-box { background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.2); border-radius: 16px; padding: 40px; width: 100%; max-width: 600px; }
+        .form-section {
+            padding: 50px 5%; display: flex;
+            flex-direction: column; align-items: center;
+        }
+        .form-box {
+            background: var(--navy-mid);
+            border: 1px solid rgba(201,168,76,0.2);
+            border-radius: 16px; padding: 40px;
+            width: 100%; max-width: 600px;
+        }
         .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-size: 0.75rem; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; background: rgba(14,27,53,0.6); border: 1px solid rgba(201,168,76,0.3); color: white; border-radius: 6px; }
-        .submit-btn { width: 100%; padding: 16px; background: var(--telegram); color: white; border: none; font-weight: 700; text-transform: uppercase; cursor: pointer; border-radius: 6px; }
-        
-        #webhookStatus { display: none; padding: 15px; margin-bottom: 20px; border-radius: 6px; text-align: center; font-weight: 600; }
+        .form-group label {
+            display: block; font-size: 0.75rem;
+            color: var(--gold); text-transform: uppercase;
+            margin-bottom: 8px; font-weight: 700;
+        }
+        .form-group input, .form-group select {
+            width: 100%; padding: 12px;
+            background: rgba(14,27,53,0.6);
+            border: 1px solid rgba(201,168,76,0.3);
+            color: white; border-radius: 6px;
+        }
+        .submit-btn {
+            width: 100%; padding: 16px;
+            background: var(--telegram); color: white;
+            border: none; font-weight: 700;
+            text-transform: uppercase; cursor: pointer;
+            border-radius: 6px;
+        }
 
-        /* PRINT / PDF STYLES */
-        @media print {
-            .nav, .nav-links, .submit-btn, .form-section, .page-header p { display: none !important; }
-            body { background: white; color: black; }
-            .print-page { page-break-after: always; padding: 40px; color: black !important; }
-            .print-page h1, .print-page h2 { color: #000 !important; }
-            .visual-bar { height: 20px; background: #eee; border: 1px solid #000; width: 100%; }
-            .score-fill { background: #333; height: 100%; }
+        #webhookStatus {
+            display: none; padding: 15px;
+            margin-bottom: 20px; border-radius: 6px;
+            text-align: center; font-weight: 600;
         }
     </style>
 </head>
+
 <body>
 
 <nav class="nav">
     <div class="nav-logo">
-        <a href="https://accessworldseminars-ship-it.github.io/results/"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars"></a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/">
+            <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars">
+        </a>
     </div>
     <div class="nav-links">
-        <a href="https://form.jotform.com/250184868189875" class="cta-nav" target="_blank"><i class="fas fa-calendar-check"></i> Free Session</a>
+        <a href="https://form.jotform.com/250184868189875" class="cta-nav" target="_blank">
+            <i class="fas fa-calendar-check"></i> Free Session
+        </a>
     </div>
 </nav>
 
@@ -80,33 +132,39 @@
 </div>
 
 <section class="form-section">
-    <div id="webhookStatus"></div>
     <div class="form-box">
+
+        <div id="webhookStatus"></div>
+
         <form id="activepiecesForm">
             <div class="form-group">
                 <label>Full Name *</label>
                 <input type="text" id="name" required placeholder="Jane Smith">
             </div>
+
             <div class="form-group">
                 <label>Email *</label>
                 <input type="email" id="email" required placeholder="you@example.com">
             </div>
+
             <div class="form-group">
                 <label>Phone *</label>
                 <input type="tel" id="phone" required placeholder="0412 345 678">
             </div>
+
             <div class="form-group">
                 <label>Country *</label>
                 <select id="country" required>
-                    <option value="" disabled selected>🌍 Select Country</option> 
-                    <option value="Australia">🇦🇺 Australia</option> 
-                    <option value="Canada">🇨🇦 Canada</option> 
-                    <option value="Ireland">🇮🇪 Ireland</option> 
-                    <option value="New Zealand">🇳🇿 New Zealand</option> 
-                    <option value="United Kingdom">🇬🇧 United Kingdom</option> 
+                    <option value="" disabled selected>🌍 Select Country</option>
+                    <option value="Australia">🇦🇺 Australia</option>
+                    <option value="Canada">🇨🇦 Canada</option>
+                    <option value="Ireland">🇮🇪 Ireland</option>
+                    <option value="New Zealand">🇳🇿 New Zealand</option>
+                    <option value="United Kingdom">🇬🇧 United Kingdom</option>
                     <option value="United States">🇺🇸 United States</option>
                 </select>
             </div>
+
             <div class="form-group">
                 <label>Focus Area</label>
                 <select id="tierLabel">
@@ -115,90 +173,65 @@
                     <option>Career & Wealth</option>
                 </select>
             </div>
+
             <button type="submit" class="submit-btn">Send Message</button>
         </form>
     </div>
 </section>
 
 <script>
-const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1'; 
+const WEBHOOK_URL = "https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1";
 
-async function sendToTelegram(name, phone, country, email, scoreNum, tierLabel) { 
-    const formData = { 
-        name: name, 
-        phone: phone, 
-        country: country, 
-        email: email, 
-        score: scoreNum.toFixed(1), 
-        tier: tierLabel, 
-        timestamp: new Date().toISOString() 
-    }; 
-
-    console.log('Sending to Telegram:', formData); 
-
-    const statusDiv = document.getElementById('webhookStatus'); 
-    if (statusDiv) { 
-        statusDiv.style.display = 'block'; 
-        statusDiv.style.background = '#fff3cd'; 
-        statusDiv.style.color = '#000'; 
-        statusDiv.innerHTML = '⏳ Sending...'; 
-    } 
-
-    try { 
-        const response = await fetch(WEBHOOK_URL, { 
-            method: 'POST', 
-            headers: { 'Content-Type': 'application/json' }, 
-            body: JSON.stringify(formData) 
-        }); 
-
-        if (response.ok) { 
-            if (statusDiv) { 
-                statusDiv.innerHTML = '✓ Report sent successfully!'; 
-                statusDiv.style.background = '#d4edda'; 
-                statusDiv.style.color = '#155724'; 
-                setTimeout(() => { statusDiv.style.display = 'none'; }, 3000); 
-            } 
-        } else { 
-            if (statusDiv) { 
-                statusDiv.innerHTML = '⚠️ Error: ' + response.status; 
-                statusDiv.style.background = '#f8d7da'; 
-                statusDiv.style.color = '#721c24'; 
-            } 
-        } 
-    } catch (error) { 
-        if (statusDiv) { 
-            statusDiv.innerHTML = '⚠️ Error: ' + error.message; 
-            statusDiv.style.background = '#f8d7da'; 
-            statusDiv.style.color = '#721c24'; 
-        } 
-    } 
-}
-
-document.getElementById('activepiecesForm').addEventListener('submit', function(e) {
+document.getElementById("activepiecesForm").addEventListener("submit", async function(e) {
     e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const country = document.getElementById('country').value;
-    const tier = document.getElementById('tierLabel').value;
-    
-    // Simulate score for manual contact form submission
-    sendToTelegram(name, phone, country, email, 0.0, tier);
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const country = document.getElementById("country").value;
+    const tier = document.getElementById("tierLabel").value;
+
+    const statusDiv = document.getElementById("webhookStatus");
+    statusDiv.style.display = "block";
+    statusDiv.style.background = "#fff3cd";
+    statusDiv.style.color = "#000";
+    statusDiv.innerHTML = "⏳ Sending...";
+
+    const payload = {
+        source: "contact-form",
+        name,
+        email,
+        phone,
+        country,
+        tier,
+        score: "0.0",
+        timestamp: new Date().toISOString()
+    };
+
+    try {
+        const response = await fetch(WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+            statusDiv.innerHTML = "✅ Message sent! Josh will contact you soon.";
+            statusDiv.style.background = "#d4edda";
+            statusDiv.style.color = "#155724";
+            document.getElementById("activepiecesForm").reset();
+        } else {
+            statusDiv.innerHTML = "⚠️ Server error: " + response.status;
+            statusDiv.style.background = "#f8d7da";
+            statusDiv.style.color = "#721c24";
+        }
+    } catch (err) {
+        statusDiv.innerHTML = "⚠️ Connection error: " + err.message;
+        statusDiv.style.background = "#f8d7da";
+        statusDiv.style.color = "#721c24";
+    }
 });
 </script>
-
-<div class="print-only" style="display:none;">
-    <div class="print-page">
-        <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" width="200">
-        <h1>Assessment Report</h1>
-        <p>Prepared for: <span id="pdf-name">User</span></p>
-        <div class="visual-bar"><div class="score-fill" style="width: 70%;"></div></div>
-    </div>
-    <div class="print-page">
-        <h2>Breakdown</h2>
-        <p>Detailed analysis of your scores...</p>
-    </div>
-</div>
 
 </body>
 </html>
