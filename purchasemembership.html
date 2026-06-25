@@ -1,543 +1,754 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Foundation Membership – AccessWorld Seminars</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
-      color: #e5e7eb;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px 20px;
-    }
-    .container {
-      max-width: 1100px;
-      width: 100%;
-      background: rgba(26, 39, 68, 0.85);
-      backdrop-filter: blur(8px);
-      border-radius: 36px;
-      padding: 40px 35px;
-      border: 1px solid rgba(201,168,76,0.25);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-    .logo img { height: 52px; }
-    .logo span {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #C9A84C;
-      letter-spacing: 0.04em;
-    }
-    h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 6px;
-    }
-    h1 em { color: #C9A84C; font-style: italic; }
-    .subhead {
-      font-size: 1.1rem;
-      color: #9aa3b5;
-      margin-bottom: 30px;
-      border-left: 3px solid #C9A84C;
-      padding-left: 18px;
-    }
-    .offer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      margin: 30px 0 40px;
-    }
-    .offer-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(201,168,76,0.2);
-      border-radius: 20px;
-      padding: 30px 25px;
-      transition: all 0.3s;
-    }
-    .offer-card:hover {
-      border-color: #C9A84C;
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-    }
-    .offer-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      color: #fff;
-      margin-bottom: 6px;
-    }
-    .offer-card .price {
-      font-size: 2.6rem;
-      font-weight: 700;
-      color: #C9A84C;
-      margin: 10px 0 4px;
-    }
-    .offer-card .price small {
-      font-size: 1rem;
-      font-weight: 400;
-      color: #9aa3b5;
-    }
-    .offer-card .desc {
-      color: #b0b8c8;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin: 12px 0 20px;
-    }
-    .offer-card .feature-list {
-      list-style: none;
-      margin-bottom: 24px;
-    }
-    .offer-card .feature-list li {
-      padding: 6px 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.9rem;
-      color: #d0d6e0;
-    }
-    .offer-card .feature-list i {
-      color: #C9A84C;
-      width: 20px;
-    }
-    .btn-pay {
-      display: inline-block;
-      background: linear-gradient(135deg, #C9A84C, #a87d28);
-      color: #080d18;
-      font-weight: 700;
-      padding: 14px 28px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-size: 0.95rem;
-      letter-spacing: 0.06em;
-      transition: all 0.3s;
-      border: none;
-      cursor: pointer;
-      text-align: center;
-    }
-    .btn-pay:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(201,168,76,0.3);
-    }
-    .btn-outline {
-      background: transparent;
-      border: 1px solid rgba(201,168,76,0.4);
-      color: #C9A84C;
-    }
-    .btn-outline:hover {
-      background: rgba(201,168,76,0.1);
-    }
-    .payment-methods {
-      margin-top: 16px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-    .payment-methods img {
-      height: 32px;
-      border-radius: 6px;
-      background: #fff;
-      padding: 4px 8px;
-    }
-    .payment-methods span {
-      font-size: 0.75rem;
-      color: #9aa3b5;
-    }
-    .bank-details {
-      background: rgba(0,0,0,0.2);
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin-top: 10px;
-      font-size: 0.85rem;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    .bank-details strong { color: #C9A84C; }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation Membership – AccessWorld Seminars</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+            color: #e5e7eb;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+        }
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(26, 39, 68, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 36px;
+            padding: 40px 35px;
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            height: 52px;
+        }
+        .logo span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #C9A84C;
+            letter-spacing: 0.04em;
+        }
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        h1 em {
+            color: #C9A84C;
+            font-style: italic;
+        }
+        .subhead {
+            font-size: 1.1rem;
+            color: #9aa3b5;
+            margin-bottom: 30px;
+            border-left: 3px solid #C9A84C;
+            padding-left: 18px;
+        }
+        .offer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin: 30px 0 40px;
+        }
+        .offer-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 20px;
+            padding: 30px 25px;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .offer-card:hover {
+            border-color: #C9A84C;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+        .offer-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .offer-card .price {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #C9A84C;
+            margin: 10px 0 4px;
+        }
+        .offer-card .price small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #9aa3b5;
+        }
+        .offer-card .desc {
+            color: #b0b8c8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 12px 0 20px;
+        }
+        .offer-card .feature-list {
+            list-style: none;
+            margin-bottom: 24px;
+            flex: 1;
+        }
+        .offer-card .feature-list li {
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #d0d6e0;
+        }
+        .offer-card .feature-list i {
+            color: #C9A84C;
+            width: 20px;
+        }
+        .btn-pay {
+            display: inline-block;
+            background: linear-gradient(135deg, #C9A84C, #a87d28);
+            color: #080d18;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.06em;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn-pay:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(201, 168, 76, 0.3);
+        }
+        .btn-pay:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(201, 168, 76, 0.4);
+            color: #C9A84C;
+        }
+        .btn-outline:hover:not(:disabled) {
+            background: rgba(201, 168, 76, 0.1);
+        }
+        .payment-methods {
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        .payment-methods img {
+            height: 32px;
+            border-radius: 6px;
+            background: #fff;
+            padding: 4px 8px;
+        }
+        .payment-methods span {
+            font-size: 0.75rem;
+            color: #9aa3b5;
+        }
+        .bank-details {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .bank-details strong {
+            color: #C9A84C;
+        }
 
-    /* Special offer block */
-    .special-offer {
-      background: rgba(201,168,76,0.08);
-      border: 2px dashed #C9A84C;
-      border-radius: 20px;
-      padding: 28px 30px;
-      margin: 30px 0 20px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .special-offer .text {
-      flex: 1;
-    }
-    .special-offer .text h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      color: #C9A84C;
-      margin-bottom: 4px;
-    }
-    .special-offer .text p {
-      color: #b0b8c8;
-      font-size: 0.95rem;
-    }
-    .special-offer .code-box {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(0,0,0,0.3);
-      padding: 12px 20px;
-      border-radius: 40px;
-      border: 1px solid rgba(201,168,76,0.3);
-    }
-    .special-offer .code-box input {
-      background: transparent;
-      border: none;
-      color: #fff;
-      font-size: 1rem;
-      padding: 8px 0;
-      width: 140px;
-      outline: none;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-    }
-    .special-offer .code-box input::placeholder {
-      color: #6b7a93;
-      font-weight: 400;
-    }
-    .special-offer .code-box .price-display {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #C9A84C;
-      min-width: 70px;
-      text-align: right;
-    }
+        /* Special offer block */
+        .special-offer {
+            background: rgba(201, 168, 76, 0.08);
+            border: 2px dashed #C9A84C;
+            border-radius: 20px;
+            padding: 28px 30px;
+            margin: 30px 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .special-offer .text {
+            flex: 1;
+        }
+        .special-offer .text h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #C9A84C;
+            margin-bottom: 4px;
+        }
+        .special-offer .text p {
+            color: #b0b8c8;
+            font-size: 0.95rem;
+        }
+        .special-offer .code-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px 20px;
+            border-radius: 40px;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+        }
+        .special-offer .code-box input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            padding: 8px 0;
+            width: 140px;
+            outline: none;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+        }
+        .special-offer .code-box input::placeholder {
+            color: #6b7a93;
+            font-weight: 400;
+        }
+        .special-offer .code-box .price-display {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #C9A84C;
+            min-width: 70px;
+            text-align: right;
+        }
 
-    /* Lead capture */
-    .lead-form {
-      background: rgba(0,0,0,0.2);
-      border-radius: 20px;
-      padding: 30px;
-      margin-top: 40px;
-      border: 1px solid rgba(201,168,76,0.15);
-    }
-    .lead-form h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      color: #fff;
-      margin-bottom: 6px;
-    }
-    .lead-form .sub {
-      color: #9aa3b5;
-      margin-bottom: 20px;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-    .form-group {
-      margin-bottom: 16px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #C9A84C;
-      margin-bottom: 4px;
-    }
-    .form-group input, .form-group select {
-      width: 100%;
-      padding: 12px 16px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(201,168,76,0.2);
-      border-radius: 10px;
-      color: #fff;
-      font-size: 1rem;
-      transition: 0.3s;
-      outline: none;
-    }
-    .form-group input:focus, .form-group select:focus {
-      border-color: #C9A84C;
-      box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
-    }
-    .form-group input::placeholder {
-      color: #6b7a93;
-    }
-    .form-group select option { background: #1A2744; }
-    .btn-submit {
-      background: linear-gradient(135deg, #C9A84C, #a87d28);
-      color: #080d18;
-      border: none;
-      padding: 16px 32px;
-      border-radius: 40px;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      width: 100%;
-    }
-    .btn-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(201,168,76,0.3);
-    }
-    .status-msg {
-      margin-top: 14px;
-      padding: 12px;
-      border-radius: 10px;
-      background: rgba(201,168,76,0.1);
-      border: 1px solid rgba(201,168,76,0.2);
-      display: none;
-      color: #C9A84C;
-    }
-    .footer-note {
-      margin-top: 30px;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #6b7a93;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding-top: 24px;
-    }
-    .footer-note a { color: #C9A84C; text-decoration: none; }
+        /* Discount agreement – shown only when discount is active */
+        .discount-agreement {
+            display: none;
+            margin-top: 16px;
+            padding: 16px 20px;
+            background: rgba(201, 168, 76, 0.08);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-radius: 14px;
+            width: 100%;
+        }
+        .discount-agreement.active {
+            display: block;
+        }
+        .discount-agreement label {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #e5e7eb;
+            line-height: 1.5;
+        }
+        .discount-agreement label input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            margin-top: 2px;
+            accent-color: #C9A84C;
+            cursor: pointer;
+        }
+        .discount-agreement label strong {
+            color: #C9A84C;
+        }
+        .discount-agreement .agreement-note {
+            font-size: 0.8rem;
+            color: #9aa3b5;
+            margin-top: 8px;
+            padding-left: 34px;
+        }
 
-    @media (max-width: 768px) {
-      .container { padding: 25px 18px; }
-      .offer-grid { grid-template-columns: 1fr; }
-      .special-offer { flex-direction: column; align-items: stretch; gap: 16px; }
-      .special-offer .code-box { width: 100%; justify-content: space-between; }
-      .form-row { grid-template-columns: 1fr; }
-      .logo span { font-size: 1.4rem; }
-      h1 { font-size: 2.2rem; }
-    }
-  </style>
+        /* Lead capture */
+        .lead-form {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            border: 1px solid rgba(201, 168, 76, 0.15);
+        }
+        .lead-form h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .lead-form .sub {
+            color: #9aa3b5;
+            margin-bottom: 20px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #C9A84C;
+            margin-bottom: 4px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            transition: 0.3s;
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #C9A84C;
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+        }
+        .form-group input::placeholder {
+            color: #6b7a93;
+        }
+        .form-group select option {
+            background: #1A2744;
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, #C9A84C, #a87d28);
+            color: #080d18;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(201, 168, 76, 0.3);
+        }
+        .status-msg {
+            margin-top: 14px;
+            padding: 12px;
+            border-radius: 10px;
+            background: rgba(201, 168, 76, 0.1);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            display: none;
+            color: #C9A84C;
+        }
+        .footer-note {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6b7a93;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 24px;
+        }
+        .footer-note a {
+            color: #C9A84C;
+            text-decoration: none;
+        }
+
+        /* Disabled payment button container with tooltip */
+        .btn-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        .btn-wrapper .tooltip {
+            visibility: hidden;
+            width: 220px;
+            background: rgba(0, 0, 0, 0.9);
+            color: #fbbf24;
+            text-align: center;
+            border-radius: 8px;
+            padding: 8px 12px;
+            position: absolute;
+            z-index: 10;
+            bottom: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .btn-wrapper .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.9);
+        }
+        .btn-wrapper .tooltip.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 18px;
+            }
+            .offer-grid {
+                grid-template-columns: 1fr;
+            }
+            .special-offer {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 16px;
+            }
+            .special-offer .code-box {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .logo span {
+                font-size: 1.4rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .discount-agreement label {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
+    <div class="container">
 
-  <!-- Logo -->
-  <div class="logo">
-    <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars">
-    <span>AccessWorld Seminars</span>
-  </div>
-
-  <!-- Headline -->
-  <h1>Foundation Membership – <em>Unlock Your Incredible Self</em></h1>
-  <div class="subhead">
-    Get live access to all annual masterclasses, monthly seminars, group coaching, and more.
-  </div>
-
-  <!-- Two payment options -->
-  <div class="offer-grid">
-    <!-- Option 1: Upfront + monthly -->
-    <div class="offer-card">
-      <h3>Startup Plan</h3>
-      <div class="price" id="upfrontPrice">$499 <small>upfront</small></div>
-      <div class="desc">Pay $499 to get started, then <strong>$129/month</strong> to continue your membership.</div>
-      <ul class="feature-list">
-        <li><i class="fas fa-check-circle"></i> All 4 annual 2‑day masterclass seminars</li>
-        <li><i class="fas fa-check-circle"></i> Monthly live virtual seminars</li>
-        <li><i class="fas fa-check-circle"></i> Unlock Your Incredible Self (live access)</li>
-        <li><i class="fas fa-check-circle"></i> How to Become a World Class Coach (live access)</li>
-        <li><i class="fas fa-check-circle"></i> Live group coaching & mentoring</li>
-        <li><i class="fas fa-check-circle"></i> All starter bonuses</li>
-      </ul>
-      <div class="payment-methods">
-        <a href="https://square.link/u/zAkyWzjY" target="_blank" class="btn-pay" id="btnUpfrontSquare">Pay with Square</a>
-        <a href="https://www.paypal.com/ncp/payment/6WYZJW9G35JHG" target="_blank" class="btn-pay btn-outline" id="btnUpfrontPaypal">PayPal</a>
-      </div>
-      <div class="bank-details">
-        <strong>Bank Transfer:</strong> BSB 124‑001 · Acc 227‑10071 · Name: Accessworld Trust BC<br>
-        <strong>PayID:</strong> 0432 119 091
-      </div>
-    </div>
-
-    <!-- Option 2: Annual (save) -->
-    <div class="offer-card" style="border-color: #C9A84C; background: rgba(201,168,76,0.05);">
-      <div style="background:#C9A84C; color:#080d18; padding:4px 14px; border-radius:30px; display:inline-block; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em;">Best Value</div>
-      <h3 style="margin-top:8px;">Annual Pass</h3>
-      <div class="price">$1,297 <small>for 12 months</small></div>
-      <div class="desc">Pay once and get a full year of membership. <strong>Includes a free upgrade to the Webinar Ultimate Package</strong> (value $1,495).</div>
-      <ul class="feature-list">
-        <li><i class="fas fa-check-circle"></i> All Startup Plan benefits</li>
-        <li><i class="fas fa-check-circle"></i> <strong>FREE</strong> Webinar Ultimate Package upgrade</li>
-        <li><i class="fas fa-check-circle"></i> Extended vault access</li>
-        <li><i class="fas fa-check-circle"></i> Advanced tool development</li>
-        <li><i class="fas fa-check-circle"></i> Certification as a Mindset & Results Coach</li>
-        <li><i class="fas fa-check-circle"></i> Save over $500 vs. monthly</li>
-      </ul>
-      <div class="payment-methods">
-        <a href="https://square.link/u/pFP4ww3r" target="_blank" class="btn-pay">Pay with Square</a>
-        <a href="https://www.paypal.com/ncp/payment/CUCDKVRY7AGY6" target="_blank" class="btn-pay btn-outline">PayPal</a>
-      </div>
-      <div class="bank-details">
-        <strong>Bank Transfer:</strong> BSB 124‑001 · Acc 227‑10071 · Name: Accessworld Trust BC<br>
-        <strong>PayID:</strong> 0432 119 091
-      </div>
-    </div>
-  </div>
-
-  <!-- Special offer: discount code -->
-  <div class="special-offer">
-    <div class="text">
-      <h4>🔥 This Week Only – Waive the Startup Fee!</h4>
-      <p>Enter the code <strong style="color:#fff;">accessworld</strong> below to pay just <strong style="color:#C9A84C;">$99</strong> to get started (normally $499).</p>
-    </div>
-    <div class="code-box">
-      <input type="text" id="discountCode" placeholder="Enter code" style="text-transform:lowercase;">
-      <span class="price-display" id="discountPrice">$499</span>
-    </div>
-    <div style="margin-top:6px; font-size:0.8rem; color:#9aa3b5; width:100%; text-align:right;">
-      <i class="fas fa-clock"></i> Offer ends soon – start for $99!
-    </div>
-  </div>
-
-  <!-- Lead capture form -->
-  <div class="lead-form">
-    <h3>Secure Your Spot</h3>
-    <div class="sub">Fill in your details and we'll send you the payment links and access instructions.</div>
-    <form id="leadForm">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Full Name *</label>
-          <input type="text" id="name" name="name" placeholder="e.g. Jamie Smith" required>
+        <!-- Logo -->
+        <div class="logo">
+            <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" />
+            <span>AccessWorld Seminars</span>
         </div>
-        <div class="form-group">
-          <label>Phone *</label>
-          <input type="tel" id="phone" name="phone" placeholder="+61 412 345 678" required>
+
+        <!-- Headline -->
+        <h1>Foundation Membership – <em>Unlock Your Incredible Self</em></h1>
+        <div class="subhead">
+            Get live access to all annual masterclasses, monthly seminars, group coaching, and more.
         </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Country *</label>
-          <select id="country" name="country" required>
-            <option value="">— Select —</option>
-            <option value="Australia">🇦🇺 Australia</option>
-            <option value="Canada">🇨🇦 Canada</option>
-            <option value="Ireland">🇮🇪 Ireland</option>
-            <option value="New Zealand">🇳🇿 New Zealand</option>
-            <option value="United Kingdom">🇬🇧 United Kingdom</option>
-            <option value="United States">🇺🇸 United States</option>
-            <option value="Other">🌍 Other</option>
-          </select>
+
+        <!-- Two payment options -->
+        <div class="offer-grid">
+            <!-- Option 1: Upfront + monthly -->
+            <div class="offer-card" id="startupCard">
+                <h3>Startup Plan</h3>
+                <div class="price" id="upfrontPrice">$499 <small>upfront</small></div>
+                <div class="desc">Pay $499 to get started, then <strong>$129/month</strong> to continue your membership.</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> All 4 annual 2‑day masterclass seminars</li>
+                    <li><i class="fas fa-check-circle"></i> Monthly live virtual seminars</li>
+                    <li><i class="fas fa-check-circle"></i> Unlock Your Incredible Self (live access)</li>
+                    <li><i class="fas fa-check-circle"></i> How to Become a World Class Coach (live access)</li>
+                    <li><i class="fas fa-check-circle"></i> Live group coaching & mentoring</li>
+                    <li><i class="fas fa-check-circle"></i> All starter bonuses</li>
+                </ul>
+                <div class="payment-methods">
+                    <div class="btn-wrapper">
+                        <a href="https://square.link/u/zAkyWzjY" target="_blank" class="btn-pay" id="btnUpfrontSquare">Pay with Square</a>
+                        <span class="tooltip" id="tooltipSquare">Agree to the 12‑month commitment first</span>
+                    </div>
+                    <div class="btn-wrapper">
+                        <a href="https://www.paypal.com/ncp/payment/6WYZJW9G35JHG" target="_blank" class="btn-pay btn-outline" id="btnUpfrontPaypal">PayPal</a>
+                        <span class="tooltip" id="tooltipPaypal">Agree to the 12‑month commitment first</span>
+                    </div>
+                </div>
+                <div class="bank-details">
+                    <strong>Bank Transfer:</strong> BSB 124‑001 · Acc 227‑10071 · Name: Accessworld Trust BC<br />
+                    <strong>PayID:</strong> 0432 119 091
+                </div>
+            </div>
+
+            <!-- Option 2: Annual (save) -->
+            <div class="offer-card" style="border-color: #C9A84C; background: rgba(201,168,76,0.05);">
+                <div style="background:#C9A84C; color:#080d18; padding:4px 14px; border-radius:30px; display:inline-block; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em;">Best Value</div>
+                <h3 style="margin-top:8px;">Annual Pass</h3>
+                <div class="price">$1,297 <small>for 12 months</small></div>
+                <div class="desc">Pay once and get a full year of membership. <strong>Includes a free upgrade to the Webinar Ultimate Package</strong> (value $1,495).</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> All Startup Plan benefits</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>FREE</strong> Webinar Ultimate Package upgrade</li>
+                    <li><i class="fas fa-check-circle"></i> Extended vault access</li>
+                    <li><i class="fas fa-check-circle"></i> Advanced tool development</li>
+                    <li><i class="fas fa-check-circle"></i> Certification as a Mindset & Results Coach</li>
+                    <li><i class="fas fa-check-circle"></i> Save over $500 vs. monthly</li>
+                </ul>
+                <div class="payment-methods">
+                    <a href="https://square.link/u/pFP4ww3r" target="_blank" class="btn-pay">Pay with Square</a>
+                    <a href="https://www.paypal.com/ncp/payment/CUCDKVRY7AGY6" target="_blank" class="btn-pay btn-outline">PayPal</a>
+                </div>
+                <div class="bank-details">
+                    <strong>Bank Transfer:</strong> BSB 124‑001 · Acc 227‑10071 · Name: Accessworld Trust BC<br />
+                    <strong>PayID:</strong> 0432 119 091
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-          <label>Email *</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+        <!-- Special offer: discount code + agreement -->
+        <div class="special-offer">
+            <div class="text">
+                <h4>🔥 This Week Only – Waive the Startup Fee!</h4>
+                <p>Enter the code <strong style="color:#fff;">accessworld</strong> below to pay just <strong style="color:#C9A84C;">$99</strong> to get started (normally $499).</p>
+            </div>
+            <div style="flex:1; min-width:200px;">
+                <div class="code-box">
+                    <input type="text" id="discountCode" placeholder="Enter code" style="text-transform:lowercase;" />
+                    <span class="price-display" id="discountPrice">$499</span>
+                </div>
+                <!-- Agreement that appears only when discount is active -->
+                <div class="discount-agreement" id="discountAgreement">
+                    <label>
+                        <input type="checkbox" id="agreeCheckbox" />
+                        <span>
+                            <strong>I agree to commit to the webinar program for 12 months</strong> to receive the $99 startup fee discount. By checking this box, I understand that this is a 12‑month commitment.
+                        </span>
+                    </label>
+                    <div class="agreement-note">
+                        <i class="fas fa-info-circle"></i> You must accept this agreement to proceed with the $99 discount.
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:6px; font-size:0.8rem; color:#9aa3b5; width:100%; text-align:right;">
+                <i class="fas fa-clock"></i> Offer ends soon – start for $99!
+            </div>
         </div>
-      </div>
-      <button type="submit" class="btn-submit"><i class="fas fa-arrow-right"></i> Get Started Now</button>
-      <div class="status-msg" id="statusMsg"></div>
-    </form>
-  </div>
 
-  <div class="footer-note">
-    <p>Questions? <a href="mailto:accessworldseminars@gmail.com">accessworldseminars@gmail.com</a> · <a href="https://wa.me/61432119091" target="_blank">+61 432 119 091</a></p>
-    <p style="margin-top:8px;">© 2026 AccessWorld Seminars · Joshua Roy · ABN: 72 546 137 885</p>
-  </div>
-</div>
+        <!-- Lead capture form -->
+        <div class="lead-form">
+            <h3>Secure Your Spot</h3>
+            <div class="sub">Fill in your details and we'll send you the payment links and access instructions.</div>
+            <form id="leadForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" id="name" name="name" placeholder="e.g. Jamie Smith" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Phone *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+61 412 345 678" required />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Country *</label>
+                        <select id="country" name="country" required>
+                            <option value="">— Select —</option>
+                            <option value="Australia">🇦🇺 Australia</option>
+                            <option value="Canada">🇨🇦 Canada</option>
+                            <option value="Ireland">🇮🇪 Ireland</option>
+                            <option value="New Zealand">🇳🇿 New Zealand</option>
+                            <option value="United Kingdom">🇬🇧 United Kingdom</option>
+                            <option value="United States">🇺🇸 United States</option>
+                            <option value="Other">🌍 Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit"><i class="fas fa-arrow-right"></i> Get Started Now</button>
+                <div class="status-msg" id="statusMsg"></div>
+            </form>
+        </div>
 
-<script>
-  (function(){
-    // ─── DISCOUNT CODE ─────────────────────────
-    const discountInput = document.getElementById('discountCode');
-    const priceDisplay = document.getElementById('discountPrice');
-    const btnUpfrontSquare = document.getElementById('btnUpfrontSquare');
-    const btnUpfrontPaypal = document.getElementById('btnUpfrontPaypal');
+        <div class="footer-note">
+            <p>Questions? <a href="mailto:accessworldseminars@gmail.com">accessworldseminars@gmail.com</a> · <a href="https://wa.me/61432119091" target="_blank">+61 432 119 091</a></p>
+            <p style="margin-top:8px;">© 2026 AccessWorld Seminars · Joshua Roy · ABN: 72 546 137 885</p>
+        </div>
+    </div>
 
-    // Default links for $499
-    const defaultSquare = 'https://square.link/u/zAkyWzjY';
-    const defaultPaypal = 'https://www.paypal.com/ncp/payment/6WYZJW9G35JHG';
-    // Discounted links for $99
-    const discountSquare = 'https://square.link/u/Ml1RSvlZ';   // $99 month link
-    // No PayPal for $99? They provided only Square link, so we'll keep PayPal as is or hide? We'll keep PayPal but note that discount is for Square.
-    // We'll update the text and maybe show a note.
+    <script>
+        (function() {
+            "use strict";
 
-    discountInput.addEventListener('input', function() {
-      const code = this.value.trim().toLowerCase();
-      if (code === 'accessworld') {
-        priceDisplay.textContent = '$99';
-        priceDisplay.style.color = '#4ade80';
-        btnUpfrontSquare.textContent = 'Pay $99 with Square';
-        btnUpfrontSquare.href = discountSquare;
-        // For PayPal, we don't have a $99 link, so we'll either hide it or keep it but show a note.
-        btnUpfrontPaypal.style.opacity = '0.5';
-        btnUpfrontPaypal.style.pointerEvents = 'none';
-        btnUpfrontPaypal.textContent = 'PayPal (not available for discount)';
-      } else {
-        priceDisplay.textContent = '$499';
-        priceDisplay.style.color = '#C9A84C';
-        btnUpfrontSquare.textContent = 'Pay with Square';
-        btnUpfrontSquare.href = defaultSquare;
-        btnUpfrontPaypal.style.opacity = '1';
-        btnUpfrontPaypal.style.pointerEvents = 'auto';
-        btnUpfrontPaypal.textContent = 'PayPal';
-      }
-    });
+            // ─── DOM refs ─────────────────────────────
+            const discountInput = document.getElementById('discountCode');
+            const priceDisplay = document.getElementById('discountPrice');
+            const agreementDiv = document.getElementById('discountAgreement');
+            const agreeCheckbox = document.getElementById('agreeCheckbox');
 
-    // ─── LEAD FORM + WEBHOOK ──────────────────
-    const form = document.getElementById('leadForm');
-    const statusMsg = document.getElementById('statusMsg');
-    const webhookURL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+            const btnSquare = document.getElementById('btnUpfrontSquare');
+            const btnPaypal = document.getElementById('btnUpfrontPaypal');
+            const tooltipSquare = document.getElementById('tooltipSquare');
+            const tooltipPaypal = document.getElementById('tooltipPaypal');
 
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
+            // Default links for $499
+            const defaultSquare = 'https://square.link/u/zAkyWzjY';
+            const defaultPaypal = 'https://www.paypal.com/ncp/payment/6WYZJW9G35JHG';
+            // Discounted links for $99
+            const discountSquare = 'https://square.link/u/Ml1RSvlZ'; // $99 month link
 
-      const name = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const country = document.getElementById('country').value;
-      const email = document.getElementById('email').value.trim();
+            // ─── State ─────────────────────────────────
+            let discountActive = false;
 
-      if (!name || !phone || !country || !email) {
-        alert('Please fill in all fields.');
-        return;
-      }
+            // ─── Functions ─────────────────────────────
+            function updateButtons() {
+                const isDiscounted = discountActive;
+                const agreed = agreeCheckbox.checked;
 
-      statusMsg.style.display = 'block';
-      statusMsg.textContent = 'Submitting...';
+                if (isDiscounted) {
+                    // Show agreement, enable buttons only if checkbox is checked
+                    agreementDiv.classList.add('active');
+                    btnSquare.textContent = 'Pay $99 with Square';
+                    btnSquare.href = discountSquare;
+                    btnPaypal.textContent = 'PayPal (not avail. for discount)';
+                    btnPaypal.style.opacity = '0.5';
+                    btnPaypal.style.pointerEvents = 'none';
+                    // Square button: enabled only if agreed
+                    btnSquare.disabled = !agreed;
+                    btnSquare.style.pointerEvents = agreed ? 'auto' : 'none';
+                    btnSquare.style.opacity = agreed ? '1' : '0.4';
+                    // Show/hide tooltips
+                    tooltipSquare.classList.toggle('show', !agreed);
+                    tooltipPaypal.classList.add('show'); // always show for PayPal since it's disabled
+                } else {
+                    // Normal state: $499, no agreement needed
+                    agreementDiv.classList.remove('active');
+                    btnSquare.textContent = 'Pay with Square';
+                    btnSquare.href = defaultSquare;
+                    btnSquare.disabled = false;
+                    btnSquare.style.pointerEvents = 'auto';
+                    btnSquare.style.opacity = '1';
+                    btnPaypal.textContent = 'PayPal';
+                    btnPaypal.style.opacity = '1';
+                    btnPaypal.style.pointerEvents = 'auto';
+                    btnPaypal.disabled = false;
+                    tooltipSquare.classList.remove('show');
+                    tooltipPaypal.classList.remove('show');
+                }
+            }
 
-      const payload = {
-        name, phone, country, email,
-        program: 'Foundation Membership',
-        amount: (discountInput.value.trim().toLowerCase() === 'accessworld') ? '99' : '499',
-        timestamp: new Date().toISOString()
-      };
+            function checkDiscount() {
+                const code = discountInput.value.trim().toLowerCase();
+                if (code === 'accessworld') {
+                    discountActive = true;
+                    priceDisplay.textContent = '$99';
+                    priceDisplay.style.color = '#4ade80';
+                } else {
+                    discountActive = false;
+                    priceDisplay.textContent = '$499';
+                    priceDisplay.style.color = '#C9A84C';
+                    agreeCheckbox.checked = false;
+                }
+                updateButtons();
+            }
 
-      try {
-        const formData = new FormData();
-        Object.keys(payload).forEach(key => formData.append(key, payload[key]));
+            // ─── Event listeners ──────────────────────
+            discountInput.addEventListener('input', checkDiscount);
 
-        await fetch(webhookURL, {
-          method: 'POST',
-          body: formData,
-          mode: 'no-cors' // best for webhooks
-        });
+            agreeCheckbox.addEventListener('change', function() {
+                if (discountActive) {
+                    updateButtons();
+                }
+            });
 
-        statusMsg.textContent = '✅ Thanks! We\'ll send you the payment links and access details.';
-        statusMsg.style.borderColor = '#4ade80';
-        form.reset();
-        // Optionally redirect to a thank you page or scroll to payment options
-        // window.location.href = '#payment';
-      } catch (err) {
-        statusMsg.textContent = '⚠️ Something went wrong. Please try again or contact support.';
-        statusMsg.style.borderColor = '#f87171';
-        console.error(err);
-      }
-    });
-  })();
-</script>
+            // ─── Lead form + webhook ──────────────────
+            const form = document.getElementById('leadForm');
+            const statusMsg = document.getElementById('statusMsg');
+            const webhookURL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const country = document.getElementById('country').value;
+                const email = document.getElementById('email').value.trim();
+
+                if (!name || !phone || !country || !email) {
+                    alert('Please fill in all fields.');
+                    return;
+                }
+
+                // If discount is active, ensure agreement is checked
+                if (discountActive && !agreeCheckbox.checked) {
+                    alert('Please agree to the 12‑month commitment to receive the $99 discount.');
+                    agreeCheckbox.focus();
+                    return;
+                }
+
+                statusMsg.style.display = 'block';
+                statusMsg.textContent = 'Submitting...';
+
+                const payload = {
+                    name,
+                    phone,
+                    country,
+                    email,
+                    program: 'Foundation Membership',
+                    amount: discountActive ? '99' : '499',
+                    discount_applied: discountActive ? 'accessworld' : 'none',
+                    twelve_month_commitment: discountActive ? 'agreed' : 'not_applicable',
+                    timestamp: new Date().toISOString()
+                };
+
+                try {
+                    const formData = new FormData();
+                    Object.keys(payload).forEach(key => formData.append(key, payload[key]));
+
+                    await fetch(webhookURL, {
+                        method: 'POST',
+                        body: formData,
+                        mode: 'no-cors'
+                    });
+
+                    statusMsg.textContent = '✅ Thanks! We\'ll send you the payment links and access details.';
+                    statusMsg.style.borderColor = '#4ade80';
+                    form.reset();
+                    // Reset discount state too
+                    discountInput.value = '';
+                    checkDiscount();
+                } catch (err) {
+                    statusMsg.textContent = '⚠️ Something went wrong. Please try again or contact support.';
+                    statusMsg.style.borderColor = '#f87171';
+                    console.error(err);
+                }
+            });
+
+            // ─── Init ──────────────────────────────────
+            checkDiscount();
+
+        })();
+    </script>
+
 </body>
 </html>
