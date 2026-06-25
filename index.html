@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AccessWorld Seminars | Joshua Roy – Results Coach & NSR Specialist</title>
-    
+
     <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -21,7 +21,7 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=923706520267125&ev=PageView&noscript=1"
 /></noscript>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -1031,6 +1031,33 @@ src="https://www.facebook.com/tr?id=923706520267125&ev=PageView&noscript=1"
             opacity: 1;
             transform: translateY(0);
         }
+        /* Unlock your incredible self styling */
+        .unlock-badge {
+            display: inline-block;
+            background: rgba(201,168,76,0.12);
+            border: 1px solid rgba(201,168,76,0.25);
+            padding: 16px 28px;
+            border-radius: 8px;
+            margin-top: 24px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            letter-spacing: 0.04em;
+        }
+        .unlock-badge i {
+            margin-right: 12px;
+            color: var(--gold);
+        }
+        .unlock-badge a {
+            color: var(--gold-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .unlock-badge a:hover {
+            color: var(--gold);
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -1042,7 +1069,8 @@ src="https://www.facebook.com/tr?id=923706520267125&ev=PageView&noscript=1"
     </div>
     <div class="nav-links">
         <a href="https://accessworldseminars-ship-it.github.io/results/"><i class="fas fa-home"></i> Home</a>
-        <a href="https://accessworldseminars-ship-it.github.io/results/BecomeACoach"><i class="fas fa-graduation-cap"></i> Coach Academy</a>
+        <!-- Coach Academy removed, replaced with Unlock Yourself -->
+        <a href="https://accessworldseminars-ship-it.github.io/results/unlock"><i class="fas fa-unlock-alt"></i> Unlock Yourself</a>
         <a href="https://accessworldseminars-ship-it.github.io/results/Bio"><i class="fas fa-user"></i> Biography</a>
         <a href="https://accessworldseminars-ship-it.github.io/results/offers"><i class="fas fa-tags"></i> Programs</a>
         <a href="https://accessworldseminars-ship-it.github.io/results/webinars"><i class="fas fa-video"></i> Webinars</a>
@@ -1056,7 +1084,8 @@ src="https://www.facebook.com/tr?id=923706520267125&ev=PageView&noscript=1"
 </nav>
 <div class="mobile-menu" id="mobileMenu">
     <a href="https://accessworldseminars-ship-it.github.io/results/"><i class="fas fa-home"></i> Home</a>
-    <a href="https://accessworldseminars-ship-it.github.io/results/BecomeACoach"><i class="fas fa-graduation-cap"></i> Coach Academy</a>
+    <!-- Coach Academy removed, replaced with Unlock Yourself in mobile menu -->
+    <a href="https://accessworldseminars-ship-it.github.io/results/unlock"><i class="fas fa-unlock-alt"></i> Unlock Yourself</a>
     <a href="https://accessworldseminars-ship-it.github.io/results/Bio"><i class="fas fa-user"></i> Biography</a>
     <a href="https://accessworldseminars-ship-it.github.io/results/offers"><i class="fas fa-tags"></i> Programs & Offers</a>
     <a href="https://accessworldseminars-ship-it.github.io/results/webinars"><i class="fas fa-video"></i> Webinars</a>
@@ -1367,6 +1396,11 @@ src="https://www.facebook.com/tr?id=923706520267125&ev=PageView&noscript=1"
                 <a href="https://www.linkedin.com/in/accessworld-seminars-3508a0296/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://www.tiktok.com/@accessworldseminars" target="_blank"><i class="fab fa-tiktok"></i></a>
             </div>
+            <!-- Unlock your incredible self badge inserted here -->
+            <div class="unlock-badge">
+                <i class="fas fa-unlock-alt"></i> 
+                <a href="https://accessworldseminars-ship-it.github.io/results/unlock">Unlock your Incredible Self</a>
+            </div>
         </div>
         <div class="footer-col">
             <h4>Programs</h4>
@@ -1380,6 +1414,8 @@ src="https://www.facebook.com/tr?id=923706520267125&ev=PageView&noscript=1"
             <a href="https://accessworldseminars-ship-it.github.io/results/Bio">Biography</a>
             <a href="https://accessworldseminars-ship-it.github.io/results/Testimony">Testimonials</a>
             <a href="https://accessworldseminars-ship-it.github.io/results/ICS">Find Your Path</a>
+            <!-- Additional link to Unlock -->
+            <a href="https://accessworldseminars-ship-it.github.io/results/unlock">Unlock Yourself</a>
         </div>
         <div class="footer-col">
             <h4>Contact</h4>
@@ -1422,7 +1458,7 @@ src="https://www.facebook.com/tr?id=923706520267125&ev=PageView&noscript=1"
         });
     }, { threshold: 0.12 });
     reveals.forEach(r => revealObs.observe(r));
-    
+
     // Meta Pixel - Track CTA button clicks
     document.querySelectorAll('a[href*="form.jotform.com/250184868189875"]').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -1434,7 +1470,7 @@ src="https://www.facebook.com/tr?id=923706520267125&ev=PageView&noscript=1"
             }
         });
     });
-    
+
     // Track WhatsApp clicks
     document.querySelectorAll('a[href*="wa.me"]').forEach(btn => {
         btn.addEventListener('click', () => {
