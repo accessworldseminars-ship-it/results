@@ -2,377 +2,1403 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Meeting Countdown – 30 October 7am Brisbane</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to become a world class coach – Joshua Roy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+    :root {
+      --navy: #1A2744;
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --cream: #FAF7F0;
+      --warm-white: #FFFDF8;
+      --charcoal: #2C2C2C;
+      --mid: #5A5A6A;
+      --accent-red: #C0392B;
+    }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+      background: var(--warm-white);
+      color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      background: rgba(26,39,68,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .site-logo {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+    .hero {
+      position: relative;
       min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 130px 24px 80px;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 20%, rgba(201,168,76,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(201,168,76,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 20% 70%, rgba(201,168,76,0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -55deg,
+        transparent,
+        transparent 80px,
+        rgba(201,168,76,0.03) 80px,
+        rgba(201,168,76,0.03) 81px
+      );
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold-light);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 100px;
+      margin-bottom: 36px;
+      animation: fadeInDown 0.8s ease both;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 8vw, 100px);
+      font-weight: 300;
+      line-height: 1.0;
+      color: var(--cream);
+      letter-spacing: -1px;
+      max-width: 900px;
+      margin: 0 auto 8px;
+      animation: fadeInUp 1s 0.15s ease both;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 3vw, 28px);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(250,247,240,0.7);
+      margin: 24px auto 0;
+      max-width: 680px;
+      line-height: 1.5;
+      animation: fadeInUp 1s 0.25s ease both;
+    }
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 36px auto;
+      animation: fadeIn 1s 0.4s ease both;
+    }
+    .hero-body {
+      font-size: 17px;
+      color: rgba(250,247,240,0.75);
+      max-width: 600px;
+      line-height: 1.8;
+      margin: 0 auto 48px;
+      animation: fadeInUp 1s 0.35s ease both;
+    }
+    .countdown-wrap {
+      animation: fadeInUp 1s 0.45s ease both;
+      margin-bottom: 48px;
+    }
+    .countdown-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .countdown {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .countdown-unit {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 2rem 1.25rem;
+      gap: 6px;
     }
-    .page {
-      max-width: 900px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border: 1px solid rgba(201, 168, 76, 0.25);
-      border-radius: 32px;
-      padding: 2.5rem 2rem;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-    }
-    .logo {
-      display: block;
-      max-width: 180px;
-      height: auto;
-      margin: 0 auto 1.5rem;
-    }
-    h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      font-size: 2.4rem;
-      color: #fff;
-      text-align: center;
-      letter-spacing: -0.5px;
-    }
-    h1 span {
-      color: #C9A84C;
-    }
-    .sub {
-      text-align: center;
-      color: rgba(255,255,255,0.6);
-      font-size: 0.95rem;
-      margin-top: 0.3rem;
-      margin-bottom: 2rem;
-    }
-    .countdown-grid {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-      flex-wrap: wrap;
-    }
-    .cd-item {
+    .countdown-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px;
+      line-height: 1;
+      color: var(--cream);
       background: rgba(255,255,255,0.06);
-      border-radius: 20px;
-      padding: 0.8rem 1.2rem;
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 8px;
+      padding: 8px 20px;
       min-width: 80px;
       text-align: center;
-      border: 1px solid rgba(201, 168, 76, 0.15);
-    }
-    .cd-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: #C9A84C;
-      line-height: 1;
       letter-spacing: 2px;
     }
-    .cd-label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: rgba(255,255,255,0.5);
-      margin-top: 6px;
+    .countdown-sep {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: var(--gold);
+      line-height: 1.3;
+      margin-top: 8px;
     }
-    .event-time {
-      text-align: center;
-      color: rgba(255,255,255,0.4);
-      font-size: 0.9rem;
-      margin-bottom: 2rem;
-    }
-    .event-time strong {
-      color: #C9A84C;
+    .countdown-word {
+      font-size: 10px;
       font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.6);
     }
-
-    /* Timezone table */
-    .tz-section {
-      margin-top: 1.8rem;
-      border-top: 1px solid rgba(201, 168, 76, 0.15);
-      padding-top: 1.8rem;
+    .cta-wrap {
+      animation: fadeInUp 1s 0.55s ease both;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      max-width: 500px;
     }
-    .tz-section h3 {
-      font-family: 'Cormorant Garamond', serif;
-      color: #fff;
-      font-size: 1.6rem;
-      font-weight: 400;
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+      background-size: 200% auto;
+      color: var(--navy);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 20px 40px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 40px rgba(201,168,76,0.35);
+      position: relative;
+      overflow: hidden;
+      width: 100%;
       text-align: center;
-      margin-bottom: 1.2rem;
     }
-    .tz-table {
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent 60%);
+      pointer-events: none;
+    }
+    .btn-primary:hover {
+      background-position: right center;
+      transform: translateY(-3px);
+      box-shadow: 0 16px 60px rgba(201,168,76,0.5);
+    }
+    .price-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: rgba(250,247,240,0.6);
+    }
+    .price-old {
+      text-decoration: line-through;
+      color: rgba(250,247,240,0.35);
+    }
+    .price-new {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+    .price-note {
+      font-size: 12px;
+      color: rgba(201,168,76,0.7);
+      letter-spacing: 1px;
+    }
+    .scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: fadeIn 1s 1.2s ease both;
+    }
+    .scroll-hint span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.5);
+    }
+    .scroll-arrow {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    .section-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .honest {
+      background: var(--cream);
+      padding: 100px 24px;
+      text-align: center;
+    }
+    .honest h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.1;
+      max-width: 760px;
+      margin: 0 auto 24px;
+    }
+    .honest h2 em { font-style: italic; color: var(--gold); }
+    .honest-body {
+      font-size: 18px;
+      line-height: 1.85;
+      color: var(--mid);
+      max-width: 640px;
+      margin: 0 auto 60px;
+    }
+    .symptom-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2px;
+      max-width: 900px;
+      margin: 0 auto 60px;
+      background: var(--navy);
+    }
+    .symptom-card {
+      background: var(--warm-white);
+      padding: 36px 28px;
+      text-align: left;
+      transition: background 0.3s ease;
+    }
+    .symptom-card:hover { background: #F0EDE4; }
+    .symptom-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+    .symptom-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .symptom-card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--mid);
+    }
+    .story {
+      background: var(--navy);
+      padding: 100px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .story::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .story-inner { max-width: 800px; margin: 0 auto; }
+    .story .section-tag { color: var(--gold); }
+    .story h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5.5vw, 62px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 40px;
+    }
+    .story h2 em { font-style: italic; color: var(--gold-light); }
+    .story p {
+      font-size: 17px;
+      line-height: 1.9;
+      color: rgba(250,247,240,0.78);
+      margin-bottom: 24px;
+    }
+    .story p strong { color: var(--cream); font-weight: 600; }
+    .pull-quote {
+      border-left: 3px solid var(--gold);
+      padding: 20px 0 20px 32px;
+      margin: 48px 0;
+    }
+    .pull-quote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream) !important;
+      line-height: 1.4;
+      margin: 0;
+    }
+    .nsr-deep {
+      background: #0F1A30;
+      padding: 100px 24px;
+    }
+    .nsr-deep-inner { max-width: 900px; margin: 0 auto; }
+    .nsr-deep .section-tag { color: var(--gold); }
+    .nsr-deep h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5.5vw, 60px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 40px;
+    }
+    .nsr-deep h2 em { font-style: italic; color: var(--gold-light); }
+    .nsr-deep p {
+      font-size: 17px;
+      line-height: 1.9;
+      color: rgba(250,247,240,0.78);
+      margin-bottom: 24px;
+    }
+    .nsr-deep p strong { color: var(--cream); }
+    .nsr-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2px;
+      background: rgba(201,168,76,0.2);
+      margin: 60px 0;
+    }
+    .nsr-step {
+      background: rgba(255,255,255,0.03);
+      padding: 36px 28px;
+    }
+    .nsr-step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: var(--gold);
+      opacity: 0.4;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .nsr-step h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+    .nsr-step p {
+      font-size: 14px;
+      color: rgba(250,247,240,0.55);
+      line-height: 1.65;
+      margin: 0;
+    }
+    .pathways {
+      background: var(--cream);
+      padding: 100px 24px;
+      text-align: center;
+    }
+    .pathways h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .pathways h2 em { font-style: italic; color: var(--gold); }
+    .pathways-sub {
+      font-size: 17px;
+      color: var(--mid);
+      max-width: 560px;
+      margin: 0 auto 70px;
+      line-height: 1.7;
+    }
+    .pathway-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0;
+      max-width: 960px;
+      margin: 0 auto 80px;
+      border: 1px solid rgba(26,39,68,0.1);
+    }
+    .pathway-card {
+      padding: 52px 36px;
+      text-align: left;
+      border-right: 1px solid rgba(26,39,68,0.1);
+      transition: background 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .pathway-card:last-child { border-right: none; }
+    .pathway-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .pathway-card:hover::before { transform: scaleX(1); }
+    .pathway-card:hover { background: rgba(201,168,76,0.04); }
+    .pathway-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 80px;
+      line-height: 1;
+      color: rgba(26,39,68,0.06);
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      user-select: none;
+    }
+    .pathway-icon { font-size: 32px; margin-bottom: 20px; display: block; }
+    .pathway-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .pathway-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .pathway-card p {
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--mid);
+      margin-bottom: 24px;
+    }
+    .pathway-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .pathway-items li {
+      font-size: 13.5px;
+      color: var(--charcoal);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .pathway-items li::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: 10px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .testimonials {
+      background: var(--warm-white);
+      padding: 100px 24px;
+      text-align: center;
+    }
+    .testimonials h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 64px;
+    }
+    .testimonials h2 em { font-style: italic; color: var(--gold); }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2px;
+      max-width: 980px;
+      margin: 0 auto 80px;
+      background: rgba(26,39,68,0.08);
+    }
+    .testi-card {
+      background: var(--warm-white);
+      padding: 44px 36px;
+      text-align: left;
+      transition: background 0.3s ease;
+    }
+    .testi-card:hover { background: var(--cream); }
+    .testi-stars {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+    .testi-card blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.55;
+      margin-bottom: 24px;
+    }
+    .testi-author {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .about-josh {
+      background: var(--cream);
+      padding: 100px 24px;
+    }
+    .about-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-left { position: sticky; top: 80px; }
+    .about-portrait {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-portrait::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,168,76,0.15), transparent 70%);
+    }
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: brightness(0.95) saturate(1.05);
+    }
+    .portrait-bar {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(201,168,76,0.9), transparent);
+      padding: 36px 24px 20px;
+    }
+    .portrait-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .portrait-title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--navy);
+      opacity: 0.8;
+    }
+    .about-creds {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 20px;
+    }
+    .about-cred {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--mid);
+    }
+    .about-cred::before {
+      content: '';
+      width: 16px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .about-right h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 4.5vw, 50px);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 28px;
+    }
+    .about-right h2 em { font-style: italic; color: var(--gold); }
+    .about-right p {
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--mid);
+      margin-bottom: 20px;
+    }
+    .about-right p strong { color: var(--navy); font-weight: 600; }
+    .pricing {
+      background: var(--navy);
+      padding: 100px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,168,76,0.12), transparent 60%);
+      pointer-events: none;
+    }
+    .pricing h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+    .pricing h2 em { font-style: italic; color: var(--gold-light); }
+    .pricing-sub {
+      font-size: 17px;
+      color: rgba(250,247,240,0.6);
+      max-width: 520px;
+      margin: 0 auto 70px;
+      line-height: 1.7;
+    }
+    .pricing-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 60px 48px;
+      position: relative;
+    }
+    .pricing-card::before {
+      content: 'LIMITED OFFER';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      padding: 6px 20px;
+    }
+    .pricing-was {
+      font-size: 18px;
+      color: rgba(250,247,240,0.4);
+      text-decoration: line-through;
+      margin-bottom: 8px;
+    }
+    .pricing-now {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+    .pricing-dollar {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      color: var(--gold-light);
+      font-weight: 300;
+      margin-top: 10px;
+    }
+    .pricing-amount {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 96px;
+      color: var(--gold-light);
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+    .pricing-currency {
+      font-size: 14px;
+      color: rgba(201,168,76,0.6);
+      margin-top: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+    .pricing-value {
+      font-size: 14px;
+      color: rgba(250,247,240,0.5);
+      margin-bottom: 40px;
+    }
+    .pricing-includes {
+      text-align: left;
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pricing-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 15px;
+      color: rgba(250,247,240,0.8);
+      line-height: 1.5;
+    }
+    .pricing-item::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .guarantee {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      text-align: left;
+      background: rgba(201,168,76,0.07);
+      padding: 20px 24px;
+      margin-bottom: 40px;
+    }
+    .guarantee-icon { font-size: 28px; flex-shrink: 0; }
+    .guarantee-text h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .guarantee-text p {
+      font-size: 13px;
+      color: rgba(250,247,240,0.6);
+      line-height: 1.6;
+    }
+    .pricing-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(201,168,76,0.2);
+      margin: 40px 0;
+    }
+    .payment-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
+      gap: 10px;
+      margin: 20px 0;
     }
-    @media (max-width: 600px) {
-      .tz-table {
-        grid-template-columns: 1fr;
-      }
+    .payment-btn {
+      display: inline-block;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+      text-align: center;
+      font-family: 'DM Sans', sans-serif;
     }
-    .tz-row {
+    .payment-btn:hover {
+      background: rgba(201,168,76,0.15);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+    .payment-btn .icon { font-size: 1.2rem; margin-right: 6px; }
+    .payment-btn.bank, .payment-btn.payid { grid-column: 1 / -1; }
+    .bank-detail { font-size: 0.7rem; opacity: 0.6; display: block; margin-top: 2px; }
+    .webhook-status {
+      margin: 1rem 0;
+      padding: 12px 16px;
+      border-radius: 8px;
       background: rgba(255,255,255,0.04);
-      border-radius: 14px;
-      padding: 0.8rem 1.2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border: 1px solid rgba(201, 168, 76, 0.08);
-      transition: background 0.2s;
+      border-left: 3px solid #C9A84C;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem;
+      display: none;
     }
-    .tz-row:hover {
+    .webhook-status.success { display: block; border-left-color: #2ecc71; background: rgba(46,204,113,0.08); }
+    .webhook-status.error { display: block; border-left-color: #e74c3c; background: rgba(231,76,60,0.08); }
+    .webhook-status .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-top-color: #C9A84C;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .form-group {
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(201,168,76,0.25);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      transition: border 0.2s;
+      outline: none;
+    }
+    .form-group input::placeholder { color: rgba(255,255,255,0.3); }
+    .form-group input:focus, .form-group select:focus {
+      border-color: #C9A84C;
       background: rgba(255,255,255,0.08);
     }
-    .tz-city {
-      color: rgba(255,255,255,0.8);
-      font-weight: 500;
-      font-size: 0.95rem;
+    .form-group select option { background: #1A2744; color: #fff; }
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
     }
-    .tz-city small {
-      font-weight: 300;
-      color: rgba(255,255,255,0.4);
-      font-size: 0.7rem;
-      display: block;
-      margin-top: 2px;
-    }
-    .tz-local {
-      font-weight: 600;
-      color: #C9A84C;
-      font-size: 1rem;
-      text-align: right;
-    }
-    .tz-local .dst-note {
-      font-weight: 300;
-      font-size: 0.6rem;
-      color: rgba(255,255,255,0.3);
-      display: block;
-    }
-
-    .footer-note {
+    .final-cta {
+      background: var(--navy);
+      padding: 120px 24px;
       text-align: center;
-      margin-top: 2.5rem;
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.2);
+      position: relative;
+      overflow: hidden;
     }
-    .footer-note a {
-      color: rgba(201, 168, 76, 0.5);
-      text-decoration: none;
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,168,76,0.12), transparent 60%);
+      pointer-events: none;
     }
-
-    .status-message {
+    .final-cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 7vw, 80px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.1;
+      max-width: 800px;
+      margin: 0 auto 24px;
+    }
+    .final-cta h2 em { font-style: italic; color: var(--gold-light); }
+    .final-cta p {
+      font-size: 18px;
+      color: rgba(250,247,240,0.65);
+      max-width: 520px;
+      margin: 0 auto 56px;
+      line-height: 1.75;
+    }
+    footer {
+      background: #0F1A30;
+      padding: 40px 24px;
       text-align: center;
-      color: rgba(255,255,255,0.5);
-      font-size: 0.85rem;
-      margin-top: 0.5rem;
+      font-size: 13px;
+      color: rgba(250,247,240,0.3);
     }
-    .status-message .highlight {
-      color: #C9A84C;
+    footer a { color: rgba(201,168,76,0.6); text-decoration: none; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes scrollPulse {
+      0%,100% { opacity: 0.4; transform: scaleY(1); }
+      50%      { opacity: 1;   transform: scaleY(1.15); }
+    }
+    @media (max-width: 768px) {
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-left { position: static; }
+      .row-2 { grid-template-columns: 1fr; }
+      .countdown-num { font-size: 44px; min-width: 60px; padding: 8px 12px; }
+      .pricing-card { padding: 48px 28px; }
+      .pricing-amount { font-size: 72px; }
+      .payment-grid { grid-template-columns: 1fr; }
+      .payment-btn.bank, .payment-btn.payid { grid-column: auto; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
 
-    <!-- Logo -->
-    <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" class="logo" />
+<!-- ══ HEADER ═════════════════════════════════════════════════════ -->
+<header class="site-header">
+  <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" class="site-logo">
+</header>
 
-    <h1>Next Meeting<br><span>30 October · 7:00 AM</span></h1>
-    <p class="sub">Brisbane time (AEST) — countdown to go live</p>
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-badge">Brisbane, Australia · Live Virtual Event</div>
+  <h1>How to become a <em>world class coach</em></h1>
+  <p class="hero-sub">Master the tools, mindset, and nervous system science to transform lives — starting with your own.</p>
+  <div class="hero-divider"></div>
+  <p class="hero-body">3‑hour intensive · NSR · NLP · real‑world coaching frameworks · direct from Joshua Roy, 24‑year law enforcement veteran &amp; creator of Nervous System Reprogramming.</p>
 
-    <!-- Countdown -->
-    <div class="countdown-grid" id="countdownGrid">
-      <div class="cd-item">
-        <div class="cd-number" id="days">00</div>
-        <div class="cd-label">Days</div>
+  <!-- Countdown to 30 October 7am Brisbane -->
+  <div class="countdown-wrap">
+    <p class="countdown-label">Next Live Session</p>
+    <div class="countdown">
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-days">00</div>
+        <div class="countdown-word">Days</div>
       </div>
-      <div class="cd-item">
-        <div class="cd-number" id="hours">00</div>
-        <div class="cd-label">Hours</div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-hours">00</div>
+        <div class="countdown-word">Hours</div>
       </div>
-      <div class="cd-item">
-        <div class="cd-number" id="minutes">00</div>
-        <div class="cd-label">Minutes</div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-mins">00</div>
+        <div class="countdown-word">Mins</div>
       </div>
-      <div class="cd-item">
-        <div class="cd-number" id="seconds">00</div>
-        <div class="cd-label">Seconds</div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-secs">00</div>
+        <div class="countdown-word">Secs</div>
       </div>
-    </div>
-
-    <div class="event-time">
-      <strong>📍 Brisbane (AEST, UTC+10)</strong> &nbsp;—&nbsp; 30 October 2025, 7:00 AM
-    </div>
-
-    <div class="status-message" id="statusMessage">
-      ⏳ Countdown active &bull; time zones shown with daylight saving adjustments
-    </div>
-
-    <!-- Time Zone Table -->
-    <div class="tz-section">
-      <h3>⌚ When it starts in your time zone</h3>
-      <div class="tz-table" id="tzTable">
-        <!-- rows injected by JS -->
-      </div>
-    </div>
-
-    <div class="footer-note">
-      All times reflect daylight saving where applicable on 30 October 2025.
     </div>
   </div>
 
-  <script>
-    (function() {
-      // ======= TARGET DATE ========
-      // 30 October 2025, 07:00:00 Brisbane time (AEST, UTC+10)
-      // We'll use a fixed UTC timestamp: 2025-10-29T21:00:00Z (since +10 => 7am Brisbane = 21:00 UTC previous day)
-      const targetUTC = Date.UTC(2025, 9, 29, 21, 0, 0); // month 9 = October
+  <div class="cta-wrap">
+    <a href="#pricing" class="btn-primary">Claim Your Seat — Join Now</a>
+    <div class="price-badge">
+      <span class="price-old">$900 USD</span>
+      <span class="price-new">$49 AUD</span>
+      <span class="price-note">· First 100 seats</span>
+    </div>
+  </div>
 
-      // ======= TIME ZONE DEFINITIONS ========
-      // We'll use Intl.DateTimeFormat with timeZone to get local time at the target moment.
-      // Each entry: cityName, timeZone (IANA), display label (optional)
-      const cities = [
-        { city: 'Brisbane', tz: 'Australia/Brisbane', label: 'AEST' },
-        { city: 'Sydney', tz: 'Australia/Sydney', label: 'AEDT' },
-        { city: 'Melbourne', tz: 'Australia/Melbourne', label: 'AEDT' },
-        { city: 'Perth', tz: 'Australia/Perth', label: 'AWST' },
-        { city: 'Adelaide', tz: 'Australia/Adelaide', label: 'ACDT' },
-        { city: 'Auckland', tz: 'Pacific/Auckland', label: 'NZDT' },
-        { city: 'London', tz: 'Europe/London', label: 'GMT' },
-        { city: 'New York', tz: 'America/New_York', label: 'EDT' },
-        { city: 'Los Angeles', tz: 'America/Los_Angeles', label: 'PDT' },
-        { city: 'Chicago', tz: 'America/Chicago', label: 'CDT' },
-        { city: 'Denver', tz: 'America/Denver', label: 'MDT' },
-        { city: 'Hong Kong', tz: 'Asia/Hong_Kong', label: 'HKT' },
-        { city: 'Singapore', tz: 'Asia/Singapore', label: 'SGT' },
-        { city: 'Dubai', tz: 'Asia/Dubai', label: 'GST' },
-        { city: 'Berlin', tz: 'Europe/Berlin', label: 'CEST' }, // Berlin is CEST until 26 Oct 2025? Actually DST ends last Sunday Oct, 2025 is 26 Oct, so on 30 Oct it's CET (UTC+1). We'll use Europe/Berlin, the formatter will give correct offset.
-        { city: 'Paris', tz: 'Europe/Paris', label: 'CET' },
-        { city: 'Tokyo', tz: 'Asia/Tokyo', label: 'JST' },
-        { city: 'Mexico City', tz: 'America/Mexico_City', label: 'CST' } // Mexico DST ends Oct, but they may not observe? We'll let Intl handle.
-      ];
+  <div class="scroll-hint">
+    <span>Discover More</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
 
-      // ======= DOM refs ========
-      const daysEl = document.getElementById('days');
-      const hoursEl = document.getElementById('hours');
-      const minutesEl = document.getElementById('minutes');
-      const secondsEl = document.getElementById('seconds');
-      const tzTable = document.getElementById('tzTable');
-      const statusMsg = document.getElementById('statusMessage');
+<!-- ══ HONEST / PROBLEM ══════════════════════════════════════════ -->
+<section class="honest">
+  <div class="section-tag">This is for you if…</div>
+  <h2>You know you were born to <em>coach</em></h2>
+  <p class="honest-body">You have the empathy, the drive, the vision — but you lack the structured system to turn it into a thriving coaching practice. This program gives you the missing pieces.</p>
+  <div class="symptom-grid reveal">
+    <div class="symptom-card">
+      <span class="symptom-icon">🧠</span>
+      <h3>You want a proven methodology</h3>
+      <p>NSR, NLP, and neuroscience‑based tools that actually work — not just fluff.</p>
+    </div>
+    <div class="symptom-card">
+      <span class="symptom-icon">💼</span>
+      <h3>You’re ready to charge premium fees</h3>
+      <p>Learn how to deliver transformation that commands $500+ per session.</p>
+    </div>
+    <div class="symptom-card">
+      <span class="symptom-icon">🔄</span>
+      <h3>You want to break the “impostor” cycle</h3>
+      <p>Step into unshakeable confidence backed by real science and thousands of hours of practice.</p>
+    </div>
+    <div class="symptom-card">
+      <span class="symptom-icon">🌟</span>
+      <h3>You want to change lives</h3>
+      <p>Not just give advice — but actually rewire the nervous system for lasting change.</p>
+    </div>
+  </div>
+</section>
 
-      // ======= Countdown update ========
-      function updateCountdown() {
-        const now = Date.now();
-        const diff = targetUTC - now;
+<!-- ══ STORY ══════════════════════════════════════════════════════ -->
+<section class="story">
+  <div class="story-inner">
+    <div class="section-tag">From Joshua Roy</div>
+    <h2>Why I built this program — <em>and why it works</em></h2>
+    <p>After 24 years in law enforcement, I saw firsthand how people break. I also discovered how they heal. <strong>I’ve invested over $85,000 in coach training, studied NLP, neuroscience, and nervous system reprogramming, and delivered 3,500+ one‑on‑one sessions.</strong></p>
+    <p>I created <strong>Nervous System Reprogramming (NSR)</strong> — a practical, body‑based framework that gets results where talk therapy and positive thinking fall short. This 3‑hour program gives you the core of that system, plus the business and mindset tools to become a world‑class coach.</p>
+    <div class="pull-quote">
+      <p>“You don’t need to be perfect to coach — you need a system. I give you the system I wish I had when I started.”</p>
+    </div>
+    <p>Whether you want to coach part‑time or build a full‑time practice, this program will shortcut your learning curve by years. <strong>Join me live on 30 October and let’s build your coaching empire together.</strong></p>
+  </div>
+</section>
 
-        if (diff <= 0) {
-          // Event has started
-          daysEl.textContent = '00';
-          hoursEl.textContent = '00';
-          minutesEl.textContent = '00';
-          secondsEl.textContent = '00';
-          statusMsg.innerHTML = '🎉 <span class="highlight">The meeting is now live!</span>';
-          return;
-        }
+<!-- ══ NSR DEEP ════════════════════════════════════════════════════ -->
+<section class="nsr-deep">
+  <div class="nsr-deep-inner">
+    <div class="section-tag">The Core Technology</div>
+    <h2>Nervous System Reprogramming — <em>the missing link</em></h2>
+    <p>Most coaching focuses on thoughts and habits. But if the nervous system is stuck in survival mode, no amount of affirmations will stick. <strong>NSR releases trapped trauma, rewires emotional responses, and installs new patterns of calm, clarity, and performance.</strong></p>
+    <div class="nsr-steps reveal">
+      <div class="nsr-step"><div class="nsr-step-num">01</div><h4>Recognise the Pattern</h4><p>Identify the nervous system loops that run your client’s life — and your own.</p></div>
+      <div class="nsr-step"><div class="nsr-step-num">02</div><h4>Release the Charge</h4><p>Use body‑based techniques to clear the emotional charge that keeps people stuck.</p></div>
+      <div class="nsr-step"><div class="nsr-step-num">03</div><h4>Reprogram the Response</h4><p>Install new neurological pathways so your client’s default state becomes calm, confident, and resourceful.</p></div>
+      <div class="nsr-step"><div class="nsr-step-num">04</div><h4>Reinforce & Sustain</h4><p>Daily micro‑practices that lock in the change permanently.</p></div>
+    </div>
+    <p>In this 3‑hour intensive, you’ll learn the core NSR techniques and how to apply them immediately with your clients. No fluff — just actionable, science‑backed tools.</p>
+  </div>
+</section>
 
-        const d = Math.floor(diff / 86400000);
-        const h = Math.floor((diff % 86400000) / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
+<!-- ══ PATHWAYS ═══════════════════════════════════════════════════ -->
+<section class="pathways">
+  <div class="section-tag">The 3 Pillars of World‑Class Coaching</div>
+  <h2>Master <em>coach</em> in 3 domains</h2>
+  <p class="pathways-sub">We cover the three dimensions that separate average coaches from elite ones.</p>
+  <div class="pathway-cards reveal">
+    <div class="pathway-card">
+      <span class="pathway-num">01</span>
+      <span class="pathway-icon">🧬</span>
+      <h3>The Science of Change</h3>
+      <span class="pathway-tag">NSR &amp; NLP</span>
+      <p>Understand how the nervous system works, how to regulate it, and how to use NLP to reframe limiting beliefs at the unconscious level.</p>
+      <ul class="pathway-items">
+        <li>NSR foundational techniques</li>
+        <li>NLP anchoring &amp; reframing</li>
+        <li>Body‑based emotional release</li>
+        <li>Subconscious reprogramming</li>
+      </ul>
+    </div>
+    <div class="pathway-card">
+      <span class="pathway-num">02</span>
+      <span class="pathway-icon">💡</span>
+      <h3>The Coach’s Mindset</h3>
+      <span class="pathway-tag">Identity &amp; Confidence</span>
+      <p>Step into the identity of a world‑class coach. Remove self‑doubt, become magnetic, and lead with certainty.</p>
+      <ul class="pathway-items">
+        <li>Breakthrough self‑limiting beliefs</li>
+        <li>Develop unshakeable presence</li>
+        <li>Handle any client objection</li>
+        <li>Build a thriving referral network</li>
+      </ul>
+    </div>
+    <div class="pathway-card">
+      <span class="pathway-num">03</span>
+      <span class="pathway-icon">📈</span>
+      <h3>The Business of Coaching</h3>
+      <span class="pathway-tag">Monetise Your Skill</span>
+      <p>Learn how to structure your offers, price your sessions, attract premium clients, and build a sustainable practice.</p>
+      <ul class="pathway-items">
+        <li>Package &amp; price your services</li>
+        <li>Marketing &amp; sales strategies</li>
+        <li>Client onboarding &amp; retention</li>
+        <li>Scaling to group coaching</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-        daysEl.textContent = String(d).padStart(2, '0');
-        hoursEl.textContent = String(h).padStart(2, '0');
-        minutesEl.textContent = String(m).padStart(2, '0');
-        secondsEl.textContent = String(s).padStart(2, '0');
+<!-- ══ TESTIMONIALS ═══════════════════════════════════════════════ -->
+<section class="testimonials">
+  <div class="section-tag">Real Results</div>
+  <h2>What coaches say about<br>Joshua’s <em>training</em></h2>
+  <div class="testi-grid reveal">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <blockquote>“Joshua’s NSR training completely changed how I coach. My clients now get results in weeks that used to take months. Worth every penny.”</blockquote>
+      <div class="testi-author">Sarah — Coach, Sydney</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <blockquote>“I went from feeling like an impostor to signing my first $5k client within 30 days of this program. The mindset shift alone was huge.”</blockquote>
+      <div class="testi-author">Mark — Former Teacher, Melbourne</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <blockquote>“The business module alone is worth the investment. I now have a clear roadmap to build a coaching practice that actually makes money.”</blockquote>
+      <div class="testi-author">Lisa — Corporate Manager turned Coach</div>
+    </div>
+  </div>
+</section>
 
-        statusMsg.innerHTML = `⏳ Countdown active &bull; ${d} days, ${h} hours, ${m} minutes remaining`;
+<!-- ══ ABOUT JOSH ═════════════════════════════════════════════════ -->
+<section class="about-josh">
+  <div class="about-inner">
+    <div class="about-left reveal">
+      <div class="about-portrait">
+        <img src="https://i.ibb.co/F4c0V58q/Screenshot-2025-12-12-162510.png" alt="Joshua Roy" class="about-photo">
+        <div class="portrait-bar">
+          <div class="portrait-name">Joshua Roy</div>
+          <div class="portrait-title">Life &amp; Results Coach</div>
+        </div>
+      </div>
+      <div class="about-creds">
+        <div class="about-cred">9 Coaching Certifications</div>
+        <div class="about-cred">NLP Practitioner</div>
+        <div class="about-cred">NSR Specialist</div>
+        <div class="about-cred">3,500+ Sessions</div>
+        <div class="about-cred">800+ Seminars Worldwide</div>
+        <div class="about-cred">24 Years QPS — Sergeant</div>
+        <div class="about-cred">Karate Champion</div>
+      </div>
+    </div>
+    <div class="about-right reveal">
+      <div class="section-tag">Your Mentor</div>
+      <h2>From the trenches to <em>world‑class</em></h2>
+      <p>Joshua Roy is a Life and Results Coach, NLP Practitioner, and creator of NSR — Nervous System Reprogramming. He’s also a serving Sergeant of Police with 24 years of frontline experience.</p>
+      <p>He has invested over <strong>$85,000</strong> in his own training, completed 20+ major personal development programs, and holds nine professional coaching certifications. He has delivered 3,500+ individual sessions and 800+ seminars worldwide.</p>
+      <p>This program distills everything he’s learned into a 3‑hour live experience. You’ll leave with a clear coaching framework, a powerful mindset shift, and a practical business blueprint.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING / PAYMENT ══════════════════════════════════════════ -->
+<section class="pricing" id="pricing">
+  <div class="section-tag" style="color:var(--gold);">Your Investment</div>
+  <h2>3 hours that could launch<br>your <em>coaching career</em></h2>
+  <p class="pricing-sub">Most coaching programs cost $3,000+. This is an entry‑level investment to give you the foundation — and the confidence — to start charging what you’re worth.</p>
+
+  <div class="pricing-card reveal">
+    <div class="pricing-was">Value $900 USD</div>
+    <div class="pricing-now">
+      <span class="pricing-dollar">$</span>
+      <span class="pricing-amount">49</span>
+      <span class="pricing-currency">AUD</span>
+    </div>
+    <div class="pricing-value">First 100 seats only · Price rises after</div>
+
+    <!-- LEAD CAPTURE FORM -->
+    <form id="purchaseForm">
+      <div class="row-2">
+        <div class="form-group">
+          <label for="fullName">Full name</label>
+          <input type="text" id="fullName" placeholder="e.g. Jamie Smith" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" placeholder="+61 400 000 000" required />
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <select id="country" required>
+            <option value="">Select…</option>
+            <option value="Australia">Australia</option>
+            <option value="Canada">Canada</option>
+            <option value="Ireland">Ireland</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+          </select>
+        </div>
+      </div>
+      <input type="hidden" id="paymentMethod" value="" />
+
+      <!-- Webhook status -->
+      <div id="webhookStatus" class="webhook-status">
+        <span class="spinner"></span> Sending your details…
+      </div>
+
+      <!-- PAYMENT BUTTONS -->
+      <div class="payment-grid">
+        <a href="https://www.paypal.com/ncp/payment/96KU47K5YFVUW" target="_blank" class="payment-btn" data-method="PayPal">
+          <span class="icon">💳</span> PayPal
+        </a>
+        <a href="https://buy.stripe.com/28EdR9e8f10j2kTf5tg3603" target="_blank" class="payment-btn" data-method="Stripe">
+          <span class="icon">⚡</span> Stripe
+        </a>
+        <a href="https://square.link/u/vdOZmPn9" target="_blank" class="payment-btn" data-method="Square">
+          <span class="icon">▣</span> Square
+        </a>
+        <a href="https://i.ibb.co/0yrm0VcQ/How-to-become-qrcode.png" target="_blank" class="payment-btn" data-method="PayPal QR">
+          <span class="icon">📱</span> PayPal QR
+        </a>
+        <a href="#" class="payment-btn bank" data-method="Bank Transfer" style="cursor:default; background:rgba(255,255,255,0.02);">
+          <span class="icon">🏦</span> Bank Transfer
+          <span class="bank-detail">BSB: 124‑001 · Acc: 227‑100‑71 · Accessworld Trust BC</span>
+        </a>
+        <a href="#" class="payment-btn payid" data-method="PayID" style="cursor:default; background:rgba(255,255,255,0.02);">
+          <span class="icon">📲</span> PayID
+          <span class="bank-detail">0432 119 091 · Accessworld Trust BC</span>
+        </a>
+      </div>
+    </form>
+
+    <div class="guarantee">
+      <div class="guarantee-icon">🛡️</div>
+      <div class="guarantee-text">
+        <h4>100% Satisfaction Guarantee</h4>
+        <p>If you don’t walk away with a clear coaching framework and actionable tools, reach out for a full refund — no questions asked.</p>
+      </div>
+    </div>
+
+    <div class="pricing-divider"></div>
+    <p style="font-size:13px; color:rgba(250,247,240,0.4); text-align:center;">Secure payment · Instant access · Limited seats</p>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══════════════════════════════════════════════════ -->
+<section class="final-cta">
+  <div class="section-tag" style="color:var(--gold);">Your Journey Starts Here</div>
+  <h2>Become the coach you were<br>always meant to <em>be.</em></h2>
+  <p>Three hours. A proven system. A mentor who has been where you are. Don’t wait — the world needs more world‑class coaches.</p>
+  <a href="#pricing" class="btn-primary" style="max-width:400px; margin:0 auto;">Claim Your Seat — $49 AUD</a>
+</section>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════════════ -->
+<footer>
+  <p style="margin-bottom:8px;">AccessWorld Seminars &copy; 2015–2026 · Brisbane, Australia · ABN: 72 546 137 885</p>
+  <p>Questions? <a href="mailto:accessworldseminars@gmail.com">accessworldseminars@gmail.com</a> · <a href="tel:0432119091">0432 119 091</a></p>
+</footer>
+
+<script>
+  // ── Countdown to 30 October 2025 7:00 AM AEST ──────────────
+  const target = new Date('2025-10-29T21:00:00Z'); // UTC = 7am Brisbane (UTC+10) on 30 Oct
+
+  function updateCountdown() {
+    const now = Date.now();
+    const diff = Math.max(0, target - now);
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // ── Scroll Reveal ────────────────────────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
       }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-      // ======= Build time zone table ========
-      function renderTimeZones() {
-        // For each city, format the target UTC time in that timezone
-        const targetDate = new Date(targetUTC);
-        let html = '';
-        cities.forEach(c => {
-          try {
-            const formatter = new Intl.DateTimeFormat('en-AU', {
-              timeZone: c.tz,
-              hour12: true,
-              hour: '2-digit',
-              minute: '2-digit',
-              day: '2-digit',
-              month: 'short',
-              year: 'numeric',
-              timeZoneName: 'short'
-            });
-            const parts = formatter.formatToParts(targetDate);
-            // we want a nice display: "7:00 AM, 30 Oct 2025 AEDT"
-            // We'll build a custom string:
-            const timeStr = parts.filter(p => p.type === 'hour' || p.type === 'minute' || p.type === 'dayPeriod').map(p => p.value).join('');
-            // or simpler: just use toLocaleString with options
-            const opts = { timeZone: c.tz, hour12: true, hour: '2-digit', minute: '2-digit', day: '2-digit', month: 'short', year: 'numeric', timeZoneName: 'short' };
-            const localStr = targetDate.toLocaleString('en-AU', opts);
-            // also get offset to show UTC offset
-            const offsetFormatter = new Intl.DateTimeFormat('en', { timeZone: c.tz, timeZoneName: 'short' });
-            const offsetParts = offsetFormatter.formatToParts(targetDate);
-            const tzName = offsetParts.find(p => p.type === 'timeZoneName')?.value || '';
-            // get the time string without date
-            const timeOpts = { timeZone: c.tz, hour12: true, hour: '2-digit', minute: '2-digit' };
-            const timeOnly = targetDate.toLocaleTimeString('en-AU', timeOpts);
-            const dateOpts = { timeZone: c.tz, day: '2-digit', month: 'short', year: 'numeric' };
-            const dateOnly = targetDate.toLocaleDateString('en-AU', dateOpts);
+  // ── Webhook + Payment Click ──────────────────────────────────
+  const form = document.getElementById('purchaseForm');
+  const statusDiv = document.getElementById('webhookStatus');
+  const paymentMethodInput = document.getElementById('paymentMethod');
 
-            // determine if DST is active (by comparing offset to standard)
-            // we can get the offset in minutes
-            const offsetMinutes = -targetDate.getTimezoneOffset(); // but that's for local, not for target timezone. We need to compute offset for the target time in that timezone.
-            // We can use a hack: get the UTC time and the local time in that timezone, compute difference
-            const localTimeInTZ = new Date(targetDate.toLocaleString('en-US', { timeZone: c.tz }));
-            const offsetMinutesTZ = (localTimeInTZ.getTime() - targetDate.getTime()) / 60000;
-            const offsetHours = offsetMinutesTZ / 60;
-            const offsetSign = offsetHours >= 0 ? '+' : '';
-            const offsetStr = `UTC${offsetSign}${offsetHours}`;
+  function submitWebhook(method) {
+    const name = document.getElementById('fullName').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const country = document.getElementById('country').value;
 
-            html += `
-              <div class="tz-row">
-                <div class="tz-city">
-                  ${c.city} <small>${c.label || ''}</small>
-                </div>
-                <div class="tz-local">
-                  ${timeOnly} <span style="font-weight:300;color:rgba(255,255,255,0.3);">·</span> ${dateOnly}
-                  <span class="dst-note">${offsetStr}</span>
-                </div>
-              </div>
-            `;
-          } catch(e) {
-            html += `<div class="tz-row"><div class="tz-city">${c.city}</div><div class="tz-local">—</div></div>`;
-          }
-        });
-        tzTable.innerHTML = html;
+    const payload = {
+      name, phone, email, country,
+      program: 'How to become a world class coach',
+      amount: '49 AUD',
+      paymentMethod: method,
+      timestamp: new Date().toISOString()
+    };
+
+    statusDiv.className = 'webhook-status';
+    statusDiv.innerHTML = `<span class="spinner"></span> Sending your details…`;
+    statusDiv.style.display = 'block';
+
+    fetch('https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+    .then(res => {
+      if (res.ok) {
+        statusDiv.className = 'webhook-status success';
+        statusDiv.innerHTML = `✅ Webhook sent successfully (${method}). You'll receive a confirmation shortly.`;
+      } else {
+        throw new Error('Webhook responded with ' + res.status);
       }
+    })
+    .catch(err => {
+      statusDiv.className = 'webhook-status error';
+      statusDiv.innerHTML = `⚠️ Could not send details: ${err.message}. Please complete your payment manually.`;
+    });
+  }
 
-      // ======= Initial render and interval ========
-      updateCountdown();
-      renderTimeZones();
-      setInterval(updateCountdown, 1000);
+  document.querySelectorAll('.payment-btn[data-method]').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const method = this.dataset.method;
+      if (method === 'Bank Transfer' || method === 'PayID') {
+        e.preventDefault();
+      }
+      paymentMethodInput.value = method;
 
-      // Refresh time zone table every minute (in case DST changes? but it won't change during the countdown, but we can keep it static)
-      // No need to refresh, but we might want to update the countdown only.
+      if (form.checkValidity()) {
+        submitWebhook(method);
+      } else {
+        e.preventDefault();
+        statusDiv.className = 'webhook-status error';
+        statusDiv.innerHTML = '⚠️ Please fill in all fields before selecting payment.';
+        statusDiv.style.display = 'block';
+        setTimeout(() => { statusDiv.style.display = 'none'; }, 3000);
+        form.reportValidity();
+      }
+    });
+  });
 
-      // Also update status if event passed
-      // Already handled in updateCountdown.
-    })();
-  </script>
+  form.addEventListener('submit', (e) => e.preventDefault());
+</script>
 </body>
 </html>
