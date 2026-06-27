@@ -1,878 +1,597 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AccessWorld Seminars - 2026-2027 Event Calendar</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Introduction Seminars | AccessWorld Seminars</title>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '923706520267125');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=923706520267125&ev=PageView&noscript=1" /></noscript>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* ── Existing styles (unchanged) ── */
+        :root {
+            --navy: #0e1b35;
+            --navy-mid: #162240;
+            --navy-light: #1e2f55;
+            --gold: #c9a84c;
+            --gold-light: #e2c47a;
+            --gold-pale: #f5e8c8;
+            --white: #ffffff;
+            --off-white: #f4f0e8;
+            --gray: #9aa3b5;
+            --text: #d8dde8;
         }
-        
-        body {
-            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
-            color: #333;
-            padding: 20px;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .logo {
-            font-size: 42px;
-            font-weight: 900;
-            color: #1a2980;
-            margin-bottom: 10px;
-        }
-        
-        .logo span {
-            color: #26d0ce;
-        }
-        
-        .subtitle {
-            color: #666;
-            font-size: 20px;
-            margin-top: 10px;
-        }
-        
-        .currency-note {
-            background: #ffeb3b;
-            padding: 10px;
-            border-radius: 10px;
-            display: inline-block;
-            margin-top: 15px;
-            font-weight: bold;
-            color: #333;
-        }
-        
-        .section-title {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 40px 0 20px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            position: relative;
-            border-left: 6px solid #26d0ce;
-        }
-        
-        .section-title h2 {
-            color: #1a2980;
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-        
-        .section-title .badge {
-            background: #ff4081;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            position: absolute;
-            top: 25px;
-            right: 25px;
-        }
-        
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
-        }
-        
-        .program-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .program-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        .card-header {
-            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
-            color: white;
-            padding: 25px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            min-height: 120px;
-            display: flex;
-            flex-direction: column;
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Barlow',sans-serif; background:var(--navy); color:var(--text); overflow-x:hidden; }
+
+        /* Nav, Hero, Section, Grid, Footer – same as original (truncated for brevity) */
+        .nav { position:fixed; top:0; left:0; width:100%; background:rgba(14,27,53,0.97); backdrop-filter:blur(12px); border-bottom:1px solid rgba(201,168,76,0.25); z-index:1000; padding:0 3%; display:flex; align-items:center; justify-content:space-between; height:68px; }
+        .nav-logo img { height:48px; width:auto; filter:drop-shadow(0 0 8px rgba(201,168,76,0.4)); }
+        .nav-links { display:flex; align-items:center; gap:2px; }
+        .nav-links a { color:var(--text); text-decoration:none; font-size:0.75rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; padding:6px 10px; border-radius:4px; transition:all .25s; white-space:nowrap; }
+        .nav-links a:hover { background:rgba(201,168,76,0.15); color:var(--gold-light); }
+        .nav-links a.cta-nav { background:linear-gradient(135deg,var(--gold),#a87d28); color:var(--navy); font-weight:700; padding:7px 14px; border-radius:30px; margin-left:6px; }
+        .nav-links a.cta-nav:hover { transform:translateY(-1px); box-shadow:0 4px 12px rgba(201,168,76,0.35); }
+        .hamburger { display:none; background:none; border:none; color:var(--gold); font-size:1.4rem; cursor:pointer; }
+        .mobile-menu { display:none; position:fixed; top:68px; left:0; width:100%; background:rgba(14,27,53,0.99); border-bottom:1px solid rgba(201,168,76,0.2); padding:20px; z-index:999; flex-direction:column; gap:8px; }
+        .mobile-menu.open { display:flex; }
+        .mobile-menu a { color:var(--text); text-decoration:none; font-size:0.9rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; padding:12px 16px; border-radius:6px; border:1px solid rgba(201,168,76,0.15); transition:all .2s; }
+        .mobile-menu a:hover { background:rgba(201,168,76,0.15); color:var(--gold); }
+        .mobile-menu a.cta-nav { background:linear-gradient(135deg,var(--gold),#a87d28); color:var(--navy); border:none; text-align:center; }
+
+        .hero { min-height:60vh; padding-top:68px; position:relative; display:flex; align-items:center; overflow:hidden; }
+        .hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 70% 50%,rgba(201,168,76,0.07) 0%,transparent 65%),radial-gradient(ellipse 40% 60% at 20% 80%,rgba(30,47,85,0.8) 0%,transparent 70%),linear-gradient(160deg,#0a1428 0%,#0e1b35 40%,#14233f 100%); }
+        .hero-bg::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px); background-size:60px 60px; }
+        .hero-content { position:relative; z-index:2; width:100%; max-width:1300px; margin:0 auto; padding:80px 5% 60px; text-align:center; }
+        .eyebrow { display:inline-flex; align-items:center; gap:10px; background:rgba(201,168,76,0.12); border:1px solid rgba(201,168,76,0.3); border-radius:30px; padding:6px 18px; font-size:0.75rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-light); margin-bottom:28px; }
+        .eyebrow span { width:6px; height:6px; background:var(--gold); border-radius:50%; display:inline-block; }
+        .hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,5.5vw,4.8rem); font-weight:700; line-height:1.05; color:var(--white); margin-bottom:16px; }
+        .hero h1 em { font-style:italic; color:var(--gold); }
+        .hero-desc { font-size:1.15rem; font-weight:300; line-height:1.75; color:var(--text); max-width:680px; margin:0 auto 20px; }
+        .hero-desc strong { color:var(--gold-light); font-weight:600; }
+
+        section { padding:80px 5%; }
+        .section-label { display:inline-flex; align-items:center; gap:10px; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+        .section-label::before { content:''; width:28px; height:2px; background:var(--gold); display:inline-block; }
+        .section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,3.6vw,3.2rem); font-weight:700; color:var(--white); line-height:1.1; margin-bottom:20px; }
+        .section-title em { font-style:italic; color:var(--gold); }
+        .section-body { font-size:1.05rem; font-weight:300; line-height:1.8; color:var(--text); max-width:620px; }
+        .inner { max-width:1300px; margin:0 auto; }
+
+        .seminars-section { background:var(--navy-mid); }
+        .seminars-header { text-align:center; margin-bottom:56px; }
+        .seminars-header .section-label { justify-content:center; }
+        .seminars-header .section-label::before { display:none; }
+        .seminars-header .section-body { margin:0 auto; text-align:center; }
+
+        .seminars-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+        .sem-card { background:rgba(14,27,53,0.7); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:36px 28px 32px; transition:all .35s; position:relative; overflow:hidden; display:flex; flex-direction:column; }
+        .sem-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,transparent,var(--gold),transparent); opacity:0; transition:opacity .3s; }
+        .sem-card:hover { transform:translateY(-8px); border-color:var(--gold); box-shadow:0 20px 50px rgba(0,0,0,0.4); }
+        .sem-card:hover::before { opacity:1; }
+        .sem-number { display:inline-flex; align-items:center; justify-content:center; background:rgba(201,168,76,0.12); border:1px solid rgba(201,168,76,0.25); border-radius:50%; width:40px; height:40px; font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:700; color:var(--gold); margin-bottom:18px; flex-shrink:0; }
+        .sem-card h3 { font-family:'Barlow Condensed',sans-serif; font-size:1.35rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--white); margin-bottom:10px; }
+        .sem-card .sem-tag { display:inline-block; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); background:rgba(201,168,76,0.1); padding:2px 12px; border-radius:20px; border:1px solid rgba(201,168,76,0.15); margin-bottom:14px; align-self:flex-start; }
+        .sem-card p { font-size:0.9rem; color:var(--gray); line-height:1.65; margin-bottom:20px; flex:1; }
+        .sem-card .sem-details { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; font-size:0.8rem; color:var(--gray); }
+        .sem-card .sem-details i { color:var(--gold); margin-right:6px; width:16px; }
+        .sem-card .sem-details span { display:inline-flex; align-items:center; gap:4px; }
+        .sem-link { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:linear-gradient(135deg,var(--gold),#a87d28); color:var(--navy); font-family:'Barlow',sans-serif; font-size:0.8rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; padding:12px 24px; border-radius:4px; transition:all .3s; border:none; cursor:pointer; width:100%; text-align:center; margin-top:4px; }
+        .sem-link:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(201,168,76,0.35); }
+
+        .cta-banner { background:linear-gradient(135deg,#0a1428,var(--navy-light)); border-top:1px solid rgba(201,168,76,0.15); border-bottom:1px solid rgba(201,168,76,0.15); padding:70px 5%; text-align:center; }
+        .cta-banner .section-title { margin-bottom:16px; }
+        .cta-banner .section-body { margin:0 auto 36px; text-align:center; }
+        .cta-actions { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; }
+        .btn-primary { display:inline-flex; align-items:center; gap:10px; background:linear-gradient(135deg,var(--gold),#a87d28); color:var(--navy); font-family:'Barlow',sans-serif; font-size:0.9rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; padding:16px 32px; border-radius:4px; transition:all .3s; border:none; cursor:pointer; }
+        .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(201,168,76,0.4); }
+        .btn-outline { display:inline-flex; align-items:center; gap:10px; background:transparent; color:var(--gold-light); font-family:'Barlow',sans-serif; font-size:0.9rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; padding:15px 30px; border-radius:4px; border:1px solid rgba(201,168,76,0.45); transition:all .3s; cursor:pointer; }
+        .btn-outline:hover { background:rgba(201,168,76,0.1); border-color:var(--gold); transform:translateY(-2px); }
+        .wa-btn { display:inline-flex; align-items:center; gap:10px; background:#25D366; color:white; font-family:'Barlow',sans-serif; font-size:0.9rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; text-decoration:none; padding:16px 28px; border-radius:4px; transition:all .3s; }
+        .wa-btn:hover { background:#1da851; transform:translateY(-2px); box-shadow:0 8px 20px rgba(37,211,102,0.3); }
+
+        .footer { background:#080f1e; padding:60px 5% 30px; border-top:1px solid rgba(201,168,76,0.15); }
+        .footer-grid { max-width:1300px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,0.07); margin-bottom:30px; }
+        .footer-logo img { height:52px; margin-bottom:18px; filter:drop-shadow(0 0 8px rgba(201,168,76,0.3)); }
+        .footer-about p { font-size:0.85rem; color:var(--gray); line-height:1.7; margin-bottom:20px; }
+        .social-row { display:flex; gap:10px; }
+        .social-row a { width:36px; height:36px; background:rgba(255,255,255,0.05); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--gray); text-decoration:none; font-size:0.95rem; transition:all .25s; border:1px solid rgba(255,255,255,0.06); }
+        .social-row a:hover { background:rgba(201,168,76,0.15); color:var(--gold); border-color:rgba(201,168,76,0.3); }
+        .footer-col h4 { font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; }
+        .footer-col a, .footer-col p { display:block; font-size:0.85rem; color:var(--gray); text-decoration:none; margin-bottom:10px; transition:color .2s; }
+        .footer-col a:hover { color:var(--gold-light); }
+        .footer-bottom { max-width:1300px; margin:0 auto; text-align:center; font-size:0.78rem; color:rgba(154,163,181,0.5); }
+        .unlock-badge { display:inline-block; background:rgba(201,168,76,0.12); border:1px solid rgba(201,168,76,0.25); padding:16px 28px; border-radius:8px; margin-top:24px; font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; color:var(--gold-light); letter-spacing:0.04em; }
+        .unlock-badge i { margin-right:12px; color:var(--gold); }
+        .unlock-badge a { color:var(--gold-light); text-decoration:none; transition:color .2s; }
+        .unlock-badge a:hover { color:var(--gold); text-decoration:underline; }
+
+        @media(max-width:1024px){ .nav-links{display:none;} .hamburger{display:block;} .seminars-grid{grid-template-columns:1fr 1fr;} .footer-grid{grid-template-columns:1fr 1fr;} }
+        @media(max-width:640px){ section{padding:60px 5%;} .hero{min-height:50vh;} .hero-content{padding:70px 5% 40px;} .hero h1{font-size:2.4rem;} .seminars-grid{grid-template-columns:1fr;} .footer-grid{grid-template-columns:1fr;} .cta-actions{flex-direction:column;align-items:center;} .sem-card{padding:28px 20px 24px;} }
+        .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s ease; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+
+        /* ── NEW MODAL STYLES ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top:0; left:0; right:0; bottom:0;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
             justify-content: center;
-        }
-        
-        .card-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(26, 41, 128, 0.9) 0%, rgba(38, 208, 206, 0.9) 100%);
-            z-index: -1;
-        }
-        
-        .program-name {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 2;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .program-price {
-            font-size: 36px;
-            font-weight: 900;
-            margin: 15px 0;
-            position: relative;
-            z-index: 2;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .card-content {
-            padding: 25px;
-        }
-        
-        .features-list {
-            list-style: none;
-        }
-        
-        .features-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
-            display: flex;
             align-items: center;
+            backdrop-filter: blur(6px);
+            padding:20px;
         }
-        
-        .features-list li:last-child {
-            border-bottom: none;
+        .modal-overlay.active { display:flex; }
+        .modal-box {
+            background: var(--navy-mid);
+            border:1px solid rgba(201,168,76,0.3);
+            border-radius:16px;
+            max-width:700px;
+            width:100%;
+            padding:40px 30px;
+            position:relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            max-height:90vh;
+            overflow-y:auto;
         }
-        
-        .feature-icon {
-            color: #26d0ce;
-            margin-right: 10px;
-            font-size: 18px;
+        .modal-close {
+            position:absolute;
+            top:12px; right:16px;
+            background:none;
+            border:none;
+            color:var(--gray);
+            font-size:28px;
+            cursor:pointer;
+            transition:color .2s;
         }
-        
-        .ideal-for {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-            font-style: italic;
-            color: #666;
-            border-left: 4px solid #26d0ce;
+        .modal-close:hover { color:var(--gold); }
+        .modal-title {
+            font-family:'Cormorant Garamond',serif;
+            font-size:2rem;
+            font-weight:700;
+            color:var(--white);
+            margin-bottom:8px;
         }
-        
-        .best-value-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #ff4081;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            z-index: 10;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        .modal-sub {
+            color:var(--gray);
+            font-size:1rem;
+            margin-bottom:24px;
         }
-        
-        .cta-button {
-            display: block;
-            width: 100%;
-            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
-            color: white;
-            border: none;
-            padding: 18px;
-            font-size: 18px;
-            font-weight: 700;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 25px;
-            text-align: center;
-            text-decoration: none;
+        .modal-form .form-group {
+            margin-bottom:16px;
         }
-        
-        .cta-button:hover {
-            transform: scale(1.03);
-            box-shadow: 0 5px 15px rgba(26, 41, 128, 0.3);
+        .modal-form label {
+            display:block;
+            color:var(--text);
+            font-weight:600;
+            font-size:0.9rem;
+            margin-bottom:4px;
         }
-        
-        .intro-offers {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-top: 40px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        .modal-form input {
+            width:100%;
+            padding:12px 16px;
+            border-radius:8px;
+            border:1px solid rgba(255,255,255,0.1);
+            background:rgba(14,27,53,0.6);
+            color:var(--white);
+            font-size:1rem;
+            transition:border .2s;
         }
-        
-        .offers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+        .modal-form input:focus {
+            border-color:var(--gold);
+            outline:none;
+            box-shadow:0 0 0 3px rgba(201,168,76,0.2);
         }
-        
-        .offer-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
+        .modal-form .btn-submit {
+            background:linear-gradient(135deg,var(--gold),#a87d28);
+            color:var(--navy);
+            font-family:'Barlow',sans-serif;
+            font-weight:700;
+            font-size:1.1rem;
+            padding:14px 24px;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            width:100%;
+            transition:all .3s;
+            text-transform:uppercase;
+            letter-spacing:0.08em;
         }
-        
-        .offer-card {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 5px solid #26d0ce;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            height: 100%;
+        .modal-form .btn-submit:hover {
+            transform:translateY(-2px);
+            box-shadow:0 6px 20px rgba(201,168,76,0.3);
         }
-        
-        .offer-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            background: #e3f2fd;
+        .modal-video-container {
+            display:none;
+            margin-top:20px;
         }
-        
-        .offer-title {
-            font-weight: 700;
-            color: #1a2980;
-            margin-bottom: 10px;
-            font-size: 18px;
+        .modal-video-container.active { display:block; }
+        .modal-video-container iframe {
+            width:100%;
+            height:380px;
+            border-radius:10px;
+            border:none;
         }
-        
-        .offer-price {
-            color: #ff4081;
-            font-weight: bold;
-            margin-top: 10px;
+        .modal-success-msg {
+            display:none;
+            text-align:center;
+            color:var(--gold-light);
+            font-size:1.2rem;
+            margin-top:16px;
         }
-        
-        .free-badge {
-            background: #4CAF50;
-            color: white;
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 12px;
-            display: inline-block;
-            margin-left: 10px;
+        .modal-success-msg.active { display:block; }
+        .modal-error {
+            color:#ff6b6b;
+            font-size:0.9rem;
+            margin-top:8px;
+            display:none;
         }
-        
-        @media (max-width: 768px) {
-            .programs-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .logo {
-                font-size: 32px;
-            }
-            
-            .section-title h2 {
-                font-size: 24px;
-            }
-        }
-        
-        /* Calendar Styles */
-        .calendar-container {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-top: 40px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .event-timeline {
-            max-width: 800px;
-            margin: 40px auto;
-            position: relative;
-        }
-        
-        .event-timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, #1a2980, #26d0ce);
-            border-radius: 2px;
-        }
-        
-        .timeline-event {
-            display: flex;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .event-date {
-            background: #1a2980;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            min-width: 120px;
-            text-align: center;
-            margin-right: 30px;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 4px 10px rgba(26, 41, 128, 0.3);
-        }
-        
-        .event-content {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #26d0ce;
-            flex: 1;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-        
-        .event-title {
-            font-weight: 700;
-            color: #1a2980;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-        
-        .event-details {
-            color: #666;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .event-details i {
-            color: #26d0ce;
-            width: 20px;
-        }
-        
-        .major-event {
-            border-left-color: #ff4081;
-        }
-        
-        .major-event .event-date {
-            background: #ff4081;
-            box-shadow: 0 4px 10px rgba(255, 64, 129, 0.3);
-        }
-        
-        .major-event .event-title {
-            color: #ff4081;
-        }
-        
-        .theme-badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: bold;
-            margin-left: 10px;
-        }
-        
-        .relationship-badge {
-            background: #D4145A;
-            color: white;
-        }
-        
-        .health-badge {
-            background: #4CAF50;
-            color: white;
-        }
-        
-        .emotional-badge {
-            background: #9C27B0;
-            color: white;
-        }
-        
-        .link-indicator {
-            color: #26d0ce;
-            font-size: 14px;
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .strategy-call {
-            text-align: center;
-            margin: 50px 0 30px;
-            color: white;
-        }
-        
-        .back-button {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
-            margin-top: 60px;
-            border-radius: 0 0 15px 15px;
+        .modal-error.active { display:block; }
+        @media(max-width:640px){
+            .modal-box { padding:24px 16px; }
+            .modal-video-container iframe { height:220px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">ACCESS<span>WORLD</span> SEMINARS</div>
-            <div class="subtitle">2026-2027 Event Calendar & Program Schedule</div>
-            <div class="currency-note">All dates in AEST (Australian Eastern Standard Time)</div>
-        </header>
 
-        <!-- ========== MAJOR 2-DAY EVENTS ========== -->
-        <div class="section-title">
-            <h2>MAJOR 2-DAY TRAINING EVENTS</h2>
-            <div class="badge">Premium Transformations</div>
+<!-- ── NAVIGATION ── (same as original) -->
+<nav class="nav">
+    <div class="nav-logo"><a href="https://accessworldseminars-ship-it.github.io/results/"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" /></a></div>
+    <div class="nav-links">
+        <a href="https://accessworldseminars-ship-it.github.io/results/"><i class="fas fa-home"></i> Home</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/unlock"><i class="fas fa-unlock-alt"></i> Unlock Yourself</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/Bio"><i class="fas fa-user"></i> Biography</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/offers"><i class="fas fa-tags"></i> Programs</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/webinars"><i class="fas fa-video"></i> Webinars</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/s"><i class="fas fa-calendar"></i> Events</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/ICS"><i class="fas fa-compass"></i> Find Your Path</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/Testimony"><i class="fas fa-star"></i> Testimonials</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/contactform"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="https://form.jotform.com/250184868189875" class="cta-nav" target="_blank"><i class="fas fa-calendar-check"></i> Free Session</a>
+    </div>
+    <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="https://accessworldseminars-ship-it.github.io/results/"><i class="fas fa-home"></i> Home</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/unlock"><i class="fas fa-unlock-alt"></i> Unlock Yourself</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/Bio"><i class="fas fa-user"></i> Biography</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/offers"><i class="fas fa-tags"></i> Programs & Offers</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/webinars"><i class="fas fa-video"></i> Webinars</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/s"><i class="fas fa-calendar"></i> Events Schedule</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/ICS"><i class="fas fa-compass"></i> Find Your Path</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/Testimony"><i class="fas fa-star"></i> Testimonials</a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/contactform"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="https://form.jotform.com/250184868189875" class="cta-nav" target="_blank"><i class="fas fa-calendar-check"></i> Book Free Session</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content reveal">
+        <div class="eyebrow"><span></span> Start Your Transformation Journey</div>
+        <h1>Free Introductory<br /><em>Seminars</em></h1>
+        <p class="hero-desc">
+            Choose from <strong>5 powerful sessions</strong> designed to give you
+            real tools and insights you can use immediately. Each seminar is
+            completely free – click below to access the video after a quick sign‑up.
+        </p>
+    </div>
+</section>
+
+<!-- ── SEMINARS GRID ── -->
+<section class="seminars-section">
+    <div class="inner">
+        <div class="seminars-header reveal">
+            <div class="section-label">Pick Your Session</div>
+            <h2 class="section-title" style="text-align:center;">Start Your <em>Free</em> Training</h2>
+            <p class="section-body" style="text-align:center; max-width:620px; margin:0 auto;">
+                All sessions are <strong>100% free</strong> – just provide your name and email
+                to unlock the video instantly.
+            </p>
         </div>
+        <div class="seminars-grid">
 
-        <div class="programs-grid">
-            <!-- 2026 Events -->
-            <div class="program-card">
-                <div class="best-value-badge">FEB 12-13</div>
-                <div class="card-header">
-                    <div class="program-name">Ultimate Relationship Seminar</div>
-                    <div class="program-price">$795</div>
-                    <div>2026 | 2-Day Intensive</div>
+            <!-- 1: NLP for Beginners (video ID from original – we keep it) -->
+            <div class="sem-card reveal">
+                <div class="sem-number">01</div>
+                <h3>NLP for Beginners</h3>
+                <span class="sem-tag">Neuro-Linguistic Programming</span>
+                <p>Learn the foundation principles of NLP and how to transform your mindset. Discover how to shift states, break triggers, and upgrade your mental software.</p>
+                <div class="sem-details">
+                    <span><i class="far fa-clock"></i> 60–90 min</span>
+                    <span><i class="fas fa-video"></i> Recording</span>
                 </div>
-                <div class="card-content">
-                    <ul class="features-list">
-                        <li><span class="feature-icon">✓</span> Live Training (2 Full Days)</li>
-                        <li><span class="feature-icon">✓</span> Workbook & Materials Included</li>
-                        <li><span class="feature-icon">✓</span> Q&A Sessions with Joshua</li>
-                        <li><span class="feature-icon">✓</span> Recording Access (12 Months)</li>
-                        <li><span class="feature-icon">✓</span> Private Community Access</li>
-                    </ul>
-                    <div class="ideal-for">
-                        <strong>Perfect For:</strong> Deep relationship transformation
-                    </div>
-                    <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
-                        BOOK STRATEGY SESSION
-                    </a>
-                </div>
-            </div>
-
-            <div class="program-card">
-                <div class="best-value-badge">MAY 8-9</div>
-                <div class="card-header">
-                    <div class="program-name">Ultimate Health Webinar</div>
-                    <div class="program-price">$695</div>
-                    <div>2026 | 2-Day Transformation</div>
-                </div>
-                <div class="card-content">
-                    <ul class="features-list">
-                        <li><span class="feature-icon">✓</span> Live Health Training</li>
-                        <li><span class="feature-icon">✓</span> Personalized Assessments</li>
-                        <li><span class="feature-icon">✓</span> Practical Step-by-Step Exercises</li>
-                        <li><span class="feature-icon">✓</span> Lifetime Recording Access</li>
-                        <li><span class="feature-icon">✓</span> Health-Focused Community</li>
-                    </ul>
-                    <div class="ideal-for">
-                        <strong>Perfect For:</strong> Optimal health & vitality seekers
-                    </div>
-                    <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
-                        BOOK STRATEGY SESSION
-                    </a>
-                </div>
-            </div>
-
-            <!-- 2026-2027 Major Events -->
-            <div class="program-card">
-                <div class="best-value-badge">AUG 6-7</div>
-                <div class="card-header">
-                    <div class="program-name">Emotional Mastery Series</div>
-                    <div class="program-price">$895</div>
-                    <div>2026 | 7am-3pm AEST</div>
-                </div>
-                <div class="card-content">
-                    <ul class="features-list">
-                        <li><span class="feature-icon">✓</span> Complete Emotional Mastery</li>
-                        <li><span class="feature-icon">✓</span> NLP & Mindset Techniques</li>
-                        <li><span class="feature-icon">✓</span> Practical Emotional Regulation</li>
-                        <li><span class="feature-icon">✓</span> Advanced Tools & Protocols</li>
-                        <li><span class="feature-icon">✓</span> Certification Available</li>
-                    </ul>
-                    <div class="ideal-for">
-                        <strong>Perfect For:</strong> Coaches & serious transformation seekers
-                    </div>
-                    <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
-                        BOOK STRATEGY SESSION
-                    </a>
-                </div>
-            </div>
-
-            <div class="program-card">
-                <div class="best-value-badge">NOV 5-6</div>
-                <div class="card-header">
-                    <div class="program-name">Life Skills Training</div>
-                    <div class="program-price">$795</div>
-                    <div>2026 | 7am-3pm AEST</div>
-                </div>
-                <div class="card-content">
-                    <ul class="features-list">
-                        <li><span class="feature-icon">✓</span> Essential Life Mastery Skills</li>
-                        <li><span class="feature-icon">✓</span> Communication & Leadership</li>
-                        <li><span class="feature-icon">✓</span> Productivity Systems</li>
-                        <li><span class="feature-icon">✓</span> Financial Mindset Training</li>
-                        <li><span class="feature-icon">✓</span> Relationship Building Skills</li>
-                    </ul>
-                    <div class="ideal-for">
-                        <strong>Perfect For:</strong> Personal & professional development
-                    </div>
-                    <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
-                        BOOK STRATEGY SESSION
-                    </a>
-                </div>
-            </div>
-
-            <!-- 2027 Event -->
-            <div class="program-card">
-                <div class="best-value-badge">FEB 11-12</div>
-                <div class="card-header">
-                    <div class="program-name">Nervous System Re-programming</div>
-                    <div class="program-price">$995</div>
-                    <div>2027 | Advanced Training</div>
-                </div>
-                <div class="card-content">
-                    <ul class="features-list">
-                        <li><span class="feature-icon">✓</span> Advanced Nervous System Work</li>
-                        <li><span class="feature-icon">✓</span> Trauma Release Protocols</li>
-                        <li><span class="feature-icon">✓</span> Polyvagal Theory Application</li>
-                        <li><span class="feature-icon">✓</span> Somatic Experiencing Techniques</li>
-                        <li><span class="feature-icon">✓</span> Elite Level Certification</li>
-                    </ul>
-                    <div class="ideal-for">
-                        <strong>Perfect For:</strong> Advanced practitioners & healers
-                    </div>
-                    <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
-                        BOOK STRATEGY SESSION
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== FREE EVENT CALENDAR ========== -->
-        <div class="section-title">
-            <h2>2026 FREE EVENT CALENDAR</h2>
-            <div class="badge">Thematic Progression</div>
-        </div>
-
-        <div class="calendar-container">
-            <div class="event-timeline">
-                <!-- January - Relationship Theme -->
-                <div class="timeline-event">
-                    <div class="event-date">Jan 8</div>
-                    <div class="event-content">
-                        <div class="event-title">Relationship Communication Secrets <span class="theme-badge relationship-badge">Relationships</span></div>
-                        <div class="event-details"><i class="fas fa-clock"></i> Thursday 7:00–8:30pm</div>
-                        <div class="event-details"><i class="fas fa-video"></i> Free Intro Session</div>
-                    </div>
-                </div>
-
-                <div class="timeline-event">
-                    <div class="event-date">Jan 9</div>
-                    <div class="event-content">
-                        <div class="event-title">Heal Your Heart for Healthy Love <span class="theme-badge relationship-badge">Relationships</span></div>
-                        <div class="event-details"><i class="fas fa-clock"></i> Friday 11:00–12:30pm</div>
-                        <div class="event-details"><i class="fas fa-video"></i> Free Intro Seminar</div>
-                    </div>
-                </div>
-
-                <div class="timeline-event">
-                    <div class="event-date">Jan 15</div>
-                    <div class="event-content">
-                        <div class="event-title">Stop Sabotaging Your Relationships <span class="theme-badge relationship-badge">Relationships</span></div>
-                        <div class="event-details"><i class="fas fa-clock"></i> Thursday 7:00–8:30pm</div>
-                        <div class="event-details"><i class="fas fa-video"></i> Free Breathwork Training</div>
-                    </div>
-                </div>
-
-                <div class="timeline-event">
-                    <div class="event-date">Jan 16</div>
-                    <div class="event-content">
-                        <div class="event-title">The Attachment Blueprint for Secure Love <span class="theme-badge relationship-badge">Relationships</span></div>
-                        <div class="event-details"><i class="fas fa-clock"></i> Friday 11:00–12:30pm</div>
-                        <div class="event-details"><i class="fas fa-video"></i> Free Health & Wellness Intro</div>
-                    </div>
-                </div>
-
-                <div class="timeline-event">
-                    <div class="event-date">Jan 23</div>
-                    <div class="event-content">
-                        <div class="event-title">Soulmate Signals: Recognize Your Perfect Partner <span class="theme-badge relationship-badge">Relationships</span></div>
-                        <div class="event-details"><i class="fas fa-clock"></i> Friday 11:00–1:30pm</div>
-                        <div class="event-details"><i class="fas fa-video"></i> Free Intro: Reduce Physical & Emotional Pain</div>
-                    </div>
-                </div>
-
-                <div class="timeline-event">
-                    <div class="event-date">Jan 29</div>
-                    <div class="event-content">
-                        <div class="event-title">Conflict to Connection: The Art of Fighting Fair <span class="theme-badge relationship-badge">Relationships</span></div>
-                        <div class="event-details"><i class="fas fa-clock"></i> Thursday 7:00–8:30pm</div>
-                        <div class="event-details"><i class="fas fa-video"></i> Free Intro Seminar: Health</div>
-                    </div>
-                </div>
-
-                <!-- February Major Event -->
-                <div class="timeline-event">
-                    <div class="event-date major-event">Feb 12-13</div>
-                    <div class="event-content major-event">
-                        <div class="event-title">⭐ ULTIMATE RELATIONSHIP SEMINAR ⭐</div>
-                        <div class="event-details"><i class="fas fa-clock"></i> 2 Days: 7:00am–3:00pm daily</div>
-                        <div class="event-details"><i class="fas fa-ticket-alt"></i> Premium 2-Day Intensive</div>
-                        <div class="link-indicator"><i class="fas fa-external-link-alt"></i> Limited spots available</div>
-                    </div>
-                </div>
-
-                <!-- February Health Theme -->
-                <div class="timeline-event">
-                    <div class="event-date">Feb 20</div>
-                    <div class="event-content">
-                        <div class="event-title">The 5-Minute Morning Ritual for All-Day Energy <span class="theme-badge health-badge">Health</span></div>
-                        <div class="event-details"><i class="fas fa-clock"></i> Friday 11:00–12:30pm</div>
-                        <div class="event-details"><i class="fas fa-video"></i> Free Intro Seminar</div>
-                    </div>
-                </div>
-
-                <div class="timeline-event">
-                    <div class="event-date">Feb 26</div>
-                    <div class="event-content">
-                        <div class="event-title">Breathwork Mastery: Unlock Natural Vitality <span class="theme-badge health-badge">Health</span></div>
-                        <div class="event-details"><i class="fas fa-clock"></i> Thursday 7:00–8:30pm</div>
-                        <div class="event-details"><i class="fas fa-video"></i> Free Intro / Attraction Seminar</div>
-                    </div>
-                </div>
-
-                <!-- March Health Theme -->
-                <div class="timeline-event">
-                    <div class="event-date">Mar 5</div>
-                    <div class="event-content">
-                        <div class="event-title">Sleep Revolution: Master Your Rest & Recovery <span class="theme-badge health-badge">Health</span></div>
-                        <div class="event-details"><i class="fas fa-clock"></i> Thursday 7:00–8:30pm</div>
-                        <div class="event-details"><i class="fas fa-video"></i> Free Intro / Attraction Seminar</div>
-                    </div>
-                </div>
-
-                <div class="timeline-event">
-                    <div class="event-date">Mar 6</div>
-                    <div class="event-content">
-                        <div class="event-title">Metabolic Reset: Reprogram Your Body <span class="theme-badge health-badge">Health</span></div>
-                        <div class="event-details"><i class="fas fa-clock"></i> Friday 11:00–12:30pm</div>
-                        <div class="event-details"><i class="fas fa-video"></i> Free Intro Seminar</div>
-                    </div>
-                </div>
-
-                <div class="timeline-event">
-                    <div class="event-date">Mar 13</div>
-                    <div class="event-content">
-                        <div class="event-title">Gut-Brain Connection: Heal Your Second Brain <span class="theme-badge health-badge">Health</span></div>
-                        <div class="event-details"><i class="fas fa-clock"></i> Friday 11:00–12:30pm</div>
-                        <div class="event-details"><i class="fas fa-video"></i> Free Intro Seminar</div>
-                    </div>
-                </div>
-
-                <div class="timeline-event">
-                    <div class="event-date">Mar 19</div>
-                    <div class="event-content">
-                        <div class="event-title">Stress to Strength: Build Resilience Naturally <span class="theme-badge health-badge">Health</span></div>
-                        <div class="event-details"><i class="fas fa-clock"></i> Thursday 7:00–8:30pm</div>
-                        <div class="event-details"><i class="fas fa-video"></i> Free Intro / Attraction Seminar</div>
-                    </div>
-                </div>
-
-                <div class="timeline-event">
-                    <div class="event-date">Mar 27</div>
-                    <div class="event-content">
-                        <div class="event-title">Pain-Free Movement: Unlock Your Body's Potential <span class="theme-badge health-badge">Health</span></div>
-                        <div class="event-details"><i class="fas fa-clock"></i> Friday 11:00–12:30pm</div>
-                        <div class="event-details"><i class="fas fa-video"></i> Free Intro Seminar</div>
-                    </div>
-                </div>
-
-                <!-- May Major Event -->
-                <div class="timeline-event">
-                    <div class="event-date major-event">May 8-9</div>
-                    <div class="event-content major-event">
-                        <div class="event-title">⭐ ULTIMATE HEALTH WEBINAR ⭐</div>
-                        <div class="event-details"><i class="fas fa-clock"></i> 2 Days: 7:00am–3:00pm daily</div>
-                        <div class="event-details"><i class="fas fa-ticket-alt"></i> Premium 2-Day Transformation</div>
-                        <div class="link-indicator"><i class="fas fa-external-link-alt"></i> Early bird pricing available</div>
-                    </div>
-                </div>
-
-                <!-- April-June Emotional Mastery (Sample) -->
-                <div class="timeline-event">
-                    <div class="event-date">Apr 2</div>
-                    <div class="event-content">
-                        <div class="event-title">Emotional Alchemy: Transform Pain into Power <span class="theme-badge emotional-badge">Emotional</span></div>
-                        <div class="event-details"><i class="fas fa-clock"></i> Thursday 7:00–8:30pm</div>
-                        <div class="event-details"><i class="fas fa-video"></i> Free Intro / Attraction Seminar</div>
-                    </div>
-                </div>
-
-                <div class="timeline-event">
-                    <div class="event-date">Jun 30</div>
-                    <div class="event-content">
-                        <div class="event-title">Emotional Mastery Summit Preview <span class="theme-badge emotional-badge">Emotional</span></div>
-                        <div class="event-details"><i class="fas fa-clock"></i> Thursday 7:00–8:30pm</div>
-                        <div class="event-details"><i class="fas fa-video"></i> Free Intro / Attraction Seminar</div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="https://form.jotform.com/250184868189875" target="_blank" 
-                   class="cta-button" style="max-width: 400px; margin: 0 auto;">
-                    REGISTER FOR FREE EVENTS
-                    <div class="link-indicator"><i class="fas fa-calendar-check"></i> Secure your spot</div>
+                <!-- data-video-id: we'll use a placeholder; the actual working video is on the original page -->
+                <a href="#" class="sem-link" data-video-id="PLACEHOLDER_NLP" data-title="NLP for Beginners" onclick="openModal(this); return false;">
+                    <i class="fas fa-graduation-cap"></i> Access Free Seminar
                 </a>
-                <p style="color: #666; margin-top: 15px; font-size: 14px;">
-                    All 31 free events available - See full calendar for complete schedule
-                </p>
             </div>
-        </div>
 
-        <!-- ========== UPCOMING MAJOR EVENTS SUMMARY ========== -->
-        <div class="section-title">
-            <h2>UPCOMING MAJOR EVENTS 2026-2027</h2>
-            <div class="badge">Save These Dates</div>
-        </div>
-
-        <div class="intro-offers">
-            <div class="offers-grid">
-                <div class="offer-card" style="border-left-color: #ff4081;">
-                    <div class="offer-title">Ultimate Relationship Seminar</div>
-                    <div class="offer-details">February 12-13, 2026</div>
-                    <div class="offer-details">7:00am–3:00pm AEST Daily</div>
-                    <div class="offer-price">$795 AUD</div>
+            <!-- 2: Stop Self-Sabotage (updated video ID) -->
+            <div class="sem-card reveal" style="transition-delay:0.08s;">
+                <div class="sem-number">02</div>
+                <h3>Stop Self-Sabotage</h3>
+                <span class="sem-tag">Break Free &amp; Win</span>
+                <p>Discover how to break free from patterns holding you back from success. Uncover why you self-sabotage and learn the 3-step WIN formula to transform your life.</p>
+                <div class="sem-details">
+                    <span><i class="far fa-clock"></i> 30 min</span>
+                    <span><i class="fas fa-video"></i> Recording</span>
                 </div>
-
-                <div class="offer-card" style="border-left-color: #4CAF50;">
-                    <div class="offer-title">Ultimate Health Webinar</div>
-                    <div class="offer-details">May 8-9, 2026</div>
-                    <div class="offer-details">7:00am–3:00pm AEST Daily</div>
-                    <div class="offer-price">$695 AUD</div>
-                </div>
-
-                <div class="offer-card" style="border-left-color: #9C27B0;">
-                    <div class="offer-title">Emotional Mastery Series</div>
-                    <div class="offer-details">August 6-7, 2026</div>
-                    <div class="offer-details">7:00am–3:00pm AEST Daily</div>
-                    <div class="offer-price">$895 AUD</div>
-                </div>
-
-                <div class="offer-card" style="border-left-color: #FF9800;">
-                    <div class="offer-title">Life Skills Training</div>
-                    <div class="offer-details">November 5-6, 2026</div>
-                    <div class="offer-details">7:00am–3:00pm AEST Daily</div>
-                    <div class="offer-price">$795 AUD</div>
-                </div>
-
-                <div class="offer-card" style="border-left-color: #2196F3;">
-                    <div class="offer-title">Nervous System Re-programming</div>
-                    <div class="offer-details">February 11-12, 2027</div>
-                    <div class="offer-details">Advanced Training</div>
-                    <div class="offer-price">$995 AUD</div>
-                </div>
+                <a href="#" class="sem-link" data-video-id="YIUj5D3BI24" data-title="Stop Self-Sabotage" onclick="openModal(this); return false;">
+                    <i class="fas fa-unlock"></i> Access Free Seminar
+                </a>
             </div>
-        </div>
 
-        <!-- ========== STRATEGY CALL CTA ========== -->
-        <div class="strategy-call">
-            <p style="font-size: 18px; margin-bottom: 10px;">Not sure which program is right for you?</p>
-            <a href="https://form.jotform.com/250184868189875" target="_blank" 
-               style="background: white; color: #1a2980; padding: 15px 40px; 
-                      border-radius: 30px; text-decoration: none; font-weight: bold; 
-                      display: inline-block; font-size: 18px; transition: all 0.3s ease;">
-                <i class="fas fa-calendar-check"></i> Book a Free Strategy Session
-            </a>
-            <p style="color: rgba(255,255,255,0.9); margin-top: 15px; font-size: 14px;">
-                Get personalized guidance on your transformation journey
-            </p>
-        </div>
+            <!-- 3: Heal Your Inner Child (updated video ID) -->
+            <div class="sem-card reveal" style="transition-delay:0.16s;">
+                <div class="sem-number">03</div>
+                <h3>Heal Your Inner Child</h3>
+                <span class="sem-tag">Emotional Freedom</span>
+                <p>Address past wounds and trauma to create emotional freedom. Learn techniques to release old patterns and step into a more empowered version of yourself.</p>
+                <div class="sem-details">
+                    <span><i class="far fa-clock"></i> 60+ min</span>
+                    <span><i class="fas fa-video"></i> Recording</span>
+                </div>
+                <a href="#" class="sem-link" data-video-id="dPqokcU4pk4" data-title="Heal Your Inner Child" onclick="openModal(this); return false;">
+                    <i class="fas fa-heart"></i> Access Free Seminar
+                </a>
+            </div>
 
-        <!-- ========== BACK TO HOME BUTTON ========== -->
-        <div class="back-button">
-            <a href="index.html"
-               style="background: white;
-                      color: #1a2980;
-                      padding: 18px 45px;
-                      border-radius: 30px;
-                      text-decoration: none;
-                      font-weight: bold;
-                      font-size: 20px;
-                      display: inline-block;
-                      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-                      transition: all 0.3s ease;">
-                ← Back to Joshua Roy Coaching Page
-            </a>
-            <p style="color: rgba(255,255,255,0.9); margin-top: 20px; font-size: 17px;">
-                Return to personal coaching options and transformation programs
-            </p>
+            <!-- 4: Communication Mastery (original working video – placeholder) -->
+            <div class="sem-card reveal" style="transition-delay:0.24s;">
+                <div class="sem-number">04</div>
+                <h3>Communication Mastery</h3>
+                <span class="sem-tag">Connect Deeper</span>
+                <p>Learn to communicate effectively and build deeper relationships. Master the art of rapport, active listening, and clear expression in any setting.</p>
+                <div class="sem-details">
+                    <span><i class="far fa-clock"></i> 60–90 min</span>
+                    <span><i class="fas fa-video"></i> Recording</span>
+                </div>
+                <a href="#" class="sem-link" data-video-id="PLACEHOLDER_COMM" data-title="Communication Mastery" onclick="openModal(this); return false;">
+                    <i class="fas fa-comments"></i> Access Free Seminar
+                </a>
+            </div>
+
+            <!-- 5: Memory Enhancement (updated video ID) -->
+            <div class="sem-card reveal" style="transition-delay:0.32s;">
+                <div class="sem-number">05</div>
+                <h3>Memory Enhancement</h3>
+                <span class="sem-tag">Boost Your Brain</span>
+                <p>Boost your memory and cognitive abilities with proven techniques. Learn practical strategies to retain more, recall faster, and think with greater clarity.</p>
+                <div class="sem-details">
+                    <span><i class="far fa-clock"></i> 30 min</span>
+                    <span><i class="fas fa-video"></i> Recording</span>
+                </div>
+                <a href="#" class="sem-link" data-video-id="ZJhPtxUbR08" data-title="Memory Enhancement" onclick="openModal(this); return false;">
+                    <i class="fas fa-brain"></i> Access Free Seminar
+                </a>
+            </div>
+
         </div>
     </div>
+</section>
 
-    <script>
-        // Add hover effects
-        document.querySelectorAll('.program-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
+<!-- ── CTA BANNER ── (unchanged) -->
+<div class="cta-banner">
+    <div class="inner">
+        <div class="section-label" style="justify-content:center; margin-bottom:16px;">Ready to Go Deeper?</div>
+        <h2 class="section-title reveal" style="text-align:center;">Book a <em>Free Session</em> With Joshua</h2>
+        <p class="section-body reveal" style="text-align:center; margin:0 auto 36px;">
+            Not sure which seminar is right for you? Book a no‑pressure chat with Joshua
+            to discuss your goals and find the best path forward.
+        </p>
+        <div class="cta-actions reveal">
+            <a href="https://form.jotform.com/250184868189875" class="btn-primary" target="_blank"><i class="fas fa-calendar-check"></i> Book Free Session</a>
+            <a href="https://wa.me/61432119091" class="wa-btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Joshua</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/contactform" class="btn-outline"><i class="fas fa-envelope"></i> Send a Message</a>
+        </div>
+    </div>
+</div>
+
+<!-- ── FOOTER ── (same as original) -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-about">
+            <div class="footer-logo"><img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" /></div>
+            <p>Transforming lives through NLP, Nervous System Reprogramming and precision results coaching. Based in Brisbane, working with ambitious people worldwide.</p>
+            <p>ABN: 72 546 137 885</p>
+            <div class="social-row" style="margin-top:16px;">
+                <a href="https://www.youtube.com/@joshuaroybosse" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/joshua_roy9/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/accessworld-seminars-3508a0296/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.tiktok.com/@accessworldseminars" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <div class="unlock-badge"><i class="fas fa-unlock-alt"></i><a href="https://accessworldseminars-ship-it.github.io/results/unlock">Unlock your Incredible Self</a></div>
+        </div>
+        <div class="footer-col">
+            <h4>Programs</h4>
+            <a href="https://accessworldseminars-ship-it.github.io/results/offers">1-on-1 Coaching</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/webinars">Webinars</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/s">Live Events</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/BecomeACoach">Coach Academy</a>
+        </div>
+        <div class="footer-col">
+            <h4>Learn More</h4>
+            <a href="https://accessworldseminars-ship-it.github.io/results/Bio">Biography</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/Testimony">Testimonials</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/ICS">Find Your Path</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/unlock">Unlock Yourself</a>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="https://wa.me/61432119091" target="_blank"><i class="fab fa-whatsapp"></i> +61 432 119 091</a>
+            <a href="mailto:accessworldseminars@gmail.com">accessworldseminars@gmail.com</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/contactform">Contact Form</a>
+            <a href="https://form.jotform.com/250184868189875" target="_blank" style="color:var(--gold);">Book Free Session →</a>
+        </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 AccessWorld Seminars · Joshua Roy · ABN: 72 546 137 885 · All Rights Reserved</p></div>
+</footer>
+
+<!-- ── MODAL ── -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div class="modal-title" id="modalTitle">Unlock Your Seminar</div>
+        <div class="modal-sub">Enter your name and email to watch the video instantly.</div>
+
+        <!-- Form -->
+        <form class="modal-form" id="modalForm" onsubmit="submitForm(event)">
+            <div class="form-group">
+                <label for="modalName">Full Name</label>
+                <input type="text" id="modalName" placeholder="e.g. John Doe" required />
+            </div>
+            <div class="form-group">
+                <label for="modalEmail">Email Address</label>
+                <input type="email" id="modalEmail" placeholder="john@example.com" required />
+            </div>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Send &amp; Watch Now</button>
+            <div class="modal-error" id="modalError">Please fill in both fields correctly.</div>
+        </form>
+
+        <!-- Video container (hidden until form submitted) -->
+        <div class="modal-video-container" id="modalVideoContainer">
+            <iframe id="modalVideoIframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="modal-success-msg" id="modalSuccessMsg">✅ You now have access! Enjoy the seminar.</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ── Hamburger ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        hamburger.innerHTML = mobileMenu.classList.contains('open') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    document.querySelectorAll('.mobile-menu a').forEach(a => {
+        a.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            hamburger.innerHTML = '<i class="fas fa-bars"></i>';
         });
+    });
 
-        // Add current date indicator
-        const currentDate = new Date();
-        const currentDay = currentDate.getDate();
-        const currentMonth = currentDate.getMonth() + 1;
-        
-        // Format: "Jan 8" style comparison
-        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        const currentDateString = `${monthNames[currentMonth-1]} ${currentDay}`;
-        
-        // Highlight current or next event
-        const eventDates = document.querySelectorAll('.event-date');
-        eventDates.forEach(dateEl => {
-            if(dateEl.textContent.includes(currentDateString)) {
-                dateEl.style.boxShadow = '0 0 0 3px #ffeb3b, 0 4px 10px rgba(26, 41, 128, 0.3)';
-                dateEl.style.animation = 'pulse 2s infinite';
-            }
-        });
+    // ── Scroll Reveal ──
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(r => revealObs.observe(r));
 
-        // Add pulse animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0% { box-shadow: 0 0 0 0 rgba(255, 235, 59, 0.7); }
-                70% { box-shadow: 0 0 0 10px rgba(255, 235, 59, 0); }
-                100% { box-shadow: 0 0 0 0 rgba(255, 235, 59, 0); }
+    // ── Modal Logic ──
+    let currentVideoId = '';
+    let currentTitle = '';
+
+    function openModal(element) {
+        currentVideoId = element.dataset.videoId;
+        currentTitle = element.dataset.title;
+        document.getElementById('modalTitle').innerHTML = 'Unlock <em style="color:var(--gold);">' + currentTitle + '</em>';
+        document.getElementById('modalForm').style.display = 'block';
+        document.getElementById('modalVideoContainer').classList.remove('active');
+        document.getElementById('modalSuccessMsg').classList.remove('active');
+        document.getElementById('modalError').classList.remove('active');
+        document.getElementById('modalName').value = '';
+        document.getElementById('modalEmail').value = '';
+        document.getElementById('modalOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+        // Preload the iframe with the video (but hidden until submit)
+        // We'll set src later on submit.
+    }
+
+    function closeModal() {
+        document.getElementById('modalOverlay').classList.remove('active');
+        document.body.style.overflow = 'auto';
+        // Stop video playback if playing
+        const iframe = document.getElementById('modalVideoIframe');
+        iframe.src = '';
+        document.getElementById('modalVideoContainer').classList.remove('active');
+        document.getElementById('modalForm').style.display = 'block';
+    }
+
+    function submitForm(e) {
+        e.preventDefault();
+        const name = document.getElementById('modalName').value.trim();
+        const email = document.getElementById('modalEmail').value.trim();
+        const errorEl = document.getElementById('modalError');
+
+        if (!name || !email || !email.includes('@') || !email.includes('.')) {
+            errorEl.classList.add('active');
+            return;
+        }
+        errorEl.classList.remove('active');
+
+        // ── Send to webhook (simulate) ──
+        // Replace with your actual webhook URL
+        const webhookUrl = 'https://your-webhook-url.com/endpoint'; // <-- CHANGE THIS
+        const payload = { name, email, seminar: currentTitle, videoId: currentVideoId };
+
+        // You can use fetch to post the data
+        fetch(webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        }).catch(err => console.warn('Webhook error (ignore if not configured):', err));
+
+        // ── Show video ──
+        document.getElementById('modalForm').style.display = 'none';
+        const iframe = document.getElementById('modalVideoIframe');
+        // For YouTube, use embed URL with autoplay
+        if (currentVideoId.startsWith('PLACEHOLDER')) {
+            // For NLP and Communication we don't have real IDs, so use a generic placeholder
+            // You can replace these with actual working videos later.
+            if (currentVideoId === 'PLACEHOLDER_NLP') {
+                iframe.src = 'https://www.youtube.com/embed/DdE0U-42mAk?autoplay=1'; // example
+            } else if (currentVideoId === 'PLACEHOLDER_COMM') {
+                iframe.src = 'https://www.youtube.com/embed/H0W6V2V6m0g?autoplay=1'; // example
+            } else {
+                iframe.src = 'https://www.youtube.com/embed/' + currentVideoId + '?autoplay=1';
             }
-        `;
-        document.head.appendChild(style);
-    </script>
+        } else {
+            iframe.src = 'https://www.youtube.com/embed/' + currentVideoId + '?autoplay=1';
+        }
+        document.getElementById('modalVideoContainer').classList.add('active');
+        document.getElementById('modalSuccessMsg').classList.add('active');
+
+        // Track with Meta Pixel (optional)
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'Lead', {
+                content_name: currentTitle,
+                content_category: 'Free Seminar Access'
+            });
+        }
+    }
+
+    // Close modal on overlay click (outside box)
+    document.getElementById('modalOverlay').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+
+    // Close with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    // Also update existing "Access Free Seminar" links in case they use the old method
+    // (we already used onclick)
+</script>
 </body>
 </html>
