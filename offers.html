@@ -1,28 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AccessWorld Seminars - Free Offers & Resources</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Introduction Seminars | AccessWorld Seminars</title>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '923706520267125');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=923706520267125&ev=PageView&noscript=1" /></noscript>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
     <style>
         :root {
-            --primary-blue: #0f1a3d;
-            --secondary-blue: #1a2b5e;
-            --accent-gold: #d4af37;
-            --accent-silver: #c0c0c0;
-            --light-blue: #2d3b6b;
-            --text-light: #ffffff;
-            --text-gray: #e0e0e0;
-            --bg-dark: #050a1a;
-            --bg-light: #f8f9fa;
-            --transition: all 0.3s ease;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --radius: 10px;
-            --success-green: #4CAF50;
-            --premium-purple: #9c27b0;
-            --healing-blue: #2196F3;
+            --navy: #0e1b35;
+            --navy-mid: #162240;
+            --navy-light: #1e2f55;
+            --gold: #c9a84c;
+            --gold-light: #e2c47a;
+            --gold-pale: #f5e8c8;
+            --white: #ffffff;
+            --off-white: #f4f0e8;
+            --gray: #9aa3b5;
+            --text: #d8dde8;
         }
 
         * {
@@ -30,945 +54,934 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         html {
             scroll-behavior: smooth;
         }
-
         body {
-            font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
-            color: var(--text-gray);
-            background-color: var(--bg-dark);
+            font-family: 'Barlow', sans-serif;
+            background: var(--navy);
+            color: var(--text);
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-
-        .container {
+        /* ── NAV ── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            background: linear-gradient(135deg, var(--success-green), #2E7D32);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
-            background: linear-gradient(135deg, #66BB6A, var(--success-green));
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--accent-gold);
-            color: var(--accent-gold);
-            box-shadow: none;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(212, 175, 55, 0.1);
-        }
-
-        .btn-healing {
-            display: inline-block;
-            padding: 16px 40px;
-            background: linear-gradient(135deg, var(--healing-blue), #1976D2);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(33, 150, 243, 0.4);
-        }
-
-        .btn-healing:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(33, 150, 243, 0.5);
-            background: linear-gradient(135deg, #64B5F6, var(--healing-blue));
-        }
-
-        .accent-text {
-            color: var(--accent-gold);
-        }
-
-        .healing-text {
-            color: var(--healing-blue);
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            padding: 40px 0;
-            border-radius: 0 0 20px 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .free-banner {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--success-green);
-            color: white;
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transform: rotate(5deg);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            z-index: 10;
-        }
-
-        .logo-container {
+            background: rgba(14, 27, 53, 0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+            z-index: 1000;
+            padding: 0 3%;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 15px;
+            justify-content: space-between;
+            height: 68px;
         }
-
-        .logo-img {
-            height: 70px;
+        .nav-logo img {
+            height: 48px;
             width: auto;
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+            filter: drop-shadow(0 0 8px rgba(201, 168, 76, 0.4));
         }
-
-        .logo-text {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(to right, var(--accent-gold), var(--accent-silver));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            color: var(--text-light);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-
-        .hero-description {
-            color: var(--text-gray);
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 25px;
-            line-height: 1.7;
-        }
-
-        /* Navigation Menu */
-        .nav-menu {
+        .nav-links {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 30px 0 10px;
+            align-items: center;
+            gap: 2px;
         }
-
-        .nav-item {
-            display: inline-block;
-            padding: 12px 25px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
-            border-radius: 50px;
+        .nav-links a {
+            color: var(--text);
             text-decoration: none;
+            font-size: 0.75rem;
             font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 6px 10px;
+            border-radius: 4px;
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+        .nav-links a:hover {
+            background: rgba(201, 168, 76, 0.15);
+            color: var(--gold-light);
+        }
+        .nav-links a.cta-nav {
+            background: linear-gradient(135deg, var(--gold), #a87d28);
+            color: var(--navy);
+            font-weight: 700;
+            padding: 7px 14px;
+            border-radius: 30px;
+            margin-left: 6px;
+        }
+        .nav-links a.cta-nav:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(201, 168, 76, 0.35);
+        }
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 68px;
+            left: 0;
+            width: 100%;
+            background: rgba(14, 27, 53, 0.99);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+            padding: 20px;
+            z-index: 999;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .mobile-menu.open {
+            display: flex;
+        }
+        .mobile-menu a {
+            color: var(--text);
+            text-decoration: none;
             font-size: 0.9rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 12px 16px;
+            border-radius: 6px;
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            transition: all 0.2s;
         }
-
-        .nav-item:hover {
-            background: rgba(76, 175, 80, 0.2);
-            border-color: var(--success-green);
-            transform: translateY(-3px);
+        .mobile-menu a:hover {
+            background: rgba(201, 168, 76, 0.15);
+            color: var(--gold);
         }
-
-        .nav-item.healing {
-            background: rgba(33, 150, 243, 0.2);
-            border-color: var(--healing-blue);
-            color: #BBDEFB;
-        }
-
-        .nav-item.healing:hover {
-            background: rgba(33, 150, 243, 0.3);
-            transform: translateY(-3px);
-        }
-
-        /* Section Title */
-        .section-title {
-            padding: 25px;
-            border-radius: var(--radius);
-            margin: 50px 0 30px;
-            background: rgba(26, 43, 94, 0.5);
-            border-left: 5px solid var(--success-green);
-            position: relative;
-            overflow: hidden;
+        .mobile-menu a.cta-nav {
+            background: linear-gradient(135deg, var(--gold), #a87d28);
+            color: var(--navy);
+            border: none;
             text-align: center;
         }
 
-        .section-title h2 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
+        /* ── HERO ── */
+        .hero {
+            min-height: 60vh;
+            padding-top: 68px;
             position: relative;
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
         }
-
-        .section-title h2:after {
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201, 168, 76, 0.07) 0%, transparent 65%),
+                radial-gradient(ellipse 40% 60% at 20% 80%, rgba(30, 47, 85, 0.8) 0%, transparent 70%),
+                linear-gradient(160deg, #0a1428 0%, #0e1b35 40%, #14233f 100%);
+        }
+        .hero-bg::before {
             content: '';
             position: absolute;
-            width: 80px;
-            height: 4px;
-            background: var(--success-green);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(201, 168, 76, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 168, 76, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
         }
-
-        .section-title .badge {
-            background: var(--success-green);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 1rem;
-            font-weight: 700;
-            display: inline-block;
-            margin-top: 15px;
-        }
-
-        /* Free Offers Grid */
-        .offers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .offer-card {
-            background: rgba(26, 43, 94, 0.5);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 2px solid rgba(76, 175, 80, 0.3);
+        .hero-content {
             position: relative;
-            height: 100%;
-        }
-
-        .offer-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: var(--success-green);
-        }
-
-        .card-header {
-            background: linear-gradient(135deg, var(--success-green), #2E7D32);
-            color: white;
-            padding: 25px;
-            text-align: center;
-            position: relative;
-            min-height: 140px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .card-header.healing-header {
-            background: linear-gradient(135deg, var(--healing-blue), #1976D2);
-        }
-
-        .free-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: white;
-            color: var(--success-green);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            z-index: 10;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 100px;
-            text-align: center;
-            line-height: 1.2;
-        }
-
-        .free-badge.healing {
-            color: var(--healing-blue);
-        }
-
-        .offer-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .offer-value {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin: 10px 0;
-            opacity: 0.9;
-        }
-
-        .card-content {
-            padding: 30px;
-        }
-
-        .features-list {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .features-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-        }
-
-        .features-list li:last-child {
-            border-bottom: none;
-        }
-
-        .feature-icon {
-            color: var(--success-green);
-            margin-right: 10px;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-
-        .feature-icon.healing {
-            color: var(--healing-blue);
-        }
-
-        .feature-name {
-            font-weight: 500;
-            color: var(--text-gray);
-            flex: 1;
-            min-width: 0;
-        }
-
-        .ideal-for {
-            background: rgba(15, 26, 61, 0.7);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            font-style: italic;
-            color: var(--text-gray);
-            border-left: 3px solid var(--success-green);
-        }
-
-        .ideal-for.healing {
-            border-left: 3px solid var(--healing-blue);
-        }
-
-        .ideal-for strong {
-            color: var(--success-green);
-        }
-
-        .ideal-for.healing strong {
-            color: var(--healing-blue);
-        }
-
-        .cta-button {
-            display: block;
+            z-index: 2;
             width: 100%;
-            background: linear-gradient(135deg, var(--success-green), #2E7D32);
-            color: white;
-            border: none;
-            padding: 18px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 25px;
-            text-align: center;
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
-            background: linear-gradient(135deg, #66BB6A, var(--success-green));
-        }
-
-        .cta-button.healing {
-            background: linear-gradient(135deg, var(--healing-blue), #1976D2);
-        }
-
-        .cta-button.healing:hover {
-            box-shadow: 0 8px 20px rgba(33, 150, 243, 0.4);
-            background: linear-gradient(135deg, #64B5F6, var(--healing-blue));
-        }
-
-        .link-indicator {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-top: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            opacity: 0.9;
-        }
-
-        /* Webinar Banner */
-        .webinar-banner {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(rgba(15, 26, 61, 0.9), rgba(26, 43, 94, 0.9));
-            border-radius: var(--radius);
-            margin: 30px 0;
-            border: 2px solid rgba(76, 175, 80, 0.3);
-        }
-
-        .webinar-banner h3 {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-        }
-
-        /* Resource Hub */
-        .resource-hub {
-            background: rgba(26, 43, 94, 0.5);
-            border-radius: var(--radius);
-            padding: 40px;
-            margin-top: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 80px 5% 60px;
             text-align: center;
         }
-
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .resource-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .resource-card {
-            background: rgba(15, 26, 61, 0.7);
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 4px solid var(--success-green);
-            transition: var(--transition);
-            cursor: pointer;
-            height: 100%;
-            text-align: center;
-        }
-
-        .resource-card:hover {
-            transform: translateY(-5px);
-            background: rgba(26, 43, 94, 0.7);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .resource-icon {
-            font-size: 2.5rem;
-            color: var(--success-green);
-            margin-bottom: 15px;
-        }
-
-        .resource-title {
-            font-weight: 600;
-            color: var(--text-light);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .resource-desc {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-        }
-
-        /* Navigation Buttons */
-        .nav-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        .home-button {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
+        .eyebrow {
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            background: rgba(201, 168, 76, 0.12);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-radius: 30px;
+            padding: 6px 18px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 28px;
+        }
+        .eyebrow span {
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+            font-weight: 700;
+            line-height: 1.05;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+        .hero-desc {
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.75;
+            color: var(--text);
+            max-width: 680px;
+            margin: 0 auto 20px;
+        }
+        .hero-desc strong {
+            color: var(--gold-light);
+            font-weight: 600;
         }
 
-        .home-button:hover {
-            background: rgba(76, 175, 80, 0.2);
-            border-color: var(--success-green);
-            transform: translateY(-3px);
+        /* ── SECTION SHARED ── */
+        section {
+            padding: 80px 5%;
+        }
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .section-label::before {
+            content: '';
+            width: 28px;
+            height: 2px;
+            background: var(--gold);
+            display: inline-block;
+        }
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.6vw, 3.2rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .section-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+        .section-body {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 620px;
+        }
+        .inner {
+            max-width: 1300px;
+            margin: 0 auto;
         }
 
-        .home-button.healing {
-            background: rgba(33, 150, 243, 0.2);
-            border-color: var(--healing-blue);
-            color: #BBDEFB;
+        /* ── SEMINARS GRID ── */
+        .seminars-section {
+            background: var(--navy-mid);
         }
-
-        .home-button.healing:hover {
-            background: rgba(33, 150, 243, 0.3);
-            transform: translateY(-3px);
-        }
-
-        /* Footer Section */
-        .footer-section {
+        .seminars-header {
             text-align: center;
-            padding: 50px 20px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            margin-top: 60px;
-            border-radius: var(--radius) var(--radius) 0 0;
+            margin-bottom: 56px;
+        }
+        .seminars-header .section-label {
+            justify-content: center;
+        }
+        .seminars-header .section-label::before {
+            display: none;
+        }
+        .seminars-header .section-body {
+            margin: 0 auto;
+            text-align: center;
         }
 
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .offers-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        .seminars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .sem-card {
+            background: rgba(14, 27, 53, 0.7);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 12px;
+            padding: 36px 28px 32px;
+            transition: all 0.35s;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .sem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .sem-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+        .sem-card:hover::before {
+            opacity: 1;
+        }
+
+        .sem-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(201, 168, 76, 0.12);
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 18px;
+            flex-shrink: 0;
+        }
+
+        .sem-card h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        .sem-card .sem-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(201, 168, 76, 0.1);
+            padding: 2px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            margin-bottom: 14px;
+            align-self: flex-start;
+        }
+        .sem-card p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.65;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        .sem-card .sem-details {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        .sem-card .sem-details i {
+            color: var(--gold);
+            margin-right: 6px;
+            width: 16px;
+        }
+        .sem-card .sem-details span {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .sem-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--gold), #a87d28);
+            color: var(--navy);
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            margin-top: 4px;
+        }
+        .sem-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 168, 76, 0.35);
+        }
+
+        /* ── CTA BANNER ── */
+        .cta-banner {
+            background: linear-gradient(135deg, #0a1428, var(--navy-light));
+            border-top: 1px solid rgba(201, 168, 76, 0.15);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+            padding: 70px 5%;
+            text-align: center;
+        }
+        .cta-banner .section-title {
+            margin-bottom: 16px;
+        }
+        .cta-banner .section-body {
+            margin: 0 auto 36px;
+            text-align: center;
+        }
+        .cta-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--gold), #a87d28);
+            color: var(--navy);
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201, 168, 76, 0.4);
+        }
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--gold-light);
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 4px;
+            border: 1px solid rgba(201, 168, 76, 0.45);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: rgba(201, 168, 76, 0.1);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .wa-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 16px 28px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        .wa-btn:hover {
+            background: #1da851;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            background: #080f1e;
+            padding: 60px 5% 30px;
+            border-top: 1px solid rgba(201, 168, 76, 0.15);
+        }
+        .footer-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            margin-bottom: 30px;
+        }
+        .footer-logo img {
+            height: 52px;
+            margin-bottom: 18px;
+            filter: drop-shadow(0 0 8px rgba(201, 168, 76, 0.3));
+        }
+        .footer-about p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .social-row {
+            display: flex;
+            gap: 10px;
+        }
+        .social-row a {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.25s;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .social-row a:hover {
+            background: rgba(201, 168, 76, 0.15);
+            color: var(--gold);
+            border-color: rgba(201, 168, 76, 0.3);
+        }
+        .footer-col h4 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .footer-col a,
+        .footer-col p {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--gray);
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover {
+            color: var(--gold-light);
+        }
+        .footer-bottom {
+            max-width: 1300px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 0.78rem;
+            color: rgba(154, 163, 181, 0.5);
+        }
+
+        .unlock-badge {
+            display: inline-block;
+            background: rgba(201, 168, 76, 0.12);
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            padding: 16px 28px;
+            border-radius: 8px;
+            margin-top: 24px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            letter-spacing: 0.04em;
+        }
+        .unlock-badge i {
+            margin-right: 12px;
+            color: var(--gold);
+        }
+        .unlock-badge a {
+            color: var(--gold-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .unlock-badge a:hover {
+            color: var(--gold);
+            text-decoration: underline;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: block;
+            }
+            .seminars-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
 
-        @media (max-width: 768px) {
-            .logo-text {
-                font-size: 1.8rem;
+        @media (max-width: 640px) {
+            section {
+                padding: 60px 5%;
             }
-            
-            .logo-img {
-                height: 50px;
+            .hero {
+                min-height: 50vh;
             }
-            
-            .subtitle {
-                font-size: 1.3rem;
+            .hero-content {
+                padding: 70px 5% 40px;
             }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
+            .hero h1 {
+                font-size: 2.4rem;
             }
-            
-            .free-banner {
-                position: relative;
-                top: auto;
-                right: auto;
-                margin-bottom: 20px;
-                transform: none;
-                display: inline-block;
-            }
-            
-            .offer-name {
-                font-size: 1.3rem;
-            }
-            
-            .resource-grid {
+            .seminars-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .nav-menu {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-actions {
                 flex-direction: column;
                 align-items: center;
             }
-            
-            .nav-item {
-                width: 80%;
-                text-align: center;
+            .sem-card {
+                padding: 28px 20px 24px;
             }
         }
 
-        @media (max-width: 480px) {
-            .offers-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-buttons {
-                flex-direction: column;
-            }
-            
-            .home-button {
-                width: 100%;
-                text-align: center;
-                justify-content: center;
-            }
-            
-            .resource-hub, .webinar-banner {
-                padding: 20px;
-            }
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="free-banner">100% FREE RESOURCES</div>
-        <div class="container">
-            <div class="logo-container">
-                <img src="https://github.com/accessworldseminars-ship-it/results/blob/2fcfdae671b699ec0b578911336fcc3ffc346532/worldjjpgsf.png?raw=true" alt="AccessWorld Logo" class="logo-img">
-                <div class="logo-text">ACCESSWORLD SEMINARS</div>
-            </div>
-            <div class="subtitle">Free Offers & Resources for Your Transformation Journey</div>
-            <div class="hero-description">
-                Start your personal growth journey with these completely free resources. No credit card required, no hidden fees - just valuable tools and experiences to help you unlock your potential.
-            </div>
-            
-            <!-- Navigation Menu -->
-            <div class="nav-menu">
-                <a href="#free-offers" class="nav-item">
-                    <i class="fas fa-gift"></i> Free Offers
-                </a>
-                <a href="https://joshbossesteamworkspace.myclickfunnels.com/funnel-heal-you-inner-child" target="_blank" class="nav-item healing">
-                    <i class="fas fa-heart"></i> Heal Your Inner Child
-                </a>
-                <a href="#resources" class="nav-item">
-                    <i class="fas fa-tools"></i> Resource Hub
-                </a>
-                <a href="https://accessworldseminars-ship-it.github.io/results/webinars" target="_blank" class="nav-item">
-                    <i class="fas fa-video"></i> Free Webinars
-                </a>
-            </div>
-            
-            <div class="nav-buttons">
-                <a href="#free-offers" class="btn">
-                    <i class="fas fa-gift"></i> View All Free Offers
-                </a>
-                <a href="https://joshbossesteamworkspace.myclickfunnels.com/funnel-heal-you-inner-child" target="_blank" class="btn-healing">
-                    <i class="fas fa-heart"></i> Heal Your Inner Child
-                </a>
-                <a href="https://accessworldseminars-ship-it.github.io/results/" class="btn-secondary">
-                    <i class="fas fa-home"></i> Back to Main Site
-                </a>
-            </div>
+
+    <!-- ── NAVIGATION ── -->
+    <nav class="nav">
+        <div class="nav-logo">
+            <a href="https://accessworldseminars-ship-it.github.io/results/">
+                <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" />
+            </a>
         </div>
-    </header>
-
-    <main class="container">
-        <!-- Webinar Banner -->
-        <div class="webinar-banner">
-            <h3>Access Our Premium <span class="accent-text">Webinar Collection</span></h3>
-            <div style="margin: 30px 0;">
-                <a href="https://accessworldseminars-ship-it.github.io/results/webinars" target="_blank" class="btn" style="font-size: 1.2rem; padding: 18px 45px;">
-                    <i class="fas fa-video"></i> View All Free Webinars
-                </a>
-            </div>
-            <p>Explore our comprehensive webinar library, specialized training sessions, and detailed program information to accelerate your personal and professional development journey - completely free.</p>
+        <div class="nav-links">
+            <a href="https://accessworldseminars-ship-it.github.io/results/"><i class="fas fa-home"></i> Home</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/unlock"><i class="fas fa-unlock-alt"></i> Unlock Yourself</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/Bio"><i class="fas fa-user"></i> Biography</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/offers"><i class="fas fa-tags"></i> Programs</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/webinars"><i class="fas fa-video"></i> Webinars</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/s"><i class="fas fa-calendar"></i> Events</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/ICS"><i class="fas fa-compass"></i> Find Your Path</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/Testimony"><i class="fas fa-star"></i> Testimonials</a>
+            <a href="https://accessworldseminars-ship-it.github.io/results/contactform"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="https://form.jotform.com/250184868189875" class="cta-nav" target="_blank"><i class="fas fa-calendar-check"></i> Free Session</a>
         </div>
+        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+    </nav>
 
-        <!-- FREE OFFERS SECTION -->
-        <div class="section-title" id="free-offers">
-            <h2>COMPLETELY FREE OFFERS</h2>
-            <div class="badge">No Credit Card Required</div>
-        </div>
-        
-        <div class="offers-grid">
-            <!-- Free Strategy Session -->
-            <div class="offer-card">
-                <div class="free-badge">100% FREE</div>
-                <div class="card-header">
-                    <div class="offer-name">Free Strategy Session</div>
-                    <div class="offer-value">$297 Value</div>
-                    <div>Personalized Coaching Assessment</div>
-                </div>
-                <div class="card-content">
-                    <ul class="features-list">
-                        <li><span class="feature-icon">✓</span><span class="feature-name">45-Minute Personalized Session</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Identify Your Biggest Blocks</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Personalized Action Plan</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Q&A With Joshua Roy</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Personalized Plans to Suit Any Budget</span></li>
-                    </ul>
-                    <div class="ideal-for">
-                        <strong>Ideal For:</strong> Anyone ready to clarify their transformation path
-                    </div>
-                    <a href="https://form.jotform.com/250184868189875" target="_blank" class="cta-button">
-                        BOOK FREE SESSION
-                        <div class="link-indicator"><i class="fas fa-calendar-alt"></i> Schedule your session</div>
-                    </a>
-                </div>
-            </div>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="https://accessworldseminars-ship-it.github.io/results/"><i class="fas fa-home"></i> Home</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/unlock"><i class="fas fa-unlock-alt"></i> Unlock Yourself</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/Bio"><i class="fas fa-user"></i> Biography</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/offers"><i class="fas fa-tags"></i> Programs & Offers</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/webinars"><i class="fas fa-video"></i> Webinars</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/s"><i class="fas fa-calendar"></i> Events Schedule</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/ICS"><i class="fas fa-compass"></i> Find Your Path</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/Testimony"><i class="fas fa-star"></i> Testimonials</a>
+        <a href="https://accessworldseminars-ship-it.github.io/results/contactform"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="https://form.jotform.com/250184868189875" class="cta-nav" target="_blank"><i class="fas fa-calendar-check"></i> Book Free Session</a>
+    </div>
 
-            <!-- Join a Free Group Coaching Session -->
-            <div class="offer-card">
-                <div class="free-badge">100% FREE</div>
-                <div class="card-header">
-                    <div class="offer-name">Join a Free Group Coaching Session</div>
-                    <div class="offer-value">$100 Value</div>
-                    <div>Live Group Experience</div>
-                </div>
-                <div class="card-content">
-                    <ul class="features-list">
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Live Group Coaching</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Q&A With Joshua Roy</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Community Interaction</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">Practical Tools & Techniques</span></li>
-                        <li><span class="feature-icon">✓</span><span class="feature-name">No Registration Fee</span></li>
-                    </ul>
-                    <div class="ideal-for">
-                        <strong>Ideal For:</strong> Those wanting to experience coaching in a group setting
-                    </div>
-                    <a href="https://joshbossesteamworkspace.myclickfunnels.com/joinnow" target="_blank" class="cta-button">
-                        JOIN FREE COACHING
-                        <div class="link-indicator"><i class="fas fa-users"></i> Join live session</div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Heal Your Inner Child Webinar -->
-            <div class="offer-card">
-                <div class="free-badge healing">MOST TALKED ABOUT</div>
-                <div class="card-header healing-header">
-                    <div class="offer-name">Heal Your Inner Child Webinar</div>
-                    <div class="offer-value">Pre-Recorded Session</div>
-                    <div>Break Free From Your Past</div>
-                </div>
-                <div class="card-content">
-                    <ul class="features-list">
-                        <li><span class="feature-icon healing">✓</span><span class="feature-name">Pre-Recorded Webinar Access</span></li>
-                        <li><span class="feature-icon healing">✓</span><span class="feature-name">Learn How Your Past Creates Internal Resistance</span></li>
-                        <li><span class="feature-icon healing">✓</span><span class="feature-name">Discover How Childhood Shapes Your Future</span></li>
-                        <li><span class="feature-icon healing">✓</span><span class="feature-name">Powerful Healing Techniques</span></li>
-                        <li><span class="feature-icon healing">✓</span><span class="feature-name">Break Free From Limiting Patterns</span></li>
-                    </ul>
-                    <div class="ideal-for healing">
-                        <strong>Ideal For:</strong> Anyone wanting to understand how their past affects their present
-                    </div>
-                    <a href="https://joshbossesteamworkspace.myclickfunnels.com/funnel-heal-you-inner-child" target="_blank" class="cta-button healing">
-                        GET ACCESS NOW
-                        <div class="link-indicator"><i class="fas fa-heart"></i> Start healing today</div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Resource Hub Note -->
-        <div style="text-align: center; margin: 30px 0; padding: 20px; background: rgba(33, 150, 243, 0.1); border-radius: var(--radius); border: 2px solid var(--healing-blue);">
-            <p style="font-size: 1.1rem; color: var(--text-light);">
-                <i class="fas fa-heart" style="color: var(--healing-blue); margin-right: 10px;"></i>
-                <strong>New:</strong> Check out our most popular resource - 
-                <a href="https://joshbossesteamworkspace.myclickfunnels.com/funnel-heal-you-inner-child" target="_blank" style="color: var(--healing-blue); text-decoration: underline;">Heal Your Inner Child Webinar</a>
-                - learn how your past is creating internal resistance to your life and future.
+    <!-- ── HERO ── -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content reveal">
+            <div class="eyebrow"><span></span> No Cost · No Obligation</div>
+            <h1>5 Free Introduction<br /><em>Seminars</em></h1>
+            <p class="hero-desc">
+                Experience the power of <strong>NLP, NSR and mindset mastery</strong> firsthand.
+                Each 60–90 minute session is designed to give you a practical tool you can use immediately —
+                and a clear taste of what's possible when you work at the level of your nervous system.
+            </p>
+            <p style="color: var(--gray); font-size: 0.95rem; margin-top: 8px;">
+                <i class="fas fa-check-circle" style="color: var(--gold);"></i> Live online · Interactive · Recordings available
             </p>
         </div>
+    </section>
 
-        <!-- RESOURCE HUB SECTION -->
-        <div class="section-title" id="resources">
-            <h2>FREE RESOURCE HUB</h2>
-            <div class="badge">Additional Free Tools & Content</div>
+    <!-- ── SEMINARS GRID ── -->
+    <section class="seminars-section">
+        <div class="inner">
+            <div class="seminars-header reveal">
+                <div class="section-label">Choose Your Session</div>
+                <h2 class="section-title" style="text-align:center;">Pick the Seminar That <em>Speaks to You</em></h2>
+                <p class="section-body" style="text-align:center; max-width: 620px; margin: 0 auto;">
+                    All sessions are <strong>completely free</strong> and open to anyone ready to make a real shift.
+                    Join live or watch the recording — your choice.
+                </p>
+            </div>
+
+            <div class="seminars-grid">
+
+                <!-- 1 -->
+                <div class="sem-card reveal">
+                    <div class="sem-number">01</div>
+                    <h3>Intro to NSR</h3>
+                    <span class="sem-tag">Nervous System Reprogramming</span>
+                    <p>
+                        Discover why willpower fails and how NSR re-wires your nervous system for
+                        lasting change. You'll learn the core principle and walk away with a simple
+                        regulation technique you can use any time.
+                    </p>
+                    <div class="sem-details">
+                        <span><i class="far fa-clock"></i> 75 min</span>
+                        <span><i class="fas fa-users"></i> Live + Recording</span>
+                    </div>
+                    <a href="https://form.jotform.com/250184868189875" class="sem-link" target="_blank">
+                        <i class="fas fa-calendar-check"></i> Register Free
+                    </a>
+                </div>
+
+                <!-- 2 -->
+                <div class="sem-card reveal" style="transition-delay:0.08s;">
+                    <div class="sem-number">02</div>
+                    <h3>NLP Foundations</h3>
+                    <span class="sem-tag">Neuro-Linguistic Programming</span>
+                    <p>
+                        Learn the foundational NLP techniques that top performers use to break
+                        limiting patterns, reframe negative experiences and install empowering
+                        beliefs. Practical, hands-on and immediately useful.
+                    </p>
+                    <div class="sem-details">
+                        <span><i class="far fa-clock"></i> 90 min</span>
+                        <span><i class="fas fa-users"></i> Live + Recording</span>
+                    </div>
+                    <a href="https://form.jotform.com/250184868189875" class="sem-link" target="_blank">
+                        <i class="fas fa-calendar-check"></i> Register Free
+                    </a>
+                </div>
+
+                <!-- 3 -->
+                <div class="sem-card reveal" style="transition-delay:0.16s;">
+                    <div class="sem-number">03</div>
+                    <h3>Mindset Mastery</h3>
+                    <span class="sem-tag">Performance Psychology</span>
+                    <p>
+                        Your mindset determines your ceiling. This session unpacks the beliefs
+                        and internal dialogues that hold you back — and gives you a proven
+                        process to shift them in real time.
+                    </p>
+                    <div class="sem-details">
+                        <span><i class="far fa-clock"></i> 60 min</span>
+                        <span><i class="fas fa-users"></i> Live + Recording</span>
+                    </div>
+                    <a href="https://form.jotform.com/250184868189875" class="sem-link" target="_blank">
+                        <i class="fas fa-calendar-check"></i> Register Free
+                    </a>
+                </div>
+
+                <!-- 4 -->
+                <div class="sem-card reveal" style="transition-delay:0.24s;">
+                    <div class="sem-number">04</div>
+                    <h3>Breathwork &amp; Release</h3>
+                    <span class="sem-tag">Somatic Healing</span>
+                    <p>
+                        Stress and stored emotion live in your body. This seminar guides you
+                        through powerful breathwork and somatic techniques to release tension,
+                        regulate your nervous system and access a state of calm clarity.
+                    </p>
+                    <div class="sem-details">
+                        <span><i class="far fa-clock"></i> 75 min</span>
+                        <span><i class="fas fa-users"></i> Live + Recording</span>
+                    </div>
+                    <a href="https://form.jotform.com/250184868189875" class="sem-link" target="_blank">
+                        <i class="fas fa-calendar-check"></i> Register Free
+                    </a>
+                </div>
+
+                <!-- 5 -->
+                <div class="sem-card reveal" style="transition-delay:0.32s;">
+                    <div class="sem-number">05</div>
+                    <h3>Unlock Your Potential</h3>
+                    <span class="sem-tag">Life Design</span>
+                    <p>
+                        A powerful synthesis of NSR, NLP and values-based goal setting. Identify
+                        what's truly blocking you and create a clear, actionable path toward the
+                        life, relationships and performance you actually want.
+                    </p>
+                    <div class="sem-details">
+                        <span><i class="far fa-clock"></i> 90 min</span>
+                        <span><i class="fas fa-users"></i> Live + Recording</span>
+                    </div>
+                    <a href="https://form.jotform.com/250184868189875" class="sem-link" target="_blank">
+                        <i class="fas fa-calendar-check"></i> Register Free
+                    </a>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <div class="resource-hub">
-            <p style="font-size: 1.1rem; margin-bottom: 20px; color: var(--text-gray); max-width: 800px; margin: 0 auto 30px;">
-                Explore these additional free resources to support your personal growth journey:
+    <!-- ── CTA BANNER ── -->
+    <div class="cta-banner">
+        <div class="inner">
+            <div class="section-label" style="justify-content:center; margin-bottom:16px;">Still Not Sure?</div>
+            <h2 class="section-title reveal" style="text-align:center;">Talk to Joshua <em>Directly</em></h2>
+            <p class="section-body reveal" style="text-align:center; margin: 0 auto 36px;">
+                Book a no-pressure chat. Ask your questions, share where you're at,
+                and discover which seminar (or coaching path) fits you best.
             </p>
-            
-            <div class="resource-grid">
-                <a href="https://accessworldseminars-ship-it.github.io/results/s" target="_blank" class="resource-link">
-                    <div class="resource-card">
-                        <div class="resource-icon"><i class="fas fa-calendar-alt"></i></div>
-                        <div class="resource-title">Upcoming Free Events</div>
-                        <div class="resource-desc">View calendar of all free seminars, webinars, and coaching sessions</div>
-                    </div>
+            <div class="cta-actions reveal">
+                <a href="https://form.jotform.com/250184868189875" class="btn-primary" target="_blank">
+                    <i class="fas fa-calendar-check"></i> Book Free Session
                 </a>
-                
-                <a href="https://accessworldseminars-ship-it.github.io/results/Testimony" target="_blank" class="resource-link">
-                    <div class="resource-card">
-                        <div class="resource-icon"><i class="fas fa-star"></i></div>
-                        <div class="resource-title">Success Stories</div>
-                        <div class="resource-desc">Read inspiring testimonials from people transformed by this work</div>
-                    </div>
+                <a href="https://wa.me/61432119091" class="wa-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Joshua
                 </a>
-                
-                <a href="https://accessworldseminars-ship-it.github.io/results/ICS" target="_blank" class="resource-link">
-                    <div class="resource-card">
-                        <div class="resource-icon"><i class="fas fa-search"></i></div>
-                        <div class="resource-title">Find Your Coaching Path</div>
-                        <div class="resource-desc">12-question diagnostic to identify your needs and recommended sessions</div>
-                    </div>
-                </a>
-                
-                <a href="https://accessworldseminars-ship-it.github.io/results/Stories" target="_blank" class="resource-link">
-                    <div class="resource-card">
-                        <div class="resource-icon"><i class="fas fa-book"></i></div>
-                        <div class="resource-title">Transformational Stories</div>
-                        <div class="resource-desc">Read moving stories to entertain, excite, and inspire your own journey</div>
-                    </div>
-                </a>
-                
-                <a href="https://accessworldseminars-ship-it.github.io/results/Lessons" target="_blank" class="resource-link">
-                    <div class="resource-card">
-                        <div class="resource-icon"><i class="fas fa-book-open"></i></div>
-                        <div class="resource-title">Example Sessions</div>
-                        <div class="resource-desc">Preview insights from actual 1-on-1 and group coaching sessions</div>
-                    </div>
-                </a>
-                
-                <a href="https://accessworldseminars-ship-it.github.io/results/Bio" target="_blank" class="resource-link">
-                    <div class="resource-card">
-                        <div class="resource-icon"><i class="fas fa-user"></i></div>
-                        <div class="resource-title">Coach Biography</div>
-                        <div class="resource-desc">Learn about Joshua Roy's journey, qualifications, and approach</div>
-                    </div>
+                <a href="https://accessworldseminars-ship-it.github.io/results/contactform" class="btn-outline">
+                    <i class="fas fa-envelope"></i> Send a Message
                 </a>
             </div>
         </div>
+    </div>
 
-        <!-- Get Started Section -->
-        <div style="text-align: center; margin: 60px 0 30px; padding: 40px; background: rgba(26, 43, 94, 0.5); border-radius: var(--radius); border: 2px solid rgba(76, 175, 80, 0.3);">
-            <h3 style="font-size: 2rem; margin-bottom: 20px; color: var(--success-green);">Ready to Begin Your Transformation?</h3>
-            <p style="font-size: 1.2rem; margin-bottom: 30px; color: var(--text-light); max-width: 700px; margin-left: auto; margin-right: auto;">
-                Start with a free strategy session to clarify your goals and create a personalized action plan.
-            </p>
-            <a href="https://form.jotform.com/250184868189875" target="_blank" class="btn" style="font-size: 1.3rem; padding: 20px 50px;">
-                <i class="fas fa-calendar-check"></i> BOOK FREE STRATEGY SESSION
-            </a>
-            <p style="color: var(--text-gray); margin-top: 20px; font-size: 0.9rem;">No obligation • No credit card required • 100% free</p>
-        </div>
-
-        <!-- Navigation Buttons -->
-        <div class="nav-buttons">
-            <a href="https://accessworldseminars-ship-it.github.io/results/" class="home-button">
-                <i class="fas fa-home"></i> Back to Home Page
-            </a>
-            <a href="https://joshbossesteamworkspace.myclickfunnels.com/funnel-heal-you-inner-child" target="_blank" class="home-button healing">
-                <i class="fas fa-heart"></i> Heal Your Inner Child
-            </a>
-            <a href="https://accessworldseminars-ship-it.github.io/results/webinars" target="_blank" class="home-button">
-                <i class="fas fa-video"></i> View All Free Webinars
-            </a>
-            <a href="#free-offers" class="home-button">
-                <i class="fas fa-gift"></i> View All Free Offers
-            </a>
-        </div>
-    </main>
-
-    <footer class="footer-section">
-        <div class="container">
-            <div class="logo-container" style="margin-bottom: 30px;">
-                <img src="https://github.com/accessworldseminars-ship-it/results/blob/2fcfdae671b699ec0b578911336fcc3ffc346532/worldjjpgsf.png?raw=true" alt="AccessWorld Logo" class="logo-img" style="height: 50px;">
-                <div class="logo-text" style="font-size: 1.8rem;">ACCESSWORLD</div>
+    <!-- ── FOOTER ── -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" />
+                </div>
+                <p>Transforming lives through NLP, Nervous System Reprogramming and precision results coaching. Based in Brisbane, working with ambitious people worldwide.</p>
+                <p>ABN: 72 546 137 885</p>
+                <div class="social-row" style="margin-top:16px;">
+                    <a href="https://www.youtube.com/@joshuaroybosse" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/joshua_roy9/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/accessworld-seminars-3508a0296/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.tiktok.com/@accessworldseminars" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+                <div class="unlock-badge">
+                    <i class="fas fa-unlock-alt"></i>
+                    <a href="https://accessworldseminars-ship-it.github.io/results/unlock">Unlock your Incredible Self</a>
+                </div>
             </div>
-            <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 20px; font-size: 1.1rem;">Free Resources & Coaching for Your Transformation Journey</p>
-            
-            <!-- Footer Navigation -->
-            <div class="nav-menu" style="margin: 30px 0; justify-content: center;">
-                <a href="#free-offers" class="nav-item">
-                    <i class="fas fa-gift"></i> Free Offers
-                </a>
-                <a href="https://joshbossesteamworkspace.myclickfunnels.com/funnel-heal-you-inner-child" target="_blank" class="nav-item healing">
-                    <i class="fas fa-heart"></i> Heal Your Inner Child
-                </a>
-                <a href="#resources" class="nav-item">
-                    <i class="fas fa-tools"></i> Resource Hub
-                </a>
-                <a href="https://accessworldseminars-ship-it.github.io/results/webinars" target="_blank" class="nav-item">
-                    <i class="fas fa-video"></i> Free Webinars
-                </a>
+            <div class="footer-col">
+                <h4>Programs</h4>
+                <a href="https://accessworldseminars-ship-it.github.io/results/offers">1-on-1 Coaching</a>
+                <a href="https://accessworldseminars-ship-it.github.io/results/webinars">Webinars</a>
+                <a href="https://accessworldseminars-ship-it.github.io/results/s">Live Events</a>
+                <a href="https://accessworldseminars-ship-it.github.io/results/BecomeACoach">Coach Academy</a>
             </div>
-            
-            <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin-bottom: 10px;">Free offers are 100% free - no hidden fees, no credit card required</p>
-            <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">© 2024 AccessWorld Seminars. All Rights Reserved.</p>
+            <div class="footer-col">
+                <h4>Learn More</h4>
+                <a href="https://accessworldseminars-ship-it.github.io/results/Bio">Biography</a>
+                <a href="https://accessworldseminars-ship-it.github.io/results/Testimony">Testimonials</a>
+                <a href="https://accessworldseminars-ship-it.github.io/results/ICS">Find Your Path</a>
+                <a href="https://accessworldseminars-ship-it.github.io/results/unlock">Unlock Yourself</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="https://wa.me/61432119091" target="_blank"><i class="fab fa-whatsapp"></i> +61 432 119 091</a>
+                <a href="mailto:accessworldseminars@gmail.com">accessworldseminars@gmail.com</a>
+                <a href="https://accessworldseminars-ship-it.github.io/results/contactform">Contact Form</a>
+                <a href="https://form.jotform.com/250184868189875" target="_blank" style="color:var(--gold);">Book Free Session →</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 AccessWorld Seminars · Joshua Roy · ABN: 72 546 137 885 · All Rights Reserved</p>
         </div>
     </footer>
 
     <script>
-        // Add hover effects to cards
-        document.querySelectorAll('.offer-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px)';
-            });
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
+        // ── Hamburger ──
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            hamburger.innerHTML = mobileMenu.classList.contains('open') ?
+                '<i class="fas fa-times"></i>' :
+                '<i class="fas fa-bars"></i>';
+        });
+        document.querySelectorAll('.mobile-menu a').forEach(a => {
+            a.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
 
-        // Add hover effects to resource cards
-        document.querySelectorAll('.resource-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-5px)';
+        // ── Scroll Reveal ──
+        const reveals = document.querySelectorAll('.reveal');
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    revealObs.unobserve(e.target);
+                }
             });
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
+        }, { threshold: 0.12 });
+        reveals.forEach(r => revealObs.observe(r));
 
-        // Smooth scrolling for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+        // ── Meta Pixel: Track registration clicks ──
+        document.querySelectorAll('a.sem-link, a.btn-primary[href*="form.jotform.com"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Lead', {
+                        content_name: 'Free Seminar Registration',
+                        content_category: 'Seminar CTA'
                     });
                 }
             });
         });
 
-        // Track link clicks (for analytics if needed)
-        document.querySelectorAll('a[href^="http"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                const linkText = this.textContent.trim();
-                console.log(`Link clicked: ${linkText}`);
-                // Add your analytics tracking here
+        // ── Meta Pixel: Track WhatsApp clicks ──
+        document.querySelectorAll('a[href*="wa.me"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Contact', {
+                        content_name: 'WhatsApp Contact',
+                        method: 'WhatsApp'
+                    });
+                }
             });
         });
-
-        // Add animation to free banner
-        const freeBanner = document.querySelector('.free-banner');
-        setInterval(() => {
-            freeBanner.style.transform = freeBanner.style.transform === 'rotate(5deg)' ? 'rotate(-5deg)' : 'rotate(5deg)';
-        }, 3000);
     </script>
+
 </body>
 </html>
