@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unlock Your Incredible Self | Joshua Roy | AccessWorld Seminars</title>
+<meta name="description" content="Join Joshua Roy for a 6-hour live transformational seminar. Master your emotions, reprogram your nervous system, and unlock your full potential.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Open Sans',sans-serif;background:#050a1a;color:#fff;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif;font-weight:700}
+img{max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+.container{width:92%;max-width:1100px;margin:0 auto;padding:0 16px}
+
+/* ========== STICKY TOP BAR ========== */
+.sticky-bar{position:fixed;top:0;left:0;width:100%;z-index:9999;background:linear-gradient(135deg,#0f1a3d 0%,#1a2b5e 100%);border-bottom:1px solid rgba(212,175,55,0.3);padding:10px 0;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:transform .3s ease}
+.sticky-bar.hidden{transform:translateY(-100%)}
+.sticky-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.sticky-logo{height:38px;width:auto;margin-right:10px;flex-shrink:0}
+.sticky-text{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:#d4af37;letter-spacing:.5px;display:flex;align-items:center}
+.sticky-text img{margin-right:10px}
+.countdown-mini{display:flex;align-items:center;gap:6px;font-family:'Montserrat',sans-serif}
+.countdown-mini .unit{background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);border-radius:6px;padding:4px 8px;text-align:center;min-width:42px}
+.countdown-mini .unit .num{display:block;font-size:18px;font-weight:800;color:#d4af37;line-height:1}
+.countdown-mini .unit .lbl{display:block;font-size:9px;color:#e0e0e0;text-transform:uppercase;letter-spacing:1px;margin-top:1px}
+.countdown-mini .sep{color:#d4af37;font-size:16px;font-weight:700}
+.sticky-cta{background:linear-gradient(135deg,#d4af37,#c0c0c0);color:#0f1a3d;font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;padding:8px 20px;border-radius:8px;border:none;cursor:pointer;letter-spacing:.5px;transition:all .3s ease;box-shadow:0 4px 15px rgba(212,175,55,.3)}
+.sticky-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,175,55,.5)}
+
+/* ========== HERO ========== */
+.hero{position:relative;padding:140px 0 80px;background:linear-gradient(135deg,#0f1a3d 0%,#1a2b5e 50%,#0f1a3d 100%);overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(212,175,55,.08) 0%,transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(26,43,94,.6) 0%,transparent 70%);border-radius:50%}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.3);border-radius:50px;padding:8px 18px;margin-bottom:24px}
+.hero-badge img{height:28px;width:auto}
+.hero-badge span{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;color:#d4af37;letter-spacing:1px;text-transform:uppercase}
+.hero h1{font-size:clamp(3.2rem, 8vw, 6rem);line-height:1.05;font-weight:900;margin-bottom:12px;color:#fff;letter-spacing:-1px}
+.hero h1 .gold{color:#d4af37}
+.hero-tagline{font-size:clamp(1.2rem, 2vw, 1.7rem);font-weight:700;color:#d4af37;letter-spacing:1.5px;margin-bottom:16px}
+.hero-sub{font-size:18px;color:#e0e0e0;margin-bottom:30px;line-height:1.7;max-width:520px}
+.hero-cta-group{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:30px}
+.btn-primary{background:linear-gradient(135deg,#d4af37,#c0c0c0);color:#0f1a3d;font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;padding:16px 36px;border-radius:10px;border:none;cursor:pointer;letter-spacing:.5px;transition:all .3s ease;display:inline-block;text-align:center;box-shadow:0 8px 30px rgba(212,175,55,.35);text-transform:uppercase}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(212,175,55,.5)}
+.btn-secondary{background:transparent;color:#d4af37;font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;padding:14px 28px;border-radius:10px;border:2px solid #d4af37;cursor:pointer;letter-spacing:.5px;transition:all .3s ease;display:inline-block;text-align:center;text-transform:uppercase}
+.btn-secondary:hover{background:rgba(212,175,55,.1);transform:translateY(-2px)}
+.hero-price{display:flex;align-items:center;gap:16px}
+.hero-price .old{text-decoration:line-through;color:#888;font-size:16px;font-family:'Montserrat',sans-serif}
+.hero-price .new{font-family:'Montserrat',sans-serif;font-size:28px;font-weight:900;color:#d4af37}
+.hero-price .note{font-size:13px;color:#aaa}
+.hero-image{text-align:center;position:relative}
+.hero-image img{max-height:500px;width:auto;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.5);border:2px solid rgba(212,175,55,.2)}
+.hero-image::before{content:'';position:absolute;top:-15px;left:-15px;right:15px;bottom:15px;border:2px solid rgba(212,175,55,.15);border-radius:16px;z-index:-1}
+
+/* ========== VIDEO SECTION ========== */
+.video-section{padding:60px 0;background:#050a1a;text-align:center}
+.video-wrapper{max-width:800px;margin:0 auto;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 20px 60px rgba(0,0,0,.4);position:relative}
+.video-wrapper iframe{width:100%;height:420px;border:none;display:block}
+
+/* ========== PROBLEM SECTION ========== */
+.problem{padding:80px 0;background:linear-gradient(180deg,#050a1a 0%,#0a1020 100%)}
+.section-label{display:inline-block;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:#d4af37;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;border:1px solid rgba(212,175,55,.3);padding:6px 14px;border-radius:4px}
+.problem h2{font-size:36px;line-height:1.25;margin-bottom:24px;color:#fff}
+.problem h2 .gold{color:#d4af37}
+.problem-intro{font-size:17px;color:#e0e0e0;margin-bottom:40px;max-width:700px;line-height:1.7}
+.problem-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.prob-card{background:linear-gradient(135deg,#0f1a3d,#1a2b5e);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:28px;transition:all .3s ease}
+.prob-card:hover{transform:translateY(-5px);border-color:rgba(212,175,55,.25);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.prob-card .icon{font-size:36px;margin-bottom:12px;display:block}
+.prob-card h4{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;margin-bottom:10px;color:#fff}
+.prob-card p{font-size:14px;color:#bbb;line-height:1.6}
+
+/* ========== STORY SECTION ========== */
+.story{padding:80px 0;background:#0f1a3d;position:relative;overflow:hidden}
+.story::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:linear-gradient(180deg,rgba(212,175,55,.03) 0%,transparent 100%)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;position:relative;z-index:2}
+.story h2{font-size:34px;line-height:1.25;margin-bottom:24px;color:#fff}
+.story h2 .gold{color:#d4af37}
+.story p{font-size:16px;color:#e0e0e0;margin-bottom:18px;line-height:1.75}
+.story-quote{border-left:3px solid #d4af37;padding-left:24px;margin:24px 0;font-style:italic;color:#d4af37;font-size:18px;line-height:1.7;font-family:'Montserrat',sans-serif;font-weight:600}
+.story-image{text-align:center}
+.story-image img{border-radius:12px;box-shadow:0 15px 50px rgba(0,0,0,.4);border:1px solid rgba(212,175,55,.15)}
+
+/* ========== WHAT YOU'LL LEARN ========== */
+.learn{padding:80px 0;background:linear-gradient(180deg,#0a1020 0%,#050a1a 100%)}
+.learn h2{font-size:36px;text-align:center;margin-bottom:16px;color:#fff}
+.learn .sub{text-align:center;color:#aaa;font-size:17px;margin-bottom:50px;max-width:600px;margin-left:auto;margin-right:auto}
+.pathway{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-bottom:50px}
+.path-card{background:linear-gradient(135deg,#0f1a3d,#1a2b5e);border:1px solid rgba(212,175,55,.2);border-radius:14px;padding:32px;position:relative;overflow:hidden;transition:all .3s ease}
+.path-card:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(0,0,0,.4);border-color:rgba(212,175,55,.4)}
+.path-card .num{position:absolute;top:12px;right:16px;font-family:'Montserrat',sans-serif;font-size:72px;font-weight:900;color:rgba(212,175,55,.06);line-height:1}
+.path-card .icon{font-size:40px;margin-bottom:16px}
+.path-card h3{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:700;margin-bottom:12px;color:#d4af37}
+.path-card ul{list-style:none;padding:0}
+.path-card ul li{font-size:14px;color:#ccc;padding:6px 0;padding-left:20px;position:relative;line-height:1.5}
+.path-card ul li::before{content:'\2713';position:absolute;left:0;color:#d4af37;font-weight:700}
+
+.agenda{background:rgba(15,26,61,.5);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:32px;margin-top:20px}
+.agenda h3{font-family:'Montserrat',sans-serif;font-size:22px;color:#d4af37;margin-bottom:24px;text-align:center}
+.session-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.session{background:rgba(5,10,26,.6);border-radius:10px;padding:20px;border-left:3px solid #d4af37}
+.session .time{font-size:12px;color:#d4af37;font-weight:700;font-family:'Montserrat',sans-serif;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.session h4{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px;font-family:'Montserrat',sans-serif}
+.session p{font-size:13px;color:#bbb;line-height:1.5}
+
+/* ========== NSR SECTION ========== */
+.nsr{padding:80px 0;background:#0f1a3d;text-align:center}
+.nsr h2{font-size:34px;margin-bottom:20px;color:#fff}
+.nsr h2 .gold{color:#d4af37}
+.nsr>p{max-width:700px;margin:0 auto 40px;color:#ccc;font-size:16px;line-height:1.7}
+.nsr-img{max-width:700px;margin:0 auto;border-radius:14px;overflow:hidden;border:1px solid rgba(212,175,55,.2);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.nsr-img img{width:100%;display:block}
+
+/* ========== TESTIMONIALS ========== */
+.testimonials{padding:80px 0;background:linear-gradient(180deg,#050a1a 0%,#0a1020 100%)}
+.testimonials h2{font-size:36px;text-align:center;margin-bottom:16px;color:#fff}
+.testimonials .sub{text-align:center;color:#aaa;font-size:17px;margin-bottom:50px}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.testi{background:rgba(15,26,61,.6);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px;transition:all .3s ease;position:relative}
+.testi:hover{border-color:rgba(212,175,55,.2);transform:translateY(-4px)}
+.testi .stars{color:#d4af37;font-size:18px;margin-bottom:14px;letter-spacing:2px}
+.testi p{font-size:15px;color:#e0e0e0;line-height:1.7;margin-bottom:16px;font-style:italic}
+.testi .author{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:#d4af37}
+.testi .role{font-size:12px;color:#888}
+
+/* ========== VALUE STACK (Russell Brunson style) ========== */
+.value-stack-section{padding:80px 0;background:#0f1a3d;text-align:center;position:relative;overflow:hidden}
+.value-stack-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(212,175,55,.06) 0%,transparent 70%);border-radius:50%}
+.value-stack-section h2{font-size:36px;margin-bottom:40px;color:#fff;position:relative;z-index:2}
+.value-stack-section h2 .gold{color:#d4af37}
+.stack-wrap{max-width:700px;margin:0 auto;background:rgba(5,10,26,.6);border:1px solid rgba(212,175,55,.2);border-radius:16px;padding:30px 30px 20px;position:relative;z-index:2}
+.stack-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:15px;color:#ddd}
+.stack-item:last-child{border-bottom:0}
+.stack-item .check{color:#d4af37;margin-right:12px;font-weight:700}
+.stack-item .name{display:flex;align-items:center;text-align:left}
+.stack-item .value{font-family:'Montserrat',sans-serif;font-weight:700;color:#d4af37;font-size:16px;white-space:nowrap}
+.stack-total{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:2px solid rgba(212,175,55,.3);font-family:'Montserrat',sans-serif;font-size:18px;font-weight:800;color:#fff}
+.stack-total .total-label{color:#d4af37}
+.stack-total .total-value{color:#d4af37;font-size:22px}
+.stack-note{margin-top:16px;font-size:14px;color:#aaa}
+.stack-note strong{color:#d4af37}
+
+/* ========== PRICING ========== */
+.pricing{padding:80px 0;background:linear-gradient(180deg,#0a1020 0%,#050a1a 100%);text-align:center}
+.pricing-card{max-width:520px;margin:0 auto;background:linear-gradient(135deg,#0f1a3d,#1a2b5e);border:2px solid rgba(212,175,55,.3);border-radius:18px;padding:48px 36px;box-shadow:0 20px 60px rgba(0,0,0,.4);position:relative;overflow:hidden}
+.pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#d4af37,#c0c0c0,#d4af37)}
+.pricing-label{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#d4af37;margin-bottom:16px}
+.pricing-card h3{font-family:'Montserrat',sans-serif;font-size:26px;font-weight:900;color:#fff;margin-bottom:20px}
+.pricing-row{display:flex;justify-content:center;align-items:center;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.pricing-row .old{font-family:'Montserrat',sans-serif;font-size:20px;color:#888;text-decoration:line-through}
+.pricing-row .new{font-family:'Montserrat',sans-serif;font-size:52px;font-weight:900;color:#d4af37}
+.pricing-row .currency{font-family:'Montserrat',sans-serif;font-size:16px;color:#aaa;font-weight:600}
+.save-badge{display:inline-block;background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#d4af37;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;padding:8px 20px;border-radius:50px;margin-bottom:24px}
+.guarantee{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:24px;font-size:14px;color:#bbb}
+.guarantee .shield{font-size:22px}
+
+/* ========== COUNTDOWN HERO ========== */
+.countdown-section{padding:60px 0;background:linear-gradient(135deg,#0f1a3d,#1a2b5e);text-align:center;border-top:1px solid rgba(212,175,55,.15);border-bottom:1px solid rgba(212,175,55,.15)}
+.countdown-section h3{font-family:'Montserrat',sans-serif;font-size:20px;color:#d4af37;margin-bottom:24px;letter-spacing:1px}
+.countdown{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.countdown .unit{background:rgba(5,10,26,.5);border:1px solid rgba(212,175,55,.25);border-radius:14px;padding:20px 28px;text-align:center;min-width:90px;backdrop-filter:blur(10px)}
+.countdown .unit .num{display:block;font-family:'Montserrat',sans-serif;font-size:42px;font-weight:900;color:#d4af37;line-height:1}
+.countdown .unit .lbl{display:block;font-size:11px;color:#ccc;text-transform:uppercase;letter-spacing:2px;margin-top:6px;font-family:'Montserrat',sans-serif;font-weight:600}
+.countdown .sep{display:flex;align-items:center;font-family:'Montserrat';font-size:30px;font-weight:900;color:#d4af37}
+.date-info{margin-top:24px;font-size:15px;color:#ccc;line-height:1.8}
+.date-info strong{color:#d4af37}
+
+/* ========== FAQ ========== */
+.faq{padding:80px 0;background:#0f1a3d}
+.faq h2{font-size:36px;text-align:center;margin-bottom:50px;color:#fff}
+.faq-item{max-width:800px;margin:0 auto 12px;background:rgba(15,26,61,.5);border:1px solid rgba(255,255,255,.06);border-radius:12px;overflow:hidden}
+.faq-q{padding:20px 24px;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;color:#fff;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:all .2s}
+.faq-q:hover{color:#d4af37}
+.faq-q .plus{font-size:22px;color:#d4af37;transition:transform .3s}
+.faq-item.open .plus{transform:rotate(45deg)}
+.faq-a{padding:0 24px;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease;color:#ccc;font-size:15px;line-height:1.7}
+.faq-item.open .faq-a{padding:0 24px 20px;max-height:400px}
+
+/* ========== FINAL CTA ========== */
+.final-cta{padding:80px 0;background:linear-gradient(135deg,#0f1a3d,#1a2b5e);text-align:center;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(212,175,55,.08) 0%,transparent 60%);border-radius:50%}
+.final-cta h2{font-size:36px;margin-bottom:20px;color:#fff;position:relative;z-index:2}
+.final-cta h2 .gold{color:#d4af37}
+.final-cta>p{max-width:600px;margin:0 auto 30px;color:#ccc;font-size:17px;line-height:1.7;position:relative;z-index:2}
+
+/* ========== FOOTER ========== */
+.footer{padding:40px 0;background:#050a1a;text-align:center;border-top:1px solid rgba(255,255,255,.06)}
+.footer img{height:40px;margin-bottom:12px;opacity:.7}
+.footer p{font-size:13px;color:#666}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.anim{animation:fadeInUp .7s ease forwards;opacity:0}
+.anim-d1{animation-delay:.1s}
+.anim-d2{animation-delay:.2s}
+.anim-d3{animation-delay:.3s}
+.anim-d4{animation-delay:.4s}
+
+/* ========== MOBILE ========== */
+@media(max-width:768px){
+.hero{padding:120px 0 50px}
+.hero-grid{grid-template-columns:1fr}
+.hero h1{font-size:clamp(2.6rem, 10vw, 3.8rem)}
+.hero-tagline{font-size:1.1rem}
+.hero-sub{font-size:15px}
+.hero-image{order:-1;margin-bottom:20px}
+.hero-image img{max-height:320px}
+.story-grid{grid-template-columns:1fr}
+.story-image{order:-1;margin-bottom:20px}
+.story h2,.learn h2,.testimonials h2,.value-stack-section h2,.faq h2,.final-cta h2,.problem h2{font-size:26px}
+.countdown .unit{padding:14px 18px;min-width:68px}
+.countdown .unit .num{font-size:30px}
+.countdown .sep{font-size:20px}
+.btn-primary,.btn-secondary{width:100%;font-size:14px;padding:14px 20px}
+.pricing-card{padding:32px 20px}
+.pricing-row .new{font-size:40px}
+.sticky-inner{flex-direction:column;gap:6px;text-align:center}
+.sticky-text{font-size:11px}
+.sticky-logo{height:28px;margin-right:0}
+.countdown-mini .unit{min-width:34px;padding:3px 5px}
+.countdown-mini .unit .num{font-size:14px}
+.sticky-cta{padding:6px 14px;font-size:11px}
+.video-wrapper iframe{height:240px}
+.stack-item{flex-wrap:wrap;gap:4px;font-size:14px}
+.stack-item .value{font-size:14px}
+.stack-total{font-size:16px;flex-wrap:wrap;gap:4px}
+}
+
+/* ========== PULSE ANIMATION FOR CTA ========== */
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(212,175,55,.4)}70%{box-shadow:0 0 0 15px rgba(212,175,55,0)}100%{box-shadow:0 0 0 0 rgba(212,175,55,0)}}
+.pulse-cta{animation:pulse 2s infinite}
+</style>
+</head>
+<body>
+
+<!-- ========== STICKY TOP BAR ========== -->
+<div class="sticky-bar" id="stickyBar">
+<div class="container">
+<div class="sticky-inner">
+<div class="sticky-text">
+<img src="https://i.ibb.co/spJSMY16/worldjjpgsf.png" alt="AccessWorld Seminars" class="sticky-logo">
+UNLOCK YOUR INCREDIBLE SELF — STARTING IN:
+</div>
+<div class="countdown-mini" id="countdownMini">
+<div class="unit"><span class="num" id="cdm-d">00</span><span class="lbl">Days</span></div>
+<div class="sep">:</div>
+<div class="unit"><span class="num" id="cdm-h">00</span><span class="lbl">Hrs</span></div>
+<div class="sep">:</div>
+<div class="unit"><span class="num" id="cdm-m">00</span><span class="lbl">Min</span></div>
+<div class="sep">:</div>
+<div class="unit"><span class="num" id="cdm-s">00</span><span class="lbl">Sec</span></div>
+</div>
+<a href="https://accessworldseminars-ship-it.github.io/results/purchaseunlock" class="sticky-cta">SECURE MY SPOT</a>
+</div>
+</div>
+</div>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="top">
+<div class="container">
+<div class="hero-grid">
+<div class="hero-content">
+<div class="hero-badge anim anim-d1">
+<img src="https://i.ibb.co/spJSMY16/worldjjpgsf.png" alt="AccessWorld Seminars">
+<span>AccessWorld Seminars | Joshua Roy</span>
+</div>
+
+<!-- MASSIVE TITLE: UNLOCK YOUR INCREDIBLE SELF -->
+<h1 class="anim anim-d2">Unlock Your <span class="gold">Incredible Self</span></h1>
+
+<!-- Invitation headline -->
+<div class="hero-tagline anim anim-d3">Join the 6‑Hour Live Seminar &amp; Transform Your Life</div>
+
+<p class="hero-sub anim anim-d3">Stop living in reaction and start living on purpose. Master your emotions, reprogram your nervous system, and unlock the version of yourself you've always known was possible.</p>
+
+<div class="hero-cta-group anim anim-d3">
+<a href="https://accessworldseminars-ship-it.github.io/results/purchaseunlock" class="btn-primary pulse-cta">YES! I'M READY TO TRANSFORM</a>
+</div>
+<div class="hero-price anim anim-d4">
+<span class="old">$397 AUD</span>
+<span class="new">$69 AUD</span>
+<span class="note">One-time payment • 100% Satisfaction Guarantee</span>
+</div>
+</div>
+<div class="hero-image anim anim-d4">
+<img src="https://i.ibb.co/F4c0V58q/Screenshot-2025-12-12-162510.png" alt="Joshua Roy - close up headshot">
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========== COUNTDOWN ========== -->
+<section class="countdown-section">
+<div class="container">
+<h3>THE SEMINAR STARTS IN:</h3>
+<div class="countdown" id="countdownMain">
+<div class="unit"><span class="num" id="cd-d">00</span><span class="lbl">Days</span></div>
+<div class="sep">:</div>
+<div class="unit"><span class="num" id="cd-h">00</span><span class="lbl">Hours</span></div>
+<div class="sep">:</div>
+<div class="unit"><span class="num" id="cd-m">00</span><span class="lbl">Minutes</span></div>
+<div class="sep">:</div>
+<div class="unit"><span class="num" id="cd-s">00</span><span class="lbl">Seconds</span></div>
+</div>
+<div class="date-info">
+<strong>Friday, October 30, 2026</strong><br>
+🇦🇺 Brisbane (AEST): <strong>7:00 AM – 1:00 PM</strong><br>
+🇦🇺 Sydney/Melbourne (AEDT): <strong>8:00 AM – 2:00 PM</strong><br>
+🇳🇿 New Zealand (NZDT): <strong>10:00 AM – 4:00 PM</strong><br>
+🇺🇸 USA Eastern (EDT): <strong>Thursday, Oct 29 · 5:00 PM – 11:00 PM</strong><br>
+🇺🇸 USA Central (CDT): <strong>4:00 PM – 10:00 PM</strong><br>
+🇺🇸 USA Pacific (PDT): <strong>2:00 PM – 8:00 PM</strong><br>
+🇮🇳 India (IST): <strong>2:30 AM – 8:30 AM (Friday, Oct 30)</strong>
+</div>
+</div>
+</section>
+
+<!-- ========== PROBLEM SECTION ========== -->
+<section class="problem" id="problem">
+<div class="container">
+<div class="section-label">THE REAL PROBLEM</div>
+<h2>You Know What to Do. <span class="gold">So Why Can't You Do It?</span></h2>
+<p class="problem-intro">You've read the books. You've had the insights. You've made promises to yourself. And yet here you are — running the same patterns, getting the same results. It's not a willpower problem. It's not a discipline problem. <strong>It's a biology problem.</strong></p>
+<div class="problem-cards">
+<div class="prob-card anim">
+<span class="icon">😤</span>
+<h4>Emotional Hijacking</h4>
+<p>You know you should stay calm, think clearly, not take the bait. But the moment arrives — and your body does something completely different.</p>
+</div>
+<div class="prob-card anim">
+<span class="icon">😴</span>
+<h4>Energy Crashes</h4>
+<p>You push through the day only to hit a wall by 2pm. You're exhausted, depleted, with nothing left for the people who matter most.</p>
+</div>
+<div class="prob-card anim">
+<span class="icon">🔄</span>
+<h4>Broken Promises</h4>
+<p>You start new habits, fight your addictions, push through the negativity. And you keep failing — in the same places, with the same patterns.</p>
+</div>
+<div class="prob-card anim">
+<span class="icon">😔</span>
+<h4>Mood Addiction</h4>
+<p>Low moods have become comfortable. Sadness, anxiety, numbness — they've become a hidden identity. Letting them go feels unsafe.</p>
+</div>
+<div class="prob-card anim">
+<span class="icon">🧠</span>
+<h4>Subconscious Sabotage</h4>
+<p>Your conscious mind wants change. But your nervous system is wired to keep you stuck — because change feels like danger.</p>
+</div>
+<div class="prob-card anim">
+<span class="icon">⏳</span>
+<h4>Waiting for "Someday"</h4>
+<p>Conditions are never perfect. The right time never comes. And another year passes — with your dreams still on hold.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========== JOSHUA'S STORY ========== -->
+<section class="story" id="story">
+<div class="container">
+<div class="story-grid">
+<div>
+<div class="section-label">YOUR GUIDE</div>
+<h2>From Burnt Out to <span class="gold">Unstoppable.</span></h2>
+<p>I'm Joshua Roy. For 24 years I served in law enforcement. I saw the worst of humanity — and it nearly broke me.</p>
+<p>Divorce. My children pulling away. Financial pressure that kept me awake at night. Every reason to be angry, bitter, and stuck. I was tired, overweight, and grumpy — believing this was just "getting older."</p>
+<p>But somewhere in the middle of it, I asked myself two questions that changed everything:</p>
+<div class="story-quote">"What is possible if I dare to dream? What is possible if I stop living in reaction — and start living on purpose?"</div>
+<p>So I made a decision. Then I made it again every morning for five years. Five years of courses, seminars, and personal development events. Over <strong>$100,000 invested</strong> in the world's best training. More than <strong>3,500 one-on-one coaching sessions</strong> delivered. <strong>900+ seminars</strong> hosted since 2015.</p>
+<p>I went from tired and grumpy to energized and alive. And along the way, I discovered something that changed everything:</p>
+<p><strong class="gold">The tools are already inside you. You just need the right key to unlock them.</strong></p>
+</div>
+<div class="story-image">
+<img src="https://i.ibb.co/F4RyZLKm/Screenshot-2026-04-27-112840.png" alt="Joshua Roy with seminar attendees">
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========== NSR INTRODUCTION ========== -->
+<section class="nsr" id="nsr">
+<div class="container">
+<div class="section-label">THE SCIENCE</div>
+<h2>Nervous System <span class="gold">Reprogramming (NSR)</span></h2>
+<p>Your emotions don't live in your thoughts. They live in your <strong>body</strong>. In your <strong>nervous system</strong>. In pathways that were wired long before you were old enough to have a say in the matter.</p>
+<p>Most people try to fix the wrong thing. They work on their attitude. They modify their behavior. They push through with willpower. And it works — <em>until it doesn't.</em></p>
+<p>NSR works <strong>below the level of conscious awareness</strong> — rewiring the hidden beliefs, values, and patterns that keep you stuck. No years of therapy. No reliving trauma. Just deep, lasting change that happens at the root.</p>
+<div class="nsr-img" style="margin-top:30px">
+<img src="https://i.ibb.co/Zp8xwpYk/Screenshot-2026-01-29-104856.png" alt="Introduction to Nervous System Reprogramming">
+</div>
+</div>
+</section>
+
+<!-- ========== WHAT YOU'LL LEARN ========== -->
+<section class="learn" id="learn">
+<div class="container">
+<div class="section-label">THE CURRICULUM</div>
+<h2>The 3 Pathways to <span class="gold">Transformation</span></h2>
+<p class="sub">In 6 hours, you'll master the complete framework Joshua has developed over 10+ years and 3,500+ coaching sessions.</p>
+<div class="pathway">
+<div class="path-card">
+<div class="num">01</div>
+<div class="icon">🎯</div>
+<h3>The Destiny Pathway</h3>
+<ul>
+<li>Define your life's purpose with crystal clarity</li>
+<li>Create a compelling vision that pulls you forward</li>
+<li>Align your daily actions with your deepest values</li>
+<li>Stop living in reaction — start living deliberately</li>
+</ul>
+</div>
+<div class="path-card">
+<div class="num">02</div>
+<div class="icon">❤️</div>
+<h3>The Emotion Pathway</h3>
+<ul>
+<li>Master emotional intelligence and resilience</li>
+<li>Release repressed emotions at their biological root</li>
+<li>Feel good — for no good reason</li>
+<li>End the emotional loops that keep you stuck</li>
+</ul>
+</div>
+<div class="path-card">
+<div class="num">03</div>
+<div class="icon">🧠</div>
+<h3>The Thought Pathway</h3>
+<ul>
+<li>Reprogram limiting beliefs below conscious awareness</li>
+<li>Master your internal story — hero, not victim</li>
+<li>Install strategies that actually produce progress</li>
+<li>Create unshakeable confidence and motivation</li>
+</ul>
+</div>
+</div>
+<div class="agenda">
+<h3>The 6-Session Breakdown</h3>
+<div class="session-grid">
+<div class="session">
+<div class="time">SESSION 1</div>
+<h4>Commitment & Subconscious Success</h4>
+<p>Build the unshakeable foundation that makes all other change possible.</p>
+</div>
+<div class="session">
+<div class="time">SESSION 2</div>
+<h4>State Elicitation Script</h4>
+<p>Anchor powerful positive emotions into your mind and body on demand.</p>
+</div>
+<div class="session">
+<div class="time">SESSION 3</div>
+<h4>Emotional Mastery</h4>
+<p>Feel good for no good reason. Master your emotional state at will.</p>
+</div>
+<div class="session">
+<div class="time">SESSION 4</div>
+<h4>The Emotion Pathway</h4>
+<p>Understand how emotions are created, stored, and released in the body.</p>
+</div>
+<div class="session">
+<div class="time">SESSION 5</div>
+<h4>The Thought Pathway</h4>
+<p>Story, Strategy, State — the three pillars of mental mastery.</p>
+</div>
+<div class="session">
+<div class="time">SESSION 6</div>
+<h4>The Destiny Pathway</h4>
+<p>Create a compelling future and install the automatic habits to live it.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="testimonials" id="testimonials">
+<div class="container">
+<div class="section-label">REAL RESULTS</div>
+<h2>What People Are <span class="gold">Saying</span></h2>
+<p class="sub">From single parents to business owners to retirees — real people, real transformation.</p>
+<div class="testi-grid">
+<div class="testi">
+<div class="stars">★★★★★</div>
+<p>"Joshua teaches you how to feel better about yourself and how to be more positive. I just spent 2 full days with Josh and I can't thank him enough — I now have the tools to better myself. Thank you Josh!"</p>
+<div class="author">Sharman</div>
+<div class="role">Single Mum, Queensland</div>
+</div>
+<div class="testi">
+<div class="stars">★★★★★</div>
+<p>"I gained valuable insight as to why I was the way I was… and then, the tools to be able to change it! He explains everything so well. Simple and incredibly effective methods to disempower the 'yuk' stuff."</p>
+<div class="author">Kay</div>
+<div class="role">Queensland</div>
+</div>
+<div class="testi">
+<div class="stars">★★★★★</div>
+<p>"Really interesting, and left me wanting more. Excited to hear the hope for my future and to unleash the power I have within. The presentation was very clear and given in a very entertaining way."</p>
+<div class="author">Seminar Attendee</div>
+<div class="role">Live Event 2025</div>
+</div>
+<div class="testi">
+<div class="stars">★★★★★</div>
+<p>"I've been slow to pick up on some subconscious past events, but today's clarity was great. So either your presentation has improved or my belief shifted. My guess is both."</p>
+<div class="author">Phil</div>
+<div class="role">75, South Australia</div>
+</div>
+<div class="testi">
+<div class="stars">★★★★★</div>
+<p>"There's always a way forward. You can embrace life, have the internal capacity to embrace any challenge, and have that joy till your days. The past can be a place of reference. It doesn't have to be a place of residence."</p>
+<div class="author">Sanjay</div>
+<div class="role">Coach-in-Training, International Relocator</div>
+</div>
+<div class="testi">
+<div class="stars">★★★★★</div>
+<p>"The value you're giving in 6 hours... It's like winning the lottery. Just the value that you're offering, it's phenomenal. It's well worth at least 100 times what you paid for those other courses."</p>
+<div class="author">Sanjay</div>
+<div class="role">Certified Results Coach</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========== VALUE STACK (Russell Brunson style) ========== -->
+<section class="value-stack-section" id="value-stack">
+<div class="container">
+<div class="section-label">EVERYTHING YOU GET</div>
+<h2>Your Complete <span class="gold">Transformation Package</span></h2>
+<div class="stack-wrap">
+<div class="stack-item">
+<span class="name"><span class="check">✓</span> 6‑Hour Live Seminar — Part 1 (First 3 Hours)</span>
+<span class="value">$197</span>
+</div>
+<div class="stack-item">
+<span class="name"><span class="check">✓</span> 6‑Hour Live Seminar — Part 2 (Second 3 Hours)</span>
+<span class="value">$197</span>
+</div>
+<div class="stack-item">
+<span class="name"><span class="check">✓</span> State Elicitation Script (anchor emotions on demand)</span>
+<span class="value">$97</span>
+</div>
+<div class="stack-item">
+<span class="name"><span class="check">✓</span> Goal‑Setting Session (complete before the event)</span>
+<span class="value">$197</span>
+</div>
+<div class="stack-item">
+<span class="name"><span class="check">✓</span> NSR Quick‑Start Guide (your roadmap to continued growth)</span>
+<span class="value">$97</span>
+</div>
+<div class="stack-item">
+<span class="name"><span class="check">✓</span> 30‑Day Replay Access (watch, rewatch, integrate)</span>
+<span class="value">$97</span>
+</div>
+<div class="stack-item">
+<span class="name"><span class="check">✓</span> Private Community Access (connect with fellow transformers)</span>
+<span class="value">$97</span>
+</div>
+<div class="stack-total">
+<span class="total-label">TOTAL VALUE</span>
+<span class="total-value">$979 AUD</span>
+</div>
+<div class="stack-note">
+<strong>Your investment today: just $69 AUD</strong> — that’s <strong>92% off</strong> the total value!
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========== PRICING ========== -->
+<section class="pricing" id="pricing">
+<div class="container">
+<div class="pricing-card">
+<div class="pricing-label">LIMITED TIME OFFER</div>
+<h3>Unlock Your Incredible Self</h3>
+<div class="pricing-row">
+<span class="old">$397 AUD</span>
+<span class="new">$69</span>
+<span class="currency">AUD</span>
+</div>
+<div class="save-badge">SAVE 82% — TODAY ONLY</div>
+<a href="https://accessworldseminars-ship-it.github.io/results/purchaseunlock" class="btn-primary pulse-cta" style="font-size:18px;padding:20px 48px;display:inline-block">YES! SECURE MY SPOT NOW</a>
+<div class="guarantee">
+<span class="shield">🛡️</span>
+<span><strong>100% Satisfaction Guarantee</strong> — Attend the full seminar. If you don't feel you've gained immediately usable tools for transformation, full refund. No questions asked.</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="faq" id="faq">
+<div class="container">
+<div class="section-label">QUESTIONS?</div>
+<h2>Frequently Asked <span class="gold">Questions</span></h2>
+<div class="faq-item open">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this really live, or is it pre-recorded? <span class="plus">+</span></div>
+<div class="faq-a">This is a fully LIVE, interactive 6‑hour seminar hosted by Joshua Roy via Zoom. You'll have the opportunity to ask questions, participate in exercises, and engage with the community in real‑time. This is not a recording — Joshua is there with you, every step of the way.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if I can't attend the full 6 hours? <span class="plus">+</span></div>
+<div class="faq-a">No problem! Every attendee receives 30‑day replay access, so you can watch, pause, and rewatch any section. Many people prefer to absorb the content in chunks — the replay ensures you don't miss a thing.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this therapy or counselling? <span class="plus">+</span></div>
+<div class="faq-a">No. This is results coaching — a practical, forward‑focused approach to transformation. We don't dig through your past or relive trauma. We start from the premise that everything you need is already inside you, and we bring it out using proven tools and frameworks.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What time is it in my timezone? <span class="plus">+</span></div>
+<div class="faq-a"><strong>Friday, October 30, 2026:</strong><br>🇦🇺 Brisbane (AEST): 7:00 AM – 1:00 PM<br>🇦🇺 Sydney/Melbourne (AEDT): 8:00 AM – 2:00 PM<br>🇳🇿 New Zealand (NZDT): 10:00 AM – 4:00 PM<br>🇺🇸 USA Eastern (EDT): Thu, Oct 29 · 5:00 PM – 11:00 PM<br>🇺🇸 USA Central (CDT): 4:00 PM – 10:00 PM<br>🇺🇸 USA Pacific (PDT): 2:00 PM – 8:00 PM<br>🇮🇳 India (IST): 2:30 AM – 8:30 AM (Friday, Oct 30)</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does the 100% guarantee work? <span class="plus">+</span></div>
+<div class="faq-a">Simple. Attend the full seminar. If you complete it and don't feel you've gained valuable, immediately usable insights to transform your emotional well‑being and personal momentum, just email us within 7 days. We'll issue a full refund — no questions, no hoops, no hassle.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Who is this seminar for? <span class="plus">+</span></div>
+<div class="faq-a">This is for anyone who feels stuck in emotional loops, lacks consistent energy and motivation, or knows they're capable of more but can't seem to break through. If you're ready to stop living in reaction and start living on purpose — this is for you. If you want a quick fix without doing the work, this isn't.</div>
+</div>
+</div>
+</section>
+
+<!-- ========== FINAL CTA ========== -->
+<section class="final-cta" id="final-cta">
+<div class="container">
+<h2>The Version of You That <span class="gold">Wins</span> Is One Decision Away.</h2>
+<p>6 hours. One decision. A completely different relationship with your emotions, your energy, and your future. The only question is: <strong>are you ready?</strong></p>
+<a href="https://accessworldseminars-ship-it.github.io/results/purchaseunlock" class="btn-primary pulse-cta" style="font-size:20px;padding:22px 56px">SECURE MY SPOT — $69 AUD</a>
+<p style="margin-top:24px;font-size:14px;color:#888">🔒 Secure payment. 100% satisfaction guarantee. Instant confirmation.</p>
+</div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+<div class="container">
+<img src="https://i.ibb.co/spJSMY16/worldjjpgsf.png" alt="AccessWorld Seminars">
+<p>AccessWorld Seminars &copy; 2015-2026. All Rights Reserved. | Brisbane, Australia</p>
+<p style="margin-top:8px;font-size:12px">Results Coach & Seminar Leader | Creator of Nervous System Reprogramming (NSR)</p>
+</div>
+</footer>
+
+<script>
+// ========== COUNTDOWN TIMER ==========
+function updateCountdown(){
+const target=new Date('2026-10-29T21:00:00Z'); // Friday, Oct 30, 7:00 AM AEST (UTC+10)
+const now=new Date();
+const diff=target-now;
+if(diff<=0){
+document.querySelectorAll('.countdown').forEach(el=>el.innerHTML='<div style="font-family:Montserrat;font-size:24px;color:#d4af37;font-weight:900">THE EVENT HAS STARTED!</div>');
+document.getElementById('countdownMini').innerHTML='<span style="color:#d4af37;font-weight:700">STARTING NOW!</span>';
+return;
+}
+const d=Math.floor(diff/86400000);
+const h=Math.floor((diff%86400000)/3600000);
+const m=Math.floor((diff%3600000)/60000);
+const s=Math.floor((diff%60000)/1000);
+const ids=['cd-d','cd-h','cd-m','cd-s','cdm-d','cdm-h','cdm-m','cdm-s'];
+const vals=[d,h,m,s,d,h,m,s];
+for(let i=0;i<ids.length;i++){
+const el=document.getElementById(ids[i]);
+if(el)el.textContent=String(vals[i]).padStart(2,'0');
+}
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+// ========== STICKY BAR SHOW/HIDE ==========
+let lastScroll=0;
+const stickyBar=document.getElementById('stickyBar');
+window.addEventListener('scroll',()=>{
+const currentScroll=window.pageYOffset;
+if(currentScroll>400){
+if(currentScroll<lastScroll){
+stickyBar.classList.remove('hidden');
+}else if(currentScroll>lastScroll+5){
+stickyBar.classList.add('hidden');
+}
+}else{
+stickyBar.classList.add('hidden');
+}
+lastScroll=currentScroll;
+});
+stickyBar.classList.add('hidden');
+
+// ========== SCROLL ANIMATIONS ==========
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.style.animationPlayState='running';
+entry.target.classList.add('anim');
+}
+});
+},{threshold:.1});
+document.querySelectorAll('.prob-card,.path-card,.testi,.stack-item,.session').forEach(el=>{
+el.style.opacity='0';
+observer.observe(el);
+});
+</script>
+</body>
+</html>
