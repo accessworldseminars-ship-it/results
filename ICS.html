@@ -119,6 +119,11 @@
             transform: translateY(-3px);
         }
         
+        .btn-large {
+            padding: 18px 48px;
+            font-size: 1.2rem;
+        }
+        
         /* Header & Navigation */
         .main-nav {
             position: fixed;
@@ -219,11 +224,13 @@
             -webkit-text-fill-color: transparent;
         }
         
-      ...
-            <div class="coach-profile">
-           <img src="https://github.com/accessworldseminars-ship-it/results/blob/506874ab3e1c1adb8973930fa182afa09fc19d6f/JoshuaRoy.png?raw=true             
-        alt="Joshua Roy" class="profile-photo">
-               <div class="profile-info">
+        .coach-profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
         }
         
         .profile-photo {
@@ -252,9 +259,9 @@
             color: var(--text-gray);
         }
         
-        /* Diagnostic Quiz */
+        /* Diagnostic Container */
         .diagnostic-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             background: rgba(26, 43, 94, 0.5);
             border-radius: var(--radius);
@@ -263,6 +270,80 @@
             margin-bottom: 80px;
         }
         
+        /* Choice Screen */
+        .choice-screen {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .choice-screen h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .choice-screen .sub {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 650px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+        
+        .choice-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .choice-card {
+            background: rgba(15, 26, 61, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius);
+            padding: 40px 35px;
+            max-width: 380px;
+            flex: 1;
+            min-width: 280px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .choice-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .choice-card .icon {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+        
+        .choice-card h3 {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+        
+        .choice-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .choice-card .btn {
+            width: 100%;
+        }
+        
+        .choice-card .btn-secondary {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+        
+        /* Quiz Styles */
         .quiz-progress {
             margin-bottom: 40px;
         }
@@ -279,7 +360,7 @@
             height: 100%;
             background: linear-gradient(to right, var(--accent-gold), #e6c158);
             border-radius: 3px;
-            width: 8.33%; /* Start at 1/12 */
+            width: 8.33%;
             transition: width 0.5s ease;
         }
         
@@ -360,7 +441,7 @@
         /* Results Section */
         .results-section {
             display: none;
-            padding: 80px 0;
+            padding: 40px 0 80px;
         }
         
         .results-card {
@@ -435,6 +516,143 @@
             justify-content: center;
             flex-wrap: wrap;
             margin-top: 50px;
+        }
+        
+        /* Problem-to-Solution Map Styles */
+        .map-section {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .map-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .map-section .subtitle {
+            text-align: center;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .map-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: var(--text-gray);
+            line-height: 1.8;
+            padding: 0 20px;
+        }
+        
+        .map-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+        }
+        
+        .map-row {
+            display: grid;
+            grid-template-columns: 1fr 60px 1fr;
+            background-color: rgba(26, 43, 94, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 6px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .map-row:hover {
+            transform: translateX(4px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .problem-side {
+            padding: 1rem 1.5rem;
+            color: #f87171;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            text-align: right;
+            background: rgba(248, 113, 113, 0.05);
+        }
+        
+        .arrow-side {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted, #9ca3af);
+            font-size: 1.2rem;
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .map-row:hover .arrow-side {
+            color: var(--accent-gold);
+        }
+        
+        .solution-side {
+            padding: 1rem 1.5rem;
+            color: var(--text-main, #f3f4f6);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .solution-tag {
+            display: inline-block;
+            background: rgba(45, 212, 191, 0.1);
+            color: #2dd4bf;
+            padding: 0.2rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(45, 212, 191, 0.2);
+            white-space: nowrap;
+        }
+        
+        .solution-tag.core {
+            background: rgba(251, 191, 36, 0.1);
+            color: var(--accent-gold);
+            border-color: rgba(251, 191, 36, 0.3);
+        }
+        
+        .map-footer {
+            text-align: center;
+            color: var(--text-muted, #9ca3af);
+            font-size: 0.9rem;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 20px;
+        }
+        
+        .map-footer .highlight {
+            color: var(--accent-gold);
+        }
+        
+        /* Hidden states */
+        .hidden {
+            display: none !important;
+        }
+        
+        .quiz-container {
+            display: none;
+        }
+        
+        .quiz-container.active {
+            display: block;
+        }
+        
+        .results-container {
+            display: none;
+        }
+        
+        .results-container.active {
+            display: block;
         }
         
         /* Footer */
@@ -615,6 +833,36 @@
             .prescription-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .choice-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .choice-card {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .map-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .problem-side {
+                justify-content: flex-start;
+                text-align: left;
+                padding: 0.75rem 1rem;
+                border-bottom: 1px dashed rgba(255,255,255,0.1);
+            }
+            
+            .arrow-side {
+                display: none;
+            }
+            
+            .solution-side {
+                padding: 0.75rem 1rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -633,6 +881,10 @@
             .option-label {
                 padding: 15px;
             }
+            
+            .results-card {
+                padding: 30px 20px;
+            }
         }
         
         /* Animation */
@@ -645,10 +897,6 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
-        }
-        
-        .hidden {
-            display: none;
         }
     </style>
 </head>
@@ -691,7 +939,7 @@
         <div class="hero-content fade-in">
             <h1>Find Your Personal Coaching Path</h1>
             <p style="font-size: 1.3rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
-                Take this 12-question diagnostic to discover your root cause pattern and receive a personalized coaching prescription
+                Take the diagnostic quiz or skip straight to the solution map if you already know your challenges
             </p>
             
             <div class="coach-profile">
@@ -710,44 +958,84 @@
         </div>
     </section>
 
-    <!-- Diagnostic Quiz -->
+    <!-- Diagnostic Container -->
     <section class="container">
-        <div class="diagnostic-container fade-in">
-            <!-- Quiz Progress -->
-            <div class="quiz-progress">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
-                <div class="progress-text">
-                    <span>Question <span id="currentQuestion">1</span> of 12</span>
-                    <span id="progressPercentage">8%</span>
+        <div class="diagnostic-container fade-in" id="diagnosticContainer">
+            
+            <!-- CHOICE SCREEN -->
+            <div class="choice-screen" id="choiceScreen">
+                <h2>Do you need help identifying your challenges?</h2>
+                <p class="sub">
+                    If you're unsure about exactly what courses you need, what circumstances or challenges you're currently facing, 
+                    or if you can't put your particular challenges into a nutshell statement and diagnose yourself accurately — 
+                    it's a good idea to go through the quiz.
+                </p>
+                <p class="sub" style="margin-top: -15px; color: var(--accent-gold);">
+                    If you already know exactly what you want and what you need, you can bypass the quiz and go straight to the solution map.
+                </p>
+                
+                <div class="choice-buttons">
+                    <div class="choice-card" onclick="startQuiz()">
+                        <div class="icon"><i class="fas fa-question-circle"></i></div>
+                        <h3>Take the Quiz</h3>
+                        <p>Answer 12 questions to get a personalized coaching prescription and profile analysis.</p>
+                        <button class="btn btn-large">Start Quiz <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    
+                    <div class="choice-card" onclick="bypassQuiz()">
+                        <div class="icon"><i class="fas fa-map-signs"></i></div>
+                        <h3>I Already Know What I Need</h3>
+                        <p>Skip the quiz and go straight to the Problem-to-Solution Map to find courses for your specific challenges.</p>
+                        <button class="btn btn-large btn-secondary">View Solution Map <i class="fas fa-arrow-right"></i></button>
+                    </div>
                 </div>
             </div>
             
-            <!-- Questions Container -->
-            <div id="questionsContainer">
-                <!-- Questions will be dynamically inserted here -->
-            </div>
-            
-            <!-- Quiz Buttons -->
-            <div class="quiz-buttons">
-                <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()">
-                    <i class="fas fa-arrow-left"></i> Previous
-                </button>
-                <button class="btn" id="nextBtn" onclick="nextQuestion()">
-                    Next <i class="fas fa-arrow-right"></i>
-                </button>
-                <button class="btn hidden" id="submitBtn" onclick="submitQuiz()">
-                    Get My Results <i class="fas fa-chart-bar"></i>
-                </button>
+            <!-- QUIZ CONTAINER -->
+            <div class="quiz-container" id="quizContainer">
+                <!-- Quiz Progress -->
+                <div class="quiz-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>Question <span id="currentQuestion">1</span> of 12</span>
+                        <span id="progressPercentage">8%</span>
+                    </div>
+                </div>
+                
+                <!-- Questions Container -->
+                <div id="questionsContainer">
+                    <!-- Questions will be dynamically inserted here -->
+                </div>
+                
+                <!-- Quiz Buttons -->
+                <div class="quiz-buttons">
+                    <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button class="btn" id="nextBtn" onclick="nextQuestion()">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn hidden" id="submitBtn" onclick="submitQuiz()">
+                        Get My Results <i class="fas fa-chart-bar"></i>
+                    </button>
+                </div>
+                
+                <div style="text-align:center; margin-top:20px;">
+                    <button class="btn btn-secondary" onclick="goBackToChoice()" style="font-size:0.85rem; padding:10px 24px;">
+                        <i class="fas fa-arrow-left"></i> Back to Options
+                    </button>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Results Section (Initially Hidden) -->
-    <section class="results-section" id="resultsSection">
+    <!-- Results Section -->
+    <section class="results-container" id="resultsContainer">
         <div class="container">
-            <div class="results-card fade-in">
+            <!-- Profile Results Card -->
+            <div class="results-card fade-in" id="profileResultsCard">
                 <div class="results-icon">
                     <i class="fas fa-file-medical-alt"></i>
                 </div>
@@ -760,7 +1048,8 @@
                 </div>
             </div>
             
-            <div class="prescription-grid">
+            <!-- Prescription Cards -->
+            <div class="prescription-grid" id="prescriptionGrid">
                 <div class="prescription-card fade-in">
                     <h4><i class="fas fa-brain"></i> Your Primary Challenge</h4>
                     <p id="primaryChallenge">Loading...</p>
@@ -780,7 +1069,8 @@
                 </div>
             </div>
             
-            <div class="prescription-card fade-in">
+            <!-- Prescribed Programs -->
+            <div class="prescription-card fade-in" id="prescribedPrograms">
                 <h4><i class="fas fa-pills"></i> Prescribed Program Bundle</h4>
                 <ul class="program-list" id="programList">
                     <!-- Programs will be dynamically inserted here -->
@@ -789,16 +1079,54 @@
                     These programs work together to address your specific pattern at multiple levels.
                 </p>
             </div>
+
+            <!-- Problem-to-Solution Map -->
+            <div class="map-section fade-in" id="solutionMap">
+                <h2>There is a <span class="accent-text">Solution</span> to Every Problem</h2>
+                <p class="subtitle">"A problem well stated is a problem half solved."</p>
+                <div class="map-intro">
+                    <p>
+                        AccessWorld Seminars has a solution for you. Look for your problem below and see the courses that provide the solution.
+                        <br><br>
+                        <strong>Remember:</strong> Coaching is about resolving challenges. Once you've resolved challenges, it's also about the ability to <strong>catapult your life forward</strong>.
+                        We resolve, dissolve, and solve the issues of the past. Then we create a bright and compelling future vision and help you live into that.
+                    </p>
+                    <p style="margin-top: 15px; font-size: 1.05rem; color: var(--accent-gold);">
+                        <strong>Coaching is a two‑step process:</strong>
+                        <br>
+                        <span style="color: var(--text-gray);">1. Eliminating values conflicts, releasing repressed emotions, and dealing with limiting beliefs.</span>
+                        <br>
+                        <span style="color: var(--text-gray);">2. Creating a vision for your life — a bright and compelling future — and helping you to reach your goals faster through empowerment tools and practices.</span>
+                    </p>
+                </div>
+
+                <!-- Map Grid -->
+                <div class="map-grid" id="mapGrid">
+                    <!-- Dynamically generated from data -->
+                </div>
+
+                <div class="map-footer">
+                    <p><span class="highlight">⭐ Core offerings</span> appear in gold.</p>
+                    <p><em>"Knowledge is not information. It is application."</em></p>
+                </div>
+                
+                <div style="text-align:center; margin-top:30px;">
+                    <button class="btn btn-secondary" onclick="resetToChoice()">
+                        <i class="fas fa-arrow-left"></i> Back to Options
+                    </button>
+                </div>
+            </div>
             
-            <div class="action-buttons fade-in">
+            <!-- Action Buttons -->
+            <div class="action-buttons fade-in" id="actionButtons">
                 <a href="https://form.jotform.com/250184868189875" target="_blank" class="btn">
                     <i class="fas fa-calendar-alt"></i> Book Your Diagnostic Session
                 </a>
                 <a href="https://accessworldseminars-ship-it.github.io/results/webinars" target="_blank" class="btn btn-secondary">
                     <i class="fas fa-video"></i> Browse All Webinars
                 </a>
-                <button class="btn btn-secondary" onclick="resetQuiz()">
-                    <i class="fas fa-redo"></i> Retake Quiz
+                <button class="btn btn-secondary" onclick="resetToChoice()">
+                    <i class="fas fa-redo"></i> Start Over
                 </button>
             </div>
         </div>
@@ -869,7 +1197,7 @@
     </footer>
 
     <script>
-        // Quiz Data
+        // ========== QUIZ DATA ==========
         const quizQuestions = [
             {
                 question: "When you think about what's holding you back right now, what feeling surfaces first?",
@@ -993,7 +1321,7 @@
             }
         ];
 
-        // Profiles based on answer patterns
+        // Profiles
         const profiles = {
             anxiety: {
                 name: "The Overactive Protection System",
@@ -1075,12 +1403,41 @@
             }
         };
 
-        // Quiz State
+        // ========== MAP DATA ==========
+        const mapData = [
+            { problem: "Health crisis", solutions: ["Health Series", "⭐ Emotional Mastery Series"] },
+            { problem: "Workplace issues", solutions: ["⭐ Emotional Mastery Series", "Life Skills Series", "Relationship Series"] },
+            { problem: "Emptiness", solutions: ["Redesign Your Identity", "Ultimate Freedom", "Gratitude Webinar"] },
+            { problem: "Friendship problems", solutions: ["Communicate From the Heart", "Relationship Series"] },
+            { problem: "Failure", solutions: ["⭐ Emotional Mastery Series", "Stepping Into Wealth"] },
+            { problem: "Financial crisis", solutions: ["Stepping Into Wealth", "⭐ Emotional Mastery Series", "Master Your Memory"] },
+            { problem: "Career pressure", solutions: ["Stepping Into Wealth", "⭐ Emotional Mastery Series", "Health Series"] },
+            { problem: "Unfair treatment", solutions: ["⭐ Emotional Mastery Series", "Communicate From the Heart", "Relationship Series"] },
+            { problem: "Inner peace", solutions: ["Gratitude Webinar", "⭐ Emotional Mastery Series"] },
+            { problem: "Mental health issues", solutions: ["⭐ Emotional Mastery Series", "Life Skills Series", "Relationship Series"] },
+            { problem: "Breakup", solutions: ["Relationship Series", "⭐ Emotional Mastery Series", "Unlock Your Incredible Self"] },
+            { problem: "Relationship challenges", solutions: ["Relationship Series", "Life Skills Series", "⭐ Emotional Mastery Series"] },
+            { problem: "Domestic violence / abuse", solutions: ["⭐ Emotional Mastery Series", "Unlock Your Incredible Self", "Ultimate Freedom"] },
+            { problem: "I want more money", solutions: ["Stepping Into Wealth", "Unlock Your Incredible Self"] },
+            { problem: "I want a better relationship", solutions: ["Relationship Series"] },
+            { problem: "I want to attract a lover", solutions: ["The Chemistry of Love", "Communicate From the Heart"] },
+            { problem: "I want a better sex life", solutions: ["Pathway to Passion"] },
+            { problem: "I want more energy", solutions: ["Health Series", "Life Skills Series"] },
+            { problem: "Addiction challenges", solutions: ["⭐ Emotional Mastery Series", "Unlock Your Incredible Self"] },
+            { problem: "Laziness", solutions: ["Life Skills Series", "⭐ Emotional Mastery Series"] },
+            { problem: "Overwhelming fear", solutions: ["⭐ Emotional Mastery Series", "Unlock Your Incredible Self"] },
+            { problem: "Lack of confidence", solutions: ["⭐ Emotional Mastery Series", "Life Skills Series", "Relationship Series"] }
+        ];
+
+        // ========== QUIZ STATE ==========
         let currentQuestion = 0;
         let answers = new Array(12).fill(null);
         let answerCounts = { A: 0, B: 0, C: 0, D: 0, E: 0 };
 
-        // DOM Elements
+        // ========== DOM ELEMENTS ==========
+        const choiceScreen = document.getElementById('choiceScreen');
+        const quizContainer = document.getElementById('quizContainer');
+        const resultsContainer = document.getElementById('resultsContainer');
         const questionsContainer = document.getElementById('questionsContainer');
         const progressFill = document.getElementById('progressFill');
         const currentQuestionSpan = document.getElementById('currentQuestion');
@@ -1088,59 +1445,78 @@
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const submitBtn = document.getElementById('submitBtn');
-        const resultsSection = document.getElementById('resultsSection');
         const primaryChallenge = document.getElementById('primaryChallenge');
         const rootCause = document.getElementById('rootCause');
         const strategy = document.getElementById('strategy');
         const programList = document.getElementById('programList');
         const resultsContent = document.getElementById('resultsContent');
+        const mapGrid = document.getElementById('mapGrid');
 
-        // Initialize Quiz
+        // ========== NAVIGATION FUNCTIONS ==========
+        function startQuiz() {
+            choiceScreen.style.display = 'none';
+            quizContainer.classList.add('active');
+            initQuiz();
+        }
+
+        function bypassQuiz() {
+            choiceScreen.style.display = 'none';
+            quizContainer.classList.remove('active');
+            showResultsDirect();
+        }
+
+        function goBackToChoice() {
+            quizContainer.classList.remove('active');
+            resultsContainer.classList.remove('active');
+            choiceScreen.style.display = 'block';
+            // Reset quiz state
+            currentQuestion = 0;
+            answers = new Array(12).fill(null);
+            answerCounts = { A: 0, B: 0, C: 0, D: 0, E: 0 };
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetToChoice() {
+            resultsContainer.classList.remove('active');
+            choiceScreen.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ========== QUIZ FUNCTIONS ==========
         function initQuiz() {
             renderQuestion();
             updateProgress();
             updateButtons();
         }
 
-        // Render Current Question
         function renderQuestion() {
             const question = quizQuestions[currentQuestion];
-            
             let html = `
                 <div class="question-container">
                     <div class="question-number">QUESTION ${currentQuestion + 1}</div>
                     <h2 class="question-text">${question.question}</h2>
                     <div class="options-container">
             `;
-            
             question.options.forEach((option, index) => {
-                const optionLetter = String.fromCharCode(65 + index); // A, B, C, D, E
+                const optionLetter = String.fromCharCode(65 + index);
                 const isSelected = answers[currentQuestion] === optionLetter;
-                
                 html += `
                     <label class="option-label ${isSelected ? 'selected' : ''}" onclick="selectOption(${currentQuestion}, '${optionLetter}')">
-                        <input type="radio" 
-                               name="question${currentQuestion}" 
-                               value="${optionLetter}" 
-                               class="option-radio"
-                               ${isSelected ? 'checked' : ''}>
+                        <input type="radio" name="question${currentQuestion}" value="${optionLetter}" class="option-radio" ${isSelected ? 'checked' : ''}>
                         <span class="option-text">${option}</span>
                     </label>
                 `;
             });
-            
             html += '</div></div>';
             questionsContainer.innerHTML = html;
         }
 
-        // Select Option
         function selectOption(questionIndex, optionLetter) {
             answers[questionIndex] = optionLetter;
             renderQuestion();
             updateButtons();
         }
 
-        // Update Progress Bar
         function updateProgress() {
             const progress = ((currentQuestion + 1) / 12) * 100;
             progressFill.style.width = `${progress}%`;
@@ -1148,23 +1524,18 @@
             progressPercentage.textContent = `${Math.round(progress)}%`;
         }
 
-        // Update Button States
         function updateButtons() {
             prevBtn.classList.toggle('hidden', currentQuestion === 0);
-            
             const isLastQuestion = currentQuestion === 11;
             const hasAnswer = answers[currentQuestion] !== null;
-            
             nextBtn.classList.toggle('hidden', isLastQuestion);
             submitBtn.classList.toggle('hidden', !isLastQuestion || !hasAnswer);
-            
             if (isLastQuestion && hasAnswer) {
                 nextBtn.classList.add('hidden');
                 submitBtn.classList.remove('hidden');
             }
         }
 
-        // Next Question
         function nextQuestion() {
             if (currentQuestion < 11 && answers[currentQuestion] !== null) {
                 currentQuestion++;
@@ -1176,7 +1547,6 @@
             }
         }
 
-        // Previous Question
         function prevQuestion() {
             if (currentQuestion > 0) {
                 currentQuestion--;
@@ -1186,120 +1556,117 @@
             }
         }
 
-        // Submit Quiz
         function submitQuiz() {
-            // Check if all questions are answered
             const unanswered = answers.some(answer => answer === null);
             if (unanswered) {
                 alert("Please answer all questions before submitting.");
                 return;
             }
-            
-            // Count answers
             answerCounts = { A: 0, B: 0, C: 0, D: 0, E: 0 };
-            answers.forEach(answer => {
-                if (answer) answerCounts[answer]++;
-            });
-            
-            // Determine profile
+            answers.forEach(answer => { if (answer) answerCounts[answer]++; });
             const maxCount = Math.max(...Object.values(answerCounts));
-            let profileKey = 'integrated'; // Default
-            
+            let profileKey = 'integrated';
+            const profileMap = { A: 'anxiety', B: 'depletion', C: 'boundaries', D: 'disconnection', E: 'attachment' };
             for (const [key, value] of Object.entries(answerCounts)) {
-                if (value === maxCount) {
-                    const profileMap = { A: 'anxiety', B: 'depletion', C: 'boundaries', D: 'disconnection', E: 'attachment' };
-                    profileKey = profileMap[key];
-                    break;
-                }
+                if (value === maxCount) { profileKey = profileMap[key]; break; }
             }
-            
-            // If there's a tie, use integrated profile
             const tiedProfiles = Object.values(answerCounts).filter(count => count === maxCount);
-            if (tiedProfiles.length > 1) {
-                profileKey = 'integrated';
-            }
-            
-            // Show results
+            if (tiedProfiles.length > 1) profileKey = 'integrated';
             showResults(profileKey);
         }
 
-        // Show Results
+        // ========== RESULTS FUNCTIONS ==========
         function showResults(profileKey) {
             const profile = profiles[profileKey];
-            
-            // Update results content
+            quizContainer.classList.remove('active');
+            resultsContainer.classList.add('active');
             resultsContent.innerHTML = `
                 <h2 style="margin: 20px 0; color: var(--accent-gold);">${profile.name}</h2>
                 <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 30px;">${profile.description}</p>
             `;
-            
             primaryChallenge.textContent = profile.challenge;
             rootCause.textContent = profile.rootCause;
             strategy.textContent = profile.strategy;
-            
-            // Update program list
             programList.innerHTML = '';
             profile.programs.forEach(program => {
                 const li = document.createElement('li');
                 li.innerHTML = `<i class="fas fa-check-circle"></i> ${program}`;
                 programList.appendChild(li);
             });
-            
-            // Show results section
-            document.querySelector('.diagnostic-container').style.display = 'none';
-            resultsSection.style.display = 'block';
-            
-            // Scroll to results
+            renderMap();
             setTimeout(() => {
-                resultsSection.scrollIntoView({ behavior: 'smooth' });
-                triggerAnimations();
-            }, 300);
-        }
-
-        // Reset Quiz
-        function resetQuiz() {
-            currentQuestion = 0;
-            answers = new Array(12).fill(null);
-            answerCounts = { A: 0, B: 0, C: 0, D: 0, E: 0 };
-            
-            resultsSection.style.display = 'none';
-            document.querySelector('.diagnostic-container').style.display = 'block';
-            
-            initQuiz();
-            
-            // Scroll to top
+                resultsContainer.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+            }, 100);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Trigger animations
-        function triggerAnimations() {
+        function showResultsDirect() {
+            resultsContainer.classList.add('active');
+            // Show a generic message for bypass
+            resultsContent.innerHTML = `
+                <h2 style="margin: 20px 0; color: var(--accent-gold);">You Know What You Need — Let's Get Started</h2>
+                <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 30px;">
+                    Since you already know your challenges, explore the solution map below to find the right courses for your situation.
+                </p>
+            `;
+            primaryChallenge.textContent = "You've identified your own path forward.";
+            rootCause.textContent = "Self-aware and ready for direct action.";
+            strategy.textContent = "1. Browse Solutions → 2. Select Programs → 3. Begin Transformation";
+            programList.innerHTML = '';
+            // Show a message instead of specific programs
+            const li = document.createElement('li');
+            li.innerHTML = `<i class="fas fa-map-signs"></i> Browse the solution map below to find the right programs for your specific challenges.`;
+            programList.appendChild(li);
+            renderMap();
             setTimeout(() => {
-                document.querySelectorAll('.fade-in').forEach(el => {
-                    el.classList.add('visible');
-                });
+                resultsContainer.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
             }, 100);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Mobile menu toggle
+        // ========== MAP FUNCTIONS ==========
+        function renderMap() {
+            mapGrid.innerHTML = '';
+            mapData.forEach(item => {
+                const row = document.createElement('div');
+                row.className = 'map-row';
+                const problemDiv = document.createElement('div');
+                problemDiv.className = 'problem-side';
+                problemDiv.textContent = item.problem;
+                const arrowDiv = document.createElement('div');
+                arrowDiv.className = 'arrow-side';
+                arrowDiv.textContent = '➔';
+                const solutionDiv = document.createElement('div');
+                solutionDiv.className = 'solution-side';
+                item.solutions.forEach(solution => {
+                    const tag = document.createElement('span');
+                    const isCore = solution.includes('⭐');
+                    tag.className = isCore ? 'solution-tag core' : 'solution-tag';
+                    tag.textContent = solution;
+                    solutionDiv.appendChild(tag);
+                });
+                row.appendChild(problemDiv);
+                row.appendChild(arrowDiv);
+                row.appendChild(solutionDiv);
+                mapGrid.appendChild(row);
+            });
+        }
+
+        // ========== MOBILE MENU ==========
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
-        
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
-        
-        // Close mobile menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
-        
-        // Fade-in on scroll
+
+        // ========== FADE IN ON SCROLL ==========
         const fadeElements = document.querySelectorAll('.fade-in');
         const fadeInOnScroll = () => {
             fadeElements.forEach(element => {
@@ -1310,12 +1677,11 @@
                 }
             });
         };
-        
-        // Initialize
+        window.addEventListener('scroll', fadeInOnScroll);
         document.addEventListener('DOMContentLoaded', () => {
-            initQuiz();
             fadeInOnScroll();
-            window.addEventListener('scroll', fadeInOnScroll);
+            // Render map initially (hidden until shown)
+            renderMap();
         });
     </script>
 </body>
