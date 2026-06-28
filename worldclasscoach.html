@@ -38,8 +38,13 @@
 
     .hero-body{font-size:17px;color:rgba(250,247,240,.75);max-width:620px;line-height:1.85;margin:0 auto 44px;animation:fadeInUp 1s .35s ease both}
 
-    .hero-video-wrap{width:100%;max-width:800px;margin:0 auto 48px;animation:fadeInUp 1s .4s ease both;position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid rgba(201,168,76,.25);box-shadow:0 20px 80px rgba(0,0,0,.4);border-radius:4px;background:#000}
-    .hero-video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+    /* ── CLEAN VIDEO EMBED ── */
+    .hero-video-wrap{width:100%;max-width:800px;margin:0 auto 48px;animation:fadeInUp 1s .4s ease both;position:relative;border:1px solid rgba(201,168,76,.25);box-shadow:0 20px 80px rgba(0,0,0,.4);border-radius:8px;overflow:hidden;background:#000;cursor:pointer}
+    .hero-video-wrap .yt-thumb{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;transition:opacity .3s}
+    .hero-video-wrap .play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;background:rgba(201,168,76,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s;pointer-events:none}
+    .hero-video-wrap:hover .play-btn{transform:translate(-50%,-50%) scale(1.1);background:var(--gold-light)}
+    .hero-video-wrap .play-btn svg{width:28px;height:28px;fill:var(--navy);margin-left:4px}
+    .hero-video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:8px}
 
     /* COUNTDOWN */
     .countdown-wrap{animation:fadeInUp 1s .45s ease both;margin-bottom:44px;padding:24px 0;border-top:1px solid rgba(201,168,76,.15);border-bottom:1px solid rgba(201,168,76,.15)}
@@ -78,6 +83,7 @@
     .who-card h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--navy);margin-bottom:10px}
     .who-card p{font-size:14px;line-height:1.7;color:var(--mid)}
 
+    /* STORY with inline photos */
     .story{background:var(--navy);padding:100px 24px;position:relative;overflow:hidden}
     .story::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.08) 0%,transparent 70%);pointer-events:none}
     .story-inner{max-width:820px;margin:0 auto}
@@ -92,12 +98,11 @@
     .stat-num{font-family:'Bebas Neue',sans-serif;font-size:54px;color:var(--gold-light);letter-spacing:2px;line-height:1;display:block}
     .stat-label{font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(250,247,240,.5);margin-top:8px}
 
-    .gallery-section{background:var(--dark);padding:80px 24px 60px}
-    .gallery-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px}
-    .gallery-inner .full-width{grid-column:1/-1}
-    .gallery-img{width:100%;border-radius:4px;display:block;object-fit:cover;border:1px solid rgba(201,168,76,.15);transition:transform .4s}
-    .gallery-img:hover{transform:scale(1.01)}
-    .gallery-caption{text-align:center;grid-column:1/-1;color:rgba(250,247,240,.5);font-size:14px;margin-top:12px;font-style:italic}
+    /* Story photo floats */
+    .story-photo-right{float:right;width:260px;margin:0 0 28px 36px;border-radius:8px;border:2px solid rgba(201,168,76,.3);box-shadow:0 12px 40px rgba(0,0,0,.5);display:block;object-fit:cover;object-position:center top}
+    .story-photo-left{float:left;width:240px;margin:0 36px 28px 0;border-radius:8px;border:2px solid rgba(201,168,76,.3);box-shadow:0 12px 40px rgba(0,0,0,.5);display:block;object-fit:cover;object-position:center top}
+    .story-photo-caption{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,.6);margin-top:6px;display:block;font-style:italic}
+    .clearfix::after{content:'';display:table;clear:both}
 
     .learn{background:var(--dark);padding:100px 24px}
     .learn-inner{max-width:940px;margin:0 auto}
@@ -189,7 +194,6 @@
     .tz-date{font-size:12px;color:rgba(250,247,240,.5);margin-top:2px}
     .tz-check{color:#27ae60;font-size:14px;margin-left:4px}
 
-    /* VALUE STACK */
     .value-stack-section{background:var(--dark);padding:80px 24px;text-align:center;position:relative;overflow:hidden}
     .value-stack-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(201,168,76,.06) 0%,transparent 70%);border-radius:50%}
     .value-stack-section h2{font-size:clamp(32px,5vw,52px);font-family:'Cormorant Garamond',serif;font-weight:300;color:var(--cream);margin-bottom:14px}
@@ -208,7 +212,6 @@
     .stack-note strong{color:var(--gold-light);font-weight:700}
     .stack-note .highlight{color:#4CAF50;font-weight:700}
 
-    /* PRICING */
     .pricing{background:var(--dark);padding:80px 24px 100px;text-align:center;position:relative;overflow:hidden}
     .pricing::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(201,168,76,.12),transparent 60%);pointer-events:none}
     .pricing h2{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,6vw,66px);font-weight:300;color:var(--cream);margin-bottom:14px}
@@ -261,8 +264,7 @@
       .countdown-num{font-size:40px;min-width:58px;padding:8px 10px}
       .pricing-card{padding:48px 24px}
       .pricing-amount{font-size:70px}
-      .gallery-inner{grid-template-columns:1fr}
-      .hero-video-wrap{padding-bottom:56.25%}
+      .story-photo-right,.story-photo-left{float:none;width:100%;margin:0 0 24px 0}
     }
   </style>
 </head>
@@ -282,16 +284,18 @@
   <p class="hero-sub">Learn the tools of the trade — and become certified in the frameworks that have transformed thousands of lives.</p>
   <div class="hero-divider"></div>
 
-  <!-- Josh photo -->
   <div class="hero-photo-wrap">
     <img src="https://i.ibb.co/F4c0V58q/Screenshot-2025-12-12-162510.png" alt="Joshua Roy" class="hero-photo">
   </div>
 
   <p class="hero-body">For anyone who feels called to help others — but wants a proven methodology, real certification, and the confidence to coach at the highest level. Joshua Roy has spent over a decade in the trenches. In this training, he gives you everything.</p>
 
-  <!-- Intro video -->
-  <div class="hero-video-wrap">
-    <iframe src="https://www.youtube.com/embed/jtmJUqAzTIo?modestbranding=1&rel=0&hd=1" allowfullscreen loading="lazy" title="How to Become a World Class Coach — Joshua Roy"></iframe>
+  <!-- CLEAN VIDEO PANEL: thumbnail + click to load iframe -->
+  <div class="hero-video-wrap" id="videoWrap" onclick="loadVideo()" title="Watch intro video">
+    <img class="yt-thumb" id="ytThumb" src="https://img.youtube.com/vi/jtmJUqAzTIo/maxresdefault.jpg" alt="How to Become a World Class Coach — Joshua Roy" onerror="this.src='https://img.youtube.com/vi/jtmJUqAzTIo/hqdefault.jpg'">
+    <div class="play-btn">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </div>
   </div>
 
   <!-- COUNTDOWN TIMER -->
@@ -338,37 +342,37 @@
   </div>
 </section>
 
-<!-- WHO IS JOSH -->
+<!-- WHO IS JOSH — with inline photos woven into the text -->
 <section class="story">
   <div class="story-inner">
     <div class="section-tag">From Joshua Roy</div>
-    <h2>I didn't stumble into coaching.<br>I was <em>forged into it.</em></h2>
-    <p><strong>Twenty-four years as a Queensland Police Sergeant.</strong> Walking into scenes that would break most people. Running a nervous system on overdrive. Watching strong, capable people collapse from the inside out — and asking myself: why does this happen, and what can actually fix it?</p>
-    <p>That question sent me on a decade-long journey. I invested <strong>over $100,000 in the world's best training programs.</strong> I studied NLP, neurological repatterning, emotional mastery, unconscious mind techniques, and nervous system reprogramming. I built something nobody taught me — because nothing I found was complete enough on its own.</p>
+    <h2>I didn't stumble into coaching.<br>I was <em>broken into it.</em></h2>
+
+    <!-- Photo 1: floated right alongside opening paragraphs -->
+    <div class="clearfix">
+      <img src="https://i.ibb.co/XrdwbfY7/IMG-1262.jpg" alt="Joshua Roy as a young man" class="story-photo-right" style="height:300px;">
+      <p>My marriage ended. My children rejected me. I was a Queensland Police Sergeant who could handle anything the job threw at me — and I couldn't hold my own family together. The pain of that season didn't care about my rank, my discipline, or my training. It went straight through all of it.</p>
+      <p>That's when I started asking the question that changed everything: why do strong people collapse from the inside out — and what can actually fix it? Not bandaid it. Not manage it. <strong>Fix it.</strong></p>
+    </div>
+
+    <!-- Photo 2: floated left alongside the journey paragraphs -->
+    <div class="clearfix">
+      <img src="https://i.ibb.co/Cs9QFSnF/23905360-10155857231059785-7730782653856996330-n.jpg" alt="Joshua Roy" class="story-photo-left" style="height:280px;">
+      <p>That question sent me on a decade-long journey. I invested <strong>over $100,000 in the world's best training programs.</strong> I studied NLP, neurological repatterning, emotional mastery, unconscious mind techniques, and nervous system reprogramming. I built something nobody taught me — because nothing I found was complete enough on its own.</p>
+      <p><strong>Twenty-four years as a Queensland Police Sergeant.</strong> Walking into scenes that would break most people. Running a nervous system on overdrive. Watching strong, capable people collapse from the inside out — and carrying their pain alongside my own.</p>
+    </div>
+
     <div class="pull-quote">
       <p>Over 3,500 one-on-one coaching sessions. 900+ seminars. An international audience. One obsessive commitment to finding what actually works — and teaching it to the right people.</p>
     </div>
+
     <p>Now I train coaches. I pass on the entire methodology — the frameworks, the tools, the live techniques — so they can go out and do what I've spent a decade building the capacity to do. <strong>If you feel called to this work, I want to be the person who hands you the map.</strong></p>
+
     <div class="stats-row reveal">
       <div class="stat-block"><span class="stat-num">3,500+</span><span class="stat-label">1-on-1 Coaching Sessions</span></div>
       <div class="stat-block"><span class="stat-num">900+</span><span class="stat-label">Seminars Delivered</span></div>
       <div class="stat-block"><span class="stat-num">$100K+</span><span class="stat-label">Invested in Training</span></div>
     </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section class="gallery-section">
-  <div class="gallery-inner">
-    <div class="full-width">
-      <img src="https://i.ibb.co/21Hpwm1x/Screenshot-2025-11-24-063153.png" alt="How to become a World Class Coach" class="gallery-img" style="max-height:380px;object-fit:cover;">
-    </div>
-    <img src="https://i.ibb.co/XrdwbfY7/IMG-1262.jpg" alt="Joshua Roy as a young man" class="gallery-img" style="max-height:320px;object-fit:cover;object-position:top;">
-    <img src="https://i.ibb.co/Cs9QFSnF/23905360-10155857231059785-7730782653856996330-n.jpg" alt="Joshua and Rebecca in Perth" class="gallery-img" style="max-height:320px;object-fit:cover;">
-    <div class="full-width">
-      <img src="https://i.ibb.co/d42pX1rd/Screenshot-2025-12-18-145326.png" alt="Joshua Roy Karate Champion" class="gallery-img" style="max-height:340px;object-fit:cover;object-position:top;">
-    </div>
-    <div class="gallery-caption">From left to right: Joshua as a young man, with his wife Rebecca, and as Australian Karate Champion at 16.</div>
   </div>
 </section>
 
@@ -554,29 +558,12 @@
   <h2>What You Get When You<br><span class="gold">Enrol Today</span></h2>
   <p class="sub">We've packed this offer with everything you need to launch your coaching career with confidence.</p>
   <div class="stack-wrap reveal">
-    <div class="stack-item">
-      <span class="name"><span class="check">✓</span> 3‑Hour Live Training with Joshua</span>
-      <span class="value">$397</span>
-    </div>
-    <div class="stack-item">
-      <span class="name"><span class="check">✓</span> Comprehensive Guide to Creating a Coaching Program</span>
-      <span class="value">$197</span>
-    </div>
-    <div class="stack-item">
-      <span class="name"><span class="check">✓</span> First Session of the 6‑Session Series (Turn Discovery Calls into $3,000+ Clients)</span>
-      <span class="value">$297</span>
-    </div>
-    <div class="stack-item">
-      <span class="name"><span class="check">✓</span> Morning Routine Training Video (Build the Character to Inspire Others)</span>
-      <span class="value">$97</span>
-    </div>
-    <div class="stack-total">
-      <span class="total-label">Total Value</span>
-      <span class="total-value">$988 AUD</span>
-    </div>
-    <div class="stack-note">
-      <strong>Your investment today: just $49 AUD</strong> — that’s <span class="highlight">95% off</span> the total value!
-    </div>
+    <div class="stack-item"><span class="name"><span class="check">✓</span> 3‑Hour Live Training with Joshua</span><span class="value">$397</span></div>
+    <div class="stack-item"><span class="name"><span class="check">✓</span> Comprehensive Guide to Creating a Coaching Program</span><span class="value">$197</span></div>
+    <div class="stack-item"><span class="name"><span class="check">✓</span> First Session of the 6‑Session Series (Turn Discovery Calls into $3,000+ Clients)</span><span class="value">$297</span></div>
+    <div class="stack-item"><span class="name"><span class="check">✓</span> Morning Routine Training Video (Build the Character to Inspire Others)</span><span class="value">$97</span></div>
+    <div class="stack-total"><span class="total-label">Total Value</span><span class="total-value">$988 AUD</span></div>
+    <div class="stack-note"><strong>Your investment today: just $49 AUD</strong> — that's <span class="highlight">95% off</span> the total value!</div>
   </div>
 </section>
 
@@ -584,7 +571,7 @@
 <section class="pricing" id="pricing">
   <div class="section-tag" style="color:var(--gold)">Your Investment</div>
   <h2>World class skills at a<br><em>fraction of the cost.</em></h2>
-  <p class="pricing-sub">Joshua deliberately makes this accessible — because the world needs more coaches who can actually do this work. Here's what that looks like.</p>
+  <p class="pricing-sub">Joshua deliberately makes this accessible — because the world needs more coaches who can actually do this work.</p>
   <div class="pricing-card reveal">
     <div class="pricing-was">Value $988 AUD</div>
     <div class="pricing-now">
@@ -593,25 +580,11 @@
       <span class="pricing-currency">AUD</span>
     </div>
     <div class="pricing-value">First 100 seats only · Price rises after</div>
-
     <div class="pricing-tiers">
-      <div class="pricing-tier active">
-        <span>🏆 Seats 1–100</span>
-        <span style="color:var(--gold-light);font-weight:700">$49 AUD</span>
-        <span class="pricing-tier-label">+ Bonus Gifts</span>
-      </div>
-      <div class="pricing-tier">
-        <span>Seats 101–200</span>
-        <span>$99 AUD</span>
-        <span class="pricing-tier-label">No Bonus Gifts</span>
-      </div>
-      <div class="pricing-tier">
-        <span>Seats 201–300</span>
-        <span>$149 AUD</span>
-        <span class="pricing-tier-label">No Bonus Gifts</span>
-      </div>
+      <div class="pricing-tier active"><span>🏆 Seats 1–100</span><span style="color:var(--gold-light);font-weight:700">$49 AUD</span><span class="pricing-tier-label">+ Bonus Gifts</span></div>
+      <div class="pricing-tier"><span>Seats 101–200</span><span>$99 AUD</span><span class="pricing-tier-label">No Bonus Gifts</span></div>
+      <div class="pricing-tier"><span>Seats 201–300</span><span>$149 AUD</span><span class="pricing-tier-label">No Bonus Gifts</span></div>
     </div>
-
     <div class="pricing-includes">
       <div class="pricing-item">Full 3-hour live coaching training with Joshua Roy</div>
       <div class="pricing-item">Complete NLP &amp; NSR methodology frameworks</div>
@@ -622,7 +595,6 @@
       <div class="pricing-item">Bonus gifts for first 100 seats</div>
       <div class="pricing-item">Recording of highlights to listen, learn &amp; implement fully</div>
     </div>
-
     <div class="guarantee">
       <div class="guarantee-icon">🛡️</div>
       <div class="guarantee-text">
@@ -630,10 +602,7 @@
         <p>If you don't walk away with immediately applicable coaching tools that improve your practice — reach out after the event for a full refund. No questions asked.</p>
       </div>
     </div>
-
-    <a href="https://accessworldseminars-ship-it.github.io/results/purchasewccoach" class="btn-primary wide" target="_blank" rel="noopener">
-      Yes — I'm Ready to Become a World Class Coach
-    </a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/purchasewccoach" class="btn-primary wide" target="_blank" rel="noopener">Yes — I'm Ready to Become a World Class Coach</a>
     <div class="pricing-divider"></div>
     <p class="pricing-fine">Secure payment · Instant access to event link · Limited seats available</p>
   </div>
@@ -654,48 +623,45 @@
 </footer>
 
 <script>
-  // ── COUNTDOWN TIMER: JULY 10, 2026 — 8:00 AM AEST ──
-  function startCountdown() {
-    const targetDate = new Date('2026-07-10T08:00:00+10:00'); // AEST is UTC+10
+  // ── CLICK-TO-PLAY VIDEO ──
+  function loadVideo() {
+    const wrap = document.getElementById('videoWrap');
+    wrap.innerHTML = '<iframe src="https://www.youtube.com/embed/jtmJUqAzTIo?autoplay=1&modestbranding=1&rel=0&hd=1" allowfullscreen allow="autoplay" loading="lazy" title="How to Become a World Class Coach — Joshua Roy"></iframe>';
+    wrap.style.cursor = 'default';
+    // Set explicit 16:9 height now that iframe is live
+    wrap.style.aspectRatio = '16/9';
+  }
 
+  // ── COUNTDOWN TIMER ──
+  function startCountdown() {
+    const targetDate = new Date('2026-07-10T08:00:00+10:00');
     function updateTimer() {
       const now = new Date();
       const distance = targetDate - now;
-
       if (distance < 0) {
-        document.getElementById('countdown').innerHTML = 
-          '<div class="countdown-ended">🚀 The Event Has Started! Join Now.</div>';
+        document.getElementById('countdown').innerHTML = '<div class="countdown-ended">🚀 The Event Has Started! Join Now.</div>';
         return;
       }
-
       const days = Math.floor(distance / 86400000);
       const hours = Math.floor((distance % 86400000) / 3600000);
       const minutes = Math.floor((distance % 3600000) / 60000);
       const seconds = Math.floor((distance % 60000) / 1000);
-
-      document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
-      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-      document.getElementById('cd-mins').textContent = String(minutes).padStart(2, '0');
-      document.getElementById('cd-secs').textContent = String(seconds).padStart(2, '0');
+      document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+      document.getElementById('cd-mins').textContent = String(minutes).padStart(2,'0');
+      document.getElementById('cd-secs').textContent = String(seconds).padStart(2,'0');
     }
-
     updateTimer();
     setInterval(updateTimer, 1000);
   }
-
-  // ── RUN COUNTDOWN ──
   startCountdown();
 
   // ── SCROLL REVEAL ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
     });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
