@@ -344,6 +344,13 @@
         }
         
         /* Quiz Styles */
+        .quiz-container {
+            display: none;
+        }
+        .quiz-container.active {
+            display: block;
+        }
+        
         .quiz-progress {
             margin-bottom: 40px;
         }
@@ -439,8 +446,14 @@
         }
         
         /* Results Section */
-        .results-section {
+        .results-container {
             display: none;
+        }
+        .results-container.active {
+            display: block;
+        }
+        
+        .results-section {
             padding: 40px 0 80px;
         }
         
@@ -586,7 +599,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-muted, #9ca3af);
+            color: #9ca3af;
             font-size: 1.2rem;
             background: rgba(255,255,255,0.02);
         }
@@ -597,7 +610,7 @@
         
         .solution-side {
             padding: 1rem 1.5rem;
-            color: var(--text-main, #f3f4f6);
+            color: #f3f4f6;
             display: flex;
             align-items: center;
             flex-wrap: wrap;
@@ -623,7 +636,7 @@
         
         .map-footer {
             text-align: center;
-            color: var(--text-muted, #9ca3af);
+            color: #9ca3af;
             font-size: 0.9rem;
             margin-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.05);
@@ -637,22 +650,6 @@
         /* Hidden states */
         .hidden {
             display: none !important;
-        }
-        
-        .quiz-container {
-            display: none;
-        }
-        
-        .quiz-container.active {
-            display: block;
-        }
-        
-        .results-container {
-            display: none;
-        }
-        
-        .results-container.active {
-            display: block;
         }
         
         /* Footer */
@@ -766,12 +763,10 @@
             .hero-content h1 {
                 font-size: 2.8rem;
             }
-            
             .coach-profile {
                 flex-direction: column;
                 text-align: center;
             }
-            
             .profile-info {
                 text-align: center;
             }
@@ -783,83 +778,67 @@
                 gap: 15px;
                 padding: 15px;
             }
-            
             .nav-links {
                 flex-direction: column;
                 gap: 10px;
                 width: 100%;
                 display: none;
             }
-            
             .nav-links.active {
                 display: flex;
             }
-            
             .mobile-menu-btn {
                 display: block;
                 position: absolute;
                 right: 15px;
                 top: 15px;
             }
-            
             .hero-header {
                 padding: 150px 0 80px;
                 margin-top: 130px;
             }
-            
             .hero-content h1 {
                 font-size: 2.2rem;
             }
-            
             .diagnostic-container {
                 padding: 30px 20px;
             }
-            
             .quiz-buttons {
                 flex-direction: column;
                 gap: 15px;
             }
-            
             .action-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            
             .action-buttons .btn {
                 width: 100%;
                 max-width: 300px;
             }
-            
             .prescription-grid {
                 grid-template-columns: 1fr;
             }
-            
             .choice-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            
             .choice-card {
                 max-width: 100%;
                 width: 100%;
             }
-            
             .map-row {
                 grid-template-columns: 1fr;
                 gap: 0;
             }
-            
             .problem-side {
                 justify-content: flex-start;
                 text-align: left;
                 padding: 0.75rem 1rem;
                 border-bottom: 1px dashed rgba(255,255,255,0.1);
             }
-            
             .arrow-side {
                 display: none;
             }
-            
             .solution-side {
                 padding: 0.75rem 1rem;
             }
@@ -869,19 +848,15 @@
             .hero-header {
                 padding: 130px 0 60px;
             }
-            
             .hero-content h1 {
                 font-size: 1.8rem;
             }
-            
             .question-text {
                 font-size: 1.1rem;
             }
-            
             .option-label {
                 padding: 15px;
             }
-            
             .results-card {
                 padding: 30px 20px;
             }
@@ -904,7 +879,7 @@
     <!-- Main Navigation -->
     <nav class="main-nav">
         <div class="nav-logo">
-            <img src="https://github.com/accessworldseminars-ship-it/results/blob/2fcfdae671b699ec0b578911336fcc3ffc346532/worldjjpgsf.png?raw=true" alt="AccessWorld Logo">
+            <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Logo">
             <span>ACCESSWORLD</span>
         </div>
         
@@ -913,11 +888,11 @@
         </button>
         
         <div class="nav-links" id="navLinks">
-            <a href="index.html">
+            <a href="https://accessworldseminars-ship-it.github.io/results/">
                 <i class="fas fa-home"></i> Home
             </a>
-            <a href="find-my-path.html" class="active">
-                <i class="fas fa-search"></i> Diagnostic Quiz
+            <a href="https://accessworldseminars-ship-it.github.io/results/ICS" class="active">
+                <i class="fas fa-compass"></i> Find Your Path
             </a>
             <a href="https://form.jotform.com/250184868189875" target="_blank">
                 <i class="fas fa-calendar-check"></i> Free Strategy Call
@@ -1135,7 +1110,7 @@
     <!-- Navigation -->
     <div class="container">
         <div class="nav-buttons">
-            <a href="index.html" class="nav-button">
+            <a href="https://accessworldseminars-ship-it.github.io/results/" class="nav-button">
                 <i class="fas fa-home"></i> Back to Home Page
             </a>
             <a href="https://form.jotform.com/250184868189875" target="_blank" class="nav-button">
@@ -1164,7 +1139,7 @@
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
-                    <a href="index.html">Home Page</a>
+                    <a href="https://accessworldseminars-ship-it.github.io/results/">Home Page</a>
                     <a href="https://form.jotform.com/250184868189875" target="_blank">Free Strategy Call</a>
                     <a href="https://accessworldseminars-ship-it.github.io/results/webinars" target="_blank">Webinar Library</a>
                     <a href="https://accessworldseminars-ship-it.github.io/results/BecomeACoach" target="_blank">Coach Academy</a>
@@ -1469,7 +1444,6 @@
             quizContainer.classList.remove('active');
             resultsContainer.classList.remove('active');
             choiceScreen.style.display = 'block';
-            // Reset quiz state
             currentQuestion = 0;
             answers = new Array(12).fill(null);
             answerCounts = { A: 0, B: 0, C: 0, D: 0, E: 0 };
@@ -1602,7 +1576,6 @@
 
         function showResultsDirect() {
             resultsContainer.classList.add('active');
-            // Show a generic message for bypass
             resultsContent.innerHTML = `
                 <h2 style="margin: 20px 0; color: var(--accent-gold);">You Know What You Need — Let's Get Started</h2>
                 <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 30px;">
@@ -1613,7 +1586,6 @@
             rootCause.textContent = "Self-aware and ready for direct action.";
             strategy.textContent = "1. Browse Solutions → 2. Select Programs → 3. Begin Transformation";
             programList.innerHTML = '';
-            // Show a message instead of specific programs
             const li = document.createElement('li');
             li.innerHTML = `<i class="fas fa-map-signs"></i> Browse the solution map below to find the right programs for your specific challenges.`;
             programList.appendChild(li);
@@ -1680,7 +1652,6 @@
         window.addEventListener('scroll', fadeInOnScroll);
         document.addEventListener('DOMContentLoaded', () => {
             fadeInOnScroll();
-            // Render map initially (hidden until shown)
             renderMap();
         });
     </script>
