@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch-House Medical Management Assessment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff;
+            margin: 40px auto;
+            max-width: 900px;
+            padding: 20px;
+            color: #1a1a1a;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .logo-placeholder {
+            display: inline-block;
+            border: 2px dashed #999;
+            padding: 15px 40px;
+            color: #666;
+            font-size: 14px;
+            background: #f5f5f5;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .header h1 {
+            color: #003366;
+            margin: 10px 0 5px;
+            font-size: 28px;
+        }
+        .header h2 {
+            color: #003366;
+            font-weight: normal;
+            margin: 0;
+            font-size: 18px;
+        }
+        .header p {
+            color: #555;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .official-badge {
+            display: inline-block;
+            background: #003366;
+            color: #fff;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+        .instructions {
+            background: #eaf4ff;
+            border-left: 5px solid #003366;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+        }
+        .instructions strong {
+            color: #003366;
+        }
+        .candidate-info {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 25px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 30px;
+        }
+        .candidate-info label {
+            font-weight: bold;
+            color: #003366;
+        }
+        .candidate-info span {
+            display: inline-block;
+            border-bottom: 1px solid #999;
+            min-width: 200px;
+            padding: 0 5px;
+        }
+        .question {
+            margin-bottom: 22px;
+            padding: 15px 20px;
+            background: #fafafa;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+        .question p {
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            color: #003366;
+        }
+        .question label {
+            display: block;
+            margin: 6px 0 6px 20px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .question input[type="radio"] {
+            margin-right: 10px;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #003366;
+            font-size: 13px;
+            color: #555;
+            text-align: center;
+        }
+        .footer .motto {
+            font-style: italic;
+            color: #003366;
+            font-weight: bold;
+        }
+        .assessor-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .assessor-section table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .assessor-section td {
+            padding: 8px 10px;
+            vertical-align: top;
+        }
+        .signature-line {
+            border-bottom: 1px solid #333;
+            min-width: 150px;
+            display: inline-block;
+            padding: 0 10px;
+        }
+        .result-box {
+            display: inline-block;
+            padding: 5px 25px;
+            border: 2px solid #333;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+        button {
+            background: #003366;
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background: #004080;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 6px;
+            display: none;
+        }
+        .pass { background: #d4edda; color: #155724; border: 1px solid #28a745; }
+        .fail { background: #f8d7da; color: #721c24; border: 1px solid #dc3545; }
+        .review { margin-top: 15px; font-weight: normal; }
+        .correct { color: #155724; }
+        .incorrect { color: #721c24; }
+        @media print {
+            button { display: none; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <!-- === LOGO PLACEHOLDER === -->
+    <div class="logo-placeholder">
+        ⚔️ [INSERT OFFICIAL QPS LOGO HERE]<br>
+        <span style="font-size:11px;color:#999;">Obtain from police.qld.gov.au</span>
+    </div>
+    <!-- ======================== -->
+
+    <h1>WATCH-HOUSE MEDICAL MANAGEMENT</h1>
+    <h2>OFFICIAL COMPETENCY ASSESSMENT</h2>
+    <div class="official-badge">★ QUEENSLAND POLICE SERVICE ★</div>
+    <p style="margin-top:8px;font-size:13px;">For Incoming Watchhouse Officers</p>
+</div>
+
+<div class="instructions">
+    <strong>PASS MARK:</strong> 100% (10/10 Correct Required) &nbsp;|&nbsp; <strong>TIME:</strong> 30 Minutes &nbsp;|&nbsp; <strong>TYPE:</strong> Closed Book
+</div>
+
+<div class="candidate-info">
+    <div><label>Candidate Name:</label> <span>&nbsp;</span></div>
+    <div><label>Date:</label> <span>&nbsp;</span></div>
+    <div><label>Station/Unit:</label> <span>&nbsp;</span></div>
+    <div><label>Assessor Name:</label> <span>&nbsp;</span></div>
+</div>
+
+<form id="quizForm">
+
+    <div class="question">
+        <p>1. When a prisoner has received medical treatment prior to being transferred into your custody, what is the first thing you should request?</p>
+        <label><input type="radio" name="q1" value="A"> A. The prisoner's medication only</label>
+        <label><input type="radio" name="q1" value="B"> B. Medical history, QP 0856 and any relevant medical documents</label>
+        <label><input type="radio" name="q1" value="C"> C. A statement from family members</label>
+        <label><input type="radio" name="q1" value="D"> D. Nothing if the prisoner appears well</label>
+    </div>
+
+    <div class="question">
+        <p>2. A professional healthcare provider attends the watch-house to assess a prisoner. Which information should be provided?</p>
+        <label><input type="radio" name="q2" value="A"> A. QPRIME Risk Assessment only</label>
+        <label><input type="radio" name="q2" value="B"> B. Prisoner Running Log only</label>
+        <label><input type="radio" name="q2" value="C"> C. All available medical information, including relevant risk assessments and logs</label>
+        <label><input type="radio" name="q2" value="D"> D. No information due to confidentiality</label>
+    </div>
+
+    <div class="question">
+        <p>3. A prisoner complains of chest pain while in custody. What should be your immediate priority?</p>
+        <label><input type="radio" name="q3" value="A"> A. Wait to see if symptoms improve</label>
+        <label><input type="radio" name="q3" value="B"> B. Complete paperwork before taking action</label>
+        <label><input type="radio" name="q3" value="C"> C. Seek urgent medical assessment and notify appropriate supervisors</label>
+        <label><input type="radio" name="q3" value="D"> D. Place the prisoner in a cell and continue observations</label>
+    </div>
+
+    <div class="question">
+        <p>4. Who is responsible for completing Part A of the QP 0856 when a prisoner requires transfer from a watch-house to a medical facility?</p>
+        <label><input type="radio" name="q4" value="A"> A. Escorting officer</label>
+        <label><input type="radio" name="q4" value="B"> B. Medical practitioner</label>
+        <label><input type="radio" name="q4" value="C"> C. Watch-house manager</label>
+        <label><input type="radio" name="q4" value="D"> D. Prosecutor</label>
+    </div>
+
+    <div class="question">
+        <p>5. Before a prisoner is returned from hospital to a watch-house, officers must ensure:</p>
+        <label><input type="radio" name="q5" value="A"> A. Family have visited</label>
+        <label><input type="radio" name="q5" value="B"> B. The doctor has completed and signed Part C of the QP 0856</label>
+        <label><input type="radio" name="q5" value="C"> C. The prisoner agrees to return</label>
+        <label><input type="radio" name="q5" value="D"> D. Court staff are notified</label>
+    </div>
+
+    <div class="question">
+        <p>6. If a prisoner attempts self-harm, the first officer on scene should:</p>
+        <label><input type="radio" name="q6" value="A"> A. Ignore the behaviour if injuries are minor</label>
+        <label><input type="radio" name="q6" value="B"> B. Secure the situation, seek assistance, render aid and notify supervisors</label>
+        <label><input type="radio" name="q6" value="C"> C. Wait for the next shift to deal with it</label>
+        <label><input type="radio" name="q6" value="D"> D. Immediately charge the prisoner with property damage</label>
+    </div>
+
+    <div class="question">
+        <p>7. When escorting or guarding a prisoner in hospital, officers must:</p>
+        <label><input type="radio" name="q7" value="A"> A. Conduct ongoing risk assessments and document significant changes</label>
+        <label><input type="radio" name="q7" value="B"> B. Remove all supervision once treatment begins</label>
+        <label><input type="radio" name="q7" value="C"> C. Leave risk management to hospital staff</label>
+        <label><input type="radio" name="q7" value="D"> D. Only update records at the end of the shift</label>
+    </div>
+
+    <div class="question">
+        <p>8. A prisoner appears mentally ill and may require treatment. What should the watch-house manager arrange first?</p>
+        <label><input type="radio" name="q8" value="A"> A. Immediate release from custody</label>
+        <label><input type="radio" name="q8" value="B"> B. A doctor or authorised mental health practitioner examination</label>
+        <label><input type="radio" name="q8" value="C"> C. Transfer to prison</label>
+        <label><input type="radio" name="q8" value="D"> D. Court appearance</label>
+    </div>
+
+    <div class="question">
+        <p>9. Which of the following should always occur during a handover between escorting or guarding officers?</p>
+        <label><input type="radio" name="q9" value="A"> A. Risk and safety concerns should be fully discussed</label>
+        <label><input type="radio" name="q9" value="B"> B. Only medical concerns should be discussed</label>
+        <label><input type="radio" name="q9" value="C"> C. No handover is required if notes are completed</label>
+        <label><input type="radio" name="q9" value="D"> D. The prisoner should conduct the briefing</label>
+    </div>
+
+    <div class="question">
+        <p>10. What simple principle should guide watch-house officers responding to medical issues?</p>
+        <label><input type="radio" name="q10" value="A"> A. Wait and observe whenever possible</label>
+        <label><input type="radio" name="q10" value="B"> B. Health concerns are primarily the prisoner's responsibility</label>
+        <label><input type="radio" name="q10" value="C"> C. Treat all medical complaints seriously, seek medical advice early, monitor continuously and document everything</label>
+        <label><input type="radio" name="q10" value="D"> D. Medical issues only require action if an ambulance is called</label>
+    </div>
+
+    <button type="button" onclick="gradeQuiz()">Submit Assessment</button>
+</form>
+
+<div id="result"></div>
+
+<div class="assessor-section">
+    <h3 style="color:#003366;margin-top:0;">ASSESSOR USE ONLY</h3>
+    <table>
+        <tr><td width="120"><strong>Score:</strong></td><td>____ / 10</td></tr>
+        <tr><td><strong>Result:</strong></td><td>☐ PASS &nbsp;&nbsp; ☐ FAIL</td></tr>
+        <tr><td style="vertical-align:top;"><strong>Comments:</strong></td>
+            <td>_________________________________________________<br>
+                _________________________________________________</td>
+        </tr>
+        <tr><td><strong>Assessor Signature:</strong></td><td>____________________ <strong>Date:</strong> ___________</td></tr>
+    </table>
+</div>
+
+<div class="footer">
+    <p class="motto">"With Honour We Serve"</p>
+    <p>Queensland Police Service — Official Training Document<br>
+    This assessment is for internal training purposes only.</p>
+</div>
+
+<script>
+function gradeQuiz() {
+    const answers = { q1:"B", q2:"C", q3:"C", q4:"C", q5:"B", q6:"B", q7:"A", q8:"B", q9:"A", q10:"C" };
+    let score = 0;
+    let review = "<div class='review'><h4>Review</h4><ul>";
+    
+    for(let q in answers) {
+        let selected = document.querySelector(`input[name="${q}"]:checked`);
+        if(selected) {
+            if(selected.value === answers[q]) {
+                score++;
+                review += `<li class="correct">${q.toUpperCase()} — Correct</li>`;
+            } else {
+                review += `<li class="incorrect">${q.toUpperCase()} — Incorrect (Correct: ${answers[q]})</li>`;
+            }
+        } else {
+            review += `<li class="incorrect">${q.toUpperCase()} — Not Answered (Correct: ${answers[q]})</li>`;
+        }
+    }
+    review += "</ul></div>";
+    
+    const result = document.getElementById("result");
+    if(score === 10) {
+        result.className = "pass";
+        result.innerHTML = `<strong>PASS ✅</strong><br>Score: ${score}/10 (100%)<br>Officer has met the required standard.` + review;
+    } else {
+        result.className = "fail";
+        result.innerHTML = `<strong>FAIL ❌</strong><br>Score: ${score}/10<br>Pass Mark: 10/10 Required<br>Remedial Training Required.` + review;
+    }
+    result.style.display = "block";
+    result.scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>
