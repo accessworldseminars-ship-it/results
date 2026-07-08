@@ -10,29 +10,38 @@
         :root {
             --gold: #C9A84C;
             --gold-light: #e4c97a;
-            --gold-dim: rgba(201,168,76,0.15);
-            --gold-border: rgba(201,168,76,0.3);
+            --gold-dim: rgba(201, 168, 76, 0.15);
+            --gold-border: rgba(201, 168, 76, 0.3);
             --navy: #1A2744;
             --navy-deep: #0d1528;
             --navy-mid: #1e2f55;
-            --navy-soft: rgba(26,39,68,0.7);
+            --navy-soft: rgba(26, 39, 68, 0.7);
             --white: #ffffff;
             --off-white: #e8e6df;
-            --muted: rgba(232,230,223,0.55);
+            --muted: rgba(232, 230, 223, 0.55);
 
             --c-seminar: #C9A84C;
-            --c-seminar-bg: rgba(201,168,76,0.08);
+            --c-seminar-bg: rgba(201, 168, 76, 0.08);
             --c-coaching: #3dba6a;
-            --c-coaching-bg: rgba(61,186,106,0.07);
+            --c-coaching-bg: rgba(61, 186, 106, 0.07);
             --c-intro: #4a9eff;
-            --c-intro-bg: rgba(74,158,255,0.07);
+            --c-intro-bg: rgba(74, 158, 255, 0.07);
             --c-nlp: #b06cf4;
-            --c-nlp-bg: rgba(176,108,244,0.07);
+            --c-nlp-bg: rgba(176, 108, 244, 0.07);
             --c-lowtier: #ff8c38;
-            --c-lowtier-bg: rgba(255,140,56,0.07);
+            --c-lowtier-bg: rgba(255, 140, 56, 0.07);
+
+            --badge-free-bg: #1db954;
+            --badge-free-text: #fff;
+            --badge-members-bg: #d32f2f;
+            --badge-members-text: #fff;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'DM Sans', sans-serif;
@@ -42,20 +51,18 @@
             overflow-x: hidden;
         }
 
-        /* ===== BACKGROUND ===== */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             background:
-                radial-gradient(ellipse 80% 50% at 15% 20%, rgba(201,168,76,0.06) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 40% at 85% 70%, rgba(74,158,255,0.04) 0%, transparent 55%),
-                radial-gradient(ellipse 100% 80% at 50% 0%, rgba(26,39,68,0.9) 0%, transparent 70%);
+                radial-gradient(ellipse 80% 50% at 15% 20%, rgba(201, 168, 76, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 85% 70%, rgba(74, 158, 255, 0.04) 0%, transparent 55%),
+                radial-gradient(ellipse 100% 80% at 50% 0%, rgba(26, 39, 68, 0.9) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
 
-        /* subtle grain */
         body::after {
             content: '';
             position: fixed;
@@ -66,7 +73,10 @@
             opacity: 0.4;
         }
 
-        .page-wrap { position: relative; z-index: 1; }
+        .page-wrap {
+            position: relative;
+            z-index: 1;
+        }
 
         /* ===== HEADER ===== */
         header {
@@ -98,7 +108,7 @@
 
         .logo-img {
             height: 64px;
-            filter: drop-shadow(0 0 16px rgba(201,168,76,0.5));
+            filter: drop-shadow(0 0 16px rgba(201, 168, 76, 0.5));
         }
 
         .logo-text {
@@ -146,7 +156,7 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: rgba(26,39,68,0.6);
+            background: rgba(26, 39, 68, 0.6);
             border: 1px solid var(--gold-border);
             padding: 12px 22px;
             border-radius: 50px;
@@ -161,7 +171,9 @@
             white-space: nowrap;
         }
 
-        .tz-bar label i { margin-right: 6px; }
+        .tz-bar label i {
+            margin-right: 6px;
+        }
 
         #timezone {
             background: transparent;
@@ -180,7 +192,9 @@
             background-position: right 0 center;
         }
 
-        #timezone option { background: var(--navy); }
+        #timezone option {
+            background: var(--navy);
+        }
 
         /* ===== CONTAINER ===== */
         .container {
@@ -193,7 +207,7 @@
         .legend {
             margin: 48px auto 16px;
             padding: 28px 32px;
-            background: rgba(26,39,68,0.45);
+            background: rgba(26, 39, 68, 0.45);
             border: 1px solid var(--gold-border);
             border-radius: 16px;
             backdrop-filter: blur(6px);
@@ -225,18 +239,102 @@
         }
 
         .pip {
-            width: 10px; height: 10px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             flex-shrink: 0;
         }
-        .pip.seminar  { background: var(--c-seminar); box-shadow: 0 0 6px var(--c-seminar); }
-        .pip.coaching { background: var(--c-coaching); box-shadow: 0 0 6px var(--c-coaching); }
-        .pip.intro    { background: var(--c-intro); box-shadow: 0 0 6px var(--c-intro); }
-        .pip.nlp      { background: var(--c-nlp); box-shadow: 0 0 6px var(--c-nlp); }
-        .pip.lowtier  { background: var(--c-lowtier); box-shadow: 0 0 6px var(--c-lowtier); }
+        .pip.seminar {
+            background: var(--c-seminar);
+            box-shadow: 0 0 6px var(--c-seminar);
+        }
+        .pip.coaching {
+            background: var(--c-coaching);
+            box-shadow: 0 0 6px var(--c-coaching);
+        }
+        .pip.intro {
+            background: var(--c-intro);
+            box-shadow: 0 0 6px var(--c-intro);
+        }
+        .pip.nlp {
+            background: var(--c-nlp);
+            box-shadow: 0 0 6px var(--c-nlp);
+        }
+        .pip.lowtier {
+            background: var(--c-lowtier);
+            box-shadow: 0 0 6px var(--c-lowtier);
+        }
+
+        /* ===== BADGE SYSTEM ===== */
+        .event-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 3px 10px 3px 8px;
+            border-radius: 30px;
+            line-height: 1.4;
+            white-space: nowrap;
+            border: 1px solid transparent;
+            transition: transform 0.15s;
+            flex-shrink: 0;
+        }
+
+        .event-badge i {
+            font-size: 0.55rem;
+        }
+
+        .event-badge.free {
+            background: var(--badge-free-bg);
+            color: var(--badge-free-text);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 12px rgba(29, 185, 84, 0.3);
+        }
+
+        .event-badge.free i {
+            color: #fff;
+        }
+
+        .event-badge.members {
+            background: var(--badge-members-bg);
+            color: var(--badge-members-text);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 12px rgba(211, 47, 47, 0.3);
+            animation: pulseRed 2s infinite;
+        }
+
+        .event-badge.members i {
+            color: #fff;
+        }
+
+        @keyframes pulseRed {
+            0%,
+            100% {
+                box-shadow: 0 0 12px rgba(211, 47, 47, 0.25);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(211, 47, 47, 0.5);
+            }
+        }
+
+        .event-badge.paid {
+            background: rgba(255, 140, 56, 0.2);
+            color: var(--c-lowtier);
+            border-color: rgba(255, 140, 56, 0.25);
+        }
+
+        .event-badge.paid i {
+            color: var(--c-lowtier);
+        }
 
         /* ===== CALENDAR ===== */
-        #calendarRoot { padding: 20px 0 80px; }
+        #calendarRoot {
+            padding: 20px 0 80px;
+        }
 
         /* ===== MONTH BLOCK ===== */
         .month-block {
@@ -245,8 +343,14 @@
         }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .month-header {
@@ -254,7 +358,7 @@
             align-items: baseline;
             justify-content: space-between;
             padding-bottom: 14px;
-            border-bottom: 1px solid rgba(201,168,76,0.2);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
             margin-bottom: 16px;
             flex-wrap: wrap;
             gap: 8px;
@@ -280,8 +384,8 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.08));
-            border: 1px solid rgba(201,168,76,0.4);
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.2), rgba(201, 168, 76, 0.08));
+            border: 1px solid rgba(201, 168, 76, 0.4);
             color: var(--gold-light);
             font-size: 0.68rem;
             font-weight: 700;
@@ -292,15 +396,20 @@
         }
 
         /* ===== SESSION CARDS ===== */
-        .session-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .session-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
 
         .session-card {
             display: grid;
             grid-template-columns: 120px 1fr auto;
             align-items: center;
             gap: 0;
-            background: rgba(26,39,68,0.35);
-            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(26, 39, 68, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 12px;
             overflow: hidden;
             transition: border-color 0.2s, background 0.2s, transform 0.15s;
@@ -310,28 +419,47 @@
         .session-card::before {
             content: '';
             position: absolute;
-            left: 0; top: 0; bottom: 0;
+            left: 0;
+            top: 0;
+            bottom: 0;
             width: 3px;
             border-radius: 12px 0 0 12px;
         }
 
-        .session-card.seminar  { --accent: var(--c-seminar);  background: var(--c-seminar-bg); }
-        .session-card.coaching { --accent: var(--c-coaching); background: var(--c-coaching-bg); }
-        .session-card.intro    { --accent: var(--c-intro);    background: var(--c-intro-bg); }
-        .session-card.nlp      { --accent: var(--c-nlp);      background: var(--c-nlp-bg); }
-        .session-card.lowtier  { --accent: var(--c-lowtier);  background: var(--c-lowtier-bg); }
+        .session-card.seminar {
+            --accent: var(--c-seminar);
+            background: var(--c-seminar-bg);
+        }
+        .session-card.coaching {
+            --accent: var(--c-coaching);
+            background: var(--c-coaching-bg);
+        }
+        .session-card.intro {
+            --accent: var(--c-intro);
+            background: var(--c-intro-bg);
+        }
+        .session-card.nlp {
+            --accent: var(--c-nlp);
+            background: var(--c-nlp-bg);
+        }
+        .session-card.lowtier {
+            --accent: var(--c-lowtier);
+            background: var(--c-lowtier-bg);
+        }
 
-        .session-card::before { background: var(--accent, transparent); }
+        .session-card::before {
+            background: var(--accent, transparent);
+        }
 
         .session-card:hover {
-            border-color: rgba(201,168,76,0.25);
+            border-color: rgba(201, 168, 76, 0.25);
             transform: translateX(2px);
         }
 
         /* date col */
         .sc-date {
             padding: 16px 16px 16px 22px;
-            border-right: 1px solid rgba(255,255,255,0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .sc-day {
@@ -364,6 +492,16 @@
         .sc-main {
             padding: 16px 20px;
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sc-top-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px 12px;
         }
 
         .sc-type-label {
@@ -372,8 +510,8 @@
             letter-spacing: 0.18em;
             text-transform: uppercase;
             color: var(--accent, var(--muted));
-            margin-bottom: 4px;
             opacity: 0.85;
+            flex-shrink: 0;
         }
 
         .sc-title {
@@ -399,7 +537,7 @@
             font-weight: 600;
             letter-spacing: 0.06em;
             white-space: nowrap;
-            border: 1px solid var(--accent, rgba(255,255,255,0.2));
+            border: 1px solid var(--accent, rgba(255, 255, 255, 0.2));
             color: var(--accent, var(--off-white));
             background: transparent;
             transition: all 0.2s;
@@ -410,25 +548,17 @@
             color: var(--navy-deep);
         }
 
-        .sc-btn i { font-size: 0.65rem; }
+        .sc-btn i {
+            font-size: 0.65rem;
+        }
 
         /* ===== SEMINAR HIGHLIGHT ===== */
         .session-card.seminar {
-            border-color: rgba(201,168,76,0.2);
+            border-color: rgba(201, 168, 76, 0.2);
         }
 
         .session-card.seminar .sc-datenum {
             color: var(--gold-light);
-        }
-
-        /* ===== DAY DIVIDER ===== */
-        .day-divider {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 4px 0 4px;
-            opacity: 0;
-            height: 0;
         }
 
         /* ===== FOOTER ===== */
@@ -458,7 +588,10 @@
             margin-bottom: 16px;
         }
 
-        .footer-img { height: 32px; opacity: 0.7; }
+        .footer-img {
+            height: 32px;
+            opacity: 0.7;
+        }
 
         .footer-name {
             font-family: 'Montserrat', sans-serif;
@@ -481,7 +614,10 @@
             opacity: 0.85;
         }
 
-        .footer-copy a:hover { opacity: 1; text-decoration: underline; }
+        .footer-copy a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 680px) {
@@ -490,22 +626,46 @@
             }
             .sc-date {
                 border-right: none;
-                border-bottom: 1px solid rgba(255,255,255,0.05);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
                 display: flex;
                 gap: 12px;
                 align-items: baseline;
                 padding: 12px 16px 12px 22px;
             }
-            .sc-day { margin-bottom: 0; }
-            .sc-datenum { font-size: 0.9rem; }
-            .sc-time { margin-top: 0; margin-left: auto; }
-            .sc-action { padding: 12px 16px; }
+            .sc-day {
+                margin-bottom: 0;
+            }
+            .sc-datenum {
+                font-size: 0.9rem;
+            }
+            .sc-time {
+                margin-top: 0;
+                margin-left: auto;
+            }
+            .sc-action {
+                padding: 12px 16px;
+            }
+            .sc-top-row {
+                flex-wrap: wrap;
+            }
+            .event-badge {
+                font-size: 0.55rem;
+                padding: 2px 8px 2px 6px;
+            }
         }
 
         @media (max-width: 500px) {
-            header { padding: 50px 0 40px; }
-            .logo-text { font-size: 1.6rem; }
-            .tz-bar { flex-direction: column; gap: 8px; border-radius: 16px; }
+            header {
+                padding: 50px 0 40px;
+            }
+            .logo-text {
+                font-size: 1.6rem;
+            }
+            .tz-bar {
+                flex-direction: column;
+                gap: 8px;
+                border-radius: 16px;
+            }
         }
 
         /* ===== STAT BAR ===== */
@@ -545,7 +705,9 @@
             position: relative;
         }
 
-        .vc-section-header { margin-bottom: 36px; }
+        .vc-section-header {
+            margin-bottom: 36px;
+        }
 
         .vc-section-title {
             font-family: 'Cormorant Garamond', serif;
@@ -569,15 +731,17 @@
         }
 
         .vc-month {
-            background: rgba(26,39,68,0.4);
-            border: 1px solid rgba(255,255,255,0.07);
+            background: rgba(26, 39, 68, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.07);
             border-radius: 14px;
             padding: 20px 16px;
             backdrop-filter: blur(4px);
             transition: border-color 0.2s;
         }
 
-        .vc-month:hover { border-color: rgba(201,168,76,0.2); }
+        .vc-month:hover {
+            border-color: rgba(201, 168, 76, 0.2);
+        }
 
         .vc-month-name {
             font-family: 'Montserrat', sans-serif;
@@ -633,27 +797,34 @@
             transition: background 0.15s;
         }
 
-        .vc-blank { pointer-events: none; }
+        .vc-blank {
+            pointer-events: none;
+        }
 
         .vc-day.vc-has-event {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             cursor: pointer;
         }
 
-        .vc-day.vc-has-event:hover { background: rgba(201,168,76,0.12); z-index: 20; }
-
-        .vc-day.vc-has-seminar {
-            background: rgba(201,168,76,0.12);
-            border: 1px solid rgba(201,168,76,0.35);
+        .vc-day.vc-has-event:hover {
+            background: rgba(201, 168, 76, 0.12);
+            z-index: 20;
         }
 
-        .vc-day.vc-has-seminar:hover { background: rgba(201,168,76,0.22); }
+        .vc-day.vc-has-seminar {
+            background: rgba(201, 168, 76, 0.12);
+            border: 1px solid rgba(201, 168, 76, 0.35);
+        }
+
+        .vc-day.vc-has-seminar:hover {
+            background: rgba(201, 168, 76, 0.22);
+        }
 
         .vc-daynum {
             font-family: 'DM Sans', sans-serif;
             font-size: 0.67rem;
             font-weight: 400;
-            color: rgba(232,230,223,0.4);
+            color: rgba(232, 230, 223, 0.4);
             line-height: 1;
         }
 
@@ -663,7 +834,9 @@
             font-size: 0.72rem;
         }
 
-        .vc-day.vc-has-seminar .vc-daynum { color: var(--gold-light); }
+        .vc-day.vc-has-seminar .vc-daynum {
+            color: var(--gold-light);
+        }
 
         .vc-dots {
             display: flex;
@@ -674,9 +847,20 @@
         }
 
         .vc-dot {
-            width: 4px; height: 4px;
+            width: 4px;
+            height: 4px;
             border-radius: 50%;
             display: block;
+        }
+
+        .vc-dot.free-dot {
+            background: var(--badge-free-bg);
+            box-shadow: 0 0 6px rgba(29, 185, 84, 0.5);
+        }
+
+        .vc-dot.members-dot {
+            background: var(--badge-members-bg);
+            box-shadow: 0 0 6px rgba(211, 47, 47, 0.5);
         }
 
         /* Tooltip */
@@ -694,7 +878,7 @@
             color: var(--off-white);
             white-space: nowrap;
             z-index: 200;
-            box-shadow: 0 12px 32px rgba(0,0,0,0.6);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
             line-height: 1.9;
             pointer-events: none;
             min-width: 180px;
@@ -703,34 +887,67 @@
         .vc-tooltip::after {
             content: '';
             position: absolute;
-            top: 100%; left: 50%;
+            top: 100%;
+            left: 50%;
             transform: translateX(-50%);
             border: 5px solid transparent;
-            border-top-color: rgba(201,168,76,0.3);
+            border-top-color: rgba(201, 168, 76, 0.3);
         }
 
-        .vc-day:hover .vc-tooltip { display: block; }
+        .vc-day:hover .vc-tooltip {
+            display: block;
+        }
 
-        /* prevent tooltip clipping on edges */
         .vc-day:nth-child(7n+1) .vc-tooltip,
         .vc-day:nth-child(7n+2) .vc-tooltip {
-            left: 0; transform: none;
+            left: 0;
+            transform: none;
         }
 
         .vc-day:nth-child(7n) .vc-tooltip,
         .vc-day:nth-child(7n-1) .vc-tooltip {
-            left: auto; right: 0; transform: none;
+            left: auto;
+            right: 0;
+            transform: none;
         }
 
-        /* Legend row inside visual cal */
+        /* Tooltip badge inside visual cal */
+        .vc-tip-badge {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.5rem;
+            letter-spacing: 0.08em;
+            padding: 1px 7px;
+            border-radius: 20px;
+            margin-left: 4px;
+            vertical-align: middle;
+            line-height: 1.5;
+        }
+
+        .vc-tip-badge.free {
+            background: var(--badge-free-bg);
+            color: #fff;
+        }
+
+        .vc-tip-badge.members {
+            background: var(--badge-members-bg);
+            color: #fff;
+        }
+
+        .vc-tip-badge.paid {
+            background: rgba(255, 140, 56, 0.25);
+            color: var(--c-lowtier);
+        }
+
         .vc-legend {
             display: flex;
             flex-wrap: wrap;
             gap: 8px 22px;
             margin-bottom: 28px;
             padding: 14px 20px;
-            background: rgba(26,39,68,0.3);
-            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(26, 39, 68, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 10px;
         }
 
@@ -744,218 +961,232 @@
     </style>
 </head>
 <body>
-<div class="page-wrap">
+    <div class="page-wrap">
 
-<header>
-    <div class="container">
-        <div class="logo-lockup">
-            <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" alt="AccessWorld" class="logo-img">
-            <div class="logo-text">ACCESSWORLD</div>
-        </div>
-        <p class="header-eyebrow">Live Events Calendar</p>
-        <h1>Upcoming Events Schedule</h1>
-        <p class="header-sub">June &ndash; December 2026</p>
+        <header>
+            <div class="container">
+                <div class="logo-lockup">
+                    <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" alt="AccessWorld" class="logo-img">
+                    <div class="logo-text">ACCESSWORLD</div>
+                </div>
+                <p class="header-eyebrow">Live Events Calendar</p>
+                <h1>Upcoming Events Schedule</h1>
+                <p class="header-sub">June &ndash; December 2026</p>
 
-        <div class="tz-bar">
-            <label for="timezone"><i class="fas fa-globe"></i> Time zone</label>
-            <select id="timezone">
-                <optgroup label="Australia">
-                    <option value="Australia/Sydney">Sydney (AEST/AEDT)</option>
-                    <option value="Australia/Brisbane">Brisbane (AEST)</option>
-                    <option value="Australia/Perth">Perth (AWST)</option>
-                </optgroup>
-                <optgroup label="USA">
-                    <option value="America/New_York">Eastern (EST/EDT)</option>
-                    <option value="America/Chicago">Central (CST/CDT)</option>
-                    <option value="America/Denver">Mountain (MST/MDT)</option>
-                    <option value="America/Los_Angeles">Pacific (PST/PDT)</option>
-                </optgroup>
-                <optgroup label="Asia & Pacific">
-                    <option value="Asia/Kolkata">India (IST)</option>
-                    <option value="Pacific/Auckland">New Zealand (NZST/NZDT)</option>
-                    <option value="Europe/London">United Kingdom (GMT/BST)</option>
-                </optgroup>
-            </select>
-        </div>
-    </div>
-</header>
+                <div class="tz-bar">
+                    <label for="timezone"><i class="fas fa-globe"></i> Time zone</label>
+                    <select id="timezone">
+                        <optgroup label="Australia">
+                            <option value="Australia/Sydney">Sydney (AEST/AEDT)</option>
+                            <option value="Australia/Brisbane">Brisbane (AEST)</option>
+                            <option value="Australia/Perth">Perth (AWST)</option>
+                        </optgroup>
+                        <optgroup label="USA">
+                            <option value="America/New_York">Eastern (EST/EDT)</option>
+                            <option value="America/Chicago">Central (CST/CDT)</option>
+                            <option value="America/Denver">Mountain (MST/MDT)</option>
+                            <option value="America/Los_Angeles">Pacific (PST/PDT)</option>
+                        </optgroup>
+                        <optgroup label="Asia & Pacific">
+                            <option value="Asia/Kolkata">India (IST)</option>
+                            <option value="Pacific/Auckland">New Zealand (NZST/NZDT)</option>
+                            <option value="Europe/London">United Kingdom (GMT/BST)</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+        </header>
 
-<main class="container">
+        <main class="container">
 
-    <div class="stat-bar" id="statBar">
-        <div class="stat-item"><span class="stat-num" id="statTotal">—</span><div class="stat-label">Total sessions</div></div>
-        <div class="stat-item"><span class="stat-num">2</span><div class="stat-label">2-Day seminars</div></div>
-        <div class="stat-item"><span class="stat-num">7</span><div class="stat-label">Months of events</div></div>
-    </div>
+            <div class="stat-bar" id="statBar">
+                <div class="stat-item"><span class="stat-num" id="statTotal">—</span><div class="stat-label">Total sessions</div></div>
+                <div class="stat-item"><span class="stat-num">2</span><div class="stat-label">2-Day seminars</div></div>
+                <div class="stat-item"><span class="stat-num">7</span><div class="stat-label">Months of events</div></div>
+            </div>
 
-    <div class="legend">
-        <div class="legend-heading"><i class="fas fa-circle-dot" style="margin-right:6px;opacity:0.7"></i> Session types</div>
-        <div class="legend-grid">
-            <div class="legend-item"><span class="pip seminar"></span> 2-Day Premium Seminar</div>
-            <div class="legend-item"><span class="pip coaching"></span> Group Coaching &amp; Mentoring</div>
-            <div class="legend-item"><span class="pip intro"></span> Introduction Webinar (Zoom)</div>
-            <div class="legend-item"><span class="pip nlp"></span> NLP Tool Dev for Coaches &amp; Trainers</div>
-            <div class="legend-item"><span class="pip lowtier"></span> Low-tier Programs (Unlock / WC Coach)</div>
-        </div>
-    </div>
+            <div class="legend">
+                <div class="legend-heading"><i class="fas fa-circle-dot" style="margin-right:6px;opacity:0.7"></i> Session types</div>
+                <div class="legend-grid">
+                    <div class="legend-item"><span class="pip seminar"></span> 2-Day Premium Seminar</div>
+                    <div class="legend-item"><span class="pip coaching"></span> Group Coaching &amp; Mentoring</div>
+                    <div class="legend-item"><span class="pip intro"></span> Introduction Webinar (Zoom)</div>
+                    <div class="legend-item"><span class="pip nlp"></span> NLP Tool Dev for Coaches &amp; Trainers</div>
+                    <div class="legend-item"><span class="pip lowtier"></span> Low-tier Programs (Unlock / WC Coach)</div>
+                </div>
+            </div>
 
-    <div id="calendarRoot"></div>
+            <div id="calendarRoot"></div>
 
-</main>
+        </main>
 
-<!-- ===== VISUAL CALENDAR ===== -->
-<section class="vc-section">
-    <div class="container">
-        <div class="vc-section-header">
-            <p class="header-eyebrow" style="text-align:left;margin-bottom:6px"><i class="fas fa-calendar-days" style="margin-right:6px"></i> Visual Overview</p>
-            <h2 class="vc-section-title">At-a-Glance Calendar</h2>
-            <p class="vc-section-sub">Hover or tap any highlighted date to see session times in your selected timezone.</p>
-        </div>
-        <div id="visualCalRoot" class="vc-grid-wrap"></div>
-    </div>
-</section>
+        <!-- ===== VISUAL CALENDAR ===== -->
+        <section class="vc-section">
+            <div class="container">
+                <div class="vc-section-header">
+                    <p class="header-eyebrow" style="text-align:left;margin-bottom:6px"><i class="fas fa-calendar-days" style="margin-right:6px"></i> Visual Overview</p>
+                    <h2 class="vc-section-title">At-a-Glance Calendar</h2>
+                    <p class="vc-section-sub">Hover or tap any highlighted date to see session times in your selected timezone.</p>
+                </div>
+                <div id="visualCalRoot" class="vc-grid-wrap"></div>
+            </div>
+        </section>
 
-<footer>
-    <div class="footer-logo-wrap">
-        <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" alt="" class="footer-img">
-        <span class="footer-name">ACCESSWORLD</span>
-    </div>
-    <div class="footer-copy">
-        <p>AccessWorld Upcoming Events Schedule &middot; June – December 2026</p>
-        <p>&copy; 2026 AccessWorld Seminars &nbsp;|&nbsp;
-            Introduction Webinars: <a href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank">Zoom link</a>
-            &nbsp;|&nbsp; Member docs for Coaching &amp; NLP
-        </p>
-    </div>
-</footer>
+        <footer>
+            <div class="footer-logo-wrap">
+                <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" alt="" class="footer-img">
+                <span class="footer-name">ACCESSWORLD</span>
+            </div>
+            <div class="footer-copy">
+                <p>AccessWorld Upcoming Events Schedule &middot; June – December 2026</p>
+                <p>&copy; 2026 AccessWorld Seminars &nbsp;|&nbsp;
+                    Introduction Webinars: <a href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank">Zoom link</a>
+                    &nbsp;|&nbsp; Member docs for Coaching &amp; NLP
+                </p>
+            </div>
+        </footer>
 
-</div><!-- page-wrap -->
+    </div><!-- page-wrap -->
 
-<script>
-    // ----- LINKS -----
-    const ZOOM_LINK    = "https://accessworldseminars-ship-it.github.io/results/zoomlink";
-    const GROUP_LINK   = "https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk";
-    const NLP_LINK     = "https://docs.google.com/document/d/1oqvKAfrmLslMq3mAZ716aA0h2blSzPXh/edit?usp=drivesdk&ouid=116911817819525150049&rtpof=true&sd=true";
-    const SEMINAR_LINK = "https://accessworldseminars-ship-it.github.io/results/2dayevents";
-    const UNLOCK_LINK  = "https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808";
-    const WCCOACH_LINK = "https://www.accessworldseminars.org/the-perfect-squeeze-page--45e9d";
+    <script>
+        // ----- LINKS -----
+        const ZOOM_LINK = "https://accessworldseminars-ship-it.github.io/results/zoomlink";
+        const GROUP_LINK = "https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk";
+        const NLP_LINK =
+            "https://docs.google.com/document/d/1oqvKAfrmLslMq3mAZ716aA0h2blSzPXh/edit?usp=drivesdk&ouid=116911817819525150049&rtpof=true&sd=true";
+        const SEMINAR_LINK = "https://accessworldseminars-ship-it.github.io/results/2dayevents";
+        const UNLOCK_LINK = "https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808";
+        const WCCOACH_LINK = "https://www.accessworldseminars.org/the-perfect-squeeze-page--45e9d";
 
-    const TYPE_META = {
-        seminar:  { label: '2-Day Seminar',            btn: 'Seminar hub',    icon: 'fa-star' },
-        coaching: { label: 'Group Coaching & Mentoring', btn: 'Member notes', icon: 'fa-users' },
-        intro:    { label: 'Introduction Webinar',     btn: 'Join Zoom',      icon: 'fa-video' },
-        nlp:      { label: 'NLP Tool Dev Training',    btn: 'NLP resources',  icon: 'fa-brain' },
-        lowtier:  { label: 'Low-tier Program',         btn: 'Register',       icon: 'fa-ticket' },
-    };
+        const TYPE_META = {
+            seminar: { label: '2-Day Seminar', btn: 'Seminar hub', icon: 'fa-star' },
+            coaching: { label: 'Group Coaching & Mentoring', btn: 'Member notes', icon: 'fa-users' },
+            intro: { label: 'Introduction Webinar', btn: 'Join Zoom', icon: 'fa-video' },
+            nlp: { label: 'NLP Tool Dev Training', btn: 'NLP resources', icon: 'fa-brain' },
+            lowtier: { label: 'Low-tier Program', btn: 'Register', icon: 'fa-ticket' },
+        };
 
-    const sessions = [
-        // JUNE
-        { date:"2026-06-04", time:"19:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-06-05", time:"09:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-06-05", time:"11:00", type:"intro",    title:"Introduction Webinar – Upgrade Your Identity",            link:ZOOM_LINK },
-        { date:"2026-06-11", time:"19:00", type:"intro",    title:"Introduction Webinar – Upgrade Your Identity",            link:ZOOM_LINK },
-        { date:"2026-06-12", time:"09:00", type:"nlp",      title:"NLP Tool Development Training for Coaches and Trainers",  link:NLP_LINK },
-        { date:"2026-06-12", time:"11:00", type:"intro",    title:"Introduction Webinar – Upgrade Your Identity",            link:ZOOM_LINK },
-        { date:"2026-06-18", time:"19:00", type:"nlp",      title:"NLP Tool Development Training for Coaches and Trainers",  link:NLP_LINK },
-        { date:"2026-06-19", time:"09:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-06-19", time:"11:00", type:"intro",    title:"Introduction Webinar – Upgrade Your Identity",            link:ZOOM_LINK },
-        { date:"2026-06-25", time:"19:00", type:"intro",    title:"Introduction Webinar – Upgrade Your Identity",            link:ZOOM_LINK },
-        { date:"2026-06-26", time:"07:00", type:"lowtier",  title:"Unlock Your Incredible Self (6 hour event)",              link:UNLOCK_LINK },
-        // JULY
-        { date:"2026-07-16", time:"19:00", type:"intro",    title:"Introduction Webinar – Emotional Clearing",               link:ZOOM_LINK },
-        { date:"2026-07-17", time:"09:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-07-17", time:"11:00", type:"intro",    title:"Introduction Webinar – Emotional Clearing",               link:ZOOM_LINK },
-        { date:"2026-07-23", time:"19:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-07-24", time:"09:00", type:"nlp",      title:"NLP Tool Development Training for Coaches and Trainers",  link:NLP_LINK },
-        { date:"2026-07-24", time:"11:00", type:"intro",    title:"Introduction Webinar – Emotional Clearing",               link:ZOOM_LINK },
-        { date:"2026-07-30", time:"19:00", type:"nlp",      title:"NLP Tool Development Training for Coaches and Trainers",  link:NLP_LINK },
-        { date:"2026-07-31", time:"09:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-07-31", time:"11:00", type:"intro",    title:"Introduction Webinar – Emotional Clearing",               link:ZOOM_LINK },
-        // AUGUST
-        { date:"2026-08-06", time:"07:00", type:"seminar",  title:"Emotional Mastery Day 1 (2-Day Seminar)",                 link:SEMINAR_LINK },
-        { date:"2026-08-07", time:"07:00", type:"seminar",  title:"Emotional Mastery Day 2 (2-Day Seminar)",                 link:SEMINAR_LINK },
-        { date:"2026-08-13", time:"19:00", type:"intro",    title:"Introduction Webinar – Upgrade Your Financial Blueprint", link:ZOOM_LINK },
-        { date:"2026-08-14", time:"09:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-08-14", time:"11:00", type:"intro",    title:"Introduction Webinar – Upgrade Your Financial Blueprint", link:ZOOM_LINK },
-        { date:"2026-08-20", time:"19:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-08-21", time:"09:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-08-21", time:"11:00", type:"intro",    title:"Introduction Webinar – Upgrade Your Financial Blueprint", link:ZOOM_LINK },
-        // SEPTEMBER
-        { date:"2026-09-03", time:"19:00", type:"intro",    title:"Introduction Webinar – Increase Your Influence",          link:ZOOM_LINK },
-        { date:"2026-09-04", time:"09:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-09-04", time:"11:00", type:"intro",    title:"Introduction Webinar – Increase Your Influence",          link:ZOOM_LINK },
-        { date:"2026-09-10", time:"19:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-09-11", time:"09:00", type:"nlp",      title:"NLP Tool Development Training for Coaches and Trainers",  link:NLP_LINK },
-        { date:"2026-09-11", time:"11:00", type:"intro",    title:"Introduction Webinar – Increase Your Influence",          link:ZOOM_LINK },
-        { date:"2026-09-17", time:"19:00", type:"nlp",      title:"NLP Tool Development Training for Coaches and Trainers",  link:NLP_LINK },
-        { date:"2026-09-18", time:"09:00", type:"lowtier",  title:"How to Become a World-Class Coach ($29)",                 link:WCCOACH_LINK },
-        // OCTOBER
-        { date:"2026-10-08", time:"19:00", type:"intro",    title:"Introduction Webinar – Master Your Memory",               link:ZOOM_LINK },
-        { date:"2026-10-09", time:"09:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-10-09", time:"11:00", type:"intro",    title:"Introduction Webinar – Master Your Memory",               link:ZOOM_LINK },
-        { date:"2026-10-16", time:"09:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-10-16", time:"11:00", type:"intro",    title:"Introduction Webinar – Master Your Memory",               link:ZOOM_LINK },
-        { date:"2026-10-22", time:"19:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-10-23", time:"09:00", type:"nlp",      title:"NLP Tool Development Training for Coaches and Trainers",  link:NLP_LINK },
-        { date:"2026-10-23", time:"11:00", type:"intro",    title:"Introduction Webinar – Master Your Memory",               link:ZOOM_LINK },
-        { date:"2026-10-29", time:"19:00", type:"nlp",      title:"NLP Tool Development Training for Coaches and Trainers",  link:NLP_LINK },
-        { date:"2026-10-30", time:"07:00", type:"lowtier",  title:"Unlock Your Incredible Self (6 hour event)",              link:UNLOCK_LINK },
-        // NOVEMBER
-        { date:"2026-11-05", time:"07:00", type:"seminar",  title:"Life Skills Day 1 (2-Day Seminar)",                       link:SEMINAR_LINK },
-        { date:"2026-11-06", time:"07:00", type:"seminar",  title:"Life Skills Day 2 (2-Day Seminar)",                       link:SEMINAR_LINK },
-        { date:"2026-11-13", time:"09:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-11-13", time:"11:00", type:"intro",    title:"Introduction Webinar – Learn About Nervous System Reprogramming", link:ZOOM_LINK },
-        { date:"2026-11-26", time:"19:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-11-27", time:"09:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-11-27", time:"11:00", type:"intro",    title:"Introduction Webinar – Learn About Nervous System Reprogramming", link:ZOOM_LINK },
-        // DECEMBER
-        { date:"2026-12-03", time:"19:00", type:"intro",    title:"Introduction Webinar – Learn About Nervous System Reprogramming", link:ZOOM_LINK },
-        { date:"2026-12-04", time:"09:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-12-04", time:"11:00", type:"intro",    title:"Introduction Webinar – Learn About Nervous System Reprogramming", link:ZOOM_LINK },
-        { date:"2026-12-10", time:"19:00", type:"coaching", title:"Group Coaching and Mentoring Session",                    link:GROUP_LINK },
-        { date:"2026-12-11", time:"09:00", type:"nlp",      title:"NLP Tool Development Training for Coaches and Trainers",  link:NLP_LINK },
-        { date:"2026-12-11", time:"11:00", type:"intro",    title:"Introduction Webinar – Learn About Nervous System Reprogramming", link:ZOOM_LINK },
-        { date:"2026-12-17", time:"19:00", type:"nlp",      title:"NLP Tool Development Training for Coaches and Trainers",  link:NLP_LINK },
-        { date:"2026-12-18", time:"09:00", type:"lowtier",  title:"How to Become a World-Class Coach ($29)",                 link:WCCOACH_LINK },
-        { date:"2026-12-18", time:"11:00", type:"intro",    title:"Introduction Webinar – Learn About Nervous System Reprogramming", link:ZOOM_LINK }
-    ];
+        // Determine badge type for a session
+        function getBadgeInfo(type) {
+            if (type === 'intro') {
+                return { cls: 'free', label: 'FREE', icon: 'fa-gift' };
+            }
+            if (type === 'coaching' || type === 'nlp' || type === 'seminar') {
+                return { cls: 'members', label: 'MEMBERS ONLY', icon: 'fa-lock' };
+            }
+            // lowtier – paid but not "members only" in the same sense
+            return { cls: 'paid', label: 'PAID', icon: 'fa-ticket' };
+        }
 
-    const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        const sessions = [
+            // JUNE
+            { date: "2026-06-04", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-06-05", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-06-05", time: "11:00", type: "intro", title: "Introduction Webinar – Upgrade Your Identity", link: ZOOM_LINK },
+            { date: "2026-06-11", time: "19:00", type: "intro", title: "Introduction Webinar – Upgrade Your Identity", link: ZOOM_LINK },
+            { date: "2026-06-12", time: "09:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+            { date: "2026-06-12", time: "11:00", type: "intro", title: "Introduction Webinar – Upgrade Your Identity", link: ZOOM_LINK },
+            { date: "2026-06-18", time: "19:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+            { date: "2026-06-19", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-06-19", time: "11:00", type: "intro", title: "Introduction Webinar – Upgrade Your Identity", link: ZOOM_LINK },
+            { date: "2026-06-25", time: "19:00", type: "intro", title: "Introduction Webinar – Upgrade Your Identity", link: ZOOM_LINK },
+            { date: "2026-06-26", time: "07:00", type: "lowtier", title: "Unlock Your Incredible Self (6 hour event)", link: UNLOCK_LINK },
+            // JULY
+            { date: "2026-07-16", time: "19:00", type: "intro", title: "Introduction Webinar – Emotional Clearing", link: ZOOM_LINK },
+            { date: "2026-07-17", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-07-17", time: "11:00", type: "intro", title: "Introduction Webinar – Emotional Clearing", link: ZOOM_LINK },
+            { date: "2026-07-23", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-07-24", time: "09:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+            { date: "2026-07-24", time: "11:00", type: "intro", title: "Introduction Webinar – Emotional Clearing", link: ZOOM_LINK },
+            { date: "2026-07-30", time: "19:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+            { date: "2026-07-31", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-07-31", time: "11:00", type: "intro", title: "Introduction Webinar – Emotional Clearing", link: ZOOM_LINK },
+            // AUGUST
+            { date: "2026-08-06", time: "07:00", type: "seminar", title: "Emotional Mastery Day 1 (2-Day Seminar)", link: SEMINAR_LINK },
+            { date: "2026-08-07", time: "07:00", type: "seminar", title: "Emotional Mastery Day 2 (2-Day Seminar)", link: SEMINAR_LINK },
+            { date: "2026-08-13", time: "19:00", type: "intro", title: "Introduction Webinar – Upgrade Your Financial Blueprint", link: ZOOM_LINK },
+            { date: "2026-08-14", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-08-14", time: "11:00", type: "intro", title: "Introduction Webinar – Upgrade Your Financial Blueprint", link: ZOOM_LINK },
+            { date: "2026-08-20", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-08-21", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-08-21", time: "11:00", type: "intro", title: "Introduction Webinar – Upgrade Your Financial Blueprint", link: ZOOM_LINK },
+            // SEPTEMBER
+            { date: "2026-09-03", time: "19:00", type: "intro", title: "Introduction Webinar – Increase Your Influence", link: ZOOM_LINK },
+            { date: "2026-09-04", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-09-04", time: "11:00", type: "intro", title: "Introduction Webinar – Increase Your Influence", link: ZOOM_LINK },
+            { date: "2026-09-10", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-09-11", time: "09:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+            { date: "2026-09-11", time: "11:00", type: "intro", title: "Introduction Webinar – Increase Your Influence", link: ZOOM_LINK },
+            { date: "2026-09-17", time: "19:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+            { date: "2026-09-18", time: "09:00", type: "lowtier", title: "How to Become a World-Class Coach ($29)", link: WCCOACH_LINK },
+            // OCTOBER
+            { date: "2026-10-08", time: "19:00", type: "intro", title: "Introduction Webinar – Master Your Memory", link: ZOOM_LINK },
+            { date: "2026-10-09", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-10-09", time: "11:00", type: "intro", title: "Introduction Webinar – Master Your Memory", link: ZOOM_LINK },
+            { date: "2026-10-16", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-10-16", time: "11:00", type: "intro", title: "Introduction Webinar – Master Your Memory", link: ZOOM_LINK },
+            { date: "2026-10-22", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-10-23", time: "09:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+            { date: "2026-10-23", time: "11:00", type: "intro", title: "Introduction Webinar – Master Your Memory", link: ZOOM_LINK },
+            { date: "2026-10-29", time: "19:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+            { date: "2026-10-30", time: "07:00", type: "lowtier", title: "Unlock Your Incredible Self (6 hour event)", link: UNLOCK_LINK },
+            // NOVEMBER
+            { date: "2026-11-05", time: "07:00", type: "seminar", title: "Life Skills Day 1 (2-Day Seminar)", link: SEMINAR_LINK },
+            { date: "2026-11-06", time: "07:00", type: "seminar", title: "Life Skills Day 2 (2-Day Seminar)", link: SEMINAR_LINK },
+            { date: "2026-11-13", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-11-13", time: "11:00", type: "intro", title: "Introduction Webinar – Learn About Nervous System Reprogramming", link: ZOOM_LINK },
+            { date: "2026-11-26", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-11-27", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-11-27", time: "11:00", type: "intro", title: "Introduction Webinar – Learn About Nervous System Reprogramming", link: ZOOM_LINK },
+            // DECEMBER
+            { date: "2026-12-03", time: "19:00", type: "intro", title: "Introduction Webinar – Learn About Nervous System Reprogramming", link: ZOOM_LINK },
+            { date: "2026-12-04", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-12-04", time: "11:00", type: "intro", title: "Introduction Webinar – Learn About Nervous System Reprogramming", link: ZOOM_LINK },
+            { date: "2026-12-10", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
+            { date: "2026-12-11", time: "09:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+            { date: "2026-12-11", time: "11:00", type: "intro", title: "Introduction Webinar – Learn About Nervous System Reprogramming", link: ZOOM_LINK },
+            { date: "2026-12-17", time: "19:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
+            { date: "2026-12-18", time: "09:00", type: "lowtier", title: "How to Become a World-Class Coach ($29)", link: WCCOACH_LINK },
+            { date: "2026-12-18", time: "11:00", type: "intro", title: "Introduction Webinar – Learn About Nervous System Reprogramming", link: ZOOM_LINK }
+        ];
 
-    function formatTime(dateStr, timeStr, tz) {
-        try {
-            const d = new Date(`${dateStr}T${timeStr}:00`);
-            return d.toLocaleTimeString([], { hour:'2-digit', minute:'2-digit', hour12:true, timeZone:tz });
-        } catch(e) { return timeStr; }
-    }
+        const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+            'November', 'December'
+        ];
 
-    function renderCalendar(tz) {
-        // group by month
-        const map = new Map();
-        sessions.forEach(s => {
-            const [y, m] = s.date.split('-');
-            const k = `${y}-${m}`;
-            if (!map.has(k)) map.set(k, []);
-            map.get(k).push(s);
-        });
+        function formatTime(dateStr, timeStr, tz) {
+            try {
+                const d = new Date(`${dateStr}T${timeStr}:00`);
+                return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true, timeZone: tz });
+            } catch (e) { return timeStr; }
+        }
 
-        // update stat
-        document.getElementById('statTotal').textContent = sessions.length;
+        function renderCalendar(tz) {
+            const map = new Map();
+            sessions.forEach(s => {
+                const [y, m] = s.date.split('-');
+                const k = `${y}-${m}`;
+                if (!map.has(k)) map.set(k, []);
+                map.get(k).push(s);
+            });
 
-        let html = '';
-        for (const [key, ms] of map.entries()) {
-            const [year, monthNum] = key.split('-');
-            const monthIdx = parseInt(monthNum) - 1;
-            const monthName = MONTH_NAMES[monthIdx];
-            const hasSeminar = ms.some(s => s.type === 'seminar');
+            document.getElementById('statTotal').textContent = sessions.length;
 
-            ms.sort((a,b) => a.date !== b.date ? a.date.localeCompare(b.date) : (a.time||'').localeCompare(b.time||''));
+            let html = '';
+            for (const [key, ms] of map.entries()) {
+                const [year, monthNum] = key.split('-');
+                const monthIdx = parseInt(monthNum) - 1;
+                const monthName = MONTH_NAMES[monthIdx];
+                const hasSeminar = ms.some(s => s.type === 'seminar');
 
-            const badge = hasSeminar
-                ? `<span class="seminar-badge"><i class="fas fa-star" style="font-size:0.6rem"></i> 2-Day Seminar Month</span>`
-                : '';
+                ms.sort((a, b) => a.date !== b.date ? a.date.localeCompare(b.date) : (a.time || '').localeCompare(b.time ||
+                ''));
 
-            html += `<div class="month-block">
+                const badge = hasSeminar ?
+                    `<span class="seminar-badge"><i class="fas fa-star" style="font-size:0.6rem"></i> 2-Day Seminar Month</span>` :
+                    '';
+
+                html += `<div class="month-block">
                 <div class="month-header">
                     <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
                         <span class="month-name">${monthName} <span style="font-size:1rem;opacity:0.5;font-family:'DM Sans',sans-serif;font-weight:300">${year}</span></span>
@@ -965,76 +1196,88 @@
                 </div>
                 <ul class="session-list">`;
 
-            ms.forEach(s => {
-                const d = new Date(s.date + 'T00:00:00');
-                const dayShort  = d.toLocaleDateString('en-AU', { weekday:'short', timeZone:tz });
-                const dayNum    = d.toLocaleDateString('en-AU', { day:'numeric', timeZone:tz });
-                const monthShort= d.toLocaleDateString('en-AU', { month:'short', timeZone:tz });
-                const timeLocal = formatTime(s.date, s.time, tz);
-                const meta      = TYPE_META[s.type] || {};
+                ms.forEach(s => {
+                    const d = new Date(s.date + 'T00:00:00');
+                    const dayShort = d.toLocaleDateString('en-AU', { weekday: 'short', timeZone: tz });
+                    const dayNum = d.toLocaleDateString('en-AU', { day: 'numeric', timeZone: tz });
+                    const monthShort = d.toLocaleDateString('en-AU', { month: 'short', timeZone: tz });
+                    const timeLocal = formatTime(s.date, s.time, tz);
+                    const meta = TYPE_META[s.type] || {};
+                    const badgeInfo = getBadgeInfo(s.type);
 
-                const btn = s.link
-                    ? `<a href="${s.link}" target="_blank" class="sc-btn">
-                         <i class="fas ${meta.icon||'fa-arrow-right'}"></i> ${meta.btn||'Open'}
-                       </a>`
-                    : '';
+                    // Build badge HTML
+                    let badgeHtml = '';
+                    if (badgeInfo) {
+                        badgeHtml =
+                            `<span class="event-badge ${badgeInfo.cls}"><i class="fas ${badgeInfo.icon}"></i> ${badgeInfo.label}</span>`;
+                    }
 
-                html += `<li class="session-card ${s.type}">
+                    const btn = s.link ?
+                        `<a href="${s.link}" target="_blank" class="sc-btn">
+                             <i class="fas ${meta.icon||'fa-arrow-right'}"></i> ${meta.btn||'Open'}
+                           </a>` :
+                        '';
+
+                    html += `<li class="session-card ${s.type}">
                     <div class="sc-date">
                         <div class="sc-day">${dayShort}</div>
                         <div class="sc-datenum">${dayNum} ${monthShort}</div>
                         <div class="sc-time">${timeLocal}</div>
                     </div>
                     <div class="sc-main">
-                        <div class="sc-type-label">${meta.label||s.type}</div>
+                        <div class="sc-top-row">
+                            <span class="sc-type-label">${meta.label||s.type}</span>
+                            ${badgeHtml}
+                        </div>
                         <div class="sc-title">${s.title}</div>
                     </div>
                     <div class="sc-action">${btn}</div>
                 </li>`;
-            });
+                });
 
-            html += `</ul></div>`;
+                html += `</ul></div>`;
+            }
+
+            document.getElementById('calendarRoot').innerHTML = html;
         }
 
-        document.getElementById('calendarRoot').innerHTML = html;
-    }
+        // ===== VISUAL GRID CALENDAR =====
+        function renderVisualCalendar(tz) {
+            const root = document.getElementById('visualCalRoot');
+            if (!root) return;
 
-    // ===== VISUAL GRID CALENDAR =====
-    function renderVisualCalendar(tz) {
-        const root = document.getElementById('visualCalRoot');
-        if (!root) return;
+            const byDate = {};
+            sessions.forEach(s => {
+                if (!byDate[s.date]) byDate[s.date] = [];
+                byDate[s.date].push(s);
+            });
 
-        // Build lookup: "YYYY-MM-DD" -> array of sessions
-        const byDate = {};
-        sessions.forEach(s => {
-            if (!byDate[s.date]) byDate[s.date] = [];
-            byDate[s.date].push(s);
-        });
+            const months = [
+                { y: 2026, m: 5 },
+                { y: 2026, m: 6 },
+                { y: 2026, m: 7 },
+                { y: 2026, m: 8 },
+                { y: 2026, m: 9 },
+                { y: 2026, m: 10 },
+                { y: 2026, m: 11 },
+            ];
 
-        // Months to show: June–December 2026
-        const months = [
-            {y:2026, m:5},  // June (0-indexed)
-            {y:2026, m:6},
-            {y:2026, m:7},
-            {y:2026, m:8},
-            {y:2026, m:9},
-            {y:2026, m:10},
-            {y:2026, m:11},
-        ];
+            const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const TYPE_COLORS = {
+                seminar: '#C9A84C',
+                coaching: '#3dba6a',
+                intro: '#4a9eff',
+                nlp: '#b06cf4',
+                lowtier: '#ff8c38'
+            };
 
-        const DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-        const TYPE_COLORS = {
-            seminar:'#C9A84C', coaching:'#3dba6a', intro:'#4a9eff', nlp:'#b06cf4', lowtier:'#ff8c38'
-        };
+            let html = '';
+            months.forEach(({ y, m }) => {
+                const monthName = MONTH_NAMES[m];
+                const firstDay = new Date(y, m, 1).getDay();
+                const daysInMonth = new Date(y, m + 1, 0).getDate();
 
-        let html = '';
-        months.forEach(({y, m}) => {
-            const monthName = MONTH_NAMES[m];
-            // first day of month
-            const firstDay = new Date(y, m, 1).getDay(); // 0=Sun
-            const daysInMonth = new Date(y, m+1, 0).getDate();
-
-            html += `<div class="vc-month">
+                html += `<div class="vc-month">
                 <div class="vc-month-name">${monthName} <span>${y}</span></div>
                 <div class="vc-grid">
                     <div class="vc-dow-row">
@@ -1042,72 +1285,91 @@
                     </div>
                     <div class="vc-days">`;
 
-            // leading blanks
-            for (let i = 0; i < firstDay; i++) {
-                html += `<div class="vc-day vc-blank"></div>`;
-            }
+                for (let i = 0; i < firstDay; i++) {
+                    html += `<div class="vc-day vc-blank"></div>`;
+                }
 
-            for (let day = 1; day <= daysInMonth; day++) {
-                const dateStr = `${y}-${String(m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-                const daySessions = byDate[dateStr] || [];
-                const hasSessions = daySessions.length > 0;
-                const hasSeminar  = daySessions.some(s => s.type === 'seminar');
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dateStr =
+                        `${y}-${String(m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+                    const daySessions = byDate[dateStr] || [];
+                    const hasSessions = daySessions.length > 0;
+                    const hasSeminar = daySessions.some(s => s.type === 'seminar');
 
-                // Build tooltip content
-                let tipLines = daySessions.map(s => {
-                    const timeLocal = formatTime(s.date, s.time, tz);
-                    const meta = TYPE_META[s.type] || {};
-                    return `${timeLocal} · ${meta.label||s.type}`;
-                }).join('<br>');
+                    // Build tooltip lines with badges
+                    let tipLines = daySessions.map(s => {
+                        const timeLocal = formatTime(s.date, s.time, tz);
+                        const meta = TYPE_META[s.type] || {};
+                        const badgeInfo = getBadgeInfo(s.type);
+                        let badgeLabel = '';
+                        if (badgeInfo) {
+                            badgeLabel =
+                                `<span class="vc-tip-badge ${badgeInfo.cls}">${badgeInfo.label}</span>`;
+                        }
+                        return `${timeLocal} · ${meta.label||s.type} ${badgeLabel}`;
+                    }).join('<br>');
 
-                // Dots for each session type
-                const dots = [...new Set(daySessions.map(s=>s.type))].map(t =>
-                    `<span class="vc-dot" style="background:${TYPE_COLORS[t]||'#fff'}"></span>`
-                ).join('');
+                    // Dots: show dot color based on badge type (free=green, members=red, paid=orange)
+                    const dotTypes = [...new Set(daySessions.map(s => {
+                        const bi = getBadgeInfo(s.type);
+                        return bi.cls;
+                    }))];
+                    const dotHtml = dotTypes.map(cls => {
+                        let color = '#fff';
+                        if (cls === 'free') color = '#1db954';
+                        else if (cls === 'members') color = '#d32f2f';
+                        else if (cls === 'paid') color = '#ff8c38';
+                        return `<span class="vc-dot ${cls}-dot" style="background:${color};box-shadow:0 0 6px ${color}44"></span>`;
+                    }).join('');
 
-                const semClass  = hasSeminar  ? ' vc-has-seminar' : '';
-                const evtClass  = hasSessions ? ' vc-has-event'   : '';
+                    const semClass = hasSeminar ? ' vc-has-seminar' : '';
+                    const evtClass = hasSessions ? ' vc-has-event' : '';
 
-                html += `<div class="vc-day${evtClass}${semClass}"${hasSessions ? ` data-tip="${tipLines.replace(/"/g,'&quot;')}"` : ''}>
+                    html += `<div class="vc-day${evtClass}${semClass}"${hasSessions ? ` data-tip="${tipLines.replace(/"/g,'&quot;')}"` : ''}>
                     <span class="vc-daynum">${day}</span>
-                    ${hasSessions ? `<div class="vc-dots">${dots}</div>` : ''}
+                    ${hasSessions ? `<div class="vc-dots">${dotHtml}</div>` : ''}
                     ${hasSessions ? `<div class="vc-tooltip">${tipLines}</div>` : ''}
                 </div>`;
-            }
+                }
 
-            html += `</div></div></div>`;
+                html += `</div></div></div>`;
+            });
+
+            root.innerHTML = html;
+        }
+
+        const tzSelect = document.getElementById('timezone');
+        tzSelect.addEventListener('change', () => {
+            renderCalendar(tzSelect.value);
+            renderVisualCalendar(tzSelect.value);
         });
 
-        root.innerHTML = html;
-    }
-
-    const tzSelect = document.getElementById('timezone');
-    tzSelect.addEventListener('change', () => {
-        renderCalendar(tzSelect.value);
-        renderVisualCalendar(tzSelect.value);
-    });
-
-    (function detectTz() {
-        const userTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        const opts = Array.from(tzSelect.options);
-        let matched = opts.find(o => o.value === userTz);
-        if (!matched) {
-            const map = {
-                Sydney:'Australia/Sydney', Melbourne:'Australia/Sydney',
-                Brisbane:'Australia/Brisbane', Perth:'Australia/Perth',
-                New_York:'America/New_York', Chicago:'America/Chicago',
-                Denver:'America/Denver', Los_Angeles:'America/Los_Angeles',
-                Kolkata:'Asia/Kolkata', Auckland:'Pacific/Auckland',
-                London:'Europe/London'
-            };
-            for (const [k, v] of Object.entries(map)) {
-                if (userTz.includes(k)) { matched = opts.find(o => o.value === v); break; }
+        (function detectTz() {
+            const userTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            const opts = Array.from(tzSelect.options);
+            let matched = opts.find(o => o.value === userTz);
+            if (!matched) {
+                const map = {
+                    Sydney: 'Australia/Sydney',
+                    Melbourne: 'Australia/Sydney',
+                    Brisbane: 'Australia/Brisbane',
+                    Perth: 'Australia/Perth',
+                    New_York: 'America/New_York',
+                    Chicago: 'America/Chicago',
+                    Denver: 'America/Denver',
+                    Los_Angeles: 'America/Los_Angeles',
+                    Kolkata: 'Asia/Kolkata',
+                    Auckland: 'Pacific/Auckland',
+                    London: 'Europe/London'
+                };
+                for (const [k, v] of Object.entries(map)) {
+                    if (userTz.includes(k)) { matched = opts.find(o => o.value === v); break; }
+                }
             }
-        }
-        if (matched) tzSelect.value = matched.value;
-        renderCalendar(tzSelect.value);
-        renderVisualCalendar(tzSelect.value);
-    })();
-</script>
+            if (matched) tzSelect.value = matched.value;
+            renderCalendar(tzSelect.value);
+            renderVisualCalendar(tzSelect.value);
+        })();
+    </script>
 </body>
 </html>
