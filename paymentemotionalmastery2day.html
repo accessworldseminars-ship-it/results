@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2-Day Breakthrough Seminar | AccessWorld Seminars</title>
+    <title>2-Day Emotional Mastery Seminar | AccessWorld Seminars</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,9 +39,8 @@
             align-items: center;
         }
 
-        /* ===== CONTAINER ===== */
         .container {
-            max-width: 820px;
+            max-width: 860px;
             width: 100%;
             margin: 0 auto;
         }
@@ -103,7 +102,7 @@
             font-size: 1rem;
             font-weight: 300;
             color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 24px;
+            margin-bottom: 8px;
             letter-spacing: 0.06em;
             text-transform: uppercase;
         }
@@ -113,9 +112,27 @@
             margin: 0 6px;
         }
 
+        .date-badge {
+            text-align: center;
+            background: rgba(201, 168, 76, 0.12);
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            border-radius: 50px;
+            padding: 6px 20px;
+            display: inline-block;
+            margin: 0 auto 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #C9A84C;
+            letter-spacing: 0.04em;
+        }
+
+        .date-badge i {
+            margin-right: 6px;
+        }
+
         .price-display {
             text-align: center;
-            margin: 12px 0 24px;
+            margin: 12px 0 20px;
         }
 
         .price-display .amount {
@@ -155,7 +172,7 @@
             text-align: center;
             font-size: 1.05rem;
             color: rgba(255, 255, 255, 0.85);
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto 28px;
             font-weight: 300;
             line-height: 1.7;
@@ -166,12 +183,86 @@
             font-weight: 600;
         }
 
+        /* ===== TIME ZONE TABLE ===== */
+        .timezone-section {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 12px 0 28px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .timezone-section .tz-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .tz-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 20px;
+            font-size: 0.9rem;
+        }
+
+        .tz-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .tz-item .tz-location {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .tz-item .tz-time {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .tz-item .tz-time.gold {
+            color: #C9A84C;
+        }
+
+        .tz-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.35);
+            margin-top: 12px;
+            font-style: italic;
+        }
+
+        @media (max-width: 480px) {
+            .tz-grid {
+                grid-template-columns: 1fr;
+                gap: 2px;
+            }
+            .program-title {
+                font-size: 2rem;
+            }
+            .price-display .amount {
+                font-size: 2.8rem;
+            }
+            .description {
+                font-size: 0.95rem;
+            }
+            .timezone-section {
+                padding: 16px 14px;
+            }
+        }
+
         /* ===== FEATURE BULLETS ===== */
         .feature-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px 24px;
-            margin: 20px 0 32px;
+            margin: 16px 0 28px;
         }
 
         .feature-item {
@@ -195,20 +286,11 @@
                 grid-template-columns: 1fr;
                 gap: 8px;
             }
-            .program-title {
-                font-size: 2rem;
-            }
-            .price-display .amount {
-                font-size: 2.8rem;
-            }
-            .description {
-                font-size: 0.95rem;
-            }
         }
 
         /* ===== FORM ===== */
         .form-section {
-            margin-top: 28px;
+            margin-top: 24px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             padding-top: 28px;
         }
@@ -282,7 +364,7 @@
 
         /* ===== PAYMENT METHODS ===== */
         .payment-methods {
-            margin: 28px 0 16px;
+            margin: 24px 0 16px;
         }
 
         .payment-methods .pm-label {
@@ -552,21 +634,6 @@
         .fw-600 {
             font-weight: 600;
         }
-
-        /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #C9A84C;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #dbb85c;
-        }
     </style>
 </head>
 
@@ -584,11 +651,18 @@
 
             <!-- ===== PROGRAM TITLE ===== -->
             <h1 class="program-title">
-                2-Day <span class="gold">Breakthrough</span> Seminar
+                2-Day <span class="gold">Emotional Mastery</span> Seminar
             </h1>
             <p class="program-subtitle">
-                <i class="fas fa-calendar-alt"></i> April 24–25, 2025 &bull; 7 AM – 3 PM <i class="fas fa-clock"></i>
+                <i class="fas fa-calendar-alt"></i> Live Online &bull; 8 hours each day
             </p>
+
+            <!-- Date Badge -->
+            <div style="text-align:center;">
+                <span class="date-badge">
+                    <i class="fas fa-calendar-check"></i> Day 1: Thu 6 Aug 2026 &bull; Day 2: Fri 7 Aug 2026 &bull; 7:00 AM AEST
+                </span>
+            </div>
 
             <!-- ===== PRICE ===== -->
             <div class="price-display">
@@ -602,9 +676,31 @@
             <p class="description">
                 Two immersive days of <span class="highlight">nervous system reprogramming</span> and
                 <span class="highlight">emotional clearing</span>.
-                Walk away with practical tools, a personalized action plan,
+                Walk away with practical tools, a personalised action plan,
                 and a 30‑day follow‑up session to lock in your transformation.
             </p>
+
+            <!-- ===== TIME ZONE TABLE ===== -->
+            <div class="timezone-section">
+                <div class="tz-title">
+                    <i class="fas fa-globe" style="color:#C9A84C;margin-right:6px;"></i>
+                    Join from anywhere – Day 1 starts at 7:00 AM AEST (Brisbane)
+                </div>
+                <div class="tz-grid">
+                    <div class="tz-item"><span class="tz-location">Brisbane (AEST)</span><span class="tz-time gold">7:00 AM</span></div>
+                    <div class="tz-item"><span class="tz-location">Sydney / Melbourne</span><span class="tz-time">7:00 AM</span></div>
+                    <div class="tz-item"><span class="tz-location">Adelaide</span><span class="tz-time">6:30 AM</span></div>
+                    <div class="tz-item"><span class="tz-location">Perth</span><span class="tz-time">5:00 AM</span></div>
+                    <div class="tz-item"><span class="tz-location">India (IST)</span><span class="tz-time">2:30 AM</span></div>
+                    <div class="tz-item"><span class="tz-location">US Pacific (PDT)</span><span class="tz-time">2:00 PM (prev day)</span></div>
+                    <div class="tz-item"><span class="tz-location">US Mountain (MDT)</span><span class="tz-time">3:00 PM (prev day)</span></div>
+                    <div class="tz-item"><span class="tz-location">US Central (CDT)</span><span class="tz-time">4:00 PM (prev day)</span></div>
+                    <div class="tz-item"><span class="tz-location">US Eastern (EDT)</span><span class="tz-time">5:00 PM (prev day)</span></div>
+                </div>
+                <div class="tz-note">
+                    <i class="far fa-clock"></i> Day 2 follows the same schedule &bull; Each day runs 7:00 AM – 3:00 PM AEST (8 hours)
+                </div>
+            </div>
 
             <!-- ===== FEATURES ===== -->
             <div class="feature-grid">
@@ -620,7 +716,7 @@
             <div class="form-section">
                 <div class="form-title">
                     <i class="fas fa-user-edit" style="color:#C9A84C;margin-right:6px;"></i>
-                    Secure your spot &mdash; enter your details
+                    Secure your spot – enter your details
                 </div>
 
                 <form id="paymentForm" novalidate>
@@ -719,7 +815,7 @@
             <span class="value">Westpac</span>
         </div>
         <div class="copy-hint">
-            <i class="far fa-copy"></i> Use these details to transfer &mdash; include your name as reference
+            <i class="far fa-copy"></i> Use these details to transfer – include your name as reference
         </div>
     </div>
 
@@ -782,7 +878,7 @@
 
         // ----- CONFIG -----
         const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
-        const PROGRAM_NAME = '2-Day Breakthrough Seminar';
+        const PROGRAM_NAME = '2-Day Emotional Mastery Seminar';
         const PRICE = '$399 AUD';
 
         // ----- DOM REFS -----
@@ -822,10 +918,8 @@
         // ----- PAYMENT BUTTON TRACKING (optional analytics) -----
         document.querySelectorAll('.pm-btn[href]').forEach(function(btn) {
             btn.addEventListener('click', function() {
-                // Log payment method selection (non-blocking)
                 const method = this.dataset.method || 'unknown';
                 console.log('[Payment] Selected:', method);
-                // You could send a lightweight ping here if needed
             });
         });
 
@@ -841,13 +935,11 @@
             formData.append('timestamp', data.timestamp);
 
             try {
-                const response = await fetch(WEBHOOK_URL, {
+                await fetch(WEBHOOK_URL, {
                     method: 'POST',
                     body: formData,
-                    mode: 'no-cors' // fire-and-forget
+                    mode: 'no-cors'
                 });
-                // 'no-cors' returns opaque response, we can't read status.
-                // We'll assume success unless network error.
                 return { success: true };
             } catch (err) {
                 console.error('Webhook error:', err);
@@ -859,7 +951,6 @@
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            // Validate
             const name = fullName.value.trim();
             const phoneVal = phone.value.trim();
             const emailVal = email.value.trim();
@@ -872,7 +963,6 @@
                 return;
             }
 
-            // Basic email validation
             if (!emailVal.includes('@') || !emailVal.includes('.')) {
                 statusDiv.className = 'webhook-status error';
                 statusDiv.textContent = '⚠️ Please enter a valid email address.';
@@ -880,14 +970,12 @@
                 return;
             }
 
-            // Disable button
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
 
             statusDiv.className = 'webhook-status loading';
             statusDiv.textContent = '⏳ Registering your spot...';
 
-            // Build payload
             const payload = {
                 name: name,
                 phone: phoneVal,
@@ -898,21 +986,12 @@
                 timestamp: new Date().toISOString()
             };
 
-            // Send to webhook
             const result = await sendToWebhook(payload);
 
             if (result.success) {
                 statusDiv.className = 'webhook-status success';
                 statusDiv.innerHTML =
                     '✅ <strong>Registration received!</strong> Check your email for details. You\'ll also receive a payment confirmation from your chosen gateway.';
-
-                // Reset form but keep data
-                // Optionally clear sensitive fields? We'll keep for convenience.
-                // But we could clear the form after a moment.
-                setTimeout(() => {
-                    // Don't clear — user might need to reference
-                }, 500);
-
             } else {
                 statusDiv.className = 'webhook-status error';
                 statusDiv.textContent =
@@ -920,28 +999,15 @@
                     (result.error || 'unknown') + ')';
             }
 
-            // Re-enable button
             submitBtn.disabled = false;
             submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Complete Registration';
-
-            // Scroll to status
             statusDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
 
-        // ----- AUTO-DISMISS STATUS AFTER 10s (success) -----
-        // We'll let the user see it, but we can auto-hide after a while?
-        // Not necessary, they can dismiss by clicking or we keep it.
-
-        // ----- HELPER: click on payment method sends a ping to webhook? -----
-        // We'll add a subtle ping when a payment method is clicked.
-        // This is optional but helps track intent.
+        // ----- PAYMENT METHOD INTENT PING -----
         document.querySelectorAll('.pm-btn').forEach(function(btn) {
             btn.addEventListener('click', function() {
-                // If it's a button (not a link), we already handle toggle.
-                // For links, we also want to register the intent.
                 const method = this.dataset.method || 'unknown';
-                // Only ping if form is filled? We'll ping lightly.
-                // We'll use a lightweight fetch with minimal data.
                 const nameVal = fullName.value.trim() || 'anonymous';
                 const emailVal = email.value.trim() || 'anon@example.com';
                 const pingData = new FormData();
@@ -952,35 +1018,21 @@
                 pingData.append('program', PROGRAM_NAME);
                 pingData.append('timestamp', new Date().toISOString());
 
-                // Fire-and-forget
                 fetch(WEBHOOK_URL, {
                     method: 'POST',
                     body: pingData,
                     mode: 'no-cors'
                 }).catch(function() { /* ignore */ });
 
-                // If the button is a link, we also show a brief status
                 if (btn.tagName === 'A') {
                     statusDiv.className = 'webhook-status loading';
                     statusDiv.textContent = '🔄 Redirecting to ' + method + '...';
-                    // Let the user see it briefly before redirect
-                    setTimeout(function() {
-                        // The redirect will happen naturally
-                    }, 300);
+                    setTimeout(function() {}, 300);
                 }
             });
         });
 
-        // ----- PREVENT DOUBLE-CLICK ON PAYMENT LINKS -----
-        document.querySelectorAll('.pm-btn[href]').forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                // Allow the redirect, but we already pinged above.
-                // No need to prevent default.
-            });
-        });
-
         console.log('[AccessWorld] Payment page ready. Webhook: ' + WEBHOOK_URL);
-
     })();
 </script>
 
