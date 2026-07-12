@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2-Day Breakthrough Seminar | AccessWorld Seminars</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #080d18 0%, #1A2744 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            line-height: 1.6;
+            padding: 20px 16px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 820px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* ===== LOGO ===== */
+        .logo-wrapper {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .logo-wrapper img {
+            max-width: 200px;
+            height: auto;
+            display: inline-block;
+        }
+
+        /* ===== MAIN CARD ===== */
+        .payment-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            border-radius: 24px;
+            padding: 40px 36px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        @media (max-width: 480px) {
+            .payment-card {
+                padding: 28px 18px;
+                border-radius: 16px;
+            }
+        }
+
+        /* ===== HEADINGS ===== */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+
+        .program-title {
+            font-size: 2.6rem;
+            line-height: 1.15;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .program-title .gold {
+            color: #C9A84C;
+        }
+
+        .program-subtitle {
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 24px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .program-subtitle i {
+            color: #C9A84C;
+            margin: 0 6px;
+        }
+
+        .price-display {
+            text-align: center;
+            margin: 12px 0 24px;
+        }
+
+        .price-display .amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.8rem;
+            font-weight: 700;
+            color: #C9A84C;
+            line-height: 1;
+        }
+
+        .price-display .currency {
+            font-size: 1.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+            margin-right: 4px;
+        }
+
+        .price-display .period {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 300;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .divider-line {
+            width: 80px;
+            height: 3px;
+            background: #C9A84C;
+            margin: 16px auto 24px;
+            border-radius: 4px;
+            opacity: 0.6;
+        }
+
+        /* ===== DESCRIPTION ===== */
+        .description {
+            text-align: center;
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 600px;
+            margin: 0 auto 28px;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .description .highlight {
+            color: #C9A84C;
+            font-weight: 600;
+        }
+
+        /* ===== FEATURE BULLETS ===== */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 24px;
+            margin: 20px 0 32px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.92rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .feature-item i {
+            color: #C9A84C;
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 480px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .program-title {
+                font-size: 2rem;
+            }
+            .price-display .amount {
+                font-size: 2.8rem;
+            }
+            .description {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* ===== FORM ===== */
+        .form-section {
+            margin-top: 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 28px;
+        }
+
+        .form-section .form-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.06);
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #C9A84C;
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+        }
+
+        .form-group select option {
+            background: #1A2744;
+            color: #ffffff;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 480px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+
+        /* ===== PAYMENT METHODS ===== */
+        .payment-methods {
+            margin: 28px 0 16px;
+        }
+
+        .payment-methods .pm-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .pm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .pm-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .pm-btn:hover {
+            background: rgba(201, 168, 76, 0.12);
+            border-color: #C9A84C;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 168, 76, 0.12);
+        }
+
+        .pm-btn i {
+            font-size: 1.2rem;
+            color: #C9A84C;
+            width: 24px;
+            text-align: center;
+        }
+
+        .pm-btn .pm-icon {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #C9A84C;
+        }
+
+        .pm-btn.bank i {
+            color: #8ab4f8;
+        }
+        .pm-btn.payid i {
+            color: #34a853;
+        }
+
+        .pm-full {
+            grid-column: 1 / -1;
+        }
+
+        .pm-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.35);
+            margin-top: 14px;
+            font-weight: 300;
+        }
+
+        .pm-note i {
+            color: #C9A84C;
+            margin-right: 4px;
+        }
+
+        @media (max-width: 480px) {
+            .pm-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .pm-btn {
+                font-size: 0.75rem;
+                padding: 12px 8px;
+            }
+            .pm-btn i {
+                font-size: 1rem;
+            }
+        }
+
+        /* ===== BANK / PAYID DETAILS ===== */
+        .bank-details {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-top: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: none;
+        }
+
+        .bank-details.visible {
+            display: block;
+            animation: fadeSlide 0.3s ease;
+        }
+
+        @keyframes fadeSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .bank-details .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .bank-details .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .bank-details .label {
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 400;
+        }
+
+        .bank-details .value {
+            color: #ffffff;
+            font-weight: 600;
+            font-family: 'Montserrat', monospace;
+            letter-spacing: 0.02em;
+        }
+
+        .bank-details .value.gold {
+            color: #C9A84C;
+        }
+
+        .bank-details .copy-hint {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.3);
+            text-align: right;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* ===== WEBHOOK STATUS ===== */
+        .webhook-status {
+            margin-top: 18px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            text-align: center;
+            display: none;
+            font-weight: 500;
+        }
+
+        .webhook-status.success {
+            display: block;
+            background: rgba(52, 168, 83, 0.15);
+            border: 1px solid rgba(52, 168, 83, 0.3);
+            color: #34a853;
+        }
+
+        .webhook-status.error {
+            display: block;
+            background: rgba(234, 67, 53, 0.12);
+            border: 1px solid rgba(234, 67, 53, 0.25);
+            color: #ea4335;
+        }
+
+        .webhook-status.loading {
+            display: block;
+            background: rgba(201, 168, 76, 0.10);
+            border: 1px solid rgba(201, 168, 76, 0.20);
+            color: #C9A84C;
+        }
+
+        /* ===== SUBMIT BUTTON ===== */
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: #C9A84C;
+            color: #080d18;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .btn-submit:hover {
+            background: #dbb85c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(201, 168, 76, 0.25);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.25);
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .footer-note a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-note a:hover {
+            color: #C9A84C;
+        }
+
+        .footer-note .sep {
+            margin: 0 8px;
+            opacity: 0.3;
+        }
+
+        /* ===== UTILITY ===== */
+        .text-gold {
+            color: #C9A84C;
+        }
+        .text-muted {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        .text-center {
+            text-align: center;
+        }
+        .mt-8 {
+            margin-top: 8px;
+        }
+        .mt-16 {
+            margin-top: 16px;
+        }
+        .mb-8 {
+            margin-bottom: 8px;
+        }
+        .fw-600 {
+            font-weight: 600;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C9A84C;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #dbb85c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ===== LOGO ===== -->
+        <div class="logo-wrapper">
+            <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars" />
+        </div>
+
+        <!-- ===== PAYMENT CARD ===== -->
+        <div class="payment-card">
+
+            <!-- ===== PROGRAM TITLE ===== -->
+            <h1 class="program-title">
+                2-Day <span class="gold">Breakthrough</span> Seminar
+            </h1>
+            <p class="program-subtitle">
+                <i class="fas fa-calendar-alt"></i> April 24–25, 2025 &bull; 7 AM – 3 PM <i class="fas fa-clock"></i>
+            </p>
+
+            <!-- ===== PRICE ===== -->
+            <div class="price-display">
+                <span class="currency">$</span><span class="amount">399</span>
+                <span class="period">AUD &bull; One-time payment</span>
+            </div>
+
+            <div class="divider-line"></div>
+
+            <!-- ===== DESCRIPTION ===== -->
+            <p class="description">
+                Two immersive days of <span class="highlight">nervous system reprogramming</span> and
+                <span class="highlight">emotional clearing</span>.
+                Walk away with practical tools, a personalized action plan,
+                and a 30‑day follow‑up session to lock in your transformation.
+            </p>
+
+            <!-- ===== FEATURES ===== -->
+            <div class="feature-grid">
+                <div class="feature-item"><i class="fas fa-brain"></i> Emotional reprogramming</div>
+                <div class="feature-item"><i class="fas fa-handshake"></i> Relationship mastery</div>
+                <div class="feature-item"><i class="fas fa-rocket"></i> Unshakable confidence</div>
+                <div class="feature-item"><i class="fas fa-heart"></i> Stress → strength</div>
+                <div class="feature-item"><i class="fas fa-bullseye"></i> Clarity of purpose</div>
+                <div class="feature-item"><i class="fas fa-users-cog"></i> Live coaching &amp; Q&A</div>
+            </div>
+
+            <!-- ===== LEAD CAPTURE FORM ===== -->
+            <div class="form-section">
+                <div class="form-title">
+                    <i class="fas fa-user-edit" style="color:#C9A84C;margin-right:6px;"></i>
+                    Secure your spot &mdash; enter your details
+                </div>
+
+                <form id="paymentForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" placeholder="e.g. Jane Doe" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="+61 412 345 678" required />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="you@example.com" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <select id="country" required>
+                                <option value="">Select your country</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Ireland">Ireland</option>
+                                <option value="New Zealand">New Zealand</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="United States">United States</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- ===== PAYMENT METHODS ===== -->
+                    <div class="payment-methods">
+                        <div class="pm-label"><i class="fas fa-credit-card" style="color:#C9A84C;margin-right:6px;"></i> Choose your payment method</div>
+
+                        <div class="pm-grid">
+                            <!-- PayPal -->
+                            <a href="https://www.paypal.com/ncp/payment/6T29BS9PYL7X4"
+                            target="_blank"
+                            class="pm-btn paypal"
+                            data-method="PayPal">
+                            <i class="fab fa-paypal"></i> PayPal
+                        </a>
+
+                        <!-- Stripe -->
+                        <a href="https://buy.stripe.com/00w00j7JR10j1gPg9xg3601"
+                        target="_blank"
+                        class="pm-btn stripe"
+                        data-method="Stripe">
+                        <i class="fas fa-bolt"></i> Stripe
+                    </a>
+
+                    <!-- Square -->
+                    <a href="https://square.link/u/sNBsxzSr"
+                    target="_blank"
+                    class="pm-btn square"
+                    data-method="Square">
+                    <span class="pm-icon">■</span> Square
+                </a>
+
+                <!-- Bank Transfer -->
+                <button type="button"
+                class="pm-btn bank"
+                id="showBankBtn"
+                data-method="Bank Transfer">
+                <i class="fas fa-university"></i> Bank Transfer
+            </button>
+
+            <!-- PayID (spans full width) -->
+            <button type="button"
+            class="pm-btn payid pm-full"
+            id="showPayIDBtn"
+            data-method="PayID">
+            <i class="fas fa-mobile-alt"></i> PayID &bull; 0432 119 091
+        </button>
+    </div>
+
+    <!-- ===== BANK DETAILS (hidden) ===== -->
+    <div class="bank-details" id="bankDetails">
+        <div class="detail-row">
+            <span class="label">BSB</span>
+            <span class="value gold">124 001</span>
+        </div>
+        <div class="detail-row">
+            <span class="label">Account Number</span>
+            <span class="value gold">227 10071</span>
+        </div>
+        <div class="detail-row">
+            <span class="label">Account Name</span>
+            <span class="value">Accessworld Trust BC</span>
+        </div>
+        <div class="detail-row">
+            <span class="label">Bank</span>
+            <span class="value">Westpac</span>
+        </div>
+        <div class="copy-hint">
+            <i class="far fa-copy"></i> Use these details to transfer &mdash; include your name as reference
+        </div>
+    </div>
+
+    <!-- ===== PAYID DETAILS (hidden) ===== -->
+    <div class="bank-details" id="payIDDetails">
+        <div class="detail-row">
+            <span class="label">PayID</span>
+            <span class="value gold">0432 119 091</span>
+        </div>
+        <div class="detail-row">
+            <span class="label">Account Name</span>
+            <span class="value">Accessworld Trust BC</span>
+        </div>
+        <div class="detail-row">
+            <span class="label">Bank</span>
+            <span class="value">Westpac</span>
+        </div>
+        <div class="copy-hint">
+            <i class="far fa-copy"></i> Use your name as the payment reference
+        </div>
+    </div>
+
+    <p class="pm-note">
+        <i class="fas fa-lock"></i> Secure checkout &bull; All major cards accepted &bull; 7-day money-back guarantee
+    </p>
+</div>
+
+<!-- ===== WEBHOOK STATUS ===== -->
+<div class="webhook-status" id="webhookStatus"></div>
+
+<!-- ===== SUBMIT ===== -->
+<button type="submit" class="btn-submit" id="submitBtn">
+    <i class="fas fa-check-circle"></i> Complete Registration
+</button>
+
+<p style="text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.25);margin-top:12px;">
+    By continuing you agree to our <a href="#" style="color:rgba(255,255,255,0.35);">Terms</a> &amp; <a href="#" style="color:rgba(255,255,255,0.35);">Privacy Policy</a>
+</p>
+
+</form>
+</div><!-- /form-section -->
+
+</div><!-- /payment-card -->
+
+<!-- ===== FOOTER ===== -->
+<div class="footer-note">
+    <span>&copy; 2025 AccessWorld Seminars</span>
+    <span class="sep">|</span>
+    <span>Need help? <a href="mailto:hello@accessworld.com">hello@accessworld.com</a></span>
+    <span class="sep">|</span>
+    <span><i class="fas fa-phone" style="color:rgba(255,255,255,0.2);"></i> +61 432 119 091</span>
+</div>
+
+</div><!-- /container -->
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+    (function() {
+        'use strict';
+
+        // ----- CONFIG -----
+        const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+        const PROGRAM_NAME = '2-Day Breakthrough Seminar';
+        const PRICE = '$399 AUD';
+
+        // ----- DOM REFS -----
+        const form = document.getElementById('paymentForm');
+        const fullName = document.getElementById('fullName');
+        const phone = document.getElementById('phone');
+        const email = document.getElementById('email');
+        const country = document.getElementById('country');
+        const submitBtn = document.getElementById('submitBtn');
+        const statusDiv = document.getElementById('webhookStatus');
+        const showBankBtn = document.getElementById('showBankBtn');
+        const showPayIDBtn = document.getElementById('showPayIDBtn');
+        const bankDetails = document.getElementById('bankDetails');
+        const payIDDetails = document.getElementById('payIDDetails');
+
+        // ----- TOGGLE BANK / PAYID -----
+        showBankBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const isVisible = bankDetails.classList.contains('visible');
+            bankDetails.classList.toggle('visible');
+            payIDDetails.classList.remove('visible');
+            if (!isVisible) {
+                bankDetails.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+
+        showPayIDBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const isVisible = payIDDetails.classList.contains('visible');
+            payIDDetails.classList.toggle('visible');
+            bankDetails.classList.remove('visible');
+            if (!isVisible) {
+                payIDDetails.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+
+        // ----- PAYMENT BUTTON TRACKING (optional analytics) -----
+        document.querySelectorAll('.pm-btn[href]').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                // Log payment method selection (non-blocking)
+                const method = this.dataset.method || 'unknown';
+                console.log('[Payment] Selected:', method);
+                // You could send a lightweight ping here if needed
+            });
+        });
+
+        // ----- WEBHOOK SEND -----
+        async function sendToWebhook(data) {
+            const formData = new FormData();
+            formData.append('name', data.name);
+            formData.append('phone', data.phone);
+            formData.append('country', data.country);
+            formData.append('email', data.email);
+            formData.append('program_name', data.program);
+            formData.append('amount', data.amount);
+            formData.append('timestamp', data.timestamp);
+
+            try {
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors' // fire-and-forget
+                });
+                // 'no-cors' returns opaque response, we can't read status.
+                // We'll assume success unless network error.
+                return { success: true };
+            } catch (err) {
+                console.error('Webhook error:', err);
+                return { success: false, error: err.message };
+            }
+        }
+
+        // ----- FORM SUBMIT -----
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Validate
+            const name = fullName.value.trim();
+            const phoneVal = phone.value.trim();
+            const emailVal = email.value.trim();
+            const countryVal = country.value;
+
+            if (!name || !phoneVal || !emailVal || !countryVal) {
+                statusDiv.className = 'webhook-status error';
+                statusDiv.textContent = '⚠️ Please fill in all fields.';
+                statusDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // Basic email validation
+            if (!emailVal.includes('@') || !emailVal.includes('.')) {
+                statusDiv.className = 'webhook-status error';
+                statusDiv.textContent = '⚠️ Please enter a valid email address.';
+                statusDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+            statusDiv.className = 'webhook-status loading';
+            statusDiv.textContent = '⏳ Registering your spot...';
+
+            // Build payload
+            const payload = {
+                name: name,
+                phone: phoneVal,
+                country: countryVal,
+                email: emailVal,
+                program: PROGRAM_NAME,
+                amount: PRICE,
+                timestamp: new Date().toISOString()
+            };
+
+            // Send to webhook
+            const result = await sendToWebhook(payload);
+
+            if (result.success) {
+                statusDiv.className = 'webhook-status success';
+                statusDiv.innerHTML =
+                    '✅ <strong>Registration received!</strong> Check your email for details. You\'ll also receive a payment confirmation from your chosen gateway.';
+
+                // Reset form but keep data
+                // Optionally clear sensitive fields? We'll keep for convenience.
+                // But we could clear the form after a moment.
+                setTimeout(() => {
+                    // Don't clear — user might need to reference
+                }, 500);
+
+            } else {
+                statusDiv.className = 'webhook-status error';
+                statusDiv.textContent =
+                    '⚠️ There was a problem registering. Please try again or contact support. (Error: ' +
+                    (result.error || 'unknown') + ')';
+            }
+
+            // Re-enable button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Complete Registration';
+
+            // Scroll to status
+            statusDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+        // ----- AUTO-DISMISS STATUS AFTER 10s (success) -----
+        // We'll let the user see it, but we can auto-hide after a while?
+        // Not necessary, they can dismiss by clicking or we keep it.
+
+        // ----- HELPER: click on payment method sends a ping to webhook? -----
+        // We'll add a subtle ping when a payment method is clicked.
+        // This is optional but helps track intent.
+        document.querySelectorAll('.pm-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                // If it's a button (not a link), we already handle toggle.
+                // For links, we also want to register the intent.
+                const method = this.dataset.method || 'unknown';
+                // Only ping if form is filled? We'll ping lightly.
+                // We'll use a lightweight fetch with minimal data.
+                const nameVal = fullName.value.trim() || 'anonymous';
+                const emailVal = email.value.trim() || 'anon@example.com';
+                const pingData = new FormData();
+                pingData.append('event', 'payment_method_selected');
+                pingData.append('method', method);
+                pingData.append('name', nameVal);
+                pingData.append('email', emailVal);
+                pingData.append('program', PROGRAM_NAME);
+                pingData.append('timestamp', new Date().toISOString());
+
+                // Fire-and-forget
+                fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    body: pingData,
+                    mode: 'no-cors'
+                }).catch(function() { /* ignore */ });
+
+                // If the button is a link, we also show a brief status
+                if (btn.tagName === 'A') {
+                    statusDiv.className = 'webhook-status loading';
+                    statusDiv.textContent = '🔄 Redirecting to ' + method + '...';
+                    // Let the user see it briefly before redirect
+                    setTimeout(function() {
+                        // The redirect will happen naturally
+                    }, 300);
+                }
+            });
+        });
+
+        // ----- PREVENT DOUBLE-CLICK ON PAYMENT LINKS -----
+        document.querySelectorAll('.pm-btn[href]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                // Allow the redirect, but we already pinged above.
+                // No need to prevent default.
+            });
+        });
+
+        console.log('[AccessWorld] Payment page ready. Webhook: ' + WEBHOOK_URL);
+
+    })();
+</script>
+
+</body>
+</html>
