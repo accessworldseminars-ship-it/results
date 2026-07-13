@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AccessWorld Seminars vs. The Others</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0a1628;
+    --navy-2: #0f2038;
+    --navy-3: #14294a;
+    --gold: #c9a84c;
+    --gold-light: #e8d192;
+    --cream: #f5f0e6;
+    --grey: #8a93a3;
+    --grey-dark: #5b6577;
+    --sad-red: #a14b4b;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{
+    background: var(--navy);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--cream);
+    overflow-x:hidden;
+  }
+  .stage{
+    min-height:100vh;
+    width:100%;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(201,168,76,0.16), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(201,168,76,0.06), transparent 60%),
+      linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
+    padding: 64px 24px 80px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  /* ---------- HEADER ---------- */
+  .eyebrow{
+    letter-spacing: 0.35em;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    text-align:center;
+  }
+  .wow-badge{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:700;
+    font-size: 15px;
+    color: var(--navy);
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    padding: 6px 20px;
+    border-radius: 999px;
+    letter-spacing: 0.1em;
+    margin-bottom: 22px;
+    box-shadow: 0 6px 20px rgba(201,168,76,0.35);
+  }
+  h1.hero{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size: clamp(38px, 6vw, 74px);
+    text-align:center;
+    line-height:1.05;
+    max-width: 920px;
+    color: var(--cream);
+  }
+  h1.hero em{
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .subhead{
+    margin-top:20px;
+    font-size:16px;
+    color: var(--grey);
+    text-align:center;
+    max-width:560px;
+    line-height:1.6;
+    font-weight:400;
+  }
+
+  /* ---------- VS BADGE ---------- */
+  .vs-wrap{
+    position:relative;
+    width:100%;
+    max-width:1080px;
+    margin-top:56px;
+  }
+  .vs-badge{
+    position:absolute;
+    top:-30px;
+    left:50%;
+    transform:translateX(-50%);
+    width:76px;
+    height:76px;
+    border-radius:50%;
+    background: linear-gradient(155deg, var(--gold-light), var(--gold) 60%, #8a6f2c);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:700;
+    font-size:22px;
+    color: var(--navy);
+    box-shadow: 0 0 0 6px var(--navy), 0 8px 30px rgba(201,168,76,0.45);
+    z-index: 10;
+    letter-spacing:0.02em;
+  }
+
+  /* ---------- COMPARISON TABLE ---------- */
+  .compare{
+    width:100%;
+    max-width:1080px;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    border: 1px solid rgba(201,168,76,0.18);
+  }
+  .compare-head{
+    display:grid;
+    grid-template-columns: 1.15fr 1fr 1fr;
+  }
+  .head-cell{
+    padding: 34px 20px 26px;
+    text-align:center;
+    position:relative;
+  }
+  .head-cell.label-col{ background: var(--navy-2); }
+  .head-cell.win{
+    background: linear-gradient(180deg, #1a3252, #142744);
+    border-left: 1px solid rgba(201,168,76,0.25);
+    border-right: 1px solid rgba(201,168,76,0.25);
+  }
+  .head-cell.lose{ background: #101c2f; }
+
+  .face{
+    width:58px; height:58px;
+    margin: 0 auto 14px;
+  }
+  .brandname{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:700;
+    font-size: 24px;
+    color: var(--gold-light);
+    letter-spacing:0.01em;
+  }
+  .othersname{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size: 22px;
+    color: var(--grey);
+  }
+  .othersname small{
+    display:block;
+    font-family:'Montserrat',sans-serif;
+    font-weight:500;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color: var(--grey-dark);
+    margin-top:6px;
+  }
+  .label-col .col-title{
+    font-family:'Montserrat', sans-serif;
+    font-size:11px;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color: var(--grey-dark);
+    font-weight:700;
+    padding-top: 32px;
+  }
+
+  .compare-body{
+    background: var(--navy);
+  }
+  .row{
+    display:grid;
+    grid-template-columns: 1.15fr 1fr 1fr;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .row:nth-child(odd) .cell{ background: rgba(255,255,255,0.012); }
+  .cell{
+    padding: 22px 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    gap:8px;
+  }
+  .cell.factor{
+    align-items:flex-start;
+    text-align:left;
+    font-weight:600;
+    font-size:14.5px;
+    color: var(--cream);
+    letter-spacing:0.01em;
+  }
+  .cell.win{
+    background: linear-gradient(180deg, rgba(201,168,76,0.09), rgba(201,168,76,0.02));
+    border-left: 1px solid rgba(201,168,76,0.16);
+    border-right: 1px solid rgba(201,168,76,0.16);
+  }
+  .mark{
+    width:22px; height:22px;
+    flex-shrink:0;
+  }
+  .cell-text{
+    font-size:13.5px;
+    line-height:1.45;
+    font-weight:500;
+  }
+  .win .cell-text{ color: var(--gold-light); font-weight:600; }
+  .lose .cell-text{ color: var(--grey); }
+
+  /* final row emphasis */
+  .row.final{
+    border-top: 1px solid rgba(201,168,76,0.3);
+  }
+  .row.final .factor{
+    font-family:'Cormorant Garamond', serif;
+    font-size:19px;
+    font-weight:700;
+  }
+  .row.final .cell{ padding: 28px 20px; }
+  .row.final .price-win{
+    font-family:'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight:700;
+    color: var(--gold-light);
+  }
+  .row.final .price-lose{
+    font-family:'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight:600;
+    color: var(--grey-dark);
+    text-decoration: line-through;
+    text-decoration-color: var(--sad-red);
+    text-decoration-thickness: 2px;
+  }
+
+  /* ---------- FOOTER CTA ---------- */
+  .cta-wrap{
+    margin-top: 56px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+  }
+  .cta-line{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size: clamp(20px, 2.6vw, 30px);
+    color: var(--cream);
+    text-align:center;
+    max-width: 680px;
+    line-height:1.4;
+  }
+  .cta-line strong{ color: var(--gold-light); font-style:normal; }
+  .cta-button{
+    margin-top:8px;
+    padding: 16px 44px;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    color: var(--navy);
+    font-weight:800;
+    font-size:14px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    border-radius: 999px;
+    border:none;
+    cursor:pointer;
+    box-shadow: 0 10px 34px rgba(201,168,76,0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .cta-button:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(201,168,76,0.5);
+  }
+  .fine{
+    font-size:11.5px;
+    color: var(--grey-dark);
+    letter-spacing:0.05em;
+  }
+
+  @media (max-width: 720px){
+    .compare-head, .row{ grid-template-columns: 1fr 1fr; }
+    .label-col{ display:none; }
+    .cell.factor{ display:none; }
+    .row::before{
+      content: attr(data-label);
+      display:block;
+      grid-column: 1 / -1;
+      padding: 14px 20px 0;
+      font-family:'Montserrat',sans-serif;
+      font-size:11px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      color: var(--gold);
+      font-weight:700;
+    }
+    .compare-head{ display: none; }
+    .head-mobile{
+      display:flex !important;
+      justify-content:space-between;
+      max-width:1080px;
+      width:100%;
+      margin: 24px auto 0;
+      padding: 0 6px;
+    }
+  }
+  .head-mobile{ display:none; }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="eyebrow">The Honest Comparison</div>
+  <div class="wow-badge">WOW.</div>
+  <h1 class="hero">World-class coaching<br>for <em>$129/month.</em></h1>
+  <p class="subhead">AccessWorld Seminars vs. the $10,000 industry standard. Same transformation. Less than a gym membership. None of the fluff.</p>
+
+  <div class="head-mobile">
+    <div style="text-align:center;">
+      <svg class="face" viewBox="0 0 60 60"><circle cx="30" cy="30" r="27" fill="none" stroke="#e8d192" stroke-width="3"/><circle cx="21" cy="24" r="3" fill="#e8d192"/><circle cx="39" cy="24" r="3" fill="#e8d192"/><path d="M17 37 Q30 49 43 37" fill="none" stroke="#e8d192" stroke-width="3" stroke-linecap="round"/></svg>
+      <div class="brandname">AccessWorld</div>
+    </div>
+    <div style="text-align:center;">
+      <svg class="face" viewBox="0 0 60 60"><circle cx="30" cy="30" r="27" fill="none" stroke="#5b6577" stroke-width="3"/><circle cx="21" cy="24" r="3" fill="#5b6577"/><circle cx="39" cy="24" r="3" fill="#5b6577"/><path d="M17 42 Q30 30 43 42" fill="none" stroke="#5b6577" stroke-width="3" stroke-linecap="round"/></svg>
+      <div class="othersname">The Others</div>
+    </div>
+  </div>
+
+  <div class="vs-wrap">
+    <div class="vs-badge">VS</div>
+
+    <div class="compare">
+      <div class="compare-head">
+        <div class="head-cell label-col">
+          <div class="col-title">Factor</div>
+        </div>
+        <div class="head-cell win">
+          <svg class="face" viewBox="0 0 60 60"><circle cx="30" cy="30" r="27" fill="none" stroke="#e8d192" stroke-width="3"/><circle cx="21" cy="24" r="3" fill="#e8d192"/><circle cx="39" cy="24" r="3" fill="#e8d192"/><path d="M17 37 Q30 49 43 37" fill="none" stroke="#e8d192" stroke-width="3" stroke-linecap="round"/></svg>
+          <div class="brandname">AccessWorld</div>
+        </div>
+        <div class="head-cell lose">
+          <svg class="face" viewBox="0 0 60 60"><circle cx="30" cy="30" r="27" fill="none" stroke="#5b6577" stroke-width="3"/><circle cx="21" cy="24" r="3" fill="#5b6577"/><circle cx="39" cy="24" r="3" fill="#5b6577"/><path d="M17 42 Q30 30 43 42" fill="none" stroke="#5b6577" stroke-width="3" stroke-linecap="round"/></svg>
+          <div class="othersname">The Others<small>NYU · iPEC · CTEDU · Brown</small></div>
+        </div>
+      </div>
+
+      <div class="compare-body">
+
+        <div class="row" data-label="Price">
+          <div class="cell factor">Price</div>
+          <div class="cell win">
+            <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="#c9a84c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="cell-text"><strong style="font-size:15px;">$129/month</strong><br>12-month program · pay in full &amp; save</div>
+          </div>
+          <div class="cell lose">
+            <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M5 5L19 19M19 5L5 19" stroke="#a14b4b" stroke-width="2.4" stroke-linecap="round"/></svg>
+            <div class="cell-text"><strong style="font-size:15px;">$2,497 – $15,500</strong><br>paid up front</div>
+          </div>
+        </div>
+
+        <div class="row" data-label="Format">
+          <div class="cell factor">Format</div>
+          <div class="cell win">
+            <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="#c9a84c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="cell-text">Live on Zoom — real coaching, real feedback</div>
+          </div>
+          <div class="cell lose">
+            <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M5 5L19 19M19 5L5 19" stroke="#a14b4b" stroke-width="2.4" stroke-linecap="round"/></svg>
+            <div class="cell-text">Mostly self-paced, recorded modules</div>
+          </div>
+        </div>
+
+        <div class="row" data-label="Travel & Accommodation">
+          <div class="cell factor">Travel &amp; Accommodation</div>
+          <div class="cell win">
+            <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="#c9a84c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="cell-text">$0 — attend from anywhere</div>
+          </div>
+          <div class="cell lose">
+            <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M5 5L19 19M19 5L5 19" stroke="#a14b4b" stroke-width="2.4" stroke-linecap="round"/></svg>
+            <div class="cell-text">$3,000+ extra for in-person sessions</div>
+          </div>
+        </div>
+
+        <div class="row" data-label="Delivery Style">
+          <div class="cell factor">Delivery Style</div>
+          <div class="cell win">
+            <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="#c9a84c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="cell-text">A living program — evolves every cohort</div>
+          </div>
+          <div class="cell lose">
+            <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M5 5L19 19M19 5L5 19" stroke="#a14b4b" stroke-width="2.4" stroke-linecap="round"/></svg>
+            <div class="cell-text">Static curriculum — recorded once, stays the same</div>
+          </div>
+        </div>
+
+        <div class="row" data-label="Supervised Practice">
+          <div class="cell factor">Supervised Practice</div>
+          <div class="cell win">
+            <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="#c9a84c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="cell-text">Included live, with instructor feedback</div>
+          </div>
+          <div class="cell lose">
+            <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M5 5L19 19M19 5L5 19" stroke="#a14b4b" stroke-width="2.4" stroke-linecap="round"/></svg>
+            <div class="cell-text">Often extra cost, or limited hours</div>
+          </div>
+        </div>
+
+        <div class="row" data-label="Community & Peer Learning">
+          <div class="cell factor">Community &amp; Peer Learning</div>
+          <div class="cell win">
+            <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="#c9a84c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="cell-text">Live cohort — real relationships, in real time</div>
+          </div>
+          <div class="cell lose">
+            <svg class="mark" viewBox="0 0 24 24" fill="none"><path d="M5 5L19 19M19 5L5 19" stroke="#a14b4b" stroke-width="2.4" stroke-linecap="round"/></svg>
+            <div class="cell-text">Forums, or pre-recorded group sessions</div>
+          </div>
+        </div>
+
+        <div class="row final" data-label="Total Investment">
+          <div class="cell factor">Total Investment</div>
+          <div class="cell win">
+            <div class="price-win">$129<span style="font-size:16px; font-weight:600;">/mo</span></div>
+            <div class="cell-text" style="margin-top:4px;">$1,548 over 12 months · pay upfront &amp; save</div>
+          </div>
+          <div class="cell lose">
+            <div class="price-lose">$5,000 – $18,000+</div>
+            <div class="cell-text" style="margin-top:4px;">locked in, non-refundable, upfront</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-wrap">
+    <p class="cta-line">Others make you pay <strong>thousands upfront.</strong><br>We ask for <strong>$129 a month.</strong></p>
+    <a class="cta-button" href="https://accessworldseminars-ship-it.github.io/results/worldclasscoach" style="text-decoration:none; display:inline-block;">See The Difference</a>
+    <div class="fine">accessworldseminars-ship-it.github.io/results/worldclasscoach</div>
+  </div>
+
+</div>
+</body>
+</html>
