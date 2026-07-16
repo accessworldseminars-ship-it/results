@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -274,117 +273,85 @@
 
 <script>
 // ============================================
-// UPDATED MASTER EVENT LIST (FINAL CORRECTED)
-// - Added Thursday May 28 @ 7pm Free Intro
-// - May 29: Group Coaching 9am, Free Intro 11am
-// - Removed Dec 24 and Dec 25 sessions
-// - Renamed: "NLP Tool Development Training for Coaches and Trainers"
-// - All times AEST (Brisbane)
+// UPDATED MASTER EVENT LIST (SYNCED WITH https://accessworldseminars-ship-it.github.io/results/s)
+// - All times are AEST (Brisbane)
 // ============================================
 const EVENTS = [
-  // ----- MAY 2026 -----
-  { date: "2026-05-28", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-05-29", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-05-29", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  
   // ----- JUNE 2026 -----
-  { date: "2026-06-04", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-06-05", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-06-05", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-06-11", time: "7:00 PM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
-  { date: "2026-06-12", time: "9:00 AM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
-  { date: "2026-06-12", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-06-18", time: "7:00 PM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
-  { date: "2026-06-19", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-06-19", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-06-25", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-06-26", time: "7:00 AM", title: "Unlock Your Incredible Self (6hr)", type: "seminar" },
-  { date: "2026-06-26", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  
+  { date: "2026-06-04", time: "9:00 PM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-06-05", time: "11:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-06-05", time: "1:00 PM", title: "Introduction Webinar – Upgrade Your Identity", type: "free" },
+  { date: "2026-06-11", time: "9:00 PM", title: "Introduction Webinar – Upgrade Your Identity", type: "free" },
+  { date: "2026-06-12", time: "11:00 AM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
+  { date: "2026-06-12", time: "1:00 PM", title: "Introduction Webinar – Upgrade Your Identity", type: "free" },
+  { date: "2026-06-18", time: "9:00 PM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
+  { date: "2026-06-19", time: "11:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-06-19", time: "1:00 PM", title: "Introduction Webinar – Upgrade Your Identity", type: "free" },
+  { date: "2026-06-25", time: "9:00 PM", title: "Introduction Webinar – Upgrade Your Identity", type: "free" },
+  { date: "2026-06-26", time: "9:00 AM", title: "Unlock Your Incredible Self (6hr)", type: "seminar" },
+
   // ----- JULY 2026 -----
-  { date: "2026-07-02", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-07-03", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-07-03", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-07-09", time: "7:00 PM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
-  { date: "2026-07-10", time: "9:00 AM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
-  { date: "2026-07-10", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-07-16", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-07-17", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-07-17", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-07-23", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-07-24", time: "7:00 AM", title: "How to Become a World-Class Coach", type: "seminar" },
-  { date: "2026-07-24", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-07-30", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-07-31", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-07-31", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  
-  // ----- AUGUST 2026 (Emotional Mastery 2-day) -----
-  { date: "2026-08-06", time: "7:00 AM", title: "Emotional Mastery Day 1", type: "seminar" },
-  { date: "2026-08-07", time: "7:00 AM", title: "Emotional Mastery Day 2", type: "seminar" },
-  { date: "2026-08-13", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-08-14", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-08-14", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-08-20", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-08-21", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-08-21", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-08-27", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-08-28", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-08-28", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  
+  { date: "2026-07-16", time: "9:00 PM", title: "Introduction Webinar – Emotional Clearing", type: "free" },
+  { date: "2026-07-17", time: "11:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-07-17", time: "1:00 PM", title: "Introduction Webinar – Emotional Clearing", type: "free" },
+  { date: "2026-07-23", time: "9:00 PM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-07-24", time: "11:00 AM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
+  { date: "2026-07-24", time: "1:00 PM", title: "Introduction Webinar – Emotional Clearing", type: "free" },
+  { date: "2026-07-30", time: "9:00 PM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
+  { date: "2026-07-31", time: "11:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-07-31", time: "1:00 PM", title: "Introduction Webinar – Emotional Clearing", type: "free" },
+
+  // ----- AUGUST 2026 -----
+  { date: "2026-08-06", time: "9:00 AM", title: "Emotional Mastery Day 1 (2-Day Seminar)", type: "seminar" },
+  { date: "2026-08-07", time: "9:00 AM", title: "Emotional Mastery Day 2 (2-Day Seminar)", type: "seminar" },
+  { date: "2026-08-13", time: "9:00 PM", title: "Introduction Webinar – Upgrade Your Financial Blueprint", type: "free" },
+  { date: "2026-08-14", time: "11:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-08-14", time: "1:00 PM", title: "Introduction Webinar – Upgrade Your Financial Blueprint", type: "free" },
+  { date: "2026-08-20", time: "9:00 PM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-08-21", time: "11:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-08-21", time: "1:00 PM", title: "Introduction Webinar – Upgrade Your Financial Blueprint", type: "free" },
+
   // ----- SEPTEMBER 2026 -----
-  { date: "2026-09-03", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-09-04", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-09-04", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-09-10", time: "7:00 PM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
-  { date: "2026-09-11", time: "9:00 AM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
-  { date: "2026-09-11", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-09-17", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-09-18", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-09-18", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-09-24", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-09-25", time: "7:00 AM", title: "Unlock Your Incredible Self (6hr)", type: "seminar" },
-  { date: "2026-09-25", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  
+  { date: "2026-09-03", time: "9:00 PM", title: "Introduction Webinar – Increase Your Influence", type: "free" },
+  { date: "2026-09-04", time: "11:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-09-04", time: "1:00 PM", title: "Introduction Webinar – Increase Your Influence", type: "free" },
+  { date: "2026-09-10", time: "9:00 PM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-09-11", time: "11:00 AM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
+  { date: "2026-09-11", time: "1:00 PM", title: "Introduction Webinar – Increase Your Influence", type: "free" },
+  { date: "2026-09-17", time: "9:00 PM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
+  { date: "2026-09-18", time: "11:00 AM", title: "How to Become a World-Class Coach ($29)", type: "seminar" },
+
   // ----- OCTOBER 2026 -----
-  { date: "2026-10-01", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-10-02", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-10-02", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-10-08", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-10-09", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-10-09", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-10-15", time: "7:00 PM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
-  { date: "2026-10-16", time: "9:00 AM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
-  { date: "2026-10-16", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-10-22", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-10-23", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-10-23", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-10-29", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-10-30", time: "7:00 AM", title: "How to Become a World-Class Coach", type: "seminar" },
-  { date: "2026-10-30", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  
-  // ----- NOVEMBER 2026 (Life Skills 2-day) -----
-  { date: "2026-11-05", time: "7:00 AM", title: "Life Skills Day 1", type: "seminar" },
-  { date: "2026-11-06", time: "7:00 AM", title: "Life Skills Day 2", type: "seminar" },
-  { date: "2026-11-12", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-11-13", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-11-13", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-11-19", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-11-20", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-11-20", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-11-26", time: "7:00 PM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
-  { date: "2026-11-27", time: "9:00 AM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
-  { date: "2026-11-27", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  
-  // ----- DECEMBER 2026 (No Dec 24/25 sessions) -----
-  { date: "2026-12-03", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-12-04", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-12-04", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-12-10", time: "7:00 PM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-12-11", time: "9:00 AM", title: "Group Coaching & Mentoring", type: "paid" },
-  { date: "2026-12-11", time: "11:00 AM", title: "Free Introduction Session", type: "free" },
-  { date: "2026-12-17", time: "7:00 PM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
-  { date: "2026-12-18", time: "9:00 AM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
-  { date: "2026-12-18", time: "11:00 AM", title: "Free Introduction Session", type: "free" }
+  { date: "2026-10-08", time: "10:00 PM", title: "Introduction Webinar – Master Your Memory", type: "free" },
+  { date: "2026-10-09", time: "12:00 PM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-10-09", time: "2:00 PM", title: "Introduction Webinar – Master Your Memory", type: "free" },
+  { date: "2026-10-16", time: "12:00 PM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-10-16", time: "2:00 PM", title: "Introduction Webinar – Master Your Memory", type: "free" },
+  { date: "2026-10-22", time: "10:00 PM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-10-23", time: "12:00 PM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
+  { date: "2026-10-23", time: "2:00 PM", title: "Introduction Webinar – Master Your Memory", type: "free" },
+  { date: "2026-10-29", time: "10:00 PM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
+  { date: "2026-10-30", time: "10:00 AM", title: "Unlock Your Incredible Self (6hr)", type: "seminar" },
+
+  // ----- NOVEMBER 2026 -----
+  { date: "2026-11-05", time: "10:00 AM", title: "Life Skills Day 1 (2-Day Seminar)", type: "seminar" },
+  { date: "2026-11-06", time: "10:00 AM", title: "Life Skills Day 2 (2-Day Seminar)", type: "seminar" },
+  { date: "2026-11-13", time: "12:00 PM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-11-13", time: "2:00 PM", title: "Introduction Webinar – Learn About Nervous System Reprogramming", type: "free" },
+  { date: "2026-11-26", time: "10:00 PM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-11-27", time: "12:00 PM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-11-27", time: "2:00 PM", title: "Introduction Webinar – Learn About Nervous System Reprogramming", type: "free" },
+
+  // ----- DECEMBER 2026 -----
+  { date: "2026-12-03", time: "10:00 PM", title: "Introduction Webinar – Learn About Nervous System Reprogramming", type: "free" },
+  { date: "2026-12-04", time: "12:00 PM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-12-04", time: "2:00 PM", title: "Introduction Webinar – Learn About Nervous System Reprogramming", type: "free" },
+  { date: "2026-12-10", time: "10:00 PM", title: "Group Coaching & Mentoring", type: "paid" },
+  { date: "2026-12-11", time: "12:00 PM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
+  { date: "2026-12-11", time: "2:00 PM", title: "Introduction Webinar – Learn About Nervous System Reprogramming", type: "free" },
+  { date: "2026-12-17", time: "10:00 PM", title: "NLP Tool Development Training for Coaches and Trainers", type: "seminar" },
+  { date: "2026-12-18", time: "12:00 PM", title: "How to Become a World-Class Coach ($29)", type: "seminar" },
+  { date: "2026-12-18", time: "2:00 PM", title: "Introduction Webinar – Learn About Nervous System Reprogramming", type: "free" }
 ];
 
 // ============================================
@@ -609,4 +576,3 @@ renderPreview();
 </script>
 </body>
 </html>
-```
