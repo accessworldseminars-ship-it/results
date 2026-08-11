@@ -96,19 +96,85 @@
             pointer-events: none;
         }
 
-        .hero-badge {
+        /* ======================================== */
+        /* 🚀 GIANT $900+ VALUE BANNER — TOP OF HERO */
+        /* ======================================== */
+        .hero-value-banner {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 20px;
+            animation: fadeInDown .8s ease both;
+        }
+        .hero-value-banner .big-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(80px, 14vw, 150px);
+            color: var(--gold-light);
+            line-height: 1;
+            letter-spacing: 4px;
+            text-shadow: 0 0 60px rgba(201, 168, 76, .35), 0 0 120px rgba(201, 168, 76, .15);
+            display: block;
+        }
+        .hero-value-banner .big-number .plus {
+            font-size: 50%;
+            vertical-align: super;
+            color: var(--gold);
+        }
+        .hero-value-banner .value-label {
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(20px, 3vw, 36px);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--cream);
+            display: block;
+            margin-top: -8px;
+        }
+        .hero-value-banner .value-label .free {
+            color: #4CAF50;
+            background: rgba(76, 175, 80, .15);
+            padding: 2px 18px;
+            border-radius: 100px;
+            border: 1px solid rgba(76, 175, 80, .3);
+        }
+        .hero-value-banner .value-sub {
+            font-size: clamp(14px, 1.2vw, 18px);
+            color: rgba(250, 247, 240, .5);
+            letter-spacing: 1px;
+            margin-top: 4px;
+            display: block;
+        }
+        .hero-value-banner .live-badge {
             display: inline-block;
             background: rgba(201, 168, 76, .15);
             border: 1px solid rgba(201, 168, 76, .4);
             color: var(--gold-light);
             font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 6px 20px;
+            border-radius: 100px;
+            margin-top: 10px;
+        }
+        .hero-value-banner .live-badge i {
+            margin-right: 6px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201, 168, 76, .10);
+            border: 1px solid rgba(201, 168, 76, .2);
+            color: rgba(250, 247, 240, .6);
+            font-size: 11px;
             font-weight: 600;
             letter-spacing: 3px;
             text-transform: uppercase;
-            padding: 8px 22px;
+            padding: 6px 22px;
             border-radius: 100px;
-            margin-bottom: 32px;
-            animation: fadeInDown .8s ease both;
+            margin-bottom: 20px;
+            animation: fadeInDown .9s .1s ease both;
+            position: relative;
+            z-index: 2;
         }
         .hero-eyebrow {
             font-size: 13px;
@@ -116,19 +182,23 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             color: var(--gold);
-            margin-bottom: 20px;
-            animation: fadeInDown .9s .1s ease both;
+            margin-bottom: 16px;
+            animation: fadeInDown .9s .15s ease both;
+            position: relative;
+            z-index: 2;
         }
         .hero h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(48px, 8.5vw, 106px);
+            font-size: clamp(44px, 8vw, 100px);
             font-weight: 300;
             line-height: 1.0;
             color: var(--cream);
             letter-spacing: -1px;
             max-width: 960px;
             margin: 0 auto 10px;
-            animation: fadeInUp 1s .15s ease both;
+            animation: fadeInUp 1s .2s ease both;
+            position: relative;
+            z-index: 2;
         }
         .hero h1 em {
             font-style: italic;
@@ -136,28 +206,32 @@
         }
         .hero-sub {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(19px, 3vw, 30px);
+            font-size: clamp(18px, 2.5vw, 28px);
             font-weight: 300;
             font-style: italic;
             color: rgba(250, 247, 240, .7);
-            margin: 22px auto 0;
+            margin: 16px auto 0;
             max-width: 700px;
             line-height: 1.55;
-            animation: fadeInUp 1s .25s ease both;
+            animation: fadeInUp 1s .3s ease both;
+            position: relative;
+            z-index: 2;
         }
         .hero-divider {
             width: 60px;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 34px auto;
+            margin: 30px auto;
             animation: fadeIn 1s .4s ease both;
+            position: relative;
+            z-index: 2;
         }
 
         /* COUNTDOWN */
         .hero-countdown-wrap {
             animation: fadeInUp 1s .35s ease both;
-            margin: 28px auto 24px;
-            padding: 20px 24px;
+            margin: 20px auto 24px;
+            padding: 18px 24px;
             border-top: 1px solid rgba(201, 168, 76, .15);
             border-bottom: 1px solid rgba(201, 168, 76, .15);
             background: rgba(0, 0, 0, .2);
@@ -165,6 +239,8 @@
             width: 100%;
             max-width: 720px;
             backdrop-filter: blur(4px);
+            position: relative;
+            z-index: 2;
         }
         .countdown-label {
             font-size: 11px;
@@ -172,7 +248,7 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             color: var(--gold);
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
         .countdown {
             display: flex;
@@ -188,23 +264,23 @@
         }
         .countdown-num {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 58px;
+            font-size: 54px;
             line-height: 1;
             color: var(--cream);
             background: rgba(255, 255, 255, .06);
             border: 1px solid rgba(201, 168, 76, .25);
             border-radius: 8px;
-            padding: 8px 18px;
-            min-width: 76px;
+            padding: 6px 16px;
+            min-width: 70px;
             text-align: center;
             letter-spacing: 2px;
         }
         .countdown-sep {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 44px;
+            font-size: 40px;
             color: var(--gold);
             line-height: 1.3;
-            margin-top: 8px;
+            margin-top: 6px;
         }
         .countdown-word {
             font-size: 10px;
@@ -221,12 +297,14 @@
         }
 
         .hero-photo-wrap {
-            margin: 0 auto 30px;
+            margin: 0 auto 24px;
             animation: fadeInUp 1s .3s ease both;
+            position: relative;
+            z-index: 2;
         }
         .hero-photo {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
             object-position: center top;
@@ -239,15 +317,17 @@
             color: rgba(250, 247, 240, .75);
             max-width: 620px;
             line-height: 1.85;
-            margin: 0 auto 36px;
+            margin: 0 auto 30px;
             animation: fadeInUp 1s .4s ease both;
+            position: relative;
+            z-index: 2;
         }
 
         /* VIDEO */
         .hero-video-wrap {
             width: 100%;
             max-width: 800px;
-            margin: 0 auto 40px;
+            margin: 0 auto 36px;
             animation: fadeInUp 1s .45s ease both;
             position: relative;
             border: 1px solid rgba(201, 168, 76, .25);
@@ -256,6 +336,7 @@
             overflow: hidden;
             background: #000;
             cursor: pointer;
+            z-index: 2;
         }
         .hero-video-wrap .yt-thumb {
             width: 100%;
@@ -303,7 +384,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
+            position: relative;
+            z-index: 2;
         }
         .btn-primary {
             display: inline-block;
@@ -348,6 +431,8 @@
             gap: 12px;
             font-size: 14px;
             color: rgba(250, 247, 240, .6);
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .price-old {
             text-decoration: line-through;
@@ -374,6 +459,7 @@
             align-items: center;
             gap: 8px;
             animation: fadeIn 1s 1.2s ease both;
+            z-index: 2;
         }
         .scroll-hint span {
             font-size: 10px;
@@ -566,15 +652,6 @@
             display: block;
             object-fit: cover;
             object-position: center top;
-        }
-        .story-photo-caption {
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: rgba(201, 168, 76, .6);
-            margin-top: 6px;
-            display: block;
-            font-style: italic;
         }
         .clearfix::after {
             content: '';
@@ -1133,7 +1210,7 @@
         }
 
         /* ======================================== */
-        /* 🚀 NEW: VALUE STACK — $900+ BONUSES      */
+        /* 🚀 VALUE STACK — $900+ BONUSES SECTION    */
         /* ======================================== */
         .value-stack-section {
             background: var(--dark);
@@ -1169,7 +1246,7 @@
             z-index: 2;
         }
         .value-stack-section .big-number .plus {
-            font-size: 60%;
+            font-size: 50%;
             vertical-align: super;
             color: var(--gold);
         }
@@ -1185,11 +1262,34 @@
             margin-top: -4px;
         }
         .value-stack-section .big-label .free {
-            color: var(--gold-light);
-            background: rgba(201, 168, 76, .15);
+            color: #4CAF50;
+            background: rgba(76, 175, 80, .15);
             padding: 2px 18px;
             border-radius: 100px;
-            border: 1px solid rgba(201, 168, 76, .3);
+            border: 1px solid rgba(76, 175, 80, .3);
+        }
+        .value-stack-section .value-sub {
+            font-size: clamp(14px, 1.2vw, 18px);
+            color: rgba(250, 247, 240, .5);
+            letter-spacing: 1px;
+            margin-top: 4px;
+            position: relative;
+            z-index: 2;
+        }
+        .value-stack-section .live-badge {
+            display: inline-block;
+            background: rgba(201, 168, 76, .15);
+            border: 1px solid rgba(201, 168, 76, .4);
+            color: var(--gold-light);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 6px 20px;
+            border-radius: 100px;
+            margin-top: 10px;
+            position: relative;
+            z-index: 2;
         }
         .value-stack-section .sub-head {
             font-size: 17px;
@@ -1306,6 +1406,63 @@
             display: block;
         }
 
+        /* ======================================== */
+        /* 🚀 MID-PAGE VALUE REMINDER                */
+        /* ======================================== */
+        .value-reminder {
+            background: var(--navy);
+            padding: 60px 24px;
+            text-align: center;
+            border-top: 1px solid rgba(201, 168, 76, .15);
+            border-bottom: 1px solid rgba(201, 168, 76, .15);
+        }
+        .value-reminder .big-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(60px, 10vw, 110px);
+            color: var(--gold-light);
+            line-height: 1;
+            letter-spacing: 2px;
+            text-shadow: 0 0 40px rgba(201, 168, 76, .2);
+        }
+        .value-reminder .big-number .plus {
+            font-size: 50%;
+            vertical-align: super;
+            color: var(--gold);
+        }
+        .value-reminder .label {
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(18px, 2.5vw, 28px);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--cream);
+            display: block;
+            margin-top: -4px;
+        }
+        .value-reminder .label .free {
+            color: #4CAF50;
+        }
+        .value-reminder .sub {
+            font-size: 16px;
+            color: rgba(250, 247, 240, .6);
+            max-width: 500px;
+            margin: 12px auto 0;
+            line-height: 1.7;
+        }
+        .value-reminder .live-badge {
+            display: inline-block;
+            background: rgba(201, 168, 76, .15);
+            border: 1px solid rgba(201, 168, 76, .4);
+            color: var(--gold-light);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 6px 20px;
+            border-radius: 100px;
+            margin-top: 12px;
+        }
+
         /* PRICING */
         .pricing {
             background: var(--dark);
@@ -1348,8 +1505,7 @@
             position: relative;
             border-radius: 8px;
         }
-        .pricing-card::before {
-            content: '⭐ LIMITED OFFER';
+        .pricing-card .value-badge {
             position: absolute;
             top: -1px;
             left: 50%;
@@ -1358,9 +1514,13 @@
             color: var(--navy);
             font-size: 10px;
             font-weight: 800;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             padding: 6px 20px;
             border-radius: 0 0 4px 4px;
+            white-space: nowrap;
+        }
+        .pricing-card .value-badge .big {
+            font-size: 14px;
         }
         .pricing-was {
             font-size: 18px;
@@ -1667,8 +1827,14 @@
             .bonus-total .total-amount {
                 font-size: 36px;
             }
+            .hero-value-banner .big-number {
+                font-size: 70px;
+            }
             .value-stack-section .big-number {
                 font-size: 60px;
+            }
+            .value-reminder .big-number {
+                font-size: 55px;
             }
         }
         @media (max-width:480px) {
@@ -1694,8 +1860,14 @@
                 font-size: 9px;
                 letter-spacing: 2px;
             }
+            .hero-value-banner .big-number {
+                font-size: 55px;
+            }
             .value-stack-section .big-number {
                 font-size: 48px;
+            }
+            .value-reminder .big-number {
+                font-size: 42px;
             }
             .bonus-total .total-amount {
                 font-size: 28px;
@@ -1713,6 +1885,17 @@
 
     <!-- ===== HERO ===== -->
     <section class="hero">
+
+        <!-- ============================================================== -->
+        <!-- 🚀 GIANT $900+ VALUE BANNER — FIRST THING THEY SEE              -->
+        <!-- ============================================================== -->
+        <div class="hero-value-banner">
+            <span class="big-number">$900<span class="plus">+</span></span>
+            <span class="value-label">VALUE — <span class="free">FREE</span></span>
+            <span class="value-sub">($975 Total Value)</span>
+            <span class="live-badge"><i class="fas fa-broadcast" style="margin-right:6px;"></i> 🔥 LIVE Coaching Program</span>
+        </div>
+
         <div class="hero-badge">AccessWorld Master Coach Program &nbsp;·&nbsp; Fri 18 September 2026</div>
         <div class="hero-eyebrow">Certification Training for Coaches, Leaders &amp; Change-Makers</div>
         <h1>How To Become A<br /><em>World Class Coach</em></h1>
@@ -1750,7 +1933,7 @@
         <div class="cta-wrap">
             <a href="https://accessworldseminars-ship-it.github.io/results/purchasewccoach" class="btn-primary pulse-cta" target="_blank" rel="noopener">Claim Your Seat — Enrol Now</a>
             <div class="price-badge">
-                <span class="price-old">$900 USD Value</span>
+                <span class="price-old">$900+ Value</span>
                 <span class="price-new">$49 AUD</span>
                 <span class="price-note">· First 100 seats only</span>
             </div>
@@ -1994,18 +2177,26 @@
     </section>
 
     <!-- ============================================================== -->
-    <!-- 🚀 NEW: VALUE STACK — $900+ WORTH OF BONUSES — INCLUDED FREE   -->
+    <!-- 🚀 MID-PAGE VALUE REMINDER — $900+ REINFORCED                   -->
+    <!-- ============================================================== -->
+    <section class="value-reminder reveal">
+        <span class="big-number">$900<span class="plus">+</span></span>
+        <span class="label">Value — <span class="free">FREE</span></span>
+        <span class="sub">You're getting <strong>$975 in total value</strong> — including a <strong>LIVE 8-Week Coaching Program</strong>, Frameworks Document, Discovery Session, and Replay Library. All yours at no extra cost.</span>
+        <span class="live-badge"><i class="fas fa-broadcast" style="margin-right:6px;"></i> 🔥 Get your personal questions answered in real time</span>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- 🚀 VALUE STACK — $900+ BONUSES SECTION                         -->
     <!-- ============================================================== -->
     <section class="value-stack-section" id="value-stack">
         <div class="section-tag" style="color:var(--gold)">🔥 BONUS OFFER</div>
 
-        <!-- BIG, BOLD HEADLINE -->
-        <div class="big-number">
-            $900<span class="plus">+</span>
-        </div>
-        <div class="big-label">
-            Worth of Bonuses — <span class="free">Included Free</span>
-        </div>
+        <div class="big-number">$900<span class="plus">+</span></div>
+        <div class="big-label">Worth of Bonuses — <span class="free">Included Free</span></div>
+        <div class="value-sub">($975 Total Value)</div>
+        <span class="live-badge"><i class="fas fa-broadcast" style="margin-right:6px;"></i> 🔥 LIVE Coaching Program — Real-Time Q&A</span>
+
         <p class="sub-head">
             When you enrol today, you don't just get the 3‑hour live training.<br />
             You get <strong>over $900 in additional bonuses</strong> — at no extra cost.
@@ -2017,10 +2208,10 @@
             <div class="bonus-card">
                 <span class="bonus-badge">🎁 Bonus #1</span>
                 <span class="bonus-icon">👥</span>
-                <h4>8‑Week Coaching &amp; Mentoring Programme</h4>
-                <p>Includes group coaching, tool development training, video recordings from live training sessions, free Introduction sessions, and access to the full Tool Development Training.</p>
+                <h4>LIVE 8‑Week Coaching &amp; Mentoring Programme</h4>
+                <p>Real-time Q&A, group coaching, tool development training, video recordings, and free Introduction sessions. Get your personal questions answered live.</p>
                 <div class="bonus-value">
-                    $519.05 <span class="free-tag">FREE</span>
+                    $499 <span class="free-tag">FREE</span>
                 </div>
             </div>
 
@@ -2031,7 +2222,7 @@
                 <h4>Frameworks Document</h4>
                 <p>A comprehensive step‑by‑step rundown of proven coaching frameworks you can use to guide any client toward results and success — from first session to breakthrough.</p>
                 <div class="bonus-value">
-                    $119.09 <span class="free-tag">FREE</span>
+                    $129 <span class="free-tag">FREE</span>
                 </div>
             </div>
 
@@ -2039,21 +2230,21 @@
             <div class="bonus-card">
                 <span class="bonus-badge">🎁 Bonus #3</span>
                 <span class="bonus-icon">🎯</span>
-                <h4>Discovery Strategy Training</h4>
-                <p>The first session of the training series — a step‑by‑step guide to the discovery strategy session. Learn exactly how to help a client clarify their goals, values, and desired outcomes.</p>
+                <h4>Discovery Strategy Session (Part 1 of 6)</h4>
+                <p>Recorded live presentation from the full 6‑session coaching program. <strong>These 6 sessions delivered 1-on-1 can attract up to $2,000+ per client.</strong></p>
                 <div class="bonus-value">
-                    $110.09 <span class="free-tag">FREE</span>
+                    $197 <span class="free-tag">FREE</span>
                 </div>
             </div>
 
-            <!-- Bonus 4 (added to push over $900) -->
+            <!-- Bonus 4 -->
             <div class="bonus-card">
                 <span class="bonus-badge">🎁 Bonus #4</span>
                 <span class="bonus-icon">📹</span>
                 <h4>Live Session Replay Library</h4>
                 <p>Full access to replays of all live training sessions — so you can review, revise, and deepen your learning at your own pace, any time you need a refresher.</p>
                 <div class="bonus-value">
-                    $150.00 <span class="free-tag">FREE</span>
+                    $150 <span class="free-tag">FREE</span>
                 </div>
             </div>
         </div>
@@ -2061,8 +2252,8 @@
         <!-- TOTAL VALUE -->
         <div class="bonus-total reveal">
             <span class="total-label">Total Bonus Value</span>
-            <span class="total-amount">$898.23</span>
-            <span class="total-free">🎉 ROUNDED UP TO $900+ — YOURS FREE</span>
+            <span class="total-amount">$975</span>
+            <span class="total-free">🎉 YOURS FREE — $900+ VALUE</span>
         </div>
 
         <p style="color:rgba(250,247,240,.5); font-size:13px; margin-top:20px; position:relative; z-index:2;">
@@ -2076,7 +2267,9 @@
         <h2>World class skills at a<br /><em>fraction of the cost.</em></h2>
         <p class="pricing-sub">Joshua deliberately makes this accessible — because the world needs more coaches who can actually do this work.</p>
         <div class="pricing-card reveal">
-            <div class="pricing-was">Value $988 AUD</div>
+            <div class="value-badge">🔥 <span class="big">$900+</span> Value — You Pay Only <span class="big">$49</span></div>
+            <div style="height:30px;"></div>
+            <div class="pricing-was">Value $975 AUD</div>
             <div class="pricing-now">
                 <span class="pricing-dollar">$</span>
                 <span class="pricing-amount">49</span>
@@ -2089,7 +2282,7 @@
                 <div class="pricing-tier"><span>Seats 201–300</span><span>$149 AUD</span><span class="pricing-tier-label">No Bonus Gifts</span></div>
             </div>
 
-            <!-- UPDATED INCLUSIONS: clear separation between paid + FREE bonuses -->
+            <!-- INCLUSIONS: paid vs FREE -->
             <div class="pricing-includes">
                 <div style="font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">⭐ What You Pay For:</div>
                 <div class="pricing-item">Full 3-hour live coaching training with Joshua Roy</div>
@@ -2102,12 +2295,12 @@
 
                 <div style="border-top:1px solid rgba(201,168,76,.2); margin:16px 0 12px;"></div>
 
-                <div style="font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#4CAF50; margin-bottom:8px;">🎁 FREE BONUSES — Over $900 Value:</div>
-                <div class="pricing-item free-bonus">8‑Week Coaching &amp; Mentoring Programme — <strong style="color:var(--gold-light);">$519.05</strong></div>
-                <div class="pricing-item free-bonus">Frameworks Document — <strong style="color:var(--gold-light);">$119.09</strong></div>
-                <div class="pricing-item free-bonus">Discovery Strategy Training — <strong style="color:var(--gold-light);">$110.09</strong></div>
-                <div class="pricing-item free-bonus">Live Session Replay Library — <strong style="color:var(--gold-light);">$150.00</strong></div>
-                <div style="font-size:13px; color:var(--gold-light); font-weight:700; margin-top:6px;">Total FREE Bonuses: $898.23 → $900+ Value</div>
+                <div style="font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#4CAF50; margin-bottom:8px;">🎁 FREE BONUSES — $900+ Value:</div>
+                <div class="pricing-item free-bonus">LIVE 8‑Week Coaching &amp; Mentoring Programme — <strong style="color:var(--gold-light);">$499</strong></div>
+                <div class="pricing-item free-bonus">Frameworks Document — <strong style="color:var(--gold-light);">$129</strong></div>
+                <div class="pricing-item free-bonus">Discovery Strategy Session (Part 1 of 6) — <strong style="color:var(--gold-light);">$197</strong></div>
+                <div class="pricing-item free-bonus">Live Session Replay Library — <strong style="color:var(--gold-light);">$150</strong></div>
+                <div style="font-size:13px; color:var(--gold-light); font-weight:700; margin-top:6px;">Total FREE Bonuses: $975 → $900+ Value</div>
             </div>
 
             <div class="guarantee">
