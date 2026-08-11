@@ -124,7 +124,7 @@
       transform: translateY(0);
     }
 
-    /* ----- FIXED NAVIGATION (no links except home – but we hide home link) ----- */
+    /* ----- FIXED NAVIGATION (funnel: no links) ----- */
     .main-nav {
       position: fixed;
       top: 0;
@@ -160,7 +160,6 @@
       color: var(--accent-gold);
     }
 
-    /* mobile menu button */
     .mobile-menu-btn {
       display: none;
       background: transparent;
@@ -175,7 +174,6 @@
       color: var(--accent-gold);
     }
 
-    /* navigation links – but we only show "Home" as a visual element, no link to homepage */
     .nav-links {
       display: flex;
       align-items: center;
@@ -195,10 +193,6 @@
       gap: 6px;
     }
 
-    .nav-links a i {
-      font-size: 1rem;
-    }
-
     .nav-links a:hover {
       color: var(--text-light);
       border-bottom-color: var(--accent-gold);
@@ -209,12 +203,11 @@
       border-bottom-color: var(--accent-gold);
     }
 
-    /* We keep home button in markup but hide it visually (no link) */
     .nav-links .home-link {
-      display: none; /* completely hidden – funnel purpose */
+      display: none;
     }
 
-    /* ----- HERO SECTION (no links) ----- */
+    /* ----- HERO SECTION ----- */
     .hero-header {
       min-height: 100vh;
       display: flex;
@@ -267,6 +260,36 @@
       margin-right: 12px;
     }
 
+    /* event date/time card */
+    .event-detail-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(212, 167, 67, 0.2);
+      border-radius: 24px;
+      padding: 28px 32px;
+      margin: 30px 0 20px;
+      backdrop-filter: blur(4px);
+      display: inline-block;
+    }
+
+    .event-detail-card .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 6px 0;
+      font-size: 1.05rem;
+    }
+
+    .event-detail-card .detail-item i {
+      color: var(--accent-gold);
+      width: 28px;
+      text-align: center;
+    }
+
+    .event-detail-card .detail-item strong {
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
     /* ----- SECTIONS ----- */
     .section {
       padding: 80px 0;
@@ -299,6 +322,40 @@
       font-size: 1.1rem;
       margin-top: 12px;
       max-width: 700px;
+    }
+
+    /* timezone grid */
+    .timezone-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .timezone-card {
+      background: var(--card-bg);
+      padding: 18px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(212, 167, 67, 0.08);
+      text-align: center;
+    }
+
+    .timezone-card .region {
+      font-weight: 600;
+      color: var(--accent-gold);
+      font-size: 0.95rem;
+    }
+
+    .timezone-card .days {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin: 4px 0;
+    }
+
+    .timezone-card .time {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-light);
     }
 
     /* ----- PILLARS / CARDS ----- */
@@ -359,7 +416,7 @@
       font-size: 0.7rem;
     }
 
-    /* learning outcomes */
+    /* outcomes */
     .outcome-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -379,7 +436,7 @@
       margin-right: 10px;
     }
 
-    /* summary table (clean) */
+    /* summary */
     .summary-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -414,7 +471,7 @@
       color: var(--text-light);
     }
 
-    /* ----- CTA SECTION (payment button) ----- */
+    /* ----- CTA SECTION ----- */
     .cta-section {
       background: linear-gradient(145deg, #112438, #0a1728);
       text-align: center;
@@ -446,7 +503,7 @@
       color: var(--accent-gold);
     }
 
-    /* ----- FOOTER (exact copy, no links to other pages) ----- */
+    /* ----- FOOTER ----- */
     footer {
       background: #07121f;
       padding: 40px 0 24px;
@@ -564,6 +621,12 @@
       .section {
         padding: 60px 0;
       }
+      .event-detail-card {
+        padding: 20px;
+      }
+      .timezone-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     @media (max-width: 480px) {
@@ -577,12 +640,15 @@
       .cta-section h2 {
         font-size: 2rem;
       }
+      .timezone-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ====== NAVIGATION (funnel: no links to home or other pages) ====== -->
+  <!-- ====== NAVIGATION (funnel: no links) ====== -->
   <nav class="main-nav">
     <div class="nav-logo">
       <i class="fas fa-globe-americas"></i>
@@ -592,44 +658,95 @@
       <i class="fas fa-bars"></i>
     </button>
     <div class="nav-links" id="navLinks">
-      <!-- home link is hidden – funnel purpose, no way to leave -->
       <a href="#" class="home-link"><i class="fas fa-home"></i> Home</a>
-      <!-- only active page indicator (no link) -->
       <span class="active" style="color:var(--accent-gold); border-bottom:2px solid var(--accent-gold); padding:8px 4px; display:flex; align-items:center; gap:6px; font-family:'Montserrat',sans-serif; font-weight:600;">
         <i class="fas fa-gem"></i> Life Skills
       </span>
-      <!-- all other nav links removed for funnel focus -->
     </div>
   </nav>
 
-  <!-- ====== HERO SECTION (no links) ====== -->
+  <!-- ====== HERO SECTION ====== -->
   <section class="hero-header">
     <div class="container hero-content fade-in">
       <h1>
         <span class="highlight">Access to Life Skills</span><br />
-        Live 2-Day Webinar
+        Live 2‑Day Webinar
       </h1>
       <p>
         Unlock your financial potential, sharpen your memory, master communication,
         and step into your incredible self — all in one transformative weekend.
       </p>
-      <!-- CTA button points directly to payment page (no other links) -->
+
+      <!-- Event details card -->
+      <div class="event-detail-card">
+        <div class="detail-item"><i class="fas fa-calendar-alt"></i> <strong>Date:</strong> November 5–6, 2026</div>
+        <div class="detail-item"><i class="fas fa-clock"></i> <strong>Time:</strong> 7:00 AM – 3:00 PM AEST (Australian Eastern Standard Time)</div>
+        <div class="detail-item"><i class="fas fa-video"></i> <strong>Platform:</strong> Zoom (live, interactive)</div>
+        <div class="detail-item"><i class="fas fa-globe"></i> <strong>Worldwide:</strong> Join from USA, India, New Zealand, and beyond</div>
+      </div>
+
       <a href="https://accessworldseminars-ship-it.github.io/results/2daylifeskillspayment" class="btn">
         <i class="fas fa-ticket-alt"></i> Secure Your Seat
       </a>
     </div>
   </section>
 
-  <!-- ====== OVERVIEW SECTION ====== -->
+  <!-- ====== TIMEZONE HELPER ====== -->
+  <section class="section" style="background: rgba(255,255,255,0.015);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">Seminar Times Around the World <span class="gold-underline"></span></h2>
+        <p>Find your local start time for this 2‑day event. All sessions run 7 AM – 3 PM AEST each day.</p>
+      </div>
+      <div class="timezone-grid">
+        <div class="timezone-card fade-in">
+          <div class="region"><i class="fas fa-map-pin"></i> Australia (AEST)</div>
+          <div class="days">Thu–Fri, Nov 5–6</div>
+          <div class="time">7:00 AM – 3:00 PM</div>
+        </div>
+        <div class="timezone-card fade-in">
+          <div class="region"><i class="fas fa-map-pin"></i> USA (Pacific)</div>
+          <div class="days">Wed–Thu, Nov 4–5</div>
+          <div class="time">1:00 PM – 9:00 PM*</div>
+          <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">*previous day start</div>
+        </div>
+        <div class="timezone-card fade-in">
+          <div class="region"><i class="fas fa-map-pin"></i> USA (Eastern)</div>
+          <div class="days">Wed–Thu, Nov 4–5</div>
+          <div class="time">4:00 PM – 12:00 AM*</div>
+          <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">*previous day start</div>
+        </div>
+        <div class="timezone-card fade-in">
+          <div class="region"><i class="fas fa-map-pin"></i> India (IST)</div>
+          <div class="days">Thu–Fri, Nov 5–6</div>
+          <div class="time">2:30 AM – 10:30 AM</div>
+        </div>
+        <div class="timezone-card fade-in">
+          <div class="region"><i class="fas fa-map-pin"></i> New Zealand (NZDT)</div>
+          <div class="days">Fri–Sat, Nov 6–7</div>
+          <div class="time">10:00 AM – 6:00 PM</div>
+        </div>
+        <div class="timezone-card fade-in">
+          <div class="region"><i class="fas fa-map-pin"></i> UK (GMT)</div>
+          <div class="days">Wed–Thu, Nov 4–5</div>
+          <div class="time">9:00 PM – 5:00 AM*</div>
+          <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">*previous day start</div>
+        </div>
+      </div>
+      <p style="color:var(--text-muted); font-size:0.9rem; margin-top:16px; text-align:center;">
+        <i class="fas fa-info-circle" style="color:var(--accent-gold);"></i> All sessions are live via Zoom. Replay available for registered attendees.
+      </p>
+    </div>
+  </section>
+
+  <!-- ====== OVERVIEW / PILLARS ====== -->
   <section class="section">
     <div class="container">
       <div class="section-header fade-in">
         <h2 class="section-title">What You’ll Learn <span class="gold-underline"></span></h2>
         <p>Four powerful pillars designed to create lasting change in every area of your life.</p>
       </div>
-
       <div class="pillars-grid">
-        <!-- Stepping Into Wealth -->
         <div class="pillar-card fade-in">
           <div class="icon"><i class="fas fa-coins"></i></div>
           <h3>Stepping Into Wealth</h3>
@@ -641,8 +758,6 @@
             <li><i class="fas fa-circle"></i> Gratitude &amp; affirmations</li>
           </ul>
         </div>
-
-        <!-- Ultimate Memory -->
         <div class="pillar-card fade-in">
           <div class="icon"><i class="fas fa-brain"></i></div>
           <h3>Ultimate Memory</h3>
@@ -654,8 +769,6 @@
             <li><i class="fas fa-circle"></i> Learn more rapidly</li>
           </ul>
         </div>
-
-        <!-- Communicating from the Heart -->
         <div class="pillar-card fade-in">
           <div class="icon"><i class="fas fa-heart"></i></div>
           <h3>Communicating from the Heart</h3>
@@ -667,8 +780,6 @@
             <li><i class="fas fa-circle"></i> Naked communication</li>
           </ul>
         </div>
-
-        <!-- Unlock Your Incredible Self -->
         <div class="pillar-card fade-in">
           <div class="icon"><i class="fas fa-star"></i></div>
           <h3>Unlock Your Incredible Self</h3>
@@ -684,7 +795,7 @@
     </div>
   </section>
 
-  <!-- ====== LEARNING OUTCOMES ====== -->
+  <!-- ====== OUTCOMES ====== -->
   <section class="section" style="background: rgba(255,255,255,0.01);">
     <div class="container">
       <div class="section-header fade-in">
@@ -736,7 +847,7 @@
     </div>
   </section>
 
-  <!-- ====== FINAL CTA – PURCHASE (no other links) ====== -->
+  <!-- ====== FINAL CTA ====== -->
   <section class="cta-section">
     <div class="container fade-in">
       <h2>Ready to Transform Your Life?</h2>
@@ -747,7 +858,7 @@
     </div>
   </section>
 
-  <!-- ====== FOOTER (exact copy, no links to other pages) ====== -->
+  <!-- ====== FOOTER ====== -->
   <footer>
     <div class="container">
       <div class="footer-logo">Access<span>World</span> <i class="fas fa-globe-americas" style="color:var(--accent-gold);"></i></div>
@@ -758,7 +869,6 @@
         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
       </div>
       <div class="footer-nav">
-        <!-- no links – funnel focus -->
         <span style="color:var(--text-muted);">© 2026 AccessWorld Seminars</span>
       </div>
       <div class="copyright">
@@ -768,9 +878,8 @@
     </div>
   </footer>
 
-  <!-- ====== JAVASCRIPT (mobile menu + fade-in) ====== -->
+  <!-- ====== JAVASCRIPT ====== -->
   <script>
-    // Mobile menu toggle
     const mobileBtn = document.getElementById('mobileMenuBtn');
     const navLinks = document.getElementById('navLinks');
     mobileBtn.addEventListener('click', function() {
@@ -783,7 +892,6 @@
       }
     });
 
-    // Fade-in on scroll (Intersection Observer)
     const fadeElements = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -795,7 +903,6 @@
 
     fadeElements.forEach(el => observer.observe(el));
 
-    // close mobile menu on resize to desktop
     window.addEventListener('resize', function() {
       if (window.innerWidth > 768 && navLinks.classList.contains('open')) {
         navLinks.classList.remove('open');
