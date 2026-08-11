@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>How To Become A World Class Coach — Joshua Roy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet" />
     <style>
         * {
             margin: 0;
@@ -153,7 +153,7 @@
             animation: fadeIn 1s .4s ease both;
         }
 
-        /* COUNTDOWN — moved higher in hero */
+        /* COUNTDOWN */
         .hero-countdown-wrap {
             animation: fadeInUp 1s .35s ease both;
             margin: 28px auto 24px;
@@ -243,7 +243,7 @@
             animation: fadeInUp 1s .4s ease both;
         }
 
-        /* VIDEO EMBED */
+        /* VIDEO */
         .hero-video-wrap {
             width: 100%;
             max-width: 800px;
@@ -397,6 +397,7 @@
             margin-bottom: 20px;
         }
 
+        /* WHO */
         .who {
             background: var(--cream);
             padding: 100px 24px;
@@ -581,6 +582,7 @@
             clear: both;
         }
 
+        /* LEARN */
         .learn {
             background: var(--dark);
             padding: 100px 24px;
@@ -661,6 +663,7 @@
             font-size: 14px;
         }
 
+        /* METHODS */
         .methods {
             background: var(--cream);
             padding: 100px 24px;
@@ -735,6 +738,7 @@
             display: block;
         }
 
+        /* PATHWAYS */
         .pathways {
             background: var(--navy);
             padding: 100px 24px;
@@ -851,7 +855,7 @@
             margin-top: 3px;
         }
 
-        /* OPPORTUNITY — with video */
+        /* OPPORTUNITY */
         .opportunity {
             background: var(--cream);
             padding: 100px 24px;
@@ -896,7 +900,6 @@
             color: var(--navy);
         }
 
-        /* Ellie video testimonial — added below the grid */
         .ellie-video-wrap {
             max-width: 900px;
             margin: 48px auto 0;
@@ -936,6 +939,7 @@
             border-radius: 100px;
         }
 
+        /* WORKSHOP */
         .workshop {
             background: var(--dark);
             padding: 100px 24px;
@@ -972,6 +976,7 @@
             border: 1px solid rgba(201, 168, 76, .2);
         }
 
+        /* TESTIMONIALS */
         .testimonials {
             background: var(--warm-white);
             padding: 100px 24px;
@@ -1028,6 +1033,7 @@
             color: var(--gold);
         }
 
+        /* IMPACT */
         .impact {
             background: var(--cream);
             padding: 100px 24px;
@@ -1060,7 +1066,7 @@
             box-shadow: 0 10px 50px rgba(26, 39, 68, .12);
         }
 
-        /* TIMEZONES — updated for 18 Sept 2026 */
+        /* TIMEZONES */
         .timezones {
             background: var(--navy);
             padding: 80px 24px;
@@ -1126,6 +1132,9 @@
             margin-left: 4px;
         }
 
+        /* ======================================== */
+        /* 🚀 NEW: VALUE STACK — $900+ BONUSES      */
+        /* ======================================== */
         .value-stack-section {
             background: var(--dark);
             padding: 80px 24px;
@@ -1136,105 +1145,168 @@
         .value-stack-section::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(201, 168, 76, .06) 0%, transparent 70%);
-            border-radius: 50%;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 50% 30%, rgba(201, 168, 76, .08) 0%, transparent 50%);
+            pointer-events: none;
         }
-        .value-stack-section h2 {
-            font-size: clamp(32px, 5vw, 52px);
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 300;
-            color: var(--cream);
-            margin-bottom: 14px;
-        }
-        .value-stack-section h2 .gold {
-            color: var(--gold-light);
-        }
-        .value-stack-section .sub {
-            font-size: 17px;
-            color: rgba(250, 247, 240, .6);
-            max-width: 560px;
-            margin: 0 auto 48px;
-            line-height: 1.7;
-        }
-        .stack-wrap {
-            max-width: 700px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, .05);
-            border: 1px solid rgba(201, 168, 76, .2);
-            border-radius: 16px;
-            padding: 32px 30px 24px;
+        .value-stack-section .section-tag {
+            color: var(--gold);
             position: relative;
             z-index: 2;
         }
-        .stack-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, .06);
-            font-size: 15px;
-            color: rgba(250, 247, 240, .85);
+        .value-stack-section .big-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(72px, 12vw, 130px);
+            color: var(--gold-light);
+            line-height: 1;
+            letter-spacing: 2px;
+            text-shadow: 0 0 60px rgba(201, 168, 76, .25), 0 0 120px rgba(201, 168, 76, .1);
+            margin-bottom: 4px;
+            position: relative;
+            z-index: 2;
         }
-        .stack-item:last-child {
-            border-bottom: 0;
-        }
-        .stack-item .check {
+        .value-stack-section .big-number .plus {
+            font-size: 60%;
+            vertical-align: super;
             color: var(--gold);
-            margin-right: 12px;
-            font-weight: 700;
-            font-size: 16px;
         }
-        .stack-item .name {
-            display: flex;
-            align-items: center;
-            text-align: left;
-            gap: 6px;
-        }
-        .stack-item .value {
+        .value-stack-section .big-label {
             font-family: 'DM Sans', sans-serif;
+            font-size: clamp(18px, 2.5vw, 30px);
             font-weight: 700;
-            color: var(--gold-light);
-            font-size: 16px;
-            white-space: nowrap;
-        }
-        .stack-total {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 18px;
-            padding-top: 18px;
-            border-top: 2px solid rgba(201, 168, 76, .3);
-            font-family: 'DM Sans', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
             color: var(--cream);
+            position: relative;
+            z-index: 2;
+            margin-top: -4px;
         }
-        .stack-total .total-label {
+        .value-stack-section .big-label .free {
             color: var(--gold-light);
+            background: rgba(201, 168, 76, .15);
+            padding: 2px 18px;
+            border-radius: 100px;
+            border: 1px solid rgba(201, 168, 76, .3);
         }
-        .stack-total .total-value {
-            color: var(--gold-light);
-            font-size: 24px;
-        }
-        .stack-note {
-            margin-top: 16px;
-            font-size: 15px;
+        .value-stack-section .sub-head {
+            font-size: 17px;
             color: rgba(250, 247, 240, .7);
+            max-width: 600px;
+            margin: 20px auto 48px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
         }
-        .stack-note strong {
+        .bonus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2px;
+            max-width: 960px;
+            margin: 0 auto;
+            background: rgba(201, 168, 76, .12);
+            position: relative;
+            z-index: 2;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .bonus-card {
+            background: rgba(255, 255, 255, .04);
+            padding: 32px 28px;
+            text-align: left;
+            transition: background .3s, transform .3s;
+            border-bottom: 2px solid transparent;
+        }
+        .bonus-card:hover {
+            background: rgba(255, 255, 255, .07);
+            border-bottom-color: var(--gold);
+        }
+        .bonus-card .bonus-badge {
+            display: inline-block;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(201, 168, 76, .15);
+            padding: 4px 14px;
+            border-radius: 100px;
+            margin-bottom: 12px;
+        }
+        .bonus-card .bonus-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .bonus-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 6px;
+        }
+        .bonus-card p {
+            font-size: 14px;
+            color: rgba(250, 247, 240, .6);
+            line-height: 1.65;
+            margin-bottom: 12px;
+        }
+        .bonus-card .bonus-value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
             color: var(--gold-light);
-            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .stack-note .highlight {
-            color: #4CAF50;
+        .bonus-card .bonus-value .free-tag {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
             font-weight: 700;
+            text-transform: uppercase;
+            background: rgba(39, 174, 96, .25);
+            color: #4CAF50;
+            padding: 2px 14px;
+            border-radius: 100px;
+            letter-spacing: 1px;
+        }
+        .bonus-total {
+            margin-top: 36px;
+            padding: 24px 32px;
+            background: rgba(201, 168, 76, .12);
+            border: 2px solid rgba(201, 168, 76, .3);
+            border-radius: 12px;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+        .bonus-total .total-label {
+            font-size: 14px;
+            color: rgba(250, 247, 240, .6);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .bonus-total .total-amount {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            color: var(--gold-light);
+            line-height: 1.2;
+            display: block;
+        }
+        .bonus-total .total-free {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #4CAF50;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
         }
 
+        /* PRICING */
         .pricing {
             background: var(--dark);
             padding: 80px 24px 100px;
@@ -1268,15 +1340,16 @@
             line-height: 1.7;
         }
         .pricing-card {
-            max-width: 560px;
+            max-width: 620px;
             margin: 0 auto;
             background: rgba(255, 255, 255, .05);
             border: 1px solid rgba(201, 168, 76, .3);
             padding: 60px 48px;
             position: relative;
+            border-radius: 8px;
         }
         .pricing-card::before {
-            content: 'LIMITED OFFER';
+            content: '⭐ LIMITED OFFER';
             position: absolute;
             top: -1px;
             left: 50%;
@@ -1287,6 +1360,7 @@
             font-weight: 800;
             letter-spacing: 3px;
             padding: 6px 20px;
+            border-radius: 0 0 4px 4px;
         }
         .pricing-was {
             font-size: 18px;
@@ -1343,6 +1417,7 @@
             border: 1px solid rgba(201, 168, 76, .1);
             font-size: 14px;
             color: rgba(250, 247, 240, .7);
+            border-radius: 4px;
         }
         .pricing-tier.active {
             border-color: rgba(201, 168, 76, .45);
@@ -1358,6 +1433,7 @@
             margin-left: auto;
             white-space: nowrap;
         }
+
         .pricing-includes {
             text-align: left;
             margin-bottom: 36px;
@@ -1380,6 +1456,16 @@
             flex-shrink: 0;
             margin-top: 1px;
         }
+        .pricing-item.free-bonus {
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+        .pricing-item.free-bonus::before {
+            content: '✦';
+            color: #4CAF50;
+            font-size: 16px;
+        }
+
         .guarantee {
             display: flex;
             gap: 16px;
@@ -1388,6 +1474,7 @@
             background: rgba(201, 168, 76, .07);
             padding: 20px 22px;
             margin-bottom: 36px;
+            border-radius: 4px;
         }
         .guarantee-icon {
             font-size: 28px;
@@ -1418,6 +1505,7 @@
             text-align: center;
         }
 
+        /* FINAL CTA */
         .final-cta {
             background: var(--navy);
             padding: 120px 24px;
@@ -1465,6 +1553,7 @@
             text-decoration: none;
         }
 
+        /* ANIMATIONS */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -1528,6 +1617,7 @@
             transform: none;
         }
 
+        /* RESPONSIVE */
         @media (max-width:768px) {
             .method-cards {
                 grid-template-columns: 1fr;
@@ -1567,6 +1657,19 @@
             .countdown {
                 gap: 8px;
             }
+            .bonus-grid {
+                grid-template-columns: 1fr;
+            }
+            .bonus-total {
+                padding: 20px;
+                width: 100%;
+            }
+            .bonus-total .total-amount {
+                font-size: 36px;
+            }
+            .value-stack-section .big-number {
+                font-size: 60px;
+            }
         }
         @media (max-width:480px) {
             .countdown-num {
@@ -1591,18 +1694,24 @@
                 font-size: 9px;
                 letter-spacing: 2px;
             }
+            .value-stack-section .big-number {
+                font-size: 48px;
+            }
+            .bonus-total .total-amount {
+                font-size: 28px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER -->
+    <!-- ===== HEADER ===== -->
     <header class="site-header">
         <img src="https://i.ibb.co/spJSMY16/worldjjpgsf.png" alt="AccessWorld Seminars" class="site-logo" />
         <a href="https://accessworldseminars-ship-it.github.io/results/purchasewccoach" class="header-cta" target="_blank" rel="noopener">Join Now</a>
     </header>
 
-    <!-- HERO -->
+    <!-- ===== HERO ===== -->
     <section class="hero">
         <div class="hero-badge">AccessWorld Master Coach Program &nbsp;·&nbsp; Fri 18 September 2026</div>
         <div class="hero-eyebrow">Certification Training for Coaches, Leaders &amp; Change-Makers</div>
@@ -1610,7 +1719,7 @@
         <p class="hero-sub">Learn the tools of the trade — and become certified in the frameworks that have transformed thousands of lives.</p>
         <div class="hero-divider"></div>
 
-        <!-- COUNTDOWN — moved higher, right after hero title -->
+        <!-- COUNTDOWN -->
         <div class="hero-countdown-wrap" id="heroCountdown">
             <p class="countdown-label">⏳ Event Starts In:</p>
             <div class="countdown" id="countdown">
@@ -1653,7 +1762,7 @@
         </div>
     </section>
 
-    <!-- WHO IS THIS FOR -->
+    <!-- ===== WHO ===== -->
     <section class="who">
         <div class="section-tag">This is for you if...</div>
         <h2>You're ready to turn your<br /><em>passion into a profession.</em></h2>
@@ -1668,7 +1777,7 @@
         </div>
     </section>
 
-    <!-- STORY -->
+    <!-- ===== STORY ===== -->
     <section class="story">
         <div class="story-inner">
             <div class="section-tag">From Joshua Roy</div>
@@ -1700,7 +1809,7 @@
         </div>
     </section>
 
-    <!-- WHAT YOU LEARN -->
+    <!-- ===== LEARN ===== -->
     <section class="learn">
         <div class="learn-inner">
             <div class="section-tag" style="color:var(--gold)">What You'll Learn</div>
@@ -1728,7 +1837,7 @@
         </div>
     </section>
 
-    <!-- TWO METHODS -->
+    <!-- ===== METHODS ===== -->
     <section class="methods">
         <div class="methods-inner">
             <div class="section-tag">The Two Types of Coach</div>
@@ -1753,7 +1862,7 @@
         </div>
     </section>
 
-    <!-- THREE PATHWAYS -->
+    <!-- ===== PATHWAYS ===== -->
     <section class="pathways">
         <div class="section-tag" style="color:var(--gold)">The Three Transformation Pathways</div>
         <h2>Everything you teach will flow<br />through one of these <em>three pathways.</em></h2>
@@ -1802,7 +1911,7 @@
         <a href="https://accessworldseminars-ship-it.github.io/results/purchasewccoach" class="btn-primary" target="_blank" rel="noopener">Enrol and Master All Three</a>
     </section>
 
-    <!-- OPPORTUNITY — Ellie section with video testimonial added -->
+    <!-- ===== OPPORTUNITY ===== -->
     <section class="opportunity">
         <div class="opportunity-inner">
             <div class="reveal">
@@ -1818,7 +1927,7 @@
             </div>
         </div>
 
-        <!-- ELLIE VIDEO TESTIMONIAL — added right here -->
+        <!-- ELLIE VIDEO TESTIMONIAL -->
         <div class="ellie-video-wrap reveal">
             <div class="video-container">
                 <iframe src="https://drive.google.com/file/d/1x8ToRzvnZFBhi-5rShr51EYOJ6h-8AdU/preview" allowfullscreen loading="lazy" title="Ellie — First Certified Graduate Testimonial"></iframe>
@@ -1827,7 +1936,7 @@
         </div>
     </section>
 
-    <!-- WORKSHOP -->
+    <!-- ===== WORKSHOP ===== -->
     <section class="workshop">
         <div class="section-tag" style="color:var(--gold)">Live Training Environment</div>
         <h2>Real skills built in a<br /><em>live workshop format.</em></h2>
@@ -1836,7 +1945,7 @@
         <a href="https://accessworldseminars-ship-it.github.io/results/purchasewccoach" class="btn-primary" target="_blank" rel="noopener">Reserve My Seat</a>
     </section>
 
-    <!-- TESTIMONIALS -->
+    <!-- ===== TESTIMONIALS ===== -->
     <section class="testimonials">
         <div class="section-tag">Voices from the Journey</div>
         <h2>Real coaches.<br /><em>Real results.</em></h2>
@@ -1859,7 +1968,7 @@
         </div>
     </section>
 
-    <!-- IMPACT -->
+    <!-- ===== IMPACT ===== -->
     <section class="impact">
         <div class="section-tag">The Impact of Coaching</div>
         <h2>See what world class<br /><em>coaching actually produces.</em></h2>
@@ -1867,7 +1976,7 @@
         <img src="https://i.ibb.co/pvJ488Tv/BCO-073e00ee-a81e-4f24-a8a3-ac75358df841.png" alt="Impact of Coaching Diagram" class="impact-img reveal" />
     </section>
 
-    <!-- TIMEZONES — updated for 18 September 2026 -->
+    <!-- ===== TIMEZONES ===== -->
     <section class="timezones">
         <h3>Become a World Class Life and Results Coach — Anywhere in the World</h3>
         <p class="timezones-sub">The AccessWorld Master Coach program kicks off <strong>Friday, 18 September 2026 at 9:00 AM AEST</strong> (Brisbane time). Here is when that is for you.</p>
@@ -1884,22 +1993,84 @@
         </div>
     </section>
 
-    <!-- VALUE STACK -->
+    <!-- ============================================================== -->
+    <!-- 🚀 NEW: VALUE STACK — $900+ WORTH OF BONUSES — INCLUDED FREE   -->
+    <!-- ============================================================== -->
     <section class="value-stack-section" id="value-stack">
-        <div class="section-tag" style="color:var(--gold)">Your Complete Transformation Package</div>
-        <h2>What You Get When You<br /><span class="gold">Enrol Today</span></h2>
-        <p class="sub">We've packed this offer with everything you need to launch your coaching career with confidence.</p>
-        <div class="stack-wrap reveal">
-            <div class="stack-item"><span class="name"><span class="check">✓</span> 3‑Hour Live Training with Joshua</span><span class="value">$397</span></div>
-            <div class="stack-item"><span class="name"><span class="check">✓</span> Comprehensive Guide to Creating a Coaching Program</span><span class="value">$197</span></div>
-            <div class="stack-item"><span class="name"><span class="check">✓</span> First Session of the 6‑Session Series (Turn Discovery Calls into $3,000+ Clients)</span><span class="value">$297</span></div>
-            <div class="stack-item"><span class="name"><span class="check">✓</span> Morning Routine Training Video (Build the Character to Inspire Others)</span><span class="value">$97</span></div>
-            <div class="stack-total"><span class="total-label">Total Value</span><span class="total-value">$988 AUD</span></div>
-            <div class="stack-note"><strong>Your investment today: just $49 AUD</strong> — that's <span class="highlight">95% off</span> the total value!</div>
+        <div class="section-tag" style="color:var(--gold)">🔥 BONUS OFFER</div>
+
+        <!-- BIG, BOLD HEADLINE -->
+        <div class="big-number">
+            $900<span class="plus">+</span>
         </div>
+        <div class="big-label">
+            Worth of Bonuses — <span class="free">Included Free</span>
+        </div>
+        <p class="sub-head">
+            When you enrol today, you don't just get the 3‑hour live training.<br />
+            You get <strong>over $900 in additional bonuses</strong> — at no extra cost.
+        </p>
+
+        <!-- BONUS CARDS -->
+        <div class="bonus-grid reveal">
+            <!-- Bonus 1 -->
+            <div class="bonus-card">
+                <span class="bonus-badge">🎁 Bonus #1</span>
+                <span class="bonus-icon">👥</span>
+                <h4>8‑Week Coaching &amp; Mentoring Programme</h4>
+                <p>Includes group coaching, tool development training, video recordings from live training sessions, free Introduction sessions, and access to the full Tool Development Training.</p>
+                <div class="bonus-value">
+                    $519.05 <span class="free-tag">FREE</span>
+                </div>
+            </div>
+
+            <!-- Bonus 2 -->
+            <div class="bonus-card">
+                <span class="bonus-badge">🎁 Bonus #2</span>
+                <span class="bonus-icon">📋</span>
+                <h4>Frameworks Document</h4>
+                <p>A comprehensive step‑by‑step rundown of proven coaching frameworks you can use to guide any client toward results and success — from first session to breakthrough.</p>
+                <div class="bonus-value">
+                    $119.09 <span class="free-tag">FREE</span>
+                </div>
+            </div>
+
+            <!-- Bonus 3 -->
+            <div class="bonus-card">
+                <span class="bonus-badge">🎁 Bonus #3</span>
+                <span class="bonus-icon">🎯</span>
+                <h4>Discovery Strategy Training</h4>
+                <p>The first session of the training series — a step‑by‑step guide to the discovery strategy session. Learn exactly how to help a client clarify their goals, values, and desired outcomes.</p>
+                <div class="bonus-value">
+                    $110.09 <span class="free-tag">FREE</span>
+                </div>
+            </div>
+
+            <!-- Bonus 4 (added to push over $900) -->
+            <div class="bonus-card">
+                <span class="bonus-badge">🎁 Bonus #4</span>
+                <span class="bonus-icon">📹</span>
+                <h4>Live Session Replay Library</h4>
+                <p>Full access to replays of all live training sessions — so you can review, revise, and deepen your learning at your own pace, any time you need a refresher.</p>
+                <div class="bonus-value">
+                    $150.00 <span class="free-tag">FREE</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOTAL VALUE -->
+        <div class="bonus-total reveal">
+            <span class="total-label">Total Bonus Value</span>
+            <span class="total-amount">$898.23</span>
+            <span class="total-free">🎉 ROUNDED UP TO $900+ — YOURS FREE</span>
+        </div>
+
+        <p style="color:rgba(250,247,240,.5); font-size:13px; margin-top:20px; position:relative; z-index:2;">
+            * Bonuses are included at no additional cost when you enrol in the World Class Coach training.
+        </p>
     </section>
 
-    <!-- PRICING -->
+    <!-- ===== PRICING ===== -->
     <section class="pricing" id="pricing">
         <div class="section-tag" style="color:var(--gold)">Your Investment</div>
         <h2>World class skills at a<br /><em>fraction of the cost.</em></h2>
@@ -1917,16 +2088,28 @@
                 <div class="pricing-tier"><span>Seats 101–200</span><span>$99 AUD</span><span class="pricing-tier-label">No Bonus Gifts</span></div>
                 <div class="pricing-tier"><span>Seats 201–300</span><span>$149 AUD</span><span class="pricing-tier-label">No Bonus Gifts</span></div>
             </div>
+
+            <!-- UPDATED INCLUSIONS: clear separation between paid + FREE bonuses -->
             <div class="pricing-includes">
+                <div style="font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">⭐ What You Pay For:</div>
                 <div class="pricing-item">Full 3-hour live coaching training with Joshua Roy</div>
                 <div class="pricing-item">Complete NLP &amp; NSR methodology frameworks</div>
                 <div class="pricing-item">All three transformation pathways — Emotion, Thought, Destiny</div>
                 <div class="pricing-item">Live session demonstrations and practice</div>
                 <div class="pricing-item">Certification in Joshua Roy's proven methodology</div>
                 <div class="pricing-item">Community access and ongoing support</div>
-                <div class="pricing-item">Bonus gifts for first 100 seats</div>
                 <div class="pricing-item">Recording of highlights to listen, learn &amp; implement fully</div>
+
+                <div style="border-top:1px solid rgba(201,168,76,.2); margin:16px 0 12px;"></div>
+
+                <div style="font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#4CAF50; margin-bottom:8px;">🎁 FREE BONUSES — Over $900 Value:</div>
+                <div class="pricing-item free-bonus">8‑Week Coaching &amp; Mentoring Programme — <strong style="color:var(--gold-light);">$519.05</strong></div>
+                <div class="pricing-item free-bonus">Frameworks Document — <strong style="color:var(--gold-light);">$119.09</strong></div>
+                <div class="pricing-item free-bonus">Discovery Strategy Training — <strong style="color:var(--gold-light);">$110.09</strong></div>
+                <div class="pricing-item free-bonus">Live Session Replay Library — <strong style="color:var(--gold-light);">$150.00</strong></div>
+                <div style="font-size:13px; color:var(--gold-light); font-weight:700; margin-top:6px;">Total FREE Bonuses: $898.23 → $900+ Value</div>
             </div>
+
             <div class="guarantee">
                 <div class="guarantee-icon">🛡️</div>
                 <div class="guarantee-text">
@@ -1940,7 +2123,7 @@
         </div>
     </section>
 
-    <!-- FINAL CTA -->
+    <!-- ===== FINAL CTA ===== -->
     <section class="final-cta">
         <div class="section-tag" style="color:var(--gold)">The Moment of Decision</div>
         <h2>The coach you're<br />meant to be is<br /><em>one decision away.</em></h2>
@@ -1948,7 +2131,7 @@
         <a href="https://accessworldseminars-ship-it.github.io/results/purchasewccoach" class="btn-primary" target="_blank" rel="noopener">Claim Your Seat — $49 AUD</a>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ===== FOOTER ===== -->
     <footer>
         <p style="margin-bottom:8px">AccessWorld Seminars &copy; 2015–2026 &nbsp;·&nbsp; Brisbane, Australia &nbsp;·&nbsp; ABN: 72 546 137 885</p>
         <p>Questions? <a href="mailto:accessworldseminars@gmail.com">accessworldseminars@gmail.com</a> &nbsp;·&nbsp; <a href="tel:0432119091">0432 119 091</a></p>
