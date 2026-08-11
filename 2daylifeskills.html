@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Access to Life Skills | AccessWorld Seminars</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Google Fonts: Montserrat + Open Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ----- CSS VARIABLES (exact match from main) ----- */
+    :root {
+      --primary-dark: #0b1a2f;
+      --primary-mid: #1a2f44;
+      --accent-gold: #d4a743;
+      --accent-glow: #e8c86a;
+      --text-light: #f5f0e8;
+      --text-muted: #b8b0a0;
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --border-glow: rgba(212, 167, 67, 0.25);
+      --shadow-dark: 0 12px 30px rgba(0, 0, 0, 0.6);
+      --transition: all 0.3s ease;
+    }
+
+    /* ----- RESET & BASE ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--primary-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ----- TYPOGRAPHY ----- */
+    h1, h2, h3, h4, .section-title, .nav-links a {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+
+    .section-title .gold-underline {
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent-gold);
+      margin-top: 12px;
+      border-radius: 4px;
+    }
+
+    .accent-text {
+      color: var(--accent-gold);
+    }
+
+    .text-muted {
+      color: var(--text-muted);
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+      font-weight: 700;
+      padding: 16px 44px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      transition: var(--transition);
+      border: 2px solid transparent;
+      box-shadow: 0 4px 20px rgba(212, 167, 67, 0.3);
+    }
+
+    .btn i {
+      margin-right: 10px;
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: var(--accent-gold);
+      border-color: var(--accent-gold);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(212, 167, 67, 0.2);
+    }
+
+    .btn-block {
+      display: inline-block;
+      width: auto;
+      padding: 18px 60px;
+    }
+
+    /* ----- FADE-IN (on scroll) ----- */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ----- FIXED NAVIGATION (no links except home – but we hide home link) ----- */
+    .main-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(11, 26, 47, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 0 24px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 999;
+      border-bottom: 1px solid rgba(212, 167, 67, 0.15);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--text-light);
+    }
+
+    .nav-logo i {
+      color: var(--accent-gold);
+      font-size: 1.8rem;
+    }
+
+    .nav-logo span {
+      color: var(--accent-gold);
+    }
+
+    /* mobile menu button */
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--text-light);
+      font-size: 2rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .mobile-menu-btn:hover {
+      color: var(--accent-gold);
+    }
+
+    /* navigation links – but we only show "Home" as a visual element, no link to homepage */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 8px 4px;
+      border-bottom: 2px solid transparent;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a i {
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-light);
+      border-bottom-color: var(--accent-gold);
+    }
+
+    .nav-links a.active {
+      color: var(--accent-gold);
+      border-bottom-color: var(--accent-gold);
+    }
+
+    /* We keep home button in markup but hide it visually (no link) */
+    .nav-links .home-link {
+      display: none; /* completely hidden – funnel purpose */
+    }
+
+    /* ----- HERO SECTION (no links) ----- */
+    .hero-header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 0 60px;
+      background: radial-gradient(circle at 30% 20%, #1f3a55, #0b1a2f 80%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-header::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212, 167, 67, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.6rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-content h1 .highlight {
+      color: var(--accent-gold);
+      border-bottom: 3px solid var(--accent-gold);
+      padding-bottom: 4px;
+    }
+
+    .hero-content p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-content .btn i {
+      margin-right: 12px;
+    }
+
+    /* ----- SECTIONS ----- */
+    .section {
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-header {
+      margin-bottom: 48px;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+
+    .section-header .gold-underline {
+      width: 70px;
+      height: 4px;
+      background: var(--accent-gold);
+      margin-top: 12px;
+      border-radius: 4px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-top: 12px;
+      max-width: 700px;
+    }
+
+    /* ----- PILLARS / CARDS ----- */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+    }
+
+    .pillar-card {
+      background: var(--card-bg);
+      padding: 32px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 167, 67, 0.1);
+      transition: var(--transition);
+      backdrop-filter: blur(4px);
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent-gold);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .pillar-card .icon {
+      font-size: 2.8rem;
+      color: var(--accent-gold);
+      margin-bottom: 16px;
+    }
+
+    .pillar-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--text-light);
+    }
+
+    .pillar-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .pillar-card ul {
+      list-style: none;
+      margin-top: 14px;
+    }
+
+    .pillar-card ul li {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pillar-card ul li i {
+      color: var(--accent-gold);
+      font-size: 0.7rem;
+    }
+
+    /* learning outcomes */
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .outcome-item {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 18px 20px;
+      border-radius: 14px;
+      border-left: 3px solid var(--accent-gold);
+    }
+
+    .outcome-item i {
+      color: var(--accent-gold);
+      margin-right: 10px;
+    }
+
+    /* summary table (clean) */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .summary-card {
+      background: var(--card-bg);
+      padding: 24px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(212, 167, 67, 0.08);
+      text-align: center;
+    }
+
+    .summary-card h4 {
+      color: var(--accent-gold);
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .summary-card .focus {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .summary-card .takeaway {
+      font-weight: 600;
+      margin-top: 8px;
+      color: var(--text-light);
+    }
+
+    /* ----- CTA SECTION (payment button) ----- */
+    .cta-section {
+      background: linear-gradient(145deg, #112438, #0a1728);
+      text-align: center;
+      padding: 70px 0;
+    }
+
+    .cta-section h2 {
+      font-size: 2.6rem;
+      margin-bottom: 16px;
+    }
+
+    .cta-section .sub {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+
+    .cta-section .btn {
+      font-size: 1.3rem;
+      padding: 20px 64px;
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+      border: 2px solid var(--accent-gold);
+    }
+
+    .cta-section .btn:hover {
+      background: transparent;
+      color: var(--accent-gold);
+    }
+
+    /* ----- FOOTER (exact copy, no links to other pages) ----- */
+    footer {
+      background: #07121f;
+      padding: 40px 0 24px;
+      border-top: 1px solid rgba(212, 167, 67, 0.08);
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    footer .footer-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+
+    footer .footer-logo span {
+      color: var(--accent-gold);
+    }
+
+    footer .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    footer .social-links a {
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      transition: var(--transition);
+    }
+
+    footer .social-links a:hover {
+      color: var(--accent-gold);
+    }
+
+    footer .footer-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin: 16px 0 24px;
+    }
+
+    footer .footer-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      border-bottom: 1px solid transparent;
+    }
+
+    footer .footer-nav a:hover {
+      color: var(--text-light);
+      border-bottom-color: var(--accent-gold);
+    }
+
+    footer .copyright {
+      font-size: 0.85rem;
+      opacity: 0.6;
+      margin-top: 12px;
+    }
+
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 992px) {
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .main-nav {
+        padding: 0 16px;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: rgba(11, 26, 47, 0.97);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px 24px;
+        gap: 12px;
+        display: none;
+        border-bottom: 1px solid rgba(212, 167, 67, 0.15);
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .nav-links a {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      .btn {
+        padding: 14px 32px;
+        font-size: 1rem;
+      }
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      .section {
+        padding: 60px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .btn-block {
+        padding: 14px 32px;
+        font-size: 1rem;
+      }
+      .cta-section h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== NAVIGATION (funnel: no links to home or other pages) ====== -->
+  <nav class="main-nav">
+    <div class="nav-logo">
+      <i class="fas fa-globe-americas"></i>
+      Access<span>World</span>
+    </div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <!-- home link is hidden – funnel purpose, no way to leave -->
+      <a href="#" class="home-link"><i class="fas fa-home"></i> Home</a>
+      <!-- only active page indicator (no link) -->
+      <span class="active" style="color:var(--accent-gold); border-bottom:2px solid var(--accent-gold); padding:8px 4px; display:flex; align-items:center; gap:6px; font-family:'Montserrat',sans-serif; font-weight:600;">
+        <i class="fas fa-gem"></i> Life Skills
+      </span>
+      <!-- all other nav links removed for funnel focus -->
+    </div>
+  </nav>
+
+  <!-- ====== HERO SECTION (no links) ====== -->
+  <section class="hero-header">
+    <div class="container hero-content fade-in">
+      <h1>
+        <span class="highlight">Access to Life Skills</span><br />
+        Live 2-Day Webinar
+      </h1>
+      <p>
+        Unlock your financial potential, sharpen your memory, master communication,
+        and step into your incredible self — all in one transformative weekend.
+      </p>
+      <!-- CTA button points directly to payment page (no other links) -->
+      <a href="https://accessworldseminars-ship-it.github.io/results/2daylifeskillspayment" class="btn">
+        <i class="fas fa-ticket-alt"></i> Secure Your Seat
+      </a>
+    </div>
+  </section>
+
+  <!-- ====== OVERVIEW SECTION ====== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">What You’ll Learn <span class="gold-underline"></span></h2>
+        <p>Four powerful pillars designed to create lasting change in every area of your life.</p>
+      </div>
+
+      <div class="pillars-grid">
+        <!-- Stepping Into Wealth -->
+        <div class="pillar-card fade-in">
+          <div class="icon"><i class="fas fa-coins"></i></div>
+          <h3>Stepping Into Wealth</h3>
+          <p>Money mindset &amp; financial blueprint</p>
+          <ul>
+            <li><i class="fas fa-circle"></i> 4 levels of wealth creation</li>
+            <li><i class="fas fa-circle"></i> Upgrade your money thermostat</li>
+            <li><i class="fas fa-circle"></i> 7 principles of financial security</li>
+            <li><i class="fas fa-circle"></i> Gratitude &amp; affirmations</li>
+          </ul>
+        </div>
+
+        <!-- Ultimate Memory -->
+        <div class="pillar-card fade-in">
+          <div class="icon"><i class="fas fa-brain"></i></div>
+          <h3>Ultimate Memory</h3>
+          <p>Cognitive enhancement &amp; recall</p>
+          <ul>
+            <li><i class="fas fa-circle"></i> 4 key memory tools</li>
+            <li><i class="fas fa-circle"></i> Prepare the mind for learning</li>
+            <li><i class="fas fa-circle"></i> Install info for instant recall</li>
+            <li><i class="fas fa-circle"></i> Learn more rapidly</li>
+          </ul>
+        </div>
+
+        <!-- Communicating from the Heart -->
+        <div class="pillar-card fade-in">
+          <div class="icon"><i class="fas fa-heart"></i></div>
+          <h3>Communicating from the Heart</h3>
+          <p>Rapport, influence &amp; connection</p>
+          <ul>
+            <li><i class="fas fa-circle"></i> 5 levels of communication</li>
+            <li><i class="fas fa-circle"></i> Instant rapport with anyone</li>
+            <li><i class="fas fa-circle"></i> Become the most interesting</li>
+            <li><i class="fas fa-circle"></i> Naked communication</li>
+          </ul>
+        </div>
+
+        <!-- Unlock Your Incredible Self -->
+        <div class="pillar-card fade-in">
+          <div class="icon"><i class="fas fa-star"></i></div>
+          <h3>Unlock Your Incredible Self</h3>
+          <p>Identity &amp; self-worth</p>
+          <ul>
+            <li><i class="fas fa-circle"></i> Turn values into identity</li>
+            <li><i class="fas fa-circle"></i> Stop negative chatter</li>
+            <li><i class="fas fa-circle"></i> Anchor new personas</li>
+            <li><i class="fas fa-circle"></i> Generate your desired outcomes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== LEARNING OUTCOMES ====== -->
+  <section class="section" style="background: rgba(255,255,255,0.01);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">By the End of This Program <span class="gold-underline"></span></h2>
+        <p>You will walk away with practical tools and a renewed sense of possibility.</p>
+      </div>
+      <div class="outcome-grid">
+        <div class="outcome-item fade-in"><i class="fas fa-check-circle"></i> Deeper understanding of wealth attraction</div>
+        <div class="outcome-item fade-in"><i class="fas fa-check-circle"></i> Step‑by‑step memory mastery guide</div>
+        <div class="outcome-item fade-in"><i class="fas fa-check-circle"></i> Listen with intent, not to respond</div>
+        <div class="outcome-item fade-in"><i class="fas fa-check-circle"></i> Identify representational systems</div>
+        <div class="outcome-item fade-in"><i class="fas fa-check-circle"></i> Confidently recall forgotten memories</div>
+        <div class="outcome-item fade-in"><i class="fas fa-check-circle"></i> Develop naked communication</div>
+        <div class="outcome-item fade-in"><i class="fas fa-check-circle"></i> Anchor empowering identity statements</div>
+        <div class="outcome-item fade-in"><i class="fas fa-check-circle"></i> Break the habit of being your old self</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SUMMARY ====== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2 class="section-title">Program Summary <span class="gold-underline"></span></h2>
+        <p>Four components, one life‑changing experience.</p>
+      </div>
+      <div class="summary-grid">
+        <div class="summary-card fade-in">
+          <h4>Stepping Into Wealth</h4>
+          <div class="focus">Money mindset</div>
+          <div class="takeaway">Become a money magnet</div>
+        </div>
+        <div class="summary-card fade-in">
+          <h4>Ultimate Memory</h4>
+          <div class="focus">Cognitive enhancement</div>
+          <div class="takeaway">Never forget what matters</div>
+        </div>
+        <div class="summary-card fade-in">
+          <h4>Communicating from the Heart</h4>
+          <div class="focus">Rapport &amp; influence</div>
+          <div class="takeaway">Become unforgettable</div>
+        </div>
+        <div class="summary-card fade-in">
+          <h4>Unlock Your Incredible Self</h4>
+          <div class="focus">Identity &amp; self‑worth</div>
+          <div class="takeaway">Become who you were meant to be</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FINAL CTA – PURCHASE (no other links) ====== -->
+  <section class="cta-section">
+    <div class="container fade-in">
+      <h2>Ready to Transform Your Life?</h2>
+      <p class="sub">Join the Access to Life Skills 2‑Day Webinar and start your journey toward wealth, clarity, connection, and confidence.</p>
+      <a href="https://accessworldseminars-ship-it.github.io/results/2daylifeskillspayment" class="btn btn-block">
+        <i class="fas fa-lock"></i> Register Now – Secure Your Spot
+      </a>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER (exact copy, no links to other pages) ====== -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">Access<span>World</span> <i class="fas fa-globe-americas" style="color:var(--accent-gold);"></i></div>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <div class="footer-nav">
+        <!-- no links – funnel focus -->
+        <span style="color:var(--text-muted);">© 2026 AccessWorld Seminars</span>
+      </div>
+      <div class="copyright">
+        <i class="fas fa-circle" style="color:var(--accent-gold); font-size:0.5rem; vertical-align:middle; margin-right:6px;"></i>
+        Empowering Change, Transforming Lives
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====== JAVASCRIPT (mobile menu + fade-in) ====== -->
+  <script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    mobileBtn.addEventListener('click', function() {
+      navLinks.classList.toggle('open');
+      const icon = this.querySelector('i');
+      if (navLinks.classList.contains('open')) {
+        icon.className = 'fas fa-times';
+      } else {
+        icon.className = 'fas fa-bars';
+      }
+    });
+
+    // Fade-in on scroll (Intersection Observer)
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    fadeElements.forEach(el => observer.observe(el));
+
+    // close mobile menu on resize to desktop
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768 && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        const icon = mobileBtn.querySelector('i');
+        icon.className = 'fas fa-bars';
+      }
+    });
+  </script>
+</body>
+</html>
