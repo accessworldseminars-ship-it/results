@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group Coaching – Submit Your Question</title>
+
+    <!-- Google Fonts for a clean, professional look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ----- RESET & BASE ----- */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0b0f1a;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background-image: radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.04) 0%, transparent 50%);
+        }
+
+        /* ----- CARD CONTAINER ----- */
+        .card {
+            max-width: 620px;
+            width: 100%;
+            background: #131d2f;
+            border-radius: 32px;
+            padding: 44px 40px 40px;
+            border: 1px solid rgba(201, 168, 76, 0.18);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7);
+            transition: border-color 0.3s;
+        }
+
+        .card:hover {
+            border-color: rgba(201, 168, 76, 0.35);
+        }
+
+        /* ----- HEADER ----- */
+        .header {
+            margin-bottom: 32px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(201, 168, 76, 0.13);
+            color: #c9a84c;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 4px 14px;
+            border-radius: 100px;
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            margin-bottom: 14px;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 2.1rem;
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .header h1 .highlight {
+            color: #c9a84c;
+            font-style: italic;
+        }
+
+        .header p {
+            color: #8d99b0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 440px;
+        }
+
+        .header p strong {
+            color: #dfe3ed;
+            font-weight: 600;
+        }
+
+        /* ----- FORM ----- */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #bcc4d6;
+            margin-bottom: 5px;
+            letter-spacing: 0.02em;
+        }
+
+        .form-group label .required {
+            color: #c9a84c;
+            margin-left: 2px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #4f5d78;
+            font-weight: 400;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: rgba(201, 168, 76, 0.5);
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.06);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 110px;
+            line-height: 1.6;
+        }
+
+        .form-group select {
+            color: #dfe3ed;
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: #131d2f;
+            color: #ffffff;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* ----- CHARACTER COUNT ----- */
+        .char-count {
+            display: flex;
+            justify-content: flex-end;
+            font-size: 0.7rem;
+            color: #4f5d78;
+            margin-top: 4px;
+            letter-spacing: 0.02em;
+        }
+
+        .char-count .count-near {
+            color: #8d99b0;
+        }
+
+        /* ----- SUBMIT BUTTON ----- */
+        .submit-btn {
+            width: 100%;
+            padding: 16px 20px;
+            margin-top: 8px;
+            background: linear-gradient(135deg, #c9a84c, #b08a2e);
+            border: none;
+            border-radius: 16px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #080d18;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.25s, opacity 0.2s;
+            box-shadow: 0 4px 20px rgba(201, 168, 76, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(201, 168, 76, 0.25);
+        }
+
+        .submit-btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .submit-btn .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2.5px solid rgba(8, 13, 24, 0.15);
+            border-top-color: #080d18;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+
+        .submit-btn.loading .spinner {
+            display: inline-block;
+        }
+        .submit-btn.loading .btn-text {
+            display: none;
+        }
+        .submit-btn.loading .btn-icon {
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ----- STATUS MESSAGE ----- */
+        .status {
+            margin-top: 18px;
+            padding: 14px 18px;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            line-height: 1.5;
+        }
+
+        .status.show {
+            display: flex;
+        }
+
+        .status.success {
+            background: rgba(52, 211, 153, 0.10);
+            border: 1px solid rgba(52, 211, 153, 0.20);
+            color: #6ee7b7;
+        }
+
+        .status.error {
+            background: rgba(239, 68, 68, 0.10);
+            border: 1px solid rgba(239, 68, 68, 0.20);
+            color: #fca5a5;
+        }
+
+        .status .status-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* ----- FOOTER ----- */
+        .footer {
+            margin-top: 28px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #3b485f;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 20px;
+            letter-spacing: 0.02em;
+        }
+
+        .footer a {
+            color: #6b7a93;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: #c9a84c;
+        }
+
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 600px) {
+            .card {
+                padding: 28px 20px 28px;
+            }
+            .header h1 {
+                font-size: 1.6rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .submit-btn {
+                font-size: 0.95rem;
+                padding: 15px 16px;
+            }
+            .badge {
+                font-size: 0.6rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .card {
+                padding: 20px 14px 24px;
+                border-radius: 24px;
+            }
+            .header h1 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card" role="main" aria-label="Question submission form">
+
+        <!-- HEADER -->
+        <div class="header">
+            <div class="badge">🎯 Group Coaching</div>
+            <h1>
+                Ask your <span class="highlight">question</span>
+            </h1>
+            <p>
+                Drop your question below and we'll cover it in the next
+                <strong>group coaching &amp; monetization session</strong>.
+                All submissions go straight to our private Telegram.
+            </p>
+        </div>
+
+        <!-- FORM -->
+        <form id="questionForm" novalidate>
+            <!-- Name + Email row -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="userName">Your name <span class="required">*</span></label>
+                    <input
+                    type="text"
+                    id="userName"
+                    placeholder="e.g. Alex Rivera"
+                    required
+                    autocomplete="given-name"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Email <span class="required">*</span></label>
+                    <input
+                    type="email"
+                    id="userEmail"
+                    placeholder="alex@example.com"
+                    required
+                    autocomplete="email"
+                    />
+                </div>
+            </div>
+
+            <!-- Topic / category (optional) -->
+            <div class="form-group">
+                <label for="questionTopic">Topic area <span style="color:#4f5d78;font-weight:400;">(optional)</span></label>
+                <select id="questionTopic">
+                    <option value="">— Select a topic —</option>
+                    <option value="Monetization">💰 Monetization</option>
+                    <option value="Content Strategy">📝 Content Strategy</option>
+                    <option value="Audience Growth">📈 Audience Growth</option>
+                    <option value="Offer Creation">🧩 Offer Creation</option>
+                    <option value="Mindset">🧠 Mindset</option>
+                    <option value="Operations">⚙️ Operations</option>
+                    <option value="Other">🌱 Other</option>
+                </select>
+            </div>
+
+            <!-- Question -->
+            <div class="form-group">
+                <label for="questionText">Your question <span class="required">*</span></label>
+                <textarea
+                id="questionText"
+                placeholder="What's your biggest challenge right now? What would you like me to break down in our next session?"
+                required
+                maxlength="2000"
+                ></textarea>
+                <div class="char-count">
+                    <span id="charCount">0</span> <span class="count-near"> / 2,000</span>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <span class="btn-icon">✧</span>
+                <span class="btn-text">Send to Telegram</span>
+                <span class="spinner"></span>
+            </button>
+        </form>
+
+        <!-- Status message -->
+        <div class="status" id="statusMessage">
+            <span class="status-icon"></span>
+            <span class="status-text"></span>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            Your question will be shared anonymously unless you opt in.
+            <br />
+            <a href="#" onclick="return false;">Privacy</a> &middot;
+            <a href="#" onclick="return false;">Session schedule</a>
+        </div>
+
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // ============================================================
+            //  CONFIGURATION — Edit these to connect to YOUR Telegram bot
+            // ============================================================
+
+            // 1. Your Telegram Bot Token (from @BotFather)
+            const BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';
+
+            // 2. Your Telegram Chat ID (where messages will be sent)
+            //    Can be a group, channel, or your personal chat.
+            //    To get it: send a message to your bot, then visit:
+            //    https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates
+            const CHAT_ID = 'YOUR_CHAT_ID_HERE';
+
+            // 3. (Optional) If you use a Zapier webhook instead of direct Telegram API,
+            //    set USE_ZAPIER = true and fill in ZAPIER_WEBHOOK_URL below.
+            const USE_ZAPIER = false;
+            const ZAPIER_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/123456/abcde/';
+
+            // 4. Session info (shown in the Telegram message)
+            const SESSION_LABEL = 'Next Group Coaching & Monetization Session';
+
+            // ============================================================
+            //  END OF CONFIG
+            // ============================================================
+
+            // DOM refs
+            const form = document.getElementById('questionForm');
+            const nameInput = document.getElementById('userName');
+            const emailInput = document.getElementById('userEmail');
+            const topicSelect = document.getElementById('questionTopic');
+            const questionInput = document.getElementById('questionText');
+            const charCount = document.getElementById('charCount');
+            const submitBtn = document.getElementById('submitBtn');
+            const statusEl = document.getElementById('statusMessage');
+            const statusIcon = statusEl.querySelector('.status-icon');
+            const statusText = statusEl.querySelector('.status-text');
+
+            // ---- Character counter ----
+            questionInput.addEventListener('input', function() {
+                charCount.textContent = this.value.length;
+            });
+
+            // ---- Form submit ----
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Gather data
+                const name = nameInput.value.trim();
+                const email = emailInput.value.trim();
+                const topic = topicSelect.value;
+                const question = questionInput.value.trim();
+
+                // Validate
+                if (!name) {
+                    showStatus('error', '❌', 'Please enter your name.');
+                    nameInput.focus();
+                    return;
+                }
+                if (!email || !isValidEmail(email)) {
+                    showStatus('error', '❌', 'Please enter a valid email address.');
+                    emailInput.focus();
+                    return;
+                }
+                if (!question) {
+                    showStatus('error', '❌', 'Please write your question.');
+                    questionInput.focus();
+                    return;
+                }
+
+                // Disable button & show loading
+                submitBtn.disabled = true;
+                submitBtn.classList.add('loading');
+                hideStatus();
+
+                try {
+                    let response;
+
+                    if (USE_ZAPIER) {
+                        // ---- Zapier webhook ----
+                        const formData = new FormData();
+                        formData.append('name', name);
+                        formData.append('email', email);
+                        formData.append('topic', topic || 'General');
+                        formData.append('question', question);
+                        formData.append('source', SESSION_LABEL);
+
+                        response = await fetch(ZAPIER_WEBHOOK_URL, {
+                            method: 'POST',
+                            body: formData,
+                            mode: 'no-cors'
+                        });
+                        // 'no-cors' returns opaque response, we assume success
+                        showStatus('success', '✅',
+                            'Your question was sent! We\'ll cover it in the next session.'
+                            );
+                        form.reset();
+                        charCount.textContent = '0';
+                    } else {
+                        // ---- Telegram Bot API ----
+                        if (BOT_TOKEN === 'YOUR_BOT_TOKEN_HERE' || CHAT_ID === 'YOUR_CHAT_ID_HERE') {
+                            showStatus('error', '⚠️',
+                                'Telegram bot not configured. Please set BOT_TOKEN and CHAT_ID in the script.'
+                                );
+                            submitBtn.disabled = false;
+                            submitBtn.classList.remove('loading');
+                            return;
+                        }
+
+                        // Build a rich message
+                        const message = buildTelegramMessage(name, email, topic, question);
+
+                        const apiUrl =
+                            `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+                        const payload = {
+                            chat_id: CHAT_ID,
+                            text: message,
+                            parse_mode: 'Markdown',
+                            disable_web_page_preview: true,
+                        };
+
+                        const res = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(payload),
+                        });
+
+                        const data = await res.json();
+
+                        if (data.ok) {
+                            showStatus('success', '✅',
+                                'Your question was sent to Telegram! We\'ll cover it in the next session.'
+                                );
+                            form.reset();
+                            charCount.textContent = '0';
+                        } else {
+                            console.error('Telegram API error:', data);
+                            let errMsg = data.description || 'Unknown error.';
+                            if (errMsg.includes('bot token')) {
+                                errMsg = 'Invalid bot token. Please check your BOT_TOKEN.';
+                            } else if (errMsg.includes('chat not found')) {
+                                errMsg = 'Chat ID not found. Please check your CHAT_ID.';
+                            }
+                            showStatus('error', '⚠️', `Telegram error: ${errMsg}`);
+                        }
+                    }
+                } catch (err) {
+                    console.error('Submission error:', err);
+                    showStatus('error', '⚠️',
+                        'Something went wrong. Please try again or contact support.'
+                        );
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('loading');
+                }
+            });
+
+            // ---- Helpers ----
+
+            function buildTelegramMessage(name, email, topic, question) {
+                const topicLine = topic && topic !== '' ? `*Topic:* ${topic}\n` : '';
+                return `
+        📩 *New Question from Group Coaching*
+
+        *Name:* ${escapeMarkdown(name)}
+        *Email:* ${escapeMarkdown(email)}
+        ${topicLine}
+        *Question:*
+        ${escapeMarkdown(question)}
+
+        ───
+        🗓 *${SESSION_LABEL}*
+            `.trim();
+            }
+
+            function escapeMarkdown(text) {
+                // Escape characters that have special meaning in Markdown
+                return text.replace(/_/g, '\\_')
+                    .replace(/\*/g, '\\*')
+                    .replace(/\[/g, '\\[')
+                    .replace(/\]/g, '\\]')
+                    .replace(/\(/g, '\\(')
+                    .replace(/\)/g, '\\)')
+                    .replace(/~/g, '\\~')
+                    .replace(/`/g, '\\`')
+                    .replace(/>/g, '\\>')
+                    .replace(/#/g, '\\#')
+                    .replace(/\+/g, '\\+')
+                    .replace(/-/g, '\\-')
+                    .replace(/=/g, '\\=')
+                    .replace(/\|/g, '\\|')
+                    .replace(/\{/g, '\\{')
+                    .replace(/\}/g, '\\}')
+                    .replace(/\./g, '\\.')
+                    .replace(/\!/g, '\\!');
+            }
+
+            function isValidEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+
+            function showStatus(type, icon, message) {
+                statusEl.className = 'status show ' + type;
+                statusIcon.textContent = icon;
+                statusText.textContent = message;
+                // Auto-hide after 8 seconds for success
+                if (type === 'success') {
+                    setTimeout(() => {
+                        if (statusEl.classList.contains('show')) {
+                            hideStatus();
+                        }
+                    }, 8000);
+                }
+            }
+
+            function hideStatus() {
+                statusEl.className = 'status';
+                statusIcon.textContent = '';
+                statusText.textContent = '';
+            }
+
+            // ---- Show config hint if tokens are default ----
+            if (BOT_TOKEN === 'YOUR_BOT_TOKEN_HERE' && !USE_ZAPIER) {
+                console.warn(
+                    '🔔 Telegram Bot: Please set your BOT_TOKEN and CHAT_ID in the script configuration.'
+                    );
+                // Show a subtle hint in the UI
+                const footer = document.querySelector('.footer');
+                const hint = document.createElement('div');
+                hint.style.marginTop = '10px';
+                hint.style.fontSize = '0.7rem';
+                hint.style.color = '#4f5d78';
+                hint.textContent = '⚙️ Configure your Telegram bot token & chat ID to enable sending.';
+                footer.appendChild(hint);
+            }
+
+            // ---- Close status on Escape key ----
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && statusEl.classList.contains('show')) {
+                    hideStatus();
+                }
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
