@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Group Coaching – Submit Your Question</title>
-
-    <!-- Google Fonts for a clean, professional look -->
+    <title>Group Coaching – Ask & Inspire</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
-
     <style>
-        /* ----- RESET & BASE ----- */
+        /* ----- reset & base ----- */
         *,
         *::before,
         *::after {
@@ -19,7 +16,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Inter', sans-serif;
             background: #0b0f1a;
@@ -31,28 +27,29 @@
             background-image: radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 60%),
                 radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.04) 0%, transparent 50%);
         }
-
-        /* ----- CARD CONTAINER ----- */
-        .card {
-            max-width: 620px;
+        .container {
+            max-width: 720px;
             width: 100%;
+        }
+
+        /* ----- card (main) ----- */
+        .card {
             background: #131d2f;
             border-radius: 32px;
-            padding: 44px 40px 40px;
+            padding: 40px 36px 36px;
             border: 1px solid rgba(201, 168, 76, 0.18);
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7);
             transition: border-color 0.3s;
+            margin-bottom: 28px;
         }
-
         .card:hover {
             border-color: rgba(201, 168, 76, 0.35);
         }
 
-        /* ----- HEADER ----- */
+        /* ----- header ----- */
         .header {
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
-
         .badge {
             display: inline-block;
             background: rgba(201, 168, 76, 0.13);
@@ -64,9 +61,8 @@
             padding: 4px 14px;
             border-radius: 100px;
             border: 1px solid rgba(201, 168, 76, 0.15);
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
-
         .header h1 {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
@@ -75,29 +71,23 @@
             line-height: 1.2;
             margin-bottom: 8px;
         }
-
         .header h1 .highlight {
             color: #c9a84c;
             font-style: italic;
         }
-
         .header p {
             color: #8d99b0;
             font-size: 0.95rem;
             line-height: 1.6;
-            max-width: 440px;
         }
-
         .header p strong {
             color: #dfe3ed;
-            font-weight: 600;
         }
 
-        /* ----- FORM ----- */
+        /* ----- form ----- */
         .form-group {
             margin-bottom: 18px;
         }
-
         .form-group label {
             display: block;
             font-size: 0.8rem;
@@ -106,12 +96,10 @@
             margin-bottom: 5px;
             letter-spacing: 0.02em;
         }
-
         .form-group label .required {
             color: #c9a84c;
             margin-left: 2px;
         }
-
         .form-group input,
         .form-group textarea,
         .form-group select {
@@ -128,13 +116,10 @@
             -webkit-appearance: none;
             appearance: none;
         }
-
         .form-group input::placeholder,
         .form-group textarea::placeholder {
             color: #4f5d78;
-            font-weight: 400;
         }
-
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
@@ -142,44 +127,36 @@
             background: rgba(255, 255, 255, 0.07);
             box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.06);
         }
-
         .form-group textarea {
             resize: vertical;
             min-height: 110px;
             line-height: 1.6;
         }
-
         .form-group select {
             color: #dfe3ed;
             cursor: pointer;
         }
-
         .form-group select option {
             background: #131d2f;
             color: #ffffff;
         }
-
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
         }
-
-        /* ----- CHARACTER COUNT ----- */
         .char-count {
             display: flex;
             justify-content: flex-end;
             font-size: 0.7rem;
             color: #4f5d78;
             margin-top: 4px;
-            letter-spacing: 0.02em;
         }
-
         .char-count .count-near {
             color: #8d99b0;
         }
 
-        /* ----- SUBMIT BUTTON ----- */
+        /* ----- submit ----- */
         .submit-btn {
             width: 100%;
             padding: 16px 20px;
@@ -199,22 +176,18 @@
             justify-content: center;
             gap: 10px;
         }
-
         .submit-btn:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 8px 32px rgba(201, 168, 76, 0.25);
         }
-
         .submit-btn:active:not(:disabled) {
             transform: translateY(0);
         }
-
         .submit-btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
             transform: none;
         }
-
         .submit-btn .spinner {
             display: none;
             width: 20px;
@@ -224,7 +197,6 @@
             border-radius: 50%;
             animation: spin 0.7s linear infinite;
         }
-
         .submit-btn.loading .spinner {
             display: inline-block;
         }
@@ -234,14 +206,13 @@
         .submit-btn.loading .btn-icon {
             display: none;
         }
-
         @keyframes spin {
             to {
                 transform: rotate(360deg);
             }
         }
 
-        /* ----- STATUS MESSAGE ----- */
+        /* ----- status ----- */
         .status {
             margin-top: 18px;
             padding: 14px 18px;
@@ -253,50 +224,110 @@
             gap: 10px;
             line-height: 1.5;
         }
-
         .status.show {
             display: flex;
         }
-
         .status.success {
             background: rgba(52, 211, 153, 0.10);
             border: 1px solid rgba(52, 211, 153, 0.20);
             color: #6ee7b7;
         }
-
         .status.error {
             background: rgba(239, 68, 68, 0.10);
             border: 1px solid rgba(239, 68, 68, 0.20);
             color: #fca5a5;
         }
-
         .status .status-icon {
             font-size: 1.2rem;
             flex-shrink: 0;
         }
 
-        /* ----- FOOTER ----- */
-        .footer {
+        /* ----- hook questions section (the "hook" you wanted) ----- */
+        .hook-section {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            padding: 24px 28px;
+            border: 1px solid rgba(201, 168, 76, 0.10);
             margin-top: 28px;
+        }
+        .hook-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.4rem;
+            color: #c9a84c;
+            margin-bottom: 12px;
+        }
+        .hook-section .sub {
+            color: #8d99b0;
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+        }
+        .hook-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 20px;
+        }
+        .hook-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            color: #dfe3ed;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .hook-item .emoji {
+            color: #c9a84c;
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .hook-item .category-tag {
+            display: inline-block;
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #8d99b0;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 0 8px;
+            border-radius: 100px;
+            margin-right: 6px;
+        }
+        .hook-more {
+            margin-top: 14px;
+            font-size: 0.8rem;
+            color: #4f5d78;
+            text-align: center;
+        }
+        .hook-more a {
+            color: #c9a84c;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .hook-more a:hover {
+            text-decoration: underline;
+        }
+
+        /* ----- footer ----- */
+        .footer {
+            margin-top: 24px;
             text-align: center;
             font-size: 0.75rem;
             color: #3b485f;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
             padding-top: 20px;
-            letter-spacing: 0.02em;
         }
-
         .footer a {
             color: #6b7a93;
             text-decoration: none;
-            transition: color 0.2s;
         }
-
         .footer a:hover {
             color: #c9a84c;
         }
 
-        /* ----- RESPONSIVE ----- */
+        /* responsive */
         @media (max-width: 600px) {
             .card {
                 padding: 28px 20px 28px;
@@ -308,15 +339,10 @@
                 grid-template-columns: 1fr;
                 gap: 0;
             }
-            .submit-btn {
-                font-size: 0.95rem;
-                padding: 15px 16px;
-            }
-            .badge {
-                font-size: 0.6rem;
+            .hook-grid {
+                grid-template-columns: 1fr;
             }
         }
-
         @media (max-width: 400px) {
             .card {
                 padding: 20px 14px 24px;
@@ -328,99 +354,120 @@
         }
     </style>
 </head>
-
 <body>
 
-    <div class="card" role="main" aria-label="Question submission form">
+    <div class="container">
 
-        <!-- HEADER -->
-        <div class="header">
-            <div class="badge">🎯 Group Coaching</div>
-            <h1>
-                Ask your <span class="highlight">question</span>
-            </h1>
-            <p>
-                Drop your question below and we'll cover it in the next
-                <strong>group coaching &amp; monetization session</strong>.
-                All submissions go straight to our private Telegram.
-            </p>
-        </div>
+        <!-- MAIN CARD -->
+        <div class="card" role="main">
 
-        <!-- FORM -->
-        <form id="questionForm" novalidate>
-            <!-- Name + Email row -->
-            <div class="form-row">
+            <!-- HEADER -->
+            <div class="header">
+                <div class="badge">🎯 Group Coaching</div>
+                <h1>
+                    Ask your <span class="highlight">question</span>
+                </h1>
+                <p>
+                    Drop your question below – we'll cover it in the next
+                    <strong>group coaching &amp; monetization session</strong>.
+                    All submissions go straight to our private Telegram.
+                </p>
+            </div>
+
+            <!-- FORM -->
+            <form id="questionForm" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="userName">Your name <span class="required">*</span></label>
+                        <input type="text" id="userName" placeholder="e.g. Alex Rivera" required autocomplete="given-name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">Email <span class="required">*</span></label>
+                        <input type="email" id="userEmail" placeholder="alex@example.com" required autocomplete="email" />
+                    </div>
+                </div>
+
                 <div class="form-group">
-                    <label for="userName">Your name <span class="required">*</span></label>
-                    <input
-                    type="text"
-                    id="userName"
-                    placeholder="e.g. Alex Rivera"
-                    required
-                    autocomplete="given-name"
-                    />
+                    <label for="questionTopic">Topic area <span style="color:#4f5d78;font-weight:400;">(optional)</span></label>
+                    <select id="questionTopic">
+                        <option value="">— Select a topic —</option>
+                        <option value="Monetization">💰 Monetization</option>
+                        <option value="Content Strategy">📝 Content Strategy</option>
+                        <option value="Audience Growth">📈 Audience Growth</option>
+                        <option value="Offer Creation">🧩 Offer Creation</option>
+                        <option value="Mindset">🧠 Mindset</option>
+                        <option value="Operations">⚙️ Operations</option>
+                        <option value="Other">🌱 Other</option>
+                    </select>
                 </div>
+
                 <div class="form-group">
-                    <label for="userEmail">Email <span class="required">*</span></label>
-                    <input
-                    type="email"
-                    id="userEmail"
-                    placeholder="alex@example.com"
-                    required
-                    autocomplete="email"
-                    />
+                    <label for="questionText">Your question <span class="required">*</span></label>
+                    <textarea id="questionText" placeholder="What's your biggest challenge right now? What would you like me to break down in our next session?" required maxlength="2000"></textarea>
+                    <div class="char-count">
+                        <span id="charCount">0</span> <span class="count-near"> / 2,000</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-icon">✧</span>
+                    <span class="btn-text">Send to Telegram</span>
+                    <span class="spinner"></span>
+                </button>
+            </form>
+
+            <!-- Status -->
+            <div class="status" id="statusMessage">
+                <span class="status-icon"></span>
+                <span class="status-text"></span>
+            </div>
+
+            <!-- HOOK QUESTIONS SECTION (the "hook" you wanted) -->
+            <div class="hook-section">
+                <h2>✨ Need inspiration?</h2>
+                <p class="sub">
+                    Here are some example “hook” questions that spark great discussions.
+                    Use them as a guide – or ask your own!
+                </p>
+                <div class="hook-grid">
+                    <!-- each item: emoji + category + question -->
+                    <div class="hook-item">
+                        <span class="emoji">🔧</span>
+                        <span><span class="category-tag">How do I…</span> Actually apply this framework to my specific niche?</span>
+                    </div>
+                    <div class="hook-item">
+                        <span class="emoji">⚖️</span>
+                        <span><span class="category-tag">Versus</span> What’s the real difference between a strategy and a tactic?</span>
+                    </div>
+                    <div class="hook-item">
+                        <span class="emoji">🚨</span>
+                        <span><span class="category-tag">Mistake/Fix</span> What’s the most common pricing mistake and how do I avoid it?</span>
+                    </div>
+                    <div class="hook-item">
+                        <span class="emoji">📖</span>
+                        <span><span class="category-tag">Definition</span> What does “value‑based pricing” actually mean in plain English?</span>
+                    </div>
+                    <div class="hook-item">
+                        <span class="emoji">🌍</span>
+                        <span><span class="category-tag">Real‑World</span> How is this concept used by top creators to grow their revenue?</span>
+                    </div>
+                    <div class="hook-item">
+                        <span class="emoji">🛠️</span>
+                        <span><span class="category-tag">Troubleshooting</span> Why isn’t my offer converting, and how do I fix the messaging?</span>
+                    </div>
+                </div>
+                <div class="hook-more">
+                    💡 Want more? Use the <a href="#" onclick="return false;">full question generator</a> (based on your transcript) to get tailored hooks.
                 </div>
             </div>
 
-            <!-- Topic / category (optional) -->
-            <div class="form-group">
-                <label for="questionTopic">Topic area <span style="color:#4f5d78;font-weight:400;">(optional)</span></label>
-                <select id="questionTopic">
-                    <option value="">— Select a topic —</option>
-                    <option value="Monetization">💰 Monetization</option>
-                    <option value="Content Strategy">📝 Content Strategy</option>
-                    <option value="Audience Growth">📈 Audience Growth</option>
-                    <option value="Offer Creation">🧩 Offer Creation</option>
-                    <option value="Mindset">🧠 Mindset</option>
-                    <option value="Operations">⚙️ Operations</option>
-                    <option value="Other">🌱 Other</option>
-                </select>
+            <!-- Footer -->
+            <div class="footer">
+                Your question will be shared anonymously unless you opt in.
+                <br />
+                <a href="#" onclick="return false;">Privacy</a> &middot;
+                <a href="#" onclick="return false;">Session schedule</a>
             </div>
-
-            <!-- Question -->
-            <div class="form-group">
-                <label for="questionText">Your question <span class="required">*</span></label>
-                <textarea
-                id="questionText"
-                placeholder="What's your biggest challenge right now? What would you like me to break down in our next session?"
-                required
-                maxlength="2000"
-                ></textarea>
-                <div class="char-count">
-                    <span id="charCount">0</span> <span class="count-near"> / 2,000</span>
-                </div>
-            </div>
-
-            <!-- Submit -->
-            <button type="submit" class="submit-btn" id="submitBtn">
-                <span class="btn-icon">✧</span>
-                <span class="btn-text">Send to Telegram</span>
-                <span class="spinner"></span>
-            </button>
-        </form>
-
-        <!-- Status message -->
-        <div class="status" id="statusMessage">
-            <span class="status-icon"></span>
-            <span class="status-text"></span>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            Your question will be shared anonymously unless you opt in.
-            <br />
-            <a href="#" onclick="return false;">Privacy</a> &middot;
-            <a href="#" onclick="return false;">Session schedule</a>
         </div>
 
     </div>
@@ -429,32 +476,17 @@
         (function() {
             'use strict';
 
-            // ============================================================
-            //  CONFIGURATION — Edit these to connect to YOUR Telegram bot
-            // ============================================================
+            // ================================================================
+            //  CONFIG – replace with YOUR Telegram bot credentials
+            // ================================================================
+            const BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';        // from @BotFather
+            const CHAT_ID = 'YOUR_CHAT_ID_HERE';            // your group or personal chat
+            const USE_ZAPIER = false;                       // keep false to use Telegram API
+            const ZAPIER_WEBHOOK_URL = '';                  // not used if USE_ZAPIER = false
 
-            // 1. Your Telegram Bot Token (from @BotFather)
-            const BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';
-
-            // 2. Your Telegram Chat ID (where messages will be sent)
-            //    Can be a group, channel, or your personal chat.
-            //    To get it: send a message to your bot, then visit:
-            //    https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates
-            const CHAT_ID = 'YOUR_CHAT_ID_HERE';
-
-            // 3. (Optional) If you use a Zapier webhook instead of direct Telegram API,
-            //    set USE_ZAPIER = true and fill in ZAPIER_WEBHOOK_URL below.
-            const USE_ZAPIER = false;
-            const ZAPIER_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/123456/abcde/';
-
-            // 4. Session info (shown in the Telegram message)
             const SESSION_LABEL = 'Next Group Coaching & Monetization Session';
+            // ================================================================
 
-            // ============================================================
-            //  END OF CONFIG
-            // ============================================================
-
-            // DOM refs
             const form = document.getElementById('questionForm');
             const nameInput = document.getElementById('userName');
             const emailInput = document.getElementById('userEmail');
@@ -466,22 +498,21 @@
             const statusIcon = statusEl.querySelector('.status-icon');
             const statusText = statusEl.querySelector('.status-text');
 
-            // ---- Character counter ----
+            // char counter
             questionInput.addEventListener('input', function() {
                 charCount.textContent = this.value.length;
             });
 
-            // ---- Form submit ----
+            // submit
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
 
-                // Gather data
                 const name = nameInput.value.trim();
                 const email = emailInput.value.trim();
                 const topic = topicSelect.value;
                 const question = questionInput.value.trim();
 
-                // Validate
+                // validation
                 if (!name) {
                     showStatus('error', '❌', 'Please enter your name.');
                     nameInput.focus();
@@ -498,51 +529,38 @@
                     return;
                 }
 
-                // Disable button & show loading
                 submitBtn.disabled = true;
                 submitBtn.classList.add('loading');
                 hideStatus();
 
                 try {
-                    let response;
-
                     if (USE_ZAPIER) {
-                        // ---- Zapier webhook ----
-                        const formData = new FormData();
-                        formData.append('name', name);
-                        formData.append('email', email);
-                        formData.append('topic', topic || 'General');
-                        formData.append('question', question);
-                        formData.append('source', SESSION_LABEL);
-
-                        response = await fetch(ZAPIER_WEBHOOK_URL, {
+                        // Zapier mode (fallback)
+                        const fd = new FormData();
+                        fd.append('name', name);
+                        fd.append('email', email);
+                        fd.append('topic', topic || 'General');
+                        fd.append('question', question);
+                        fd.append('source', SESSION_LABEL);
+                        await fetch(ZAPIER_WEBHOOK_URL, {
                             method: 'POST',
-                            body: formData,
+                            body: fd,
                             mode: 'no-cors'
                         });
-                        // 'no-cors' returns opaque response, we assume success
-                        showStatus('success', '✅',
-                            'Your question was sent! We\'ll cover it in the next session.'
-                            );
+                        showStatus('success', '✅', 'Sent! We\'ll cover it in the next session.');
                         form.reset();
                         charCount.textContent = '0';
                     } else {
-                        // ---- Telegram Bot API ----
+                        // Telegram Bot API
                         if (BOT_TOKEN === 'YOUR_BOT_TOKEN_HERE' || CHAT_ID === 'YOUR_CHAT_ID_HERE') {
-                            showStatus('error', '⚠️',
-                                'Telegram bot not configured. Please set BOT_TOKEN and CHAT_ID in the script.'
-                                );
+                            showStatus('error', '⚠️', 'Telegram bot not configured. Please set BOT_TOKEN and CHAT_ID.');
                             submitBtn.disabled = false;
                             submitBtn.classList.remove('loading');
                             return;
                         }
 
-                        // Build a rich message
                         const message = buildTelegramMessage(name, email, topic, question);
-
-                        const apiUrl =
-                            `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-
+                        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
                         const payload = {
                             chat_id: CHAT_ID,
                             text: message,
@@ -550,48 +568,36 @@
                             disable_web_page_preview: true,
                         };
 
-                        const res = await fetch(apiUrl, {
+                        const res = await fetch(url, {
                             method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
+                            headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(payload),
                         });
-
                         const data = await res.json();
 
                         if (data.ok) {
-                            showStatus('success', '✅',
-                                'Your question was sent to Telegram! We\'ll cover it in the next session.'
-                                );
+                            showStatus('success', '✅', 'Your question was sent to Telegram! We\'ll cover it in the next session.');
                             form.reset();
                             charCount.textContent = '0';
                         } else {
-                            console.error('Telegram API error:', data);
                             let errMsg = data.description || 'Unknown error.';
-                            if (errMsg.includes('bot token')) {
-                                errMsg = 'Invalid bot token. Please check your BOT_TOKEN.';
-                            } else if (errMsg.includes('chat not found')) {
-                                errMsg = 'Chat ID not found. Please check your CHAT_ID.';
-                            }
+                            if (errMsg.includes('bot token')) errMsg = 'Invalid bot token. Check BOT_TOKEN.';
+                            if (errMsg.includes('chat not found')) errMsg = 'Chat ID not found. Check CHAT_ID.';
                             showStatus('error', '⚠️', `Telegram error: ${errMsg}`);
                         }
                     }
                 } catch (err) {
-                    console.error('Submission error:', err);
-                    showStatus('error', '⚠️',
-                        'Something went wrong. Please try again or contact support.'
-                        );
+                    console.error(err);
+                    showStatus('error', '⚠️', 'Something went wrong. Please try again or contact support.');
                 } finally {
                     submitBtn.disabled = false;
                     submitBtn.classList.remove('loading');
                 }
             });
 
-            // ---- Helpers ----
-
+            // ----- helpers -----
             function buildTelegramMessage(name, email, topic, question) {
-                const topicLine = topic && topic !== '' ? `*Topic:* ${topic}\n` : '';
+                const topicLine = topic && topic !== '' ? `*Topic:* ${escapeMarkdown(topic)}\n` : '';
                 return `
         📩 *New Question from Group Coaching*
 
@@ -607,7 +613,6 @@
             }
 
             function escapeMarkdown(text) {
-                // Escape characters that have special meaning in Markdown
                 return text.replace(/_/g, '\\_')
                     .replace(/\*/g, '\\*')
                     .replace(/\[/g, '\\[')
@@ -636,12 +641,9 @@
                 statusEl.className = 'status show ' + type;
                 statusIcon.textContent = icon;
                 statusText.textContent = message;
-                // Auto-hide after 8 seconds for success
                 if (type === 'success') {
                     setTimeout(() => {
-                        if (statusEl.classList.contains('show')) {
-                            hideStatus();
-                        }
+                        if (statusEl.classList.contains('show')) hideStatus();
                     }, 8000);
                 }
             }
@@ -652,12 +654,8 @@
                 statusText.textContent = '';
             }
 
-            // ---- Show config hint if tokens are default ----
+            // hint if tokens not set
             if (BOT_TOKEN === 'YOUR_BOT_TOKEN_HERE' && !USE_ZAPIER) {
-                console.warn(
-                    '🔔 Telegram Bot: Please set your BOT_TOKEN and CHAT_ID in the script configuration.'
-                    );
-                // Show a subtle hint in the UI
                 const footer = document.querySelector('.footer');
                 const hint = document.createElement('div');
                 hint.style.marginTop = '10px';
@@ -667,11 +665,8 @@
                 footer.appendChild(hint);
             }
 
-            // ---- Close status on Escape key ----
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && statusEl.classList.contains('show')) {
-                    hideStatus();
-                }
+                if (e.key === 'Escape' && statusEl.classList.contains('show')) hideStatus();
             });
 
         })();
