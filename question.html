@@ -242,7 +242,7 @@
             flex-shrink: 0;
         }
 
-        /* ----- hook questions section (the "hook" you wanted) ----- */
+        /* ----- hook questions section ----- */
         .hook-section {
             background: rgba(255, 255, 255, 0.02);
             border-radius: 24px;
@@ -370,7 +370,7 @@
                 <p>
                     Drop your question below – we'll cover it in the next
                     <strong>group coaching &amp; monetization session</strong>.
-                    All submissions go straight to our private Telegram.
+                    All submissions go straight to our private Telegram via Activepieces.
                 </p>
             </div>
 
@@ -422,7 +422,7 @@
                 <span class="status-text"></span>
             </div>
 
-            <!-- HOOK QUESTIONS SECTION (the "hook" you wanted) -->
+            <!-- HOOK QUESTIONS SECTION -->
             <div class="hook-section">
                 <h2>✨ Need inspiration?</h2>
                 <p class="sub">
@@ -430,7 +430,6 @@
                     Use them as a guide – or ask your own!
                 </p>
                 <div class="hook-grid">
-                    <!-- each item: emoji + category + question -->
                     <div class="hook-item">
                         <span class="emoji">🔧</span>
                         <span><span class="category-tag">How do I…</span> Actually apply this framework to my specific niche?</span>
@@ -477,14 +476,14 @@
             'use strict';
 
             // ================================================================
-            //  CONFIG – replace with YOUR Telegram bot credentials
+            //  CONFIG – Activepieces webhook (no token/chat ID needed)
+            //  This URL comes directly from the quiz prompt – replace if needed.
             // ================================================================
-            const BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';        // from @BotFather
-            const CHAT_ID = 'YOUR_CHAT_ID_HERE';            // your group or personal chat
-            const USE_ZAPIER = false;                       // keep false to use Telegram API
-            const ZAPIER_WEBHOOK_URL = '';                  // not used if USE_ZAPIER = false
+            const WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
 
-            const SESSION_LABEL = 'Next Group Coaching & Monetization Session';
+            // Optional: add a source label so you know it came from this page
+            const SOURCE_LABEL = 'Group Coaching Question Form';
+
             // ================================================================
 
             const form = document.getElementById('questionForm');
@@ -533,62 +532,39 @@
                 submitBtn.classList.add('loading');
                 hideStatus();
 
+                // Build payload for Activepieces
+                const payload = {
+                    name: name,
+                    email: email,
+                    topic: topic || 'General',
+                    question: question,
+                    source: SOURCE_LABEL,
+                    timestamp: new Date().toISOString()
+                };
+
                 try {
-                    if (USE_ZAPIER) {
-                        // Zapier mode (fallback)
-                        const fd = new FormData();
-                        fd.append('name', name);
-                        fd.append('email', email);
-                        fd.append('topic', topic || 'General');
-                        fd.append('question', question);
-                        fd.append('source', SESSION_LABEL);
-                        await fetch(ZAPIER_WEBHOOK_URL, {
-                            method: 'POST',
-                            body: fd,
-                            mode: 'no-cors'
-                        });
-                        showStatus('success', '✅', 'Sent! We\'ll cover it in the next session.');
+                    const response = await fetch(WEBHOOK_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        showStatus('success', '✅', 'Your question was sent to Telegram! We\'ll cover it in the next session.');
                         form.reset();
                         charCount.textContent = '0';
                     } else {
-                        // Telegram Bot API
-                        if (BOT_TOKEN === 'YOUR_BOT_TOKEN_HERE' || CHAT_ID === 'YOUR_CHAT_ID_HERE') {
-                            showStatus('error', '⚠️', 'Telegram bot not configured. Please set BOT_TOKEN and CHAT_ID.');
-                            submitBtn.disabled = false;
-                            submitBtn.classList.remove('loading');
-                            return;
-                        }
-
-                        const message = buildTelegramMessage(name, email, topic, question);
-                        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-                        const payload = {
-                            chat_id: CHAT_ID,
-                            text: message,
-                            parse_mode: 'Markdown',
-                            disable_web_page_preview: true,
-                        };
-
-                        const res = await fetch(url, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload),
-                        });
-                        const data = await res.json();
-
-                        if (data.ok) {
-                            showStatus('success', '✅', 'Your question was sent to Telegram! We\'ll cover it in the next session.');
-                            form.reset();
-                            charCount.textContent = '0';
-                        } else {
-                            let errMsg = data.description || 'Unknown error.';
-                            if (errMsg.includes('bot token')) errMsg = 'Invalid bot token. Check BOT_TOKEN.';
-                            if (errMsg.includes('chat not found')) errMsg = 'Chat ID not found. Check CHAT_ID.';
-                            showStatus('error', '⚠️', `Telegram error: ${errMsg}`);
-                        }
+                        // Try to get error message
+                        let errorMsg = '';
+                        try {
+                            const errorData = await response.json();
+                            errorMsg = errorData.message || errorData.error || '';
+                        } catch (_) { /* ignore */ }
+                        showStatus('error', '⚠️', `Server error (${response.status})${errorMsg ? ': ' + errorMsg : ''}. Please try again.`);
                     }
                 } catch (err) {
-                    console.error(err);
-                    showStatus('error', '⚠️', 'Something went wrong. Please try again or contact support.');
+                    console.error('Submission error:', err);
+                    showStatus('error', '⚠️', 'Network error – please check your connection and try again.');
                 } finally {
                     submitBtn.disabled = false;
                     submitBtn.classList.remove('loading');
@@ -596,43 +572,6 @@
             });
 
             // ----- helpers -----
-            function buildTelegramMessage(name, email, topic, question) {
-                const topicLine = topic && topic !== '' ? `*Topic:* ${escapeMarkdown(topic)}\n` : '';
-                return `
-        📩 *New Question from Group Coaching*
-
-        *Name:* ${escapeMarkdown(name)}
-        *Email:* ${escapeMarkdown(email)}
-        ${topicLine}
-        *Question:*
-        ${escapeMarkdown(question)}
-
-        ───
-        🗓 *${SESSION_LABEL}*
-            `.trim();
-            }
-
-            function escapeMarkdown(text) {
-                return text.replace(/_/g, '\\_')
-                    .replace(/\*/g, '\\*')
-                    .replace(/\[/g, '\\[')
-                    .replace(/\]/g, '\\]')
-                    .replace(/\(/g, '\\(')
-                    .replace(/\)/g, '\\)')
-                    .replace(/~/g, '\\~')
-                    .replace(/`/g, '\\`')
-                    .replace(/>/g, '\\>')
-                    .replace(/#/g, '\\#')
-                    .replace(/\+/g, '\\+')
-                    .replace(/-/g, '\\-')
-                    .replace(/=/g, '\\=')
-                    .replace(/\|/g, '\\|')
-                    .replace(/\{/g, '\\{')
-                    .replace(/\}/g, '\\}')
-                    .replace(/\./g, '\\.')
-                    .replace(/\!/g, '\\!');
-            }
-
             function isValidEmail(email) {
                 return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
             }
@@ -654,17 +593,7 @@
                 statusText.textContent = '';
             }
 
-            // hint if tokens not set
-            if (BOT_TOKEN === 'YOUR_BOT_TOKEN_HERE' && !USE_ZAPIER) {
-                const footer = document.querySelector('.footer');
-                const hint = document.createElement('div');
-                hint.style.marginTop = '10px';
-                hint.style.fontSize = '0.7rem';
-                hint.style.color = '#4f5d78';
-                hint.textContent = '⚙️ Configure your Telegram bot token & chat ID to enable sending.';
-                footer.appendChild(hint);
-            }
-
+            // ESC key to dismiss status
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && statusEl.classList.contains('show')) hideStatus();
             });
