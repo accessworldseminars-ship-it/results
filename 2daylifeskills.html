@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Access to Life Skills · 2-Day Webinar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <style>
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #faf9f6;
+            color: #1a1a2e;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background: #0f0e1a;
+            padding: 16px 0;
+            border-bottom: 3px solid #e6b91e;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-wrap img {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+
+        .logo-wrap span {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-wrap span small {
+            font-weight: 400;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            display: block;
+            letter-spacing: 0.2px;
+        }
+
+        .cta-btn-header {
+            background: #e6b91e;
+            color: #0f0e1a;
+            font-weight: 700;
+            padding: 10px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: background 0.2s, transform 0.1s;
+            display: inline-block;
+            border: 2px solid transparent;
+        }
+
+        .cta-btn-header:hover {
+            background: #f5cd3a;
+            transform: scale(1.02);
+        }
+
+        /* --- HERO --- */
+        .hero {
+            background: linear-gradient(145deg, #12101f 0%, #1e1b32 100%);
+            padding: 60px 0 50px;
+            color: #fff;
+            border-bottom: 6px solid #e6b91e;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .hero-content h1 .highlight {
+            color: #e6b91e;
+            border-bottom: 3px solid #e6b91e;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            margin: 20px 0 28px;
+            max-width: 540px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(230, 185, 30, 0.15);
+            border: 1px solid rgba(230, 185, 30, 0.3);
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #e6b91e;
+            margin-bottom: 16px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-height: 380px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* --- SECTION TITLES --- */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        .section-title span {
+            color: #e6b91e;
+        }
+
+        .section-sub {
+            font-size: 1.1rem;
+            color: #4a4a5e;
+            max-width: 680px;
+            margin-bottom: 32px;
+        }
+
+        .divider {
+            width: 70px;
+            height: 4px;
+            background: #e6b91e;
+            border-radius: 4px;
+            margin: 8px 0 24px;
+        }
+
+        /* --- OVERVIEW --- */
+        .overview {
+            padding: 70px 0 50px;
+            background: #fff;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .overview-text p {
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+            color: #2d2d44;
+        }
+
+        .overview-image img {
+            width: 100%;
+            border-radius: 18px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* --- WHO IT'S FOR --- */
+        .who-for {
+            padding: 60px 0;
+            background: #f5f4f0;
+        }
+
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 12px;
+        }
+
+        .who-card {
+            background: #fff;
+            padding: 28px 24px;
+            border-radius: 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            border-left: 6px solid #e6b91e;
+            transition: transform 0.2s;
+        }
+
+        .who-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .who-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .who-card h3 .emoji {
+            font-size: 1.6rem;
+        }
+
+        .who-card p {
+            color: #3d3d55;
+            font-size: 0.98rem;
+        }
+
+        /* --- PILLARS (what you learn) --- */
+        .pillars {
+            padding: 70px 0;
+            background: #fff;
+        }
+
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px 50px;
+            margin-top: 20px;
+        }
+
+        .pillar-item {
+            background: #f9f8f4;
+            border-radius: 20px;
+            padding: 28px 28px 32px;
+            border: 1px solid #eeece6;
+            transition: box-shadow 0.2s;
+        }
+
+        .pillar-item:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        .pillar-item .pillar-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 14px;
+            margin-bottom: 16px;
+            background: #eae8e0;
+        }
+
+        .pillar-item h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pillar-item h3 .badge {
+            background: #e6b91e;
+            color: #0f0e1a;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+        }
+
+        .pillar-item ul {
+            list-style: none;
+            margin-top: 12px;
+        }
+
+        .pillar-item ul li {
+            padding: 6px 0 6px 28px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23e6b91e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') left center no-repeat;
+            background-size: 18px;
+            color: #2d2d44;
+            font-size: 0.95rem;
+        }
+
+        /* --- OUTCOMES --- */
+        .outcomes {
+            padding: 70px 0;
+            background: #12101f;
+            color: #fff;
+        }
+
+        .outcomes .section-title span {
+            color: #e6b91e;
+        }
+
+        .outcomes .section-sub {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px 48px;
+            margin-top: 20px;
+        }
+
+        .outcome-block h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #e6b91e;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .outcome-block ul {
+            list-style: none;
+        }
+
+        .outcome-block ul li {
+            padding: 5px 0 5px 28px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23e6b91e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') left center no-repeat;
+            background-size: 18px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+        }
+
+        /* --- SUMMARY TABLE --- */
+        .summary-section {
+            padding: 60px 0;
+            background: #fff;
+        }
+
+        .summary-table-wrap {
+            overflow-x: auto;
+            margin-top: 16px;
+            border-radius: 18px;
+            border: 1px solid #eae8e0;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.98rem;
+        }
+
+        .summary-table th {
+            background: #12101f;
+            color: #fff;
+            padding: 16px 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .summary-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid #eeece6;
+            background: #faf9f6;
+        }
+
+        .summary-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .summary-table .label {
+            font-weight: 700;
+            color: #0f0e1a;
+        }
+
+        .summary-table .focus {
+            color: #4a4a5e;
+        }
+
+        .summary-table .takeaway {
+            font-weight: 600;
+            color: #e6b91e;
+        }
+
+        /* --- COACH + JIGSAW --- */
+        .coach-section {
+            padding: 60px 0;
+            background: #f5f4f0;
+        }
+
+        .coach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .coach-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 24px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+            display: block;
+            margin: 0 auto;
+            border: 4px solid #fff;
+        }
+
+        .coach-text h2 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .coach-text h2 span {
+            color: #e6b91e;
+        }
+
+        .coach-text p {
+            font-size: 1.05rem;
+            color: #2d2d44;
+            margin: 16px 0 20px;
+        }
+
+        .jigsaw-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .jigsaw-grid img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            border: 2px solid #fff;
+            transition: transform 0.2s;
+        }
+
+        .jigsaw-grid img:hover {
+            transform: scale(1.02);
+        }
+
+        /* --- CTA / PAYMENT --- */
+        .cta-section {
+            padding: 70px 0 80px;
+            background: linear-gradient(145deg, #12101f, #1e1b32);
+            color: #fff;
+            text-align: center;
+            border-top: 6px solid #e6b91e;
+            border-bottom: 6px solid #e6b91e;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .cta-section h2 span {
+            color: #e6b91e;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 16px auto 32px;
+            opacity: 0.8;
+        }
+
+        .cta-btn-main {
+            display: inline-block;
+            background: #e6b91e;
+            color: #0f0e1a;
+            font-weight: 700;
+            font-size: 1.3rem;
+            padding: 18px 56px;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+            border: 2px solid transparent;
+            box-shadow: 0 12px 30px rgba(230, 185, 30, 0.25);
+        }
+
+        .cta-btn-main:hover {
+            background: #f5cd3a;
+            transform: scale(1.02);
+            box-shadow: 0 16px 40px rgba(230, 185, 30, 0.35);
+        }
+
+        .cta-btn-main small {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        .cta-note {
+            margin-top: 24px;
+            font-size: 0.9rem;
+            opacity: 0.5;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background: #0a0914;
+            color: rgba(255, 255, 255, 0.5);
+            padding: 32px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer a {
+            color: #e6b91e;
+            text-decoration: none;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                gap: 32px;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid,
+            .overview-grid,
+            .coach-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .who-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .pillar-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .outcomes-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .navbar .container {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+
+            .logo-wrap {
+                justify-content: center;
+            }
+
+            .cta-btn-header {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .who-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 1.7rem;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-btn-main {
+                padding: 14px 32px;
+                font-size: 1.1rem;
+                width: 100%;
+            }
+
+            .jigsaw-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+
+            .summary-table th,
+            .summary-table td {
+                padding: 12px 14px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo-wrap">
+                <img src="https://i.ibb.co/spJSMY16/worldjjpgsf.png" alt="Access Worlds Seminars Logo" />
+                <span>ACCESS <small>life skills · seminars</small></span>
+            </div>
+            <a href="#purchase" class="cta-btn-header">📅 Reserve your seat</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">🔥 Live 2-Day Webinar · Limited Seats</div>
+                <h1>Access to <br /><span class="highlight">Life Skills</span></h1>
+                <p>Transform your financial future, sharpen your memory, deepen your communication, and unlock your incredible self — all in one immersive weekend.</p>
+                <a href="#purchase" class="cta-btn-header" style="background:#e6b91e;color:#0f0e1a;font-size:1.1rem;padding:14px 40px;">Secure your spot →</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://i.ibb.co/35tg077p/Picture4.jpg" alt="Stepping into Wealth seminar" />
+            </div>
+        </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="overview">
+        <div class="container overview-grid">
+            <div class="overview-text">
+                <span style="font-weight:600;color:#e6b91e;text-transform:uppercase;letter-spacing:1px;font-size:0.8rem;">Overview</span>
+                <h2 class="section-title">Open your mind. <span>Upgrade your life.</span></h2>
+                <div class="divider"></div>
+                <p>The Life Skills Webinar is for people who want to improve their financial circumstances, memory, communication, and self-concept. It is designed to open up the minds and hearts of individuals toward the possibility of overcoming personal challenges and struggles — and ultimately making the world a better place to live in.</p>
+                <p style="margin-top:8px;"><strong>📅 Live 2-day event</strong> · hands-on · supportive community · experienced teacher.</p>
+            </div>
+            <div class="overview-image">
+                <img src="https://i.ibb.co/5hNYwNtF/Picture2.jpg" alt="Memory free introduction" />
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO IT'S FOR -->
+    <section class="who-for">
+        <div class="container">
+            <span style="font-weight:600;color:#e6b91e;text-transform:uppercase;letter-spacing:1px;font-size:0.8rem;">Who it's for</span>
+            <h2 class="section-title">3 types of people <span>who belong here</span></h2>
+            <div class="divider"></div>
+            <div class="who-grid">
+                <div class="who-card">
+                    <h3><span class="emoji">💰</span> Wealth Builders</h3>
+                    <p>People who want to improve their financial future, save for retirement, or start investing – and are tired of exchanging time for money.</p>
+                </div>
+                <div class="who-card">
+                    <h3><span class="emoji">🧠</span> Sharp Minds</h3>
+                    <p>People who want to sharpen their mind, remember information more effectively, and accelerate their learning.</p>
+                </div>
+                <div class="who-card">
+                    <h3><span class="emoji">🗣️</span> Influential Communicators</h3>
+                    <p>People who want to deepen their communication skills, build instant rapport, and enhance their influence.</p>
+                </div>
+            </div>
+            <p style="margin-top:28px;font-size:1.05rem;color:#3d3d55;text-align:center;max-width:700px;margin-left:auto;margin-right:auto;">... and anyone who wants to have fun achieving this quickly, with the support of an experienced teacher and an inspiring community.</p>
+        </div>
+    </section>
+
+    <!-- WHAT YOU LEARN (PILLARS) -->
+    <section class="pillars">
+        <div class="container">
+            <span style="font-weight:600;color:#e6b91e;text-transform:uppercase;letter-spacing:1px;font-size:0.8rem;">Curriculum</span>
+            <h2 class="section-title">What you will <span>learn</span></h2>
+            <div class="divider"></div>
+            <div class="pillar-grid">
+
+                <!-- Stepping Into Wealth -->
+                <div class="pillar-item">
+                    <img class="pillar-img" src="https://i.ibb.co/35tg077p/Picture4.jpg" alt="Stepping into Wealth" />
+                    <h3>💰 Stepping Into Wealth <span class="badge">money</span></h3>
+                    <ul>
+                        <li>The four levels of wealth creation</li>
+                        <li>How to move your financial thermostat up and down</li>
+                        <li>Upgrade your money mindset and financial blueprint</li>
+                        <li>The seven fundamental principles of financial security</li>
+                        <li>Apply gratitude, affirmations, and incantations to attract prosperity</li>
+                    </ul>
+                </div>
+
+                <!-- Ultimate Memory -->
+                <div class="pillar-item">
+                    <img class="pillar-img" src="https://i.ibb.co/5hNYwNtF/Picture2.jpg" alt="Ultimate Memory" />
+                    <h3>🧠 Ultimate Memory <span class="badge">recall</span></h3>
+                    <ul>
+                        <li>The 4 key tools for memory enhancement</li>
+                        <li>How to prepare the mind for learning</li>
+                        <li>How to install information so that recall becomes simple</li>
+                        <li>The four major functions of the mind</li>
+                        <li>How to learn more rapidly</li>
+                    </ul>
+                </div>
+
+                <!-- Communicating from the Heart -->
+                <div class="pillar-item">
+                    <img class="pillar-img" src="https://i.ibb.co/qfFknZF/Picture3.jpg" alt="Communicating from the Heart" />
+                    <h3>❤️ Communicating from the Heart <span class="badge">influence</span></h3>
+                    <ul>
+                        <li>The five levels of communication</li>
+                        <li>The four types of communication</li>
+                        <li>How to get instantaneous rapport with anyone you meet</li>
+                        <li>How to become the most interesting person in any setting</li>
+                        <li>The most important and impactful words you can say to another person</li>
+                    </ul>
+                </div>
+
+                <!-- Unlock Your Incredible Self -->
+                <div class="pillar-item">
+                    <img class="pillar-img" src="https://i.ibb.co/xd7XrD8/Picture1aa.png" alt="Unlock Your Incredible Self" style="object-fit:contain;background:#fff;" />
+                    <h3>✨ Unlock Your Incredible Self <span class="badge">identity</span></h3>
+                    <ul>
+                        <li>Turn any value into an identity statement</li>
+                        <li>Stop negative chatter through incantations</li>
+                        <li>Anchor new identity personas into your nervous system</li>
+                        <li>Confidently generate and replicate the identity that produces your desired outcomes</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BY THE END -->
+    <section class="outcomes">
+        <div class="container">
+            <span style="font-weight:600;color:#e6b91e;text-transform:uppercase;letter-spacing:1px;font-size:0.8rem;">Outcomes</span>
+            <h2 class="section-title">By the end, you will <span>have</span></h2>
+            <div class="divider" style="background:#e6b91e;"></div>
+            <p class="section-sub">Practical, step-by-step mastery in four core areas of life.</p>
+
+            <div class="outcomes-grid">
+                <div class="outcome-block">
+                    <h4>💰 In Wealth</h4>
+                    <ul>
+                        <li>Deeper understanding of how to attract more wealth</li>
+                        <li>Stop thinking about money in a less-than-positive way</li>
+                        <li>Complete step-by-step process for a $$$ growth mindset</li>
+                        <li>Confidently identify your current financial situation and how to change it</li>
+                    </ul>
+                </div>
+                <div class="outcome-block">
+                    <h4>🧠 In Memory</h4>
+                    <ul>
+                        <li>Complete step-by-step guide to creating a powerful memory</li>
+                        <li>Stop forgetting where you parked your car or placed your effects</li>
+                        <li>Confidently recall information you thought you had forgotten</li>
+                        <li>Apply memory skills to education, daily tasks, and life</li>
+                    </ul>
+                </div>
+                <div class="outcome-block">
+                    <h4>🗣️ In Communication</h4>
+                    <ul>
+                        <li>Increase your ability to listen with the intent of understanding</li>
+                        <li>Clear understanding of awakened communication</li>
+                        <li>Confidently identify representational systems and connect with others</li>
+                        <li>Develop the attributes required for "naked communication"</li>
+                    </ul>
+                </div>
+                <div class="outcome-block">
+                    <h4>✨ In Self-Concept</h4>
+                    <ul>
+                        <li>Know how to turn any value into an identity statement</li>
+                        <li>Stop negative chatter through incantations</li>
+                        <li>Anchor new identity personas into your nervous system</li>
+                        <li>Confidently generate and replicate the identity that produces your desired outcomes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUMMARY TABLE -->
+    <section class="summary-section">
+        <div class="container">
+            <span style="font-weight:600;color:#e6b91e;text-transform:uppercase;letter-spacing:1px;font-size:0.8rem;">Quick reference</span>
+            <h2 class="section-title">Program <span>summary</span></h2>
+            <div class="divider"></div>
+            <div class="summary-table-wrap">
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Focus</th>
+                            <th>Key Takeaway</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="label">Stepping Into Wealth</td>
+                            <td class="focus">Money mindset &amp; financial blueprint</td>
+                            <td class="takeaway">Become a money magnet</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Ultimate Memory</td>
+                            <td class="focus">Cognitive enhancement &amp; recall</td>
+                            <td class="takeaway">Never forget what matters</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Communicating from the Heart</td>
+                            <td class="focus">Rapport, influence &amp; connection</td>
+                            <td class="takeaway">Become unforgettable</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Unlock Your Incredible Self</td>
+                            <td class="focus">Identity &amp; self-worth</td>
+                            <td class="takeaway">Become who you were meant to be</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top:24px;font-size:1.05rem;color:#2d2d44;text-align:center;max-width:700px;margin-left:auto;margin-right:auto;">The Life Skills program gives you the practical tools to succeed in every area of life – financially, mentally, socially, and personally.</p>
+        </div>
+    </section>
+
+    <!-- COACH + JIGSAW -->
+    <section class="coach-section">
+        <div class="container coach-grid">
+            <div class="coach-image">
+                <img src="https://i.ibb.co/p6V5HvcK/Screenshot-2025-11-11-122952.png" alt="Life coach headshot" />
+                <div style="margin-top:20px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+                    <span style="background:#12101f;color:#fff;padding:4px 16px;border-radius:40px;font-size:0.75rem;font-weight:600;">✨ Certified Coach</span>
+                    <span style="background:#12101f;color:#fff;padding:4px 16px;border-radius:40px;font-size:0.75rem;font-weight:600;">🧠 Memory Expert</span>
+                </div>
+            </div>
+            <div class="coach-text">
+                <h2>Your guide to <span>transformation</span></h2>
+                <div class="divider"></div>
+                <p>With decades of experience in life coaching, neuro-linguistic programming, and wealth psychology, your instructor will walk you through every exercise with clarity, warmth, and practical wisdom.</p>
+                <p style="font-weight:500;">“I help people unlock the identity that produces their desired outcomes — and make it stick.”</p>
+
+                <div style="margin-top:20px;">
+                    <p style="font-weight:600;font-size:0.9rem;color:#4a4a5e;margin-bottom:8px;">🧩 Life Skills Series</p>
+                    <div class="jigsaw-grid">
+                        <img src="https://i.ibb.co/xd7XrD8/Picture1aa.png" alt="Jigsaw piece 1" />
+                        <img src="https://i.ibb.co/35tg077p/Picture4.jpg" alt="Jigsaw piece 2" />
+                        <img src="https://i.ibb.co/qfFknZF/Picture3.jpg" alt="Jigsaw piece 3" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / PAYMENT -->
+    <section class="cta-section" id="purchase">
+        <div class="container">
+            <h2>Ready to <span>step into wealth</span>?</h2>
+            <p>Join the live 2-day webinar and get the complete life skills toolkit — financial freedom, memory mastery, communication influence, and unshakeable self-concept.</p>
+            <a href="https://github.com/accessworldseminars-ship-it/results/blob/main/purchase2day.html" target="_blank" class="cta-btn-main">
+                🎟️ Secure your seat now
+                <small>2-day live webinar · limited places</small>
+            </a>
+            <p class="cta-note">📌 Payment page opens in a new tab · 100% secure</p>
+            <p style="margin-top:12px;font-size:0.85rem;opacity:0.4;">Access Worlds Seminars · Life Skills Series</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p style="margin-bottom:4px;">© 2026 Access Worlds Seminars · Life Skills Webinar</p>
+            <p style="font-size:0.8rem;">Designed for transformation · <a href="#purchase">Reserve your seat</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
