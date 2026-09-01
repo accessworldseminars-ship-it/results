@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>AccessWorld Events 2026 | June – December</title>
+    <title>AccessWorld Events 2026 | September – December</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -971,7 +971,7 @@
                 </div>
                 <p class="header-eyebrow">Live Events Calendar</p>
                 <h1>Upcoming Events Schedule</h1>
-                <p class="header-sub">June &ndash; December 2026</p>
+                <p class="header-sub">September &ndash; December 2026</p>
 
                 <div class="tz-bar">
                     <label for="timezone"><i class="fas fa-globe"></i> Time zone</label>
@@ -1001,8 +1001,8 @@
 
             <div class="stat-bar" id="statBar">
                 <div class="stat-item"><span class="stat-num" id="statTotal">—</span><div class="stat-label">Total sessions</div></div>
-                <div class="stat-item"><span class="stat-num">2</span><div class="stat-label">2-Day seminars</div></div>
-                <div class="stat-item"><span class="stat-num">7</span><div class="stat-label">Months of events</div></div>
+                <div class="stat-item"><span class="stat-num">1</span><div class="stat-label">2-Day seminar</div></div>
+                <div class="stat-item"><span class="stat-num">4</span><div class="stat-label">Months of events</div></div>
             </div>
 
             <div class="legend">
@@ -1038,7 +1038,7 @@
                 <span class="footer-name">ACCESSWORLD</span>
             </div>
             <div class="footer-copy">
-                <p>AccessWorld Upcoming Events Schedule &middot; June – December 2026</p>
+                <p>AccessWorld Upcoming Events Schedule &middot; September – December 2026</p>
                 <p>&copy; 2026 AccessWorld Seminars &nbsp;|&nbsp;
                     Introduction Webinars: <a href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank">Zoom link</a>
                     &nbsp;|&nbsp; Member docs for Coaching &amp; NLP
@@ -1049,14 +1049,14 @@
     </div><!-- page-wrap -->
 
     <script>
-        // ----- LINKS -----
+        // ----- LINKS (UPDATED) -----
         const ZOOM_LINK = "https://accessworldseminars-ship-it.github.io/results/zoomlink";
         const GROUP_LINK = "https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk";
         const NLP_LINK =
             "https://docs.google.com/document/d/1oqvKAfrmLslMq3mAZ716aA0h2blSzPXh/edit?usp=drivesdk&ouid=116911817819525150049&rtpof=true&sd=true";
-        const SEMINAR_LINK = "https://accessworldseminars-ship-it.github.io/results/2dayemotionalmastery";
-        const UNLOCK_LINK = "https://www.accessworldseminars.org/the-perfect-squeeze-page--6c808";
-        const WCCOACH_LINK = "https://www.accessworldseminars.org/the-perfect-squeeze-page--45e9d";
+        const SEMINAR_LINK = "https://accessworldseminars-ship-it.github.io/results/2daylifeskillsprogram";
+        const UNLOCK_LINK = "https://accessworldseminars-ship-it.github.io/results/unlock";
+        const WCCOACH_LINK = "https://accessworldseminars-ship-it.github.io/results/worldclasscoach";
 
         const TYPE_META = {
             seminar: { label: '2-Day Seminar', btn: 'Seminar hub', icon: 'fa-star' },
@@ -1066,7 +1066,6 @@
             lowtier: { label: 'Low-tier Program', btn: 'Register', icon: 'fa-ticket' },
         };
 
-        // Determine badge type for a session
         function getBadgeInfo(type) {
             if (type === 'intro') {
                 return { cls: 'free', label: 'FREE', icon: 'fa-gift' };
@@ -1074,51 +1073,19 @@
             if (type === 'coaching' || type === 'nlp' || type === 'seminar') {
                 return { cls: 'members', label: 'MEMBERS ONLY', icon: 'fa-lock' };
             }
-            // lowtier – paid but not "members only" in the same sense
             return { cls: 'paid', label: 'PAID', icon: 'fa-ticket' };
         }
 
+        // ----- UPDATED SESSIONS (Sep – Dec, Sep 3 removed, prices/links updated) -----
         const sessions = [
-            // JUNE
-            { date: "2026-06-04", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
-            { date: "2026-06-05", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
-            { date: "2026-06-05", time: "11:00", type: "intro", title: "Introduction Webinar – Upgrade Your Identity", link: ZOOM_LINK },
-            { date: "2026-06-11", time: "19:00", type: "intro", title: "Introduction Webinar – Upgrade Your Identity", link: ZOOM_LINK },
-            { date: "2026-06-12", time: "09:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
-            { date: "2026-06-12", time: "11:00", type: "intro", title: "Introduction Webinar – Upgrade Your Identity", link: ZOOM_LINK },
-            { date: "2026-06-18", time: "19:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
-            { date: "2026-06-19", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
-            { date: "2026-06-19", time: "11:00", type: "intro", title: "Introduction Webinar – Upgrade Your Identity", link: ZOOM_LINK },
-            { date: "2026-06-25", time: "19:00", type: "intro", title: "Introduction Webinar – Upgrade Your Identity", link: ZOOM_LINK },
-            { date: "2026-06-26", time: "07:00", type: "lowtier", title: "Unlock Your Incredible Self (6 hour event)", link: UNLOCK_LINK },
-            // JULY
-            { date: "2026-07-16", time: "19:00", type: "intro", title: "Introduction Webinar – Emotional Clearing", link: ZOOM_LINK },
-            { date: "2026-07-17", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
-            { date: "2026-07-17", time: "11:00", type: "intro", title: "Introduction Webinar – Emotional Clearing", link: ZOOM_LINK },
-            { date: "2026-07-23", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
-            { date: "2026-07-24", time: "09:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
-            { date: "2026-07-24", time: "11:00", type: "intro", title: "Introduction Webinar – Emotional Clearing", link: ZOOM_LINK },
-            { date: "2026-07-30", time: "19:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
-            { date: "2026-07-31", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
-            { date: "2026-07-31", time: "11:00", type: "intro", title: "Introduction Webinar – Emotional Clearing", link: ZOOM_LINK },
-            // AUGUST
-            { date: "2026-08-06", time: "07:00", type: "seminar", title: "Emotional Mastery Day 1 (2-Day Seminar)", link: SEMINAR_LINK },
-            { date: "2026-08-07", time: "07:00", type: "seminar", title: "Emotional Mastery Day 2 (2-Day Seminar)", link: SEMINAR_LINK },
-            { date: "2026-08-13", time: "19:00", type: "intro", title: "Introduction Webinar – Upgrade Your Financial Blueprint", link: ZOOM_LINK },
-            { date: "2026-08-14", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
-            { date: "2026-08-14", time: "11:00", type: "intro", title: "Introduction Webinar – Upgrade Your Financial Blueprint", link: ZOOM_LINK },
-            { date: "2026-08-20", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
-            { date: "2026-08-21", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
-            { date: "2026-08-21", time: "11:00", type: "intro", title: "Introduction Webinar – Upgrade Your Financial Blueprint", link: ZOOM_LINK },
             // SEPTEMBER
-            { date: "2026-09-03", time: "19:00", type: "intro", title: "Introduction Webinar – Increase Your Influence", link: ZOOM_LINK },
             { date: "2026-09-04", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
             { date: "2026-09-04", time: "11:00", type: "intro", title: "Introduction Webinar – Increase Your Influence", link: ZOOM_LINK },
             { date: "2026-09-10", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
             { date: "2026-09-11", time: "09:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
             { date: "2026-09-11", time: "11:00", type: "intro", title: "Introduction Webinar – Increase Your Influence", link: ZOOM_LINK },
             { date: "2026-09-17", time: "19:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
-            { date: "2026-09-18", time: "09:00", type: "lowtier", title: "How to Become a World-Class Coach ($29)", link: WCCOACH_LINK },
+            { date: "2026-09-18", time: "09:00", type: "lowtier", title: "How to Become a World-Class Coach ($49)", link: WCCOACH_LINK },
             // OCTOBER
             { date: "2026-10-08", time: "19:00", type: "intro", title: "Introduction Webinar – Master Your Memory", link: ZOOM_LINK },
             { date: "2026-10-09", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
@@ -1146,7 +1113,7 @@
             { date: "2026-12-11", time: "09:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
             { date: "2026-12-11", time: "11:00", type: "intro", title: "Introduction Webinar – Learn About Nervous System Reprogramming", link: ZOOM_LINK },
             { date: "2026-12-17", time: "19:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
-            { date: "2026-12-18", time: "09:00", type: "lowtier", title: "How to Become a World-Class Coach ($29)", link: WCCOACH_LINK },
+            { date: "2026-12-18", time: "09:00", type: "lowtier", title: "How to Become a World-Class Coach ($49)", link: WCCOACH_LINK },
             { date: "2026-12-18", time: "11:00", type: "intro", title: "Introduction Webinar – Learn About Nervous System Reprogramming", link: ZOOM_LINK }
         ];
 
@@ -1205,7 +1172,6 @@
                     const meta = TYPE_META[s.type] || {};
                     const badgeInfo = getBadgeInfo(s.type);
 
-                    // Build badge HTML
                     let badgeHtml = '';
                     if (badgeInfo) {
                         badgeHtml =
@@ -1241,7 +1207,7 @@
             document.getElementById('calendarRoot').innerHTML = html;
         }
 
-        // ===== VISUAL GRID CALENDAR =====
+        // ===== VISUAL GRID CALENDAR (Sep–Dec only) =====
         function renderVisualCalendar(tz) {
             const root = document.getElementById('visualCalRoot');
             if (!root) return;
@@ -1252,24 +1218,15 @@
                 byDate[s.date].push(s);
             });
 
+            // Only September through December (months 8,9,10,11)
             const months = [
-                { y: 2026, m: 5 },
-                { y: 2026, m: 6 },
-                { y: 2026, m: 7 },
                 { y: 2026, m: 8 },
                 { y: 2026, m: 9 },
                 { y: 2026, m: 10 },
-                { y: 2026, m: 11 },
+                { y: 2026, m: 11 }
             ];
 
             const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            const TYPE_COLORS = {
-                seminar: '#C9A84C',
-                coaching: '#3dba6a',
-                intro: '#4a9eff',
-                nlp: '#b06cf4',
-                lowtier: '#ff8c38'
-            };
 
             let html = '';
             months.forEach(({ y, m }) => {
@@ -1296,7 +1253,6 @@
                     const hasSessions = daySessions.length > 0;
                     const hasSeminar = daySessions.some(s => s.type === 'seminar');
 
-                    // Build tooltip lines with badges
                     let tipLines = daySessions.map(s => {
                         const timeLocal = formatTime(s.date, s.time, tz);
                         const meta = TYPE_META[s.type] || {};
@@ -1309,7 +1265,6 @@
                         return `${timeLocal} · ${meta.label||s.type} ${badgeLabel}`;
                     }).join('<br>');
 
-                    // Dots: show dot color based on badge type (free=green, members=red, paid=orange)
                     const dotTypes = [...new Set(daySessions.map(s => {
                         const bi = getBadgeInfo(s.type);
                         return bi.cls;
