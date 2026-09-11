@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Influence & Rapport Mastery — learn emotional regulation, matching and mirroring, and the tools of ethical influence with AccessWorld Seminars.">
+<title>Influence &amp; Rapport Mastery | AccessWorld Seminars</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+/* ============================================
+   ROOT VARIABLES  (same as main page)
+   ============================================ */
+:root{
+  --gold:#d4af37;
+  --gold-light:#e8c860;
+  --gold-dark:#a8871f;
+  --navy:#0b1120;
+  --navy-2:#121a2b;
+  --navy-3:#0f1626;
+  --card-bg:#16203a;
+  --card-bg-hover:#1c2949;
+  --text:#e6e9ef;
+  --text-muted:#a8b0c0;
+  --border:rgba(212,175,55,.20);
+  --border-strong:rgba(212,175,55,.45);
+  --shadow:0 10px 30px rgba(0,0,0,.40);
+  --shadow-lg:0 18px 45px rgba(0,0,0,.55);
+  --transition:all .3s ease;
+  --font-heading:'Montserrat',sans-serif;
+  --font-body:'Open Sans',sans-serif;
+  --section-pad:80px;
+  --radius:14px;
+}
+
+/* ============================================
+   RESET / BASE
+   ============================================ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:90px;}
+body{
+  font-family:var(--font-body);
+  background:var(--navy);
+  color:var(--text);
+  line-height:1.75;
+  font-size:16px;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,h5{font-family:var(--font-heading);line-height:1.25;font-weight:700;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+ul{list-style:none;}
+
+.accent-text{color:var(--gold);}
+.container{max-width:1200px;margin:0 auto;padding:0 24px;}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+.main-nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:1000;
+  background:rgba(11,17,32,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:14px 0;
+  transition:var(--transition);
+}
+.main-nav.scrolled{
+  padding:8px 0;
+  box-shadow:0 6px 24px rgba(0,0,0,.5);
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-heading);font-weight:800;
+  font-size:1.15rem;letter-spacing:.5px;color:var(--text);
+}
+.nav-logo i{color:var(--gold);font-size:1.4rem;}
+.nav-logo span{color:var(--gold);}
+
+.mobile-menu-btn{
+  display:none;
+  background:transparent;border:1px solid var(--border-strong);
+  color:var(--gold);font-size:1.25rem;
+  border-radius:8px;padding:8px 12px;cursor:pointer;
+  transition:var(--transition);
+}
+.mobile-menu-btn:hover{background:rgba(212,175,55,.12);}
+
+.nav-links{display:flex;align-items:center;gap:6px;}
+.nav-links a{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:9px 15px;border-radius:8px;
+  font-family:var(--font-heading);font-size:.85rem;font-weight:600;
+  letter-spacing:.4px;color:var(--text-muted);
+  transition:var(--transition);white-space:nowrap;
+}
+.nav-links a i{font-size:.85rem;color:var(--gold);opacity:.85;}
+.nav-links a:hover{color:var(--gold);background:rgba(212,175,55,.10);}
+.nav-links a.active{
+  color:var(--navy);
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+}
+.nav-links a.active i{color:var(--navy);}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero-header{
+  position:relative;
+  min-height:78vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  padding:150px 24px 90px;
+  background:
+    radial-gradient(circle at 18% 22%,rgba(212,175,55,.16),transparent 45%),
+    radial-gradient(circle at 82% 78%,rgba(212,175,55,.10),transparent 50%),
+    linear-gradient(160deg,#0b1120 0%,#131d33 55%,#0b1120 100%);
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+}
+.hero-header::before{
+  content:"";
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(212,175,55,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(212,175,55,.045) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+.hero-content{position:relative;z-index:2;max-width:900px;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:7px 18px;margin-bottom:24px;
+  border:1px solid var(--border-strong);border-radius:50px;
+  background:rgba(212,175,55,.10);
+  font-family:var(--font-heading);font-size:.72rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;color:var(--gold);
+}
+.hero-content h1{
+  font-size:clamp(2rem,5.2vw,3.5rem);
+  font-weight:800;letter-spacing:-.5px;margin-bottom:22px;
+}
+.hero-content h1 .accent-text{
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-content p{
+  font-size:clamp(1rem,2.1vw,1.2rem);
+  color:var(--text-muted);max-width:720px;margin:0 auto 34px;
+  font-weight:300;
+}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 30px;border-radius:50px;
+  font-family:var(--font-heading);font-size:.86rem;font-weight:700;
+  letter-spacing:.6px;text-transform:uppercase;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--navy);border:none;cursor:pointer;
+  transition:var(--transition);box-shadow:0 8px 22px rgba(212,175,55,.24);
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(212,175,55,.38);}
+.btn-outline{
+  background:transparent;color:var(--gold);
+  border:1px solid var(--border-strong);box-shadow:none;
+}
+.btn-outline:hover{background:rgba(212,175,55,.12);box-shadow:none;}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+.section{padding:var(--section-pad) 0;}
+.section-alt{background:var(--navy-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+
+.section-header{text-align:center;max-width:820px;margin:0 auto 52px;}
+.section-header h2{
+  font-size:clamp(1.6rem,3.6vw,2.4rem);
+  font-weight:800;letter-spacing:-.3px;margin-bottom:14px;
+}
+.section-header h2::after{
+  content:"";display:block;width:80px;height:4px;margin:18px auto 0;
+  border-radius:3px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-light));
+}
+.section-header p{color:var(--text-muted);font-size:1.05rem;font-weight:300;}
+
+.section-header.left{text-align:left;margin-left:0;}
+.section-header.left h2::after{margin-left:0;}
+
+/* ============================================
+   CARDS / GRIDS
+   ============================================ */
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+
+.card{
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:32px 28px;
+  transition:var(--transition);
+  position:relative;overflow:hidden;
+}
+.card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-light));
+  transform:scaleX(0);transform-origin:left;transition:transform .35s ease;
+}
+.card:hover{
+  transform:translateY(-6px);
+  background:var(--card-bg-hover);
+  border-color:var(--border-strong);
+  box-shadow:var(--shadow-lg);
+}
+.card:hover::before{transform:scaleX(1);}
+.card-icon{
+  width:54px;height:54px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(212,175,55,.12);
+  border:1px solid var(--border);
+  color:var(--gold);font-size:1.35rem;margin-bottom:20px;
+}
+.card h3{font-size:1.15rem;margin-bottom:10px;color:var(--text);}
+.card p{color:var(--text-muted);font-size:.95rem;font-weight:300;}
+.card ul{margin-top:14px;}
+.card ul li{
+  position:relative;padding-left:22px;margin-bottom:8px;
+  color:var(--text-muted);font-size:.92rem;font-weight:300;
+}
+.card ul li::before{
+  content:"\f00c";font-family:"Font Awesome 6 Free";font-weight:900;
+  position:absolute;left:0;top:1px;color:var(--gold);font-size:.72rem;
+}
+.card-number{
+  font-family:var(--font-heading);font-size:2.4rem;font-weight:800;
+  color:rgba(212,175,55,.22);line-height:1;margin-bottom:10px;
+}
+
+/* ============================================
+   STORY / SPLIT BLOCK
+   ============================================ */
+.split{
+  display:grid;grid-template-columns:1.05fr .95fr;
+  gap:50px;align-items:center;
+}
+.story-panel{
+  background:linear-gradient(150deg,rgba(212,175,55,.10),rgba(22,32,58,.85));
+  border:1px solid var(--border-strong);
+  border-left:4px solid var(--gold);
+  border-radius:var(--radius);
+  padding:34px 32px;
+}
+.story-panel h3{
+  font-size:1.2rem;color:var(--gold);margin-bottom:16px;
+  display:flex;align-items:center;gap:10px;
+}
+.story-panel p{color:var(--text-muted);font-size:.96rem;font-weight:300;margin-bottom:14px;}
+.story-panel p:last-child{margin-bottom:0;}
+.story-panel .quote{
+  font-style:italic;color:var(--text);
+  border-left:2px solid var(--gold);padding-left:16px;margin:18px 0;
+}
+
+/* ============================================
+   QUICK LINKS
+   ============================================ */
+.quick-links-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+}
+.quick-link{
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+  padding:26px 16px;text-align:center;
+  background:var(--card-bg);
+  border:1px solid var(--border);border-radius:var(--radius);
+  transition:var(--transition);
+}
+.quick-link:hover{
+  transform:translateY(-5px);
+  border-color:var(--border-strong);
+  background:var(--card-bg-hover);
+  box-shadow:var(--shadow);
+}
+.quick-link i{font-size:1.6rem;color:var(--gold);}
+.quick-link span{
+  font-family:var(--font-heading);font-size:.82rem;font-weight:600;
+  letter-spacing:.4px;color:var(--text);
+}
+
+/* ============================================
+   PILLARS (NSR style)
+   ============================================ */
+.nsr-pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.pillar{
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:34px 28px;text-align:center;
+  transition:var(--transition);
+}
+.pillar:hover{
+  transform:translateY(-6px);border-color:var(--border-strong);
+  background:var(--card-bg-hover);box-shadow:var(--shadow-lg);
+}
+.pillar i{font-size:2rem;color:var(--gold);margin-bottom:18px;display:block;}
+.pillar h3{font-size:1.1rem;margin-bottom:10px;}
+.pillar p{color:var(--text-muted);font-size:.93rem;font-weight:300;}
+
+/* ============================================
+   BREATH TIMELINE
+   ============================================ */
+.breath-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  margin-top:10px;
+}
+.breath-step{
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:26px 20px;text-align:center;
+  transition:var(--transition);
+}
+.breath-step:hover{border-color:var(--border-strong);transform:translateY(-4px);}
+.breath-step .step-num{
+  font-family:var(--font-heading);font-weight:800;font-size:.72rem;
+  letter-spacing:2px;color:var(--gold);text-transform:uppercase;
+  display:block;margin-bottom:12px;
+}
+.breath-step h4{font-size:1rem;margin-bottom:8px;}
+.breath-step p{color:var(--text-muted);font-size:.88rem;font-weight:300;}
+
+/* ============================================
+   TAKEAWAY LIST
+   ============================================ */
+.takeaway-list{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.takeaway{
+  display:flex;gap:16px;align-items:flex-start;
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:24px;transition:var(--transition);
+}
+.takeaway:hover{border-color:var(--border-strong);background:var(--card-bg-hover);}
+.takeaway i{color:var(--gold);font-size:1.15rem;margin-top:4px;}
+.takeaway h4{font-size:1rem;margin-bottom:6px;}
+.takeaway p{color:var(--text-muted);font-size:.9rem;font-weight:300;}
+
+/* ============================================
+   CTA BANNER
+   ============================================ */
+.cta-banner{
+  background:
+    radial-gradient(circle at 15% 25%,rgba(212,175,55,.16),transparent 48%),
+    linear-gradient(150deg,#131d33,#0b1120);
+  border:1px solid var(--border-strong);
+  border-radius:20px;padding:60px 40px;text-align:center;
+}
+.cta-banner h2{font-size:clamp(1.5rem,3.2vw,2.15rem);margin-bottom:16px;}
+.cta-banner p{color:var(--text-muted);max-width:680px;margin:0 auto 30px;font-weight:300;}
+
+/* ============================================
+   NAV BUTTONS (bottom)
+   ============================================ */
+.nav-buttons{
+  display:flex;flex-wrap:wrap;gap:16px;justify-content:center;
+  padding:0 0 var(--section-pad);
+}
+.nav-button{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:13px 26px;border-radius:50px;
+  border:1px solid var(--border-strong);
+  background:rgba(212,175,55,.07);
+  color:var(--gold);
+  font-family:var(--font-heading);font-size:.82rem;font-weight:700;
+  letter-spacing:.5px;text-transform:uppercase;
+  transition:var(--transition);
+}
+.nav-button:hover{
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--navy);transform:translateY(-3px);
+  box-shadow:0 12px 28px rgba(212,175,55,.30);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer{
+  background:var(--navy-3);
+  border-top:1px solid var(--border);
+  padding:60px 0 26px;
+}
+.footer-grid{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;
+  gap:40px;margin-bottom:44px;
+}
+.footer-brand .nav-logo{margin-bottom:16px;}
+.footer-brand p{color:var(--text-muted);font-size:.9rem;font-weight:300;max-width:320px;}
+.footer-col h4{
+  font-family:var(--font-heading);font-size:.82rem;font-weight:700;
+  letter-spacing:1.4px;text-transform:uppercase;color:var(--gold);
+  margin-bottom:18px;
+}
+.footer-col ul li{margin-bottom:10px;}
+.footer-col ul li a{
+  color:var(--text-muted);font-size:.9rem;transition:var(--transition);
+  display:inline-flex;align-items:center;gap:8px;
+}
+.footer-col ul li a:hover{color:var(--gold);padding-left:4px;}
+.social-links{display:flex;gap:12px;margin-top:6px;}
+.social-links a{
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--border);color:var(--gold);
+  background:rgba(212,175,55,.07);transition:var(--transition);
+}
+.social-links a:hover{
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--navy);transform:translateY(-3px);
+}
+.footer-bottom{
+  border-top:1px solid var(--border);
+  padding-top:24px;text-align:center;
+  color:var(--text-muted);font-size:.84rem;
+}
+.footer-bottom p{margin-bottom:6px;}
+.footer-bottom .accent-text{font-weight:600;}
+
+/* ============================================
+   FADE-IN ANIMATION
+   ============================================ */
+.fade-in{
+  opacity:0;transform:translateY(28px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* ============================================
+   RESPONSIVE — 992px
+   ============================================ */
+@media (max-width:992px){
+  :root{--section-pad:64px;}
+
+  .mobile-menu-btn{display:block;}
+
+  .nav-links{
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:4px;
+    background:rgba(11,17,32,.99);
+    border-bottom:1px solid var(--border);
+    padding:0 20px;max-height:0;overflow:hidden;
+    transition:max-height .35s ease,padding .35s ease;
+  }
+  .nav-links.open{max-height:520px;padding:16px 20px 24px;}
+  .nav-links a{padding:13px 16px;font-size:.92rem;width:100%;}
+
+  .grid-3,.grid-4,.nsr-pillars-grid{grid-template-columns:repeat(2,1fr);}
+  .quick-links-grid{grid-template-columns:repeat(2,1fr);}
+  .breath-steps{grid-template-columns:repeat(2,1fr);}
+  .split{grid-template-columns:1fr;gap:34px;}
+  .footer-grid{grid-template-columns:repeat(2,1fr);gap:34px;}
+}
+
+/* ============================================
+   RESPONSIVE — 768px
+   ============================================ */
+@media (max-width:768px){
+  :root{--section-pad:56px;}
+  body{font-size:15.5px;}
+
+  .hero-header{min-height:auto;padding:130px 20px 70px;}
+  .hero-cta{flex-direction:column;align-items:stretch;}
+  .hero-cta .btn{justify-content:center;}
+
+  .grid-2,.grid-3,.grid-4,.nsr-pillars-grid,
+  .quick-links-grid,.breath-steps,.takeaway-list{
+    grid-template-columns:1fr;
+  }
+
+  .section-header{margin-bottom:38px;}
+  .card{padding:26px 22px;}
+  .story-panel{padding:26px 22px;}
+  .cta-banner{padding:44px 24px;}
+  .footer-grid{grid-template-columns:1fr;gap:30px;}
+  .nav-buttons{flex-direction:column;align-items:stretch;}
+  .nav-button{justify-content:center;}
+}
+
+/* ============================================
+   RESPONSIVE — 480px
+   ============================================ */
+@media (max-width:480px){
+  :root{--section-pad:48px;}
+  .container{padding:0 18px;}
+  .nav-inner{padding:0 18px;}
+  .nav-logo{font-size:1rem;}
+  .nav-logo i{font-size:1.2rem;}
+  .hero-badge{font-size:.62rem;letter-spacing:1.4px;padding:6px 14px;}
+  .btn{padding:13px 22px;font-size:.78rem;}
+  .card-icon{width:46px;height:46px;font-size:1.15rem;}
+  .card h3{font-size:1.05rem;}
+  .social-links a{width:36px;height:36px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
+<nav class="main-nav" id="mainNav">
+  <div class="nav-inner">
+
+    <a href="https://accessworldseminars-ship-it.github.io/results/" class="nav-logo">
+      <i class="fas fa-globe"></i>
+      AccessWorld <span>Seminars</span>
+    </a>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="nav-links" id="navLinks">
+      <a href="https://accessworldseminars-ship-it.github.io/results/">
+        <i class="fas fa-home"></i> Home
+      </a>
+      <a href="https://accessworldseminars-ship-it.github.io/results/#about">
+        <i class="fas fa-users"></i> About
+      </a>
+      <a href="https://accessworldseminars-ship-it.github.io/results/#seminars">
+        <i class="fas fa-chalkboard-user"></i> Seminars
+      </a>
+      <a href="#" class="active">
+        <i class="fas fa-bullhorn"></i> Influence
+      </a>
+      <a href="https://accessworldseminars-ship-it.github.io/results/#coaching">
+        <i class="fas fa-handshake"></i> Coaching
+      </a>
+      <a href="https://accessworldseminars-ship-it.github.io/results/#contact">
+        <i class="fas fa-envelope"></i> Contact
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<header class="hero-header">
+  <div class="hero-content fade-in">
+
+    <div class="hero-badge">
+      <i class="fas fa-bullhorn"></i> Tool Development Training
+    </div>
+
+    <h1>Influence &amp; <span class="accent-text">Rapport Mastery</span></h1>
+
+    <p>
+      You cannot lift another unless you are standing on higher ground.
+      Learn to regulate your own nervous system, step into another person's world,
+      and create the trust and responsiveness that moves people to action.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#foundation" class="btn">
+        <i class="fas fa-wind"></i> Explore the Tools
+      </a>
+      <a href="#takeaways" class="btn btn-outline">
+        <i class="fas fa-list-check"></i> Key Takeaways
+      </a>
+    </div>
+
+  </div>
+</header>
+
+
+<!-- ============================================
+     QUICK LINKS
+     ============================================ -->
+<section class="section" id="quicklinks">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>Inside This Session</h2>
+      <p>Five practical skill areas — practised, not just discussed.</p>
+    </div>
+
+    <div class="quick-links-grid fade-in">
+      <a href="#foundation" class="quick-link">
+        <i class="fas fa-heart-pulse"></i>
+        <span>Self-Regulation</span>
+      </a>
+      <a href="#flexibility" class="quick-link">
+        <i class="fas fa-masks-theater"></i>
+        <span>Emotional Flexibility</span>
+      </a>
+      <a href="#rapport" class="quick-link">
+        <i class="fas fa-people-arrows"></i>
+        <span>Match &amp; Mirror</span>
+      </a>
+      <a href="#breaking" class="quick-link">
+        <i class="fas fa-scissors"></i>
+        <span>Breaking Rapport</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 1 — FOUNDATION: REGULATE YOURSELF
+     ============================================ -->
+<section class="section section-alt" id="foundation">
+  <div class="container">
+
+    <div class="section-header fade-in">
+      <h2>Step One: <span class="accent-text">Regulate Yourself</span></h2>
+      <p>
+        You can't help anybody unless you yourself are feeling it. The first move in influence
+        is never the other person — it's your own nervous system.
+      </p>
+    </div>
+
+    <div class="grid-4 fade-in">
+
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-square"></i></div>
+        <h3>Box Breathing</h3>
+        <p>In for 4 · hold for 4 · out for 4 · hold for 4. Three rounds is enough to reset.</p>
+        <ul>
+          <li>Picturing the square keeps focus</li>
+          <li>Most effective when practised daily</li>
+          <li>Use before any high-stakes conversation</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-wind"></i></div>
+        <h3>Three-Breath Reset</h3>
+        <p>The quick version when you don't have time. In, out — three times, deliberately.</p>
+        <ul>
+          <li>Works mid-conversation</li>
+          <li>Gets you out of your head, into your body</li>
+          <li>No one around you even notices</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-snowflake"></i></div>
+        <h3>Cold Exposure</h3>
+        <p>The fastest nervous-system reset available — cold water, cold plunge, ice bath.</p>
+        <ul>
+          <li>Full reset in seconds</li>
+          <li>Not always practical — that's why breath comes first</li>
+          <li>Best used before, not during</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Excitement Exercise</h3>
+        <p>Jump up and down. Say "Yes!" out loud. Amp your energy on purpose.</p>
+        <ul>
+          <li>Creates emotional flexibility</li>
+          <li>Called "emotional stretching"</li>
+          <li>Generates good feelings internally, not reactively</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 2 — EMOTIONAL FLEXIBILITY
+     ============================================ -->
+<section class="section" id="flexibility">
+  <div class="container">
+
+    <div class="section-header fade-in">
+      <h2>Emotional <span class="accent-text">Flexibility</span></h2>
+      <p>The skill of moving from one emotion to another — and back again — without missing a beat.</p>
+    </div>
+
+    <div class="split fade-in">
+
+      <div class="story-panel">
+        <h3><i class="fas fa-shield-halved"></i> The Watchhouse</h3>
+
+        <p>
+          A law enforcement friend was calmly telling a story about taking up archery — the bow he
+          bought, the arrows, his shots in the backyard.
+        </p>
+
+        <p>
+          Then an incident erupted in the background. He stood up and within moments was yelling
+          at a prisoner, face red, wild, absolutely convincing. Anyone watching would swear he was
+          furious.
+        </p>
+
+        <p>
+          A couple of minutes later the incident resolved. He sat back down and continued his
+          archery story — from exactly the same place he left off, without missing a beat.
+        </p>
+
+        <div class="quote">
+          "That's when I realised he wasn't actually angry. He was matching and mirroring energy."
+        </div>
+
+        <p>
+          He had emotional regulation. He had emotional flexibility. He could access an emotion,
+          use it for the period required, and put it away again.
+        </p>
+      </div>
+
+      <div>
+        <div class="section-header left" style="margin-bottom:24px;">
+          <h2 style="font-size:1.5rem;">What This Actually Means</h2>
+        </div>
+
+        <div class="card" style="margin-bottom:20px;">
+          <h3>You Become a Skilled Actor</h3>
+          <p>
+            Not losing the plot. Not losing your head. Not letting your nervous system take over
+            and live in reaction. Instead: choosing the emotion you want to portray, accessing it,
+            using it, and putting it away.
+          </p>
+        </div>
+
+        <div class="card" style="margin-bottom:20px;">
+          <h3>Regulated People Get More Done</h3>
+          <p>
+            In a panic state, the brain works slower, organising takes longer, and decisions get
+            muddled. From a calm, regulated state you make fast, accurate decisions and give clear
+            instructions — so you achieve more in less time.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Under Pressure, Deepen the Voice</h3>
+          <p>
+            In high-pressure situations the tendency is for voices to rise and speed up. The more
+            effective move — for everyone — is to deepen the voice and slow the delivery. It's
+            more commanding, and it works.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 3 — BUILDING RAPPORT
+     ============================================ -->
+<section class="section section-alt" id="rapport">
+  <div class="container">
+
+    <div class="section-header fade-in">
+      <h2>Step Two: <span class="accent-text">Build Rapport</span></h2>
+      <p>
+        Once you're regulated, the goal is to get the other person to follow your lead.
+        That begins with match and mirror.
+      </p>
+    </div>
+
+    <div class="breath-steps fade-in" style="margin-bottom:44px;">
+      <div class="breath-step">
+        <span class="step-num">Element 01</span>
+        <h4>Pace</h4>
+        <p>Match their speed of speech and movement.</p>
+      </div>
+      <div class="breath-step">
+        <span class="step-num">Element 02</span>
+        <h4>Tone</h4>
+        <p>Match volume, pitch and emotional colour.</p>
+      </div>
+      <div class="breath-step">
+        <span class="step-num">Element 03</span>
+        <h4>Energy</h4>
+        <p>Meet their intensity — don't dampen or inflate it.</p>
+      </div>
+      <div class="breath-step">
+        <span class="step-num">Element 04</span>
+        <h4>Posture</h4>
+        <p>Reflect their stance, gestures and facial expression.</p>
+      </div>
+    </div>
+
+    <div class="grid-3 fade-in">
+
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-comment-dots"></i></div>
+        <h3>Repeat Their Words</h3>
+        <p>
+          Echo back key phrases and terminology. It signals focus and understanding — the way
+          attorneys do it in negotiation, and the way great listeners do it everywhere.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-heart"></i></div>
+        <h3>Honest, Sincere Compliments</h3>
+        <p>
+          A genuine compliment brings the guard down and dissolves barriers. It must be real —
+          people can tell the difference instantly.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-ear-listen"></i></div>
+        <h3>Name the State</h3>
+        <p>
+          When someone says "I'm fine" but they're not, name what's underneath.
+          <em>"You've been a bit short with me — would I be right in thinking you're frustrated?"</em>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 4 — CASE STUDY: BILL
+     ============================================ -->
+<section class="section" id="casestudy">
+  <div class="container">
+
+    <div class="section-header fade-in">
+      <h2>The Detective Who <span class="accent-text">Never Went to Court</span></h2>
+      <p>Rapport beats task-orientation — every single time.</p>
+    </div>
+
+    <div class="split fade-in">
+
+      <div>
+        <div class="card" style="margin-bottom:20px;">
+          <h3>The Pattern</h3>
+          <p>
+            Other detectives were always in court. Their suspects dug their heels in, pleaded not
+            guilty, and made every case harder than it needed to be.
+          </p>
+        </div>
+
+        <div class="card" style="margin-bottom:20px;">
+          <h3>Bill's Approach</h3>
+          <p>
+            He spent an hour just talking with the person. Showing empathy. Building rapport.
+            Finding out about their life, their situation, what they were dealing with.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>The Result</h3>
+          <p>
+            By the end, they felt like they were talking to a friend — someone who had their best
+            interests at heart. He was sending them to court, and they were thanking him for it.
+            No fights. No delays. No trial.
+          </p>
+        </div>
+      </div>
+
+      <div class="story-panel">
+        <h3><i class="fas fa-car-side"></i> The Warrant Pickup</h3>
+
+        <p>
+          The same principle applies in the field. Picture a law enforcement officer with a warrant,
+          needing to influence someone to get into the car.
+        </p>
+
+        <p>
+          The approach: <em>"It's a weekday. If you come with me now, we can get this sorted in a
+          few hours — court, back out, home before you know it. If you wait, we have to pick you up
+          on a Saturday, and you could be in until Monday."</em>
+        </p>
+
+        <div class="quote">
+          "Do you really want that? Come with me now, we'll deal with it, and it'll be over."
+        </div>
+
+        <p>
+          People complied. Time after time. Not because they were forced — because they were
+          influenced. Rapport and clear framing beat antagonism every time.
+        </p>
+
+        <p>
+          The deeper lesson: the officer genuinely wanted the best outcome for that person.
+          Compliance was a by-product of care.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 5 — BREAKING RAPPORT
+     ============================================ -->
+<section class="section section-alt" id="breaking">
+  <div class="container">
+
+    <div class="section-header fade-in">
+      <h2>Breaking Rapport — <span class="accent-text">Yes, It Matters Too</span></h2>
+      <p>Building rapport gets you trust and responsiveness. Breaking it brings attention back.</p>
+    </div>
+
+    <div class="nsr-pillars-grid fade-in">
+
+      <div class="pillar">
+        <i class="fas fa-clock"></i>
+        <h3>When You Need to Leave</h3>
+        <p>
+          Some conversations will go all day if you let them. Breaking rapport lets you exit
+          respectfully — without signalling that the person was uninteresting.
+        </p>
+      </div>
+
+      <div class="pillar">
+        <i class="fas fa-users-viewfinder"></i>
+        <h3>When Attention Drifts</h3>
+        <p>
+          A clap, a loud noise, a sudden shift in energy. Teachers do it in classrooms. You do it
+          with your kids. It works because it interrupts the pattern.
+        </p>
+      </div>
+
+      <div class="pillar">
+        <i class="fas fa-hand"></i>
+        <h3>How to Do It Well</h3>
+        <p>
+          Bring in a different energy, speed or pace. Don't insult, don't criticise. Maintain the
+          relationship while changing the dynamic.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 6 — THE ME MONSTER
+     ============================================ -->
+<section class="section" id="memonster">
+  <div class="container">
+
+    <div class="section-header fade-in">
+      <h2>Get Out of Your Head, <span class="accent-text">Into Your Heart</span></h2>
+      <p>People don't care how much you know until they know how much you care.</p>
+    </div>
+
+    <div class="split fade-in">
+
+      <div class="story-panel">
+        <h3><i class="fas fa-plane-departure"></i> The Lost Luggage Trap</h3>
+
+        <p>
+          Someone tells you about a trip where their bag went missing. You immediately think of
+          the time yours went missing too.
+        </p>
+
+        <p>
+          Suddenly you're telling your story — and yours was worse. Three days without luggage.
+          You've one-upped them.
+        </p>
+
+        <div class="quote">
+          "You've left their story. You've taken the baton and run with it.
+          They no longer feel heard."
+        </div>
+
+        <p>
+          That's the Me Monster. It's the default setting for most of us — and it destroys rapport
+          in a single sentence.
+        </p>
+      </div>
+
+      <div>
+        <div class="card" style="margin-bottom:20px;">
+          <h3>Instead, Stay in Their World</h3>
+          <p>
+            Brief acknowledgement, then keep the focus on them:
+            <em>"That's rough. How long did it take to get it back? Tell me more — that must have
+            been so frustrating."</em>
+          </p>
+        </div>
+
+        <div class="card" style="margin-bottom:20px;">
+          <h3>Sympathy vs. Empathy</h3>
+          <p>
+            Sympathy comes from the lips out. Empathy comes from the heart out. Empathy is walking
+            in their shoes — stepping into the scenario <em>as them</em>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Dialogue, Not Monologue</h3>
+          <p>
+            Once rapport is built, you can share. But it's a two-way street. A conversation where
+            one person talks and the other just nods isn't connection — it's performance.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 7 — TAKEAWAYS
+     ============================================ -->
+<section class="section section-alt" id="takeaways">
+  <div class="container">
+
+    <div class="section-header fade-in">
+      <h2>What You'll <span class="accent-text">Take Away</span></h2>
+      <p>The fundamentals, distilled.</p>
+    </div>
+
+    <div class="takeaway-list fade-in">
+
+      <div class="takeaway">
+        <i class="fas fa-1"></i>
+        <div>
+          <h4>Regulate First, Always</h4>
+          <p>You can't lift another unless you're on higher ground. Start at the bottom rung of the ladder — yourself.</p>
+        </div>
+      </div>
+
+      <div class="takeaway">
+        <i class="fas fa-2"></i>
+        <div>
+          <h4>Build Emotional Flexibility</h4>
+          <p>Practise moving between emotional states on purpose. Breath work, box breathing, excitement exercises.</p>
+        </div>
+      </div>
+
+      <div class="takeaway">
+        <i class="fas fa-3"></i>
+        <div>
+          <h4>Match Pace, Tone, Energy, Posture</h4>
+          <p>Meet people where they are before you try to move them anywhere else.</p>
+        </div>
+      </div>
+
+      <div class="takeaway">
+        <i class="fas fa-4"></i>
+        <div>
+          <h4>Don't Fix — Connect</h4>
+          <p>Asking questions turns you into a coach. Matching and mirroring keeps you in their world.</p>
+        </div>
+      </div>
+
+      <div class="takeaway">
+        <i class="fas fa-5"></i>
+        <div>
+          <h4>Name What's Underneath</h4>
+          <p>Read the emotion behind the words and reflect it back. That's how people feel truly understood.</p>
+        </div>
+      </div>
+
+      <div class="takeaway">
+        <i class="fas fa-6"></i>
+        <div>
+          <h4>Know When to Break Rapport</h4>
+          <p>Bring in a different energy to reclaim attention or exit gracefully — without damaging the relationship.</p>
+        </div>
+      </div>
+
+      <div class="takeaway">
+        <i class="fas fa-7"></i>
+        <div>
+          <h4>Kill the Me Monster</h4>
+          <p>Resist the urge to tell your own version. Stay in their story. All about them, not about you.</p>
+        </div>
+      </div>
+
+      <div class="takeaway">
+        <i class="fas fa-8"></i>
+        <div>
+          <h4>Influence Serves Contribution</h4>
+          <p>The two needs of the spirit are growth and contribution. Influence is how you give beyond yourself.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     CTA BANNER
+     ============================================ -->
+<section class="section" id="cta">
+  <div class="container">
+    <div class="cta-banner fade-in">
+      <h2>Practise This in Your World</h2>
+      <p>
+        Influence is a skill — it develops through repetition, not theory. Take one tool from this
+        session and use it today. Then come back and tell us what happened.
+      </p>
+      <a href="https://accessworldseminars-ship-it.github.io/results/#contact" class="btn">
+        <i class="fas fa-calendar-check"></i> Join the Next Session
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     NAV BUTTONS
+     ============================================ -->
+<div class="container">
+  <div class="nav-buttons fade-in">
+    <a href="https://accessworldseminars-ship-it.github.io/results/" class="nav-button">
+      <i class="fas fa-home"></i> Return Home
+    </a>
+    <a href="https://accessworldseminars-ship-it.github.io/results/#seminars" class="nav-button">
+      <i class="fas fa-chalkboard-user"></i> All Seminars
+    </a>
+    <a href="#foundation" class="nav-button">
+      <i class="fas fa-arrow-up"></i> Back to Top
+    </a>
+  </div>
+</div>
+
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer>
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a href="https://accessworldseminars-ship-it.github.io/results/" class="nav-logo">
+          <i class="fas fa-globe"></i>
+          AccessWorld <span>Seminars</span>
+        </a>
+        <p>
+          Practical training in influence, communication, and personal development.
+          Tools you can use today — in your family, your work, and your world.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="https://accessworldseminars-ship-it.github.io/results/"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="https://accessworldseminars-ship-it.github.io/results/#about"><i class="fas fa-users"></i> About</a></li>
+          <li><a href="https://accessworldseminars-ship-it.github.io/results/#seminars"><i class="fas fa-chalkboard-user"></i> Seminars</a></li>
+          <li><a href="https://accessworldseminars-ship-it.github.io/results/#coaching"><i class="fas fa-handshake"></i> Coaching</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Training</h4>
+        <ul>
+          <li><a href="#foundation"><i class="fas fa-heart-pulse"></i> Self-Regulation</a></li>
+          <li><a href="#rapport"><i class="fas fa-people-arrows"></i> Rapport Building</a></li>
+          <li><a href="#breaking"><i class="fas fa-scissors"></i> Breaking Rapport</a></li>
+          <li><a href="#takeaways"><i class="fas fa-list-check"></i> Key Takeaways</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://accessworldseminars-ship-it.github.io/results/#contact"><i class="fas fa-envelope"></i> Contact Us</a></li>
+        </ul>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> <span class="accent-text">AccessWorld Seminars</span>. All rights reserved.</p>
+      <p>Influence &amp; Rapport Mastery — Tool Development Training</p>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ============================================
+     JAVASCRIPT
+     ============================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- Mobile Menu ---------- */
+  var menuBtn = document.getElementById('mobileMenuBtn');
+  var navLinks = document.getElementById('navLinks');
+  var icon = menuBtn ? menuBtn.querySelector('i') : null;
+
+  if (menuBtn && navLinks) {
+    menuBtn.addEventListener('click', function () {
+      navLinks.classList.toggle('open');
+      var isOpen = navLinks.classList.contains('open');
+      if (icon) {
+        icon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+      }
+    });
+
+    /* Close menu when a link is clicked (mobile) */
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.innerWidth <= 992) {
+          navLinks.classList.remove('open');
+          if (icon) icon.className = 'fas fa-bars';
+        }
+      });
+    });
+
+    /* Close on outside click */
+    document.addEventListener('click', function (e) {
+      if (window.innerWidth <= 992 &&
+          navLinks.classList.contains('open') &&
+          !navLinks.contains(e.target) &&
+          !menuBtn.contains(e.target)) {
+        navLinks.classList.remove('open');
+        if (icon) icon.className = 'fas fa-bars';
+      }
+    });
+  }
+
+  /* ---------- Navbar scroll effect ---------- */
+  var nav = document.getElementById('mainNav');
+  function handleScroll() {
+    if (!nav) return;
+    if (window.scrollY > 40) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+
+  /* ---------- Fade-in on scroll ---------- */
+  var fadeEls = document.querySelectorAll('.fade-in');
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -60px 0px'
+    });
+
+    fadeEls.forEach(function (el) { observer.observe(el); });
+  } else {
+    /* Fallback for older browsers */
+    fadeEls.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  /* ---------- Current year in footer ---------- */
+  var yearEl = document.getElementById('year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+
+})();
+</script>
+
+</body>
+</html>
