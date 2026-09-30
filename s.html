@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>AccessWorld Events 2026 | September – December</title>
+    <title>AccessWorld Events 2026 | October – December</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -619,6 +619,23 @@
             text-decoration: underline;
         }
 
+        .footer-social {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            font-size: 1.1rem;
+        }
+
+        .footer-social a {
+            color: var(--muted);
+            transition: color 0.2s;
+        }
+
+        .footer-social a:hover {
+            color: var(--gold);
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 680px) {
             .session-card {
@@ -958,6 +975,14 @@
             font-size: 0.75rem;
             color: var(--muted);
         }
+
+        /* Archive section */
+        #archiveSection {
+            display: none;
+        }
+        #archiveSection .session-list {
+            max-width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -971,7 +996,7 @@
                 </div>
                 <p class="header-eyebrow">Live Events Calendar</p>
                 <h1>Upcoming Events Schedule</h1>
-                <p class="header-sub">September &ndash; December 2026</p>
+                <p class="header-sub">October &ndash; December 2026</p>
 
                 <div class="tz-bar">
                     <label for="timezone"><i class="fas fa-globe"></i> Time zone</label>
@@ -994,15 +1019,21 @@
                         </optgroup>
                     </select>
                 </div>
+
+                <div style="margin-top: 16px;">
+                    <a href="#" id="archiveToggle" style="color: var(--gold); font-size: 0.8rem; text-decoration: none; border-bottom: 1px dotted var(--gold); padding-bottom: 2px;">
+                        <i class="fas fa-archive"></i> Past Meetings Archive (September 2026)
+                    </a>
+                </div>
             </div>
         </header>
 
         <main class="container">
 
             <div class="stat-bar" id="statBar">
-                <div class="stat-item"><span class="stat-num" id="statTotal">—</span><div class="stat-label">Total sessions</div></div>
+                <div class="stat-item"><span class="stat-num" id="statTotal">—</span><div class="stat-label">Total upcoming sessions</div></div>
                 <div class="stat-item"><span class="stat-num">1</span><div class="stat-label">2-Day seminar</div></div>
-                <div class="stat-item"><span class="stat-num">4</span><div class="stat-label">Months of events</div></div>
+                <div class="stat-item"><span class="stat-num">3</span><div class="stat-label">Months of events</div></div>
             </div>
 
             <div class="legend">
@@ -1032,24 +1063,43 @@
             </div>
         </section>
 
+        <!-- ===== ARCHIVE SECTION ===== -->
+        <section id="archiveSection" style="padding: 40px 0 20px; border-top: 1px solid var(--gold-border); margin-top: 30px;">
+            <div class="container">
+                <h2 class="vc-section-title" style="margin-bottom: 20px;">Past Meetings Archive</h2>
+                <p style="color: var(--muted); margin-bottom: 20px;">September 2026 sessions (dates and times in your selected timezone).</p>
+                <div id="archiveRoot"></div>
+            </div>
+        </section>
+
         <footer>
             <div class="footer-logo-wrap">
                 <img src="https://raw.githubusercontent.com/accessworldseminars-ship-it/results/main/worldjjpgsf.png" alt="" class="footer-img">
                 <span class="footer-name">ACCESSWORLD</span>
             </div>
             <div class="footer-copy">
-                <p>AccessWorld Upcoming Events Schedule &middot; September – December 2026</p>
+                <p>AccessWorld Upcoming Events Schedule &middot; October – December 2026</p>
                 <p>&copy; 2026 AccessWorld Seminars &nbsp;|&nbsp;
                     Introduction Webinars: <a href="https://accessworldseminars-ship-it.github.io/results/zoomlink" target="_blank">Zoom link</a>
                     &nbsp;|&nbsp; Member docs for Coaching &amp; NLP
                 </p>
+                <p style="margin-top: 8px;">
+                    <a href="https://docs.google.com/document/d/1Hxyuu7UfaHes85mvSGaWKRvBUeOPUBbB/edit?usp=drive_link&ouid=116911817819525150049&rtpof=true&sd=true" target="_blank">
+                        <i class="fas fa-book"></i> Unlock Your Incredible Self ebook
+                    </a>
+                </p>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.tiktok.com/@accessworldseminars?_r=1&_t=ZS-95fxVgSPl9p" target="_blank" title="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
             </div>
         </footer>
 
     </div><!-- page-wrap -->
 
     <script>
-        // ----- LINKS (UPDATED) -----
+        // ----- LINKS -----
         const ZOOM_LINK = "https://accessworldseminars-ship-it.github.io/results/zoomlink";
         const GROUP_LINK = "https://docs.google.com/document/d/1Twxj6syLJJxBD3Z5hu31U8omuihOS5k1VgFgunhbGGg/edit?usp=drivesdk";
         const NLP_LINK =
@@ -1076,9 +1126,9 @@
             return { cls: 'paid', label: 'PAID', icon: 'fa-ticket' };
         }
 
-        // ----- UPDATED SESSIONS (Sep – Dec, Sep 3 removed, prices/links updated) -----
+        // ----- SESSIONS (September kept for archive, October–December upcoming) -----
         const sessions = [
-            // SEPTEMBER
+            // SEPTEMBER (archived)
             { date: "2026-09-04", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
             { date: "2026-09-04", time: "11:00", type: "intro", title: "Introduction Webinar – Increase Your Influence", link: ZOOM_LINK },
             { date: "2026-09-10", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
@@ -1090,8 +1140,7 @@
             { date: "2026-10-08", time: "19:00", type: "intro", title: "Introduction Webinar – Master Your Memory", link: ZOOM_LINK },
             { date: "2026-10-09", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
             { date: "2026-10-09", time: "11:00", type: "intro", title: "Introduction Webinar – Master Your Memory", link: ZOOM_LINK },
-            { date: "2026-10-16", time: "09:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
-            { date: "2026-10-16", time: "11:00", type: "intro", title: "Introduction Webinar – Master Your Memory", link: ZOOM_LINK },
+            // October 16 removed (free, no sessions)
             { date: "2026-10-22", time: "19:00", type: "coaching", title: "Group Coaching and Mentoring Session", link: GROUP_LINK },
             { date: "2026-10-23", time: "09:00", type: "nlp", title: "NLP Tool Development Training for Coaches and Trainers", link: NLP_LINK },
             { date: "2026-10-23", time: "11:00", type: "intro", title: "Introduction Webinar – Master Your Memory", link: ZOOM_LINK },
@@ -1128,16 +1177,20 @@
             } catch (e) { return timeStr; }
         }
 
+        // ===== MAIN CALENDAR (October–December only) =====
         function renderCalendar(tz) {
+            // Filter out September for main calendar
+            const upcomingSessions = sessions.filter(s => !s.date.startsWith('2026-09'));
+
             const map = new Map();
-            sessions.forEach(s => {
+            upcomingSessions.forEach(s => {
                 const [y, m] = s.date.split('-');
                 const k = `${y}-${m}`;
                 if (!map.has(k)) map.set(k, []);
                 map.get(k).push(s);
             });
 
-            document.getElementById('statTotal').textContent = sessions.length;
+            document.getElementById('statTotal').textContent = upcomingSessions.length;
 
             let html = '';
             for (const [key, ms] of map.entries()) {
@@ -1207,23 +1260,24 @@
             document.getElementById('calendarRoot').innerHTML = html;
         }
 
-        // ===== VISUAL GRID CALENDAR (Sep–Dec only) =====
+        // ===== VISUAL GRID CALENDAR (October–December only) =====
         function renderVisualCalendar(tz) {
             const root = document.getElementById('visualCalRoot');
             if (!root) return;
 
+            const upcomingSessions = sessions.filter(s => !s.date.startsWith('2026-09'));
+
             const byDate = {};
-            sessions.forEach(s => {
+            upcomingSessions.forEach(s => {
                 if (!byDate[s.date]) byDate[s.date] = [];
                 byDate[s.date].push(s);
             });
 
-            // Only September through December (months 8,9,10,11)
+            // Only October, November, December (months 9,10,11)
             const months = [
-                { y: 2026, m: 8 },
-                { y: 2026, m: 9 },
-                { y: 2026, m: 10 },
-                { y: 2026, m: 11 }
+                { y: 2026, m: 9 },   // October
+                { y: 2026, m: 10 },  // November
+                { y: 2026, m: 11 }   // December
             ];
 
             const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -1293,10 +1347,75 @@
             root.innerHTML = html;
         }
 
+        // ===== ARCHIVE (September only) =====
+        function renderArchive(tz) {
+            const archiveRoot = document.getElementById('archiveRoot');
+            if (!archiveRoot) return;
+
+            const septSessions = sessions.filter(s => s.date.startsWith('2026-09'));
+            if (septSessions.length === 0) {
+                archiveRoot.innerHTML = '<p style="color: var(--muted);">No archived sessions.</p>';
+                return;
+            }
+
+            septSessions.sort((a, b) => a.date !== b.date ? a.date.localeCompare(b.date) : (a.time || '').localeCompare(b.time || ''));
+
+            let html = '<ul class="session-list">';
+            septSessions.forEach(s => {
+                const d = new Date(s.date + 'T00:00:00');
+                const dayShort = d.toLocaleDateString('en-AU', { weekday: 'short', timeZone: tz });
+                const dayNum = d.toLocaleDateString('en-AU', { day: 'numeric', timeZone: tz });
+                const monthShort = d.toLocaleDateString('en-AU', { month: 'short', timeZone: tz });
+                const timeLocal = formatTime(s.date, s.time, tz);
+                const meta = TYPE_META[s.type] || {};
+                const badgeInfo = getBadgeInfo(s.type);
+
+                let badgeHtml = '';
+                if (badgeInfo) {
+                    badgeHtml = `<span class="event-badge ${badgeInfo.cls}"><i class="fas ${badgeInfo.icon}"></i> ${badgeInfo.label}</span>`;
+                }
+
+                // Archive: show date, time, title, badge, but no button
+                html += `<li class="session-card ${s.type}">
+                    <div class="sc-date">
+                        <div class="sc-day">${dayShort}</div>
+                        <div class="sc-datenum">${dayNum} ${monthShort}</div>
+                        <div class="sc-time">${timeLocal}</div>
+                    </div>
+                    <div class="sc-main">
+                        <div class="sc-top-row">
+                            <span class="sc-type-label">${meta.label||s.type}</span>
+                            ${badgeHtml}
+                        </div>
+                        <div class="sc-title">${s.title}</div>
+                    </div>
+                    <div class="sc-action"></div>
+                </li>`;
+            });
+            html += '</ul>';
+            archiveRoot.innerHTML = html;
+        }
+
+        // ===== TOGGLE ARCHIVE =====
+        document.getElementById('archiveToggle').addEventListener('click', function(e) {
+            e.preventDefault();
+            const archiveSection = document.getElementById('archiveSection');
+            const toggleLink = this;
+            if (archiveSection.style.display === 'none' || archiveSection.style.display === '') {
+                archiveSection.style.display = 'block';
+                toggleLink.innerHTML = '<i class="fas fa-archive"></i> Hide Past Meetings Archive';
+            } else {
+                archiveSection.style.display = 'none';
+                toggleLink.innerHTML = '<i class="fas fa-archive"></i> Past Meetings Archive (September 2026)';
+            }
+        });
+
+        // ===== TIMEZONE HANDLING =====
         const tzSelect = document.getElementById('timezone');
         tzSelect.addEventListener('change', () => {
             renderCalendar(tzSelect.value);
             renderVisualCalendar(tzSelect.value);
+            renderArchive(tzSelect.value);
         });
 
         (function detectTz() {
@@ -1324,6 +1443,7 @@
             if (matched) tzSelect.value = matched.value;
             renderCalendar(tzSelect.value);
             renderVisualCalendar(tzSelect.value);
+            renderArchive(tzSelect.value);
         })();
     </script>
 </body>
