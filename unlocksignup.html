@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Save Your Free Seat | Unlock Your Incredible Self | AccessWorld Seminars</title>
+<meta name="description" content="Register FREE for the live 6-hour 'Unlock Your Incredible Self' seminar with Joshua Roy. Friday 30 October 2026. Optional VIP upgrade available.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Montserrat',Helvetica,Arial,sans-serif;
+  background:linear-gradient(135deg,#080d18 0%,#1A2744 100%);
+  background-attachment:fixed;
+  color:#e8ecf4;
+  line-height:1.65;
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:.2px}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.container{width:100%;max-width:1080px;margin:0 auto;padding:0 20px}
+.narrow{max-width:820px;margin:0 auto}
+
+/* ============================================================
+   FOCUS STATES (accessibility — gold outline)
+   ============================================================ */
+:focus-visible{
+  outline:3px solid #C9A84C;
+  outline-offset:3px;
+  border-radius:6px;
+}
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
+.topbar{
+  padding:18px 0;
+  border-bottom:1px solid rgba(201,168,76,.18);
+  background:rgba(8,13,24,.72);
+  backdrop-filter:blur(10px);
+  position:sticky;top:0;z-index:500;
+}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{height:42px;width:auto;filter:drop-shadow(0 0 12px rgba(201,168,76,.35))}
+.brand-text{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;color:#C9A84C;line-height:1.4}
+.brand-text span{display:block;color:#8b97ad;font-weight:600;letter-spacing:1.6px;font-size:10px}
+.topbar-cta{
+  font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+  background:linear-gradient(135deg,#C9A84C,#e2c877);color:#080d18;
+  padding:10px 20px;border-radius:50px;border:none;cursor:pointer;
+  transition:transform .25s ease,box-shadow .25s ease;
+  box-shadow:0 6px 22px rgba(201,168,76,.28);
+}
+.topbar-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,168,76,.45)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative;padding:64px 0 48px;text-align:center;overflow:hidden}
+.hero::before{
+  content:'';position:absolute;top:-220px;left:50%;transform:translateX(-50%);
+  width:760px;height:760px;max-width:150vw;
+  background:radial-gradient(circle,rgba(201,168,76,.13) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;z-index:2}
+
+.free-pill{
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(201,168,76,.12);
+  border:1px solid rgba(201,168,76,.42);
+  color:#C9A84C;
+  font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;
+  letter-spacing:2.6px;text-transform:uppercase;
+  padding:9px 20px;border-radius:50px;margin-bottom:26px;
+}
+.free-pill .dot{
+  width:8px;height:8px;border-radius:50%;background:#C9A84C;
+  box-shadow:0 0 0 0 rgba(201,168,76,.7);
+  animation:ping 2s infinite;
+}
+@keyframes ping{
+  0%{box-shadow:0 0 0 0 rgba(201,168,76,.6)}
+  70%{box-shadow:0 0 0 12px rgba(201,168,76,0)}
+  100%{box-shadow:0 0 0 0 rgba(201,168,76,0)}
+}
+
+.hero h1{
+  font-size:clamp(2.6rem,7.5vw,4.6rem);
+  color:#fff;margin-bottom:14px;
+  text-shadow:0 4px 40px rgba(0,0,0,.5);
+}
+.hero h1 .gold{color:#C9A84C}
+.hero-sub{
+  font-size:clamp(.98rem,2vw,1.15rem);
+  color:#b9c3d4;max-width:640px;margin:0 auto 30px;line-height:1.75;
+}
+.hero-sub strong{color:#e8ecf4}
+
+/* Countdown */
+.countdown{
+  display:flex;justify-content:center;align-items:center;gap:10px;
+  flex-wrap:wrap;margin-bottom:26px;
+}
+.cd-unit{
+  background:rgba(8,13,24,.62);
+  border:1px solid rgba(201,168,76,.28);
+  border-radius:12px;
+  padding:14px 18px;min-width:78px;text-align:center;
+  backdrop-filter:blur(8px);
+  transition:border-color .3s ease;
+}
+.cd-unit:hover{border-color:rgba(201,168,76,.55)}
+.cd-num{
+  display:block;font-family:'Montserrat',sans-serif;font-size:30px;font-weight:900;
+  color:#C9A84C;line-height:1;font-variant-numeric:tabular-nums;
+}
+.cd-lbl{
+  display:block;font-size:9px;font-weight:700;letter-spacing:1.8px;
+  text-transform:uppercase;color:#8b97ad;margin-top:5px;
+}
+.cd-sep{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:rgba(201,168,76,.6)}
+
+.hero-date{
+  display:inline-block;
+  font-size:13px;color:#b9c3d4;letter-spacing:.4px;
+  border-top:1px solid rgba(201,168,76,.2);
+  padding-top:18px;margin-top:4px;
+}
+.hero-date strong{color:#C9A84C}
+
+/* ============================================================
+   FORM CARD
+   ============================================================ */
+.form-section{padding:16px 0 72px}
+.form-card{
+  position:relative;
+  background:linear-gradient(160deg,rgba(26,39,68,.92) 0%,rgba(13,20,38,.96) 100%);
+  border:1px solid rgba(201,168,76,.28);
+  border-radius:20px;
+  padding:44px 40px 40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.03) inset;
+  overflow:hidden;
+}
+.form-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,transparent,#C9A84C,#e2c877,#C9A84C,transparent);
+}
+.form-head{text-align:center;margin-bottom:34px}
+.form-head .eyebrow{
+  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;
+  letter-spacing:3px;text-transform:uppercase;color:#C9A84C;
+  display:block;margin-bottom:12px;
+}
+.form-head h2{font-size:clamp(1.7rem,4vw,2.3rem);color:#fff;margin-bottom:10px}
+.form-head p{font-size:14px;color:#98a3b8;max-width:460px;margin:0 auto}
+
+/* Fields */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1 / -1}
+.field label{
+  font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:1.4px;text-transform:uppercase;color:#C9A84C;
+}
+.field label .req{color:#ff8a8a;margin-left:3px}
+.field input,
+.field select{
+  width:100%;
+  font-family:'Montserrat',sans-serif;font-size:15px;font-weight:500;
+  color:#fff;
+  background:rgba(8,13,24,.72);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:10px;
+  padding:14px 16px;
+  transition:border-color .25s ease,background .25s ease,box-shadow .25s ease;
+  appearance:none;
+  -webkit-appearance:none;
+}
+.field select{
+  background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9A84C' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+  background-size:16px;
+  padding-right:44px;
+  cursor:pointer;
+}
+.field select option{background:#0f1729;color:#e8ecf4}
+.field input::placeholder{color:#5f6b80}
+.field input:hover,.field select:hover{border-color:rgba(201,168,76,.4)}
+.field input:focus,.field select:focus{
+  outline:none;
+  border-color:#C9A84C;
+  background:rgba(8,13,24,.92);
+  box-shadow:0 0 0 3px rgba(201,168,76,.18);
+}
+.field .hint{font-size:11px;color:#6c7891;letter-spacing:.2px}
+
+/* Ticket choice */
+.ticket-choice{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.ticket{
+  position:relative;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:12px;
+  padding:16px 16px 16px 44px;
+  cursor:pointer;
+  background:rgba(8,13,24,.5);
+  transition:border-color .25s ease,background .25s ease,transform .2s ease;
+}
+.ticket:hover{border-color:rgba(201,168,76,.45);transform:translateY(-2px)}
+.ticket input{position:absolute;opacity:0;width:0;height:0}
+.ticket .radio{
+  position:absolute;left:16px;top:18px;
+  width:18px;height:18px;border-radius:50%;
+  border:2px solid rgba(201,168,76,.55);
+  transition:border-color .2s ease;
+}
+.ticket .radio::after{
+  content:'';position:absolute;inset:3px;border-radius:50%;
+  background:#C9A84C;transform:scale(0);transition:transform .2s ease;
+}
+.ticket input:checked ~ .radio{border-color:#C9A84C}
+.ticket input:checked ~ .radio::after{transform:scale(1)}
+.ticket:has(input:checked){border-color:#C9A84C;background:rgba(201,168,76,.09);box-shadow:0 0 0 1px rgba(201,168,76,.25) inset}
+.ticket input:focus-visible ~ .radio{outline:3px solid #C9A84C;outline-offset:3px}
+.ticket-name{
+  display:block;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;
+  color:#fff;letter-spacing:.4px;margin-bottom:3px;
+}
+.ticket-name .tag{color:#C9A84C}
+.ticket-desc{display:block;font-size:11.5px;color:#8b97ad;line-height:1.5}
+
+/* Error messages */
+.error-msg{
+  font-size:12px;color:#ff9a9a;font-weight:600;letter-spacing:.2px;
+  min-height:0;display:none;
+}
+.error-msg.show{display:block;animation:shake .35s ease}
+@keyframes shake{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-4px)}
+  75%{transform:translateX(4px)}
+}
+.field.invalid input,.field.invalid select{border-color:#c94c4c;background:rgba(80,20,20,.25)}
+
+/* Submit */
+.submit-wrap{margin-top:30px;text-align:center}
+.btn-submit{
+  width:100%;
+  font-family:'Montserrat',sans-serif;font-size:16px;font-weight:900;
+  letter-spacing:1.2px;text-transform:uppercase;
+  color:#080d18;
+  background:linear-gradient(135deg,#C9A84C 0%,#e2c877 50%,#C9A84C 100%);
+  background-size:200% auto;
+  border:none;border-radius:12px;
+  padding:20px 32px;cursor:pointer;
+  transition:background-position .5s ease,transform .25s ease,box-shadow .25s ease;
+  box-shadow:0 12px 36px rgba(201,168,76,.32);
+}
+.btn-submit:hover:not(:disabled){
+  background-position:right center;
+  transform:translateY(-2px);
+  box-shadow:0 18px 46px rgba(201,168,76,.5);
+}
+.btn-submit:active:not(:disabled){transform:translateY(0)}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+.trust-line{
+  margin-top:16px;font-size:12px;color:#7b8699;letter-spacing:.3px;
+  display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;
+}
+.trust-line span{display:inline-flex;align-items:center;gap:5px}
+
+/* Webhook status */
+#webhookStatus{
+  display:none;
+  margin-top:18px;
+  padding:14px 18px;
+  border-radius:10px;
+  font-size:14px;font-weight:600;
+  text-align:center;
+  line-height:1.5;
+}
+
+/* ============================================================
+   SUCCESS PANEL
+   ============================================================ */
+.success-panel{
+  display:none;
+  text-align:center;
+  padding:12px 0 8px;
+  animation:fadeUp .6s ease forwards;
+}
+.success-panel.show{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.success-icon{
+  width:78px;height:78px;margin:0 auto 22px;border-radius:50%;
+  background:linear-gradient(135deg,rgba(201,168,76,.2),rgba(201,168,76,.05));
+  border:2px solid #C9A84C;
+  display:flex;align-items:center;justify-content:center;
+  font-size:36px;color:#C9A84C;
+  box-shadow:0 0 40px rgba(201,168,76,.3);
+}
+.success-panel h2{font-size:clamp(1.8rem,4.5vw,2.4rem);color:#fff;margin-bottom:12px}
+.success-panel h2 .gold{color:#C9A84C}
+.success-panel p{font-size:15px;color:#b9c3d4;max-width:540px;margin:0 auto 14px;line-height:1.75}
+.success-panel .name-highlight{color:#C9A84C;font-weight:700}
+
+.next-steps{
+  text-align:left;max-width:520px;margin:28px auto 0;
+  background:rgba(8,13,24,.55);
+  border:1px solid rgba(201,168,76,.22);
+  border-radius:14px;padding:24px 26px;
+}
+.next-steps h4{
+  font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;
+  letter-spacing:2.4px;text-transform:uppercase;color:#C9A84C;margin-bottom:16px;
+}
+.next-steps ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+.next-steps li{
+  display:flex;gap:12px;font-size:13.5px;color:#c4cddc;line-height:1.6;
+}
+.next-steps li .num{
+  flex-shrink:0;width:22px;height:22px;border-radius:50%;
+  background:rgba(201,168,76,.16);border:1px solid rgba(201,168,76,.4);
+  color:#C9A84C;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;margin-top:1px;
+}
+.next-steps li strong{color:#fff}
+
+.vip-upsell{
+  margin-top:28px;max-width:520px;margin-left:auto;margin-right:auto;
+  background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(201,168,76,.03));
+  border:1px solid rgba(201,168,76,.4);
+  border-radius:14px;padding:24px 26px;text-align:center;
+}
+.vip-upsell .vip-label{
+  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;
+  letter-spacing:3px;text-transform:uppercase;color:#C9A84C;margin-bottom:8px;
+}
+.vip-upsell h4{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;margin-bottom:8px}
+.vip-upsell p{font-size:13px;color:#a9b4c6;margin-bottom:16px;line-height:1.6}
+.btn-ghost{
+  display:inline-block;
+  font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;
+  letter-spacing:1.2px;text-transform:uppercase;
+  color:#C9A84C;background:transparent;
+  border:2px solid #C9A84C;border-radius:10px;
+  padding:13px 26px;cursor:pointer;
+  transition:background .25s ease,transform .2s ease;
+}
+.btn-ghost:hover{background:rgba(201,168,76,.13);transform:translateY(-2px)}
+
+.btn-reset{
+  margin-top:22px;
+  font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;
+  letter-spacing:1.2px;text-transform:uppercase;
+  color:#8b97ad;background:none;border:none;cursor:pointer;
+  text-decoration:underline;text-underline-offset:4px;
+  transition:color .2s ease;
+}
+.btn-reset:hover{color:#C9A84C}
+
+/* ============================================================
+   SECTIONS BELOW FORM
+   ============================================================ */
+.section{padding:64px 0}
+.section-alt{background:rgba(8,13,24,.45);border-top:1px solid rgba(201,168,76,.12);border-bottom:1px solid rgba(201,168,76,.12)}
+.section-head{text-align:center;margin-bottom:44px}
+.section-head .eyebrow{
+  display:inline-block;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;
+  letter-spacing:3px;text-transform:uppercase;color:#C9A84C;
+  border:1px solid rgba(201,168,76,.35);border-radius:4px;
+  padding:6px 14px;margin-bottom:16px;
+}
+.section-head h2{font-size:clamp(1.8rem,4.5vw,2.6rem);color:#fff;margin-bottom:12px}
+.section-head h2 .gold{color:#C9A84C}
+.section-head p{font-size:15px;color:#98a3b8;max-width:560px;margin:0 auto;line-height:1.7}
+
+/* Timezone grid */
+.tz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.tz-card{
+  background:rgba(26,39,68,.55);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;padding:18px 20px;
+  transition:border-color .25s ease,transform .25s ease;
+}
+.tz-card:hover{border-color:rgba(201,168,76,.35);transform:translateY(-3px)}
+.tz-card .flag{font-size:20px;display:block;margin-bottom:8px}
+.tz-card .region{
+  font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;
+  letter-spacing:1.4px;text-transform:uppercase;color:#C9A84C;margin-bottom:5px;
+}
+.tz-card .time{font-size:14px;color:#dbe3ef;font-weight:600;line-height:1.5}
+
+/* Benefits */
+.benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.benefit{
+  background:linear-gradient(150deg,rgba(26,39,68,.7),rgba(13,20,38,.7));
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:14px;padding:26px 24px;
+  transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease;
+}
+.benefit:hover{border-color:rgba(201,168,76,.35);transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.benefit .b-icon{font-size:28px;display:block;margin-bottom:14px}
+.benefit h4{
+  font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;
+  letter-spacing:.6px;color:#fff;margin-bottom:8px;
+}
+.benefit p{font-size:13.5px;color:#98a3b8;line-height:1.65}
+
+/* Quote */
+.quote-block{
+  text-align:center;max-width:700px;margin:0 auto;
+  border-left:3px solid #C9A84C;
+  padding:8px 0 8px 28px;
+  text-align:left;
+}
+.quote-block p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.25rem,3vw,1.7rem);
+  font-style:italic;color:#e8ecf4;line-height:1.5;margin-bottom:12px;
+}
+.quote-block cite{
+  font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;color:#C9A84C;font-style:normal;
+}
+
+/* Footer */
+.footer{
+  padding:44px 0 40px;text-align:center;
+  border-top:1px solid rgba(255,255,255,.07);
+  background:rgba(8,13,24,.6);
+}
+.footer img{height:44px;margin:0 auto 16px;opacity:.85}
+.footer p{font-size:12px;color:#5f6b80;line-height:1.8}
+.footer .fine{font-size:11px;color:#4a5468;margin-top:10px;max-width:560px;margin-left:auto;margin-right:auto}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:720px){
+  .form-card{padding:32px 22px 30px;border-radius:16px}
+  .form-grid{grid-template-columns:1fr;gap:16px}
+  .ticket-choice{grid-template-columns:1fr}
+  .hero{padding:44px 0 36px}
+  .section{padding:48px 0}
+  .cd-unit{padding:11px 14px;min-width:64px}
+  .cd-num{font-size:24px}
+  .cd-sep{font-size:18px}
+  .brand img{height:34px}
+  .brand-text{font-size:10px;letter-spacing:1.6px}
+  .brand-text span{font-size:9px}
+  .topbar-cta{font-size:11px;padding:9px 16px}
+}
+@media(max-width:400px){
+  .cd-unit{padding:9px 11px;min-width:56px}
+  .cd-num{font-size:20px}
+  .cd-lbl{font-size:8px;letter-spacing:1.2px}
+  .container{padding:0 16px}
+}
+
+/* Reduce motion */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+
+/* ============================================================
+   PRINT — clean confirmation
+   ============================================================ */
+@media print{
+  body{background:#fff;color:#111}
+  .topbar,.hero .free-pill,.countdown,.btn-submit,.btn-reset,.btn-ghost,
+  .topbar-cta,.trust-line,#webhookStatus,.vip-upsell,.footer{display:none!important}
+  .form-card{background:#fff;border:1px solid #ccc;box-shadow:none;padding:20px}
+  .form-head h2,.success-panel h2,.hero h1{color:#111}
+  .field label{color:#333}
+  .field input,.field select{background:#fff;color:#111;border:1px solid #999}
+  .next-steps{background:#f7f7f7;border:1px solid #ccc}
+  .next-steps li{color:#222}
+  .next-steps li strong{color:#000}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     TOP BAR
+     ============================================================ -->
+<header class="topbar">
+  <div class="container topbar-inner">
+    <div class="brand">
+      <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars logo">
+      <div class="brand-text">
+        AccessWorld Seminars
+        <span>Joshua Roy</span>
+      </div>
+    </div>
+    <button class="topbar-cta" type="button" onclick="scrollToForm()" aria-label="Scroll to the free registration form">
+      Free Registration
+    </button>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="free-pill">
+      <span class="dot" aria-hidden="true"></span>
+      Free Live Seminar — Limited Seats
+    </div>
+
+    <h1>Unlock Your <span class="gold">Incredible Self</span></h1>
+
+    <p class="hero-sub">
+      A 6‑hour live transformational seminar with <strong>Joshua Roy</strong>.
+      Master your emotions, reprogram your nervous system, and unlock the version of
+      yourself you've always known was possible — <strong>at no cost.</strong>
+    </p>
+
+    <!-- Countdown -->
+    <div class="countdown" id="countdown" role="timer" aria-label="Time remaining until the seminar begins">
+      <div class="cd-unit"><span class="cd-num" id="cd-d">00</span><span class="cd-lbl">Days</span></div>
+      <div class="cd-sep" aria-hidden="true">:</div>
+      <div class="cd-unit"><span class="cd-num" id="cd-h">00</span><span class="cd-lbl">Hours</span></div>
+      <div class="cd-sep" aria-hidden="true">:</div>
+      <div class="cd-unit"><span class="cd-num" id="cd-m">00</span><span class="cd-lbl">Minutes</span></div>
+      <div class="cd-sep" aria-hidden="true">:</div>
+      <div class="cd-unit"><span class="cd-num" id="cd-s">00</span><span class="cd-lbl">Seconds</span></div>
+    </div>
+
+    <div class="hero-date">
+      <strong>Friday, 30 October 2026</strong> &nbsp;·&nbsp; Live on Zoom &nbsp;·&nbsp; 6 Hours
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     REGISTRATION FORM
+     ============================================================ -->
+<section class="form-section" id="register">
+  <div class="container">
+    <div class="narrow">
+
+      <div class="form-card">
+
+        <!-- ---------- FORM STATE ---------- -->
+        <div id="formState">
+          <div class="form-head">
+            <span class="eyebrow">Step 1 of 1 — Takes 30 Seconds</span>
+            <h2>Save Your Free Seat</h2>
+            <p>Enter your details below and we'll send your joining link straight to your inbox.</p>
+          </div>
+
+          <form id="signupForm" novalidate>
+
+            <div class="form-grid">
+
+              <!-- Name -->
+              <div class="field" id="field-name">
+                <label for="name">Full Name <span class="req">*</span></label>
+                <input type="text" id="name" name="name" placeholder="e.g. Sarah Thompson"
+                       autocomplete="name" aria-required="true" aria-describedby="err-name">
+                <span class="error-msg" id="err-name" role="alert">Please enter your full name.</span>
+              </div>
+
+              <!-- Phone -->
+              <div class="field" id="field-phone">
+                <label for="phone">Phone <span class="req">*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="e.g. +61 400 000 000"
+                       autocomplete="tel" aria-required="true" aria-describedby="err-phone">
+                <span class="error-msg" id="err-phone" role="alert">Please enter a valid phone number.</span>
+              </div>
+
+              <!-- Email -->
+              <div class="field" id="field-email">
+                <label for="email">Email Address <span class="req">*</span></label>
+                <input type="email" id="email" name="email" placeholder="e.g. you@email.com"
+                       autocomplete="email" aria-required="true" aria-describedby="err-email">
+                <span class="error-msg" id="err-email" role="alert">Please enter a valid email address.</span>
+              </div>
+
+              <!-- Country -->
+              <div class="field" id="field-country">
+                <label for="country">Country <span class="req">*</span></label>
+                <select id="country" name="country" aria-required="true" aria-describedby="err-country">
+                  <option value="" disabled selected>🌍 Select Country</option>
+                  <option value="Australia">🇦🇺 Australia</option>
+                  <option value="Canada">🇨🇦 Canada</option>
+                  <option value="Ireland">🇮🇪 Ireland</option>
+                  <option value="New Zealand">🇳🇿 New Zealand</option>
+                  <option value="United Kingdom">🇬🇧 United Kingdom</option>
+                  <option value="United States">🇺🇸 United States</option>
+                </select>
+                <span class="error-msg" id="err-country" role="alert">Please select your country.</span>
+              </div>
+
+              <!-- Ticket choice -->
+              <div class="field full">
+                <label id="ticketLabel">Choose Your Ticket</label>
+                <div class="ticket-choice" role="radiogroup" aria-labelledby="ticketLabel">
+
+                  <label class="ticket" for="ticket-free">
+                    <input type="radio" id="ticket-free" name="ticket" value="General Admission (FREE)" checked>
+                    <span class="radio" aria-hidden="true"></span>
+                    <span class="ticket-name">General Admission <span class="tag">— FREE</span></span>
+                    <span class="ticket-desc">Full 6‑hour live seminar + live Q&amp;A. No cost.</span>
+                  </label>
+
+                  <label class="ticket" for="ticket-vip">
+                    <input type="radio" id="ticket-vip" name="ticket" value="VIP Upgrade ($997 AUD)">
+                    <span class="radio" aria-hidden="true"></span>
+                    <span class="ticket-name">VIP Upgrade <span class="tag">— $997 AUD</span></span>
+                    <span class="ticket-desc">All bonuses, 30‑day replay, private community.</span>
+                  </label>
+
+                </div>
+                <span class="hint">No payment required now — VIP upgrades are arranged after registration.</span>
+              </div>
+
+            </div>
+
+            <!-- Submit -->
+            <div class="submit-wrap">
+              <button type="submit" class="btn-submit" id="submitBtn"
+                      aria-label="Submit registration and save my free seat">
+                Save My Free Seat →
+              </button>
+              <div class="trust-line">
+                <span>🔒 Your details stay private</span>
+                <span>·</span>
+                <span>✉️ Joining link sent by email</span>
+              </div>
+            </div>
+
+            <!-- Webhook status -->
+            <div id="webhookStatus" role="status" aria-live="polite"></div>
+
+          </form>
+        </div>
+
+        <!-- ---------- SUCCESS STATE ---------- -->
+        <div class="success-panel" id="successPanel" role="status" aria-live="polite">
+          <div class="success-icon" aria-hidden="true">✓</div>
+          <h2>You're In, <span class="gold" id="successName">Friend</span>!</h2>
+          <p>
+            Your free seat for <strong>Unlock Your Incredible Self</strong> is confirmed.
+            We've received your registration and your joining details are on their way.
+          </p>
+
+          <div class="next-steps">
+            <h4>What Happens Next</h4>
+            <ul>
+              <li><span class="num">1</span><span>Check your inbox (and spam folder) for your <strong>Zoom joining link</strong>.</span></li>
+              <li><span class="num">2</span><span>Block out <strong>Friday 30 October 2026</strong> — arrive 5 minutes early.</span></li>
+              <li><span class="num">3</span><span>Bring a notebook, water, and an open mind. This is a <strong>live, interactive</strong> session.</span></li>
+              <li><span class="num">4</span><span>Complete the short <strong>Goal‑Setting Session</strong> we'll email you before the event.</span></li>
+            </ul>
+          </div>
+
+          <div class="vip-upsell">
+            <div class="vip-label">Want to Go Deeper?</div>
+            <h4>Upgrade to VIP — $997 AUD</h4>
+            <p>
+              Get the State Elicitation Script, NSR Quick‑Start Guide, 30‑day replay access,
+              private community, and a VIP‑only bonus session with Joshua.
+            </p>
+            <a href="https://accessworldseminars-ship-it.github.io/results/purchaseunlock"
+               class="btn-ghost" aria-label="Upgrade to VIP for 997 Australian dollars">
+              Explore VIP Upgrade
+            </a>
+          </div>
+
+          <button type="button" class="btn-reset" id="resetBtn"
+                  aria-label="Register another person">
+            Register someone else
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TIMEZONES
+     ============================================================ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Find Your Time</span>
+      <h2>When to <span class="gold">Show Up</span></h2>
+      <p>Friday, 30 October 2026 — a live 6‑hour seminar. Find your city below.</p>
+    </div>
+
+    <div class="tz-grid">
+      <div class="tz-card">
+        <span class="flag" aria-hidden="true">🇦🇺</span>
+        <div class="region">Brisbane (AEST)</div>
+        <div class="time">7:00 AM – 1:00 PM</div>
+      </div>
+      <div class="tz-card">
+        <span class="flag" aria-hidden="true">🇦🇺</span>
+        <div class="region">Sydney / Melbourne (AEDT)</div>
+        <div class="time">8:00 AM – 2:00 PM</div>
+      </div>
+      <div class="tz-card">
+        <span class="flag" aria-hidden="true">🇳🇿</span>
+        <div class="region">New Zealand (NZDT)</div>
+        <div class="time">10:00 AM – 4:00 PM</div>
+      </div>
+      <div class="tz-card">
+        <span class="flag" aria-hidden="true">🇺🇸</span>
+        <div class="region">USA Eastern (EDT)</div>
+        <div class="time">Thu 29 Oct · 5:00 PM – 11:00 PM</div>
+      </div>
+      <div class="tz-card">
+        <span class="flag" aria-hidden="true">🇺🇸</span>
+        <div class="region">USA Central (CDT)</div>
+        <div class="time">4:00 PM – 10:00 PM</div>
+      </div>
+      <div class="tz-card">
+        <span class="flag" aria-hidden="true">🇺🇸</span>
+        <div class="region">USA Pacific (PDT)</div>
+        <div class="time">2:00 PM – 8:00 PM</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHAT YOU'LL GET
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Included Free</span>
+      <h2>What You'll <span class="gold">Walk Away With</span></h2>
+      <p>Six hours. Three pathways. Tools you can use the moment you leave.</p>
+    </div>
+
+    <div class="benefits">
+      <div class="benefit">
+        <span class="b-icon" aria-hidden="true">🎯</span>
+        <h4>The Destiny Pathway</h4>
+        <p>Define your purpose with clarity, build a compelling vision, and align your daily actions with what matters most.</p>
+      </div>
+      <div class="benefit">
+        <span class="b-icon" aria-hidden="true">❤️</span>
+        <h4>The Emotion Pathway</h4>
+        <p>Master emotional resilience, release stored emotion at its root, and end the loops that keep you stuck.</p>
+      </div>
+      <div class="benefit">
+        <span class="b-icon" aria-hidden="true">🧠</span>
+        <h4>The Thought Pathway</h4>
+        <p>Reprogram limiting beliefs below conscious awareness and install strategies that actually create progress.</p>
+      </div>
+      <div class="benefit">
+        <span class="b-icon" aria-hidden="true">⚡</span>
+        <h4>Nervous System Reprogramming</h4>
+        <p>Understand how emotions are created, stored and released in the body — and how to work with them, not against them.</p>
+      </div>
+      <div class="benefit">
+        <span class="b-icon" aria-hidden="true">🗣️</span>
+        <h4>Live Q&amp;A with Joshua</h4>
+        <p>Ask questions in real time. This is a fully live, interactive session — not a recording.</p>
+      </div>
+      <div class="benefit">
+        <span class="b-icon" aria-hidden="true">📋</span>
+        <h4>Goal‑Setting Session</h4>
+        <p>Complete a short pre‑event exercise so you arrive ready to extract maximum value from every hour.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     QUOTE
+     ============================================================ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="quote-block">
+      <p>“The tools are already inside you. You just need the right key to unlock them.”</p>
+      <cite>— Joshua Roy, AccessWorld Seminars</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <img src="https://i.ibb.co/ynXdYpmL/worldjjpgsf.png" alt="AccessWorld Seminars logo">
+    <p>AccessWorld Seminars &copy; 2015–2026. All Rights Reserved. | Brisbane, Australia</p>
+    <p>Results Coach &amp; Seminar Leader | Creator of Nervous System Reprogramming (NSR)</p>
+    <p class="fine">
+      Your information is used solely to send you your seminar joining details and related updates.
+      You can unsubscribe at any time.
+    </p>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ==========================================================
+     CONFIG
+     ========================================================== */
+  var WEBHOOK_URL = 'https://cloud.activepieces.com/api/v1/webhooks/52NbZ98JuauiBQh5movJ1';
+  var EVENT_NAME  = 'Unlock Your Incredible Self';
+  var EVENT_DATE  = 'Friday 30 October 2026';
+  var EVENT_TIME  = '7:00 AM AEST (Brisbane)';
+
+  /* Prevent duplicate submissions */
+  var isSubmitting = false;
+
+  /* ==========================================================
+     COUNTDOWN TIMER
+     Target: Friday 30 Oct 2026, 7:00 AM AEST (UTC+10) = 29 Oct 21:00 UTC
+     ========================================================== */
+  var targetDate = new Date('2026-10-29T21:00:00Z');
+
+  function updateCountdown() {
+    var now  = new Date();
+    var diff = targetDate - now;
+
+    if (diff <= 0) {
+      var el = document.getElementById('countdown');
+      if (el) {
+        el.innerHTML = '<div style="font-family:Montserrat,sans-serif;font-size:20px;color:#C9A84C;font-weight:900;letter-spacing:1px">THE SEMINAR HAS STARTED!</div>';
+      }
+      return;
+    }
+
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+
+    var map = { 'cd-d': d, 'cd-h': h, 'cd-m': m, 'cd-s': s };
+    for (var id in map) {
+      if (map.hasOwnProperty(id)) {
+        var node = document.getElementById(id);
+        if (node) node.textContent = String(map[id]).padStart(2, '0');
+      }
+    }
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  /* ==========================================================
+     SCROLL HELPER
+     ========================================================== */
+  window.scrollToForm = function () {
+    var target = document.getElementById('register');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  /* ==========================================================
+     VALIDATION
+     ========================================================== */
+  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  var phonePattern = /^[+()\-\s\d]{7,20}$/;
+
+  function setInvalid(fieldId, errorId, show) {
+    var field = document.getElementById(fieldId);
+    var error = document.getElementById(errorId);
+    if (!field || !error) return;
+    if (show) {
+      field.classList.add('invalid');
+      error.classList.add('show');
+    } else {
+      field.classList.remove('invalid');
+      error.classList.remove('show');
+    }
+  }
+
+  function validateForm() {
+    var name    = document.getElementById('name').value.trim();
+    var phone   = document.getElementById('phone').value.trim();
+    var email   = document.getElementById('email').value.trim();
+    var country = document.getElementById('country').value;
+
+    var valid = true;
+    var firstInvalid = null;
+
+    /* Name */
+    if (name.length < 2) {
+      setInvalid('field-name', 'err-name', true);
+      valid = false;
+      if (!firstInvalid) firstInvalid = 'name';
+    } else {
+      setInvalid('field-name', 'err-name', false);
+    }
+
+    /* Phone */
+    if (!phonePattern.test(phone)) {
+      setInvalid('field-phone', 'err-phone', true);
+      valid = false;
+      if (!firstInvalid) firstInvalid = 'phone';
+    } else {
+      setInvalid('field-phone', 'err-phone', false);
+    }
+
+    /* Email */
+    if (!emailPattern.test(email)) {
+      setInvalid('field-email', 'err-email', true);
+      valid = false;
+      if (!firstInvalid) firstInvalid = 'email';
+    } else {
+      setInvalid('field-email', 'err-email', false);
+    }
+
+    /* Country */
+    if (!country) {
+      setInvalid('field-country', 'err-country', true);
+      valid = false;
+      if (!firstInvalid) firstInvalid = 'country';
+    } else {
+      setInvalid('field-country', 'err-country', false);
+    }
+
+    if (!valid && firstInvalid) {
+      var node = document.getElementById(firstInvalid);
+      if (node) node.focus();
+    }
+
+    return valid;
+  }
+
+  /* Clear individual errors as the user types/selects */
+  ['name', 'phone', 'email', 'country'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var evt = (el.tagName === 'SELECT') ? 'change' : 'input';
+    el.addEventListener(evt, function () {
+      setInvalid('field-' + id, 'err-' + id, false);
+    });
+  });
+
+  /* ==========================================================
+     WEBHOOK — SEND TO TELEGRAM VIA ACTIVEPIECES
+     ========================================================== */
+  async function sendToTelegram(name, phone, country, email, ticket) {
+    var formData = {
+      name: name,
+      phone: phone,
+      country: country,
+      email: email,
+      ticket: ticket,
+      event: EVENT_NAME,
+      event_date: EVENT_DATE,
+      event_time: EVENT_TIME,
+      type: 'Seminar Signup',
+      source: 'Unlock Your Incredible Self — Signup Page',
+      timestamp: new Date().toISOString()
+    };
+
+    console.log('Sending to Telegram:', formData);
+
+    var statusDiv = document.getElementById('webhookStatus');
+    if (statusDiv) {
+      statusDiv.style.display = 'block';
+      statusDiv.style.background = '#fff3cd';
+      statusDiv.style.color = '#000';
+      statusDiv.innerHTML = '⏳ Sending...';
+    }
+
+    try {
+      var response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        if (statusDiv) {
+          statusDiv.innerHTML = '✓ Report sent successfully!';
+          statusDiv.style.background = '#d4edda';
+          statusDiv.style.color = '#155724';
+          setTimeout(function () { statusDiv.style.display = 'none'; }, 3000);
+        }
+        return true;
+      } else {
+        if (statusDiv) {
+          statusDiv.innerHTML = '⚠️ Error: ' + response.status;
+          statusDiv.style.background = '#f8d7da';
+          statusDiv.style.color = '#721c24';
+        }
+        return false;
+      }
+    } catch (error) {
+      if (statusDiv) {
+        statusDiv.innerHTML = '⚠️ Error: ' + error.message;
+        statusDiv.style.background = '#f8d7da';
+        statusDiv.style.color = '#721c24';
+      }
+      return false;
+    }
+  }
+
+  /* ==========================================================
+     FORM SUBMIT
+     ========================================================== */
+  var form = document.getElementById('signupForm');
+  var submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    /* Guard against duplicate submissions */
+    if (isSubmitting) return;
+
+    if (!validateForm()) return;
+
+    isSubmitting = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Saving Your Seat...';
+
+    var name    = document.getElementById('name').value.trim();
+    var phone   = document.getElementById('phone').value.trim();
+    var email   = document.getElementById('email').value.trim();
+    var country = document.getElementById('country').value;
+    var ticketEl = document.querySelector('input[name="ticket"]:checked');
+    var ticket  = ticketEl ? ticketEl.value : 'General Admission (FREE)';
+
+    var success = await sendToTelegram(name, phone, country, email, ticket);
+
+    if (success) {
+      showSuccess(name);
+    } else {
+      /* Re-enable so they can retry */
+      isSubmitting = false;
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Save My Free Seat →';
+    }
+  });
+
+  /* ==========================================================
+     SUCCESS STATE
+     ========================================================== */
+  function showSuccess(name) {
+    var firstName = name.split(' ')[0] || 'Friend';
+
+    var formState = document.getElementById('formState');
+    var successPanel = document.getElementById('successPanel');
+    var successName = document.getElementById('successName');
+
+    if (successName) successName.textContent = firstName;
+
+    if (formState) formState.style.display = 'none';
+    if (successPanel) successPanel.classList.add('show');
+
+    /* Scroll the confirmation into view */
+    var card = document.querySelector('.form-card');
+    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    /* Reset the guard so a future registration can occur */
+    isSubmitting = false;
+  }
+
+  /* ==========================================================
+     RESET — REGISTER ANOTHER PERSON
+     ========================================================== */
+  var resetBtn = document.getElementById('resetBtn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function () {
+      /* Reset form fields */
+      form.reset();
+
+      /* Clear all validation states */
+      ['name', 'phone', 'email', 'country'].forEach(function (id) {
+        setInvalid('field-' + id, 'err-' + id, false);
+      });
+
+      /* Hide status */
+      var statusDiv = document.getElementById('webhookStatus');
+      if (statusDiv) {
+        statusDiv.style.display = 'none';
+        statusDiv.innerHTML = '';
+      }
+
+      /* Restore button */
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Save My Free Seat →';
+      isSubmitting = false;
+
+      /* Swap panels */
+      var formState = document.getElementById('formState');
+      var successPanel = document.getElementById('successPanel');
+      if (successPanel) successPanel.classList.remove('show');
+      if (formState) formState.style.display = 'block';
+
+      /* Scroll back to form top */
+      window.scrollToForm();
+      var nameField = document.getElementById('name');
+      if (nameField) setTimeout(function () { nameField.focus(); }, 400);
+    });
+  }
+
+  /* ==========================================================
+     KEYBOARD — Enter key submits when focused in a text field
+     ========================================================== */
+  ['name', 'phone', 'email'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit', { cancelable: true }));
+      }
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
