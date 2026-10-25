@@ -13,9 +13,9 @@
   <style>
     /* ===== CSS VARIABLES ===== */
     :root {
-      --primary: #0a2e4a;          /* deep navy */
-      --secondary: #1b4f6e;        /* mid blue */
-      --accent: #d4a11e;           /* gold */
+      --primary: #0a2e4a;
+      --secondary: #1b4f6e;
+      --accent: #d4a11e;
       --accent-light: #e8c45a;
       --text-dark: #1e2a36;
       --text-light: #5e6f7e;
@@ -29,19 +29,14 @@
       --nav-height: 80px;
     }
 
-    /* ===== RESET & BASE ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Open Sans', sans-serif;
       color: var(--text-dark);
       background-color: var(--bg-light);
       line-height: 1.6;
-      padding-top: var(--nav-height); /* fixed nav offset */
+      padding-top: var(--nav-height);
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -52,19 +47,9 @@
       color: var(--primary);
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    ul, ol {
-      margin-bottom: 1rem;
-      padding-left: 1.5rem;
-    }
-
-    li {
-      margin-bottom: 0.5rem;
-    }
+    a { text-decoration: none; color: inherit; }
+    ul, ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
 
     .container {
       width: 100%;
@@ -73,9 +58,7 @@
       padding: 0 24px;
     }
 
-    .section {
-      padding: 80px 0;
-    }
+    .section { padding: 80px 0; }
 
     .section-title {
       font-size: 2.4rem;
@@ -105,9 +88,7 @@
       font-weight: 400;
     }
 
-    .accent-text {
-      color: var(--accent);
-    }
+    .accent-text { color: var(--accent); }
 
     /* ===== BUTTONS ===== */
     .btn {
@@ -130,18 +111,6 @@
       background: var(--accent-light);
       transform: translateY(-3px);
       box-shadow: 0 8px 24px rgba(212, 161, 30, 0.4);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--accent);
-      color: var(--accent);
-      box-shadow: none;
-    }
-
-    .btn-outline:hover {
-      background: var(--accent);
-      color: var(--primary);
     }
 
     /* ===== NAVIGATION ===== */
@@ -170,14 +139,8 @@
       gap: 8px;
     }
 
-    .nav-logo i {
-      color: var(--accent);
-      font-size: 1.8rem;
-    }
-
-    .nav-logo span {
-      color: var(--accent);
-    }
+    .nav-logo i { color: var(--accent); font-size: 1.8rem; }
+    .nav-logo span { color: var(--accent); }
 
     .nav-links {
       display: flex;
@@ -198,9 +161,7 @@
       gap: 6px;
     }
 
-    .nav-links a i {
-      font-size: 1rem;
-    }
+    .nav-links a i { font-size: 1rem; }
 
     .nav-links a:hover,
     .nav-links a.active {
@@ -220,11 +181,9 @@
       transition: var(--transition);
     }
 
-    .mobile-menu-btn:hover {
-      color: var(--accent);
-    }
+    .mobile-menu-btn:hover { color: var(--accent); }
 
-    /* ===== HERO SECTION ===== */
+    /* ===== HERO ===== */
     .hero-header {
       background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       padding: 80px 0 100px;
@@ -273,9 +232,7 @@
       line-height: 1.15;
     }
 
-    .hero-content h1 span {
-      color: var(--accent);
-    }
+    .hero-content h1 span { color: var(--accent); }
 
     .hero-content p {
       font-size: 1.25rem;
@@ -314,28 +271,8 @@
       margin-bottom: 1.2rem;
     }
 
-    .card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.8rem;
-      color: var(--primary);
-    }
-
-    .card p {
-      color: var(--text-light);
-      flex: 1;
-      font-size: 0.98rem;
-    }
-
-    .card ul {
-      margin-top: 0.8rem;
-      padding-left: 1.2rem;
-      color: var(--text-light);
-      font-size: 0.95rem;
-    }
-
-    .card ul li {
-      margin-bottom: 0.4rem;
-    }
+    .card h3 { font-size: 1.4rem; margin-bottom: 0.8rem; color: var(--primary); }
+    .card p { color: var(--text-light); flex: 1; font-size: 0.98rem; }
 
     /* ===== CONTENT SECTIONS ===== */
     .content-section {
@@ -377,9 +314,7 @@
       color: var(--text-dark);
     }
 
-    .content-section blockquote strong {
-      color: var(--primary);
-    }
+    .content-section blockquote strong { color: var(--primary); }
 
     .highlight-box {
       background: linear-gradient(135deg, rgba(212, 161, 30, 0.08) 0%, rgba(212, 161, 30, 0.03) 100%);
@@ -389,10 +324,7 @@
       margin: 2rem 0;
     }
 
-    .highlight-box h3 {
-      margin-top: 0;
-      color: var(--primary);
-    }
+    .highlight-box h3 { margin-top: 0; color: var(--primary); }
 
     .two-col {
       display: grid;
@@ -408,16 +340,8 @@
       border: 1px solid rgba(0, 0, 0, 0.04);
     }
 
-    .col-box h4 {
-      color: var(--primary);
-      font-size: 1.15rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .col-box p {
-      font-size: 0.98rem;
-      color: var(--text-light);
-    }
+    .col-box h4 { color: var(--primary); font-size: 1.15rem; margin-bottom: 0.8rem; }
+    .col-box p { font-size: 0.98rem; color: var(--text-light); }
 
     /* ===== NAV BUTTONS (BOTTOM) ===== */
     .nav-buttons {
@@ -442,9 +366,7 @@
       font-size: 0.95rem;
     }
 
-    .nav-button i {
-      font-size: 1.1rem;
-    }
+    .nav-button i { font-size: 1.1rem; }
 
     .nav-button:hover {
       background: var(--accent);
@@ -475,11 +397,7 @@
       font-family: 'Montserrat', sans-serif;
     }
 
-    .footer-col p {
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
+    .footer-col p { font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem; }
 
     .footer-col a {
       display: block;
@@ -489,16 +407,9 @@
       transition: var(--transition);
     }
 
-    .footer-col a:hover {
-      color: var(--accent);
-      padding-left: 4px;
-    }
+    .footer-col a:hover { color: var(--accent); padding-left: 4px; }
 
-    .social-links {
-      display: flex;
-      gap: 14px;
-      margin-top: 1rem;
-    }
+    .social-links { display: flex; gap: 14px; margin-top: 1rem; }
 
     .social-links a {
       display: inline-flex;
@@ -529,7 +440,7 @@
       color: rgba(255, 255, 255, 0.5);
     }
 
-    /* ===== FADE IN ANIMATION ===== */
+    /* ===== FADE IN ===== */
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
@@ -543,27 +454,15 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 992px) {
-      .hero-content h1 {
-        font-size: 2.6rem;
-      }
-      .two-col {
-        grid-template-columns: 1fr;
-      }
-      .section {
-        padding: 60px 0;
-      }
-      .section-title {
-        font-size: 2rem;
-      }
-      .content-section {
-        padding: 32px 24px;
-      }
+      .hero-content h1 { font-size: 2.6rem; }
+      .two-col { grid-template-columns: 1fr; }
+      .section { padding: 60px 0; }
+      .section-title { font-size: 2rem; }
+      .content-section { padding: 32px 24px; }
     }
 
     @media (max-width: 768px) {
-      .mobile-menu-btn {
-        display: block;
-      }
+      .mobile-menu-btn { display: block; }
 
       .nav-links {
         position: fixed;
@@ -581,9 +480,7 @@
         z-index: 999;
       }
 
-      .nav-links.open {
-        transform: translateY(0);
-      }
+      .nav-links.open { transform: translateY(0); }
 
       .nav-links a {
         padding: 12px 16px;
@@ -591,76 +488,30 @@
         font-size: 1rem;
       }
 
-      .hero-content h1 {
-        font-size: 2.2rem;
-      }
-
-      .hero-content p {
-        font-size: 1.1rem;
-      }
-
-      .section-title {
-        font-size: 1.8rem;
-      }
-
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
+      .hero-content h1 { font-size: 2.2rem; }
+      .hero-content p { font-size: 1.1rem; }
+      .section-title { font-size: 1.8rem; }
+      .card-grid { grid-template-columns: 1fr; }
+      .footer-content { grid-template-columns: 1fr; gap: 28px; }
     }
 
     @media (max-width: 480px) {
-      .container {
-        padding: 0 16px;
-      }
-
-      .hero-header {
-        padding: 60px 0 70px;
-      }
-
-      .hero-content h1 {
-        font-size: 1.8rem;
-      }
-
-      .hero-content p {
-        font-size: 1rem;
-      }
-
-      .section {
-        padding: 48px 0;
-      }
-
-      .section-title {
-        font-size: 1.6rem;
-      }
-
-      .btn {
-        padding: 12px 24px;
-        font-size: 0.9rem;
-      }
-
-      .nav-button {
-        padding: 10px 20px;
-        font-size: 0.85rem;
-      }
-
-      .content-section {
-        padding: 24px 16px;
-      }
-
-      .content-section h2 {
-        font-size: 1.5rem;
-      }
+      .container { padding: 0 16px; }
+      .hero-header { padding: 60px 0 70px; }
+      .hero-content h1 { font-size: 1.8rem; }
+      .hero-content p { font-size: 1rem; }
+      .section { padding: 48px 0; }
+      .section-title { font-size: 1.6rem; }
+      .btn { padding: 12px 24px; font-size: 0.9rem; }
+      .nav-button { padding: 10px 20px; font-size: 0.85rem; }
+      .content-section { padding: 24px 16px; }
+      .content-section h2 { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== NAVIGATION ===== -->
+  <!-- ===== NAVIGATION (no Home button) ===== -->
   <nav class="main-nav">
     <div class="nav-logo">
       <i class="fas fa-globe-americas"></i>
@@ -670,10 +521,7 @@
       <i class="fas fa-bars"></i>
     </button>
     <div class="nav-links" id="navLinks">
-      <a href="https://accessworldseminars-ship-it.github.io/results/">
-        <i class="fas fa-home"></i> Home
-      </a>
-      <a href="#inerrancy">
+      <a href="#inerrancy" class="active">
         <i class="fas fa-book-open"></i> Inerrancy
       </a>
       <a href="#lds-perspective">
@@ -682,13 +530,13 @@
       <a href="#faith-works">
         <i class="fas fa-hands-praying"></i> Faith & Works
       </a>
-      <a href="#allegiance" class="active">
+      <a href="#allegiance">
         <i class="fas fa-shield-alt"></i> Allegiance
       </a>
     </div>
   </nav>
 
-  <!-- ===== HERO SECTION ===== -->
+  <!-- ===== HERO ===== -->
   <section class="hero-header">
     <div class="hero-content fade-in">
       <h1>Biblical <span>Inerrancy</span> & the LDS Perspective</h1>
@@ -699,7 +547,7 @@
     </div>
   </section>
 
-  <!-- ===== MAIN CONTENT ===== -->
+  <!-- ===== CORE QUESTION ===== -->
   <section class="section" id="inerrancy">
     <div class="container">
       <div class="section-header fade-in">
@@ -727,6 +575,7 @@
     </div>
   </section>
 
+  <!-- ===== SCHOLARLY ===== -->
   <section class="section" style="background: var(--bg-white);" id="scholarly">
     <div class="container">
       <div class="section-header fade-in">
@@ -753,10 +602,20 @@
           </ul>
           <p style="margin-top: 1rem; margin-bottom: 0;">Supporters of inerrancy have proposed explanations for each of these and argue that apparent contradictions can be harmonized.</p>
         </div>
+
+        <h3>The Core Question (Revisited)</h3>
+        <p>The debate is not really about evidence alone. It often comes down to prior beliefs about:</p>
+        <ol>
+          <li>Whether God inspired Scripture.</li>
+          <li>How God would use human authors.</li>
+          <li>Whether the Bible's purpose is to provide theological truth, precise historical records, or both.</li>
+        </ol>
+        <p>So the honest answer is: If you accept biblical inerrancy, then yes, the Bible is free from error. If you approach it primarily as an ancient collection of historical documents, many scholars conclude it contains discrepancies and human limitations. Reasonable and informed people, including devout Christians, hold both positions.</p>
       </div>
     </div>
   </section>
 
+  <!-- ===== LDS PERSPECTIVE ===== -->
   <section class="section" id="lds-perspective">
     <div class="container">
       <div class="section-header fade-in">
@@ -787,6 +646,7 @@
           <li>Therefore Scripture alone appears insufficient to produce doctrinal unity.</li>
           <li>God resolves this problem by calling living prophets.</li>
         </ul>
+        <p>This is similar in principle to how ancient Israel frequently had both written scripture and living prophets. The people had the Law of Moses, yet they still needed Isaiah, Jeremiah, Ezekiel, and others to explain God's will for their own generation.</p>
 
         <div class="two-col">
           <div class="col-box">
@@ -804,13 +664,55 @@
         <blockquote>"How do we know our interpretation of Scripture is correct?"</blockquote>
         <p>to</p>
         <blockquote>"How do we know which prophet is authorized to interpret Scripture?"</blockquote>
-        <p>At the deepest level, every Christian tradition ends up relying on an authority claim. The real dividing question isn't "Are prophets perfect?" Most knowledgeable Latter-day Saints would answer "No." The real question is:</p>
+        <p>At the deepest level, every Christian tradition ends up relying on an authority claim:</p>
+        <ul>
+          <li><strong>Protestantism:</strong> Scripture is the final authority.</li>
+          <li><strong>Catholicism:</strong> Scripture plus the Church's teaching authority (Magisterium).</li>
+          <li><strong>Eastern Orthodoxy:</strong> Scripture interpreted through Holy Tradition.</li>
+          <li><strong>LDS:</strong> Scripture plus continuing revelation through living prophets.</li>
+        </ul>
+        <p>The LDS view is attractive to many because it offers a mechanism for resolving disputes: living revelation. But it also raises a further question: how does one verify that a particular prophet speaks for God? That question becomes the central issue rather than whether there are discrepancies in the biblical text.</p>
+
+        <h3>Where the Real Debate Lies</h3>
+        <p>The real dividing question isn't "Are prophets perfect?" Most knowledgeable Latter-day Saints would answer "No." The real question is:</p>
         <blockquote><strong>"Can God reliably guide His Church through imperfect people?"</strong></blockquote>
-        <p>If the answer is yes, then fallibility does not disprove prophetic authority. If the answer is no, then every mistake becomes evidence against prophetic claims.</p>
+        <p>If the answer is yes, then fallibility does not disprove prophetic authority. If the answer is no, then every mistake becomes evidence against prophetic claims. That is ultimately where the LDS perspective and many of its critics diverge. The disagreement is usually not over whether prophets are human. Both sides generally agree they are. The disagreement is whether God can entrust divine authority to imperfect human beings and still accomplish His purposes.</p>
+
+        <h3>The Four Revealed Works</h3>
+        <p>From an LDS perspective, a significant difference from many forms of Protestantism is the expanded canon. Latter-day Saints claim that God has provided additional sources of revelation:</p>
+        <ol>
+          <li>The Bible</li>
+          <li>The Book of Mormon</li>
+          <li>Doctrine and Covenants</li>
+          <li>Pearl of Great Price</li>
+          <li>Living prophets and apostles</li>
+        </ol>
+        <p>This creates a larger canon and a continuing mechanism for resolving doctrinal questions. For example:</p>
+        <ul>
+          <li>The Bible teaches baptism.</li>
+          <li>The Book of Mormon clarifies the mode and purpose of baptism.</li>
+          <li>Doctrine and Covenants restores priesthood authority and church organization.</li>
+          <li>Living prophets can address modern questions not directly discussed in ancient scripture.</li>
+        </ul>
+        <p>From an LDS viewpoint, this helps explain why there can be doctrinal certainty despite an imperfect biblical record. The central claim becomes: God did not leave humanity with only an ancient text to interpret. He restored additional scripture and living prophetic authority.</p>
+
+        <div class="two-col">
+          <div class="col-box">
+            <h4>A Protestant Would Likely Reply</h4>
+            <p>Additional scriptures and prophets simply multiply the authorities and create new questions.</p>
+          </div>
+          <div class="col-box">
+            <h4>An LDS Member Would Respond</h4>
+            <p>Without continuing revelation, Christianity fragmented into thousands of competing interpretations.</p>
+          </div>
+        </div>
+
+        <p>The strongest LDS case is not, in my view, "the Bible is perfect." Rather, it is: God historically worked through prophets, apostles, scripture, and continuing revelation. Therefore we should expect the same pattern today. The question then shifts from: "Is the Bible completely error-free?" to "Has God actually restored prophetic authority through Joseph Smith?" If the Restoration is true, then the four standard works together with living prophets provide a framework for resolving doctrinal disputes. If the Restoration is not true, then the existence of additional scriptures doesn't solve the authority problem. Everything ultimately comes back to that foundational claim.</p>
       </div>
     </div>
   </section>
 
+  <!-- ===== FAITH & WORKS ===== -->
   <section class="section" style="background: var(--bg-white);" id="faith-works">
     <div class="container">
       <div class="section-header fade-in">
@@ -839,6 +741,11 @@
           </div>
         </div>
 
+        <h3>The Strongest Verses</h3>
+        <p><strong>For sola fide:</strong> Romans 3:28 — "Therefore we conclude that a man is justified by faith without the deeds of the law."</p>
+        <p><strong>Against sola fide:</strong> James 2:24 — "Ye see then how that by works a man is justified, and not by faith only." This is the only place in scripture where the phrase "faith only" appears.</p>
+        <p>Catholics, Orthodox, and many Latter-day Saints often point here and ask: If the Bible teaches faith alone so clearly, why does James literally say "not by faith only"?</p>
+
         <h3>The LDS Reconciliation</h3>
         <p>Latter-day Saints tend to approach the issue differently. An LDS reading often says:</p>
         <ul>
@@ -847,10 +754,24 @@
         </ul>
         <p>The Book of Mormon often presents these ideas together: faith in Christ, repentance, baptism, enduring to the end, reliance on grace.</p>
         <p>So an LDS interpretation usually sees no need for "faith alone" as a separate doctrine. The question becomes: <em>What kind of faith saves?</em> And the answer would be: <strong>A covenantal faith that trusts Christ and follows Him.</strong></p>
+
+        <h3>A Deeper Observation</h3>
+        <p>What's fascinating is that almost all Christians agree on one thing: <strong>Dead faith does not save.</strong></p>
+        <p>The disagreement is over the role of works.</p>
+        <ul>
+          <li><strong>Protestants say:</strong> Works reveal saving faith.</li>
+          <li><strong>Catholics, Orthodox, and Latter-day Saints typically say:</strong> Works are part of the believer's response to God's grace and therefore participate in the saving relationship.</li>
+        </ul>
+        <p>So the dispute is often less about whether Christians should obey Christ and more about how faith, grace, and obedience relate to justification and salvation. In many ways, Paul and James become much easier to reconcile once you see that they are fighting different errors:</p>
+        <ul>
+          <li>Paul fights the idea that we can <strong>earn</strong> salvation.</li>
+          <li>James fights the idea that salvation requires <strong>no transformation</strong>.</li>
+        </ul>
       </div>
     </div>
   </section>
 
+  <!-- ===== ALLEGIANCE ===== -->
   <section class="section" id="allegiance">
     <div class="container">
       <div class="section-header fade-in">
@@ -869,10 +790,11 @@
           <li>Faith is a power through which God acts and through which humans access divine power.</li>
           <li>Miracles, repentance, sacrifice, and covenant keeping all flow from faith.</li>
         </ul>
+        <p>An LDS reading of James fits very naturally with this. If faith is a principle of action, then "faith without works is dead" is almost self-evidently true. A faith that never acts is not really faith at all.</p>
 
         <h2>The "Pistis" / Allegiance View</h2>
         <p>In recent biblical scholarship, some scholars have argued that the Greek word <em>pistis</em> can mean more than intellectual belief or trust. It can carry ideas of faithfulness, loyalty, fidelity, and allegiance.</p>
-        <p>Under this framework, when Paul speaks of faith in Christ, he may be describing covenant loyalty to Christ as King rather than mere mental assent. Instead of "Believe these facts about Jesus," the emphasis becomes "Give your loyalty and obedience to Jesus."</p>
+        <p>Under this framework, when Paul speaks of faith in Christ, he may be describing covenant loyalty to Christ as King rather than mere mental assent. Instead of "Believe these facts about Jesus," the emphasis becomes "Give your loyalty and obedience to Jesus." This interpretation has been advanced by scholars such as Matthew W. Bates and others studying "faith" language in the New Testament.</p>
 
         <div class="highlight-box">
           <h3>A Possible Synthesis</h3>
@@ -893,14 +815,14 @@
   <!-- ===== BOTTOM NAV BUTTONS ===== -->
   <div class="container">
     <div class="nav-buttons fade-in">
-      <a href="https://accessworldseminars-ship-it.github.io/results/" class="nav-button">
-        <i class="fas fa-home"></i> Return Home
-      </a>
       <a href="#inerrancy" class="nav-button">
         <i class="fas fa-book-open"></i> Back to Inerrancy
       </a>
       <a href="#lds-perspective" class="nav-button">
         <i class="fas fa-church"></i> LDS Perspective
+      </a>
+      <a href="#faith-works" class="nav-button">
+        <i class="fas fa-hands-praying"></i> Faith & Works
       </a>
     </div>
   </div>
@@ -920,10 +842,10 @@
         </div>
         <div class="footer-col">
           <h4>Quick Links</h4>
-          <a href="https://accessworldseminars-ship-it.github.io/results/">Home</a>
           <a href="#inerrancy">Inerrancy</a>
           <a href="#lds-perspective">LDS Perspective</a>
           <a href="#faith-works">Faith & Works</a>
+          <a href="#allegiance">Allegiance</a>
         </div>
         <div class="footer-col">
           <h4>Resources</h4>
@@ -962,7 +884,8 @@
       }
     });
 
-    // Close mobile menu when a link is clicked    document.querySelectorAll('.nav-links a').forEach(link => {
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('open');
         const icon = mobileMenuBtn.querySelector('i');
