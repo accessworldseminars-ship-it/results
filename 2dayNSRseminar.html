@@ -478,9 +478,14 @@
             overflow: hidden;
             border: 2px solid rgba(212, 175, 55, 0.3);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            background: rgba(15, 26, 61, 0.6);
         }
 
-        .instructor-img img { width: 100%; height: auto; }
+        .instructor-img img {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: contain;
+        }
 
         .instructor-stats {
             display: grid;
@@ -525,6 +530,7 @@
             border-radius: var(--radius);
             overflow: hidden;
             transition: var(--transition);
+            display: block;
         }
 
         .video-card:hover {
@@ -537,19 +543,19 @@
             position: relative;
             display: block;
             aspect-ratio: 16/9;
-            background: linear-gradient(135deg, var(--secondary-blue), var(--light-blue));
+            background: rgba(15, 26, 61, 0.8);
             overflow: hidden;
         }
 
         .video-thumb img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: var(--transition);
-            opacity: 0.85;
+            opacity: 0.9;
         }
 
-        .video-card:hover .video-thumb img { opacity: 1; transform: scale(1.05); }
+        .video-card:hover .video-thumb img { opacity: 1; transform: scale(1.03); }
 
         .play-icon {
             position: absolute;
@@ -557,7 +563,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(5, 10, 26, 0.4);
+            background: rgba(5, 10, 26, 0.35);
         }
 
         .play-icon i {
@@ -568,6 +574,23 @@
         }
 
         .video-card:hover .play-icon i { transform: scale(1.15); color: #fff; }
+
+        /* Drive-style testimonial thumb (no photo) */
+        .icon-thumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a2b5e, #2d3b6b);
+        }
+
+        .icon-thumb i {
+            font-size: 3.2rem;
+            color: var(--accent-gold);
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.6));
+            transition: var(--transition);
+        }
+
+        .video-card:hover .icon-thumb i { transform: scale(1.12); color: #fff; }
 
         .video-info { padding: 18px 20px; }
         .video-info h4 { font-size: 1rem; margin-bottom: 4px; }
@@ -700,94 +723,103 @@
             padding-top: 18px;
         }
 
-        /* ===== PRICING ===== */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 26px;
-            align-items: start;
+        /* ===== QUIZ BANNER ===== */
+        .quiz-banner {
+            background: linear-gradient(135deg, rgba(26, 43, 94, 0.85), rgba(45, 59, 107, 0.65));
+            border-top: 1px solid rgba(212, 175, 55, 0.25);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 60px 0;
+            text-align: center;
         }
 
-        .price-card {
-            background: rgba(26, 43, 94, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .quiz-banner h2 {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            margin-bottom: 14px;
+        }
+
+        .quiz-banner p {
+            max-width: 660px;
+            margin: 0 auto 26px;
+            font-size: 1rem;
+        }
+
+        .quiz-banner .quiz-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            color: var(--accent-gold);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 7px 18px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+        }
+
+        /* ===== ENROLL CARD ===== */
+        .enroll-wrap {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .enroll-card {
+            background: rgba(26, 43, 94, 0.55);
+            border: 2px solid var(--accent-gold);
             border-radius: var(--radius);
             overflow: hidden;
-            transition: var(--transition);
-            position: relative;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.18);
         }
 
-        .price-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .price-card.best-value {
-            border: 2px solid var(--accent-gold);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-        }
-
-        .best-badge {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: var(--accent-gold);
-            color: var(--primary-blue);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 0.68rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            padding: 6px 14px;
-            border-radius: 50px;
-            z-index: 2;
-        }
-
-        .price-header {
+        .enroll-header {
             background: linear-gradient(135deg, var(--secondary-blue), var(--light-blue));
-            padding: 28px 26px;
+            padding: 34px 30px;
             text-align: center;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.25);
         }
 
-        .price-header h3 { font-size: 1.15rem; margin-bottom: 10px; }
-
-        .price-tag {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 2.4rem;
-            color: var(--accent-gold);
-            display: block;
-            line-height: 1;
+        .enroll-header h3 {
+            font-size: clamp(1.3rem, 3vw, 1.7rem);
+            margin-bottom: 10px;
         }
 
-        .price-old {
+        .enroll-header p {
+            color: var(--accent-silver);
             font-size: 0.9rem;
-            color: var(--accent-silver);
-            text-decoration: line-through;
-            margin-top: 6px;
+            margin: 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
         }
 
-        .price-note {
-            font-size: 0.78rem;
-            color: var(--accent-silver);
-            margin-top: 8px;
+        .enroll-body { padding: 34px 30px; }
+
+        .enroll-body .check-list { margin-bottom: 26px; }
+        .enroll-body .check-list li { font-size: 0.95rem; }
+
+        .enroll-note {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            font-size: 0.88rem;
+            color: var(--text-light);
+            margin-bottom: 26px;
+            text-align: center;
         }
 
-        .price-body { padding: 26px; }
+        .enroll-note i { color: var(--accent-gold); margin-right: 6px; }
 
-        .price-body .check-list li { font-size: 0.9rem; }
-
-        .price-ideal {
-            border-left: 3px solid var(--accent-gold);
-            padding-left: 14px;
-            font-style: italic;
-            font-size: 0.85rem;
-            color: var(--accent-silver);
-            margin: 18px 0;
+        .enroll-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
         }
-
-        .price-body .btn { width: 100%; margin-top: 8px; }
 
         /* ===== FINAL CTA ===== */
         .final-cta {
@@ -859,27 +891,31 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: var(--transition);
             position: relative;
+            background: rgba(15, 26, 61, 0.75);
         }
 
         .showcase-item:hover {
-            transform: scale(1.03);
+            transform: scale(1.02);
             border-color: rgba(212, 175, 55, 0.4);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
 
-        .showcase-item img { width: 100%; height: 220px; object-fit: cover; }
+        /* Full image visible — nothing cropped */
+        .showcase-item img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: contain;
+            padding: 6px;
+        }
 
         .showcase-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
             background: linear-gradient(transparent, rgba(5, 10, 26, 0.95));
-            padding: 30px 18px 16px;
+            padding: 26px 18px 16px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             font-size: 0.85rem;
             color: var(--text-light);
+            text-align: center;
         }
 
         /* ===== FOOTER ===== */
@@ -938,7 +974,7 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width: 992px) {
             .instructor-wrap { grid-template-columns: 1fr; gap: 30px; }
-            .instructor-img { max-width: 400px; margin: 0 auto; }
+            .instructor-img { max-width: 420px; margin: 0 auto; }
         }
 
         @media (max-width: 768px) {
@@ -950,6 +986,7 @@
             .section-title { padding: 14px 18px; }
             .highlight-box { padding: 22px; }
             .process-body, .process-header { padding-left: 20px; padding-right: 20px; }
+            .enroll-body, .enroll-header { padding-left: 22px; padding-right: 22px; }
         }
 
         @media (max-width: 480px) {
@@ -959,7 +996,7 @@
             .logo-wrap img { height: 42px; }
             .brand-text { font-size: 0.95rem; }
             .currency-note { font-size: 0.7rem; padding: 5px 10px; }
-            .price-tag { font-size: 2rem; }
+            .enroll-actions .btn { width: 100%; }
         }
 
         /* Smooth fade-in on scroll */
@@ -980,7 +1017,7 @@
                 <img src="https://i.ibb.co/spJSMY16/worldjjpgsf.png" alt="AccessWorld Seminars Logo">
                 <div>
                     <div class="brand-text">ACCESSWORLD SEMINARS</div>
-                    <div class="brand-sub">Transformative Coaching & Training</div>
+                    <div class="brand-sub">Transformative Coaching &amp; Training</div>
                 </div>
             </div>
             <div class="currency-note">
@@ -1004,7 +1041,7 @@
             </p>
             <div class="hero-cta">
                 <a href="https://accessworldseminars-ship-it.github.io/results/purchase2day" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
-                    <i class="fas fa-shopping-cart"></i> Secure Your Spot — Event-Only Pricing
+                    <i class="fas fa-shopping-cart"></i> Enroll in the 2-Day Program
                 </a>
                 <a href="#processes" class="btn btn-secondary btn-lg">
                     <i class="fas fa-arrow-down"></i> Discover the 4 Processes
@@ -1397,7 +1434,7 @@
             </div>
             <div class="instructor-wrap">
                 <div class="instructor-img">
-                    <img src="https://i.ibb.co/Wp2YgG8G/Whats-App-Image-2026-03-03-at-8-23-49-AM-3.jpg" alt="Joshua Roy — Seminar Leader and Life Coach">
+                    <img src="https://i.ibb.co/p6V5HvcK/Screenshot-2025-11-11-122952.png" alt="Joshua Roy — Seminar Leader and Life Coach">
                 </div>
                 <div>
                     <p style="font-size:1.05rem; margin-bottom:16px;">
@@ -1472,14 +1509,50 @@
                         <p>Watch on YouTube <i class="fas fa-external-link-alt"></i></p>
                     </div>
                 </a>
-                <a href="https://youtu.be/REBPK1om9XQ" class="video-card" target="_blank" rel="noopener">
+                <a href="https://youtu.be/u0V-pgyrXt4" class="video-card" target="_blank" rel="noopener">
                     <div class="video-thumb">
-                        <img src="https://i.ibb.co/jkTVLDfD/Whats-App-Image-2026-03-03-at-8-23-48-AM-1.jpg" alt="Brad Testimony">
+                        <img src="https://i.ibb.co/jkTVLDfD/Whats-App-Image-2026-03-03-at-8-23-48-AM-1.jpg" alt="Sharon Testimony">
                         <div class="play-icon"><i class="fas fa-play-circle"></i></div>
                     </div>
                     <div class="video-info">
-                        <h4>Brad's Testimony</h4>
+                        <h4>Sharon's Testimony</h4>
                         <p>Watch on YouTube <i class="fas fa-external-link-alt"></i></p>
+                    </div>
+                </a>
+                <a href="https://drive.google.com/file/d/1qfwDbGlpDvYm0Ggyuew_Dw_A6XQNpoI0/view?usp=drive_link" class="video-card" target="_blank" rel="noopener">
+                    <div class="video-thumb icon-thumb">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="video-info">
+                        <h4>Gordon's Testimony</h4>
+                        <p>Watch on Google Drive <i class="fas fa-external-link-alt"></i></p>
+                    </div>
+                </a>
+                <a href="https://drive.google.com/file/d/1CT2x7n6wbe-tqtB5Y073mSH2OB2BbSmX/view?usp=drive_link" class="video-card" target="_blank" rel="noopener">
+                    <div class="video-thumb icon-thumb">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="video-info">
+                        <h4>Deanna's Testimony</h4>
+                        <p>Watch on Google Drive <i class="fas fa-external-link-alt"></i></p>
+                    </div>
+                </a>
+                <a href="https://drive.google.com/file/d/1Ue67kXJQPWzuAKEMOCEZqvz1JFQvGkpd/view?usp=drive_link" class="video-card" target="_blank" rel="noopener">
+                    <div class="video-thumb icon-thumb">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="video-info">
+                        <h4>Karla's Testimony</h4>
+                        <p>Watch on Google Drive <i class="fas fa-external-link-alt"></i></p>
+                    </div>
+                </a>
+                <a href="https://drive.google.com/file/d/1E4P6fKpcgqEHP4vFftwK9EJ7wGS97GAL/view?usp=drive_link" class="video-card" target="_blank" rel="noopener">
+                    <div class="video-thumb icon-thumb">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="video-info">
+                        <h4>Lisa's Testimony</h4>
+                        <p>Watch on Google Drive <i class="fas fa-external-link-alt"></i></p>
                     </div>
                 </a>
             </div>
@@ -1494,16 +1567,36 @@
                     <span class="author">— Rita</span>
                 </div>
                 <div class="quote-card">
-                    <p>What if it doesn't work? And now Hannah is zero. We found something that works.</p>
-                    <span class="author">— Hannah (after Space Odyssey)</span>
+                    <p>I felt unsafe during the coaching. I could feel the trigger happening in real time. Then we went back one hour before and looked down from high up. That changed everything. It doesn't affect my body anymore.</p>
+                    <span class="author">— Workshop Participant (after the NSR memory process)</span>
                 </div>
                 <div class="quote-card">
                     <p>Zero. Calm.</p>
                     <span class="author">— Helena (after Space Odyssey)</span>
                 </div>
                 <div class="quote-card">
-                    <p>Learning more from you in many areas. Best version of myself.</p>
-                    <span class="author">— Helena</span>
+                    <p>He asked me for the steps. Like a recipe for a cake. I'd never thought of it that way. I was totally visualizing what that would look like — and what it would feel like to stand up tall and breathe in yellow and say "that's interesting." That felt good.</p>
+                    <span class="author">— Kate</span>
+                </div>
+                <div class="quote-card">
+                    <p>I feel like I can talk to somebody right now. I can just walk up to someone. I think they're in a lot of pain — do you mind if I give you a 30-second stretch?</p>
+                    <span class="author">— Steven (after a 10-minute confidence process)</span>
+                </div>
+                <div class="quote-card">
+                    <p>I've come to terms with being alone without feeling lonely. That's a big, big difference.</p>
+                    <span class="author">— Christine</span>
+                </div>
+                <div class="quote-card">
+                    <p>I used to sit and think my way through a problem and it would just get worse and worse because I'm overthinking. Now I'm like — just get up and move your body. That has brought a lot of inspiration to me.</p>
+                    <span class="author">— Sarah</span>
+                </div>
+                <div class="quote-card">
+                    <p>I really feel very connected, and I'm really excited about doing that.</p>
+                    <span class="author">— Gordon</span>
+                </div>
+                <div class="quote-card">
+                    <p>Everything's working out in the way that it needs to work out.</p>
+                    <span class="author">— Sonjay</span>
                 </div>
                 <div class="quote-card">
                     <p>10 out of 10.</p>
@@ -1609,71 +1702,71 @@
         </div>
     </section>
 
-    <!-- ===== INVESTMENT ===== -->
+    <!-- ===== QUIZ BANNER ===== -->
+    <section id="quiz" class="quiz-banner fade-in">
+        <div class="container">
+            <div class="quiz-tag"><i class="fas fa-clipboard-check"></i> Free Quiz</div>
+            <h2>Not Sure If NSR Is Right For You?</h2>
+            <p>
+                Take the free <strong style="color:var(--accent-gold);">Emotional Mastery &amp; NSR</strong> quiz. In a few minutes you'll discover where your nervous system is holding you back — and which process will move the needle for you first.
+            </p>
+            <a href="https://accessworldseminars-ship-it.github.io/results/quizselect19" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                <i class="fas fa-clipboard-check"></i> Take the Emotional Mastery &amp; NSR Quiz
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== ENROLL ===== -->
     <section id="investment" class="fade-in" style="background:linear-gradient(180deg, transparent, rgba(26,43,94,0.3), transparent);">
         <div class="container">
             <div class="section-title">
-                <i class="fas fa-tags"></i>
-                <h2>Investment Options — Event-Only Pricing</h2>
-                <span class="badge">Prices Going Up</span>
+                <i class="fas fa-ticket"></i>
+                <h2>Enroll in the 2-Day NSR Transformation Program</h2>
+                <span class="badge">Event-Only Pricing</span>
             </div>
-            <p style="text-align:center; margin-bottom:36px; font-size:0.95rem; color:var(--accent-silver);">
-                <i class="fas fa-info-circle" style="color:var(--accent-gold);"></i>
-                All prices in AUD (Australian Dollars). This is event-only pricing — prices will increase.
-            </p>
 
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <div class="price-header">
-                        <h3>12-Month Extension</h3>
-                        <span class="price-tag">$860</span>
-                        <div class="price-old">Regularly $1,700 AUD</div>
-                        <div class="price-note">Just under half price</div>
+            <div class="enroll-wrap">
+                <div class="enroll-card">
+                    <div class="enroll-header">
+                        <h3>2-Day Nervous System Reprogramming Workshop</h3>
+                        <p>Live · Interactive · Immersive</p>
                     </div>
-                    <div class="price-body">
+                    <div class="enroll-body">
                         <ul class="check-list">
-                            <li>Continue your growth journey for another 12 months</li>
-                            <li>Access to future seminars and trainings</li>
-                            <li>Group coaching and NLP sessions</li>
-                            <li>Event-only discounted rate</li>
+                            <li>Two full days live with Joshua Roy</li>
+                            <li>All 4 change processes — The Gift, The Grey Room, The Womb of Eternity &amp; Space Odyssey</li>
+                            <li>Guided visualization and change work (including the Golden Door process)</li>
+                            <li>Morning routine training</li>
+                            <li>Small-group breakout rooms for connection and integration</li>
+                            <li>Digital manual and workbook</li>
+                            <li>Interactive Q&amp;A and live coaching moments</li>
                         </ul>
-                        <div class="price-ideal">Ideal for those ready to deepen their transformation.</div>
-                        <a href="https://accessworldseminars-ship-it.github.io/results/purchase2day" class="btn btn-secondary" target="_blank" rel="noopener">Get the 12-Month Extension</a>
+
+                        <div class="enroll-note">
+                            <i class="fas fa-info-circle"></i>
+                            All prices in AUD (Australian Dollars). This is <strong>event-only pricing</strong> — prices increase after this event.
+                        </div>
+
+                        <div class="enroll-actions">
+                            <a href="https://accessworldseminars-ship-it.github.io/results/purchase2day" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                                <i class="fas fa-shopping-cart"></i> Enroll Now
+                            </a>
+                            <a href="https://accessworldseminars-ship-it.github.io/results/quizselect19" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
+                                <i class="fas fa-clipboard-check"></i> Take the Quiz First
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="price-card best-value">
-                    <span class="best-badge">Best Value</span>
-                    <div class="price-header">
-                        <h3>Lifetime Membership</h3>
-                        <span class="price-tag">$2,560</span>
-                        <div class="price-old">Will increase to $4,000+ in 2 years</div>
-                        <div class="price-note">Lock in today's price forever</div>
-                    </div>
-                    <div class="price-body">
-                        <ul class="check-list">
-                            <li>5 full courses (2 days each = 80+ hours of training)</li>
-                            <li>Group coaching included</li>
-                            <li>NLP sessions included</li>
-                            <li>Lifetime access to future seminars</li>
-                            <li>Never pay again — just show up and transform</li>
-                        </ul>
-                        <div class="price-ideal">Ideal for those who want permanent, lifelong growth and community.</div>
-                        <a href="https://accessworldseminars-ship-it.github.io/results/purchase2day" class="btn btn-primary" target="_blank" rel="noopener">
-                            <i class="fas fa-crown"></i> Get Lifetime Membership
-                        </a>
-                    </div>
+                <div class="highlight-box" style="margin-top:30px; text-align:center;">
+                    <strong>"Any investment you make is going to bring a return. That's how it works."</strong> — Joshua Roy
                 </div>
-            </div>
 
-            <div class="highlight-box" style="margin-top:30px; text-align:center;">
-                <strong>"Any investment you make is going to bring a return. That's how it works."</strong> — Joshua Roy
-            </div>
-
-            <div style="text-align:center; margin-top:30px;">
-                <a href="https://docs.google.com/document/d/1z5--f16JH3T7eLllLzw66L60NFAw384n/edit?usp=drive_link&ouid=116911817819525150049&rtpof=true&sd=true" class="btn btn-secondary" target="_blank" rel="noopener">
-                    <i class="fas fa-external-link-alt"></i> Read the Full NSR &amp; NLP Description
-                </a>
+                <div style="text-align:center; margin-top:26px;">
+                    <a href="https://docs.google.com/document/d/1z5--f16JH3T7eLllLzw66L60NFAw384n/edit?usp=drive_link&ouid=116911817819525150049&rtpof=true&sd=true" class="btn btn-secondary" target="_blank" rel="noopener">
+                        <i class="fas fa-external-link-alt"></i> Read the Full NSR &amp; NLP Description
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1708,10 +1801,10 @@
             </p>
             <div class="hero-cta">
                 <a href="https://accessworldseminars-ship-it.github.io/results/purchase2day" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
-                    <i class="fas fa-shopping-cart"></i> Register Now — Event-Only Pricing
+                    <i class="fas fa-shopping-cart"></i> Enroll in the 2-Day Program
                 </a>
-                <a href="#investment" class="btn btn-secondary btn-lg">
-                    <i class="fas fa-tags"></i> View Investment Options
+                <a href="https://accessworldseminars-ship-it.github.io/results/quizselect19" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
+                    <i class="fas fa-clipboard-check"></i> Take the Free Quiz
                 </a>
             </div>
             <p style="margin-top:26px; font-size:0.9rem; color:var(--accent-silver);">
@@ -1733,7 +1826,8 @@
                 <a href="#instructor">About Joshua</a>
                 <a href="#testimonials">Testimonials</a>
                 <a href="#faq">FAQ</a>
-                <a href="https://accessworldseminars-ship-it.github.io/results/purchase2day" target="_blank" rel="noopener">Register</a>
+                <a href="https://accessworldseminars-ship-it.github.io/results/quizselect19" target="_blank" rel="noopener">Quiz</a>
+                <a href="https://accessworldseminars-ship-it.github.io/results/purchase2day" target="_blank" rel="noopener">Enroll</a>
             </div>
             <div class="footer-copy">
                 &copy; 2026 AccessWorld Seminars. All rights reserved. &nbsp;|&nbsp; All prices in AUD (Australian Dollars).
@@ -1778,17 +1872,6 @@
                 console.log('External link clicked:', url);
             });
         });
-
-        // Highlight best value card on hover (subtle pulse)
-        const bestCard = document.querySelector('.price-card.best-value');
-        if (bestCard) {
-            bestCard.addEventListener('mouseenter', () => {
-                bestCard.style.boxShadow = '0 0 50px rgba(212, 175, 55, 0.35)';
-            });
-            bestCard.addEventListener('mouseleave', () => {
-                bestCard.style.boxShadow = '0 0 30px rgba(212, 175, 55, 0.2)';
-            });
-        }
     </script>
 </body>
 </html>
